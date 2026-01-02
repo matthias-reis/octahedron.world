@@ -3,7 +3,6 @@
 import { FC, useEffect, useState, useRef } from 'react';
 import { Result } from './_state';
 import { runSimulation } from './_simulation';
-import { calculateOverrideValues } from 'next/dist/server/font-utils';
 
 const toFormatted = (num: number) => new Intl.NumberFormat('de-DE').format(num);
 

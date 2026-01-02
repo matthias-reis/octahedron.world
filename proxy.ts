@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-export function middleware(request: Request) {
+export function proxy(request: Request) {
   // get the URL from request header
   const headers = new Headers(request.headers);
   const url = new URL(request.url);

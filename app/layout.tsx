@@ -52,19 +52,22 @@ export const metadata: Metadata = {
     default: 'OCTAHEDRONWORLD',
     template: '%s | OCTAHEDRONWORLD',
   },
+
   alternates: { canonical: '/' },
   metadataBase: new URL('https://octahedron.world'),
+
   description:
     'Monthly magazine for Science Fiction, Science Fact and Fantasy.',
-  themeColor: getThemeColor(),
-  colorScheme: 'dark',
+
   creator: 'Matthias Reis',
   publisher: 'Matthias Reis',
   authors: [{ name: 'Matthias Reis' }],
+
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
+
   openGraph: {
     url: '/',
     title: 'OCTAHEDRONWORLD',
@@ -81,4 +84,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+};
+
+export const viewport = {
+  colorScheme: 'dark',
+  themeColor: getThemeColor(),
 };

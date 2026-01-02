@@ -8,9 +8,10 @@ import { getItem } from '../../../core/data-layer';
 import { getFormattedTitle } from '../../../core/page-meta';
 import { Metadata } from 'next';
 
-export async function generateMetadata({
-  params,
-}: DynamicPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: DynamicPageProps
+): Promise<Metadata> {
+  const params = await props.params;
   const slug = params?.slug?.join('/') || '';
   const item = getItem(slug);
   if (!item) return {};
@@ -19,7 +20,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function LegalPage({ params }: DynamicPageProps) {
+export default async function LegalPage(props: DynamicPageProps) {
+  const params = await props.params;
   const slug = params?.slug;
   const file = `${process.cwd()}/_legal/${slug}.md`;
   if (!existsSync(file)) redirect('/');

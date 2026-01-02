@@ -55,6 +55,7 @@ export class State {
       gender,
       age: 0,
       status: 'born',
+      health: Math.random(),
       likelihoodForPartner: Math.random(),
       fertility: Math.random(),
       mother: mother.id,

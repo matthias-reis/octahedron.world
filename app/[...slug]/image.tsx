@@ -3,13 +3,13 @@ import { ReadBoxed } from '../../comp/sections';
 import { Tag, TagList } from '../../comp/tag';
 import { getTagsByTagSlugs } from '../../core/data-layer';
 import { getFormattedDate } from '../../core/date-helpers';
-import type { Layout } from './page';
+import type { Layout } from './types';
 import Octahedron from '../../comp/octahedron';
 
 export const imageLayout: Layout = {
   components: {},
   Main: ({ item }) => (
-    <>
+    <body>
       <Link href="/" className={`text-decent-500 absolute top-4 right-4 z-10`}>
         <Octahedron />
       </Link>
@@ -40,6 +40,6 @@ export const imageLayout: Layout = {
           </TagList>
         </ReadBoxed>
       )}
-    </>
+    </body>
   ),
 };

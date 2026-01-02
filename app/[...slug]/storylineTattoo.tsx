@@ -4,22 +4,23 @@ import { Boxed, Grid, GridItem, ReadBoxed, Section } from '../../comp/sections';
 import { Tag, TagList } from '../../comp/tag';
 import { getTagsByTagSlugs } from '../../core/data-layer';
 import { getMonthName, getYearSpan } from '../../core/date-helpers';
-import type { Layout } from './page';
+import type { Layout } from './types';
 import { LayoutFrame } from '../../comp/layout-frame';
+import { PropsWithChildren } from 'react';
 
 export const storylineTattooLayout: Layout = {
   components: {
-    h2: ({ children }) => (
+    h2: ({ children }: PropsWithChildren) => (
       <h2 className="font-bold font-condensed text-5xl md:text-6xl text-decent-500 mt-8">
         {children}
       </h2>
     ),
-    h3: ({ children }) => (
+    h3: ({ children }: PropsWithChildren) => (
       <h2 className="font-light uppercase text-3xl tracking-wider text-decent-700 mb-6">
         {children}
       </h2>
     ),
-    image: ({ payload }) => (
+    image: ({ payload }: PropsWithChildren<{ payload?: string }>) => (
       <img
         alt="Tattoo Photography"
         src={`/tattoos/${payload}.jpeg`}

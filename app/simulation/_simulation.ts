@@ -42,12 +42,13 @@ const getStartingState = (): State => {
       Math.random() < LIKELIHOOD_FEMALE ? 'female' : 'male';
     const age = AGE_AT_START;
     const likelihoodForPartner = Math.random();
-    const health = Math;
+    const health = Math.random();
     const fertility = Math.random();
     citizens.push({
       id,
       gender,
       age,
+      health,
       status: 'alive' as Status,
       likelihoodForPartner,
       fertility,

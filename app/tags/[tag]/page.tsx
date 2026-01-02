@@ -3,7 +3,8 @@ import { Item } from '../../../comp/item';
 import { Boxed, Grid, GridItem } from '../../../comp/sections';
 import type { DynamicPageProps, ItemMeta, TagMeta } from '../../../core/types';
 
-export default function Page({ params }: DynamicPageProps) {
+export default async function Page(props: DynamicPageProps) {
+  const params = await props.params;
   const tagSlug = params.tag || '';
   const { name, count, items } = getTagByTagSlug(tagSlug);
   const storylineItems = items.filter((i) => i.type === 'storyline');

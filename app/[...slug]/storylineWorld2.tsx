@@ -4,18 +4,20 @@ import { Boxed, Grid, GridItem, ReadBoxed, Section } from '../../comp/sections';
 import { Tag, TagList } from '../../comp/tag';
 import { getTagsByTagSlugs } from '../../core/data-layer';
 import { getMonthName, getYearSpan } from '../../core/date-helpers';
-import type { Layout } from './page';
+import type { Layout } from './types';
 import { World2Calculator } from '../../comp/world-2-calculator';
 import { LayoutFrame } from '../../comp/layout-frame';
+import { FCC } from '../../core/types';
+import { PropsWithChildren } from 'react';
 
 export const storylineWorld2Layout: Layout = {
   components: {
-    h1: ({ children }) => (
+    h1: ({ children }: PropsWithChildren) => (
       <h1 className="font-condensed font-bold text-5xl md:text-8xl text-decent-900 uppercase mb-3">
         {children}
       </h1>
     ),
-    h2: ({ children }) => (
+    h2: ({ children }: PropsWithChildren) => (
       <h2 className="font-bold font-condensed text-4xl md:text-5xl text-decent-900 mt-7 mb-4">
         {children}
       </h2>

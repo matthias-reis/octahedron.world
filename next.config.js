@@ -7,7 +7,6 @@ const nextConfig = {
   transpilePackages: ['@piwikpro/next-piwik-pro'],
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
-  swcMinify: true,
   redirects: async () => [
     {
       source: '/more',
@@ -22,6 +21,9 @@ const nextConfig = {
       type: 'asset/source',
     });
     return config;
+  },
+  turbopack: {
+    root: __dirname,
   },
 };
 

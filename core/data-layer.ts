@@ -36,10 +36,6 @@ export const getTopItems = () => {
   const posts = getPosts();
   const ret = Array(63).fill(null);
 
-  console.log(
-    posts.map((i) => `${i.slug}: ${i.hidden ? 'hidden' : 'visible'}`)
-  );
-
   ret[2] = [images[0], 3];
   ret[14] = [images[1], 2];
   ret[25] = [images[2], 2];

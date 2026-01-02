@@ -1,29 +1,30 @@
+import { PropsWithChildren } from 'react';
 import { Item } from '../../comp/item';
 import { LayoutFrame } from '../../comp/layout-frame';
 import { Boxed, Grid, GridItem, ReadBoxed, Section } from '../../comp/sections';
 import { Tag, TagList } from '../../comp/tag';
 import { getItem, getTagsByTagSlugs } from '../../core/data-layer';
 import { getFormattedDate } from '../../core/date-helpers';
-import type { Layout } from './page';
+import type { Layout } from './types';
 
 export const postLayout: Layout = {
   components: {
-    h1: ({ children }) => (
+    h1: ({ children }: PropsWithChildren) => (
       <h1 className="font-condensed font-bold text-5xl md:text-6xl text-decent-900 uppercase mt-8 mb-6">
         {children}
       </h1>
     ),
-    h2: ({ children }) => (
+    h2: ({ children }: PropsWithChildren) => (
       <h2 className="font-bold font-condensed text-4xl md:text-3xl text-decent-900 mt-6 mb-4">
         {children}
       </h2>
     ),
-    h3: ({ children }) => (
+    h3: ({ children }: PropsWithChildren) => (
       <h2 className="font-bold font-condensed text-4xl md:text-xl text-decent-900 mt-4 mb-4">
         {children}
       </h2>
     ),
-    item: ({ payload }) => {
+    item: ({ payload }: PropsWithChildren<{ payload?: string }>) => {
       const other = getItem(payload || '');
       return <Item meta={other} />;
     },

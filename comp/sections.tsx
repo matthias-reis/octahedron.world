@@ -1,5 +1,7 @@
 import { FCC } from '../core/types';
 
+import type { JSX } from "react";
+
 export const Section: FCC<{
   headline: string;
   subHeadline?: string;

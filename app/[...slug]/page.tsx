@@ -1,12 +1,12 @@
-import type { FC, ReactElement } from 'react';
-import { redirect } from 'next/navigation';
+import type { FC, PropsWithChildren, ReactElement } from 'react';
+import { notFound } from 'next/navigation';
 import {
   getItem,
   getItemsByCategory,
   getItemsBySlugs,
 } from '../../core/data-layer';
 import { parseMarkdown } from '../../core/markdown';
-import { DynamicPageProps, FCC, ItemMeta } from '../../core/types';
+import { DynamicPageProps } from '../../core/types';
 import { Item } from '../../comp/item';
 import { postLayout } from './post';
 import { defaultLayout } from './default';
@@ -15,16 +15,7 @@ import { storylineTattooLayout } from './storylineTattoo';
 import { storylineWorld2Layout } from './storylineWorld2';
 import { imageLayout } from './image';
 import { Metadata } from 'next';
-
-export type Layout = {
-  Main: FC<{
-    item: ItemMeta;
-    sections: ReactElement[];
-    categoryItems?: ItemMeta[];
-    relatedItems?: ItemMeta[];
-  }>;
-  components: Record<string, FCC<{ payload?: string }>>;
-};
+import type { Layout } from './types';
 
 const layouts: Record<string, Layout> = {
   post: postLayout,
@@ -37,43 +28,48 @@ const layouts: Record<string, Layout> = {
   default: defaultLayout,
 };
 
-const Page: FC<DynamicPageProps> = ({ params }) => {
+const Page: FC<DynamicPageProps> = async (props) => {
+  const params = await props.params;
   const slug = (params?.slug ?? []).join('/');
   const item = getItem(slug);
-  if (!item) redirect('/');
+  if (!item) notFound();
 
   let { Main, components } =
     layouts[item.slug] || layouts[item.type || 'none'] || layouts.default;
 
   components = {
-    p: ({ children }) => (
+    p: ({ children }: PropsWithChildren) => (
       <p className="text-lg font-serif leading-loose text-decent-700 mb-4">
         {children}
       </p>
     ),
-    ul: ({ children }) => (
+    ul: ({ children }: PropsWithChildren) => (
       <ul className="font-serif text-lg mb-4 list-outside list-disc text-decent-700">
         {children}
       </ul>
     ),
-    code: ({ children }) => (
+    code: ({ children }: PropsWithChildren) => (
       <code className="font-mono text-md text-main">{children}</code>
     ),
-    li: ({ children }) => (
+    li: ({ children }: PropsWithChildren) => (
       <li className="mb-3 ml-4 leading-loose">{children}</li>
     ),
-    a: (props) => <a className="underline underline-offset-4" {...props} />,
-    strong: ({ children }) => (
+    a: (props: PropsWithChildren) => (
+      <a className="underline underline-offset-4" {...props} />
+    ),
+    strong: ({ children }: PropsWithChildren) => (
       <strong className="font-bold text-decent-900">{children}</strong>
     ),
-    blockquote: ({ children }) => (
+    blockquote: ({ children }: PropsWithChildren) => (
       <blockquote className="border-l-2 border-decent-500 pl-4 font-sans text-sm [&_p]:font-sans [&_p]:text-sm [&_p]:leading-relaxed w-3/4">
         {children}
       </blockquote>
     ),
-    sub: ({ children }) => <sub className="align-sub">{children}</sub>,
+    sub: ({ children }: PropsWithChildren) => (
+      <sub className="align-sub">{children}</sub>
+    ),
     ...components,
-    link: ({ payload }) => {
+    link: ({ payload }: PropsWithChildren<{ payload?: string }>) => {
       if (!payload) return null;
       const itemMeta = getItem(payload);
 
@@ -94,7 +90,7 @@ const Page: FC<DynamicPageProps> = ({ params }) => {
 
   const relatedItems = getItemsBySlugs(item?.related ?? []);
   const categoryItems = getItemsByCategory(item?.category);
-  const sections: ReactElement[] = item.sections.map((section, i) => {
+  const sections: ReactElement<any>[] = item.sections.map((section, i) => {
     if (typeof section !== 'string') {
       if (components[section.type]) {
         const Comp = components[section.type];
@@ -107,7 +103,7 @@ const Page: FC<DynamicPageProps> = ({ params }) => {
         );
       }
     } else {
-      return parseMarkdown(section, components);
+      return parseMarkdown(section, components) as ReactElement;
     }
   });
 
@@ -123,9 +119,10 @@ const Page: FC<DynamicPageProps> = ({ params }) => {
 
 export default Page;
 
-export async function generateMetadata({
-  params,
-}: DynamicPageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: DynamicPageProps
+): Promise<Metadata> {
+  const params = await props.params;
   const slug = params?.slug?.join('/') || '';
   const item = getItem(slug);
   if (!item) return {};
