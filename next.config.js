@@ -7,6 +7,7 @@ const nextConfig = {
   transpilePackages: ['@piwikpro/next-piwik-pro'],
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
+  output: 'standalone',
   redirects: async () => [
     {
       source: '/more',
