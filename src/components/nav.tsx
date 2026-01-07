@@ -1,13 +1,15 @@
-import { A } from '@solidjs/router';
+import { A, useLocation } from '@solidjs/router';
 import { cx } from './cx';
 import OctahedronLogo from './octahedron-logo';
-import { createSignal } from 'solid-js';
+import { createSignal, Show } from 'solid-js';
 import { X } from 'lucide-solid';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = createSignal<boolean>(false);
+  const location = useLocation();
+
   return (
-    <>
+    <Show when={location.pathname !== '/'}>
       <nav
         class={cx(
           'p-3 absolute top-0 right-0 w-xs',
@@ -36,6 +38,6 @@ export default function Nav() {
           </A>
         </div>
       </nav>
-    </>
+    </Show>
   );
 }
