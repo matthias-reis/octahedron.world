@@ -6,29 +6,21 @@ import { mkdirpSync as mkdirp } from 'mkdirp';
 const contentPath = join(process.cwd(), '_content');
 
 async function run() {
-  console.log('[IMG] Imagine start');
+  console.log('[IMG] start');
   const files = await glob(`${contentPath}/**/*.{jpg,jpeg,png}`, {
     absolute: true,
   });
   console.log(`[IMG] found ${files.length} files`);
   for (const file of files) {
-    const { name, dir } = parse(file);
-    const folders = dir.replace(contentPath, '');
+    const { name } = parse(file);
 
-    mkdirp(join(process.cwd(), 'public/img', folders));
+    // Create flat structure: public/img/{imageName}/s.jpg and public/img/{imageName}/l.jpg
+    const imageFolder = join(process.cwd(), 'public/img', name);
+    mkdirp(imageFolder);
 
-    const newImageLargeName = join(
-      process.cwd(),
-      'public/img',
-      folders,
-      name + '-l.jpg'
-    );
-    const newImageSmallName = join(
-      process.cwd(),
-      'public/img',
-      folders,
-      name + '-s.jpg'
-    );
+    const newImageLargeName = join(imageFolder, 'l.jpg');
+    const newImageSmallName = join(imageFolder, 's.jpg');
+
     const imageSharp = sharp(file);
 
     const imageLarge = imageSharp
@@ -59,9 +51,9 @@ async function run() {
         force: true,
       });
     await imageSmall.toFile(newImageSmallName);
-    console.log('[IMG]', folders, name);
+    console.log(`[IMG] 🏞️  ${name}`);
   }
-  console.log('[IMG] done');
+  console.log('[IMG] 🏁 done');
 }
 
 run();

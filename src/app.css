@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wdth,wght@75,300;75,700;87.5,200;87.5,400;87.5,700&family=Lora:wght@300;400;700&family=Fira+Code:wght@300;400;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --hue: 185;
+  --hue-complement: 5;
+}
+
+@theme inline {
+  --font-octa: "Nunito Sans", sans-serif;
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-serif: "Lora", serif;
+  --font-mono: "Fira Code", monospace;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-neutral-100: hsl(var(--hue), 4%, 0%);
+  --color-neutral-150: hsl(var(--hue), 4%, 3%);
+  --color-neutral-200: hsl(var(--hue), 4%, 6%);
+  --color-neutral-300: hsl(var(--hue), 4%, 18%);
+  --color-neutral-400: hsl(var(--hue), 4%, 35%);
+  --color-neutral-500: hsl(var(--hue), 4%, 50%);
+  --color-neutral-600: hsl(var(--hue), 4%, 65%);
+  --color-neutral-700: hsl(var(--hue), 4%, 82%);
+  --color-neutral-800: hsl(var(--hue), 4%, 94%);
+  --color-neutral-900: hsl(var(--hue), 4%, 100%);
+
+  --color-decent-100: hsl(var(--hue), 20%, 0%);
+  --color-decent-200: hsl(var(--hue), 20%, 6%);
+  --color-decent-300: hsl(var(--hue), 20%, 18%);
+  --color-decent-400: hsl(var(--hue), 20%, 35%);
+  --color-decent-500: hsl(var(--hue), 20%, 50%);
+  --color-decent-600: hsl(var(--hue), 20%, 65%);
+  --color-decent-700: hsl(var(--hue), 20%, 82%);
+  --color-decent-800: hsl(var(--hue), 20%, 94%);
+  --color-decent-900: hsl(var(--hue), 20%, 100%);
+
+  --color-saturated-100: hsl(var(--hue), 65%, 0%);
+  --color-saturated-200: hsl(var(--hue), 65%, 6%);
+  --color-saturated-300: hsl(var(--hue), 65%, 18%);
+  --color-saturated-400: hsl(var(--hue), 65%, 35%);
+  --color-saturated-500: hsl(var(--hue), 65%, 50%);
+  --color-saturated-600: hsl(var(--hue), 65%, 65%);
+  --color-saturated-700: hsl(var(--hue), 65%, 82%);
+  --color-saturated-800: hsl(var(--hue), 65%, 94%);
+  --color-saturated-900: hsl(var(--hue), 65%, 100%);
+
+  --color-main: hsl(var(--hue), 60%, 50%);
+  --color-complement: hsl(var(--hue-complement), 50%, 70%);
+
+  /* Spacings */
+  --spacing-1: 0.1rem;
+  --spacing-2: 0.25rem;
+  --spacing-3: 0.5rem;
+  --spacing-4: 1rem;
+  --spacing-5: 2rem;
+  --spacing-6: 3rem;
+  --spacing-7: 5rem;
+  --spacing-8: 8rem;
+  --spacing-9: 13rem;
+  --spacing-10: 21rem;
+
+  /* aspect ratios */
+  --aspect-wide: 3 / 1;
+  --aspect-image: 3 / 2;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+.font-octa {
+  font-stretch: 75%;
+}
+
+.font-sans {
+  font-stretch: 87.5%;
+}
+
+.red {
+  --hue: 0;
+  --hue-complement: 200;
+}
+.orange {
+  --hue: 25;
+  --hue-complement: 180;
+}
+.tan {
+  --hue: 40;
+  --hue-complement: 220;
+}
+
+.yellow {
+  --hue: 60;
+  --hue-complement: 240;
+}
+
+.lime {
+  --hue: 80;
+  --hue-complement: 250;
+}
+
+.olive {
+  --hue: 95;
+  --hue-complement: 260;
+}
+
+.green {
+  --hue: 120;
+  --hue-complement: 280;
+}
+
+.wood {
+  --hue: 145;
+  --hue-complement: 280;
+}
+
+.cyan {
+  --hue: 170;
+  --hue-complement: 350;
+}
+
+.sky {
+  --hue: 210;
+  --hue-complement: 30;
+}
+
+.blue {
+  --hue: 240;
+  --hue-complement: 60;
+}
+
+.violet {
+  --hue: 270;
+  --hue-complement: 90;
+}
+
+.purple {
+  --hue: 315;
+  --hue-complement: 110;
+}
+
+.carmine {
+  --hue: 335;
+  --hue-complement: 160;
+}
