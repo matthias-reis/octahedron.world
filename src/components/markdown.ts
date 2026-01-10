@@ -1,22 +1,21 @@
 import type { Options } from 'hast-util-to-jsx-runtime';
-import { unified, type Plugin } from 'unified';
+import { unified } from 'unified';
 import parse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
-import rehypeReact from 'rehype-react';
-import { type JSX } from 'solid-js';
-import { jsx, jsxs, Fragment } from 'solid-jsx/jsx-runtime';
+import { hastToSolidJsx } from './hast-to-solid';
+import type { JSX } from 'solid-js';
 
-export function parseMarkdown(s: string, components?: Options['components']) {
-  const processed = unified()
+export function parseMarkdown(s: string, components?: Options['components']): JSX.Element {
+  // Parse markdown string to MDAST (Markdown Abstract Syntax Tree)
+  const mdastTree = unified()
     .use(parse)
-    .use(remarkRehype as unknown as Plugin)
-    .use(rehypeReact, {
-      Fragment,
-      jsx,
-      jsxs,
-      components,
-    })
-    .processSync(s);
+    .parse(s);
 
-  return processed.result as JSX.Element;
+  // Transform MDAST to HAST (HTML Abstract Syntax Tree)
+  const hastTree = unified()
+    .use(remarkRehype)
+    .runSync(mdastTree);
+
+  // Convert HAST to Solid JSX elements in the component's reactive context
+  return hastToSolidJsx(hastTree, components ?? undefined);
 }

@@ -5,6 +5,8 @@ import { largeImageUrl } from '~/components/image-helpers';
 import { CalendarDays, ChevronLeft } from 'lucide-solid';
 import dayjs from 'dayjs';
 import { A } from '@solidjs/router';
+import { link } from 'node:fs';
+import { LinkPlugin } from '~/components/plugins/link';
 
 export const layout: Layout = {
   main: ({ children, item }) => (
@@ -43,9 +45,9 @@ export const layout: Layout = {
             <CalendarDays />{' '}
             <span>{dayjs(item.date).format('YYYY-MM-DD')}</span>
             <span>·</span>
-            <span>words {item.words.toLocaleString()}</span>
+            <span>words {item.words.toLocaleString('en-GB')}</span>
             <span>·</span>
-            <span>chars {item.chars.toLocaleString()}</span>
+            <span>chars {item.chars.toLocaleString('en-GB')}</span>
           </p>
           {children}
         </div>
@@ -55,6 +57,7 @@ export const layout: Layout = {
   section: ({ children }) => <section class="">{children}</section>,
   plugins: {
     default: DefaultPlugin,
+    link: LinkPlugin,
     text: TextPlugin(),
   },
 };

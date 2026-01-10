@@ -1,16 +1,14 @@
-import { A } from '@solidjs/router';
+import { A, createAsyncStore } from '@solidjs/router';
 import { For } from 'solid-js';
 import { cx } from '~/components/cx';
+import { smallImageUrl } from '~/components/image-helpers';
 import OctahedronLogo from '~/components/octahedron-logo';
+import { getAllRootRoutes } from '~/model/model';
+import { ItemMeta } from '~/types';
 
 export default function HomePage() {
-  const items = Array(21).fill({
-    title: 'Title',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    image: 'reference',
-    slug: 'all',
-  });
+  const items = createAsyncStore(() => getAllRootRoutes());
+
   return (
     <div>
       <main class="mx-auto mb-7 max-w-6xl px-3">
@@ -27,23 +25,25 @@ export default function HomePage() {
             <h2 class="text-decent-500 text-xl font-lighter font-sans mt-3">
               Ephemeral Thoughts about Life,
               <br />
-              the Universe and Everything.
+              the Universe and Everything...
             </h2>
           </div>
         </div>
         <ul class="grid grid-cols-4 gap-0">
-          <For each={items}>
-            {(item, index) => {
+          <For each={items()}>
+            {(item: ItemMeta, index) => {
               const isWide = index() % 5 === 0;
               const isTextTop = index() % 2 !== 0;
               const colorClass = [
-                'bg-neutral-300',
                 'bg-saturated-300',
                 'bg-decent-300',
-              ][index() % 3];
+                'bg-complement-300',
+                'bg-decent-300',
+                'bg-saturated-300',
+              ][index() % 4];
               const img = (
                 <img
-                  src={`/img/reference/s.jpg`}
+                  src={smallImageUrl(item.image)}
                   alt="Reference"
                   class={cx(
                     'object-cover w-full',
@@ -59,7 +59,7 @@ export default function HomePage() {
                       isWide ? 'text-5xl' : 'text-3xl'
                     )}
                   >
-                    Title
+                    {item.title}
                   </h3>
                   <p
                     class={cx(
@@ -67,9 +67,7 @@ export default function HomePage() {
                       isWide && 'text-lg mr-8'
                     )}
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam.
+                    {item.description}
                   </p>
                 </div>
               );
@@ -83,7 +81,7 @@ export default function HomePage() {
                   <A
                     href={`/${item.slug}`}
                     class={cx(
-                      `flex flex-col h-full outline-2 -outline-offset-8 outline-transparent hover:outline-saturated-500 transition-all duration-200`,
+                      `flex flex-col h-full outline-2 -outline-offset-2 outline-transparent hover:outline-saturated-500 transition-all duration-200`,
                       colorClass
                     )}
                   >

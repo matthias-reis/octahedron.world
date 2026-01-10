@@ -3,7 +3,7 @@
 
 :root {
   --hue: 185;
-  --hue-complement: 5;
+  --hue-complement: 330;
 }
 
 @theme inline {
@@ -45,6 +45,16 @@
   --color-saturated-700: hsl(var(--hue), 65%, 82%);
   --color-saturated-800: hsl(var(--hue), 65%, 94%);
   --color-saturated-900: hsl(var(--hue), 65%, 100%);
+
+  --color-complement-100: hsl(var(--hue-complement), 30%, 0%);
+  --color-complement-200: hsl(var(--hue-complement), 30%, 6%);
+  --color-complement-300: hsl(var(--hue-complement), 30%, 18%);
+  --color-complement-400: hsl(var(--hue-complement), 30%, 35%);
+  --color-complement-500: hsl(var(--hue-complement), 30%, 50%);
+  --color-complement-600: hsl(var(--hue-complement), 30%, 65%);
+  --color-complement-700: hsl(var(--hue-complement), 30%, 82%);
+  --color-complement-800: hsl(var(--hue-complement), 30%, 94%);
+  --color-complement-900: hsl(var(--hue-complement), 30%, 100%);
 
   --color-main: hsl(var(--hue), 60%, 50%);
   --color-complement: hsl(var(--hue-complement), 50%, 70%);
@@ -154,4 +164,8 @@ body {
 .carmine {
   --hue: 335;
   --hue-complement: 160;
+}
+
+.cta {
+  @apply px-4 py-2 bg-complement-500 text-neutral-900 font-bold rounded-md hover:bg-complement-600 transition-all duration-200 block max-w-md mx-auto text-center;
 }

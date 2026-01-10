@@ -1,6 +1,6 @@
 ---
 superTitle: Children's Story
-title: Asimov
+title: Asimov and the Robot Planet
 description: >-
   A robot from another planet is making contact with a boy on earth and asking
   for his help.
@@ -21,7 +21,7 @@ tags:
   - Storyline
 group: asimov
 alias: storylines/asimov
-slug: asimov
+slug: asimov-and-the-robot-planet
 layout: storyline
 image: asimov
 ---

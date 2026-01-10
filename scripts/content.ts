@@ -1,9 +1,9 @@
 import { glob } from 'glob';
-import { join, parse } from 'node:path';
+import { join } from 'node:path';
 import { readFile, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
 import frontmatter from 'front-matter';
-import { FrontMatter, ItemMeta, Sec } from '~/types/types';
+import { FrontMatter, ItemMeta, Sec } from '~/types';
 
 const read = promisify(readFile);
 
@@ -44,10 +44,6 @@ function wordCount(sections: Sec[]) {
     },
     { words: 0, chars: 0 }
   );
-}
-
-function slugify(s: string) {
-  return s.toLowerCase().replace(/ /g, '-');
 }
 
 async function getMetaData(): Promise<Record<string, ItemMeta>> {

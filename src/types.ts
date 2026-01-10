@@ -1,5 +1,5 @@
 import { Options } from 'hast-util-to-jsx-runtime';
-import { Component, JSX } from 'solid-js';
+import { Component, JSX, ParentComponent } from 'solid-js';
 
 export type FrontMatter = {
   title: string;
@@ -18,6 +18,7 @@ export type FrontMatter = {
   language?: 'en' | 'de'; // default en
   unfinished?: boolean;
   hidden?: boolean;
+  root?: boolean;
   colorSpace?: string;
   image: string; // mandatory from now on
 };
@@ -30,6 +31,18 @@ export type ItemMeta = {
   chars: number;
 } & FrontMatter;
 
+export type CompactItemMeta = Pick<
+  ItemMeta,
+  | 'slug'
+  | 'title'
+  | 'group'
+  | 'layout'
+  | 'image'
+  | 'description'
+  | 'superTitle'
+  | 'subTitle'
+>;
+
 export type TagMeta = {
   name: string;
   slug: string;
@@ -41,9 +54,7 @@ export type DynamicPageProps = {
   params: Promise<{ slug?: string[]; tag?: string }>;
 };
 
-export type Plugin = Component<
-  Sec & { wrapper?: Component<{ children: JSX.Element }> }
->;
+export type Plugin = Component<Sec & { wrapper?: ParentComponent }>;
 
 export type HtmlComponents = Options['components'];
 

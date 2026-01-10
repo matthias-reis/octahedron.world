@@ -1,6 +1,6 @@
 ---
 superTitle: Kindergeschichte
-title: Asimov
+title: Asimov und der Planet der Roboter
 description: >-
   Ein Roboter von einem fremden Planeten stellt Kontakt zu einem Jungen auf der
   Erde her und fragt ihn nach Hilfe zu einem delikaten Problem.
@@ -16,7 +16,7 @@ related:
   - the-guillorys-de
 group: asimov
 alias: storylines/asimov-de
-slug: asimov-de
+slug: asimov-and-the-robot-planet-de
 layout: storyline
 ---
 

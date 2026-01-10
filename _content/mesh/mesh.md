@@ -1,6 +1,6 @@
 ---
 superTitle: Worldbuilding
-title: The Mesh
+title: The Mesh - Worldbuilding for a Cyberpunk World
 description:
   A vision of a hypothetical metaverse-esque three dimensional internet
 colorSpace: red
@@ -15,11 +15,11 @@ tags:
   - AmWriting
   - Worldbuilding
   - Storyline
-group: mesh
+group: mesh-worldbuilding
 alias: storylines/mesh
-slug: mesh
+slug: mesh-worldbuilding
 layout: lightbox
-image: mesh
+image: mesh-worldbuilding
 ---
 
 I'm a developer and computer guy, so it's only natural that the most fascinating

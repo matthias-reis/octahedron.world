@@ -1,6 +1,6 @@
 ---
 superTitle: Worldbuilding
-title: Hermetics
+title: The Hermetic World
 description: >-
   Let's dive into the worldbuilding of a fantasy story that circles around
   magicians. We have even created a novel out of it.
@@ -20,7 +20,7 @@ tags:
   - Storyline
 group: hermetics
 alias: storylines/hermetics
-slug: hermetics
+slug: hermetics-worldbuilding
 layout: storyline
 image: hermetics
 ---

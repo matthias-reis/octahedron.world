@@ -33,7 +33,7 @@ The Academy is a place of knowledge and facts. It's constituted with enough
 power to be one of the pillars of the Society. Enough power to withstand
 ideology. The Society survived ten thousand years, because it never gave in to
 potential despots. Also among the Hermetics such figures appear from time to
-time. And with Hermetic mind power, they're even hader to handle than their
+time. And with Hermetic mind power, they're even harder to handle than their
 normal world couterparts like Putin, Erdogan or Kim. But a strong and
 independent science council is the best weapon against dogma.
 

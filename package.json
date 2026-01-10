@@ -4,11 +4,13 @@
   "scripts": {
     "predev": "pnpm content && pnpm imagine",
     "dev": "vinxi dev",
+    "dev:watch": "pnpm watch:content & pnpm dev",
     "prebuild": "pnpm content && pnpm imagine",
     "build": "vinxi build",
     "start": "vinxi start",
     "content": "tsx ./scripts/content.ts",
-    "imagine": "tsx ./scripts/imagine.ts"
+    "imagine": "tsx ./scripts/imagine.ts",
+    "watch:content": "tsx ./scripts/watch-content.ts"
   },
   "dependencies": {
     "@solidjs/router": "^0.15.0",

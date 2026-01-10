@@ -1,15 +1,15 @@
 import { A, createAsync } from '@solidjs/router';
 import { For } from 'solid-js';
-import { getAllRoutesForOverview } from '~/model/model';
+import { getAllCompactRoutes } from '~/model/model';
 
 export default function AllRoutesPage() {
-  const routes = createAsync(() => getAllRoutesForOverview());
+  const routes = createAsync(() => getAllCompactRoutes());
 
   return (
     <main class="mx-auto my-6 max-w-3xl p-4">
       <h1 class="mb-6 text-6xl font-bold">All Routes</h1>
       <ul class="space-y-2">
-        <For each={routes()}>
+        <For each={Object.values(routes() || {})}>
           {(route) => (
             <li>
               <A href={`/${route.slug}`} class="text-main-600 hover:underline">
