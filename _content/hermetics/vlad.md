@@ -22,7 +22,7 @@ tags:
 group: hermetics
 alias: storylines/vlad
 slug: vlad
-layout: lightbox
+layout: storyline
 image: vlad
 ---
 

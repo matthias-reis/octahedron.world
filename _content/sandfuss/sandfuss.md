@@ -19,7 +19,7 @@ group: sandfuss
 alias: storylines/sandfuss
 slug: sandfuss
 layout: lightbox
-image: sandfuss
+image: sandfuss-tint
 hidden: true
 ---
 

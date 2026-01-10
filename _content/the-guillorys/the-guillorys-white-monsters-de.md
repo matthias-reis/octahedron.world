@@ -1,6 +1,6 @@
 ---
 superTitle: Kindergeschichte
-title: Die Guillorys
+title: Die Guillorys - Weiße Monster
 description: >-
   Wir sind Gäste bei einr außergewöhnlichen Familie, einer Mäusefamilie in ihrer
   Villa in New Orleans. Was ist so außergewöhnlich an den Guillorys, fragst Du
@@ -22,8 +22,8 @@ tags:
   - Fantasy
 group: the-guillorys
 alias: storylines/the-guillorys-de
-slug: the-guillorys-de
-layout: lightbox
+slug: the-guillorys-white-monsters-de
+layout: storyline
 ---
 
 _Louis_

@@ -8,19 +8,16 @@ colorSpace: sky
 unfinished: true
 startDate: 2022-05-12T00:00:00.000Z
 date: 2023-12-12T00:00:00.000Z
-related:
-  - storylines/operator
-  - storylines/mesh
 tags:
   - Simulation Theory
   - AI
   - Metaverse
-  - Storyline
 group: simulation-theory
 alias: storylines/simulation-theory
 slug: simulation-theory
-layout: post
+layout: entry
 image: simulation-theory
+root: true
 ---
 
 There is an interesting thought experiment, I want to tell you about.

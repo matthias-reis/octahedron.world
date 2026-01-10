@@ -1,6 +1,6 @@
 ---
 superTitle: Worldbuilding
-title: Transspace
+title: Transspace Worldbuilding
 description: >-
   Travelling faster than light, lifting and accellerating without errort and
   loss, time travelling. for all that, you need a well grounded theory in your
@@ -21,9 +21,9 @@ tags:
   - Storyline
 group: transspace
 alias: storylines/transspace
-slug: transspace
+slug: transspace-worldbuilding
 layout: lightbox
-image: transspace
+image: transspace-worldbuilding
 ---
 
 If you don't want to wait years and generations until you reach another star

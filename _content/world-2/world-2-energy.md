@@ -22,7 +22,7 @@ group: world-2
 alias: storylines/world-2
 slug: world-2-energy
 layout: report
-image: world-2
+image: world-2-energy
 ---
 
 # The Start

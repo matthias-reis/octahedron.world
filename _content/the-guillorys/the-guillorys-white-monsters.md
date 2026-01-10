@@ -1,6 +1,6 @@
 ---
 superTitle: Children's Story
-title: The Guillorys
+title: The Guillorys - White Monsters
 description: >-
   We are guests at an extraordinary family of mice in theire residence in New
   Orleans, the Guillorys. What's so special about them, you ask? Well, some of
@@ -25,8 +25,8 @@ tags:
   - SciFi
 group: the-guillorys
 alias: storylines/the-guillorys
-slug: the-guillorys
-layout: lightbox
+slug: the-guillorys-white-monsters
+layout: storyline
 image: the-guillorys
 ---
 _Louis_
