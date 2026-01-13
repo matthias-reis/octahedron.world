@@ -20,6 +20,7 @@ export type FrontMatter = {
   hidden?: boolean;
   root?: boolean;
   colorSpace?: string;
+  weight?: number;
   image: string; // mandatory from now on
 };
 
@@ -41,6 +42,7 @@ export type CompactItemMeta = Pick<
   | 'description'
   | 'superTitle'
   | 'subTitle'
+  | 'weight'
 >;
 
 export type TagMeta = {

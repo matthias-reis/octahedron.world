@@ -1,9 +1,10 @@
 import { A } from '@solidjs/router';
+import { largeImageUrl } from '~/components/image-helpers';
 import { HtmlComponents } from '~/types';
 
 export const baseComponents: HtmlComponents = {
   p: (props) => (
-    <p class="py-2 font-serif leading-loose text-neutral-700" {...props} />
+    <p class="py-2 font-serif leading-loose text-neutral-800" {...props} />
   ),
   h1: (props) => (
     <h2
@@ -19,11 +20,16 @@ export const baseComponents: HtmlComponents = {
   ),
   ul: (props) => (
     <ul
-      class="font-serif mb-4 list-outside list-disc text-decent-700"
+      class="font-serif mb-4 list-outside list-disc text-neutral-800"
       {...props}
     />
   ),
-  code: (props) => <code class="font-mono text-md text-main" {...props} />,
+  code: (props) => (
+    <code
+      class="font-mono text-md text-decent-700 border border-decent-400"
+      {...props}
+    />
+  ),
   li: (props) => <li class="mb-3 ml-4 leading-loose" {...props} />,
   a: (props) => {
     if (props.href.startsWith('/')) {
@@ -38,9 +44,12 @@ export const baseComponents: HtmlComponents = {
   strong: (props) => <strong class="font-bold text-decent-900" {...props} />,
   blockquote: (props) => (
     <blockquote
-      class="border-l-4 border-decent-400 text-decent-600 pl-4 font-sans text-sm w-3/4 [&_p]:font-sans [&_p]:text-sm [&_p]:text-decent-600 [&_strong]:text-decent-700 [&_p]:leading-relaxed"
+      class="border-l-4 border-decent-400 text-decent-700 pl-4 font-sans text-sm w-3/4 [&_p]:font-sans [&_p]:text-sm [&_p]:text-decent-600 [&_strong]:text-decent-700 [&_p]:leading-relaxed"
       {...props}
     />
   ),
   sub: (props) => <sub class="align-sub" {...props} />,
+  img: ({ src, alt, ...props }) => (
+    <img src={largeImageUrl(src)} alt={alt} class="max-w-lg mx-auto my-6" />
+  ),
 };

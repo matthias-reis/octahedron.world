@@ -17,4 +17,5 @@ root: true
 slug: transspace
 layout: grid
 image: transspace
+weight: 0.8
 ---

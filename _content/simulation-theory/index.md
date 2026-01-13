@@ -18,6 +18,7 @@ slug: simulation-theory
 layout: entry
 image: simulation-theory
 root: true
+weight: 0.2
 ---
 
 There is an interesting thought experiment, I want to tell you about.

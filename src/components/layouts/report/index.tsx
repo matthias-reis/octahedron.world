@@ -1,10 +1,7 @@
 import { Layout } from '~/types';
-import { Title } from './title';
 import { DefaultPlugin } from '~/components/plugins/default';
 import { TextPlugin } from '~/components/plugins/text';
 import { largeImageUrl } from '~/components/image-helpers';
-import { A } from '@solidjs/router';
-import { ChevronLeft } from 'lucide-solid/icons/index';
 
 export const layout: Layout = {
   main: ({ children, item }) => (
@@ -17,15 +14,17 @@ export const layout: Layout = {
         />
         <div class="text-center relative -top-10 -mb-8">
           {item.superTitle && (
-            <p class="text-lg uppercase text-decent-900 mt-5 font-bold tracking-widest font-octa">
+            <p class="text-lg uppercase text-decent-900 mt-5 font-bold tracking-widest font-octa text-shadow-md text-shadow-neutral-500">
               {item.superTitle}
             </p>
           )}
-          <h1 class="text-8xl text-decent-900 font-octa font-bold leading-none">
+          <h1 class="text-8xl text-decent-900 font-octa font-bold leading-none text-shadow-md text-shadow-neutral-500">
             {item.title}
           </h1>
           {item.subTitle && (
-            <p class="text-lg text-decent-900 mt-2">{item.subTitle}</p>
+            <p class="text-lg text-decent-900 mt-2 text-shadow-md text-shadow-neutral-500">
+              {item.subTitle}
+            </p>
           )}
         </div>
         <p class="text-center text-md font-sans text-decent-600 mb-6 mx-auto w-md">

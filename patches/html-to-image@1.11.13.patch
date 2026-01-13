@@ -1,0 +1,22 @@
+diff --git a/src/embed-webfonts.ts b/src/embed-webfonts.ts
+index a84a699d37aeaaea19b9b31e0e98710f1e30da3c..ef4e63abb3b44d08e9b07ed0d5978a40dba932b7 100644
+--- a/src/embed-webfonts.ts
++++ b/src/embed-webfonts.ts
+@@ -203,7 +203,7 @@ async function parseWebFontRules<T extends HTMLElement>(
+ }
+ 
+ function normalizeFontFamily(font: string) {
+-  return font.trim().replace(/["']/g, '')
++  return font?.trim().replace(/["']/g, '') || ''
+ }
+ 
+ function getUsedFonts(node: HTMLElement) {
+@@ -234,7 +234,7 @@ export async function getWebFontCSS<T extends HTMLElement>(
+   const cssTexts = await Promise.all(
+     rules
+       .filter((rule) =>
+-        usedFonts.has(normalizeFontFamily(rule.style.fontFamily)),
++        rule.style.fontFamily && usedFonts.has(normalizeFontFamily(rule.style.fontFamily)),
+       )
+       .map((rule) => {
+         const baseUrl = rule.parentStyleSheet

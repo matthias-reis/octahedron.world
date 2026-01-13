@@ -1,20 +1,23 @@
 import { A, createAsyncStore } from '@solidjs/router';
 import { For } from 'solid-js';
 import { cx } from '~/components/cx';
-import { smallImageUrl } from '~/components/image-helpers';
+import { largeImageUrl, smallImageUrl } from '~/components/image-helpers';
 import OctahedronLogo from '~/components/octahedron-logo';
+import { sortRootItems } from '~/model/helpers';
 import { getAllRootRoutes } from '~/model/model';
-import { ItemMeta } from '~/types';
+import { CompactItemMeta, ItemMeta } from '~/types';
 
 export default function HomePage() {
-  const items = createAsyncStore(() => getAllRootRoutes());
+  const getItems = createAsyncStore(() => getAllRootRoutes());
+
+  const items = () => sortRootItems(getItems() || []);
 
   return (
     <div>
       <main class="mx-auto mb-7 max-w-6xl px-3">
         <div
-          style={{ 'background-image': 'url(/img/_home/l.jpg)' }}
-          class="bg-cover aspect-wide border border-transparent"
+          style={{ 'background-image': `url(${largeImageUrl('_home')})` }}
+          class="bg-cover aspect-image md:aspect-wide border border-transparent"
         >
           <div class="w-full h-full bg-center flex flex-col justify-center items-center text-center bg-linear-to-b from-transparent via-black to-transparent">
             <h1 class="font-octa flex justify-center items-center gap-2 text-neutral-500 text-4xl w-full">
@@ -31,7 +34,7 @@ export default function HomePage() {
         </div>
         <ul class="grid grid-cols-4 gap-0">
           <For each={items()}>
-            {(item: ItemMeta, index) => {
+            {(item: CompactItemMeta, index) => {
               const isWide = index() % 5 === 0;
               const isTextTop = index() % 2 !== 0;
               const colorClass = [

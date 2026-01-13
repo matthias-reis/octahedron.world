@@ -88,19 +88,13 @@ export const getAllRootRoutes = query(async () => {
 
   const availableItems = Object.values(data)
     .filter((item) => item.root)
-    .map(({ slug, title, image, description }) => ({
+    .map(({ slug, title, image, description, group, weight }) => ({
       slug,
       title,
+      group,
       image,
       description,
+      weight: weight ?? 0.5,
     }));
-  const fillInItems = Array(20 - availableItems.length).fill({
-    title: 'Title',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
-    image: 'reference',
-    slug: 'all',
-  });
-  const allItems = [...availableItems, ...fillInItems];
-  return allItems;
+  return availableItems as CompactItemMeta[];
 }, 'all-root-routes');

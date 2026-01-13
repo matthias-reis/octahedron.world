@@ -4,7 +4,7 @@ description: >-
   Somethig seems to be missing in the landscape of social networks. So why don't
   we try to build it?
 date: 2025-09-08T00:00:00.000Z
-colorSpace: cyan
+colorSpace: red
 tags:
   - Meetup
   - Social Networks
@@ -18,7 +18,7 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-09-08-meetdown-pitch
 slug: meetdown-pitch
-layout: post
+layout: report
 image: social-networks
 ---
 
@@ -61,7 +61,7 @@ describe current networking practices to be able to take a more analytical look:
 
 If you now plot those criteria on two axes, something interesting happens.
 
-![Networking Context](/img/posts/2025/meetdown-network-matrix-l.jpg)
+![Networking Context](_meetdown-network-matrix)
 
 I've added some examples of social interactions. TV and streaming networks seem
 to be the one extreme. A few creators are producing content for a big anonymous
@@ -138,7 +138,7 @@ communities.
 
 ## Part of a Federated Social Network Ecosystem
 
-![Fediverse Network](/img/posts/2025/meetdown-fediverse-l.jpg)
+![Fediverse Network](_meetdown-fediverse)
 
 The solution should embrace existing protocols like Activity Pub (Mastodon) or
 AT (Bluesky). It should re-use existing tooling and infrastructure as good as
@@ -152,7 +152,7 @@ stream of the official hashtag of an event as well.
 
 ## Free and Indie - Open Source and Non Profit
 
-![Free to use and Open Source](/img/posts/2025/meetdown-open-l.jpg)
+![Free to use and Open Source](_meetdown-open)
 
 We want to build open source software free to use by everybody who wants to form
 a community or support others in doing so. We don’t want to and most likely will
@@ -167,7 +167,7 @@ But especially all contributors of course would donate their time and expertise.
 
 ## Self Hostable - Roll Your Own Instance
 
-![Self Hosted and Easy to Update](/img/posts/2025/meetdown-self-hosted-l.jpg)
+![Self Hosted and Easy to Update](_meetdown-self-hosted)
 
 That automatically brings me to the next must have:
 
@@ -186,7 +186,7 @@ top of some of the other's protocols (AT is very flexible, for example).
 
 ## UX as First Class Citizen
 
-![User Experience and excellent Design](/img/posts/2025/meetdown-ux-l.jpg)
+![User Experience and excellent Design](_meetdown-ux)
 
 A collaboration tool should be easy to use - not only by tech savvy people.
 Especially if several aspects and modules from different sources are combined,

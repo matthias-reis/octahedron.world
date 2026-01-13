@@ -17,6 +17,7 @@ slug: kamina
 layout: entry
 image: kamina
 root: true
+weight: 0.6
 ---
 
 ==> kamina-1

@@ -19,6 +19,7 @@ slug: hermetics
 layout: entry
 image: hermetics
 root: true
+weight: 0.8
 ---
 
 My wifes and my biggest writing endeavour was our novel "Die Hermetiker". Around

@@ -16,6 +16,7 @@ root: true
 slug: weird-things
 layout: entry
 image: weird-things
+weight: 0.3
 ---
 
 ==> the-guillorys-white-monsters

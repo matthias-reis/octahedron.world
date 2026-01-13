@@ -2,3 +2,6 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
   - sharp
+
+patchedDependencies:
+  html-to-image@1.11.13: patches/html-to-image@1.11.13.patch

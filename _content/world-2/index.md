@@ -18,4 +18,5 @@ root: true
 slug: world-2
 layout: grid
 image: world-2
+weight: 0.7
 ---

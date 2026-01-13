@@ -4,12 +4,13 @@ import { getAllCompactRoutes } from '~/model/model';
 
 export default function AllRoutesPage() {
   const routes = createAsync(() => getAllCompactRoutes());
+  const routesList = () => Object.values(routes() || {});
 
   return (
     <main class="mx-auto my-6 max-w-3xl p-4">
       <h1 class="mb-6 text-6xl font-bold">All Routes</h1>
       <ul class="space-y-2">
-        <For each={Object.values(routes() || {})}>
+        <For each={routesList}>
           {(route) => (
             <li>
               <A href={`/${route.slug}`} class="text-main-600 hover:underline">

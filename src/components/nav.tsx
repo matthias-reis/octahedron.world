@@ -9,6 +9,7 @@ import { smallImageUrl } from './image-helpers';
 export default function Nav() {
   const [isOpen, setIsOpen] = createSignal<boolean>(false);
   const items = createAsyncStore(() => getAllRootRoutes());
+  const itemsList = () => Object.values(items() || {});
   const location = useLocation();
 
   return (
@@ -39,7 +40,7 @@ export default function Nav() {
           <A href="/foo" class="block p-3">
             Not Found
           </A>
-          <For each={Object.values(items() || {})}>
+          <For each={itemsList}>
             {(item) => (
               <A
                 href={`/${item.slug}`}
