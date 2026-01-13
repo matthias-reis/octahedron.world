@@ -1,6 +1,7 @@
 import { A, createAsyncStore } from '@solidjs/router';
 import { type JSX, Suspense, ParentComponent, For } from 'solid-js';
 import { smallImageUrl } from '~/components/image-helpers';
+import { LinkBox } from '~/components/link-box';
 import { Loading } from '~/components/loading';
 import { getAllCompactRoutes } from '~/model/model';
 import { type Plugin } from '~/types';
@@ -36,26 +37,7 @@ export const GroupPlugin: Plugin = ({ payload, wrapper }) => {
           <Wrapper>
             <nav class="grid gap-4 md:grid-cols-2 my-5">
               <For each={visibleItems}>
-                {(item) => (
-                  <A
-                    href={`/${item.slug}`}
-                    class="flex justify-stretch gap-3  bg-decent-300 outline-2 -outline-offset-2 outline-transparent hover:outline-saturated-500"
-                  >
-                    <img
-                      src={smallImageUrl(item.image)}
-                      alt=""
-                      class="aspect-image object-contain h-7"
-                    />
-                    <span class="m-3 flex flex-col">
-                      <span class="font-octa font-bold text-2xl">
-                        {item.title}
-                      </span>
-                      <span class="text-sm text-decent-500">
-                        {item.description}
-                      </span>
-                    </span>
-                  </A>
-                )}
+                {(item) => <LinkBox item={item} small />}
               </For>
             </nav>
           </Wrapper>

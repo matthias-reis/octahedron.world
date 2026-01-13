@@ -18,7 +18,7 @@ export const layout: Layout = {
         >
           <ChevronLeft /> <span>home</span>
         </A>
-        <h1 class="text-8xl text-saturated-900 font-octa font-bold leading-tight text-center">
+        <h1 class="text-6xl md:text-8xl text-saturated-900 font-octa font-bold leading-none text-center">
           {item.title}
         </h1>
         <img
@@ -26,7 +26,7 @@ export const layout: Layout = {
           alt={item.title}
           class="mx-auto mb-6 aspect-image w-full object-contain"
         />
-        <p class="text-center text-md font-sans text-decent-600 mb-6 mx-auto w-md">
+        <p class="text-center text-md font-sans text-decent-600 mb-6 mx-auto max-w-md">
           {item.description}
         </p>
         {children}

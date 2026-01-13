@@ -6,6 +6,7 @@ import './app.css';
 import 'katex/dist/katex.min.css';
 import { Octa } from './components/octa';
 import routes from '../routes.json';
+import { Footer } from './components/footer';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Suspense>
             <div class="border-t-4 border-yellow-400 sm:border-orange-400 md:border-purple-400 lg:border-blue-400 xl:border-green-400">
               {props.children}
+              <Footer />
             </div>
           </Suspense>
         </>

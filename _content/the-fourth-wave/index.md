@@ -53,9 +53,7 @@ After that the short story almost wrote itself:
 
 Both entries are also available in German, if you're interested.
 
-==> das-fermi-paradoxon
-
-==> die-vierte-welle
+==> <group> das-fermi-paradoxon, die-vierte-welle
 
 # The eBook
 
