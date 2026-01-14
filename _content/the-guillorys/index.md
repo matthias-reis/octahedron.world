@@ -17,7 +17,7 @@ root: true
 slug: the-guillorys
 layout: entry
 image: the-guillorys
-weight: 0.3
+weight: 0
 ---
 
 ==> the-guillorys-white-monsters

@@ -15,7 +15,7 @@ export default function App() {
         <>
           <Nav />
           <Suspense>
-            <div class="">
+            <div class="bg-neutral-100">
               {props.children}
               <Footer />
             </div>

@@ -16,4 +16,5 @@ slug: on-writing
 layout: grid
 image: on-writing
 root: true
+weight: 1
 ---

@@ -15,4 +15,5 @@ slug: art
 layout: album
 image: art
 colorSpace: orange
+weight: 1
 ---

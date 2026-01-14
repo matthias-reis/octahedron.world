@@ -16,4 +16,5 @@ root: true
 slug: elements
 layout: grid
 image: elements
+weight: 2
 ---

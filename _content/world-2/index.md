@@ -16,7 +16,7 @@ tags:
 group: world-2
 root: true
 slug: world-2
-layout: grid
+layout: entry
 image: world-2
-weight: 0.7
+weight: 3
 ---

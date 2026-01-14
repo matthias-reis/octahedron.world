@@ -19,4 +19,5 @@ root: true
 slug: artificial-intelligence
 layout: grid
 image: artificial-intelligence
+weight: 1
 ---

@@ -15,5 +15,5 @@ slug: dica-club
 layout: grid
 image: dica-club
 root: true
-weight: 0.1
+weight: 0
 ---

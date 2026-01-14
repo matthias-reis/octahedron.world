@@ -15,5 +15,5 @@ slug: pcsc
 layout: grid
 image: pcsc
 root: true
-weight: 0.3
+weight: 0
 ---

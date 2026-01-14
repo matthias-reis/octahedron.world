@@ -94,7 +94,7 @@ export const getAllRootRoutes = query(async () => {
       group,
       image,
       description,
-      weight: weight ?? 0.5,
+      weight: weight ?? 0,
     }));
   return availableItems as CompactItemMeta[];
 }, 'all-root-routes');

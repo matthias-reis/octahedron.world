@@ -51,6 +51,7 @@ export default function HomePage() {
                     'border border-transparent p-3 md:p-0',
                     isWide && 'sm:col-span-2'
                   )}
+                  data-weight={item.weight}
                 >
                   <A
                     href={`/${item.slug}`}

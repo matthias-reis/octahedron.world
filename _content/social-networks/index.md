@@ -20,7 +20,7 @@ root: true
 slug: social-networks
 layout: entry
 image: social-networks
-weight: 1
+weight: 3
 ---
 
 I've been working for XING for over ten years. XING has been a professional

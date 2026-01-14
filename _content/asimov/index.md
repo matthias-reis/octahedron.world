@@ -15,6 +15,7 @@ root: true
 slug: asimov
 layout: entry
 image: asimov-home
+weight: 2
 ---
 
 ==> asimov

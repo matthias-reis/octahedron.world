@@ -16,5 +16,5 @@ root: true
 slug: photography
 layout: album
 image: photography
-weight: 0.8
+weight: 3
 ---

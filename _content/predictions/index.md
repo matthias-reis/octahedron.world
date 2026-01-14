@@ -17,4 +17,5 @@ slug: predictions
 layout: grid
 image: predictions
 root: true
+weight: 1
 ---

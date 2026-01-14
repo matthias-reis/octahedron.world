@@ -16,5 +16,5 @@ root: true
 slug: weird-things
 layout: grid
 image: weird-things
-weight: 0.3
+weight: 0
 ---

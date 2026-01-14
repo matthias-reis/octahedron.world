@@ -15,4 +15,5 @@ root: true
 slug: ai-worlds
 layout: album
 image: ai-worlds
+weight: 1
 ---

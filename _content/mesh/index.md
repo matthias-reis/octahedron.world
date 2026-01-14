@@ -17,5 +17,5 @@ slug: mesh
 layout: grid
 image: mesh
 root: true
-weight: 0.8
+weight: 2
 ---

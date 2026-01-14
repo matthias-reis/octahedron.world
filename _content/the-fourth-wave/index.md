@@ -19,7 +19,7 @@ root: true
 slug: the-fourth-wave
 layout: entry
 image: the-fourth-wave
-weight: 0.9
+weight: 3
 ---
 
 The Fourth Wave is our first published short story. The story evolved around a
