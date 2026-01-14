@@ -22,8 +22,9 @@ tags:
 group: kamina
 alias: storylines/kamina-1-de
 slug: kamina-1-de
-layout: lightbox
+layout: storyline
 ---
+
 Kamina rannte, so schnell sie konnte. Sie war wütend, weil sie sich mal wieder
 mit ihrem Bruder gestritten hatte. Er hatte ihr ihre schöne Spieluhr
 weggenommen. Wenn man sie öffnete, tanzte ein kleines Einhorn nach einer

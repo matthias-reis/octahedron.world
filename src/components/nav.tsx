@@ -2,14 +2,15 @@ import { A, createAsyncStore, useLocation } from '@solidjs/router';
 import { cx } from './cx';
 import OctahedronLogo from './octahedron-logo';
 import { createSignal, For, Show, Suspense } from 'solid-js';
-import { X } from 'lucide-solid';
+import { House, X } from 'lucide-solid';
 import { getAllRootRoutes } from '~/model/model';
 import { smallImageUrl } from './image-helpers';
+import { sortRootItems } from '~/model/helpers';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = createSignal<boolean>(false);
   const items = createAsyncStore(() => getAllRootRoutes());
-  const itemsList = () => Object.values(items() || {});
+  const itemsList = () => sortRootItems(Object.values(items() || {}));
   const location = useLocation();
 
   return (
@@ -42,7 +43,7 @@ export default function Nav() {
               class="aspect-image object-cover h-6"
             />
             <span class="font-octa font-bold text-xl leading-none text-saturated-600">
-              Home
+              <House />
             </span>
           </A>
           <Suspense>

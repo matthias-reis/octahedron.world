@@ -14,7 +14,16 @@ tags:
 group: elements
 root: true
 slug: elements
-layout: grid
+layout: entry
 image: elements
 weight: 2
 ---
+
+==> elements-earth
+
+==> elements-water
+
+Still to come:
+
+- fire: the trip continues thrugh the seven gates of hell
+- air: upwind and back on earth

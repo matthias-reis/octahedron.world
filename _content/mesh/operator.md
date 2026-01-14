@@ -21,7 +21,7 @@ tags:
 group: mesh
 alias: storylines/operator
 slug: operator
-layout: lightbox
+layout: storyline
 image: operator
 ---
 

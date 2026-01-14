@@ -18,7 +18,7 @@ tags:
 group: mesh-worldbuilding
 alias: storylines/mesh
 slug: mesh-worldbuilding
-layout: lightbox
+layout: report
 image: mesh-worldbuilding
 ---
 

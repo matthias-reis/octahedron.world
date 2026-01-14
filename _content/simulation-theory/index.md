@@ -40,4 +40,9 @@ But the likelihood, that we are the first in a potentially endless chain is next
 to zero. In that (quite realistic) moment, we will have proof that we ourselves
 live in a simulation.
 
----
+I have started to develop two stories in that setting but they are at a very
+early stage.
+
+==> octahedra
+
+==> vergency-hotel

@@ -22,7 +22,7 @@ tags:
 group: mesh
 alias: storylines/pylons
 slug: pylons
-layout: lightbox
+layout: storyline
 image: pylons
 hidden: true
 ---

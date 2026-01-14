@@ -23,7 +23,7 @@ tags:
 group: kamina
 alias: storylines/kamina-1
 slug: kamina-1
-layout: lightbox
+layout: storyline
 image: kamina-1
 ---
 

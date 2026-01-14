@@ -21,7 +21,7 @@ tags:
 group: world-2
 alias: storylines/world-2
 slug: world-2-energy
-layout: report
+layout: world2
 image: world-2-energy
 ---
 

@@ -1,7 +1,9 @@
 ---
 title: The Vergency Hotel
 date: 2024-08-05T00:00:00.000Z
-description: Starting some tales from the center of the universe
+description:
+  Anecdotes from the center of the universe. Who would have thought that it's a
+  venerable hotel?
 tags:
   - SciFi
   - Fantasy

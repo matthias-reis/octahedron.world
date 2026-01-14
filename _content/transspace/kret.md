@@ -21,7 +21,7 @@ tags:
 group: transspace
 alias: storylines/kret
 slug: kret
-layout: lightbox
+layout: report
 image: kret
 ---
 

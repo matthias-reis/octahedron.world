@@ -18,7 +18,7 @@ related:
 group: kamina
 alias: storylines/kamina-2-de
 slug: kamina-2-de
-layout: lightbox
+layout: storyline
 ---
 
 Kamina war elf Jahre alt. Ihre Eltern sagten ihr immer, sie habe eine

@@ -22,7 +22,7 @@ tags:
 group: transspace
 alias: storylines/transspace
 slug: transspace-worldbuilding
-layout: lightbox
+layout: report
 image: transspace-worldbuilding
 ---
 

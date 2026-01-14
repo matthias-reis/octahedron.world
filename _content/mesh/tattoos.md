@@ -16,7 +16,7 @@ tags:
 group: mesh
 alias: storylines/tattoos
 slug: tattoos
-layout: lightbox
+layout: storyline
 image: tattoos
 hidden: true
 ---
