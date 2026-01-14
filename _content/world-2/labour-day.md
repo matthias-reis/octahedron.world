@@ -1,5 +1,5 @@
 ---
-title: Fairness
+title: Fairness on Labour Day
 description: Some thoughts on May, the first, labour day.
 date: 2022-05-02T00:00:00.000Z
 tags:
@@ -19,8 +19,8 @@ image: general
 
 Some thoughts about May, 1st, the international labour day.
 
-I think these days many things come together that describe the situation in the
-world pretty precisely. Here are some examples.
+I think these days some concrete things become visible that reflect the
+situation in the world in general pretty precisely. Here are some examples.
 
 Mastodon, the decentral network is a good start. Many people come here to flee
 from Twitter. The reason is that the richest man in the world spends an

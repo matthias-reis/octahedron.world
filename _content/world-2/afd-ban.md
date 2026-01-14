@@ -24,14 +24,6 @@ layout: post
 image: chat-with-gpt
 ---
 
-> **Sidenote for the category**: "Chat with GPT" will be a collection of my
-> conversations with AI. Like many people, I ask Chat GPT, Claude and others
-> silly things. But sometimes, it also gets interesting and I learn something.
-> As they might be worth knowing for future me or others as well, I'll share
-> them here.
->
-> I'm starting with a hot political topic these days.
-
 The German security agency "Verfassungsschutz" ir responsible for surveilling
 enemies of the institutions of the country andour constitution. It has recently
 released a 1000-page paper on the party AfD, that describes it as right
@@ -43,7 +35,7 @@ of the votes in the last elections. It's a very complicated process to ban a
 party (as it should be in a democracy), therefore many politicians are hesitant.
 But let's anyway find out about the legal circumstances and consequences.
 
-## Legal Framework
+# Legal Framework
 
 According to Article 21(2) of the German Constitutional Law (Grundgesetz),
 political parties can be declared unconstitutional if their aims or actions seek
@@ -58,7 +50,7 @@ application for prohibition and the final verdict would automatically lose their
 parliamentary mandate. The key point is that even short-term membership in this
 window results in the loss of the seat, regardless of later party resignation.
 
-## Impact on the Bundestag Composition
+# Impact on the Bundestag Composition
 
 Assuming the AfD (currently with 152 seats) is banned under this process:
 
@@ -91,7 +83,7 @@ Two-thirds majority: **319 seats**
   could become an option in case of conflicts in the current govenmental
   constellations
 
-## Additional Notes on Individual Members of the Banned Party Faction
+# Additional Notes on Individual Members of the Banned Party Faction
 
 - Any AfD member who was part of the party during the key procedural period
   would lose their mandate automatically, without the need for individual
@@ -105,7 +97,7 @@ Two-thirds majority: **319 seats**
 - Of course a ban from prliament would also revoke immunity and therefore allow
   courts and attorneys to take action against the members.
 
-## AfD Members in Public Office
+# AfD Members in Public Office
 
 - The ban would also affect any AfD members in public office, including regional
   parliaments, local councils.

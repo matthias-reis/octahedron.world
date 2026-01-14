@@ -20,15 +20,13 @@ image: real-world
 hidden: true
 ---
 
-I've found out that I need more categories for single articles. So after the
-first [experiment with anecdotes](/posts/mesh-tales/01-swoosh) last week, here's
-another one.
+Every now and then a topic comes around that needs to be voiced. Many of them
+are situational. Their effects are symptomatic but probably don't las too long
+for themselves. Wile the text might already be outdated at te time of reading or
+has to be brought into context with its date, I still think it will also be an
+interesting read after some years.
 
-I knew I'd need the category "Politics", because every now and then a topic
-comes around that needs to be voiced. So in this category it's all about what
-our politicians do, what the voters do and what the media makes out of it.
-
-**So why do I start this today?**
+No go back in time to mid 2023.
 
 I come from a little rurual region in Germany, called Rhön, a place in the
 middle of nowhere between Bavaria (well, actually in Bavaria) and Hesse. And

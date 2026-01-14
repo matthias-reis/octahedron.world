@@ -20,7 +20,8 @@ image: climate-news
 
 I'm about to buy a car, an electric one. It's a big thing for us, because we
 didn't own one, we didn't need one for almost nine years. But I've been talking
-about cars and transport a lot already.
+about cars and transport a lot already. But while researching the best options,
+I had to think about an adjacent topic.
 
 Today it's about the pure geometry of living and its influence on our emissions.
 Let's talk about housing.
@@ -32,20 +33,26 @@ either passive by itself (what we call zero energy house) or uses sustainable
 energy from the outside (passive house).
 
 But the smaller it is, the more tech needs to go into the surface, the more it
-costs and the more problematic the room climate is getting.
+costs and the more problematic the micro climate inside the living area is
+getting.
 
 Therefore bigger blocks are by far the most efficient way to live in terms of
 environment. However we reach a tipping point somewhere where comfort is
-suffering, e.g. where there are flats that don't receive natural light anymore.
+suffering, e.g. we don't allow that there are flats that don't receive natural
+light anymore.
 
-Additionally, big housing projects usually need quite some infrastructure.
+On the other hand, big housing projects usually need quite some infrastructure.
 Parking lots, roads, density of public transport, which comes with a high ratio
 of sealed surfaces - cement gardens.
 
 We have to hit the sweet spot there and new housing projects probably lie in the
 middle. Densely populated, but still with a lot of green.
 
-Last aspect today is another geometric argument. The closer people live
+The last aspect today is another geometric argument. The closer people live
 together, the closer the grocery stores, pubs, fitness studios can be. And
-therefore many things will be in walking distance range. You will not achieve
-that in rural areas.
+therefore many things will be within walking distance range. You will not
+achieve that in rural areas.
+
+In the end it's always the same triangle between comfort, cost and environment.
+And it might be worth invesigating further where the actual sweetspot lies, how
+it could be identified and what useful steps could be taken to reach it.
