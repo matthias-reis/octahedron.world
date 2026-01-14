@@ -19,6 +19,8 @@ ENV NODE_ENV=production
 
 # SolidStart/Vinxi build output
 COPY --from=build /app/.output ./
+# Generated data files
+COPY --from=build /app/data.json /app/routes.json /app/redirects.json ./
 
 EXPOSE 3000
 ENV PORT=3000
