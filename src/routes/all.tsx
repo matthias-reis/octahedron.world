@@ -10,7 +10,7 @@ export default function AllRoutesPage() {
     <main class="mx-auto my-6 max-w-3xl p-4">
       <h1 class="mb-6 text-6xl font-bold">All Routes</h1>
       <ul class="space-y-2">
-        <For each={routesList}>
+        <For each={routesList()}>
           {(route) => (
             <li>
               <A href={`/${route.slug}`} class="text-main-600 hover:underline">

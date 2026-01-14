@@ -67,6 +67,6 @@ export type Layout = {
     categoryItems?: ItemMeta[];
     relatedItems?: ItemMeta[];
   }>;
-  section?: Component<{ children: JSX.Element }>;
+  section?: ParentComponent;
   plugins: Record<string, Plugin>;
 };

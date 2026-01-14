@@ -4,9 +4,9 @@ import { getAllCompactRoutes } from '~/model/model';
 import { Loading } from './loading';
 import { LinkBox } from './link-box';
 import { cx } from './cx';
+import { ItemMeta } from '~/types';
 
-export const Related: Component<{ slugs?: string[] }> = ({ slugs }) => {
-  if (!slugs || slugs.length === 0) return null;
+export const Related: Component<{ item: ItemMeta }> = ({ item }) => {
   const items = createAsyncStore(() => getAllCompactRoutes());
 
   return (
@@ -18,33 +18,65 @@ export const Related: Component<{ slugs?: string[] }> = ({ slugs }) => {
       }
     >
       {(() => {
-        const data = items();
-        if (!data) return null;
+        const allItems = items();
+        if (!allItems) return null;
 
-        const visibleItems = slugs
-          .map((slug) => items()![slug])
+        const related = item.related || [];
+
+        const relatedItems = related
+          .map((slug) => allItems[slug])
           .filter(Boolean);
 
+        const groupedItems = Object.values(allItems).filter(
+          (otherItem) =>
+            otherItem.group === item.group && !related.includes(otherItem.slug)
+        );
+
         // Loaded but nothing found - display nothing
-        if (visibleItems.length === 0) return null;
+        if (relatedItems.length === 0 && groupedItems.length === 0) return null;
 
         // Loaded and found - display the link
         return (
-          <nav
-            class={cx(
-              'grid gap-4 md:grid-cols-2 my-5',
-              visibleItems.length === 1 && 'md:grid-cols-1'
+          <div class="px-3">
+            {relatedItems.length > 0 && (
+              <>
+                <h3 class="font-octa text-3xl font-bold text-saturated-700">
+                  Recommended Read
+                </h3>
+                <nav
+                  class={cx(
+                    'grid gap-4 md:grid-cols-2 my-5',
+                    relatedItems.length === 1 && 'md:grid-cols-1'
+                  )}
+                >
+                  <For each={relatedItems}>
+                    {(item) => (
+                      <LinkBox item={item} small={relatedItems.length > 1} />
+                    )}
+                  </For>
+                </nav>
+              </>
             )}
-          >
-            <h3 class="font-octa text-3xl font-bold text-saturated-700">
-              Related Post{visibleItems.length > 1 ? 's' : ''}
-            </h3>
-            <For each={visibleItems}>
-              {(item) => (
-                <LinkBox item={item} small={visibleItems.length > 1} />
-              )}
-            </For>
-          </nav>
+            {groupedItems.length > 0 && (
+              <>
+                <h3 class="font-octa text-3xl font-bold text-saturated-700">
+                  All Posts on This Topic
+                </h3>
+                <nav
+                  class={cx(
+                    'grid gap-4 md:grid-cols-2 my-5',
+                    relatedItems.length === 1 && 'md:grid-cols-1'
+                  )}
+                >
+                  <For each={groupedItems}>
+                    {(item) => (
+                      <LinkBox item={item} small={groupedItems.length > 1} />
+                    )}
+                  </For>
+                </nav>
+              </>
+            )}
+          </div>
         );
       })()}
     </Suspense>

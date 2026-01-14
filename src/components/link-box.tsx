@@ -16,7 +16,7 @@ export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = ({
       <img
         src={smallImageUrl(item.image)}
         alt=""
-        class={cx('aspect-image object-contain', small ? 'h-8 md:h-7' : 'h-8')}
+        class={cx('aspect-image object-cover', small ? 'h-8 md:h-7' : 'h-8')}
       />
       <span class="m-3 flex flex-col">
         <span class="font-octa font-bold text-2xl">{item.title}</span>

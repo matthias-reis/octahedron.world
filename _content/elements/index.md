@@ -11,7 +11,7 @@ tags:
   - Angels
   - Fantasy
   - Dystopia
-group: ai-worlds
+group: elements
 root: true
 slug: elements
 layout: grid

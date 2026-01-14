@@ -15,7 +15,7 @@ export default function App() {
         <>
           <Nav />
           <Suspense>
-            <div class="border-t-4 border-yellow-400 sm:border-orange-400 md:border-purple-400 lg:border-blue-400 xl:border-green-400">
+            <div class="">
               {props.children}
               <Footer />
             </div>

@@ -5,6 +5,8 @@ import { TextPlugin } from '~/components/plugins/text';
 import { largeImageUrl } from '~/components/image-helpers';
 import { A } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons/index';
+import { LanguageLink } from '~/components/language-link';
+import { Related } from '~/components/related';
 
 export const layout: Layout = {
   main: ({ children, item }) => (
@@ -22,10 +24,16 @@ export const layout: Layout = {
           alt={item.title}
           class="mx-auto mb-6 aspect-image w-full object-contain max-w-3xl"
         />
-        <p class="text-center text-md font-sans text-decent-600 mb-6 mx-auto w-md">
+        <p class="text-center text-md font-sans text-decent-600 mb-2 mx-auto max-w-md">
           {item.description}
         </p>
+        <p class="text-center text-sm font-sans text-decent-500 mb-6">
+          Read: {Math.round(item.words / 200)} min ✧ Words:{' '}
+          {item.words.toLocaleString()} ✧ Chars: {item.chars.toLocaleString()}
+        </p>
+        <LanguageLink item={item} />
         {children}
+        <Related item={item} />
       </main>
     </div>
   ),

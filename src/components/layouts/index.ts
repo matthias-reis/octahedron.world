@@ -3,6 +3,9 @@ import { layout as storyline } from './storyline';
 import { layout as report } from './report';
 import { layout as lightbox } from './lightbox';
 import { layout as entry } from './entry';
+import { layout as grid } from './grid';
+import { layout as album } from './album';
+import { layout as legal } from './legal';
 import { layout as defaultLayout } from './default';
 
 export const layouts: Record<string, Layout> = {
@@ -10,5 +13,8 @@ export const layouts: Record<string, Layout> = {
   report,
   lightbox,
   entry,
+  grid,
+  album,
+  legal,
   default: defaultLayout,
 };

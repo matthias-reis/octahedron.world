@@ -5,11 +5,12 @@ import { largeImageUrl } from '~/components/image-helpers';
 import { CalendarDays, ChevronLeft } from 'lucide-solid';
 import dayjs from 'dayjs';
 import { A } from '@solidjs/router';
+import { cx } from '~/components/cx';
 
 export const layout: Layout = {
   main: ({ children, item }) => (
     <div
-      class={`${item.colorSpace} min-h-screen gradient bg-neutral-100 pb-20`}
+      class={cx(` min-h-screen gradient bg-neutral-100 pb-20`, item.colorSpace)}
     >
       <div class="justify-center items-center pt-5 pb-2 relative w-full h-[90vh]">
         <img

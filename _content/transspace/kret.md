@@ -8,8 +8,8 @@ colorSpace: cyan
 startDate: 2022-05-02T00:00:00.000Z
 date: 2022-10-30T00:00:00.000Z
 related:
-  - storylines/transspace
-  - storylines/the-bond
+  - transspace-worldbuilding
+  - the-bond
 tags:
   - Kret
   - Aliens

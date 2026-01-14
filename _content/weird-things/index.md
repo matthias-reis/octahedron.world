@@ -14,9 +14,7 @@ tags:
 group: weird-things
 root: true
 slug: weird-things
-layout: entry
+layout: grid
 image: weird-things
 weight: 0.3
 ---
-
-==> the-guillorys-white-monsters

@@ -4,11 +4,12 @@ superTitle: Datenschutzerklärung (DE)
 group: general
 slug: privacy
 image: _home
+layout: legal
 ---
 
-## 1. Datenschutz auf einen Blick
+# 1. Datenschutz auf einen Blick
 
-### Allgemeine Hinweise
+## Allgemeine Hinweise
 
 Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
 personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
@@ -16,15 +17,15 @@ Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert
 werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie
 unserer unter diesem Text aufgeführten Datenschutzerklärung.
 
-### Datenerfassung auf dieser Website
+## Datenerfassung auf dieser Website
 
-#### Wer ist verantwortlich für die Datenerfassung auf dieser Website?
+**Wer ist verantwortlich für die Datenerfassung auf dieser Website?**
 
 Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber.
 Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur Verantwortlichen
 Stelle“ in dieser Datenschutzerklärung entnehmen.
 
-#### Wie erfassen wir Ihre Daten?
+**Wie erfassen wir Ihre Daten?**
 
 Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen.
 Hierbei kann es sich z. B. um Daten handeln, die Sie in ein Kontaktformular
@@ -35,13 +36,13 @@ Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.
 B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die
 Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.
 
-#### Wofür nutzen wir Ihre Daten?
+**Wofür nutzen wir Ihre Daten?**
 
 Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website
 zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens
 verwendet werden.
 
-#### Welche Rechte haben Sie bezüglich Ihrer Daten?
+**Welche Rechte haben Sie bezüglich Ihrer Daten?**
 
 Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger
 und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben
@@ -57,16 +58,16 @@ Aufsichtsbehörde zu.
 Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit
 an uns wenden.
 
-#### Analyse-Tools und Tools von Drittanbietern
+**Analyse-Tools und Tools von Drittanbietern**
 
 Beim Besuch dieser Website kann Ihr Surf-Verhalten statistisch ausgewertet
 werden. Das geschieht vor allem mit sogenannten Analyseprogrammen. Detaillierte
 Informationen zu diesen Analyseprogrammen finden Sie in der folgenden
 Datenschutzerklärung.
 
-## 2. Hosting Wir hosten die Inhalte unserer Website bei folgendem Anbieter:
+# 2. Hosting - Wir hosten die Inhalte unserer Website bei folgendem Anbieter:
 
-### Externes Hosting
+## Externes Hosting
 
 Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser
 Website erfasst werden, werden auf den Servern des Hosters / der Hoster
@@ -90,14 +91,14 @@ Bezug auf diese Daten befolgen.
 
 Wir setzen folgende(n) Hoster ein:
 
-Vercel Inc.  
-340 S Lemon Ave #4133  
-Walnut, CA 91789  
-USA
+Hetzner Online GmbH  
+Industriestr. 25  
+91710 Gunzenhausen  
+Deutschland
 
-## 3. Allgemeine Hinweise und Pflichtinformationen
+# 3. Allgemeine Hinweise und Pflichtinformationen
 
-### Datenschutz
+## Datenschutz
 
 Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr
 ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend
@@ -117,12 +118,12 @@ Hinweis zur verantwortlichen Stelle Die verantwortliche Stelle für die
 Datenverarbeitung auf dieser Website ist:
 
 Matthias Reis  
-Wiesenstr. 7  
-20255 Hamburg
+Seevestr. 30  
+21271 Hanstedt
 
 E-Mail: mr@octahedron.world
 
-### Speicherdauer
+## Speicherdauer
 
 Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer
 genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck
@@ -133,7 +134,7 @@ die Speicherung Ihrer personenbezogenen Daten haben (z. B. steuer- oder
 handelsrechtliche Aufbewahrungsfristen); im letztgenannten Fall erfolgt die
 Löschung nach Fortfall dieser Gründe.
 
-### Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website
+## Allgemeine Hinweise zu den Rechtsgrundlagen der Datenverarbeitung auf dieser Website
 
 Sofern Sie in die Datenverarbeitung eingewilligt haben, verarbeiten wir Ihre
 personenbezogenen Daten auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO bzw. Art. 9
@@ -154,28 +155,14 @@ nach Art. 6 Abs. 1 lit. f DSGVO erfolgen. Über die jeweils im Einzelfall
 einschlägigen Rechtsgrundlagen wird in den folgenden Absätzen dieser
 Datenschutzerklärung informiert.
 
-### Hinweis zur Datenweitergabe in die USA und sonstige Drittstaaten
-
-Wir verwenden unter anderem Tools von Unternehmen mit Sitz in den USA oder
-sonstigen datenschutzrechtlich nicht sicheren Drittstaaten. Wenn diese Tools
-aktiv sind, können Ihre personenbezogene Daten in diese Drittstaaten übertragen
-und dort verarbeitet werden. Wir weisen darauf hin, dass in diesen Ländern kein
-mit der EU vergleichbares Datenschutzniveau garantiert werden kann.
-Beispielsweise sind US-Unternehmen dazu verpflichtet, personenbezogene Daten an
-Sicherheitsbehörden herauszugeben, ohne dass Sie als Betroffener hiergegen
-gerichtlich vorgehen könnten. Es kann daher nicht ausgeschlossen werden, dass
-US-Behörden (z. B. Geheimdienste) Ihre auf US-Servern befindlichen Daten zu
-Überwachungszwecken verarbeiten, auswerten und dauerhaft speichern. Wir haben
-auf diese Verarbeitungstätigkeiten keinen Einfluss.
-
-### Widerruf Ihrer Einwilligung zur Datenverarbeitung
+## Widerruf Ihrer Einwilligung zur Datenverarbeitung
 
 Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung
 möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die
 Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom
 Widerruf unberührt.
 
-### Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)
+## Widerspruchsrecht gegen die Datenerhebung in besonderen Fällen sowie gegen Direktwerbung (Art. 21 DSGVO)
 
 WENN DIE DATENVERARBEITUNG AUF GRUNDLAGE VON ART. 6 ABS. 1 LIT. E ODER F DSGVO
 ERFOLGT, HABEN SIE JEDERZEIT DAS RECHT, AUS GRÜNDEN, DIE SICH AUS IHRER
@@ -197,7 +184,7 @@ VERBINDUNG STEHT. WENN SIE WIDERSPRECHEN, WERDEN IHRE PERSONENBEZOGENEN DATEN
 ANSCHLIESSEND NICHT MEHR ZUM ZWECKE DER DIREKTWERBUNG VERWENDET (WIDERSPRUCH
 NACH ART. 21 ABS. 2 DSGVO).
 
-### Beschwerderecht bei der zuständigen Aufsichtsbehörde
+## Beschwerderecht bei der zuständigen Aufsichtsbehörde
 
 Im Falle von Verstößen gegen die DSGVO steht den Betroffenen ein Beschwerderecht
 bei einer Aufsichtsbehörde, insbesondere in dem Mitgliedstaat ihres gewöhnlichen
@@ -205,7 +192,7 @@ Aufenthalts, ihres Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes zu.
 Das Beschwerderecht besteht unbeschadet anderweitiger verwaltungsrechtlicher
 oder gerichtlicher Rechtsbehelfe.
 
-### Recht auf Datenübertragbarkeit
+## Recht auf Datenübertragbarkeit
 
 Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in
 Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen
@@ -213,7 +200,7 @@ Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.
 Sofern Sie die direkte Übertragung der Daten an einen anderen Verantwortlichen
 verlangen, erfolgt dies nur, soweit es technisch machbar ist.
 
-### Auskunft, Löschung und Berichtigung
+## Auskunft, Löschung und Berichtigung
 
 Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht
 auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten,
@@ -221,7 +208,7 @@ deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein
 Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren
 Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.
 
-### Recht auf Einschränkung der Verarbeitung
+## Recht auf Einschränkung der Verarbeitung
 
 Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen
 Daten zu verlangen. Hierzu können Sie sich jederzeit an uns wenden. Das Recht
@@ -251,7 +238,7 @@ Rechtsansprüchen oder zum Schutz der Rechte einer anderen natürlichen oder
 juristischen Person oder aus Gründen eines wichtigen öffentlichen Interesses der
 Europäischen Union oder eines Mitgliedstaats verarbeitet werden.
 
-### SSL- bzw. TLS-Verschlüsselung
+## SSL- bzw. TLS-Verschlüsselung
 
 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
 vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an
@@ -263,9 +250,9 @@ Browserzeile.
 Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie
 an uns übermitteln, nicht von Dritten mitgelesen werden.
 
-## 4. Datenerfassung auf dieser Website
+# 4. Datenerfassung auf dieser Website
 
-### Cookies
+## Cookies
 
 Unsere Internetseiten verwenden so genannte „Cookies“. Cookies sind kleine
 Datenpakete und richten auf Ihrem Endgerät keinen Schaden an. Sie werden
@@ -308,7 +295,7 @@ Soweit Cookies von Drittunternehmen oder zu Analysezwecken eingesetzt werden,
 werden wir Sie hierüber im Rahmen dieser Datenschutzerklärung gesondert
 informieren und ggf. eine Einwilligung abfragen.
 
-## 5. Newsletter
+# 5. Newsletter
 
 Newsletterdaten Wenn Sie den auf der Website angebotenen Newsletter beziehen
 möchten, benötigen wir von Ihnen eine E- Mail-Adresse sowie Informationen,
@@ -347,9 +334,9 @@ Speicherung in der Blacklist ist zeitlich nicht befristet. **Sie können der
 Speicherung widersprechen, sofern Ihre Interessen unser berechtigtes Interesse
 überwiegen.**
 
-## 6. Plugins und Tools
+# 6. Plugins und Tools
 
-### YouTube mit erweitertem Datenschutz
+## YouTube mit erweitertem Datenschutz
 
 Diese Website bindet Videos der Website YouTube ein. Betreiber der Seiten ist
 die Google Ireland Limited („Google“), Gordon House, Barrow Street, Dublin 4,

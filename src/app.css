@@ -14,6 +14,7 @@
 
   --color-transparent: transparent;
   --color-current: currentColor;
+  --color-textpop: #0006;
 
   --color-neutral-100: hsl(var(--hue), 4%, 0%);
   --color-neutral-150: hsl(var(--hue), 4%, 3%);

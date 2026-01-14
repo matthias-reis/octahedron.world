@@ -1,6 +1,6 @@
 import type { ItemMeta, Sec } from '~/types';
 import { layouts } from './layouts';
-import { For, JSX, Show } from 'solid-js';
+import { For, JSX, ParentComponent, Show } from 'solid-js';
 import { createAsync } from '@solidjs/router';
 import { DefaultPlugin } from './plugins/default';
 import { getRoute } from '~/model/model';
@@ -15,7 +15,8 @@ export const Octa = ({ route }: { route: string }) => {
         if (!metaValue) {
           throw new Error(`Octa Route not found: ${route}`);
         }
-        const layout = layouts[metaValue.layout || 'default'] || layouts.default;
+        const layout =
+          layouts[metaValue.layout || 'default'] || layouts.default;
         const Main = layout.main;
         return (
           <Main item={metaValue}>
@@ -26,8 +27,7 @@ export const Octa = ({ route }: { route: string }) => {
                     ? layout.plugins![section.type]
                     : DefaultPlugin;
                 const Section =
-                  layout.section ||
-                  (({ children }: { children: JSX.Element }) => <>{children}</>);
+                  layout.section || (({ children }) => <>{children}</>);
                 return (
                   <Plugin
                     type={section.type}

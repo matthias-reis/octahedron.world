@@ -80,7 +80,7 @@ export default function HomePage() {
                       <p
                         class={cx(
                           'font-octa px-4 text-neutral-900 mb-4',
-                          isWide && 'text-lg mr-8'
+                          isWide && 'text-lg sm:mr-8'
                         )}
                       >
                         {item.description}
