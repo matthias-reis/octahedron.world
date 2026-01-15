@@ -4,6 +4,7 @@ import { For, JSX, ParentComponent, Show } from 'solid-js';
 import { createAsync } from '@solidjs/router';
 import { DefaultPlugin } from './plugins/default';
 import { getRoute } from '~/model/model';
+import { Head } from './head';
 
 export const Octa = ({ route }: { route: string }) => {
   const meta = createAsync(() => getRoute(route));
@@ -18,8 +19,17 @@ export const Octa = ({ route }: { route: string }) => {
         const layout =
           layouts[metaValue.layout || 'default'] || layouts.default;
         const Main = layout.main;
+        const description = Array.isArray(metaValue.description)
+          ? metaValue.description.join(' ')
+          : metaValue.description;
         return (
           <Main item={metaValue}>
+            <Head
+              title={metaValue.title}
+              description={description}
+              image={metaValue.image}
+            />
+
             <For each={metaValue.sections}>
               {(section: Sec) => {
                 const Plugin =

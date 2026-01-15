@@ -1,11 +1,13 @@
 import { A, createAsyncStore } from '@solidjs/router';
 import { For } from 'solid-js';
+import { Title } from '@solidjs/meta';
 import { cx } from '~/components/cx';
 import { largeImageUrl, smallImageUrl } from '~/components/image-helpers';
 import OctahedronLogo from '~/components/octahedron-logo';
 import { sortRootItems } from '~/model/helpers';
 import { getAllRootRoutes } from '~/model/model';
-import { CompactItemMeta, ItemMeta } from '~/types';
+import { CompactItemMeta } from '~/types';
+import { Head } from '~/components/head';
 
 export default function HomePage() {
   const getItems = createAsyncStore(() => getAllRootRoutes());
@@ -14,6 +16,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <Head />
       <main class="mx-auto mb-7 max-w-6xl">
         <div
           style={{ 'background-image': `url(${largeImageUrl('_home')})` }}

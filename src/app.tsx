@@ -7,28 +7,34 @@ import 'katex/dist/katex.min.css';
 import { Octa } from './components/octa';
 import routes from '../routes.json';
 import { Footer } from './components/footer';
+import { MetaProvider } from '@solidjs/meta';
 
 export default function App() {
   return (
-    <Router
-      root={(props) => (
-        <>
-          <Nav />
-          <Suspense>
-            <div class="bg-neutral-100">
-              {props.children}
-              <Footer />
-            </div>
-          </Suspense>
-        </>
-      )}
-    >
-      <For each={routes}>
-        {(route) => (
-          <Route path={`/${route}`} component={() => <Octa route={route} />} />
+    <MetaProvider>
+      <Router
+        root={(props) => (
+          <>
+            <Nav />
+            <Suspense>
+              <div class="bg-neutral-100">
+                {props.children}
+                <Footer />
+              </div>
+            </Suspense>
+          </>
         )}
-      </For>
-      <FileRoutes />
-    </Router>
+      >
+        <For each={routes}>
+          {(route) => (
+            <Route
+              path={`/${route}`}
+              component={() => <Octa route={route} />}
+            />
+          )}
+        </For>
+        <FileRoutes />
+      </Router>
+    </MetaProvider>
   );
 }
