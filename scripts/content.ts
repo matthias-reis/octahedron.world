@@ -79,7 +79,9 @@ async function run() {
   writeFileSync(join(process.cwd(), 'data.json'), json);
 
   // Write routes.json - array of all slugs
-  const routes = Object.keys(metadata);
+  const routes = Object.entries(metadata)
+    .filter(([_, item]) => item.layout !== 'none')
+    .map(([slug, _]) => slug);
   const routesJson = JSON.stringify(routes, null, 2);
   writeFileSync(join(process.cwd(), 'routes.json'), routesJson);
   console.log(`[CON] 🗺️  generated ${routes.length} routes`);
