@@ -1,108 +1,361 @@
-import { TrackModel, type Track } from "model/track";
-import { db, toSerialisedDate } from "./firebase";
+import dayjs from "dayjs";
+import { slugify } from "./slugify";
 
-export const fbReadAllTracks = async () => {
-  // read all tracks from firebase
-  const collection = db.collection("tracks");
-  const snapshot = await collection.get();
-  const tracks: Track[] = [];
-  snapshot.forEach((doc) => {
-    const data = doc.data() as Track;
-    delete data.votes; // remove votes from data
-    data.releaseDate = toSerialisedDate(data.releaseDate);
-    data.releaseDate = toSerialisedDate(data.releaseDate);
-    tracks.push(data);
-  });
-  return tracks;
-};
+export class TrackModel {
+  private track: Track | CompactTrack;
+  public votes: Vote[];
 
-export const fbReadTracksByLatestRating = async (limit: number) => {
-  // Query tracks ordered by latest rating date
-  const collection = db.collection("tracks");
-  const snapshot = await collection
-    .orderBy("lastVoteDate", "desc")
-    .limit(limit)
-    .get();
-
-  const tracks = snapshot.docs.map((doc) => {
-    const data = doc.data() as Track;
-    return data;
-  });
-  return tracks;
-};
-
-export const fbReadFullTrack = async (id: string) => {
-  try {
-    // Query a single track by ID
-    const track = await db.collection("tracks").doc(id).get();
-
-    if (!track.exists) {
-      return null;
+  constructor(track: Track | CompactTrack, votes?: Vote[]) {
+    if (!track.title) {
+      track.title = "No Title";
     }
+    this.track = track;
+    const potentialVotes: (Vote | SerialisedVote)[] =
+      votes || (track as Track).votes || [];
 
-    return track.data() as Track;
-  } catch (error) {
-    console.error("[FIREBASE] Error in getFullTrackById:", error);
-    throw error;
+    this.votes = potentialVotes
+      .map((vote) => {
+        if (
+          vote.date &&
+          typeof vote.date === "object" &&
+          "toDate" in vote.date &&
+          typeof vote.date.toDate === "function"
+        ) {
+          return {
+            date: (vote.date as any).toDate(),
+            rating: vote.rating,
+          };
+        }
+        if (typeof vote.date === "string") {
+          return {
+            date: new Date(vote.date),
+            rating: vote.rating,
+          };
+        }
+        return vote as Vote;
+      })
+      .sort((a, b) => b.date.getTime() - a.date.getTime());
   }
-};
 
-export const fbWriteTrack = async (track: TrackModel) => {
-  const serialized = track.serialised;
-
-  try {
-    await db
-      .collection("tracks")
-      .doc(track.id)
-      .set(serialized, { merge: true });
-  } catch (error) {
-    console.error("[FIREBASE] Error in writeTrack:", error);
-    throw error;
+  addVote(vote: number) {
+    const newVote = {
+      date: new Date(),
+      rating: vote,
+    };
+    this.votes.push(newVote);
+    return newVote;
   }
-};
 
-export const fbReadTracksByArtist = async (artist: string) => {
-  try {
-    // Query tracks by artist
-    const collection = db.collection("tracks");
-    const snapshot = await collection.where("artist", "==", artist).get();
-
-    if (snapshot.empty) {
-      return [];
+  augment(other: TrackModel) {
+    const t = this.track as Track;
+    const o = other.track as Track;
+    if (!t.discCount) {
+      t.discCount = o.discCount;
     }
+    if (!t.discNumber) {
+      t.discNumber = o.discNumber;
+    }
+    if (!t.trackCount) {
+      t.trackCount = o.trackCount;
+    }
+    if (!t.trackNumber) {
+      t.trackNumber = o.trackNumber;
+    }
+    //we take the earliest release date
+    this.releaseDate = earliest(this.releaseDate, other.releaseDate);
+    this.dateAdded = earliest(this.dateAdded, other.dateAdded);
+  }
 
-    const tracks: Track[] = [];
-    snapshot.forEach((doc) => {
-      const data = doc.data() as Track;
-      tracks.push(data);
-    });
+  isEarlierOnAlbum(other: TrackModel) {
+    const t = this.track as Track;
+    const o = other.track as Track;
+    if (t.discNumber !== o.discNumber) {
+      return (t.discNumber || 0) < (o.discNumber || 0);
+    } else {
+      return (t.trackNumber || 0) < (o.trackNumber || 0);
+    }
+  }
 
-    return tracks;
-  } catch (error) {
-    console.error("[FIREBASE] Error in fbReadTracksByArtist:", error);
-    throw error;
+  get releaseDate() {
+    return this.track.releaseDate
+      ? new Date(this.track.releaseDate)
+      : this.dateAdded;
+  }
+  set releaseDate(value: Date) {
+    this.track.releaseDate = value.toISOString();
+  }
+  get dateAdded() {
+    return this.track.dateAdded ? new Date(this.track.dateAdded) : new Date();
+  }
+  set dateAdded(value: Date) {
+    this.track.dateAdded = value.toISOString();
+  }
+  get id() {
+    return slugify(`${this.title}--${this.artist}--${this.album}`);
+  }
+
+  get title() {
+    return this.track.title.trim();
+  }
+
+  get songUrl() {
+    return `/pcsc-one/songs/${this.id}`;
+  }
+
+  get year() {
+    return this.releaseDate?.getFullYear() ?? 0;
+  }
+  get yearUrl() {
+    return `/pcsc-one/years/${this.year}`;
+  }
+
+  get artist() {
+    return this.track.artist?.trim();
+  }
+
+  get artistUrl() {
+    return `/pcsc-one/artists/${encodeURIComponent(this.artist)}`;
+  }
+
+  get album() {
+    return this.track.album?.trim();
+  }
+
+  get albumUrl() {
+    return `/pcsc-one/albums/${encodeURIComponent(this.album)}`;
+  }
+
+  get appleRating() {
+    return (this.track as Track).appleRating ?? 0;
+  }
+
+  get vote() {
+    const latestDate = this.votes
+      .map((vote) => vote.date)
+      .sort()
+      .reverse()[0];
+
+    const [voteSum, weightSum] = this.votes
+      .map((vote) => {
+        const ageInDays = dayjs(latestDate).diff(vote.date, "day");
+        const weight = (1 / (1000 - ageInDays)) ^ (2 * 0.8 + 0.2);
+        return [vote.rating * weight, weight];
+      })
+      .reduce(
+        (acc, [voteSum, weightSum]) => {
+          acc[0] += voteSum;
+          acc[1] += weightSum;
+          return acc;
+        },
+        [0, 0]
+      );
+    return Math.round((voteSum * 10) / weightSum) / 10;
+  }
+
+  get lastVoteDate() {
+    return this.lastVote?.date.toISOString() ?? this.track.lastVoteDate;
+  }
+
+  get lastVote() {
+    const latestVote = this.votes.sort(
+      (a, b) => b.date.getTime() - a.date.getTime()
+    )[0];
+    return latestVote;
+  }
+
+  get storedVote() {
+    return this.storedVoteAsNumber.toFixed(1) ?? "-";
+  }
+
+  get storedVoteAsNumber() {
+    return this.track.vote;
+  }
+
+  get r7Vote() {
+    return p1toR7Vote(this.vote);
+  }
+
+  get starRating() {
+    return p1toStarRating(this.vote);
+  }
+
+  get discCount() {
+    return (this.track as Track).discCount || 1;
+  }
+
+  get trackNumber() {
+    const t = this.track as Track;
+    if (this.discCount === 1) {
+      return `Track ${t.trackNumber} / ${t.trackCount}`;
+    } else {
+      return `(Disc ${t.discNumber}/${t.discCount}) Track ${t.trackNumber} / ${t.trackCount}`;
+    }
+  }
+  get serialisedVotes() {
+    return this.votes.map((vote) => ({
+      date: vote.date.toISOString(),
+      rating: vote.rating,
+    }));
+  }
+
+  get compact(): CompactTrack {
+    return {
+      id: this.id,
+      title: this.title,
+      album: this.album,
+      artist: this.artist,
+      dateAdded: this.dateAdded.toISOString(),
+      vote: this.storedVoteAsNumber,
+      releaseDate: this.releaseDate.toISOString(),
+      lastVoteDate: this.lastVoteDate,
+      songUrl: this.songUrl,
+      artistUrl: this.artistUrl,
+      albumUrl: this.albumUrl,
+      yearUrl: this.yearUrl,
+      year: this.year,
+    };
+  }
+
+  get serialised(): Track {
+    const t = this.track as Track;
+
+    return {
+      ...this.compact,
+      appleRating: this.starRating,
+      albumArtist: t.albumArtist || null,
+      discNumber: t.discNumber,
+      discCount: t.discCount,
+      trackNumber: t.trackNumber,
+      trackCount: t.trackCount,
+      vote: this.vote,
+      votes: this.serialisedVotes,
+    };
+  }
+  get json() {
+    return JSON.stringify(
+      {
+        id: "000",
+        title: this.title,
+        album: this.album,
+        artist: this.artist,
+        year: this.year,
+        elo: 100,
+        trackId: this.id,
+        videoId: "",
+        contests: 0,
+        lastContestDate: "",
+      },
+      null,
+      2
+    );
+  }
+}
+
+export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
+  const aa = new Date(a);
+  const bb = new Date(b);
+  if (aa.getTime() < bb.getTime()) {
+    return aa;
+  } else {
+    return bb;
   }
 };
 
-export const fbReadTracksByAlbum = async (album: string) => {
-  try {
-    // Query tracks by artist
-    const collection = db.collection("tracks");
-    const snapshot = await collection.where("album", "==", album).get();
-
-    if (snapshot.empty) {
-      return [];
-    }
-
-    const tracks: Track[] = [];
-    snapshot.forEach((doc) => {
-      const data = doc.data() as Track;
-      tracks.push(data);
-    });
-
-    return tracks;
-  } catch (error) {
-    console.error("[FIREBASE] Error in fbReadTracksByAlbum:", error);
-    throw error;
+export const p1toStarRating = (x: number) => {
+  if (x < 0) {
+    return 0;
+  } else if (x <= 10) {
+    return Math.round(x * 9);
+  } else if (x <= 15) {
+    return 90 + Math.round((x - 10) * 2);
+  } else {
+    return 100;
   }
+};
+
+export const r8toR7Vote = (x: number) => {
+  return Math.round((x * 90) / 20);
+};
+export const r7toR8Vote = (x: number) => {
+  return Math.round((x * 20) / 90);
+};
+
+export const r8toP1Vote = (x: number) => {
+  if (x < 0) {
+    return 0;
+  } else if (x <= 20) {
+    return Math.round(x / 2);
+  } else {
+    return Math.round((x - 20) * 1.5 + 10);
+  }
+};
+
+export const p1toR8Vote = (x: number) => {
+  if (x < 0) {
+    return 0;
+  } else if (x <= 10) {
+    return x * 2;
+  } else {
+    return Math.round((x - 10) / 1.5 + 20);
+  }
+};
+
+export const p1toR7Vote = (x: number) => {
+  let linear = 0;
+  if (x <= 10) {
+    linear = x * 2;
+  } else {
+    linear = (x - 10) / 1.5 + 20;
+  }
+  return (linear * 90) / 20;
+};
+
+export type CompactTrack = {
+  id: string;
+  title: string; // synonym to name
+  album: string;
+  artist: string;
+  vote: number;
+  dateAdded: string;
+  releaseDate: string;
+  lastVoteDate: string;
+  songUrl: string;
+  artistUrl: string;
+  albumUrl: string;
+  yearUrl: string;
+  year: number;
+};
+
+export type Track = CompactTrack & {
+  albumArtist?: string | null;
+  vote: number;
+  appleRating?: number | null;
+  discNumber: number | null;
+  discCount: number | null;
+  trackNumber: number | null;
+  trackCount: number | null;
+  votes?: SerialisedVote[] | null;
+};
+
+export const toTrack = (
+  track: Omit<Track, "releaseDate" | "dateAdded"> & {
+    releaseDate: Date;
+    dateAdded: Date;
+  }
+): Track => {
+  return {
+    ...track,
+    releaseDate: track.releaseDate.toISOString(),
+    dateAdded: track.dateAdded.toISOString(),
+  };
+};
+
+export type SerialisedVote = {
+  date: string;
+  rating: number;
+};
+
+export type Vote = {
+  date: Date;
+  rating: number;
 };
