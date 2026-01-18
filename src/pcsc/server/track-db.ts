@@ -1,10 +1,9 @@
-"use server";
-import { TrackModel, type Track } from "../model/track";
-import { db, toSerialisedDate } from "./firebase";
+import { TrackModel, type Track } from '../model/track';
+import { db, toSerialisedDate } from './firebase';
 
 export const fbReadAllTracks = async () => {
   // read all tracks from firebase
-  const collection = db.collection("tracks");
+  const collection = db.collection('tracks');
   const snapshot = await collection.get();
   const tracks: Track[] = [];
   snapshot.forEach((doc) => {
@@ -19,9 +18,9 @@ export const fbReadAllTracks = async () => {
 
 export const fbReadTracksByLatestRating = async (limit: number) => {
   // Query tracks ordered by latest rating date
-  const collection = db.collection("tracks");
+  const collection = db.collection('tracks');
   const snapshot = await collection
-    .orderBy("lastVoteDate", "desc")
+    .orderBy('lastVoteDate', 'desc')
     .limit(limit)
     .get();
 
@@ -35,7 +34,7 @@ export const fbReadTracksByLatestRating = async (limit: number) => {
 export const fbReadFullTrack = async (id: string) => {
   try {
     // Query a single track by ID
-    const track = await db.collection("tracks").doc(id).get();
+    const track = await db.collection('tracks').doc(id).get();
 
     if (!track.exists) {
       return null;
@@ -43,7 +42,7 @@ export const fbReadFullTrack = async (id: string) => {
 
     return track.data() as Track;
   } catch (error) {
-    console.error("[FIREBASE] Error in getFullTrackById:", error);
+    console.error('[FIREBASE] Error in getFullTrackById:', error);
     throw error;
   }
 };
@@ -53,11 +52,11 @@ export const fbWriteTrack = async (track: TrackModel) => {
 
   try {
     await db
-      .collection("tracks")
+      .collection('tracks')
       .doc(track.id)
       .set(serialized, { merge: true });
   } catch (error) {
-    console.error("[FIREBASE] Error in writeTrack:", error);
+    console.error('[FIREBASE] Error in writeTrack:', error);
     throw error;
   }
 };
@@ -65,8 +64,8 @@ export const fbWriteTrack = async (track: TrackModel) => {
 export const fbReadTracksByArtist = async (artist: string) => {
   try {
     // Query tracks by artist
-    const collection = db.collection("tracks");
-    const snapshot = await collection.where("artist", "==", artist).get();
+    const collection = db.collection('tracks');
+    const snapshot = await collection.where('artist', '==', artist).get();
 
     if (snapshot.empty) {
       return [];
@@ -80,7 +79,7 @@ export const fbReadTracksByArtist = async (artist: string) => {
 
     return tracks;
   } catch (error) {
-    console.error("[FIREBASE] Error in fbReadTracksByArtist:", error);
+    console.error('[FIREBASE] Error in fbReadTracksByArtist:', error);
     throw error;
   }
 };
@@ -88,8 +87,8 @@ export const fbReadTracksByArtist = async (artist: string) => {
 export const fbReadTracksByAlbum = async (album: string) => {
   try {
     // Query tracks by artist
-    const collection = db.collection("tracks");
-    const snapshot = await collection.where("album", "==", album).get();
+    const collection = db.collection('tracks');
+    const snapshot = await collection.where('album', '==', album).get();
 
     if (snapshot.empty) {
       return [];
@@ -103,7 +102,7 @@ export const fbReadTracksByAlbum = async (album: string) => {
 
     return tracks;
   } catch (error) {
-    console.error("[FIREBASE] Error in fbReadTracksByAlbum:", error);
+    console.error('[FIREBASE] Error in fbReadTracksByAlbum:', error);
     throw error;
   }
 };

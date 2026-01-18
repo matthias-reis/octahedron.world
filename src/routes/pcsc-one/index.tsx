@@ -1,49 +1,31 @@
-import { createSignal, For, createMemo } from 'solid-js';
-import { createAsync } from '@solidjs/router';
+import { createSignal, For, createResource, Suspense } from 'solid-js';
 import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
 import { PcscTitle } from '~/pcsc/pcsc-title';
 import { PcscItem } from '~/pcsc/pcsc-item';
-import { getAllTracks } from '~/pcsc/lib/track-utils';
-import { TrackModel } from '~/pcsc/model/track';
-import { TrackMapModel } from '~/pcsc/model/track-map';
+import { fetchLeaderboard, fetchByQuery } from '~/pcsc/server/tracks';
 
 export default function PCSCOneHome() {
   const [searchTerm, setSearchTerm] = createSignal('');
 
-  // Fetch all tracks from the database
-  const tracks = createAsync(async () => {
-    const allTracks = await getAllTracks();
-    return allTracks.map((t) => t.compact);
+  const [tracks] = createResource(searchTerm, async (query) => {
+    if (query.length === 0) {
+      return await fetchLeaderboard();
+    } else {
+      return await fetchByQuery(query);
+    }
   });
-
-  // Create track map for searching and sorting
-  const trackMap = createMemo(() => {
-    const trackData = tracks();
-    if (!trackData) return null;
-    return new TrackMapModel(trackData.map((t) => new TrackModel(t)));
-  });
-
-  // Get filtered or all tracks, limited to top 50
-  const displayedTracks = createMemo(() => {
-    const map = trackMap();
-    if (!map) return [];
-
-    const query = searchTerm();
-    const trackCollection = query ? map.find(query) : map.all;
-
-    // Return top 50 tracks sorted by rating
-    return trackCollection.slice(0, 50);
-  });
-
-  const resultsCount = () => displayedTracks().length;
 
   const headline = () =>
     searchTerm().length > 0 ? `Search for "${searchTerm()}"` : 'PCSC One';
 
-  const description = () =>
-    searchTerm().length === 0
-      ? 'Home of the music ratings database'
-      : `Found ${resultsCount()} results.`;
+  const description = () => {
+    const term = searchTerm();
+    if (term.length === 0) {
+      return 'Home of the music ratings database';
+    }
+    const count = tracks.latest?.length ?? 0;
+    return `Found ${count} results.`;
+  };
 
   return (
     <>
@@ -60,20 +42,15 @@ export default function PCSCOneHome() {
         />
       </div>
 
-      <div class="mt-8 space-y-4">
-        <For each={displayedTracks()}>
-          {(track, index) => (
-            <PcscItem
-              href={track.songUrl}
-              number={index() + 1}
-              headline={track.title}
-              description={track.artist}
-              action={`${track.album} • ${track.year}`}
-              rating={track.storedVote}
-            />
-          )}
-        </For>
-      </div>
+      <Suspense
+        fallback={<div class="mt-8 text-center opacity-50">Loading...</div>}
+      >
+        <div class="mt-8 space-y-4">
+          <For each={tracks()}>
+            {(track, index) => <PcscItem track={track} number={index() + 1} />}
+          </For>
+        </div>
+      </Suspense>
     </>
   );
 }

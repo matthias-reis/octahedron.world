@@ -199,20 +199,24 @@ export class TrackModel {
   }
 
   get compact(): CompactTrack {
+    // Safeguard against NaN values
+    const vote = isNaN(this.storedVoteAsNumber) ? 0 : this.storedVoteAsNumber;
+    const year = isNaN(this.year) ? 0 : this.year;
+
     return {
       id: this.id,
       title: this.title,
       album: this.album,
       artist: this.artist,
       dateAdded: this.dateAdded.toISOString(),
-      vote: this.storedVoteAsNumber,
+      vote,
       releaseDate: this.releaseDate.toISOString(),
       lastVoteDate: this.lastVoteDate,
       songUrl: this.songUrl,
       artistUrl: this.artistUrl,
       albumUrl: this.albumUrl,
       yearUrl: this.yearUrl,
-      year: this.year,
+      year,
     };
   }
 

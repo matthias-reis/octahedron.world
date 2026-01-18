@@ -1,5 +1,5 @@
-import { slugify } from "./slugify";
-import type { Track, TrackModel } from "./track";
+import { slugify } from './slugify';
+import type { CompactTrack, Track, TrackModel } from './track';
 
 export class TrackMapModel {
   private tracks: TrackModel[];
@@ -11,6 +11,10 @@ export class TrackMapModel {
     return this.tracks.sort((a, b) => {
       return b.storedVoteAsNumber - a.storedVoteAsNumber;
     });
+  }
+
+  get hasTracks(): boolean {
+    return this.tracks.length > 0;
   }
 
   getArtists(): TrackCollectionItem[] {
@@ -146,26 +150,44 @@ export class TrackMapModel {
     return Object.values(artistMap);
   }
 
-  getTop(i: number): Track[] {
-    return this.tracks
+  getTop(i: number): CompactTrack[] {
+    const tracks = this.tracks
       .sort((a, b) => b.storedVoteAsNumber - a.storedVoteAsNumber)
       .slice(0, i)
-      .map((t) => t.serialised);
+      .map((t) => t.compact);
+
+    // Force plain object serialization to prevent prototype chain issues
+    let res = [];
+    try {
+      res = JSON.parse(JSON.stringify(tracks)) as CompactTrack[];
+    } catch (e) {
+      console.error('TrackMapModel.find serialization error:', e);
+      res = tracks;
+    }
+    return res;
   }
 
-  find(query: string): TrackModel[] {
+  find(query: string): CompactTrack[] {
     const q = slugify(query);
     if (!q) return [];
-    const results = this.tracks
+    const tracks = this.tracks
       .map((item) => {
         const place = item.id.indexOf(q);
         return [place, item] as [number, TrackModel];
       })
       .filter((i) => i[0] > -1)
       .sort((a, b) => b[1].storedVoteAsNumber - a[1].storedVoteAsNumber)
-      .map((i) => i[1]);
+      .map((i) => i[1].compact);
 
-    return results;
+    // Force plain object serialization to prevent prototype chain issues
+    let res = [];
+    try {
+      res = JSON.parse(JSON.stringify(tracks)) as CompactTrack[];
+    } catch (e) {
+      console.log('TrackMapModel.find serialization error:', e);
+      res = tracks;
+    }
+    return res;
   }
 }
 

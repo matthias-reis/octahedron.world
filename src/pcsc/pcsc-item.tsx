@@ -1,19 +1,19 @@
-import { JSX, Show } from 'solid-js';
+import { Show } from 'solid-js';
 import { A } from '@solidjs/router';
+import { TrackModel, type CompactTrack } from './model/track';
 
 export interface PcscItemProps {
-  href: string;
+  track: CompactTrack;
   number?: number;
-  headline: string;
-  description?: JSX.Element;
-  action?: JSX.Element;
-  rating?: number | string;
 }
 
 export function PcscItem(props: PcscItemProps) {
+  // Transform CompactTrack to TrackModel for convenience methods
+  const trackModel = new TrackModel(props.track);
+
   return (
     <A
-      href={props.href}
+      href={trackModel.songUrl}
       class="relative block pcsc-bd bg-neutral-100/10 hover:bg-neutral-100/20 rounded-lg py-3 px-6 transition-colors overflow-hidden"
     >
       <div>
@@ -24,25 +24,21 @@ export function PcscItem(props: PcscItemProps) {
           </div>
         </Show>
 
-        <h3 class="text-3xl font-octa font-bold mb-2">{props.headline}</h3>
-        <Show when={props.description}>
-          <div>{props.description}</div>
-        </Show>
+        <h3 class="text-3xl font-octa font-bold mb-2">{trackModel.title}</h3>
+        <div>{trackModel.artist}</div>
 
-        {/* Action slot */}
-        <Show when={props.action}>
-          <div class="mt-4 opacity-50">{props.action}</div>
-        </Show>
+        {/* Action slot - album and year */}
+        <div class="mt-4 opacity-50">
+          {trackModel.album} • {trackModel.year}
+        </div>
       </div>
 
-      <Show when={props.rating !== undefined}>
-        <div class="w-7 text-center absolute bottom-3 right-3 flex flex-col items-stretch justify-stretch">
-          <span class="opacity-50 text-sm">Rating</span>
-          <span class="text-xl font-mono font-bold bg-complement">
-            {props.rating}
-          </span>
-        </div>
-      </Show>
+      <div class="w-7 text-center absolute bottom-3 right-3 flex flex-col items-stretch justify-stretch">
+        <span class="opacity-50 text-sm">Rating</span>
+        <span class="text-xl font-mono font-bold bg-complement">
+          {trackModel.storedVote}
+        </span>
+      </div>
     </A>
   );
 }
