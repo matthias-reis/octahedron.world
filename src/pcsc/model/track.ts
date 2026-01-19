@@ -164,7 +164,7 @@ export class TrackModel {
   }
 
   get storedVote() {
-    return this.storedVoteAsNumber.toFixed(1) ?? '-';
+    return this.storedVoteAsNumber?.toFixed(1) ?? '-';
   }
 
   get storedVoteAsNumber() {

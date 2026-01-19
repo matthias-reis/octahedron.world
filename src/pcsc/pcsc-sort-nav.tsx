@@ -1,9 +1,7 @@
 import { For } from 'solid-js';
-import type { AlbumSortOption } from '~/routes/pcsc-api/albums';
-import type { ArtistSortOption } from '~/routes/pcsc-api/artists';
 
 export interface SortOption {
-  value: AlbumSortOption | ArtistSortOption;
+  value: string;
   label: string;
   description?: string;
 }
@@ -28,8 +26,8 @@ export const artistSortOptions: SortOption[] = [
 
 export interface PcscSortNavProps {
   options: SortOption[];
-  current: AlbumSortOption | ArtistSortOption;
-  onChange: (sort: AlbumSortOption | ArtistSortOption) => void;
+  current: string;
+  onChange: (sort: string) => void;
 }
 
 export function PcscSortNav(props: PcscSortNavProps) {

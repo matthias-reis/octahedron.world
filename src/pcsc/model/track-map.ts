@@ -131,16 +131,16 @@ export class TrackMapModel {
     return Object.values(yearsList).map((i) => i.data);
   }
 
-  getYear(year: number): Track[] {
+  getYear(year: number): CompactTrack[] {
     return this.tracks
       .filter((t) => t.year === year)
       .sort((a, b) => b.storedVoteAsNumber - a.storedVoteAsNumber)
-      .map((t) => t.serialised);
+      .map((t) => t.compact);
   }
 
-  getYearDistinct(year: number): Track[] {
+  getYearDistinct(year: number): CompactTrack[] {
     const tracksOfTheYear = this.getYear(year);
-    const artistMap: Record<string, Track> = {};
+    const artistMap: Record<string, CompactTrack> = {};
     tracksOfTheYear.forEach((track) => {
       if (!artistMap[track.artist]) {
         artistMap[track.artist] = track;

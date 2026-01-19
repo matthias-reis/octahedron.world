@@ -106,3 +106,27 @@ export const fbReadTracksByAlbum = async (album: string) => {
     throw error;
   }
 };
+
+export const fbReadRatingsHistory = async (limit: number = 100) => {
+  try {
+    // Query tracks ordered by latest rating date, including vote history
+    const collection = db.collection('tracks');
+    const snapshot = await collection
+      .orderBy('lastVoteDate', 'desc')
+      .limit(limit)
+      .get();
+
+    const tracks = snapshot.docs.map((doc) => {
+      const data = doc.data() as Track;
+      data.releaseDate = toSerialisedDate(data.releaseDate);
+      data.dateAdded = toSerialisedDate(data.dateAdded);
+      // Keep votes array for rating history
+      return data;
+    });
+
+    return tracks;
+  } catch (error) {
+    console.error('[FIREBASE] Error in fbReadRatingsHistory:', error);
+    throw error;
+  }
+};
