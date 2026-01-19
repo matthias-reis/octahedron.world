@@ -1,8 +1,9 @@
 import { For } from 'solid-js';
 import type { AlbumSortOption } from '~/routes/pcsc-api/albums';
+import type { ArtistSortOption } from '~/routes/pcsc-api/artists';
 
 export interface SortOption {
-  value: AlbumSortOption;
+  value: AlbumSortOption | ArtistSortOption;
   label: string;
   description?: string;
 }
@@ -16,10 +17,19 @@ export const albumSortOptions: SortOption[] = [
   { value: 'name', label: 'A-Z', description: 'Alphabetical order' },
 ];
 
+export const artistSortOptions: SortOption[] = [
+  { value: 'v3', label: 'Top 3', description: 'Average of top 3 tracks' },
+  { value: 'v5', label: 'Top 5', description: 'Average of top 5 tracks' },
+  { value: 'v7', label: 'Top 7', description: 'Average of top 7 tracks' },
+  { value: 'v9', label: 'Top 9', description: 'Average of top 9 tracks' },
+  { value: 'count', label: 'Tracks', description: 'Number of tracks' },
+  { value: 'name', label: 'A-Z', description: 'Alphabetical order' },
+];
+
 export interface PcscSortNavProps {
   options: SortOption[];
-  current: AlbumSortOption;
-  onChange: (sort: AlbumSortOption) => void;
+  current: AlbumSortOption | ArtistSortOption;
+  onChange: (sort: AlbumSortOption | ArtistSortOption) => void;
 }
 
 export function PcscSortNav(props: PcscSortNavProps) {
