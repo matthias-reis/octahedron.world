@@ -18,7 +18,16 @@ export async function fillTracksCache() {
   return new TrackMapModel(trackModels);
 }
 
-let tracksCache = fillTracksCache();
+export let tracksCache = fillTracksCache();
+
+/**
+ * Refreshes the tracks cache by re-fetching from Firebase.
+ */
+export function refreshTracksCache() {
+  console.log('[PCSC] Refreshing tracks cache...');
+  tracksCache = fillTracksCache();
+  return tracksCache;
+}
 
 /**
  * Gets all tracks from cache (SERVER-SIDE ONLY).
