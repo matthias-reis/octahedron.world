@@ -123,103 +123,130 @@ src/routes/pcsc-one/      # SolidStart routes for PCSC One
 
 ## Overview
 
-The PCSC One application follows a **three-layer architecture** with clear separation between UI, frontend queries, and backend services.
+The PCSC One application follows a **four-layer architecture** with clear separation between UI, frontend queries, API routes, and server-side caching.
 
 ## Architecture Principles
 
-### 1. Three-Layer Architecture
-- **UI Layer (Components/Pages)**: Only works with TrackModel instances, never calls backend directly
-- **Frontend Layer (queries.ts)**: Transforms backend responses into TrackModel instances
-- **Backend Layer (service/)**: Processes data server-side, returns CompactTrack objects
+### 1. Four-Layer Architecture
+- **UI Layer (Components/Pages)**: Works with `CompactTrack` objects, handles display logic
+- **Frontend Layer (`server/tracks.ts`)**: Query functions using SolidJS `query()` for caching/deduplication
+- **API Layer (`routes/pcsc-api/`)**: HTTP endpoints that process requests and return JSON
+- **Cache Layer (`server/track-cache.ts`)**: In-memory cache of all tracks loaded from Firebase
 
 ### 2. Server-Side Processing
-- **All heavy operations** (sorting, filtering, searching) occur on the server
-- Backend maintains the full dataset in memory (cached)
-- Query functions return only the necessary subset of data
+- **All heavy operations** (sorting, filtering, searching) occur on the server via API routes
+- Cache layer maintains the full dataset in memory (loaded once from Firebase)
+- API endpoints return only the necessary subset of data
 - Client never receives or processes the full dataset
 
-### 3. Data Transfer Optimization
-- Server returns `CompactTrack` objects (minimal data structure)
-- Frontend layer hydrates CompactTrack → TrackModel for computed properties
-- Only essential fields transferred over network
+### 3. Data Transfer
+- API routes return `CompactTrack[]` as JSON
+- Frontend queries use SolidJS `query()` for automatic caching and request deduplication
+- UI components work directly with `CompactTrack` objects
 
 ### 4. Clear Separation of Concerns
 - **UI Components**: Display logic, user interaction, UI state
-- **Frontend Queries**: Data transformation (CompactTrack → TrackModel)
-- **Backend Services**: Data fetching, filtering, sorting, business logic
+- **Frontend Queries**: Data fetching with caching via `query()`, uses `fetchLocal()` helper
+- **API Routes**: HTTP handlers that call cache layer methods
+- **Cache Layer**: TrackMapModel instance with search/filter/sort capabilities
 
 ## File Structure
 
 ```
 src/pcsc/
-├── service/
-│   ├── server.ts          # SERVER: fetch* functions return CompactTrack[]
-│   ├── client.ts          # CLIENT: get* functions return TrackModel[]
-│   ├── firebase.ts        # Firebase admin initialization
-│   └── track.ts           # Low-level Firebase CRUD operations
-├── lib/
-│   └── track-utils.ts     # Caching layer for all tracks
+├── server/
+│   ├── tracks.ts          # Frontend queries using query() - fetchLeaderboard, fetchByQuery
+│   ├── fetch.ts           # fetchLocal() helper for API calls
+│   ├── track-cache.ts     # In-memory cache with TrackMapModel
+│   ├── track-db.ts        # Low-level Firebase CRUD operations
+│   └── firebase.ts        # Firebase admin initialization
 ├── model/
 │   ├── track.tsx          # TrackModel class + CompactTrack/Track types
 │   ├── track-map.tsx      # TrackMapModel (search/filter utilities)
 │   └── slugify.ts         # Text normalization for search
 └── components/            # UI components
+
+src/routes/pcsc-api/
+├── tracks/
+│   ├── leaderboard/
+│   │   └── index.ts       # GET /pcsc-api/tracks/leaderboard
+│   └── search/
+│       └── [query].ts     # GET /pcsc-api/tracks/search/:query
 ```
 
 ## Architecture Layers
 
 ### UI Layer (Components/Pages)
 
-UI components **MUST ONLY** call client-side `get*` functions, never server `fetch*` functions directly.
+UI components import query functions from `~/pcsc/server/tracks` and use them with `createResource`.
 
 **Rules**:
-- Always import from `~/pcsc/service/client`
-- Work exclusively with `TrackModel[]` arrays
-- Access convenience methods and computed properties (e.g., `track.songUrl`, `track.storedVote`)
+- Import `fetchLeaderboard`, `fetchByQuery` from `~/pcsc/server/tracks`
+- Work with `CompactTrack[]` arrays returned by queries
+- Use `createResource` for reactive data fetching
 
-### Client Layer (`src/pcsc/service/client.ts`)
+**Example**:
+```typescript
+import { fetchLeaderboard, fetchByQuery } from '~/pcsc/server/tracks';
 
-Client-side query functions that wrap server calls and hydrate data. **CLIENT-SIDE ONLY** - no `"use server"`.
+const [tracks] = createResource(searchTerm, async (query) => {
+  return query.length === 0
+    ? await fetchLeaderboard()
+    : await fetchByQuery(query);
+});
+```
 
-**Naming Convention**: `get*` functions (e.g., `getTop500`, `getByQuery`)
+### Frontend Layer (`src/pcsc/server/tracks.ts`)
 
-**Purpose**: Provide TrackModel instances with convenience methods like:
-- Computed URLs (`track.songUrl`, `track.artistUrl`, `track.albumUrl`)
-- Formatting helpers
-- Centralized URL composition (e.g., `/pcsc-one/songs/{slug}`)
+Query functions wrapped with SolidJS `query()` for automatic caching and deduplication.
 
-**`getTop500(): Promise<TrackModel[]>`** *(CLIENT-SIDE)*
-- Calls server-side `fetchTop500()`
-- Receives `CompactTrack[]` over network
-- Maps to `TrackModel[]` on the CLIENT
-- Returns: TrackModel instances with convenience methods
+**Naming Convention**: `fetch*` functions (e.g., `fetchLeaderboard`, `fetchByQuery`)
 
-**`getByQuery(query: string): Promise<TrackModel[]>`** *(CLIENT-SIDE)*
-- Calls server-side `fetchByQuery(query)`
-- Receives `CompactTrack[]` over network
-- Maps to `TrackModel[]` on the CLIENT
-- Returns: TrackModel instances with convenience methods
+**`fetchLeaderboard(): Promise<CompactTrack[]>`**
+- Wrapped with `query()` for caching
+- Calls `/pcsc-api/tracks/leaderboard` via `fetchLocal()`
+- Returns top 100 tracks sorted by rating
 
-### Server Layer (`src/pcsc/service/server.ts`)
+**`fetchByQuery(searchQuery: string): Promise<CompactTrack[]>`**
+- Wrapped with `query()` for caching
+- Calls `/pcsc-api/tracks/search/:query` via `fetchLocal()`
+- Returns matching tracks sorted by rating
 
-Server-side query functions that process data. **Marked with `"use server"`**.
+### Fetch Helper (`src/pcsc/server/fetch.ts`)
 
-**Naming Convention**: `fetch*` functions (e.g., `fetchTop500`, `fetchByQuery`)
+**`fetchLocal(url: string)`**
+- Handles both server-side and client-side fetching
+- Uses `VITE_SERVER_URL` env var for server-side requests
+- Returns parsed JSON response
 
-**`fetchTop500(): Promise<CompactTrack[]>`** *(SERVER-SIDE)*
-- Fetches all tracks from cache
-- Sorts by rating (highest first)
-- Returns top 500 tracks as plain CompactTrack objects (serializable)
-- **Never called directly by UI components**
+### API Layer (`src/routes/pcsc-api/`)
 
-**`fetchByQuery(query: string): Promise<CompactTrack[]>`** *(SERVER-SIDE)*
-- Accepts search term
-- Searches across title, artist, album (slugified for fuzzy matching)
-- Returns up to 500 matching tracks sorted by rating
-- Falls back to fetchTop500() if query is empty
-- **Never called directly by UI components**
+HTTP API routes that call cache layer methods and return JSON.
 
-#### `track.ts` - Firebase Operations (Low-Level)
+**`GET /pcsc-api/tracks/leaderboard`**
+- Calls `getAllTracks()` from cache
+- Returns `tracks.getTop(100)` as JSON
+
+**`GET /pcsc-api/tracks/search/:query`**
+- Calls `getAllTracks()` from cache
+- Returns `tracks.find(params.query)` as JSON
+
+### Cache Layer (`src/pcsc/server/track-cache.ts`)
+
+In-memory cache that loads all tracks from Firebase once and provides a `TrackMapModel` instance.
+
+**`fillTracksCache(): Promise<TrackMapModel>`**
+- Fetches all tracks from Firebase via `fbReadAllTracks()`
+- Creates `TrackModel` instances for each track
+- Returns a `TrackMapModel` with search/filter capabilities
+- Called once on server startup
+
+**`getAllTracks(): Promise<TrackMapModel>`**
+- Returns the cached `TrackMapModel` instance
+- No re-fetching from Firebase after initial load
+
+### Database Layer (`src/pcsc/server/track-db.ts`)
+
 Direct Firebase operations (CRUD). All functions marked `"use server"`.
 
 - `fbReadAllTracks()`: Fetch all tracks from Firestore
@@ -229,18 +256,11 @@ Direct Firebase operations (CRUD). All functions marked `"use server"`.
 - `fbReadTracksByArtist(artist)`: Get tracks by artist
 - `fbReadTracksByAlbum(album)`: Get tracks by album
 
-#### `firebase.ts` - Firebase Initialization
+### Firebase Initialization (`src/pcsc/server/firebase.ts`)
+
 - Initializes Firebase Admin SDK
 - Exports `db` (Firestore instance)
 - Exports `toSerialisedDate()` utility
-
-### Library Layer (`src/pcsc/lib/`)
-
-#### `track-utils.ts` - Caching
-**`getAllTracks(): Promise<TrackModel[]>`**
-- In-memory cache of all tracks
-- Loads from Firebase once, then serves from memory
-- Returns TrackModel instances (not CompactTrack)
 
 ### Model Layer (`src/pcsc/model/`)
 
@@ -300,126 +320,140 @@ type Track = CompactTrack & {
 
 ## Data Flow
 
-### Initial Page Load
+### Initial Page Load (Leaderboard)
 
 ```
-UI Component          Client Layer (CLIENT)       Server Layer (SERVER)
-    |                     service/client.ts          service/server.ts
-    |                           |                         |
-    |--- getTop500() ---------->|                         |
-    |                           |--- fetchTop500() ------>|
-    |                           |                         |
-    |                           |                 getAllTracks() (cached)
-    |                           |                 TrackMapModel.all (sorted)
-    |                           |                 .slice(0, 500)
-    |                           |                 .map(t => t.compact)
-    |                           |                         |
-    |                           |<-- CompactTrack[] ------|
-    |                           |   (serialized over network)
-    |                    .map(t => new TrackModel(t))
-    |                    (CLIENT-SIDE hydration)
-    |                           |
-    |<-- TrackModel[] ----------|
-    |
-Display top 50
+UI Component          Frontend Query          API Route                Cache Layer
+    |                 server/tracks.ts    /pcsc-api/tracks/leaderboard  track-cache.ts
+    |                       |                     |                         |
+    |-- fetchLeaderboard()->|                     |                         |
+    |                       |                     |                         |
+    |              query() wrapper                |                         |
+    |              (caching/dedup)                |                         |
+    |                       |                     |                         |
+    |                       |-- fetchLocal() ---->|                         |
+    |                       |   GET request       |                         |
+    |                       |                     |-- getAllTracks() ------>|
+    |                       |                     |                         |
+    |                       |                     |          TrackMapModel (in-memory)
+    |                       |                     |          .getTop(100)
+    |                       |                     |                         |
+    |                       |                     |<-- CompactTrack[] ------|
+    |                       |                     |                         |
+    |                       |<-- JSON response ---|                         |
+    |                       |                     |                         |
+    |<-- CompactTrack[] ----|                     |                         |
+    |                       |                     |                         |
+Display tracks
 ```
 
 ### Search Query
 
 ```
-UI Component          Client Layer (CLIENT)       Server Layer (SERVER)
-    |                     service/client.ts          service/server.ts
-    |                           |                         |
-    |-- getByQuery(q) --------->|                         |
-    |                           |-- fetchByQuery(q) ----->|
-    |                           |                         |
-    |                           |                 getAllTracks() (cached)
-    |                           |                 TrackMapModel.find(q)
-    |                           |                 .slice(0, 500)
-    |                           |                 .map(t => t.compact)
-    |                           |                         |
-    |                           |<-- CompactTrack[] ------|
-    |                           |   (serialized over network)
-    |                    .map(t => new TrackModel(t))
-    |                    (CLIENT-SIDE hydration)
-    |                           |
-    |<-- TrackModel[] ----------|
-    |
-Display top 50
+UI Component          Frontend Query          API Route                Cache Layer
+    |                 server/tracks.ts    /pcsc-api/tracks/search/:q   track-cache.ts
+    |                       |                     |                         |
+    |-- fetchByQuery(q) --->|                     |                         |
+    |                       |                     |                         |
+    |              query() wrapper                |                         |
+    |              (caching/dedup)                |                         |
+    |                       |                     |                         |
+    |                       |-- fetchLocal() ---->|                         |
+    |                       |   GET request       |                         |
+    |                       |                     |-- getAllTracks() ------>|
+    |                       |                     |                         |
+    |                       |                     |          TrackMapModel (in-memory)
+    |                       |                     |          .find(query)
+    |                       |                     |                         |
+    |                       |                     |<-- CompactTrack[] ------|
+    |                       |                     |                         |
+    |                       |<-- JSON response ---|                         |
+    |                       |                     |                         |
+    |<-- CompactTrack[] ----|                     |                         |
+    |                       |                     |                         |
+Display tracks
 ```
 
 ## Frontend Pattern
 
 ### Using Query Functions in UI Components
 
-**CORRECT** - UI components call frontend `get*` functions:
+**CORRECT** - UI components import from `~/pcsc/server/tracks`:
 
 ```typescript
-import { getTop500, getByQuery } from '~/pcsc/queries';
+import { fetchLeaderboard, fetchByQuery } from '~/pcsc/server/tracks';
 
 // Reactive query that refetches when searchTerm changes
 const [tracks] = createResource(searchTerm, async (query) => {
-  // Frontend layer returns TrackModel[] with all convenience methods
   return query.length === 0
-    ? await getTop500()
-    : await getByQuery(query);
+    ? await fetchLeaderboard()
+    : await fetchByQuery(query);
 });
 
-// Work with TrackModel instances
-const displayedTracks = () => tracks()?.slice(0, 50) ?? [];
+// Work with CompactTrack objects
+<For each={tracks()}>
+  {(track) => <PcscItem track={track} />}
+</For>
 ```
 
-**INCORRECT** - Never call backend `fetch*` functions directly from UI:
+**INCORRECT** - Never call API routes directly or bypass the query layer:
 
 ```typescript
-// ❌ WRONG - UI should never import from service/query
-import { fetchTop500, fetchByQuery } from '~/pcsc/service/query';
+// ❌ WRONG - Don't call API routes directly
+const res = await fetch('/pcsc-api/tracks/leaderboard');
+const tracks = await res.json();
 
-// ❌ WRONG - UI should never manually transform CompactTrack to TrackModel
-const compactTracks = await fetchTop500();
-return compactTracks.map(t => new TrackModel(t));
+// ❌ WRONG - Don't import from track-cache in UI components
+import { getAllTracks } from '~/pcsc/server/track-cache';
 ```
 
-### Three-Layer Data Transformation
+### Four-Layer Architecture Benefits
 
-1. **Backend Layer** (`service/query.ts`):
-   - `fetch*` functions return `CompactTrack[]`
-   - Minimal data for efficient network transfer
-   - Plain objects optimized for JSON serialization
+1. **Frontend Layer** (`server/tracks.ts`):
+   - `query()` wrapper provides automatic caching and request deduplication
+   - Single source of truth for all track queries
+   - Easy to add new query functions following the same pattern
 
-2. **Frontend Layer** (`queries.ts`):
-   - `get*` functions call `fetch*` and transform responses
-   - Transforms `CompactTrack[]` → `TrackModel[]`
-   - Single responsibility: hydration of server responses
+2. **API Layer** (`routes/pcsc-api/`):
+   - Clean HTTP endpoints for data access
+   - Can be extended for external API access if needed
+   - Separation of routing logic from business logic
 
-3. **UI Layer** (components/pages):
-   - Works exclusively with `TrackModel[]`
-   - Access all convenience methods and computed properties
-   - Example: `track.songUrl`, `track.storedVote`, `track.vote`
+3. **Cache Layer** (`server/track-cache.ts`):
+   - Single in-memory TrackMapModel instance
+   - All search/filter/sort operations happen here
+   - No repeated Firebase calls after initial load
+
+4. **UI Layer** (components/pages):
+   - Works with `CompactTrack[]` directly
+   - No transformation logic needed
+   - Clean, simple component code
 
 ### Why This Architecture?
 
-**Separation of Concerns**:
-- UI components don't know about CompactTrack or transformation logic
-- Backend doesn't know about TrackModel class
-- Frontend layer handles all data hydration
+**Performance**:
+- `query()` wrapper caches responses and deduplicates concurrent requests
+- API routes run server-side, reducing client bundle size
+- In-memory cache eliminates repeated Firebase calls
 
-**Type Safety**:
-- UI components always work with rich TrackModel instances
-- No risk of accessing undefined methods on plain objects
+**Separation of Concerns**:
+- UI components focus on display logic
+- Query functions handle caching and API calls
+- API routes handle HTTP concerns
+- Cache layer manages data operations
 
 **Maintainability**:
-- Adding new query functions? Just add to `queries.ts` with same pattern
-- Changing data transformation? Only modify `queries.ts`
-- UI components remain unchanged
+- Adding new queries: Add function to `server/tracks.ts` + API route
+- Changing cache behavior: Only modify `track-cache.ts`
+- UI components remain unchanged when backend changes
 
 ## Performance Considerations
 
-1. **Server-side caching**: `getAllTracks()` loads once, serves from memory
-2. **Minimal data transfer**: Only CompactTrack (not full Track) sent over network
-3. **Backend processing**: Heavy operations (sort, filter) done server-side
-4. **Client-side slicing**: Server returns up to 500, client displays 50
-5. **Reactive fetching**: SolidJS `createResource` auto-refetches on search
+1. **Server-side caching**: `fillTracksCache()` loads Firebase data once at startup, serves from memory via `getAllTracks()`
+2. **Query caching**: SolidJS `query()` wrapper caches responses and deduplicates concurrent requests
+3. **Minimal data transfer**: Only `CompactTrack[]` sent over network (not full Track objects)
+4. **Backend processing**: Heavy operations (sort, filter, search) done server-side in API routes
+5. **Reactive fetching**: SolidJS `createResource` auto-refetches when search term changes
 
 ## Search Implementation
 
