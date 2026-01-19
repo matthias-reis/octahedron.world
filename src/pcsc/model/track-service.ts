@@ -1,6 +1,6 @@
 'use server';
 import { TrackModel, type Track } from '~/pcsc/model/track';
-import { db, toSerialisedDate } from '~/pcsc/service/firebase';
+import { db, toSerialisedDate } from '~/pcsc/server/firebase';
 
 export const fbReadAllTracks = async () => {
   // read all tracks from firebase

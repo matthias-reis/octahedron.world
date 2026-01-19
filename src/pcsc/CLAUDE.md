@@ -156,15 +156,20 @@ The PCSC One application follows a **four-layer architecture** with clear separa
 src/pcsc/
 ├── server/
 │   ├── tracks.ts          # Frontend queries using query() - fetchLeaderboard, fetchByQuery
+│   ├── albums.ts          # Frontend queries for albums - fetchAlbums
 │   ├── fetch.ts           # fetchLocal() helper for API calls
 │   ├── track-cache.ts     # In-memory cache with TrackMapModel
 │   ├── track-db.ts        # Low-level Firebase CRUD operations
 │   └── firebase.ts        # Firebase admin initialization
 ├── model/
-│   ├── track.tsx          # TrackModel class + CompactTrack/Track types
-│   ├── track-map.tsx      # TrackMapModel (search/filter utilities)
+│   ├── track.ts           # TrackModel class + CompactTrack/Track types
+│   ├── track-map.ts       # TrackMapModel (search/filter utilities, getAlbums, getArtists)
 │   └── slugify.ts         # Text normalization for search
-└── components/            # UI components
+├── pcsc-item.tsx          # Track item display component
+├── pcsc-collection-item.tsx # Album/Artist/Year collection item component
+├── pcsc-sort-nav.tsx      # Sorting navigation component
+├── pcsc-title.tsx         # Page title component
+└── pcsc-breadcrumb.tsx    # Breadcrumb navigation component
 
 src/routes/pcsc-api/
 ├── tracks/
@@ -172,6 +177,8 @@ src/routes/pcsc-api/
 │   │   └── index.ts       # GET /pcsc-api/tracks/leaderboard
 │   └── search/
 │       └── [query].ts     # GET /pcsc-api/tracks/search/:query
+└── albums/
+    └── index.ts           # GET /pcsc-api/albums?sort=<option>
 ```
 
 ## Architecture Layers
@@ -212,6 +219,16 @@ Query functions wrapped with SolidJS `query()` for automatic caching and dedupli
 - Calls `/pcsc-api/tracks/search/:query` via `fetchLocal()`
 - Returns matching tracks sorted by rating
 
+### Albums Query Layer (`src/pcsc/server/albums.ts`)
+
+Query functions for album aggregations.
+
+**`fetchAlbums(sort: AlbumSortOption): Promise<TrackCollectionItem[]>`**
+- Wrapped with `query()` for caching
+- Calls `/pcsc-api/albums?sort=<option>` via `fetchLocal()`
+- Sort options: `v3`, `v5`, `v7`, `v9`, `count`, `name`
+- Returns albums with aggregated track data
+
 ### Fetch Helper (`src/pcsc/server/fetch.ts`)
 
 **`fetchLocal(url: string)`**
@@ -230,6 +247,13 @@ HTTP API routes that call cache layer methods and return JSON.
 **`GET /pcsc-api/tracks/search/:query`**
 - Calls `getAllTracks()` from cache
 - Returns `tracks.find(params.query)` as JSON
+
+**`GET /pcsc-api/albums?sort=<option>`**
+- Calls `getAllTracks()` from cache
+- Calls `tracks.getAlbums()` to aggregate tracks by album
+- Sorts results by the specified option
+- Sort options: `v3` (default), `v5`, `v7`, `v9`, `count`, `name`
+- Returns `TrackCollectionItem[]` as JSON
 
 ### Cache Layer (`src/pcsc/server/track-cache.ts`)
 
@@ -304,15 +328,53 @@ type Track = CompactTrack & {
 };
 ```
 
-#### `track-map.tsx` - Search/Filter Utilities
+#### `track-map.ts` - Search/Filter Utilities
 **TrackMapModel Class**
 - Constructor accepts `TrackModel[]`
 - `all` getter: Returns all tracks sorted by rating
 - `find(query)`: Search tracks by slugified query
-- `getArtists()`: Aggregate tracks by artist
-- `getAlbums()`: Aggregate tracks by album
-- `getYears()`: Aggregate tracks by year
-- `getTop(n)`: Get top N tracks
+- `getArtists()`: Aggregate tracks by artist, returns `TrackCollectionItem[]`
+- `getAlbums()`: Aggregate tracks by album, returns `TrackCollectionItem[]`
+- `getYears()`: Aggregate tracks by year, returns `TrackCollectionItem[]`
+- `getTop(n)`: Get top N tracks as `CompactTrack[]`
+
+**TrackCollectionItem Type**
+```typescript
+type TrackCollectionItem = {
+  name: string;      // Album/Artist/Year name
+  sub?: string;      // Subtitle (e.g., artist name for albums)
+  sub2?: string;     // Optional second subtitle
+  url: string;       // Link to detail page
+  count: number;     // Number of tracks
+  v3: number | null; // Average rating of top 3 tracks
+  v5: number | null; // Average rating of top 5 tracks
+  v7: number | null; // Average rating of top 7 tracks
+  v9: number | null; // Average rating of top 9 tracks
+};
+```
+
+### UI Components (`src/pcsc/`)
+
+#### `pcsc-item.tsx` - Track Display
+- Displays a single track with title, artist, album, year, and rating
+- Used in track lists (leaderboard, search results)
+
+#### `pcsc-collection-item.tsx` - Collection Display
+- Displays album/artist/year aggregations
+- Shows name, subtitle, track count, and rating based on current sort
+- Adapts displayed rating label based on sort option
+
+#### `pcsc-sort-nav.tsx` - Sorting Navigation
+- Horizontal list of sorting options
+- Supports: `v3`, `v5`, `v7`, `v9`, `count`, `name`
+- Visual indicator for current selection
+- Exports `albumSortOptions` array for albums page
+
+#### `pcsc-title.tsx` - Page Title
+- Consistent page header with headline and optional description
+
+#### `pcsc-breadcrumb.tsx` - Breadcrumb Navigation
+- Shows navigation path with links
 
 #### `slugify.ts`
 - Normalizes text for search (lowercase, remove accents, etc.)

@@ -1,7 +1,7 @@
 import { createSignal, For, createResource, Suspense } from 'solid-js';
 import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
 import { PcscTitle } from '~/pcsc/pcsc-title';
-import { PcscItem } from '~/pcsc/pcsc-item';
+import { PcscTrack } from '~/pcsc/pcsc-track';
 import { fetchLeaderboard, fetchByQuery } from '~/pcsc/server/tracks';
 
 export default function PCSCOneHome() {
@@ -47,7 +47,7 @@ export default function PCSCOneHome() {
       >
         <div class="mt-8 space-y-4">
           <For each={tracks()}>
-            {(track, index) => <PcscItem track={track} number={index() + 1} />}
+            {(track, index) => <PcscTrack track={track} number={index() + 1} />}
           </For>
         </div>
       </Suspense>

@@ -1,5 +1,5 @@
-import dayjs from "dayjs";
-import { slugify } from "./slugify";
+import dayjs from 'dayjs';
+import { slugify } from './slugify';
 
 export class TrackModel {
   private track: Track | CompactTrack;
@@ -7,7 +7,7 @@ export class TrackModel {
 
   constructor(track: Track | CompactTrack, votes?: Vote[]) {
     if (!track.title) {
-      track.title = "No Title";
+      track.title = 'No Title';
     }
     this.track = track;
     const potentialVotes: (Vote | SerialisedVote)[] =
@@ -17,16 +17,16 @@ export class TrackModel {
       .map((vote) => {
         if (
           vote.date &&
-          typeof vote.date === "object" &&
-          "toDate" in vote.date &&
-          typeof vote.date.toDate === "function"
+          typeof vote.date === 'object' &&
+          'toDate' in vote.date &&
+          typeof vote.date.toDate === 'function'
         ) {
           return {
             date: (vote.date as any).toDate(),
             rating: vote.rating,
           };
         }
-        if (typeof vote.date === "string") {
+        if (typeof vote.date === 'string') {
           return {
             date: new Date(vote.date),
             rating: vote.rating,
@@ -137,7 +137,7 @@ export class TrackModel {
 
     const [voteSum, weightSum] = this.votes
       .map((vote) => {
-        const ageInDays = dayjs(latestDate).diff(vote.date, "day");
+        const ageInDays = dayjs(latestDate).diff(vote.date, 'day');
         const weight = (1 / (1000 - ageInDays)) ^ (2 * 0.8 + 0.2);
         return [vote.rating * weight, weight];
       })
@@ -164,7 +164,7 @@ export class TrackModel {
   }
 
   get storedVote() {
-    return this.storedVoteAsNumber.toFixed(1) ?? "-";
+    return this.storedVoteAsNumber.toFixed(1) ?? '-';
   }
 
   get storedVoteAsNumber() {
@@ -190,6 +190,20 @@ export class TrackModel {
     } else {
       return `(Disc ${t.discNumber}/${t.discCount}) Track ${t.trackNumber} / ${t.trackCount}`;
     }
+  }
+  get compactTrackNumber() {
+    const t = this.track as Track;
+    if (this.discCount === 1) {
+      return `${t.trackNumber}`;
+    } else {
+      return `${t.discNumber}/${t.trackNumber}`;
+    }
+  }
+  get albumSortKey() {
+    const t = this.track as Track;
+    const discNum = t.discNumber || 0;
+    const trackNum = t.trackNumber || 0;
+    return discNum * 1000 + trackNum;
   }
   get serialisedVotes() {
     return this.votes.map((vote) => ({
@@ -217,6 +231,8 @@ export class TrackModel {
       albumUrl: this.albumUrl,
       yearUrl: this.yearUrl,
       year,
+      compactTrackNumber: this.compactTrackNumber,
+      albumSortKey: this.albumSortKey,
     };
   }
 
@@ -238,16 +254,18 @@ export class TrackModel {
   get json() {
     return JSON.stringify(
       {
-        id: "000",
+        id: '000',
         title: this.title,
         album: this.album,
         artist: this.artist,
         year: this.year,
         elo: 100,
         trackId: this.id,
-        videoId: "",
+        videoId: '',
         contests: 0,
-        lastContestDate: "",
+        lastContestDate: '',
+        compactTrackNumber: this.compactTrackNumber,
+        albumSortKey: this.albumSortKey,
       },
       null,
       2
@@ -328,6 +346,8 @@ export type CompactTrack = {
   albumUrl: string;
   yearUrl: string;
   year: number;
+  compactTrackNumber: string;
+  albumSortKey: number;
 };
 
 export type Track = CompactTrack & {
@@ -342,7 +362,7 @@ export type Track = CompactTrack & {
 };
 
 export const toTrack = (
-  track: Omit<Track, "releaseDate" | "dateAdded"> & {
+  track: Omit<Track, 'releaseDate' | 'dateAdded'> & {
     releaseDate: Date;
     dateAdded: Date;
   }
