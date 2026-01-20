@@ -14,7 +14,17 @@ tags:
 group: weird-things
 root: true
 slug: weird-things
-layout: grid
+layout: entry
 image: weird-things
 weight: 0
 ---
+
+Weird Things sounded like a good umbrella for all those oddities for a while. If
+a topic didn't fit into anything else, put it here.
+
+But then again, the current collection has a certain shared vibe, a theme that
+repeats itself. A glimpse of the unconscious.
+
+So here's the collection now. Perfect to dive into my mind for a while. Enjoy!
+
+==> <group> trapdoor, puddle, somnium

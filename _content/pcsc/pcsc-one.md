@@ -15,5 +15,5 @@ tags:
 group: pcsc
 slug: pcsc-one
 layout: none
-image: pcsc-magenta
+image: pcsc-blue
 ---
