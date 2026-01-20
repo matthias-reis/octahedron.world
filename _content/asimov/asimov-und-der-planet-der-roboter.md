@@ -1,12 +1,12 @@
 ---
 superTitle: Kindergeschichte
-title: Asimov und der Planet der Roboter
+title: Asimov - Planet der Roboter
 description: >-
   Ein Roboter von einem fremden Planeten stellt Kontakt zu einem Jungen auf der
   Erde her und fragt ihn nach Hilfe zu einem delikaten Problem.
 colorSpace: wood
 language: de
-ref: asimov
+ref: asimov-robot-planet
 image: asimov
 startDate: 2022-12-25T00:00:00.000Z
 date: 2023-12-11T00:00:00.000Z
@@ -16,7 +16,7 @@ related:
   - the-guillorys-de
 group: asimov
 alias: storylines/asimov-de
-slug: asimov-and-the-robot-planet-de
+slug: asimov-planet-der-roboter
 layout: storyline
 ---
 

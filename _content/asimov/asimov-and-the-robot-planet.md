@@ -1,12 +1,12 @@
 ---
 superTitle: Children's Story
-title: Asimov and the Robot Planet
+title: Asimov - Robot Planet
 description: >-
   A robot from another planet is making contact with a boy on earth and asking
   for his help.
 colorSpace: wood
 language: en
-ref: asimov-de
+ref: asimov-planet-der-roboter
 start: 2022-12-25T00:00:00.000Z
 end: 2023-12-11T00:00:00.000Z
 related:
@@ -21,7 +21,7 @@ tags:
   - Storyline
 group: asimov
 alias: storylines/asimov
-slug: asimov-and-the-robot-planet
+slug: asimov-robot-planet
 layout: storyline
 image: asimov
 ---
