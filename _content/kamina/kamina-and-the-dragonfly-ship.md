@@ -6,7 +6,7 @@ description: >-
   into a steampunk world with a lot of surprises.
 colorSpace: orange
 language: en
-ref: kamina-2-de
+ref: kamina-und-das-libellenschiff
 startDate: 2023-01-11T00:00:00.000Z
 date: 2023-11-21T00:00:00.000Z
 related:
@@ -22,7 +22,7 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-2
-slug: kamina-2
+slug: kamina-and-the-dragonfly-ship
 layout: storyline
 image: kamina-2
 ---

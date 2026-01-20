@@ -7,7 +7,7 @@ description: >-
   lauern.
 colorSpace: orange
 language: de
-ref: kamina-2
+ref: kamina-and-the-dragonfly-ship
 image: kamina-2
 start: 2023-01-11T00:00:00.000Z
 end: 2023-11-21T00:00:00.000Z
@@ -17,7 +17,7 @@ related:
   - the-guillorys-de
 group: kamina
 alias: storylines/kamina-2-de
-slug: kamina-2-de
+slug: kamina-und-das-libellenschiff
 layout: storyline
 ---
 

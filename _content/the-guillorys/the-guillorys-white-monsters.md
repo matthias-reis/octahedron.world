@@ -13,8 +13,8 @@ type: Children's Story
 startDate: 2023-03-27T00:00:00.000Z
 date: 2023-08-04T00:00:00.000Z
 related:
-  - kamina-2
-  - asimov
+  - kamina-and-the-dragonfly-ship
+  - asimov-robot-planet
 tags:
   - Mice
   - Super Hero

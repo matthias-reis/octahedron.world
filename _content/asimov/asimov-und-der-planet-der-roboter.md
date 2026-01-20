@@ -11,8 +11,8 @@ image: asimov
 startDate: 2022-12-25T00:00:00.000Z
 date: 2023-12-11T00:00:00.000Z
 related:
-  - kamina-1-de
-  - kamina-2-de
+  - kamina-und-die-wassergeister
+  - kamina-und-das-libellenschiff
   - the-guillorys-de
 group: asimov
 alias: storylines/asimov-de

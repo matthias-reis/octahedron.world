@@ -6,7 +6,7 @@ description: >-
   findet sich in einem fantastischen Abenteuer wieder ... unter Wasser.
 colorSpace: red
 language: de
-ref: kamina-1
+ref: kamina-and-the-water-spirits
 image: kamina-1
 startDate: 2019-10-15T00:00:00.000Z
 date: 2023-11-01T00:00:00.000Z
@@ -21,7 +21,7 @@ tags:
   - For Children
 group: kamina
 alias: storylines/kamina-1-de
-slug: kamina-1-de
+slug: kamina-und-die-wassergeister
 layout: storyline
 ---
 

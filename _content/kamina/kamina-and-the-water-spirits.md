@@ -6,7 +6,7 @@ description: >-
   a fantastic adventure ... under water.
 colorSpace: red
 language: en
-ref: kamina-1-de
+ref: kamina-und-die-wassergeister
 startDate: 2019-10-15T00:00:00.000Z
 date: 2023-11-01T00:00:00.000Z
 related:
@@ -22,7 +22,7 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-1
-slug: kamina-1
+slug: kamina-and-the-water-spirits
 layout: storyline
 image: kamina-1
 ---

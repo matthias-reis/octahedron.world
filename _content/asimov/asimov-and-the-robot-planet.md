@@ -10,8 +10,8 @@ ref: asimov-planet-der-roboter
 start: 2022-12-25T00:00:00.000Z
 end: 2023-12-11T00:00:00.000Z
 related:
-  - kamina-1
-  - kamina-2
+  - kamina-and-the-water-spirits
+  - kamina-and-the-dragonfly-ship
   - the-guillorys
 tags:
   - Robot
