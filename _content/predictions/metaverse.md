@@ -1,5 +1,5 @@
 ---
-title: Metaverse
+title: Metaverse 2023-2033
 description: >-
   Built to fail, Facebooks metaverse. Yet it was the dream of a whole cyberpunk
   generation.
@@ -44,3 +44,13 @@ So I see two possible outcomes:
   will be in decline. Competing platforms will follow up just to decline a bit
   later. In ten years, that new thing will not be dead yet, but you'd smell it
   already just like you do with Facebook at the moment.
+
+# Annotation 2026
+
+Please also read the [augmented reality](/augmented-reality) prediction. The two
+are closely connected.
+
+For the metaverse, I can say: They have messed it up big time. Especially Mark
+Zuckerberg himself. The metaverse is not a thing. So if nobody comes up with a
+reboot of the whole concept, it will die a slow death and never make it in th
+history book of big inventions.

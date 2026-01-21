@@ -1,5 +1,5 @@
 ---
-title: Natural Catastrophes
+title: Natural Catastrophes 2023-2033
 description:
   We are already facing superlatives of natural catastrophes on a monthly basis.
 date: 2023-09-04T00:00:00.000Z
@@ -48,3 +48,19 @@ our comfortable home lands.
 
 But at least, we finally do something against the cause and will work on our CO₂
 emissions.
+
+# Annotation 2026
+
+Oh dear. Parts of our world run into the wrong direction. Like 180 degrees
+wrong. They drill, baby, they drill. But others like China are continuing to go
+for renewable and cheap energy.
+
+But that also means: Climate Catastrophes are a thing. In the past three years
+since that post, we had huge wildfires, floods, draughts. A devastating storm is
+mentioned at least once a month.
+
+I have the feeling we are ahead of time here. On top of that there is a topic in
+slumber that will hit us (us Europeans) differently. The gulf stream is getting
+weaker. It's gettign colder here.
+
+But that sounds like yet another prediction, right?

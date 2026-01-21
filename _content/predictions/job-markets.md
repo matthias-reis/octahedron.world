@@ -1,5 +1,5 @@
 ---
-title: Job Markets
+title: Job Markets 2023-2033
 description: Automation vs. Demographic Change. Who will win?
 date: 2023-07-06T00:00:00.000Z
 colorSpace: yellow
@@ -35,3 +35,9 @@ will see a saturation of the market combined with an increase of productivity.
 In many other areas like education, health care and craftsmanship, we will see a
 massive shortage of labour that will threaten our society if we don't allow
 people from abroad to fill the gaps through migration.
+
+# Annotation 2026
+
+We now see a first wave of disruption through AI on the one hand. And a shortage
+of workforce starting with jobs you can't do anymore when you're over 60 (like
+craftsmen).So the prediction holds true.

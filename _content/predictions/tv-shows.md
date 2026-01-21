@@ -1,5 +1,5 @@
 ---
-title: TV Shows
+title: TV Shows 2023-2033
 description: >-
   Will there still be TV shows, when AI can produce bespoke content for
   everyone?
@@ -36,3 +36,16 @@ personality.
 
 And although everybody can produce, the best ones will still run in front of a
 bigger audience. But they better be really good!
+
+## Annotation 2026
+
+AI is still in the phase of exponential growth. We see first glimpses of this
+prediction already. People create deep fake videos within seconds. You can't
+trust images on social media anymore. And people who can't anticipate if
+something is fake are lost and easily manipulated.
+
+So there's only a small step to fictional videos and bespoke TV shows. I'd even
+say those are the most harmless outcome of the AI tech boom we see at the
+moment.
+
+I should make a prediction on AGI next, right?

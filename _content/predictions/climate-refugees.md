@@ -1,5 +1,5 @@
 ---
-title: Climate Refugees
+title: Climate Refugees 2023-2050
 description: Central Europe is the place to be in 50 years. For everyone.
 date: 2023-04-20T00:00:00.000Z
 colorSpace: yellow
@@ -7,7 +7,8 @@ tags:
   - Climate
   - Climate Crisis
   - Refugees
-  - Ten Years From Now
+  - Fifty Years From Now
+  - Year 2050
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-04-20-climate-refugees
@@ -32,4 +33,16 @@ food and shadow, the most basic and essential things.
 
 Finally, I should repeat that I'm not talking about ficton. This is not a
 potential scenario if we don't reache the Paris climate goals in 2050. It's a
-2030 topic.
+2030 and 2040 topic.
+
+# Annotation 2026
+
+I'm sure you know the situation when water is boiling in a closed pot. I think
+we are at that point already. But we still don't want to lift the lid.
+
+The climate crisis is accelerating. Its effects are visible permanently and
+everywhere. But the humans found a way to discract themselves from it-with wars
+on other parts of the world.
+
+This topic will hit us. It will hit us harder than we expect, because we don't
+use the time to prepare.
