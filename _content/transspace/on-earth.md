@@ -31,9 +31,3 @@ above all, "likeable". They had the potential to become media heroes (mainly
 because they were also media experts). They could explain all the complex
 processes in a simple way, not so much the technical ones, but especially the
 sociological issues and implications.
-
-Further reads:
-
-- [The Bond, a Short Story with all details around the corporations](/storylines/the-bond)
-- [The Kret (World Building)](/storylines/kret)
-- [Transspace (World Building)](/storylines/transspace)
