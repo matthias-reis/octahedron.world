@@ -17,7 +17,7 @@ root: true
 slug: transspace
 layout: entry
 image: transspace
-weight: 2
+weight: 3
 ---
 
 The great gig in the sky.
