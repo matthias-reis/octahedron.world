@@ -9,39 +9,42 @@ import { MdsTemplate } from './components/mds-template';
 import routes from '../routes.json';
 import { Footer } from './components/footer';
 import { MetaProvider } from '@solidjs/meta';
+import { I18nProvider } from './i18n/context';
 
 export default function App() {
   return (
     <MetaProvider>
-      <Router
-        root={(props) => (
-          <>
-            <Nav />
-            <Suspense>
-              <div class="bg-neutral-100">
-                {props.children}
-                <Footer />
-              </div>
-            </Suspense>
-          </>
-        )}
-      >
-        <For each={routes}>
-          {(route) => (
-            <Route
-              path={`/${route.slug}`}
-              component={() =>
-                route.workflow === 'mds' ? (
-                  <MdsTemplate route={route.slug} />
-                ) : (
-                  <Octa route={route.slug} />
-                )
-              }
-            />
+      <I18nProvider>
+        <Router
+          root={(props) => (
+            <>
+              <Nav />
+              <Suspense>
+                <div class="bg-neutral-100">
+                  {props.children}
+                  <Footer />
+                </div>
+              </Suspense>
+            </>
           )}
-        </For>
-        <FileRoutes />
-      </Router>
+        >
+          <For each={routes}>
+            {(route) => (
+              <Route
+                path={`/${route.slug}`}
+                component={() =>
+                  route.workflow === 'mds' ? (
+                    <MdsTemplate route={route.slug} />
+                  ) : (
+                    <Octa route={route.slug} />
+                  )
+                }
+              />
+            )}
+          </For>
+          <FileRoutes />
+        </Router>
+      </I18nProvider>
     </MetaProvider>
   );
 }

@@ -8,9 +8,11 @@ import { sortRootItems } from '~/model/helpers';
 import { getAllRootRoutes } from '~/model/model';
 import { CompactItemMeta } from '~/types';
 import { Head } from '~/components/head';
+import { useI18n } from '~/i18n/context';
 
 export default function HomePage() {
   const getItems = createAsyncStore(() => getAllRootRoutes());
+  const { t } = useI18n();
 
   const items = () => sortRootItems(getItems() || []);
 
@@ -28,10 +30,8 @@ export default function HomePage() {
               <OctahedronLogo class="text-saturated-500 w-6 h-6" />
               <span class="text-decent-400 font-light">WORLD</span>
             </h1>
-            <h2 class="text-decent-500 text-xl font-lighter font-sans mt-3">
-              Ephemeral Thoughts about Life,
-              <br />
-              the Universe and Everything...
+            <h2 class="text-decent-500 text-xl max-w-md font-lighter font-sans mt-3 text-balance">
+              {t('home.tagline')}
             </h2>
           </div>
         </div>

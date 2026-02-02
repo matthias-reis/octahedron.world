@@ -5,6 +5,7 @@ description: >-
   Little Kamina is always drawn into phantastic adventures. This time she jumps
   into a steampunk world with a lot of surprises.
 colorSpace: orange
+slug: kamina-and-the-dragonfly-ship
 language: en
 ref: kamina-und-das-libellenschiff
 startDate: 2023-01-11T00:00:00.000Z
@@ -22,7 +23,6 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-2
-slug: kamina-and-the-dragonfly-ship
 layout: storyline
 image: kamina-2
 ---

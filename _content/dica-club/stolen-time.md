@@ -1,5 +1,7 @@
 ```@@|
 slug: stolen-time
+language: en
+ref: gestohlene-zeit
 title: Stolen Time
 description:
   The first DICA case with detailed explanations of how the quests work.

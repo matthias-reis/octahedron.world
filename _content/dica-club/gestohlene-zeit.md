@@ -1,5 +1,7 @@
 ```@@|
 slug: gestohlene-zeit
+language: de
+ref: stolen-time
 title: Gestohlene Zeit
 description:
   Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests funktionieren.

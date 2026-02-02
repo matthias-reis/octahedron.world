@@ -1,12 +1,12 @@
 ---
-title: Privacy Policy
-superTitle: Datenschutzerklärung (DE)
+title: Datenschutzerklärung
+superTitle: Datenschutzerklärung
 group: general
-slug: privacy
+slug: datenschutz
 image: _home
 layout: legal
-language: en
-ref: datenschutz
+language: de
+ref: privacy
 ---
 
 # 1. Datenschutz auf einen Blick

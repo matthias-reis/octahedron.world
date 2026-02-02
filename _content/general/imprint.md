@@ -4,6 +4,8 @@ group: general
 slug: imprint
 image: _home
 layout: legal
+language: en
+ref: impressum
 ---
 
 # Details according to § 5 TMG

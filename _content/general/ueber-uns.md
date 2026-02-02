@@ -1,12 +1,12 @@
 ---
-title: About Octahedron World
-superTitle: Author, Motivation and Used Technology
+title: Über Octahedron World
+superTitle: Autor, Motivation und Technologie
 group: general
-slug: about
+slug: ueber-uns
 layout: legal
 image: _home
-language: en
-ref: ueber-uns
+language: de
+ref: about
 ---
 
 # Who am I?
