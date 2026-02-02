@@ -27,6 +27,17 @@
   --color-neutral-800: hsl(var(--hue), 4%, 94%);
   --color-neutral-900: hsl(var(--hue), 4%, 100%);
 
+  --color-neutral-complement-100: hsl(var(--hue-complement), 4%, 0%);
+  --color-neutral-complement-150: hsl(var(--hue-complement), 4%, 3%);
+  --color-neutral-complement-200: hsl(var(--hue-complement), 4%, 6%);
+  --color-neutral-complement-300: hsl(var(--hue-complement), 4%, 18%);
+  --color-neutral-complement-400: hsl(var(--hue-complement), 4%, 35%);
+  --color-neutral-complement-500: hsl(var(--hue-complement), 4%, 50%);
+  --color-neutral-complement-600: hsl(var(--hue-complement), 4%, 65%);
+  --color-neutral-complement-700: hsl(var(--hue-complement), 4%, 82%);
+  --color-neutral-complement-800: hsl(var(--hue-complement), 4%, 94%);
+  --color-neutral-complement-900: hsl(var(--hue-complement), 4%, 100%);
+
   --color-decent-100: hsl(var(--hue), 20%, 0%);
   --color-decent-200: hsl(var(--hue), 20%, 6%);
   --color-decent-300: hsl(var(--hue), 20%, 18%);
@@ -183,4 +194,23 @@ body {
 
 .cta {
   @apply px-4 py-2 bg-complement-500 text-neutral-900 font-bold rounded-md hover:bg-complement-600 transition-all duration-200 block max-w-md mx-auto text-center;
+}
+
+.dica-button {
+  @apply max-w-lg mx-auto inline-block px-6 py-3 bg-saturated-500 text-saturated-800 font-semibold rounded-full hover:bg-saturated-600 hover:text-saturated-900 transition-colors;
+}
+
+.dica-selector-inactive {
+  @apply bg-neutral-complement-300 text-neutral-complement-700 hover:bg-neutral-400;
+}
+
+.dica-selector-active {
+  @apply bg-complement-600 text-complement-300;
+}
+
+.dica-box-inactive {
+  @apply border-neutral-complement-500 text-neutral-complement-400;
+}
+.dica-box-active {
+  @apply border-complement-400 text-complement-300;
 }

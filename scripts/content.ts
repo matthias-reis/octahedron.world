@@ -3,14 +3,10 @@ import { join } from 'node:path';
 import { readFile, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
 import frontmatter from 'front-matter';
+import { parse } from 'solid-mds';
 import { FrontMatter, ItemMeta, Sec } from '~/types';
 
 const read = promisify(readFile);
-
-async function fm<T>(file: string) {
-  const raw = await read(file, 'utf8');
-  return frontmatter<T>(raw);
-}
 
 function parseContent(s: string): Sec[] {
   s = s
@@ -55,16 +51,39 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
   });
 
   for (const file of files) {
-    const frontmatterData = await fm<FrontMatter>(file);
-    const sections = parseContent(frontmatterData.body);
-    const meta: ItemMeta = {
-      ...frontmatterData.attributes,
-      sections,
-      ...wordCount(sections),
-    };
-    if (meta.title) {
-      metaData[meta.slug] = meta;
-      console.log(`[CON] 📄 <${meta.group}> ${meta.slug} | ${meta.title}`);
+    const raw = await read(file, 'utf8');
+    const trimmed = raw.trimStart();
+
+    if (trimmed.startsWith('```')) {
+      // MDS workflow: parse with solid-mds
+      const result = parse(raw);
+      if (!result.global) continue;
+      const meta: ItemMeta = {
+        ...(result.global as FrontMatter),
+        workflow: 'mds',
+        sections: [],
+        words: 0,
+        chars: 0,
+        raw,
+      };
+      if (meta.title) {
+        metaData[meta.slug] = meta;
+        console.log(`[CON] 📄 <mds> ${meta.slug} | ${meta.title}`);
+      }
+    } else {
+      // Octa workflow: parse frontmatter + sections
+      const frontmatterData = frontmatter<FrontMatter>(raw);
+      const sections = parseContent(frontmatterData.body);
+      const meta: ItemMeta = {
+        ...frontmatterData.attributes,
+        workflow: 'octa',
+        sections,
+        ...wordCount(sections),
+      };
+      if (meta.title) {
+        metaData[meta.slug] = meta;
+        console.log(`[CON] 📄 <${meta.group}> ${meta.slug} | ${meta.title}`);
+      }
     }
   }
   return metaData;
@@ -78,10 +97,10 @@ async function run() {
   const json = JSON.stringify(metadata, null, 2);
   writeFileSync(join(process.cwd(), 'data.json'), json);
 
-  // Write routes.json - array of all slugs
+  // Write routes.json - array of route objects with workflow and slug
   const routes = Object.entries(metadata)
     .filter(([_, item]) => item.layout !== 'none')
-    .map(([slug, _]) => slug);
+    .map(([slug, item]) => ({ workflow: item.workflow || 'octa', slug }));
   const routesJson = JSON.stringify(routes, null, 2);
   writeFileSync(join(process.cwd(), 'routes.json'), routesJson);
   console.log(`[CON] 🗺️  generated ${routes.length} routes`);

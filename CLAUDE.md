@@ -8,7 +8,7 @@ A personal content publishing platform built with SolidStart and Tailwind CSS.
 - **Styling**: Tailwind CSS 4.0+
 - **Routing**: SolidJS Router (file-based routing)
 - **Build Tool**: Vinxi
-- **Content**: Markdown files with YAML frontmatter
+- **Content**: Markdown files with YAML frontmatter or solid-mds format
 - **Images**: Sharp for processing
 
 ## Project Structure
@@ -36,7 +36,22 @@ octahedron.world/
 
 ## Content System
 
-### Markdown Files
+### Content Workflows
+
+The content system supports two workflows, determined by the file's first
+characters:
+
+- **Octa workflow** (`workflow: 'octa'`): Files starting with `---` (YAML
+  frontmatter). This is the original format used by most content.
+- **MDS workflow** (`workflow: 'mds'`): Files starting with backticks
+  (`` ``` ``). These are parsed by the `solid-mds` library. The `global`
+  metadata from the parsed result serves the same role as frontmatter in octa
+  files.
+
+The `workflow` field is automatically set in `data.json` based on the file
+format.
+
+### Octa Workflow (Frontmatter Files)
 
 All content lives in `_content/` organized by topic directories (e.g.,
 `_content/mesh/`, `_content/photography/`).
@@ -44,9 +59,9 @@ All content lives in `_content/` organized by topic directories (e.g.,
 Each markdown file has:
 
 - **YAML frontmatter**: Metadata that defines how the page behaves
-- **Markdown body**: The actual content
+- **Markdown body**: The actual content, split into sections by `---` delimiters
 
-### Key Frontmatter Fields
+#### Key Frontmatter Fields
 
 ```yaml
 ---
@@ -72,12 +87,37 @@ alias: old-url-path # Optional: Legacy URL redirects (see below)
   field.** Only exists on migrated content to preserve old links. New content
   does not need this field.
 
+### MDS Workflow (solid-mds Files)
+
+Files that start with backticks are parsed using the `solid-mds` library
+(`parse` function). The global metadata block (`` ```@@| ``) provides the same
+metadata fields as YAML frontmatter does in octa files. The content structure
+(steps, local metadata, body rendering) is handled entirely by solid-mds.
+
+Example global metadata block in an MDS file:
+
+````markdown
+```@@|
+slug: my-page
+title: My Page Title
+version: 1
+```
+````
+
+The `parse()` function returns `{ global, steps, first, count }`. The `global`
+object is spread into the item metadata in `data.json`, just like frontmatter
+attributes are for octa files.
+
 ### Content Processing Scripts
 
 **`pnpm content`** (scripts/content.ts):
 
 - Scans `_content/**/*.md`
-- Parses frontmatter and markdown body
+- Detects workflow by file start: `---` → octa (frontmatter), `` ``` `` → mds
+  (solid-mds)
+- Octa files: parses YAML frontmatter and splits body into sections
+- MDS files: parses with `solid-mds` and extracts `global` metadata
+- Sets `workflow: 'octa'` or `workflow: 'mds'` on each item
 - Generates three files:
   - `data.json`: Full metadata for all content
   - `routes.json`: List of valid route slugs

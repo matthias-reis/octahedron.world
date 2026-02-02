@@ -31,6 +31,7 @@
     "solid-chartjs": "^1.3.11",
     "solid-js": "^1.9.5",
     "solid-jsx": "^1.1.4",
+    "solid-mds": "^0.3.2",
     "tailwind-merge": "^3.4.0",
     "unified": "^11.0.5",
     "vinxi": "^0.5.7"

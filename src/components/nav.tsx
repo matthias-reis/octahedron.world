@@ -17,8 +17,8 @@ export default function Nav() {
     <Show when={location.pathname !== '/'}>
       <nav
         class={cx(
-          'p-3 pr-4 fixed top-0 right-0 w-xs flex flex-col z-20 cursor-pointer',
-          isOpen() && 'z-1 bg-neutral-100 border-l border-neutral-300 h-screen'
+          'p-3 pr-4 fixed top-0 right-0 w-xs flex flex-col z-30 cursor-pointer',
+          isOpen() && 'bg-neutral-100 border-l border-neutral-300 h-screen'
         )}
         onClick={() => setIsOpen(!isOpen())}
       >

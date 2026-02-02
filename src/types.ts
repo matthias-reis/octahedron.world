@@ -30,6 +30,9 @@ export type ItemMeta = {
   sections: Sec[];
   words: number;
   chars: number;
+  workflow?: 'octa' | 'mds';
+  raw?: string;
+  type?: string;
 } & FrontMatter;
 
 export type CompactItemMeta = Pick<
@@ -43,6 +46,7 @@ export type CompactItemMeta = Pick<
   | 'superTitle'
   | 'subTitle'
   | 'weight'
+  | 'workflow'
 >;
 
 export type TagMeta = {
