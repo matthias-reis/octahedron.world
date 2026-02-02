@@ -341,7 +341,7 @@ export default function createTemplate(props: {
                 <span>{parsed.global?.title}</span>
               </h1>
               <h2 class="text-2xl font-bold font-octa mb-4">
-                Progress: {progress().percent || 0}%
+                Progress: {progress().percent.toFixed() || 0}%
               </h2>
               <div class="flex gap-4 mb-4 items-center mr-2">
                 <p class="relative h-12px bg-neutral-300 p-0.5 rounded-full grow">

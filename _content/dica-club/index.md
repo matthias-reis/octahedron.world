@@ -1,4 +1,4 @@
----
+```@@|
 title: Dica Club
 description: >-
   Riddles and Escape games - some with real world connection and geolocation
@@ -12,20 +12,30 @@ tags:
   - Geolocation
 group: dica-club
 slug: dica-club
-layout: entry
+type: entry
 image: dica-club
 root: true
 weight: 0
----
+```
 
-Nothing to see here yet, sorry. That was a fake door test. Congratulations, you
-passed.
+DICA is the Portuguese word for "hint" or "clue". A while ago, I had an idea to
+build a platform for escape games, scavenger hunts and pub quizzes. It was
+called DICA Club.
 
-No, jokes aside. Some time ago I started experimenting with some more active
-formats and even wanted to create an own domain dica.club for it. Dica is latin
-for "clue" or "hint".
+I didn't have time to implement it back then, but the architecture and the first
+example quests are now available.
 
-Now we're here. I need to do some more adaptations and the first experimental
-escape riddle game will be available.
+Here you can try it.
 
-Just some patience, please.
+```teaser|
+slug: stolen-time
+```
+
+It's also available in german.
+
+```teaser|
+slug: gestohlene-zeit
+```
+
+Additionally, I have recently added quite some features to that workflow. So you
+should have a complete quest game experience now.

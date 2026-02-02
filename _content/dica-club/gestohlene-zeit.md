@@ -1,7 +1,10 @@
 ```@@|
 slug: gestohlene-zeit
 title: Gestohlene Zeit
+description:
+  Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests funktionieren.
 group: dica-club
+image: crime-scene
 tags:
   - Escape Game
   - Scavenger Hunt
@@ -182,7 +185,7 @@ type: page
 >
 > Natürlich kann es beliebig schwer sein, die Seite zu finden.
 
-![Website](https://picsum.photos/1200/800)
+![Website](website)
 
 `https://www.zeitlenkung.de/peter-henlein`
 
@@ -407,7 +410,7 @@ und die Richtung bestimmen.
 
 Aha. Beim Umschauen ergibt sich ein weiterer Hinweis.
 
-![Eiffelturm Mural](https://picsum.photos/1200/800)
+![Eiffelturm Mural](eiffel-tower)
 
 An der Westwand des Galerieflügels ist der Eiffelturm aufgemalt - in voller
 Größe von der Sockelleiste bis unter die Decke. Ein faszinierendes Mural. Die
@@ -573,7 +576,7 @@ type: clue
 
 # Unser Hauptverdächtiger
 
-![Bild von Friedrich zu Feuerbach](https://picsum.photos/1200/800)
+![Bild von Friedrich zu Feuerbach](friedrich)
 
 **Friedrich zu Feuerbach**, der Bruder des Museumsdirektors. So so. Das erklärt
 einiges. Wir haben auf jeden Fall unseren Verdächtigen Nummer eins.
@@ -683,8 +686,6 @@ Dame an der Rezeption.
 "Oh, vermutlich gar nicht", antwortet sie. "Er ist schon seit zwei Wochen in
 Zürich auf einem Uhrmacherkongress. Er ist nämlich selbst Uhrmacher. Hier an der
 Pinnwand hängen seine Postkarten. Drei Stück hat er verschickt."
-
-<Wimmelbild mit 3 schweizer Poskarten>
 
 ```quest/imagemapmulti|
 ref: pinnwand
@@ -913,7 +914,7 @@ Damit konnte man auch mit Alibi der Täter sein.
 Noch am selben Tag ließen wir Friedrich zu Feuerbach von der Schweizer Polizei
 festnehmen. Kurz danach gestand er alles.
 
-![Friedrich wird abgeführt](https://picsum.photos/1200/800)
+![Friedrich wird abgeführt](arrest)
 
 Er ist zweifelsohne ein genialer Mechaniker, aber als Krimineller hatte er noch
 einiges zu lernen. Seine doppelte Finte mit den Spuren, die zu ihm selbst
