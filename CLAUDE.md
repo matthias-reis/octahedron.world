@@ -36,135 +36,67 @@ octahedron.world/
 
 ## Content System
 
-### Content Workflows
+The content system supports two distinct workflows for processing and rendering content:
 
-The content system supports two workflows, determined by the file's first
-characters:
+1.  **Octa Workflow** (Legacy): Uses YAML frontmatter and Layouts.
+2.  **MDS Workflow** (New): Uses `solid-mds` parsing and Renderers.
 
-- **Octa workflow** (`workflow: 'octa'`): Files starting with `---` (YAML
-  frontmatter). This is the original format used by most content.
-- **MDS workflow** (`workflow: 'mds'`): Files starting with backticks
-  (`` ``` ``). These are parsed by the `solid-mds` library. The `global`
-  metadata from the parsed result serves the same role as frontmatter in octa
-  files.
+Both workflows coexist. The file format is detected automatically by `scripts/content.ts`.
 
-The `workflow` field is automatically set in `data.json` based on the file
-format.
+### 1. Octa Workflow (Frontmatter + Layouts)
 
-### Octa Workflow (Frontmatter Files)
+**File Format**: Standard markdown starting with `---` (YAML frontmatter).
+**Behavior**:
+-   Parses YAML frontmatter for metadata.
+-   Splits body into sections (text, custom plugins).
+-   Uses **Layouts** in `src/components/layouts/` to render the page.
 
-All content lives in `_content/` organized by topic directories (e.g.,
-`_content/mesh/`, `_content/photography/`).
-
-Each markdown file has:
-
-- **YAML frontmatter**: Metadata that defines how the page behaves
-- **Markdown body**: The actual content, split into sections by `---` delimiters
-
-#### Key Frontmatter Fields
-
+**Structure**:
 ```yaml
 ---
-slug: unique-page-url # Required: URL path for this page
-title: Page Title # Required: Display title
-layout: post # Optional: Layout type (defaults to 'default')
-group: mesh # Required: Topic group/category
-root: true # Optional: Show on homepage (default: false)
-weight: 2 # Optional: Sort order on homepage
-image: image-name # Optional: Image reference (without extension)
-alias: old-url-path # Optional: Legacy URL redirects (see below)
+workflow: octa # (Implicit)
+slug: my-octa-page
+layout: post # Selects src/components/layouts/post
 ---
 ```
 
-- **`slug`**: Defines the URL path (e.g., `mesh` → `/mesh`)
-- **`layout`**: Selects which layout component to use (concept explained in
-  Layouts section)
-- **`root: true`**: Pages marked as root items appear on the homepage
-- **`weight`**: Controls sort order for root items on homepage
-- **`image`**: References an image from `_content/` (processed by
-  `pnpm imagine`)
-- **`alias`**: Legacy field for old URL structure redirects. **Never touch this
-  field.** Only exists on migrated content to preserve old links. New content
-  does not need this field.
+### 2. MDS Workflow (solid-mds + Renderers)
 
-### MDS Workflow (solid-mds Files)
+**File Format**: Markdown starting with backticks ` ``` ` (solid-mds format).
+**Behavior**:
+-   Parses using `solid-mds` package.
+-   Extracts **Global Metadata** (`@@|`) for `data.json`.
+-   Uses **Renderers** in `src/renderers/` to render the page.
+-   The renderer is chosen by the `type` field in global metadata (defaults to `default` or `dica` depending on context).
 
-Files that start with backticks are parsed using the `solid-mds` library
-(`parse` function). The global metadata block (`` ```@@| ``) provides the same
-metadata fields as YAML frontmatter does in octa files. The content structure
-(steps, local metadata, body rendering) is handled entirely by solid-mds.
-
-Example global metadata block in an MDS file:
-
+**Structure**:
 ````markdown
 ```@@|
-slug: my-page
-title: My Page Title
-version: 1
+slug: my-mds-page
+type: dica     # Selects src/renderers/dica
+title: My Title
 ```
 ````
 
-The `parse()` function returns `{ global, steps, first, count }`. The `global`
-object is spread into the item metadata in `data.json`, just like frontmatter
-attributes are for octa files.
+**Syntax specific to this project**:
+-   **Global Metadata** (`@@|`): Equivalent to frontmatter. Must be at the start.
+-   **Steps** (`+++step-id`): Divides content into interactive steps/slides.
+-   **Local Metadata** (`@|`): Per-step configuration.
+-   **Custom Blocks** (`:::variant`): Special components (like Quests).
 
-### Content Processing Scripts
+## Renderers
 
-**`pnpm content`** (scripts/content.ts):
+The `src/renderers/` directory contains full-page applications/templates for MDS content.
 
-- Scans `_content/**/*.md`
-- Detects workflow by file start: `---` → octa (frontmatter), `` ``` `` → mds
-  (solid-mds)
-- Octa files: parses YAML frontmatter and splits body into sections
-- MDS files: parses with `solid-mds` and extracts `global` metadata
-- Sets `workflow: 'octa'` or `workflow: 'mds'` on each item
-- Generates three files:
-  - `data.json`: Full metadata for all content
-  - `routes.json`: List of valid route slugs
-  - `redirects.json`: Alias mappings
+-   **Path**: `src/renderers/{type}/create-template.tsx` (pattern may vary)
+-   **Integration**: Loaded by `src/components/mds-template.tsx` based on the `type` field.
+-   **Example**: `src/renderers/dica` is a comprehensive interactive renderer with state management, progress tracking, and a quest system.
 
-**`pnpm imagine`** (scripts/imagine.ts):
-
-- Finds images in `_content/**/*.{jpg,jpeg,png}`
-- Generates two variants per image:
-  - `public/img/{name}/s.jpg`: Small (600px, quality 65)
-  - `public/img/{name}/l.jpg`: Large (1280px, quality 90)
-
-Both scripts run automatically before `dev` and `build` (see `predev` and
-`prebuild` in package.json).
-
-## Navigation Structure
-
-### Homepage ([src/routes/index.tsx](src/routes/index.tsx))
-
-- Displays all pages where `root: true` in frontmatter
-- Items are sorted by `weight` field
-- Grid layout with images and descriptions
-- Each item links to its slug URL
-
-### Site Navigation ([src/components/nav.tsx](src/components/nav.tsx))
-
-- Shows on all pages except homepage
-- Fixed position top-right corner
-- Collapsible menu showing all root items
-- Home button to return to homepage
-
-### Page Routing
-
-Content pages are rendered dynamically:
-
-1. User visits `/{slug}`
-2. SolidStart router matches the route
-3. [src/components/octa.tsx](src/components/octa.tsx) component:
-   - Fetches metadata from `data.json` using slug
-   - Selects appropriate layout based on frontmatter `layout` field
-   - Renders content sections using layout's plugin system
-
-## Layouts and Plugins
+## Layouts and Plugins (Octa Workflow)
 
 ### Layouts
 
-Layouts define how content is displayed. Located in
+Layouts define how content is displayed for the **Octa** workflow. Located in
 [src/components/layouts/](src/components/layouts/).
 
 Each layout provides:
@@ -178,13 +110,13 @@ The `layout` field in frontmatter selects which layout to use. If omitted,
 
 ### Plugins System
 
-Plugins are responsible for rendering individual content sections. The
+Plugins are responsible for rendering individual content sections in the **Octa** workflow. The
 `pnpm content` script parses markdown files and creates a list of sections,
 where each section has a `type` and a `payload`.
 
 **How it works:**
 
-1. **Content parsing** ([scripts/content.ts:15-33](scripts/content.ts)):
+1. **Content parsing** ([scripts/content.ts](scripts/content.ts)):
    - Markdown body is split into sections by `---` delimiters
    - Plain text becomes `{ type: 'text', payload: '...' }`
    - Special syntax `==> slug` becomes `{ type: 'link', payload: 'slug' }`
@@ -230,9 +162,6 @@ The plugin system is designed for future expansion. To add new section types:
 2. Register it in the layout's plugin map
 3. Use the custom syntax in markdown: `==> <{name}> {payload}`
 
-This allows layouts to support domain-specific content types (interactive
-widgets, data visualizations, embedded media, etc.) without modifying the core
-content processing pipeline.
 
 ## Data Layer (Model)
 
