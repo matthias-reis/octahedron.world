@@ -9,118 +9,132 @@ language: de
 ref: about
 ---
 
-# Who am I?
+# Wer bin ich?
 
-Hi, my name is Matthias.
+Hallo, mein Name ist Matthias.
 
-I am a Software Engineer and Team Lead. But since I was a teenager, I have been
-thinking of stories and building other worlds in my head. Later, I have written
-them down, forgot them, found them again, added layers of ideas to them and so
-on.
+Ich bin Software Engineer und Team Lead. Aber schon seit meiner Jugend denke ich
+mir Geschichten aus und baue andere Welten in meinem Kopf. Später habe ich sie
+aufgeschrieben, vergessen, wiedergefunden, neue Ideenschichten hinzugefügt und
+so weiter.
 
-I am several decades older and still, from time to time, I have ideas popping
-up. So there's plenty of material.
+Ich bin inzwischen einige Jahrzehnte älter und immer noch tauchen von Zeit zu
+Zeit Ideen auf. Es gibt also reichlich Material.
 
-# What should I do with all that content in my head?
+# Wohin mit all dem Inhalt in meinem Kopf?
 
-Some years ago, one of these ideas grew so large that it had to be channelled
-into a novel. And I have even managed to write and publish it together with my
-beloved wife, Anne. It is a fantasy novel written in German and called "Die
-Hermetiker". And I'm sure I will place one or the other hint on these pages,
-probably even a sample chapter. For the beginning, you can read about its
-worldbuilding and other things
+Vor einigen Jahren wuchs eine dieser Ideen so sehr an, dass sie in einen Roman
+kanalisiert werden mussten (oder konnten). Ich habe es sogar geschafft, ihn
+zusammen mit meiner lieben Frau Anne zu schreiben und zu veröffentlichen. Es ist
+ein Fantasy-Roman (auf Deutsch) mit dem Titel „Die Hermetiker“. Und ich bin
+sicher, ich werde den einen oder anderen Hinweis auf diesen Seiten platzieren,
+vielleicht sogar ein Probekapitel. Für den Anfang könnt Ihr einiges über das
+Worldbuilding und andere Dinge im Hermetiker-Universum erfahren.
 
 ==> hermetics
 
-But there were many other stories ranging from space opera over cyberpunk to
-researched science facts. For those, I haven't found a suitable channel yet.
+Aber es gab noch viele andere Geschichten, von Space Opera über Cyberpunk bis
+hin zu recherchierten wissenschaftlichen Fakten. Für diese habe ich noch keinen
+geeigneten Kanal gefunden.
 
-I've tried many formats. As a developer, it's so easy to get lost in creating
-the best possible blog technology and forgetting about the content. And so I've
-tried many variants all bound to conditions like "at least one complete article
-per week". And I never managed to deliver that much and lost track after a
-while.
+Ich habe viele Formate ausprobiert. Als Entwickler verliert man sich so leicht
+darin, die bestmögliche Blog-Technologie zu erstellen und vergisst dabei den
+Inhalt. Und so habe ich viele Varianten ausprobiert, alle gebunden an
+Bedingungen wie „mindestens ein kompletter Artikel pro Woche“. Und ich habe es
+nie geschafft, so viel zu liefern und verlor nach einer Weile den Faden.
 
-## Byte Sized Fiction
+## Byte-Sized Fiction
 
-Then came the Twitter crisis. Elon Musk wanted to buy Twitter. And everyone
-tried out other things like [Mastodon](https://mstdn.social/@aithir). This was
-the opportunity for a reboot and the creation of a purposeful account.
+Dann kam die Twitter-Krise und Corona. Elon Musk wollte Twitter kaufen. Und
+jeder probierte andere Dinge aus wie [Mastodon](https://mstdn.social/@aithir).
+Das war die Gelegenheit für einen Neustart und die Erstellung eines
+zweckgebundenen Accounts.
 
-The format was given. The maximum on that instance was 1.000 characters per
-toot. So I sliced my content into small 150-word-pieces and published the
-material in series that I called [storylines](/storylines). What started was a
-phase I called the Cambrian Explosion of content.
+Das Format war vorgegeben. Das Maximum auf dieser Instanz waren 1.000 Zeichen
+pro **Tröt**. Also habe ich meinen Inhalt in kleine 150-Wort-Stücke geschnitten
+und das Material in Serien veröffentlicht, die ich [Storylines](/storylines)
+nannte. Was begann, war eine Phase, die man als die **kambrische Explosion** an
+Inhalten bezeichnen könnte.
 
-Because you might lose the overview after some time when skimming throug a
-social media feed, after a while I came back to the original plan of creating a
-website for it. But this time with the difference that there is quite some
-content already.
+Weil man nach einiger Zeit den Überblick verliert, wenn man durch einen
+Social-Media-Feed blättert, kam ich nach einer Weile wieder auf den
+ursprünglichen Plan zurück, eine Website dafür zu erstellen. Aber dieses Mal mit
+dem Unterschied, dass es bereits einigen Inhalt gab.
 
-And the routined pace of **four contributions per week** or 2 to 3 printed pages
-remained. Amazing. And I'll never forget the additional thrill beyond continuous
-writing: compression into flash fiction and and creating a little bit of
-suspense every day.
+Und das routinierte Tempo von **vier Beiträgen pro Woche** oder 2 bis 3
+gedruckten Seiten blieb erstmal. Erstaunlich! Und ich werde nie den zusätzlichen
+Nervenkitzel jenseits des kontinuierlichen Schreibens vergessen: Komprimierung
+in Flash Fiction und jeden Tag ein kleines bisschen Spannung erzeugen.
 
-# Reformatting
+# Neuformatiert
 
-But that was not the end. Sooner or later, the concept had to reach its creative
-limits and the willingnes to go beyond this artificial constraint got bigger and
-bigger. The next iterations therefore went back to publishing full short
-stories, this time in a monthly magazine format. I also refurbished the
-Storylines and recreated full fledged short stories out of them again. But you
-could still see how things grew. All content is live during their creation with
-all the steps inbetween. Whenever a new chapter or paragraph will be available,
-the site will be updated.
+Aber das war nicht das Ende. Früher oder später musste das Konzept seine
+kreativen Grenzen erreichen und der Wunsch, über diese künstliche Einschränkung
+hinauszugehen, wurde größer und größer.
 
-# Consolidating
+Die nächsten Iterationen gingen daher zurück zur Veröffentlichung längerer
+Abschnitte bis hin zu ganzen Kurzgeschichten, diesmal in einem monatlichen
+Magazinformat. Ich habe auch die Storylines überarbeitet und wieder vollwertige
+Lesestrecken daraus erstellt. Aber man konnte immer noch sehen, wie die Dinge
+wuchsen. Alle Inhalte sind während ihrer Entstehung live, mit allen Schritten
+dazwischen. Wann immer ein neues Kapitel oder ein neuer Abschnitt verfügbar war,
+wurde die Seite aktualisiert.
 
-Fast forward to 2026. Another big change of the page and especially its content.
-I've dropped the concept of monthly magazines with mixed topics and introduced a
-structure that leans into my story arcs. One chapter for each arc and you find
-all the material that belongs to one world in that chapter, ready to explore the
-whole world at once.
+# Konsolidierung
 
-Creating fiction in the area of sci fi and fantasy means worldbuilding. Creating
-Principles that can be reused is much simpler and more concise than starting
-with a story and trying to adapt the surroundings to it. This is my way of
-imagining content and I thought this should be reflected on the page.
+Vorspulen ins Jahr 2026. Eine weitere, die bisher letzte große Änderung der
+Seite und vor allem ihres Inhalts. Ich habe das Konzept der monatlichen Magazine
+mit gemischten Themen fallen gelassen und eine Struktur eingeführt, die sich an
+meine Handlungsbögen anlehnt. Ein Kapitel für jeden Bogen und Ihr findet das
+gesamte Material, das zu einer Welt gehört, in diesem Kapitel. Seid also bereit,
+die ganze Welt auf einmal zu erkunden.
 
-Side effect: All of my other ideas (music, games, coding, photography) fit in as
-well.
+Fiktion im Bereich Sci-Fi und Fantasy zu erstellen bedeutet Worldbuilding.
+Prinzipien zu erstellen, die wiederverwendet werden können, ist viel einfacher
+und prägnanter, als mit einer Geschichte zu beginnen und zu versuchen, die
+Umgebung daran anzupassen. Das ist meine Art, mir Inhalte vorzustellen, und ich
+dachte, das sollte sich auf der Seite widerspiegeln.
 
-## Nitty Gritty
+Nebeneffekt: Alle meine anderen Ideen (Musik hören, Spiele erfinden,
+Programmieren, Fotografie) passen auch hinein und finden sich jeweils in ihren
+Kapiteln wieder.
 
-Want some tech facts about the portal?
+## Tech Talk
 
-I'm using **Solid JS** (Solid Start) and deploy everything to a self hosted
-Docker Image that lives in a self hosted **Hetzner** server. Therefore I turned
-away from my previous iterations with Next.js and Vercel (whose policies I don't
-like that much anymore).
+Noch ein paar technische Fakten über das Portal gefällig?
 
-I don't want ads on the platform. The minimal and bespoke tracking is done via -
-you guessed it - a self hosted Matomo instance (after also exiting Google
-Analytics).
+Ich benutze inzwischen **Solid JS** (Solid Start) und deploye alles in ein
+Docker Image, das auf einem selbst gehosteten **Hetzner** Server lebt. Daher
+habe ich mich von meinen vorherigen Iterationen mit Next.js und Vercel (deren
+Richtlinien ich nicht mehr so sehr mag) abgewendet.
 
-I use Tailwind for the styles and a bespoke markdown pipeline base on unified
-and remark to create the pages. All the text lives next to the code and goes
-through the same deployment cycle as the code itself.
+Ich möchte keine Werbung auf der Plattform. Das minimale und maßgeschneiderte
+Tracking erfolgt über - Ihr habt es erraten - eine selbst gehostete
+Matomo-Instanz (nachdem ich auch Google Analytics verlassen habe).
 
-Every topic comes with its signature image. Most of the key visual images come
-from the **midjourney** AI or Gemini's Nano Banana.
+Ich benutze Tailwind für die Styles und eine maßgeschneiderte Markdown-Pipeline
+basierend auf unified und remark, um die Seiten zu erstellen. Der gesamte Text
+lebt im Repo neben dem Code und durchläuft denselben Deployment-Zyklus (ich will
+hier nicht von CI-Pipeline sprechen) wie der Code selbst.
 
-## Have Fun
+Jedes Thema kommt mit seinem Coverbild. Die meisten Bilder stammen von der
+**Midjourney** AI oder Geminis Nano Banana.
 
-**The first purpose of my texts is to entertain myself during writing.**
+## Viel Spaß
 
-But I also appreciate feedback and discussion. How do you like it? Would you
-want something changed? Are you curious about what is coming next?
+**Der wichtigste Zweck meiner Texte ist es, mich selbst beim Schreiben zu
+unterhalten.**
 
-I'm still thinking of a direct feedback loop inside the page. I'd love to hear
-your thoughts. But for now, you can [mail me](mailto:mr@octahedron.world), or
-reach me via [Mastodon](https://mstdn.social/@aithir),
-[Bluesky](https://bsky.app/profile/octahedron.bsky.social) or
-[Instagram](https://www.instagram.com/matzn/).
+Aber ich schätze auch Feedback und Diskussionen. Wie gefällt es Euch? Passt
+etwas nicht zusammen, Typos irgendwo? Seid Ihr neugierig, was als nächstes
+kommt?
 
-But of course, I also want you to have some fun with my texts.
-[Why don't you dive into them?](/)
+Ich denke immer noch über eine direkte Feedback-Schleife innerhalb der Seite
+nach. Ich würde gerne Eure Gedanken hören. Aber für jetzt könnt Ihr mir
+[mailen](mailto:mr@octahedron.world) oder mich über
+[Mastodon](https://mstdn.social/@aithir),
+[Bluesky](https://bsky.app/profile/octahedron.bsky.social) oder
+[Instagram](https://www.instagram.com/matzn/) erreichen.
+
+Aber natürlich möchte ich auch, dass Ihr Spaß mit meinen Texten habt.
+[Warum taucht Ihr nicht einfach ein?](/)

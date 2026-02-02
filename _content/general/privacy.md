@@ -9,6 +9,9 @@ language: en
 ref: datenschutz
 ---
 
+The following text is and stays in German language as it is the only legally
+binding version.
+
 # 1. Datenschutz auf einen Blick
 
 ## Allgemeine Hinweise
