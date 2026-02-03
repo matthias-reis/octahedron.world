@@ -1,4 +1,4 @@
----
+```@@|
 title: The Mesh
 description: >-
   My favourite genre: Cyberpunk. William Gibson, Neal Stephenson and the visual
@@ -14,8 +14,8 @@ tags:
   - Dystopian
 group: mesh
 slug: mesh
-layout: grid
+type: grid
 image: mesh
 root: true
 weight: 2
----
+```

@@ -1,4 +1,4 @@
----
+```@@|
 title: Artificial Intelligence
 description: >-
   The topic AI exploded in the recent years. When you create fiction, it's
@@ -17,7 +17,7 @@ tags:
 group: artificial-intelligence
 root: true
 slug: artificial-intelligence
-layout: grid
+type: grid
 image: artificial-intelligence
 weight: 1
----
+```

@@ -6,6 +6,7 @@ import { getRoute } from '~/model/model';
 const renderers: Record<string, ReturnType<typeof clientOnly>> = {
   dica: clientOnly(() => import('~/renderers/dica/create-template')),
   entry: clientOnly(() => import('~/renderers/entry/index')),
+  grid: clientOnly(() => import('~/renderers/grid/index')),
 };
 
 export const MdsTemplate = ({ route }: { route: string }) => {
