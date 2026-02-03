@@ -9,6 +9,7 @@ import { Step } from './step';
 import { Quest } from './quest';
 import { View } from './view';
 import { LogoHorizontal } from './logo';
+import { useI18n } from '~/i18n/context';
 
 const MONTHS_DE = [
   'Januar',
@@ -96,6 +97,7 @@ export default function createTemplate(props: {
   const [stepsStatus, setStepsStatus] = createStore<Record<string, StepStatus>>(
     {}
   );
+  const { t, locale } = useI18n();
 
   const reveal = (ids: string[]) => {
     ids.forEach((ref) => {
@@ -322,7 +324,7 @@ export default function createTemplate(props: {
                           <div class="mt-8 p-5 border-2 border-neutral-400 bg-neutral-200 rounded-2xl">
                             <p class="text-sm text-neutral-500 flex items-center gap-1">
                               <Signpost size={16} />
-                              Help
+                              {t('dica.help')}
                             </p>
                             <Help />
                           </div>
@@ -341,7 +343,7 @@ export default function createTemplate(props: {
                 <span>{parsed.global?.title}</span>
               </h1>
               <h2 class="text-2xl font-bold font-octa mb-4">
-                Progress: {progress().percent.toFixed() || 0}%
+                {t('dica.progress')}: {progress().percent.toFixed() || 0}%
               </h2>
               <div class="flex gap-4 mb-4 items-center mr-2">
                 <p class="relative h-12px bg-neutral-300 p-0.5 rounded-full grow">
@@ -364,7 +366,9 @@ export default function createTemplate(props: {
             </div>
             <Show when={revealedClues().length > 0}>
               <div>
-                <h2 class="text-2xl font-bold font-octa mb-4">Clues</h2>
+                <h2 class="text-2xl font-bold font-octa mb-4">
+                  {t('dica.clues')}
+                </h2>
                 <ul class="flex flex-col gap-2 mb-6">
                   <For each={revealedClues()}>
                     {(step) => (

@@ -24,7 +24,7 @@ export function LanguageSwitcher() {
     const data = routeData();
     let targetPath = location.pathname;
 
-    if (data && data.ref) {
+    if (data && data.ref && data.language !== next) {
       // If the current page has a cross-reference, use it
       targetPath = `/${data.ref}`;
     }

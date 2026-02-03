@@ -2,6 +2,11 @@ export const en = {
   home: {
     tagline: 'Ephemeral Thoughts about Life, the Universe and Everything...',
   },
+  dica: {
+    help: 'Help',
+    progress: 'Progress',
+    clues: 'Clues',
+  },
   footer: {
     imprint: 'Imprint',
     imprint_href: '/imprint',

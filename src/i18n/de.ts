@@ -1,6 +1,11 @@
 import type { Dictionary } from './en';
 
 export const de: Dictionary = {
+  dica: {
+    help: 'Hilfe',
+    progress: 'Fortschritt',
+    clues: 'Hinweise',
+  },
   home: {
     tagline:
       'Flüchtige Gedanken über das Leben, das Universum und den ganzen Rest',
