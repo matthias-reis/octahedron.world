@@ -1,4 +1,4 @@
----
+```@@|
 title: Predictions
 description: >-
   Starting in 2023, I created a set of predictions about technology, society,
@@ -14,11 +14,11 @@ tags:
   - Society
 group: predictions
 slug: predictions
-layout: entry
+type: entry
 image: predictions
 root: true
 weight: 1
----
+```
 
 Here's my predictions section. I do most of them for myself. I want to check
 over time, if I'm right.
@@ -31,16 +31,13 @@ All predictions will mention a target year in their title. The first batch has
 originally been created in 2023 with a horizon of ten years, so 2033. I think in
 2026, it's time to give them a fist re-visit and leave some notes.
 
-==> augmented-reality
-
-==> tv-shows
-
-==> climate-refugees
-
-==> self-driving-cars
-
-==> metaverse
-
-==> job-markets
-
-==> natural-catastrophes
+```group|
+slugs:
+  - augmented-reality
+  - tv-shows
+  - climate-refugees
+  - self-driving-cars
+  - metaverse
+  - job-markets
+  - natural-catastrophes
+```

@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: Simulation Theory
 description: >-
@@ -15,11 +15,11 @@ tags:
 group: simulation-theory
 alias: storylines/simulation-theory
 slug: simulation-theory
-layout: entry
+type: entry
 image: simulation-theory
 root: true
 weight: 0
----
+```
 
 There is an interesting thought experiment, I want to tell you about.
 
@@ -43,6 +43,10 @@ live in a simulation.
 I have started to develop two stories in that setting but they are at a very
 early stage.
 
-==> octahedra
+```teaser|
+slug: octahedra
+```
 
-==> vergency-hotel
+```teaser|
+slug: vergency-hotel
+```

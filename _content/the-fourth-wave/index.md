@@ -1,4 +1,4 @@
----
+```@@|
 title: The Fourth Wave and the Aliens that never came
 description: >-
   Two things came together for this experience. We needed a Guinnea Pig for
@@ -17,10 +17,10 @@ tags:
 group: the-fourth-wave
 root: true
 slug: the-fourth-wave
-layout: entry
+type: entry
 image: the-fourth-wave
 weight: 3
----
+```
 
 The Fourth Wave is our first published short story. The story evolved around a
 for me intersting idea chain:
@@ -43,20 +43,31 @@ goal and appear here on Earth. It's merely about timing.
 First, I looked into the theoretical probablilities and the so called Drake
 equation in this article.
 
-==> fermis-paradox
+```teaser|
+slug: fermis-paradox
+```
 
 After that the short story almost wrote itself:
 
-==> the-fourth-wave-shortstory
+```teaser|
+slug: the-fourth-wave-shortstory
+```
 
 # German Translation
 
 Both entries are also available in German, if you're interested.
 
-==> <group> das-fermi-paradoxon, die-vierte-welle
+```group|
+slugs:
+  - das-fermi-paradoxon
+  - die-vierte-welle
+```
 
 # The eBook
 
 If you want to support us, you can buy the eBook version of The Fourth Wave.
 
-==> <cta> https://amreis.de/ Visit amreis.de
+```cta|
+text: Buy the eBook
+url: https://amreis.de/
+```

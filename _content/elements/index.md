@@ -1,4 +1,4 @@
----
+```@@|
 title: Elements
 description: >-
   Another Fantasy / Dystopia project involving demons and angels. This is a set
@@ -14,14 +14,18 @@ tags:
 group: elements
 root: true
 slug: elements
-layout: entry
+type: entry
 image: elements
 weight: 2
----
+```
 
-==> elements-earth
+```teaser|
+slug: elements-earth
+```
 
-==> elements-water
+```teaser|
+slug: elements-water
+```
 
 Still to come:
 

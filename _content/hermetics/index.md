@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: Hermetics
 description: >-
@@ -16,11 +16,11 @@ tags:
 group: hermetics
 alias: storylines/hermetics
 slug: hermetics
-layout: entry
+type: entry
 image: hermetics
 root: true
 weight: 3
----
+```
 
 My wifes and my biggest writing endeavour was our novel "Die Hermetiker". Around
 2015 I started off with planning a complete world. I knew I wanted to do
@@ -31,7 +31,9 @@ started sketching out its details.
 You can look into those drafts here in the following article to start immersing
 into this world just like I did at that time:
 
-==> hermetics-worldbuilding
+```teaser|
+slug: hermetics-worldbuilding
+```
 
 After that, we started drafting, then we were crafting chapter by chapter,
 revising while working on the next chapters. Re-reading, re-writing, polishing.
@@ -45,7 +47,10 @@ publishing house.
 **And did I mention the landing web page, where you can buy your own physical
 copy?**
 
-==> <cta> https://amreis.de/ Visit amreis.de
+```cta|
+url: https://amreis.de/
+text: Visit amreis.de
+```
 
 After having such a fantasy world in your head, ideas might spin automatically.
 That was especially the case with our urban fantasy setup, where our real world
@@ -53,11 +58,17 @@ is mingling with the magical elements.
 
 Here's another full blown short story set in the same universe:
 
-==> vlad
+```teaser|
+slug: vlad
+```
 
 Finally, here are some further thought and deep dives. This area might grow over
 time
 
-==> <group> puppets, academy
+```group|
+slugs:
+  - puppets
+  - academy
+```
 
 Hope you enjoyed the ride. Don't forget to buy the book! ;)

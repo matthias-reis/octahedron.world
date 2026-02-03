@@ -1,4 +1,4 @@
----
+```@@|
 title: Transspace
 description: >-
   An author needs a go-to world for spacefaring stories. Here's mine. It
@@ -15,10 +15,10 @@ tags:
 group: transspace
 root: true
 slug: transspace
-layout: entry
+type: entry
 image: transspace
 weight: 3
----
+```
 
 The great gig in the sky.
 
@@ -37,12 +37,18 @@ transspace, the great unifying theory of my space opera world.
 
 Have a look at this world building exercise first:
 
-==> transspace-worldbuilding
+```teaser|
+slug: transspace-worldbuilding
+```
 
 As always, the world creates ideas, not the other way around. So I will surely
 dive into one or the other.
 
-==> <group> intro-transspace-tales, van-der-belt
+```group|
+slugs:
+  - intro-transspace-tales
+  - van-der-belt
+```
 
 # The Kret, my Favourite Aliens
 
@@ -53,15 +59,24 @@ resources and exploitation.
 The Kret were my number one aliens, living 30 Ly away. So let's look into their
 worldbuilding first:
 
-==> kret
+```teaser|
+slug: kret
+```
 
 Now stories combine and we bring both together to form the human sphere of
 influence in the 22nd and 23rd century.
 
-==> <group> on-earth, power, introducing-the-spins
+```group|
+slugs:
+  - on-earth
+  - power
+  - introducing-the-spins
+```
 
 Now to the grand finale. The short story, that unveils many details about the
 relation between the two races, the inventions surrounding transspace and all
 their connections.
 
-==> the-bond
+```teaser|
+slug: the-bond
+```

@@ -1,4 +1,4 @@
----
+```@@|
 title: World 2
 description: >-
   A second earth? No, we don't need that, right? We can still save ours. But do
@@ -16,10 +16,10 @@ tags:
 group: world-2
 root: true
 slug: world-2
-layout: entry
+type: entry
 image: world-2
 weight: 3
----
+```
 
 Even if one day, we need one, there is no second earth, no world 2. We have only
 one planet, and we are destroying it on many levels. Destruction in our case
@@ -41,22 +41,32 @@ x toms of CO2" means. Even for me as someone who likes numbers and data, this
 was very helpful. It also covers many interesting facts on the topic of global
 energy consumptions
 
-==> world-2-energy
+```teaser|
+slug: world-2-energy
+```
 
 A second column of CO2 emissions comes from the transport sector. I also looked
 into that in more detail.
 
-==> world-2-traffic
+```teaser|
+slug: world-2-traffic
+```
 
 And the third column is agriculture, food and our diet. We often tend to forget
 that when talking about the climate crisis. So here are those details.
 
-==> world-2-vegan
+```teaser|
+slug: world-2-vegan
+```
 
 I've also found some more text circling around that topic over and over again
 and I'm sure I will return to it in the future.
 
-==> <group> big-city-life,tipping-points
+```group|
+slugs:
+  - big-city-life
+  - tipping-points
+```
 
 # Politics
 
@@ -72,4 +82,10 @@ As a result from time to time I want to dive deeper into the mechanics behins
 those movements and what you could do agains it. So if you're interested, here's
 a current list.
 
-==> <group> labour-day,political-systems,afd-ban,mid-term-reports
+```group|
+slugs:
+  - labour-day
+  - political-systems
+  - afd-ban
+  - mid-term-reports
+```

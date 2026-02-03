@@ -1,4 +1,4 @@
----
+```@@|
 title: The Guillorys
 description: >-
   A series of children's tales. This time with a family of mouse superheroes.
@@ -15,15 +15,17 @@ tags:
 group: the-guillorys
 root: true
 slug: the-guillorys
-layout: entry
+type: entry
 image: the-guillorys
 weight: 0
----
+```
 
 This series for children is still at a very early stage. There's only one story
 and it's also still in the making, not even half finished.
 
-==> the-guillorys-white-monsters
+```teaser|
+slug: the-guillorys-white-monsters
+```
 
 But what's the idea? I wanted to do something with superheroes. So I started
 inventing a family of superhero mice. I grew up with this topic. Looking at you
