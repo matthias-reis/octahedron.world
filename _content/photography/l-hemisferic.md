@@ -1,4 +1,4 @@
----
+```@@|
 title: L’Hemisfèric
 description: >-
   Under the night sky, the futuristic form of L’Hemisfèric is highlighted by
@@ -28,6 +28,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-04-11-l-hemisferic
 slug: l-hemisferic
-layout: lightbox
+type: lightbox
 image: l-hemisferic
----
+```

@@ -1,4 +1,4 @@
----
+```@@|
 title: Metal Album Cover Proposal
 description: >-
   A solitary wooden post stands like a silent sentinel in a misty field under a
@@ -29,6 +29,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-04-21-amenra
 slug: amenra
-layout: lightbox
+type: lightbox
 image: amenra
----
+```

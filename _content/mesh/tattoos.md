@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Two Stories
 title: Tattoos
 description: >-
@@ -16,10 +16,10 @@ tags:
 group: mesh
 alias: storylines/tattoos
 slug: tattoos
-layout: storyline
+type: storyline
 image: tattoos
 hidden: true
----
+```
 
 > This needs to be split up, please
 

@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Kindergeschichte
 title: Asimov - Planet der Roboter
 description: >-
@@ -17,8 +17,8 @@ related:
 group: asimov
 alias: storylines/asimov-de
 slug: asimov-planet-der-roboter
-layout: storyline
----
+type: storyline
+```
 
 Vor etwa einem Monat wurde Peter elf. Es war ein fantastischer Tag. Er bekam
 viele technische Spielzeuge. Das war in letzter Zeit seine große Leidenschaft.

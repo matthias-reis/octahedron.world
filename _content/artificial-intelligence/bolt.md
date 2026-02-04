@@ -1,8 +1,8 @@
----
+```@@|
 superTitle: Short Story
 title: Bolt
 description: >-
-  An unexpected announcement reveals the greates surprise in media history and
+  An unexpected announcement reveals the greatest surprise in media history and
   starts a race for the truth.
 colorSpace: lime
 unfinished: true
@@ -18,6 +18,6 @@ tags:
 group: artificial-intelligence
 alias: storylines/bolt
 slug: bolt
-layout: storyline
+type: storyline
 image: bolt
----
+```

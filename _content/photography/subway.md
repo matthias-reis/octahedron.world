@@ -1,4 +1,4 @@
----
+```@@|
 title: Empty Subway Station
 description: >-
   A modern subway station in Hamburg’s Hafencity, illuminated by striking purple
@@ -20,6 +20,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-05-02-subway
 slug: subway
-layout: lightbox
+type: lightbox
 image: subway
----
+```

@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Kindergeschichte
 title: Die Guillorys und die weißen Monster
 description: >-
@@ -23,8 +23,8 @@ tags:
 group: the-guillorys
 alias: storylines/the-guillorys-de
 slug: die-guillorys-und-die-weissen-monster
-layout: storyline
----
+type: storyline
+```
 
 _Louis_
 

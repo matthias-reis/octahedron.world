@@ -1,4 +1,4 @@
----
+```@@|
 title: Metropol Parasol Seville
 description: >-
   The Metropol Parasol in Seville captured in black and white, showcasing its
@@ -19,6 +19,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-05-14-metropolparasol
 slug: metropolparasol
-layout: lightbox
+type: lightbox
 image: metropolparasol
----
+```

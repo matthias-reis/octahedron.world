@@ -1,4 +1,4 @@
----
+```@@|
 title: Stranded
 description: >-
   A small wooden rowboat rests on a quiet beach under a moody blue sky. The calm
@@ -18,6 +18,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-10-10-stranded
 slug: stranded
-layout: lightbox
+type: lightbox
 image: stranded
----
+```

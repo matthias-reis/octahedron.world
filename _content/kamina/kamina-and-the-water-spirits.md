@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Children's Story
 title: Kamina and the Water Spirits
 description: >-
@@ -23,9 +23,9 @@ tags:
 group: kamina
 alias: storylines/kamina-1
 slug: kamina-and-the-water-spirits
-layout: storyline
+type: storyline
 image: kamina-1
----
+```
 
 Kamina ran as fast as she could. She was angry because she once again argued
 with her brother Yoko. He'd taken away her beautiful music box. When she opened

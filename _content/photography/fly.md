@@ -1,4 +1,4 @@
----
+```@@|
 title: The Fly
 description: >-
   A small fly rests on a soft petal, showcasing the intricate details of its
@@ -24,6 +24,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-04-08-fly
 slug: fly
-layout: lightbox
+type: lightbox
 image: fly
----
+```

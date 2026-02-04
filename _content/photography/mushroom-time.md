@@ -1,4 +1,4 @@
----
+```@@|
 title: Mushroom Time
 description: >-
   A close-up view from below of a red-capped fly agaric mushroom (Amanita
@@ -19,6 +19,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-10-19-mushroom-time
 slug: mushroom-time
-layout: lightbox
+type: lightbox
 image: mushroom-time
----
+```

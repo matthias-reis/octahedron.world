@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: Vlad
 subTitle: The Truth About Dracula
@@ -22,9 +22,9 @@ tags:
 group: hermetics
 alias: storylines/vlad
 slug: vlad
-layout: storyline
+type: storyline
 image: vlad
----
+```
 
 It is late October 1904. My name is Camil Constantin. I am a chronist at the
 Kronstadt registry and this is aggregation report number 411-1904-101. My

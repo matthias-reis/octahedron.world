@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Children's Story
 title: Asimov - Robot Planet
 description: >-
@@ -22,9 +22,9 @@ tags:
 group: asimov
 alias: storylines/asimov
 slug: asimov-robot-planet
-layout: storyline
+type: storyline
 image: asimov
----
+```
 
 About a month ago Peter turned eleven. It was an amazing day. He got a lot of
 tech gadgets. That was his passion these days. The coolest present was from his

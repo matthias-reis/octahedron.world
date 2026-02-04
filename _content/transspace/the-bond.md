@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: The Bond
 description: >-
@@ -21,9 +21,9 @@ tags:
 group: transspace
 alias: storylines/the-bond
 slug: the-bond
-layout: storyline
+type: storyline
 image: the-bond
----
+```
 
 ## Marla
 

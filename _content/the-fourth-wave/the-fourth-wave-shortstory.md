@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: The Fourth Wave
 description: >-
@@ -21,9 +21,9 @@ tags:
   - Sociology
 group: the-fourth-wave
 slug: the-fourth-wave-shortstory
-layout: storyline
+type: storyline
 image: the-fourth-wave
----
+```
 
 It appeared on every news channel in the morning. The ships were ready—an
 exciting moment for the colony, which had been working toward this event since

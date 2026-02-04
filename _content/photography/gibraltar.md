@@ -1,4 +1,4 @@
----
+```@@|
 title: Next Stop Gibraltar
 description: >-
   A lone palm tree stands on a sandy beach with a bicycle leaning against its
@@ -22,6 +22,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-05-16-gibraltar
 slug: gibraltar
-layout: lightbox
+type: lightbox
 image: gibraltar
----
+```

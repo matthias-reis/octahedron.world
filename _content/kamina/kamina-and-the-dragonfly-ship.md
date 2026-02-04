@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Children's Story
 title: Kamina and the Dragonfly Ship
 description: >-
@@ -23,9 +23,9 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-2
-layout: storyline
+type: storyline
 image: kamina-2
----
+```
 
 Kamina was eleven. Her parents always told her that she had an exuberant
 imagination. They didn't believe her that she permanently fell into holes or

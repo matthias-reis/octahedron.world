@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: Octahedra
 description: >-
@@ -22,9 +22,9 @@ tags:
 group: simulation-theory
 alias: storylines/octahedra
 slug: octahedra
-layout: storyline
+type: storyline
 image: octahedra
----
+```
 
 Udin found a stone. At first, it was fully covered with dirt. She only saw its
 beauty and quality because a small corner stood out. So she went to the river

@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Elements, Part 2
 title: Water
 description: >-
@@ -25,9 +25,9 @@ related:
 group: elements
 alias: storylines/elements-water
 slug: elements-water
-layout: storyline
+type: storyline
 image: elements-water
----
+```
 
 ## Water
 

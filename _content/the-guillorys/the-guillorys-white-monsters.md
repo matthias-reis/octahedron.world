@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Children's Story
 title: The Guillorys - White Monsters
 description: >-
@@ -26,9 +26,9 @@ tags:
 group: the-guillorys
 alias: storylines/the-guillorys
 slug: the-guillorys-white-monsters
-layout: storyline
+type: storyline
 image: the-guillorys
----
+```
 
 _Louis_
 

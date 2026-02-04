@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Elements, Part 1
 title: Earth
 description: The start of a dystopian journey to hell and elysium and back.
@@ -22,9 +22,10 @@ related:
 group: elements
 alias: storylines/elements-earth
 slug: elements-earth
-layout: storyline
+type: storyline
 image: elements-earth
----
+```
+
 > Some years ago, I started a novel, a post-apocalyptic dystopia with mixed-in
 > pseudo-religious and fantastic elements. Namely demons and devils. I have to
 > say I'm not the religious type of guy. But I like the symbolism, mysticism and

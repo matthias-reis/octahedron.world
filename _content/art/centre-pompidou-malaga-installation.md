@@ -1,4 +1,4 @@
----
+```@@|
 title: Juan Muñoz - Centre Pompidou Málaga
 description: >-
   These puppet-like sculptures by Spanish artist Juan Muñoz create a haunting,
@@ -26,6 +26,6 @@ group: art
 superTitle: Art
 alias: images/2020/2020-12-01-centre-pompidou-malaga-installation
 slug: centre-pompidou-malaga-installation
-layout: lightbox
+type: lightbox
 image: centre-pompidou-malaga-installation
----
+```

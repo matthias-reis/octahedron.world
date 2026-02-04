@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Report
 title: The Pylons
 description: >-
@@ -22,7 +22,7 @@ tags:
 group: mesh
 alias: storylines/pylons
 slug: pylons
-layout: storyline
+type: storyline
 image: pylons
 hidden: true
----
+```

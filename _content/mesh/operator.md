@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Shortstory
 title: The Operator
 description: >-
@@ -21,9 +21,9 @@ tags:
 group: mesh
 alias: storylines/operator
 slug: operator
-layout: storyline
+type: storyline
 image: operator
----
+```
 
 The concert hall was disappointing as usual, an old shabby place made out of
 concrete and ugly steel bars in the middle of nowhere south of Hamburg. But

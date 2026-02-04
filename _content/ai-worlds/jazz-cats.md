@@ -1,4 +1,4 @@
----
+```@@|
 title: Jazz Cats
 description: >-
   Three cats sit on a wooden counter surrounded by vinyl records and CDs in a
@@ -19,6 +19,6 @@ group: ai-worlds
 superTitle: AI Worlds
 alias: images/2025/2025-06-25-jazz-cats
 slug: jazz-cats
-layout: lightbox
+type: lightbox
 image: jazz-cats
----
+```

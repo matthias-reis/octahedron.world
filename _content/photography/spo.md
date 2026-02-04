@@ -1,4 +1,4 @@
----
+```@@|
 title: The Coolest Building On The Beach Is A Toilet
 description: >-
   At sunset, a stilt house stands gracefully on the beach, casting long shadows
@@ -26,6 +26,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-04-16-spo
 slug: spo
-layout: lightbox
+type: lightbox
 image: spo
----
+```

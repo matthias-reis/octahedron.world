@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Children's Story
 title: Sandfuss P.I.
 description: An animalic short story
@@ -18,10 +18,10 @@ tags:
 group: sandfuss
 alias: storylines/sandfuss
 slug: sandfuss
-layout: lightbox
+type: lightbox
 image: sandfuss-tint
 hidden: true
----
+```
 
 My wife Anne had the idea sketched out a year or two ago. So this category is a
 collection of sketches around a new short story.

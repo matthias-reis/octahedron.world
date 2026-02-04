@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Kurzgeschichte
 title: Die vierte Welle
 description: >-
@@ -21,9 +21,9 @@ tags:
   - Soziologie
 group: the-fourth-wave
 slug: die-vierte-welle
-layout: storyline
+type: storyline
 image: the-fourth-wave
----
+```
 
 Es kam am Morgen auf allen Nachrichtenkanälen. Die Schiffe standen bereit, ein
 aufregender Zeitpunkt für die Kolonie, die seit ihrem Bestehen, seit nunmehr 823

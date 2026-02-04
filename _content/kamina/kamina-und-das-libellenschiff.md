@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Kindergeschichte
 title: Kamina und das Libellenschiff
 description: >-
@@ -18,8 +18,8 @@ related:
 group: kamina
 alias: storylines/kamina-2-de
 slug: kamina-und-das-libellenschiff
-layout: storyline
----
+type: storyline
+```
 
 Kamina war elf Jahre alt. Ihre Eltern sagten ihr immer, sie habe eine
 überbordende Fantasie. Sie haben ihr nicht geglaubt, dass sie ständig in Löcher

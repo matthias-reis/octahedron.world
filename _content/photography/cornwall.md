@@ -1,4 +1,4 @@
----
+```@@|
 title: Cornwall's stunning coastline.
 description: >-
   Cornwall landscape. Sunlit clouds drift across the sky, their reflections
@@ -26,6 +26,6 @@ group: photography
 superTitle: Photography
 alias: images/2025/2025-04-06-cornwall
 slug: cornwall
-layout: lightbox
+type: lightbox
 image: cornwall
----
+```

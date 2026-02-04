@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Kindergeschichte
 title: Kamina und die Wassergeister
 description: >-
@@ -22,8 +22,8 @@ tags:
 group: kamina
 alias: storylines/kamina-1-de
 slug: kamina-und-die-wassergeister
-layout: storyline
----
+type: storyline
+```
 
 Kamina rannte, so schnell sie konnte. Sie war wütend, weil sie sich mal wieder
 mit ihrem Bruder gestritten hatte. Er hatte ihr ihre schöne Spieluhr

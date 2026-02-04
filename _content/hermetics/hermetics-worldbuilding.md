@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: The Hermetic World
 description: >-
@@ -21,9 +21,9 @@ tags:
 group: hermetics
 alias: storylines/hermetics
 slug: hermetics-worldbuilding
-layout: storyline
+type: storyline
 image: hermetics
----
+```
 
 Some years ago, my wife [Anne](https://cardamonchai.com) and I have managed to
 write a full novel. We're very proud of it. I still love the story after

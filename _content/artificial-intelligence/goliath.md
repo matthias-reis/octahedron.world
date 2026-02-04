@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Short Story
 title: Goliath
 description: >-
@@ -16,9 +16,10 @@ tags:
 group: artificial-intelligence
 alias: storylines/goliath
 slug: goliath
-layout: storyline
+type: storyline
 image: goliath
----
+```
+
 ## Part 1: The Goliath Reports
 
 Goliath was an AI program funded by several European states, the US and Canada.
