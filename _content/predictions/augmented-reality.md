@@ -1,4 +1,4 @@
----
+```@@|
 title: Augmented Reality 2023-2033
 description:
   What could happen in the next ten years. Let's start with AR headsets
@@ -12,9 +12,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-01-02-augmented-reality
 slug: augmented-reality
-layout: post
+type: post
 image: predictions
----
+```
 
 Hello and happy 2023! I thought I'd start the new year with a new storyline of
 predictions. Now in ten years. This is just for myself. I'd like to look back at

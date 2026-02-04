@@ -1,4 +1,4 @@
----
+```@@|
 title: Intro to Transspace Tales
 description:
   More anecdotes, this time about transspace, my concept for space operas
@@ -13,10 +13,10 @@ group: transspace
 superTitle: Transspace Tales
 alias: posts/2023/2023-12-21-intro-transspace-tales
 slug: intro-transspace-tales
-layout: post
+type: post
 image: transspace-tales
 hidden: true
----
+```
 
 There are three big worldbuilding systems that I have developed over time.
 There's the Cyberpunk UNiverse from the Mesh, there are the Hermetics, my take

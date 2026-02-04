@@ -1,4 +1,4 @@
----
+```@@|
 title: Judges
 description:
   Objectivity. A goal that notoriously biased humans may never achieve.
@@ -13,9 +13,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2023/2023-04-11-judges
 slug: judges
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Pure Objectivity. The complete lack of bias. Does that exist? We know that
 today's AI models are trained with real-world data. They contain all the flaws

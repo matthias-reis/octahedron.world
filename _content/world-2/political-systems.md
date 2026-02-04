@@ -1,4 +1,4 @@
----
+```@@|
 title: Political Systems
 description:
   There are two main points of view in ideologies. Individual vs State.
@@ -10,10 +10,10 @@ group: world-2
 superTitle: General
 alias: posts/2022/2022-05-23-political-systems
 slug: political-systems
-layout: post
+type: post
 image: general
 hidden: true
----
+```
 
 In all the states in the world, the individual person is at the centre of all
 rules and ethics. That includes dictatorships. The only difference here is that

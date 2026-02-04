@@ -1,4 +1,4 @@
----
+```@@|
 title: The Fifth Season
 subTitle: N.K. Jemisin
 description: Reviewing the Hugo Award winning novel by N.K. Jemisin
@@ -14,10 +14,10 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-06-20-fifth-season
 slug: fifth-season
-layout: post
+type: post
 image: reviews
 hidden: true
----
+```
 
 One of the most famous SciFi authors, Arthur C. Clark, once said: "Any
 sufficiently advanced technology is indistinguishable from magic." This

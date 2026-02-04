@@ -1,4 +1,4 @@
----
+```@@|
 title: SciFi & Fantasy - A Journey
 date: 2023-05-18T00:00:00.000Z
 description: From typical characters to shared topics and tropes.
@@ -12,10 +12,10 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-05-18-scifi-fantasy-tropes
 slug: scifi-fantasy-tropes
-layout: post
+type: post
 image: tropes
 hidden: true
----
+```
 
 Hello there! New topic coming in. In the past, I have shared my worldbuilding
 and the stories that spun off. But now I also would like to dive a bit deeper

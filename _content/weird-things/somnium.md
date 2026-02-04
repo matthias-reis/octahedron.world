@@ -1,4 +1,4 @@
----
+```@@|
 title: Somnium
 description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the
@@ -17,9 +17,9 @@ group: weird-things
 superTitle: Weird Things
 alias: posts/2025/2025-04-22-somnium
 slug: somnium
-layout: post
+type: post
 image: weird-things
----
+```
 
 > "Somnium" is an essay, or short story by the famous scientist Johannes Kepler.
 > Dating back to 1608 it is considered by quite some people the first Science

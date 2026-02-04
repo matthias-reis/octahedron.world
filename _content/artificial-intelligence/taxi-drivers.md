@@ -1,4 +1,4 @@
----
+```@@|
 title: Taxi Drivers
 description: What's happening to taxi drivers as soon as cars can drive alone?
 date: 2022-06-28T00:00:00.000Z
@@ -13,9 +13,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-28-taxi-drivers
 slug: taxi-drivers
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Autonomous driving is a huge topic. Especially in Germany, where the car is the
 holy grail of freedom, it's being discussed a lot. Many people own a car. A lot

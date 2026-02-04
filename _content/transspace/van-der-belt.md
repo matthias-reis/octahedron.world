@@ -1,4 +1,4 @@
----
+```@@|
 title: Van Der Belt
 description: >-
   The sphere of human life expands into the universe, while some pioneers still
@@ -15,9 +15,9 @@ group: transspace
 superTitle: Transspace Tales
 alias: posts/2024/2024-08-27-van-der-belt
 slug: van-der-belt
-layout: post
+type: post
 image: transspace-tales
----
+```
 
 “They have to go”, shouted the old man into the round. “I can’t bear them
 anymore.”

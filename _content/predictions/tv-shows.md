@@ -1,4 +1,4 @@
----
+```@@|
 title: TV Shows 2023-2033
 description: >-
   Will there still be TV shows, when AI can produce bespoke content for
@@ -14,9 +14,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-03-28-tv-shows
 slug: tv-shows
-layout: post
+type: post
 image: predictions
----
+```
 
 Everyone writes about the rapid progress of AI. Everyone makes experiments with
 it, everyone has tried it out already. It's working much too well, right? Yes,

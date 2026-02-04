@@ -1,4 +1,4 @@
----
+```@@|
 title: Mars
 date: 2023-09-22T00:00:00.000Z
 description: >-
@@ -14,9 +14,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-09-22-mars
 slug: mars
-layout: post
+type: post
 image: tropes
----
+```
 
 The visit on the moon was one of the most iconic moments in the history of
 mankind. So it's only natural, that we try to take the next step: go to another

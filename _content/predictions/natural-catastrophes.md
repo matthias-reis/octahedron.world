@@ -1,4 +1,4 @@
----
+```@@|
 title: Natural Catastrophes 2023-2033
 description:
   We are already facing superlatives of natural catastrophes on a monthly basis.
@@ -16,9 +16,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-09-04-natural-catastrophes
 slug: natural-catastrophes
-layout: post
+type: post
 image: predictions
----
+```
 
 The climate discussion is finally leading the news headlines everywhere. This is
 actually a good thing. It starts to get into the minds of people. That's what

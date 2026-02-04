@@ -4,7 +4,6 @@ import { For, Suspense } from 'solid-js';
 import Nav from '~/components/nav';
 import './app.css';
 import 'katex/dist/katex.min.css';
-import { Octa } from './components/octa';
 import { MdsTemplate } from './components/mds-template';
 import routes from '../routes.json';
 import { Footer } from './components/footer';
@@ -32,13 +31,7 @@ export default function App() {
             {(route) => (
               <Route
                 path={`/${route.slug}`}
-                component={() =>
-                  route.workflow === 'mds' ? (
-                    <MdsTemplate route={route.slug} />
-                  ) : (
-                    <Octa route={route.slug} />
-                  )
-                }
+                component={() => <MdsTemplate route={route.slug} />}
               />
             )}
           </For>

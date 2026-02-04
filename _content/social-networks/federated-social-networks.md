@@ -1,4 +1,4 @@
----
+```@@|
 title: Federated Social Networks
 description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the
@@ -18,9 +18,9 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-05-02-federated-social-networks
 slug: federated-social-networks
-layout: post
+type: post
 image: social-networks
----
+```
 
 We live in weird times. For over fifteen years, we have willingly given all
 private information to organisations who made revenues out of placing ads and

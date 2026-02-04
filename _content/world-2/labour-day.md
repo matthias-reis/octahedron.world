@@ -1,4 +1,4 @@
----
+```@@|
 title: Fairness on Labour Day
 description: Some thoughts on May, the first, labour day.
 date: 2022-05-02T00:00:00.000Z
@@ -13,9 +13,9 @@ group: world-2
 superTitle: General
 alias: posts/2022/2022-05-02-labour-day
 slug: labour-day
-layout: post
+type: post
 image: general
----
+```
 
 Some thoughts about May, 1st, the international labour day.
 

@@ -1,4 +1,4 @@
----
+```@@|
 title: Mid Term Reports
 description:
   Mid 2023. Elections in important German regions with catastrophic results.
@@ -15,10 +15,10 @@ group: world-2
 superTitle: Real World
 alias: posts/2023/2023-10-09-mid-term-reports
 slug: mid-term-reports
-layout: post
+type: post
 image: real-world
 hidden: true
----
+```
 
 Every now and then a topic comes around that needs to be voiced. Many of them
 are situational. Their effects are symptomatic but probably don't las too long

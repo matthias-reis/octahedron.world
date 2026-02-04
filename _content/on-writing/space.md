@@ -1,4 +1,4 @@
----
+```@@|
 title: Space
 description: How fictional stories can pass the vast emptiness of space.
 date: 2022-05-10T00:00:00.000Z
@@ -11,10 +11,10 @@ group: on-writing
 superTitle: General
 alias: posts/2022/2022-05-10-space
 slug: space
-layout: post
+type: post
 image: general
 hidden: true
----
+```
 
 Science fiction stories with aliens must find a way to pass through space. The
 distance between planets is overwhelmingly large. There are only three

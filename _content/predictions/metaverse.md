@@ -1,4 +1,4 @@
----
+```@@|
 title: Metaverse 2023-2033
 description: >-
   Built to fail, Facebooks metaverse. Yet it was the dream of a whole cyberpunk
@@ -14,9 +14,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-06-12-metaverse
 slug: metaverse
-layout: post
+type: post
 image: predictions
----
+```
 
 As a big cyberpunk fan, I am constantly interested in the VR topic. The
 Metaverse is the latest real-world iteration on this topic and the Apple VR

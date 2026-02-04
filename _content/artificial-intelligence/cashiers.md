@@ -1,4 +1,4 @@
----
+```@@|
 title: Cashiers
 description:
   Will the human factor be removed one day from the supermarket checkout?
@@ -12,9 +12,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-06-cashiers
 slug: cashiers
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 A study in the US calculated the probability that a job will be taken over by AI
 or computers in general in the future. I've been thinking about this for quite

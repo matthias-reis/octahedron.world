@@ -1,4 +1,4 @@
----
+```@@|
 title: Climate Refugees 2023-2050
 description: Central Europe is the place to be in 50 years. For everyone.
 date: 2023-04-20T00:00:00.000Z
@@ -13,9 +13,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-04-20-climate-refugees
 slug: climate-refugees
-layout: post
+type: post
 image: predictions
----
+```
 
 Everything can already be seen in the architectural foundation of future
 history. It's getting hot on Earth. Some regions will become inhabitable. People

@@ -1,4 +1,4 @@
----
+```@@|
 title: Construction Worker
 description:
   But the things you have to build with your bare hands should be safe, right?
@@ -11,9 +11,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-12-29-construction-worker
 slug: construction-worker
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Another candidate for Jobs that will be gone in twenty years or at least look
 different is the construction worker, the craftsman who works with concrete,

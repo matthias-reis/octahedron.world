@@ -1,4 +1,4 @@
----
+```@@|
 title: Big City Life
 description: Urban versus rural areas for the environment
 date: 2024-08-22T00:00:00.000Z
@@ -14,9 +14,9 @@ group: world-2
 superTitle: Climate News
 alias: posts/2024/2024-08-22-big-city-life
 slug: big-city-life
-layout: post
+type: post
 image: climate-news
----
+```
 
 I'm about to buy a car, an electric one. It's a big thing for us, because we
 didn't own one, we didn't need one for almost nine years. But I've been talking

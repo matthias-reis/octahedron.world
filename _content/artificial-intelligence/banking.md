@@ -1,4 +1,4 @@
----
+```@@|
 title: Banking
 description: >-
   Algorithms rule investment for decades already, so where's the place for human
@@ -12,9 +12,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-11-21-banking
 slug: banking
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Another one from the series of jobs that might or might not exist in ten years
 anymore. This time: banking. The whole financial system is extremely mood

@@ -1,4 +1,4 @@
----
+```@@|
 title: ChatGPT
 description:
   Special topic about the rise of large language models and their impact
@@ -14,9 +14,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-12-06-chat-gpt
 slug: chat-gpt
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 I initially had planned a different topic today, but **Chat GPT** is so amazing
 that I have to talk about it in the context of AI Jobs. Remember Covid? I'm sure

@@ -1,4 +1,4 @@
----
+```@@|
 title: Speculative Apocalypses
 description:
   What is the most likely extinction e vent and how many are actually affected?
@@ -12,9 +12,9 @@ group: on-writing
 superTitle: General
 alias: posts/2022/2022-05-05-speculative-apocalypses
 slug: speculative-apocalypses
-layout: post
+type: post
 image: general
----
+```
 
 Dark times, indeed. But what really threatens our existence concretely?
 

@@ -1,4 +1,4 @@
----
+```@@|
 title: Surgeon
 description: >-
   A job that relies on precision? That's worth a look from machine's
@@ -13,9 +13,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2023/2023-03-07-surgeon
 slug: surgeon
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Some weeks ago, I wrote an article about doctors and AI as their major job
 market competitors. Family Physicians mostly do one thing: diagnosing or finding

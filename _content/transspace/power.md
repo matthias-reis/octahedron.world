@@ -1,4 +1,4 @@
----
+```@@|
 title: Distribution of Power
 description: Monitoring the different social balances of Earth and Kret
 date: 2024-08-08T00:00:00.000Z
@@ -12,9 +12,9 @@ group: transspace
 superTitle: Kret Tales
 alias: posts/2024/2024-08-08-power
 slug: power
-layout: post
+type: post
 image: kret-tales
----
+```
 
 Power is something very abstract. Its distribution has a long history, many
 dependencies and some unexplainable effects. Among the humans on Earth,

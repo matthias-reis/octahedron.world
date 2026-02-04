@@ -1,7 +1,7 @@
----
+```@@|
 slug: puddle
 title: Puddle
-layout: post
+type: post
 description: A hatch into a weird underworld.
 date: 2024-08-26T00:00:00.000Z
 colorSpace: original
@@ -12,7 +12,7 @@ tags:
 group: weird-things
 superTitle: Weird Things
 image: weird-things
----
+```
 
 It was pouring rain all day. Actually since last week. Actually, I might have
 forgotten what the sun looks like. I was walking along the pavement near my

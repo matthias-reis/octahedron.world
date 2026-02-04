@@ -1,4 +1,4 @@
----
+```@@|
 title: Flashes vs Pixelfed
 description: >-
   I've made an experiment. I ran the two Instagram alternatives Pixelfed and
@@ -18,9 +18,9 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-06-25-flashes-vs-pixelfed
 slug: flashes-vs-pixelfed
-layout: post
+type: post
 image: social-networks
----
+```
 
 I started an experiment. I wanted to compare the two new federated alternatives
 to instagram when it comes to image sharing. Contender one is the fediverse

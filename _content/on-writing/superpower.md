@@ -1,4 +1,4 @@
----
+```@@|
 title: Superpower
 date: 2023-06-27T00:00:00.000Z
 description:
@@ -14,9 +14,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-06-27-superpower
 slug: superpower
-layout: post
+type: post
 image: tropes
----
+```
 
 Superpowers in SciFi and Fantasy literature come from the wish of us humans to
 achieve more than what is theoretically possible on the one hand. On the other

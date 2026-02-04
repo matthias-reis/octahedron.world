@@ -1,4 +1,4 @@
----
+```@@|
 title: The Academic Council
 description: Knowledge and Science as one of the pillars of power
 date: 2024-09-04T00:00:00.000Z
@@ -15,9 +15,9 @@ group: hermetics
 superTitle: Hermetics Tales
 alias: posts/2024/2024-09-04-academy
 slug: academy
-layout: post
+type: post
 image: hermetics-tales
----
+```
 
 There are dozens of fantasy fiction universes that spawned based on magic
 schools and colleges. While it seems obvious that hermetics influenced

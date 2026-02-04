@@ -1,4 +1,4 @@
----
+```@@|
 title: The Swoosh
 description: Tales from the Mesh, starting off with the Mesh Logo
 date: 2023-10-05T00:00:00.000Z
@@ -12,9 +12,9 @@ group: mesh
 superTitle: Mesh Tales
 alias: posts/2023/2023-10-05-swoosh
 slug: swoosh
-layout: post
+type: post
 image: mesh-tales
----
+```
 
 When I start imagining a new world, it's comparable to a stream of water. It's
 flowing, sometimes it hits a rock that must be softened, but most of the time,

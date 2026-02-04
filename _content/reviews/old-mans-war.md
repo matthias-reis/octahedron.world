@@ -1,4 +1,4 @@
----
+```@@|
 title: Old Man's War
 subTitle: John Scalzi
 description: >-
@@ -15,10 +15,10 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-09-19-old-mans-war
 slug: old-mans-war
-layout: post
+type: post
 image: reviews
 hidden: true
----
+```
 
 This book - starting with my review quintessence - was way out of my comfort
 zone. The main theme is war. The title doesn't lie. It explains its mechanics in

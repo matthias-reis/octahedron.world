@@ -1,4 +1,4 @@
----
+```@@|
 title: Alien Size
 date: 2024-07-30T00:00:00.000Z
 description: Tiny aliens, tiny spaceships. What if aliens are small?
@@ -12,9 +12,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2024/2024-07-30-size
 slug: size
-layout: post
+type: post
 image: tropes
----
+```
 
 Wo says, that Aliens have our size? The size of humans? When they are two heads
 taller the are already considered monsters, right?

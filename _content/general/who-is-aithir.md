@@ -1,4 +1,4 @@
----
+```@@|
 title: Who is Aithir?
 description: Where does my alias come from?
 date: 2022-04-27T00:00:00.000Z
@@ -13,9 +13,9 @@ group: general
 superTitle: General
 alias: posts/2022/2022-04-27-who-is-aithir
 slug: who-is-aithir
-layout: post
+type: post
 image: general
----
+```
 
 **Ether**, that is how they called the hypothetical medium in which light
 travelled - until about 150 years ago. It was somehow magic because nobody had

@@ -1,4 +1,4 @@
----
+```@@|
 title: Aliens
 date: 2023-05-30T00:00:00.000Z
 description:
@@ -13,9 +13,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-05-30-aliens
 slug: aliens
-layout: post
+type: post
 image: tropes
----
+```
 
 I'm starting with one of the most obvious tropes of all: Aliens. Other
 intelligent species are at the heart of at least half of all sci-fi and a good

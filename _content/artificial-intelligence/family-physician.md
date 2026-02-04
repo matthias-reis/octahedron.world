@@ -1,4 +1,4 @@
----
+```@@|
 title: Family Physician
 description: Yes, also the core of humanity, the doctor will be affected by AI
 date: 2022-11-01T00:00:00.000Z
@@ -11,9 +11,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-11-01-family-physician
 slug: family-physician
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 Doctors are highly qualified. But 90 % of the work our family physicians do
 could also be done by an expert system. Their system uses comparably simple

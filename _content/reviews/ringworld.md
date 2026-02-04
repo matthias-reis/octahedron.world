@@ -1,4 +1,4 @@
----
+```@@|
 title: Ringworld
 subTitle: Larry Niven
 description: The 1970 sci-fi classic by Larry Niven
@@ -14,9 +14,9 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-05-23-ringworld
 slug: ringworld
-layout: post
+type: post
 image: reviews
----
+```
 
 I'm late to this sci-fi classic: Ringworld by Larry Niven. Niven has, especially
 through the series of the Ringworld books, become one of the most renowned and

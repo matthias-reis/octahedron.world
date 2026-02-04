@@ -1,4 +1,4 @@
----
+```@@|
 title: The Dispossessed
 subTitle: Ursula K. Le Guin
 description: Reviewing the 1974 sci-fi novel by Ursula K. Le Guin
@@ -13,9 +13,9 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-04-17-the-dispossessed
 slug: the-dispossessed
-layout: post
+type: post
 image: reviews
----
+```
 
 A new series, folks. I watch a lot of movies and TV shows and I read a lot of
 books. So I'd like to do some reviews here. Not so much in the direction of good

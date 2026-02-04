@@ -1,4 +1,4 @@
----
+```@@|
 title: The Vergency Hotel
 date: 2024-08-05T00:00:00.000Z
 description:
@@ -14,9 +14,9 @@ group: simulation-theory
 superTitle: Vergency Hotel
 alias: posts/2024/2024-08-05-vergency-hotel
 slug: vergency-hotel
-layout: post
+type: post
 image: vergency-hotel
----
+```
 
 About a hundred years ago, I was invited to the hotel for the first time. But
 who counts years anyway. And what are years? A relic habit from my youth on a

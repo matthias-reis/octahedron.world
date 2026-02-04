@@ -1,4 +1,4 @@
----
+```@@|
 title: Designers
 description: Dall-E and Midjourney take over many art direction tasks already.
 date: 2022-06-14T00:00:00.000Z
@@ -13,9 +13,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-14-designers
 slug: designers
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 The OpenAI project has recently released information about a project called
 **Dall-E**. If you guess its purpose from the name, you might be right. A

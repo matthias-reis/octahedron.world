@@ -1,4 +1,4 @@
----
+```@@|
 title: Developers
 description: Are software engineers optimizing themselves away one day?
 date: 2022-07-28T00:00:00.000Z
@@ -12,9 +12,9 @@ group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-07-28-developers
 slug: developers
-layout: post
+type: post
 image: ai-jobs
----
+```
 
 What? Developers are supposed to be replaced by AI? Never. I thought we'd be the
 last?

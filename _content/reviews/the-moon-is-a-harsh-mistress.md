@@ -1,4 +1,4 @@
----
+```@@|
 title: The Moon is a Harsh Mistress
 subTitle: Robert Heinlein
 description: >-
@@ -14,9 +14,9 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-10-16-the-moon-is-a-harsh-mistress
 slug: the-moon-is-a-harsh-mistress
-layout: post
+type: post
 image: reviews
----
+```
 
 Many New Wave (around 1964-1983) sc-fi stories are special. Very often the focus
 not so much on the technical innovations or new concepts. They rather transpose

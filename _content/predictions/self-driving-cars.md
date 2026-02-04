@@ -1,4 +1,4 @@
----
+```@@|
 title: Self Driving Cars 2023-2033
 description: When will I order a car and ask it to drive me to the supermarket?
 date: 2023-05-02T00:00:00.000Z
@@ -11,9 +11,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-05-02-self-driving-cars
 slug: self-driving-cars
-layout: post
+type: post
 image: predictions
----
+```
 
 Traffic is terrible, jams are annoying, Construction sites are from hell and I
 don't even want to start with the other drivers. I've made a

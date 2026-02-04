@@ -1,4 +1,4 @@
----
+```@@|
 title: Introducing the SPINs
 description: About joint law enforcement and special units in the Canon
 date: 2024-08-19T00:00:00.000Z
@@ -16,9 +16,9 @@ group: transspace
 superTitle: Kret Tales
 alias: posts/2024/2024-08-19-introducing-the-spins
 slug: introducing-the-spins
-layout: post
+type: post
 image: kret-tales
----
+```
 
 There had to be a neutral force in the known universe. After the discovery of
 the Kret and the founding of the Hyperion headquarters, there was too much going

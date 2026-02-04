@@ -1,4 +1,4 @@
----
+```@@|
 title: Job Markets 2023-2033
 description: Automation vs. Demographic Change. Who will win?
 date: 2023-07-06T00:00:00.000Z
@@ -12,9 +12,9 @@ group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-07-06-job-markets
 slug: job-markets
-layout: post
+type: post
 image: predictions
----
+```
 
 As long as we can think, work has been at the centre of our existence. These
 days, it covers around 25% of our adult life, 40 hours a week. In former times,

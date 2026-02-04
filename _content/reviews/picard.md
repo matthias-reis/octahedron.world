@@ -1,4 +1,4 @@
----
+```@@|
 title: Picard
 subTitle: The Star Trek Series
 description: >-
@@ -17,9 +17,9 @@ group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-04-26-picard
 slug: picard
-layout: post
+type: post
 image: reviews
----
+```
 
 The third and last episode of Star Trek: Picard, the TV series on Prime, is
 finished. After season one, I thought it was the best I've ever seen. Season two

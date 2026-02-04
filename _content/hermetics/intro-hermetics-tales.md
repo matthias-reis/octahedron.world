@@ -1,4 +1,4 @@
----
+```@@|
 title: Hermetics Tales
 description: Anecdotes and rumors from the world of magic.
 date: 2024-02-08T00:00:00.000Z
@@ -13,10 +13,10 @@ group: hermetics
 superTitle: Hermetics Tales
 alias: posts/2024/2024-02-08-intro-hermetics-tales
 slug: intro-hermetics-tales
-layout: post
+type: post
 image: hermetics-tales
 hidden: true
----
+```
 
 Hermetics.
 

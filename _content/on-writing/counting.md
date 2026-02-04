@@ -1,4 +1,4 @@
----
+```@@|
 title: Counting
 date: 2023-12-22T00:00:00.000Z
 description: How to achieve tension? Count down. Ten to one.
@@ -11,9 +11,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-12-22-counting
 slug: counting
-layout: post
+type: post
 image: tropes
----
+```
 
 The next topic in my series about tropes and archetypes is not specific to the
 sci-fi and fantasy genres. It can be found in all sorts of stories. Before I go

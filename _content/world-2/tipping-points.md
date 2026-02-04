@@ -1,4 +1,4 @@
----
+```@@|
 title: Tipping Points
 description: The unexpected acceleration of catastrophic climate effects
 date: 2024-09-24T00:00:00.000Z
@@ -12,9 +12,9 @@ group: world-2
 superTitle: Climate News
 alias: posts/2024/2024-09-24-tipping-points
 slug: tipping-points
-layout: post
+type: post
 image: climate-news
----
+```
 
 Yesterday, I saw a disturbing video clip listing three of the next tipping
 points. Especially the third one almost made me sick.

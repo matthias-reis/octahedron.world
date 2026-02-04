@@ -1,4 +1,4 @@
----
+```@@|
 title: Root
 description: Root, the most important node in the mesh
 date: 2024-08-20T00:00:00.000Z
@@ -13,9 +13,9 @@ group: mesh
 superTitle: Mesh Tales
 alias: posts/2024/2024-08-20-come-in
 slug: come-in
-layout: post
+type: post
 image: mesh-tales
----
+```
 
 The main entrance to the Mesh is the `@root` node. Although many power users
 respawn in their home bases, root stays the most visited place in the mesh.

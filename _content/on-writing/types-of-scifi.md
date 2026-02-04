@@ -1,4 +1,4 @@
----
+```@@|
 title: Types of SciFi
 date: 2023-08-01T00:00:00.000Z
 description: How do the different types of science fiction work?
@@ -11,9 +11,9 @@ group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-08-01-types-of-scifi
 slug: types-of-scifi
-layout: post
+type: post
 image: tropes
----
+```
 
 Today's topic is neither really a trope nor an archetype, but it anyway seems
 important to me in this context. It's about the meaningfulness of SciFi. I think

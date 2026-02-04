@@ -1,4 +1,4 @@
----
+```@@|
 title: Banning the Right Wing Party AfD
 description: >-
   What is the legal framework for banning a party and what would be the
@@ -20,9 +20,9 @@ group: world-2
 superTitle: Chat with GPT
 alias: posts/2025/2025-05-12-afd-ban
 slug: afd-ban
-layout: post
+type: post
 image: chat-with-gpt
----
+```
 
 The German security agency "Verfassungsschutz" ir responsible for surveilling
 enemies of the institutions of the country andour constitution. It has recently

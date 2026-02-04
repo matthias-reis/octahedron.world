@@ -1,4 +1,4 @@
----
+```@@|
 title: The Trapdoor
 description: A hatch into a weird underworld.
 date: 2024-08-26T00:00:00.000Z
@@ -12,9 +12,9 @@ group: weird-things
 superTitle: Weird Things
 alias: posts/2024/2024-08-26-trapdoor
 slug: trapdoor
-layout: post
+type: post
 image: weird-things
----
+```
 
 I’ve never noticed that trapdoor next to the sidewalk before. I walk there every
 day but that piece of concrete and metal in the middle of the grass verge was

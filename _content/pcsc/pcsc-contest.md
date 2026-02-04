@@ -1,4 +1,4 @@
----
+```@@|
 title: PCSC The Contest
 description: >-
   The Perfect Circle Song Contest. People voting for songs. There are always
