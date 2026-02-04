@@ -3,10 +3,15 @@ import {
   World2CalculatorChart,
   type GraphData,
 } from './world-2-calculator-chart';
+import { Component } from 'solid-js';
 
-export const World2Calculator: Plugin = ({ payload }) => {
+export const World2Calculator: Component<{ data: { variant: string } }> = (
+  props
+) => {
+  console.log(props);
   const variant =
-    variants[(payload as keyof typeof variants) || ''] || variants.budget;
+    variants[(props.data.variant as keyof typeof variants) || ''] ||
+    variants.budget;
 
   const graph: GraphData = variant.lines.map(({ name, value, reference }) => ({
     name,

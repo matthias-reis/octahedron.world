@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: World 2
 title: Traffic & Transport
 subTitle: Part Three of the Series About the Climate Crisis
@@ -22,9 +22,9 @@ tags:
 group: world-2
 alias: storylines/traffic
 slug: world-2-traffic
-layout: report
+type: world2
 image: traffic
----
+```
 
 During Corona, many of us were bound to our homes. From time to time, we had to
 move our muscles somehow. What I did was going out for walks. Because we also

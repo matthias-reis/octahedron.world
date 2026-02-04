@@ -9,7 +9,6 @@ colorSpace: tan
 language: en
 ref: die-guillorys-und-die-weissen-monster
 unfinished: true
-type: Children's Story
 startDate: 2023-03-27T00:00:00.000Z
 date: 2023-08-04T00:00:00.000Z
 related:

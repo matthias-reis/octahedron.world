@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: Transspace Worldbuilding
 description: >-
@@ -22,9 +22,9 @@ tags:
 group: transspace
 alias: storylines/transspace
 slug: transspace-worldbuilding
-layout: report
+type: report
 image: transspace-worldbuilding
----
+```
 
 If you don't want to wait years and generations until you reach another star
 system, your science fiction stories have to imagine a propulsion system that

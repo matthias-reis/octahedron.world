@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: Das Fermi Paradoxon
 subTitle: Auf der Suche nach Außerirdischen
@@ -22,9 +22,9 @@ tags:
   - Zivilisationen
 group: the-fourth-wave
 slug: das-fermi-paradoxon
-layout: report
+type: report
 image: the-fourth-wave
----
+```
 
 Aliens, Außerirdische. Andere Lebensformen. Einer der wesentlichen Antriebe
 hinter der Raumfahrt und der Beobachtung anderer Sterne ist die Suche nach neuen

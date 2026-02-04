@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: Fermi's Paradox
 subTitle: In Search of Extraterrestrials
@@ -23,9 +23,9 @@ tags:
   - Civilizations
 group: the-fourth-wave
 slug: fermis-paradox
-layout: report
+type: report
 image: the-fourth-wave
----
+```
 
 Aliens. Extraterrestrial Lifeforms. One of the big drivers behind human space
 exploration efforts and the observation of stars and galaxies is the search for

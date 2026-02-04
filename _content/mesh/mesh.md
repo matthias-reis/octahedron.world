@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: The Mesh - Worldbuilding for a Cyberpunk World
 description:
@@ -18,9 +18,9 @@ tags:
 group: mesh-worldbuilding
 alias: storylines/mesh
 slug: mesh-worldbuilding
-layout: report
+type: report
 image: mesh-worldbuilding
----
+```
 
 I'm a developer and computer guy, so it's only natural that the most fascinating
 genre in science fiction for me is Cyberpunk. My favourite novel - hereby

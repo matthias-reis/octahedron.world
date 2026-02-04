@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: World 2
 title: Veganism & Agriculture
 subTitle: Part Two of the Series About the Climate Crisis
@@ -23,9 +23,9 @@ tags:
 group: world-2
 alias: storylines/vegan
 slug: world-2-vegan
-layout: report
+type: world2
 image: vegan
----
+```
 
 People usually don't believe that our current food consumption is a major player
 in the climate crisis. I have to admit that the connections are very
@@ -66,7 +66,7 @@ It's as cheap as flour, dead simple and the tastiest thing you'll ever eat.
 
 Then they invited us for dinner.
 
----
+&nbsp;
 
 The previous thoughts point out the inevitable, the future we're steering to. We
 will develop into a vegan world. It's not an option to choose from in the
@@ -104,7 +104,7 @@ affects the planet's biodiversity. It also shrinks the rainforest (e.g. in
 Brazil), which approaches a tipping point if it's getting reduced by another
 18%. At that point, it can't maintain its microclimate anymore and will dry out.
 
----
+&nbsp;
 
 Some people say that moving to a vegan diet would have one of the biggest
 positive effects for a private person's footprint. But in public discussions, it
@@ -138,7 +138,9 @@ proof that it's inevitable.
 Time for a small recap session. We found out that meat and dairy have a 14%
 share in climate change.
 
-==> <calculator> vegan
+```calculator|
+variant: vegan
+```
 
 The chart shows, that you can shave off 71% from your 500% over-budget emission
 with a vegan diet. In comparison if you get rid of your car

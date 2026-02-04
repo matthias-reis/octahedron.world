@@ -1,4 +1,4 @@
----
+```@@|
 title: Meetdown - A Pitch
 description: >-
   Somethig seems to be missing in the landscape of social networks. So why don't
@@ -18,9 +18,9 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-09-08-meetdown-pitch
 slug: meetdown-pitch
-layout: report
+type: report
 image: social-networks
----
+```
 
 > Annotation before we dive in: Meetdown - the name - is meant as a pun, like
 > Markup -> Markdown. It has a slightly negative connotation. Therefore it's not

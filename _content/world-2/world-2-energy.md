@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: World 2
 title: Energy & Dimensions
 subTitle: Part One of the Series About the Climate Crisis
@@ -21,9 +21,9 @@ tags:
 group: world-2
 alias: storylines/world-2
 slug: world-2-energy
-layout: world2
+type: world2
 image: world-2-energy
----
+```
 
 # The Start
 
@@ -122,7 +122,9 @@ zero - carbon neutral - after 2050.
 Divided by 30 and the average expected population of 8,73 billion people, this
 makes 1,6 tons per year for every one of us. This is my new reference.
 
-==> <graphics> budget
+```graphics|
+
+```
 
 Source:
 [(atmosfair.de)](https://www.atmosfair.de/en/green_travel/annual_climate_budget/)
@@ -131,7 +133,9 @@ Now this is a value we can work with. We have a budget and we can put everything
 in relation to the budget. So I've decided to create a small calculator that
 spits out memes with chart graphics. Here we go.
 
-==> <calculator> budget
+```calculator|
+variant: budget
+```
 
 Source:
 [(ourworldindata.org)](https://ourworldindata.org/co2-and-greenhouse-gas-emissions#co2-and-greenhouse-gas-emissions-country-profiles)
@@ -145,7 +149,9 @@ candidate in this list, who's emissions are rising.
 
 To get used to this metric, let's do some more comparisons.
 
-==> <calculator> coal
+```calculator|
+variant: coal
+```
 
 Source:
 [Umweltbundesamt](https://www.umweltbundesamt.de/daten/energie/energiebedingte-emissionen#energiebedingte-kohlendioxid-emissionen-durch-stromerzeugung)
@@ -171,7 +177,9 @@ politicians.**
 
 Let's look at another example:
 
-==> <calculator> flights
+```calculator|
+variant: flights
+```
 
 Sources:
 

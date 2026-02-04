@@ -1,4 +1,4 @@
----
+```@@|
 superTitle: Worldbuilding
 title: The Kret
 description: >-
@@ -21,9 +21,9 @@ tags:
 group: transspace
 alias: storylines/kret
 slug: kret
-layout: report
+type: report
 image: kret
----
+```
 
 Aliens have always been the icing on the science fiction cake.
 

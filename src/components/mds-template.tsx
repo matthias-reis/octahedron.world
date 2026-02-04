@@ -11,6 +11,8 @@ const renderers: Record<string, ReturnType<typeof clientOnly>> = {
   legal: clientOnly(() => import('~/renderers/legal')),
   lightbox: clientOnly(() => import('~/renderers/lightbox')),
   storyline: clientOnly(() => import('~/renderers/storyline')),
+  report: clientOnly(() => import('~/renderers/report')),
+  world2: clientOnly(() => import('~/renderers/world2')),
 };
 
 export const MdsTemplate = ({ route }: { route: string }) => {
