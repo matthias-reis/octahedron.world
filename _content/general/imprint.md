@@ -1,12 +1,12 @@
----
+```@@|
 title: Imprint
 group: general
 slug: imprint
 image: _home
-layout: legal
+type: legal
 language: en
 ref: impressum
----
+```
 
 # Details according to § 5 TMG
 

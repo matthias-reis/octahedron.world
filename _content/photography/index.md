@@ -1,4 +1,4 @@
----
+```@@|
 title: Photography
 description: >-
   Real world photos here. Favourite images taken with my Sony Alpha, my old
@@ -14,7 +14,7 @@ tags:
 group: photography
 root: true
 slug: photography
-layout: album
+type: album
 image: photography
 weight: 3
----
+```

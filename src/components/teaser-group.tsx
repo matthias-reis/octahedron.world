@@ -6,11 +6,13 @@ import { Loading } from '~/components/loading';
 import { getAllCompactRoutes } from '~/model/model';
 import { type Plugin } from '~/types';
 
-export const TeaserGroup: Component<{ data: { slugs: string[] } }> = (
+export const TeaserGroup: Component<{ data?: Record<string, any> }> = (
   props
 ) => {
   const items = createAsyncStore(() => getAllCompactRoutes());
-  const visibleSlugs = props.data.slugs;
+  const visibleSlugs = props.data?.slugs;
+
+  if (!Array.isArray(visibleSlugs)) return null;
 
   return (
     <Suspense

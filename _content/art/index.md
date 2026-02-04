@@ -1,4 +1,4 @@
----
+```@@|
 title: Art Pieces
 description: >-
   Photos from the art of others are a second layer of creativity that I enjoy.
@@ -12,8 +12,8 @@ tags:
 group: art
 root: true
 slug: art
-layout: album
+type: album
 image: art
 colorSpace: orange
 weight: 1
----
+```

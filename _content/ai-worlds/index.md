@@ -1,4 +1,4 @@
----
+```@@|
 title: AI Worlds
 description: >-
   A collection of AI generated images and remixes. Many of them are either
@@ -13,7 +13,7 @@ tags:
 group: ai-worlds
 root: true
 slug: ai-worlds
-layout: album
+type: album
 image: ai-worlds
 weight: 1
----
+```

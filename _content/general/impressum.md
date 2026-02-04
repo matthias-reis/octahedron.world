@@ -1,12 +1,12 @@
----
+```@@|
 title: Impressum
 group: general
 slug: impressum
 image: _home
-layout: legal
+type: legal
 language: de
 ref: imprint
----
+```
 
 # Angaben gemäß § 5 TMG
 

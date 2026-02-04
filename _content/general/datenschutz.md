@@ -1,13 +1,13 @@
----
+```@@|
 title: Datenschutzerklärung
 superTitle: Datenschutzerklärung
 group: general
 slug: datenschutz
 image: _home
-layout: legal
+type: legal
 language: de
 ref: privacy
----
+```
 
 # 1. Datenschutz auf einen Blick
 

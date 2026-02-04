@@ -1,13 +1,13 @@
----
+```@@|
 title: Über Octahedron World
 superTitle: Autor, Motivation und Technologie
 group: general
 slug: ueber-uns
-layout: legal
+type: legal
 image: _home
 language: de
 ref: about
----
+```
 
 # Wer bin ich?
 
