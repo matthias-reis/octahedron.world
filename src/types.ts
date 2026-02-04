@@ -8,7 +8,7 @@ export type FrontMatter = {
   group: string; // new grouping. E.g. 'hermetics'
   slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
   alias?: string; // old url
-  layout?: string; // manual falls back to default, which we will have at first
+  type?: string; // MDS renderer type (e.g., 'post', 'storyline', 'lightbox', etc.)
   description?: string | string[];
   startDate?: string;
   date?: string;
@@ -30,9 +30,8 @@ export type ItemMeta = {
   sections: Sec[];
   words: number;
   chars: number;
-  workflow?: 'octa' | 'mds';
-  raw?: string;
-  type?: string;
+  raw?: string; // Raw markdown content for MDS rendering
+  type?: string; // MDS renderer type
 } & FrontMatter;
 
 export type CompactItemMeta = Pick<
@@ -40,13 +39,12 @@ export type CompactItemMeta = Pick<
   | 'slug'
   | 'title'
   | 'group'
-  | 'layout'
+  | 'type'
   | 'image'
   | 'description'
   | 'superTitle'
   | 'subTitle'
   | 'weight'
-  | 'workflow'
 >;
 
 export type TagMeta = {
@@ -63,14 +61,3 @@ export type DynamicPageProps = {
 export type Plugin = Component<Sec & { wrapper?: ParentComponent }>;
 
 export type HtmlComponents = Options['components'];
-
-export type Layout = {
-  main: Component<{
-    item: ItemMeta;
-    children: JSX.Element;
-    categoryItems?: ItemMeta[];
-    relatedItems?: ItemMeta[];
-  }>;
-  section?: ParentComponent;
-  plugins: Record<string, Plugin>;
-};
