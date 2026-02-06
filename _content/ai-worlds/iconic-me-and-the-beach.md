@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Iconic Me and the Beach
 description: >-
   A man with a graying beard stands in front of a vintage-style building,

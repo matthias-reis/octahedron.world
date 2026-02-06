@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Empty Subway Station
 description: >-
   A modern subway station in Hamburg’s Hafencity, illuminated by striking purple

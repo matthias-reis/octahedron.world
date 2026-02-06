@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Mushroom Time
 description: >-
   A close-up view from below of a red-capped fly agaric mushroom (Amanita

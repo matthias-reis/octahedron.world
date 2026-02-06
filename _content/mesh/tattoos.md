@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Two Stories
 title: Tattoos
 description: >-

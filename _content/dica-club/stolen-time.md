@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 slug: stolen-time
 language: en
 ref: gestohlene-zeit
@@ -23,7 +23,7 @@ reveal:
 
 +++case
 
-```@|
+```yaml @
 title: The Crime Scene
 type: page
 weight: 1
@@ -63,7 +63,7 @@ All other exhibits and exhibition elements have remained absolutely intact. The
 surveillance cameras also show no suspicious activities. A wooden gallery,
 accessible via stairs, also shows no obvious traces.
 
-```quest/view|
+```yaml quest/view
 ref: case
 reveal:
   - waste-no-time
@@ -82,7 +82,7 @@ become visible when certain conditions are met.
 
 +++waste-no-time
 
-```@|
+```yaml @
 title: Waste No Time
 weight: 2
 type: page
@@ -100,7 +100,7 @@ type: page
 I want to note down the first facts and think for a moment. What is the name of
 the hall we are in again?
 
-```quest/choice|
+```yaml quest/choice
 ref: waste-no-time
 question: What is the name of the hall?
 options:
@@ -111,8 +111,8 @@ options:
 solution: 1
 success:
   Very good! We are in the Gallery Wing, as can be easily seen from the numerous
-  wall portraits. As a reward, there is a clue.
-  Look to the right in the navigation bar.
+  wall portraits. As a reward, there is a clue. Look to the right in the
+  navigation bar.
 failure: Unfortunately that was wrong. Try again right away!
 reveal:
   - the-webpage
@@ -125,7 +125,7 @@ welcome to go look again. Little hint, which is probably only free in this very 
 
 +++the-webpage
 
-```@|
+```yaml @
 title: The Webpage
 type: clue
 ```
@@ -161,7 +161,7 @@ As soon as you are there, it will also appear in the right navigation column.
 
 +++traces
 
-```@|
+```yaml @
 title: The First Clue
 weight: 1
 type: page
@@ -194,7 +194,7 @@ later than the one that disappeared here.
 Together with the note you found, there are now several leads that you must
 follow.
 
-```quest/view|
+```yaml quest/view
 ref: traces
 reveal:
   - on-the-page
@@ -208,7 +208,7 @@ As you can see, more riddles have now appeared in the overview on the right. You
 
 +++on-the-page
 
-```@|
+```yaml @
 title: On the Page
 weight: 2
 type: page
@@ -223,7 +223,7 @@ The website found is strange. apparently it shows normal information. But
 further down you find a list of terms that represent a kind of entry code. You
 absolutely must find the right ones.
 
-```quest/multiplechoice|
+```yaml quest/multiplechoice
 ref: on-the-page
 question: Which terms can be assigned to watchmaking?
 options:
@@ -239,19 +239,18 @@ options:
   - Stick
 solutions: [0, 2, 6, 8]
 success:
-  Very good! Are you a trained watchmaker or what?
-  As you might have seen, a clue was unlocked.
-  Another subpage has opened.
+  Very good! Are you a trained watchmaker or what? As you might have seen, a
+  clue was unlocked. Another subpage has opened.
 failure:
-  Unfortunately that was wrong. Try again right away!
-  But we sadly have to deduct a few points.
+  Unfortunately that was wrong. Try again right away! But we sadly have to
+  deduct a few points.
 reveal:
   - access
 ```
 
 +++accesss
 
-```@|
+```yaml @
 title: The Subpage
 type: clue
 reveal:
@@ -276,7 +275,7 @@ next.
 The page that appears contains only a few strange letters, presumably a
 password:
 
-```note
+```md note
 DRIC
 ```
 
@@ -284,7 +283,7 @@ Best you enter the letters in [Your Notebook](#notebook).
 
 +++the-note
 
-```@|
+```yaml @
 title: The Note
 weight: 2
 type: page
@@ -302,7 +301,7 @@ type: page
 On the note from the crime scene, next to the internet address mentioned as the
 source, there is also this riddle:
 
-```note
+```md note
 To find me you must solve this riddle:
 
 I cannot be grasped, yet I am always around you.
@@ -312,7 +311,7 @@ I am the companion of seconds and hours – what am I called?
   Signed _The Silent Companion_
 ```
 
-```quest/input|
+```yaml quest/input
 ref: the-note
 question: Which term could be sought?
 solution: Time
@@ -320,19 +319,19 @@ success:
   Very good! You are on the right track. You have hereby also unlocked another
   Clue.
 failure:
-  Unfortunately that was wrong. Please pay attention to upper and lower case too! Try
-  again right away!
+  Unfortunately that was wrong. Please pay attention to upper and lower case
+  too! Try again right away!
 notfound:
-  Time, that would have been the correct solution. Unfortunately you didn't find this even after 10
-  tries. We let you proceed, but have to give you 0 points for this
-  task.
+  Time, that would have been the correct solution. Unfortunately you didn't find
+  this even after 10 tries. We let you proceed, but have to give you 0 points
+  for this task.
 reveal:
   - disappointed
 ```
 
 +++disappointed
 
-```@|
+```yaml @
 title: More Clues
 type: clue
 ```
@@ -361,7 +360,7 @@ Well, there are more tracks to follow. Maybe they will lead you further.
 **But Stop! The note also has a back side. Someone wrote something there with
 pencil.**
 
-```note
+```md note
 H z. F.
 ```
 
@@ -370,7 +369,7 @@ Strange letter combination. Still, definitely enter it in
 
 +++the-weapon
 
-```@|
+```yaml @
 title: The Weapon
 weight: 2
 type: page
@@ -403,22 +402,22 @@ from the baseboard to below the ceiling. A fascinating mural. The small plaque
 at the foot of the painting says **"Scale 1:50"**. Well if that isn't enough to
 determine the room height.
 
-```quest/number|
+```yaml quest/number
 ref: the-weapon
 question: How high is the ceiling of the gallery wing in centimeters?
 solution: 660
 tolerance: 60
 success: Very well combined, perfectly deduced.
 failure:
-  Unfortunately that was wrong. Please try again. You are also welcome to use the
-  internet for help. We are looking for the height in centimeters.
+  Unfortunately that was wrong. Please try again. You are also welcome to use
+  the internet for help. We are looking for the height in centimeters.
 reveal:
   - the-gallery
 ```
 
 +++the-gallery
 
-```@|
+```yaml @
 title: The Gallery
 type: clue
 ```
@@ -456,7 +455,7 @@ Then let's take a closer look at the gallery.
 Here, right here. Wait. Someone carved something into the railing here. That
 must be very fresh. You recognize four letters:
 
-```note
+```md note
 FRIE
 ```
 
@@ -464,7 +463,7 @@ Best you enter the letters in [Your Notebook](#notebook).
 
 +++notebook
 
-```@|
+```yaml @
 title: Notebook
 weight: 3
 type: page
@@ -487,33 +486,31 @@ clues.
 
 Little help: In the end there should be 3 words.
 
-```quest/multitext|
+```yaml quest/multitext
 question:
-  Enter the letter combinations you found here.
-  You can also go to other pages and return here to
-  collect various information.
+  Enter the letter combinations you found here. You can also go to other pages
+  and return here to collect various information.
 ref: notebook
 solutions:
   - FRIE
   - DRIC
   - H z. F.
 success:
-  Very good, you have found all hints in the room for now. But what does that mean?
-  Another riddle has opened.
+  Very good, you have found all hints in the room for now. But what does that
+  mean? Another riddle has opened.
 failure:
-  That unfortunately didn't fit. Please try again. You are also welcome to
-  copy the texts from the other pages.
+  That unfortunately didn't fit. Please try again. You are also welcome to copy
+  the texts from the other pages.
 notfound:
-  That was 10 failed attempts. Unfortunately you didn't enter all the correct solutions.
-  We let you proceed, but have to give you 0 points for this
-  task.
+  That was 10 failed attempts. Unfortunately you didn't enter all the correct
+  solutions. We let you proceed, but have to give you 0 points for this task.
 reveal:
   - the-name
 ```
 
 +++the-name
 
-```@|
+```yaml @
 title: The Name
 type: page
 ```
@@ -531,7 +528,7 @@ So back to the notes. I have entered all text scraps I have found so far here. I
 think we should have quite some material by now. Three strange letter
 combinations:
 
-```note
+```md note
 DRIC
 
 H z. F.
@@ -539,15 +536,17 @@ H z. F.
 FRIE
 ```
 
-```quest/input|
+```yaml quest/input
 ref: the-name
 weight: 3
 question: What could these letters form in the correct order?
-solution: "FRIEDRICH z. F."
-success: z. F. like in "zu Feuerbach". Very well combined! Friedrich zu Feuerbach. We have a name
+solution: 'FRIEDRICH z. F.'
+success:
+  z. F. like in "zu Feuerbach". Very well combined! Friedrich zu Feuerbach. We
+  have a name
 failure:
-  Unfortunately that was wrong. Please pay attention to upper and lower case too! Try
-  again right away!
+  Unfortunately that was wrong. Please pay attention to upper and lower case
+  too! Try again right away!
 reveal:
   - suspicious
   - family-photo
@@ -555,7 +554,7 @@ reveal:
 
 +++suspicious
 
-```@|
+```yaml @
 title: The Prime Suspect
 type: clue
 ```
@@ -573,7 +572,7 @@ A few things obviously still need to be clarified.
 
 +++family-photo
 
-```@|
+```yaml @
 title: Questions upon Questions
 weight: 3
 type: page
@@ -596,7 +595,7 @@ myself.
 But wait, what is that? I grab a magnifying glass and look at a detail more
 closely.
 
-```quest/imagemap|
+```yaml quest/imagemap
 ref: family-photo
 image: brothers
 spot: [47, 59.5]
@@ -604,8 +603,7 @@ question: Which exciting detail can be seen here?
 success:
   Unbelievable! On the photo our watch can be seen, the stolen pocket watch,
   which admittedly looks very bulky for a modern pocket watch.
-failure:
-  Unfortunately that was wrong. Try again right away!
+failure: Unfortunately that was wrong. Try again right away!
 reveal:
   - backside
   - pinboard
@@ -618,7 +616,7 @@ Look exactly over the picture. One brother has something in his hand.
 
 +++backside
 
-```@|
+```yaml @
 title: Back of the Photo
 type: clue
 ```
@@ -629,7 +627,7 @@ the picture after he had examined it briefly.
 "Here is something on the back", he said. "A text written in pencil.
 **'DISINHERITED'** in capital letters."
 
-```note
+```md note
 DISINHERITED
 ```
 
@@ -651,7 +649,7 @@ Why did I call him Watson? No idea.
 
 +++pinboard
 
-```@|
+```yaml @
 title: The Pinboard
 weight: 2
 type: page
@@ -672,7 +670,7 @@ the lady at the reception.
 congress for two weeks. He is a watchmaker himself. Here on the pinboard hang
 his postcards. He sent three of them."
 
-```quest/imagemapmulti|
+```yaml quest/imagemapmulti
 ref: pinboard
 image: pinboard
 spots:
@@ -682,10 +680,9 @@ spots:
 tolerance: 8
 question: Find the three postcards from Switzerland.
 success:
-  Very good! We found the three postcards.
-  The postmarks confirm that they come from Switzerland.
-failure:
-  Unfortunately that was the wrong spot. Try again right away!
+  Very good! We found the three postcards. The postmarks confirm that they come
+  from Switzerland.
+failure: Unfortunately that was the wrong spot. Try again right away!
 reveal:
   - interviews
 ```
@@ -697,7 +694,7 @@ Simply find the motifs that fit Switzerland.
 
 +++interviews
 
-```@|
+```yaml @
 title: Interviews
 weight: 1
 type: page
@@ -724,7 +721,7 @@ We are not getting anywhere. We have to question the witnesses. I grab brother
 Hieronymus. My colleague is already trying to reach the brother in the hotel in
 Zurich.
 
-```quest/view|
+```yaml quest/view
 ref: interviews
 reveal:
   - hieronymus
@@ -739,7 +736,7 @@ Also, the next riddle has already been unlocked this time.
 
 +++hieronymus
 
-```@|
+```yaml @
 title: Conversation with Hieronymus zu Feuerbach
 type: clue
 ```
@@ -785,12 +782,12 @@ from time to time."
 
 +++friedrich
 
-```@|
+```yaml @
 title: Phone Log with Friedrich zu Feuerbach
 type: clue
 ```
 
-```note
+```md note
 **KOK Berger:** Good day, this is Commissioner Berger speaking. I am calling from your brother's museum.
 
 **FzF:** Yes, good day. How can I help you?
@@ -813,7 +810,7 @@ is confirmed.
 
 +++geometry
 
-```@|
+```yaml @
 title: The Geometry of the Pendulum
 weight: 3
 type: page
@@ -853,13 +850,14 @@ What if he didn't drop it, but built a mechanism as a skilled watchmaker. We
 should check the wall behind it. But where exactly? I take some transparent
 paper and draw the pendulum swing.
 
-```quest/imagemapprecision|
+```yaml quest/imagemapprecision
 ref: geometry
 question: At which point could a cavity be located behind the wall?
 image: geometry
 spot: [90.5, 50.8]
 success:
-  Unbelievable! Behind the wall above the connecting door there is actually a cavity.
+  Unbelievable! Behind the wall above the connecting door there is actually a
+  cavity.
 reveal:
   - solution
 ```
@@ -872,7 +870,7 @@ Then you should hit the wall.
 
 +++solution
 
-```@|
+```yaml @
 title: We Solve It
 type: clue
 subtype: solution

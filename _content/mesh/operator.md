@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Shortstory
 title: The Operator
 description: >-

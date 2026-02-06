@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Counting
 date: 2023-12-22T00:00:00.000Z
 description: How to achieve tension? Count down. Ten to one.

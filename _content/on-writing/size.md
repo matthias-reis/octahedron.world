@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Alien Size
 date: 2024-07-30T00:00:00.000Z
 description: Tiny aliens, tiny spaceships. What if aliens are small?

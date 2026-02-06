@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Somnium
 description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the

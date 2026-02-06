@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: TV Shows 2023-2033
 description: >-
   Will there still be TV shows, when AI can produce bespoke content for

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Intro to Transspace Tales
 description:
   More anecdotes, this time about transspace, my concept for space operas

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Judges
 description:
   Objectivity. A goal that notoriously biased humans may never achieve.

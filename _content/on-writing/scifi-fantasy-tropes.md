@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: SciFi & Fantasy - A Journey
 date: 2023-05-18T00:00:00.000Z
 description: From typical characters to shared topics and tropes.

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Space
 description: How fictional stories can pass the vast emptiness of space.
 date: 2022-05-10T00:00:00.000Z

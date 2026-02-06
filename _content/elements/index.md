@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Elements
 description: >-
   Another Fantasy / Dystopia project involving demons and angels. This is a set
@@ -19,11 +19,11 @@ image: elements
 weight: 2
 ```
 
-```teaser|
+```yaml teaser
 slug: elements-earth
 ```
 
-```teaser|
+```yaml teaser
 slug: elements-water
 ```
 

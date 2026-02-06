@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Natural Catastrophes 2023-2033
 description:
   We are already facing superlatives of natural catastrophes on a monthly basis.

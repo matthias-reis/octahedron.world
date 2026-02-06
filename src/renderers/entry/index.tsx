@@ -1,5 +1,6 @@
 import { JSX } from 'solid-js';
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import type { GlobalScope, LocalScope } from './types';
 import { A } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons/index';
@@ -7,10 +8,10 @@ import { largeImageUrl } from '~/components/image-helpers';
 import { canonicalComponents } from '~/components/canonical-components';
 
 export default function createTemplate(props: {
-  markdown: string;
+  mds: HastParseResult;
 }): JSX.Element {
-  const parsed = parse<GlobalScope, LocalScope>(
-    props.markdown,
+  const parsed = transform<GlobalScope, LocalScope>(
+    props.mds,
     canonicalComponents
   );
   const item = parsed.global;

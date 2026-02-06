@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Metal Album Cover Proposal
 description: >-
   A solitary wooden post stands like a silent sentinel in a misty field under a

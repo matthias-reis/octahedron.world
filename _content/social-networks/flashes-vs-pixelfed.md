@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Flashes vs Pixelfed
 description: >-
   I've made an experiment. I ran the two Instagram alternatives Pixelfed and

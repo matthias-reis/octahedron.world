@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Kindergeschichte
 title: Asimov - Planet der Roboter
 description: >-

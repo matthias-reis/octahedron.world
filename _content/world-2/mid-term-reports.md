@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Mid Term Reports
 description:
   Mid 2023. Elections in important German regions with catastrophic results.
@@ -62,11 +62,12 @@ right) was to bash the Green Party for their politics.
   do we have the mindset at the moment to deal with these large numbers. So the
   impact will be drastic. We will try to guard our borders and we will watch
   while millions of Africans will drown in the Medierranean Sea.\
-  Populists want to disrupt. And they will get disruption. Lots of it. Looking at
-  the next five or ten years, you can easily imagine the numbers of right wing parties
-  rise and rise while the blocks inbetween (Social Democrats, Conservatives, Liberals)
-  will be ground and crumbled by the topics they can't handle anymore. Disruption
-  will reach us and France like it did in Italy, Britain, Hungary and Poland.
+  Populists want to disrupt. And they will get disruption. Lots of it. Looking
+  at the next five or ten years, you can easily imagine the numbers of right
+  wing parties rise and rise while the blocks inbetween (Social Democrats,
+  Conservatives, Liberals) will be ground and crumbled by the topics they can't
+  handle anymore. Disruption will reach us and France like it did in Italy,
+  Britain, Hungary and Poland.
 
 Much too long post already. So I stop for now. The topic however might be worth
 another look or two.

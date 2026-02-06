@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Dispossessed
 subTitle: Ursula K. Le Guin
 description: Reviewing the 1974 sci-fi novel by Ursula K. Le Guin

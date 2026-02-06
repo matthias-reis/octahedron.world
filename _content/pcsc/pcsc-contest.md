@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: PCSC The Contest
 description: >-
   The Perfect Circle Song Contest. People voting for songs. There are always
@@ -12,6 +12,6 @@ tags:
   - Videos
 group: pcsc
 slug: pcsc-contest
-layout: none
+type: none
 image: pcsc-magenta
----
+```

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: On Earth
 description: How did the discovery of the Kret change the world?
 date: 2024-08-01T00:00:00.000Z

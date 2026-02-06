@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Artificial Intelligence
 description: >-
   The topic AI exploded in the recent years. When you create fiction, it's

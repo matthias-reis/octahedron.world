@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Dica Club
 description: >-
   Riddles and Escape games - some with real world connection and geolocation
@@ -27,13 +27,13 @@ example quests are now available.
 
 Here you can try it.
 
-```teaser|
+```yaml teaser
 slug: stolen-time
 ```
 
 It's also available in german.
 
-```teaser|
+```yaml teaser
 slug: gestohlene-zeit
 ```
 

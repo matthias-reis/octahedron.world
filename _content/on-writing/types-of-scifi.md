@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Types of SciFi
 date: 2023-08-01T00:00:00.000Z
 description: How do the different types of science fiction work?

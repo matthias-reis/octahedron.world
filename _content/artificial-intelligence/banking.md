@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Banking
 description: >-
   Algorithms rule investment for decades already, so where's the place for human

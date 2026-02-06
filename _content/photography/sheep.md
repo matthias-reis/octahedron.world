@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Framed Sheep
 description: >-
   A single sheep stands on a grassy hilltop, captured in profile against an

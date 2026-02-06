@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Augmented Reality 2023-2033
 description:
   What could happen in the next ten years. Let's start with AR headsets

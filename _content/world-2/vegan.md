@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: World 2
 title: Veganism & Agriculture
 subTitle: Part Two of the Series About the Climate Crisis
@@ -138,7 +138,7 @@ proof that it's inevitable.
 Time for a small recap session. We found out that meat and dairy have a 14%
 share in climate change.
 
-```calculator|
+```yaml calculator
 variant: vegan
 ```
 

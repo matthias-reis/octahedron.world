@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Speculative Apocalypses
 description:
   What is the most likely extinction e vent and how many are actually affected?

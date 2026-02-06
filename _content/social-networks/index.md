@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: On Social Networks
 description: >-
   I'm currently working on a bunch of product and technology ideas and dive into
@@ -41,7 +41,7 @@ At first I searched for a new home of my favourite images -previously posted in
 Instagram. THe first article looks into the federated alternatives and their
 capabilities:
 
-```teaser|
+```yaml teaser
 slug: flashes-vs-pixelfed
 ```
 
@@ -52,7 +52,7 @@ that on our own. Fully open source and federated.
 I immediately dived into the architecture and the protocols they are using. So
 here's my summary on this.
 
-```teaser|
+```yaml teaser
 slug: federated-social-networks
 ```
 
@@ -60,6 +60,6 @@ And finally, I created the pith for the new social network / groups platform /
 meetup site we will be working on in the future. It still has it's temporary
 name "meetdown", but I'm sure I can update this very soon.
 
-```teaser|
+```yaml teaser
 slug: meetdown-pitch
 ```

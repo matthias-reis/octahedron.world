@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Fairness on Labour Day
 description: Some thoughts on May, the first, labour day.
 date: 2022-05-02T00:00:00.000Z

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Coolest Building On The Beach Is A Toilet
 description: >-
   At sunset, a stilt house stands gracefully on the beach, casting long shadows

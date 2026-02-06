@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Metaverse 2023-2033
 description: >-
   Built to fail, Facebooks metaverse. Yet it was the dream of a whole cyberpunk

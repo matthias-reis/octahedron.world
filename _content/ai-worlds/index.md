@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: AI Worlds
 description: >-
   A collection of AI generated images and remixes. Many of them are either

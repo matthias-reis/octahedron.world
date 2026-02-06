@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Kurzgeschichte
 title: Die vierte Welle
 description: >-

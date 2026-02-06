@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Impressum
 group: general
 slug: impressum

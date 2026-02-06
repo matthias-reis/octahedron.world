@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Children's Story
 title: The Guillorys - White Monsters
 description: >-

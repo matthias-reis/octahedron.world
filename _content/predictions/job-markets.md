@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Job Markets 2023-2033
 description: Automation vs. Demographic Change. Who will win?
 date: 2023-07-06T00:00:00.000Z

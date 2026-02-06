@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: ChatGPT
 description:
   Special topic about the rise of large language models and their impact

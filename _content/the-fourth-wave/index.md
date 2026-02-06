@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Fourth Wave and the Aliens that never came
 description: >-
   Two things came together for this experience. We needed a Guinnea Pig for
@@ -43,13 +43,13 @@ goal and appear here on Earth. It's merely about timing.
 First, I looked into the theoretical probablilities and the so called Drake
 equation in this article.
 
-```teaser|
+```yaml teaser
 slug: fermis-paradox
 ```
 
 After that the short story almost wrote itself:
 
-```teaser|
+```yaml teaser
 slug: the-fourth-wave-shortstory
 ```
 
@@ -57,7 +57,7 @@ slug: the-fourth-wave-shortstory
 
 Both entries are also available in German, if you're interested.
 
-```group|
+```yaml group
 slugs:
   - das-fermi-paradoxon
   - die-vierte-welle
@@ -67,7 +67,7 @@ slugs:
 
 If you want to support us, you can buy the eBook version of The Fourth Wave.
 
-```cta|
+```yaml cta
 text: Buy the eBook
 url: https://amreis.de/
 ```

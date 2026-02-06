@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Construction Worker
 description:
   But the things you have to build with your bare hands should be safe, right?

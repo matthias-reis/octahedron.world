@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Transspace
 description: >-
   An author needs a go-to world for spacefaring stories. Here's mine. It
@@ -37,14 +37,14 @@ transspace, the great unifying theory of my space opera world.
 
 Have a look at this world building exercise first:
 
-```teaser|
+```yaml teaser
 slug: transspace-worldbuilding
 ```
 
 As always, the world creates ideas, not the other way around. So I will surely
 dive into one or the other.
 
-```group|
+```yaml group
 slugs:
   - intro-transspace-tales
   - van-der-belt
@@ -59,14 +59,14 @@ resources and exploitation.
 The Kret were my number one aliens, living 30 Ly away. So let's look into their
 worldbuilding first:
 
-```teaser|
+```yaml teaser
 slug: kret
 ```
 
 Now stories combine and we bring both together to form the human sphere of
 influence in the 22nd and 23rd century.
 
-```group|
+```yaml group
 slugs:
   - on-earth
   - power
@@ -77,6 +77,6 @@ Now to the grand finale. The short story, that unveils many details about the
 relation between the two races, the inventions surrounding transspace and all
 their connections.
 
-```teaser|
+```yaml teaser
 slug: the-bond
 ```

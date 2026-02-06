@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Fifth Season
 subTitle: N.K. Jemisin
 description: Reviewing the Hugo Award winning novel by N.K. Jemisin

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Predictions
 description: >-
   Starting in 2023, I created a set of predictions about technology, society,
@@ -31,7 +31,7 @@ All predictions will mention a target year in their title. The first batch has
 originally been created in 2023 with a horizon of ten years, so 2033. I think in
 2026, it's time to give them a fist re-visit and leave some notes.
 
-```group|
+```yaml group
 slugs:
   - augmented-reality
   - tv-shows

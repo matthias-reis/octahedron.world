@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Climate Refugees 2023-2050
 description: Central Europe is the place to be in 50 years. For everyone.
 date: 2023-04-20T00:00:00.000Z

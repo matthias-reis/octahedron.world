@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Worldbuilding
 title: The Hermetic World
 description: >-

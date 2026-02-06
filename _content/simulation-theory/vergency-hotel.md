@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Vergency Hotel
 date: 2024-08-05T00:00:00.000Z
 description:

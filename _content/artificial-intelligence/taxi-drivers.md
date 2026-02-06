@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Taxi Drivers
 description: What's happening to taxi drivers as soon as cars can drive alone?
 date: 2022-06-28T00:00:00.000Z

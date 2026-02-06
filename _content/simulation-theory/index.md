@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Short Story
 title: Simulation Theory
 description: >-
@@ -43,10 +43,10 @@ live in a simulation.
 I have started to develop two stories in that setting but they are at a very
 early stage.
 
-```teaser|
+```yaml teaser
 slug: octahedra
 ```
 
-```teaser|
+```yaml teaser
 slug: vergency-hotel
 ```

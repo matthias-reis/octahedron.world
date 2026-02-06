@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Ringworld
 subTitle: Larry Niven
 description: The 1970 sci-fi classic by Larry Niven

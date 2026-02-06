@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: On Writing
 description: >-
   A lot of texts and short notes cover some of my used principles while writing.

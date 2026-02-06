@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Metropol Parasol Seville
 description: >-
   The Metropol Parasol in Seville captured in black and white, showcasing its

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Elements, Part 1
 title: Earth
 description: The start of a dystopian journey to hell and elysium and back.

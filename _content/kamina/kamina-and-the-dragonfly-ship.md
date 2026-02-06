@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Children's Story
 title: Kamina and the Dragonfly Ship
 description: >-

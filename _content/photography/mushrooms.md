@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Still remember wet and cold?
 description: >-
   A dense cluster of mushrooms rises from the mossy forest floor - their caps

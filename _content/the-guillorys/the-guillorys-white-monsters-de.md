@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Kindergeschichte
 title: Die Guillorys und die weißen Monster
 description: >-

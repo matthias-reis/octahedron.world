@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Picard
 subTitle: The Star Trek Series
 description: >-

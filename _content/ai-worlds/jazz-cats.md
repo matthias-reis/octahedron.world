@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Jazz Cats
 description: >-
   Three cats sit on a wooden counter surrounded by vinyl records and CDs in a

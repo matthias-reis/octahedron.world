@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Worldbuilding
 title: The Mesh - Worldbuilding for a Cyberpunk World
 description:

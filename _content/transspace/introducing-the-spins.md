@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Introducing the SPINs
 description: About joint law enforcement and special units in the Canon
 date: 2024-08-19T00:00:00.000Z

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Political Systems
 description:
   There are two main points of view in ideologies. Individual vs State.

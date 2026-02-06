@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Surgeon
 description: >-
   A job that relies on precision? That's worth a look from machine's

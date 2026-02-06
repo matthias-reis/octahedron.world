@@ -24,10 +24,10 @@ export const MdsTemplate = ({ route }: { route: string }) => {
     <Show when={item()}>
       {(data) => {
         const type = data().type;
-        const raw = data().raw;
+        const mds = data().mds;
         const Renderer = type ? renderers[type] : undefined;
 
-        if (!Renderer || !raw) {
+        if (!Renderer || !mds) {
           return (
             <section class="max-w-4xl mx-auto p-8">
               <h1 class="text-2xl font-bold mb-4">{data().title}</h1>
@@ -38,7 +38,7 @@ export const MdsTemplate = ({ route }: { route: string }) => {
           );
         }
 
-        return <Renderer markdown={raw} />;
+        return <Renderer mds={mds} />;
       }}
     </Show>
   );

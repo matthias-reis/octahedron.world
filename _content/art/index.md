@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Art Pieces
 description: >-
   Photos from the art of others are a second layer of creativity that I enjoy.

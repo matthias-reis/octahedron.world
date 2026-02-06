@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Mesh
 description: >-
   My favourite genre: Cyberpunk. William Gibson, Neal Stephenson and the visual

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Van Der Belt
 description: >-
   The sphere of human life expands into the universe, while some pioneers still

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Tipping Points
 description: The unexpected acceleration of catastrophic climate effects
 date: 2024-09-24T00:00:00.000Z

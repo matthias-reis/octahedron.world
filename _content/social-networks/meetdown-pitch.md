@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Meetdown - A Pitch
 description: >-
   Somethig seems to be missing in the landscape of social networks. So why don't

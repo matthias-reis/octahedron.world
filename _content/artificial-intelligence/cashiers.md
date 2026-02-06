@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Cashiers
 description:
   Will the human factor be removed one day from the supermarket checkout?

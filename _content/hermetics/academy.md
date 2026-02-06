@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Academic Council
 description: Knowledge and Science as one of the pillars of power
 date: 2024-09-04T00:00:00.000Z

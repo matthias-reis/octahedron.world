@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: AI Chauffeur
 description:
   Self driving cars might be the backbone of our future transport system.

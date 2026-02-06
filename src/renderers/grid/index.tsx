@@ -1,5 +1,6 @@
 import { For, JSX, Suspense } from 'solid-js';
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import type { GlobalScope, LocalScope } from './types';
 import { A, createAsync } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons/index';
@@ -10,10 +11,10 @@ import { Loading } from '~/components/loading';
 import { LinkBox } from '~/components/link-box';
 
 export default function createTemplate(props: {
-  markdown: string;
+  mds: HastParseResult;
 }): JSX.Element {
-  const parsed = parse<GlobalScope, LocalScope>(
-    props.markdown,
+  const parsed = transform<GlobalScope, LocalScope>(
+    props.mds,
     canonicalComponents
   );
   const item = parsed.global;

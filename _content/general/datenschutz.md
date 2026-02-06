@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Datenschutzerklärung
 superTitle: Datenschutzerklärung
 group: general

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Next Stop Gibraltar
 description: >-
   A lone palm tree stands on a sandy beach with a bicycle leaning against its

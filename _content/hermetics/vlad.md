@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Short Story
 title: Vlad
 subTitle: The Truth About Dracula

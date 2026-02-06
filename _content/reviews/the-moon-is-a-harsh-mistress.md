@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Moon is a Harsh Mistress
 subTitle: Robert Heinlein
 description: >-

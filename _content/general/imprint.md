@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Imprint
 group: general
 slug: imprint

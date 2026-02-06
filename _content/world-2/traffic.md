@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: World 2
 title: Traffic & Transport
 subTitle: Part Three of the Series About the Climate Crisis

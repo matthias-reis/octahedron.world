@@ -40,6 +40,9 @@ importers:
       firebase-admin:
         specifier: ^13.6.0
         version: 13.6.0
+      hast-mds:
+        specifier: ^0.1.0
+        version: 0.1.0
       hast-util-to-jsx-runtime:
         specifier: ^2.3.6
         version: 2.3.6
@@ -74,8 +77,8 @@ importers:
         specifier: ^1.1.4
         version: 1.1.4(solid-js@1.9.10)
       solid-mds:
-        specifier: ^0.3.2
-        version: 0.3.2(solid-js@1.9.10)
+        specifier: ^0.4.0
+        version: 0.4.0(hast-mds@0.1.0)(solid-js@1.9.10)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.4.0
@@ -92,9 +95,6 @@ importers:
       '@types/js-yaml':
         specifier: ^4.0.9
         version: 4.0.9
-      front-matter:
-        specifier: ^4.0.2
-        version: 4.0.2
       glob:
         specifier: ^13.0.0
         version: 13.0.0
@@ -1466,9 +1466,6 @@ packages:
     resolution: {integrity: sha512-ZcbTaIqJOfCc03QwD468Unz/5Ir8ATtvAHsK+FdXbDIbGfihqh9mrvdcYunQzqn4HrvWWaFyaxJhGZagaJJpPQ==}
     engines: {node: '>= 14'}
 
-  argparse@1.0.10:
-    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
-
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
@@ -2045,9 +2042,6 @@ packages:
     resolution: {integrity: sha512-Rx/WycZ60HOaqLKAi6cHRKKI7zxWbJ31MhntmtwMoaTeF7XFH9hhBp8vITaMidfljRQ6eYWCKkaTK+ykVJHP2A==}
     engines: {node: '>= 0.8'}
 
-  front-matter@4.0.2:
-    resolution: {integrity: sha512-I8ZuJ/qG92NWX8i5x1Y8qyj3vizhXS31OxjKDu3LKP+7/qBgfIKValiZIEwoVoJKUHlhWtYrktkxV1XsX+pPlg==}
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -2161,6 +2155,9 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  hast-mds@0.1.0:
+    resolution: {integrity: sha512-IuWfnJCYZQutOW1Dfa+OdfZltL82DVCZKXCW0Rlb4BALIVRXECf3cAPwcrUz6+mEB0VIUIGOcB+8GWw8D+9c1Q==}
 
   hast-util-from-dom@5.0.1:
     resolution: {integrity: sha512-N+LqofjR2zuzTjCPzyDUdSshy4Ma6li7p/c3pA78uTwzFgENbgbUrm2ugwsOdcjI1muO+o6Dgzp9p8WHtn/39Q==}
@@ -2374,10 +2371,6 @@ packages:
 
   js-tokens@9.0.1:
     resolution: {integrity: sha512-mxa9E9ITFOt0ban3j6L5MpjwegGz6lBQmM1IJkWeBZGcMxto50+eWdjC/52xDbS2vy0k7vIMK0Fe2wfL9OQSpQ==}
-
-  js-yaml@3.14.2:
-    resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
-    hasBin: true
 
   js-yaml@4.1.1:
     resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
@@ -3062,9 +3055,6 @@ packages:
   rehype-react@8.0.0:
     resolution: {integrity: sha512-vzo0YxYbB2HE+36+9HWXVdxNoNDubx63r5LBzpxBGVWM8s9mdnMdbmuJBAX6TTyuGdZjZix6qU3GcSuKCIWivw==}
 
-  rehype-stringify@10.0.1:
-    resolution: {integrity: sha512-k9ecfXHmIPuFVI61B9DeLPN0qFHfawM6RsuX48hoqlaKSF61RskNjSm1lI8PhBEM0MRdLxVVm4WmTqJQccH9mA==}
-
   remark-gfm@4.0.1:
     resolution: {integrity: sha512-1quofZ2RQ9EWdeN34S79+KExV1764+wCUGop5CPL1WGdD0ocPpu91lzPGbwWMECpEpd42kJGQwzRfyov9j4yNg==}
 
@@ -3236,9 +3226,10 @@ packages:
     peerDependencies:
       solid-js: '>=1.4.0'
 
-  solid-mds@0.3.2:
-    resolution: {integrity: sha512-B2G+ePS40nGaZ5pmu2y4doYa5L99D8LxvS1c5IehAq3M0gGx8qKLCeqJlOf3YMkP2jv2Qp3rpBGH91418+HkYQ==}
+  solid-mds@0.4.0:
+    resolution: {integrity: sha512-dJinI/aGRAmd9uF+x8XSvLTrLdCiuJhgDHO3y7tmuU5o6EfCiGUEQElguF2vJfTnwLMWK7eTLAwYiO196Ngl4w==}
     peerDependencies:
+      hast-mds: ^0.1.0
       solid-js: ^1.9.0
 
   solid-refresh@0.6.3:
@@ -3269,9 +3260,6 @@ packages:
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
-
-  sprintf-js@1.0.3:
-    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
   stackframe@1.3.4:
     resolution: {integrity: sha512-oeVtt7eWQS+Na6F//S4kJ2K2VbRlS9D43mAlMyVpVWovy9o+jfgH8O9agzANzaiLjclA0oYzUXEM4PurhSUChw==}
@@ -5026,10 +5014,6 @@ snapshots:
       - bare-abort-controller
       - react-native-b4a
 
-  argparse@1.0.10:
-    dependencies:
-      sprintf-js: 1.0.3
-
   argparse@2.0.1: {}
 
   arrify@2.0.1:
@@ -5587,10 +5571,6 @@ snapshots:
 
   fresh@2.0.0: {}
 
-  front-matter@4.0.2:
-    dependencies:
-      js-yaml: 3.14.2
-
   fsevents@2.3.3:
     optional: true
 
@@ -5775,6 +5755,19 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  hast-mds@0.1.0:
+    dependencies:
+      rehype-katex: 7.0.1
+      remark-gfm: 4.0.1
+      remark-math: 6.0.0
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.2
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+      yaml: 2.8.2
+    transitivePeerDependencies:
+      - supports-color
 
   hast-util-from-dom@5.0.1:
     dependencies:
@@ -6033,11 +6026,6 @@ snapshots:
   js-tokens@4.0.0: {}
 
   js-tokens@9.0.1: {}
-
-  js-yaml@3.14.2:
-    dependencies:
-      argparse: 1.0.10
-      esprima: 4.0.1
 
   js-yaml@4.1.1:
     dependencies:
@@ -7050,12 +7038,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  rehype-stringify@10.0.1:
-    dependencies:
-      '@types/hast': 3.0.4
-      hast-util-to-html: 9.0.5
-      unified: 11.0.5
-
   remark-gfm@4.0.1:
     dependencies:
       '@types/mdast': 4.0.4
@@ -7325,20 +7307,10 @@ snapshots:
     dependencies:
       solid-js: 1.9.10
 
-  solid-mds@0.3.2(solid-js@1.9.10):
+  solid-mds@0.4.0(hast-mds@0.1.0)(solid-js@1.9.10):
     dependencies:
-      rehype-katex: 7.0.1
-      rehype-stringify: 10.0.1
-      remark-gfm: 4.0.1
-      remark-math: 6.0.0
-      remark-parse: 11.0.0
-      remark-rehype: 11.1.2
+      hast-mds: 0.1.0
       solid-js: 1.9.10
-      unified: 11.0.5
-      unist-util-visit: 5.0.0
-      yaml: 2.8.2
-    transitivePeerDependencies:
-      - supports-color
 
   solid-refresh@0.6.3(solid-js@1.9.10):
     dependencies:
@@ -7365,8 +7337,6 @@ snapshots:
   source-map@0.7.6: {}
 
   space-separated-tokens@2.0.2: {}
-
-  sprintf-js@1.0.3: {}
 
   stackframe@1.3.4: {}
 

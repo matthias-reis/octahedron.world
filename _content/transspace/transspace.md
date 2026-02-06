@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Worldbuilding
 title: Transspace Worldbuilding
 description: >-

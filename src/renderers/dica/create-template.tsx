@@ -1,6 +1,7 @@
 import { JSX, Show, For, onMount, createSignal, createEffect } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import type { GlobalScope, LocalScope, StepStatus } from './types';
 import { A, useLocation } from '@solidjs/router';
 import { Page } from './page';
@@ -88,11 +89,12 @@ function mergeSteps(
 }
 
 export default function createTemplate(props: {
-  markdown: string;
+  mds: HastParseResult;
 }): JSX.Element {
-  const markdown = props.markdown;
   const state = {
-    parsed: null as ReturnType<typeof parse<GlobalScope, LocalScope>> | null,
+    parsed: null as ReturnType<
+      typeof transform<GlobalScope, LocalScope>
+    > | null,
   };
   const [stepsStatus, setStepsStatus] = createStore<Record<string, StepStatus>>(
     {}
@@ -168,7 +170,7 @@ export default function createTemplate(props: {
     ),
   };
 
-  const parsed = parse<GlobalScope, LocalScope>(markdown, components);
+  const parsed = transform<GlobalScope, LocalScope>(props.mds, components);
   state.parsed = parsed;
 
   const slug = parsed.global?.slug ?? 'unknown';

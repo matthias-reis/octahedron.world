@@ -2,7 +2,7 @@ import { glob } from 'glob';
 import { join } from 'node:path';
 import { readFile, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
-import { parse } from 'solid-mds';
+import { parse } from 'hast-mds';
 import { ItemMeta } from '~/types';
 
 const read = promisify(readFile);
@@ -24,16 +24,27 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
       continue;
     }
 
-    // Parse with solid-mds
-    const result = parse<ItemMeta, unknown>(raw);
+    // Parse with hast-mds (server-side)
+    const result = parse(
+      raw,
+      new Set([
+        'teaser',
+        'cta',
+        'group',
+        'quest',
+        'note',
+        'calculator',
+        'graphics',
+      ])
+    );
     if (!result.global) {
       console.log(`[CON] ⚠️  No MDS Global Scope found in: ${file}`);
       continue;
     }
 
     const meta: ItemMeta = {
-      ...result.global,
-      raw,
+      ...(result.global as any),
+      mds: result,
     };
 
     if (meta.title) {

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Weird Things
 description: >-
   There are findings, that are weirder than real life and one day might be a
@@ -27,9 +27,9 @@ repeats itself. A glimpse of the unconscious.
 
 So here's the collection now. Perfect to dive into my mind for a while. Enjoy!
 
-```group|
+```yaml group
 slugs:
-- trapdoor
-- puddle
-- somnium
+  - trapdoor
+  - puddle
+  - somnium
 ```

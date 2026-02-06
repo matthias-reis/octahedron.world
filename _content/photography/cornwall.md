@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Cornwall's stunning coastline.
 description: >-
   Cornwall landscape. Sunlit clouds drift across the sky, their reflections

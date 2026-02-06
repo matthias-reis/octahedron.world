@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Juan Muñoz - Centre Pompidou Málaga
 description: >-
   These puppet-like sculptures by Spanish artist Juan Muñoz create a haunting,

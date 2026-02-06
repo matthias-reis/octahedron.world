@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Puppets
 description: Are we the toys for the Hermetic Society?
 date: 2024-07-31T00:00:00.000Z

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Stranded
 description: >-
   A small wooden rowboat rests on a quiet beach under a moody blue sky. The calm

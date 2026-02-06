@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 slug: puddle
 title: Puddle
 type: post

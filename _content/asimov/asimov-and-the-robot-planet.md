@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Children's Story
 title: Asimov - Robot Planet
 description: >-

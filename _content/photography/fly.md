@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Fly
 description: >-
   A small fly rests on a soft petal, showcasing the intricate details of its

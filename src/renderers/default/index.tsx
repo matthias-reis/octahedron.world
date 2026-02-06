@@ -1,4 +1,5 @@
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import { A } from '@solidjs/router';
 import { CalendarDays, ChevronLeft } from 'lucide-solid';
 import dayjs from 'dayjs';
@@ -6,15 +7,17 @@ import { largeImageUrl } from '~/components/image-helpers';
 import { canonicalComponents } from '~/components/canonical-components';
 import type { GlobalScope, LocalScope } from './types';
 import type { JSX } from 'solid-js/jsx-runtime';
+import { Related } from '~/components/related';
+import { ItemMeta } from '~/types';
 
 export default function createTemplate(props: {
-  markdown: string;
+  mds: HastParseResult<GlobalScope, LocalScope>;
 }): JSX.Element {
-  const parsed = parse<GlobalScope, LocalScope>(
-    props.markdown,
+  const parsed = transform<GlobalScope, LocalScope>(
+    props.mds,
     canonicalComponents
   );
-  const item = parsed.global;
+  const item = parsed.global as ItemMeta;
 
   return (
     <div
@@ -100,22 +103,7 @@ export default function createTemplate(props: {
         </div>
       </main>
       <aside class="max-w-4xl mt-5 mx-auto">
-        {/* Related Content */}
-        {item?.related && item.related.length > 0 && (
-          <div class="pt-6 border-t border-decent-300 px-6">
-            <h3 class="text-lg font-bold text-decent-700 mb-4">Related</h3>
-            <div class="flex flex-wrap gap-2">
-              {item.related.map((rel) => (
-                <A
-                  href={`/${rel}`}
-                  class="text-sm text-decent-600 hover:text-saturated-700 underline"
-                >
-                  {rel}
-                </A>
-              ))}
-            </div>
-          </div>
-        )}
+        <Related item={item as ItemMeta} />
       </aside>
     </div>
   );

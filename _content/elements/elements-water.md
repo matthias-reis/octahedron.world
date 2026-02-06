@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Elements, Part 2
 title: Water
 description: >-

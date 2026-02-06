@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Banning the Right Wing Party AfD
 description: >-
   What is the legal framework for banning a party and what would be the

@@ -1,5 +1,6 @@
 import { JSX, Suspense, For } from 'solid-js';
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import { A, createAsync } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons';
 import { smallImageUrl } from '~/components/image-helpers';
@@ -10,10 +11,10 @@ import { Loading } from '~/components/loading';
 import { FrontMatter } from '~/types';
 
 export default function AlbumRenderer(props: {
-  markdown: string;
+  mds: HastParseResult;
 }): JSX.Element {
-  const parsed = parse<FrontMatter, any>(
-    props.markdown,
+  const parsed = transform<FrontMatter, any>(
+    props.mds,
     canonicalComponents as any
   );
 

@@ -1,17 +1,19 @@
 import { JSX } from 'solid-js';
-import { parse } from 'solid-mds';
+import { transform } from 'solid-mds';
+import { HastParseResult } from 'hast-mds';
 import type { GlobalScope, LocalScope } from './types';
 import { A } from '@solidjs/router';
 import { largeImageUrl } from '~/components/image-helpers';
 import { ChevronLeft } from 'lucide-solid/icons/index';
 import { cx } from '~/components/cx';
 import { canonicalComponents } from '~/components/canonical-components';
+import { Related } from '~/components/related';
 
 export default function createTemplate(props: {
-  markdown: string;
+  mds: HastParseResult;
 }): JSX.Element {
-  const parsed = parse<GlobalScope, LocalScope>(
-    props.markdown,
+  const parsed = transform<GlobalScope, LocalScope>(
+    props.mds,
     canonicalComponents
   );
   const item = parsed.global;
@@ -91,22 +93,7 @@ export default function createTemplate(props: {
           ))}
         </div>
 
-        {/* Related Content */}
-        {item?.related && item.related.length > 0 && (
-          <div class="mt-12 pt-6 border-t border-decent-300">
-            <h3 class="text-lg font-bold text-decent-700 mb-4">Related</h3>
-            <div class="flex flex-wrap gap-2">
-              {item.related.map((rel) => (
-                <A
-                  href={`/${rel}`}
-                  class="text-sm text-decent-600 hover:text-saturated-700 underline"
-                >
-                  {rel}
-                </A>
-              ))}
-            </div>
-          </div>
-        )}
+        <Related item={item} />
       </main>
     </div>
   );

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Worldbuilding
 title: Das Fermi Paradoxon
 subTitle: Auf der Suche nach Außerirdischen

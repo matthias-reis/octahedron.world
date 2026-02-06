@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Kindergeschichte
 title: Kamina und die Wassergeister
 description: >-

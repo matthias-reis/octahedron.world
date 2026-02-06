@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Self Driving Cars 2023-2033
 description: When will I order a car and ask it to drive me to the supermarket?
 date: 2023-05-02T00:00:00.000Z

@@ -1,10 +1,11 @@
-```@@|
+```yaml @@
 slug: gestohlene-zeit
 language: de
 ref: stolen-time
 title: Gestohlene Zeit
 description:
-  Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests funktionieren.
+  Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests
+  funktionieren.
 group: dica-club
 image: crime-scene
 tags:
@@ -23,7 +24,7 @@ reveal:
 
 +++fall
 
-```@|
+```yaml @
 title: Der Tatort
 type: page
 weight: 1
@@ -65,7 +66,7 @@ geblieben. Auch die Überwachungskameras zeigen keinerlei verdächtige
 Aktivitäten. Eine Holzempore, die über eine Treppe erreichbar ist weist
 ebenfalls keine offensichtlichen Spuren auf.
 
-```quest/view|
+```yaml quest/view
 ref: fall
 reveal:
   - keine-zeit-verschwenden
@@ -84,7 +85,7 @@ nur dann sichtbar, wenn bestimmte Bedingungen erfüllt sind.
 
 +++keine-zeit-verschwenden
 
-```@|
+```yaml @
 title: Keine Zeit verschwenden
 weight: 2
 type: page
@@ -102,7 +103,7 @@ type: page
 Ich will mir die ersten Sachverhalte notieren und überlege kurz. Wie heißt der
 Saal nochmal, in dem wir uns befinden?
 
-```quest/choice|
+```yaml quest/choice
 ref: keine-zeit-verschwenden
 question: Wie lautet der Name des Saals?
 options:
@@ -130,7 +131,7 @@ Navigationsspalte auf "Der Tatort" und lies nochmal nach.
 
 +++die-webseite
 
-```@|
+```yaml @
 title: Die Webseite
 type: clue
 ```
@@ -170,7 +171,7 @@ Sobald Du dort bist, erscheint sie dann auch in der rechten Navigationsspalte.
 
 +++spuren
 
-```@|
+```yaml @
 title: Die erste Spur
 weight: 1
 type: page
@@ -203,7 +204,7 @@ sein, als die, die hier verschwunden ist.
 Zusammen mit dem Zettel, den Du gefunden hast, ergeben sich nun einige Spuren,
 denen Du folgen musst.
 
-```quest/view|
+```yaml quest/view
 ref: spuren
 reveal:
   - auf-der-webseite
@@ -217,7 +218,7 @@ Wie Du siehst, sind rechts in der Übersicht nun weitere Rätsel aufgetaucht. Du
 
 +++auf-der-webseite
 
-```@|
+```yaml @
 title: Auf der Webseite
 weight: 2
 type: page
@@ -234,7 +235,7 @@ Die gefundene Webseite ist seltsam. Sie zeigt augenscheinlich normale
 Informationen an. Doch weiter unten findest Du eine Liste von Begriffen, die
 eine Art Einstiegscode darstellen. Du musst unbedigt die richtigen finden.
 
-```quest/multiplechoice|
+```yaml quest/multiplechoice
 ref: auf-der-webseite
 question: Welche Begriffe können der Uhrmacherei zugewiesen werden?
 options:
@@ -262,7 +263,7 @@ reveal:
 
 +++zugang
 
-```@|
+```yaml @
 title: Die Unterseite
 type: clue
 reveal:
@@ -287,7 +288,7 @@ das eine Rätsel folgt das nächste.
 Die Seite, die erscheint, enthält nur ein paar seltsame Buchstaben, vermutlich
 ein Passwort:
 
-```note
+```md note
 DRIC
 ```
 
@@ -295,7 +296,7 @@ Am besten Du trägst die Buchstaben in [Dein Notizbuch](#notizbuch) ein.
 
 +++der-zettel
 
-```@|
+```yaml @
 title: Der Zettel
 weight: 2
 type: page
@@ -314,7 +315,7 @@ type: page
 Auf dem Zettel vom Tatort steht neben der Internetadresse, die als Quelle
 genannt wurde auch noch dieses Rätsel:
 
-```note
+```md note
 Um mich zu finden musst Du dieses Rätsel lösen:
 
 Ich bin nicht zu greifen, doch stets um dich herum.
@@ -324,7 +325,7 @@ Ich bin der Begleiter von Sekunden und Stunden – wie nennt man mich?
   Gez. _Der stumme Begleiter_
 ```
 
-```quest/input|
+```yaml quest/input
 ref: der-zettel
 question: Welcher Begriff könnte gesucht werden?
 solution: Zeit
@@ -344,7 +345,7 @@ reveal:
 
 +++enttaeuscht
 
-```@|
+```yaml @
 title: Mehr Spuren
 type: clue
 ```
@@ -374,7 +375,7 @@ sie Dich ja weiter.
 **Aber Halt! Der Zettel hat auch eine Rückseite. Dort hat jemad etwas mit
 Bleistift geschrieben.**
 
-```note
+```md note
 H z. F.
 ```
 
@@ -383,7 +384,7 @@ Komische Buchstabenkombination. Trotzdem unbedingt in
 
 +++die-tatwaffe
 
-```@|
+```yaml @
 title: Die Tatwaffe
 weight: 2
 type: page
@@ -419,7 +420,7 @@ Größe von der Sockelleiste bis unter die Decke. Ein faszinierendes Mural. Die
 kleine Plakette am Fuß des Gemäldes besagt **"Maßstab 1:50"**. Na wenn das nicht
 ausreicht, um die Raumhöhe zu bestimmen.
 
-```quest/number|
+```yaml quest/number
 ref: die-tatwaffe
 question: Wie hoch ist die Decke des Galerieflügels in Zentimeter?
 solution: 660
@@ -434,7 +435,7 @@ reveal:
 
 +++die-empore
 
-```@|
+```yaml @
 title: Die Empore
 type: clue
 ```
@@ -472,7 +473,7 @@ Dann schauen wir uns die Empore mal etwas genauer an.
 Hier, genau hier. Moment. Hier hat jemand etwas ins Geländer geschnitzt. Das
 muss ganz frisch sein. Du erkennst vier Buchstaben:
 
-```note
+```md note
 FRIE
 ```
 
@@ -480,7 +481,7 @@ Am besten Du trägst die Buchstaben in [Dein Notizbuch](#notizbuch) ein.
 
 +++notizbuch
 
-```@|
+```yaml @
 title: Notizbuch
 weight: 3
 type: page
@@ -503,7 +504,7 @@ und Hinweisen findest.
 
 Kleine Hilfe: Am Ende sollten es 3 Wörter sein.
 
-```quest/multitext|
+```yaml quest/multitext
 question:
   Trage hier die Buchstabenkombinationen ein, die Du gefunden hast.
   Du kannst auch auf andere Seiten gehen und wieder hierher zurückkehren um
@@ -529,7 +530,7 @@ reveal:
 
 +++der-name
 
-```@|
+```yaml @
 title: Der Name
 type: page
 ```
@@ -547,7 +548,7 @@ Also nochmal zu den Notizen. Ich habe hier alle Textfetzen, die ich bisher
 gefunden habe eingetragen. Ich denke wir sollten jetzt schon einiges an Material
 haben. Drei seltsame Buchstabenkombinationen:
 
-```note
+```md note
 DRIC
 
 H z. F.
@@ -555,7 +556,7 @@ H z. F.
 FRIE
 ```
 
-```quest/input|
+```yaml quest/input
 ref: der-name
 weight: 3
 question: Was könnten diese Buchstaben in der richtigen Reihenfolgeergeben?
@@ -571,7 +572,7 @@ reveal:
 
 +++verdaechtig
 
-```@|
+```yaml @
 title: Der Hauptverdächtige
 type: clue
 ```
@@ -589,7 +590,7 @@ Ein paar Dinge gilt es offensichtlich noch zu klären.
 
 +++familienfoto
 
-```@|
+```yaml @
 title: Fragen über Fragen
 weight: 3
 type: page
@@ -613,7 +614,7 @@ schon mal selbst einen Blick darauf.
 Aber Moment, was ist das? Ich schnappe mir eine Lupe uns sehe mir ein Detail
 genauer an.
 
-```quest/imagemap|
+```yaml quest/imagemap
 ref: familienfoto
 image: brothers
 spot: [47, 59.5]
@@ -635,7 +636,7 @@ Schau genau über das Bild. Der eine Bruder hat etwas in der Hand.
 
 +++rueckseite
 
-```@|
+```yaml @
 title: Rückseite des Fotos
 type: clue
 ```
@@ -646,7 +647,7 @@ Bild, nachdem er es kurz untersucht hatte.
 "Hier ist etwas auf der Rückseite", sagte er. "Ein Text mit Bleistift
 geschrieben. **'ENTERBT'** in Großbuchstaben."
 
-```note
+```md note
 ENTERBT
 ```
 
@@ -668,7 +669,7 @@ Wieso habe ich ihn Watson genannt? Keine Ahnung.
 
 +++pinnwand
 
-```@|
+```yaml @
 title: Die Pinnwand
 weight: 2
 type: page
@@ -689,7 +690,7 @@ Dame an der Rezeption.
 Zürich auf einem Uhrmacherkongress. Er ist nämlich selbst Uhrmacher. Hier an der
 Pinnwand hängen seine Postkarten. Drei Stück hat er verschickt."
 
-```quest/imagemapmulti|
+```yaml quest/imagemapmulti
 ref: pinnwand
 image: pinboard
 spots:
@@ -714,7 +715,7 @@ Finde einfach die Motive, die zur Schweiz passen.
 
 +++verhoere
 
-```@|
+```yaml @
 title: Verhöre
 weight: 1
 type: page
@@ -743,7 +744,7 @@ Wir kommen nicht weiter. Wir müssen die Zeugen befragen. Ich schnappe mir Brude
 Hieronymus. Meine Kollegin versucht bereits, den Bruder im Hotel in Zürich zu
 erreichen.
 
-```quest/view|
+```yaml quest/view
 ref: verhoere
 reveal:
   - hieronymus
@@ -758,7 +759,7 @@ Zudem ist diesmal schoon das nächste Rätsel freigeschaltet worden.
 
 +++hieronymus
 
-```@|
+```yaml @
 title: Gespräch mit Hieronymus zu Feuerbach
 type: clue
 ```
@@ -805,12 +806,12 @@ verkauft von Zeit zu Zeit seine Modelle für sehr viel Geld."
 
 +++friedrich
 
-```@|
+```yaml @
 title: Telefonprotokoll mit Friedrich zu Feuerbach
 type: clue
 ```
 
-```note
+```md note
 **KOK Berger:** Guten Tag, hier spricht Kommissarin Berger. Ich rufe vom Museum Ihres Bruder aus an.
 
 **FzF:** Ja, guten Tag. Wie kann ich Ihnen helfen?
@@ -833,7 +834,7 @@ Friedrich zu Feuerbach.
 
 +++geometrie
 
-```@|
+```yaml @
 title: Die Geometrie des Pendels
 weight: 3
 type: page
@@ -867,7 +868,7 @@ Was wenn er es nicht fallen ließ, sondern als geschickter Uhrmacher eine
 Mechanik baute. Wir sollten die Wand dahinter prüfen. Aber wo genau? Führen wir
 das Pendel weiter.
 
-```quest/imagemapprecision|
+```yaml quest/imagemapprecision
 ref: geometrie
 question: An welcher Stelle könnte sich hinter der Wand ein Hohlraum befinden?
 image: geometry
@@ -886,7 +887,7 @@ Dann solltest Du auf die Wand treffen.
 
 +++loesung
 
-```@|
+```yaml @
 title: Wir lösen auf
 type: clue
 subtype: solution

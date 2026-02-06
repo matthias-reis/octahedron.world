@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Children's Story
 title: Sandfuss P.I.
 description: An animalic short story

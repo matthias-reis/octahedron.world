@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Report
 title: The Pylons
 description: >-

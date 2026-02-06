@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Old Man's War
 subTitle: John Scalzi
 description: >-

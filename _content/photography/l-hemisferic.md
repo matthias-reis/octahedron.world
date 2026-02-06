@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: L’Hemisfèric
 description: >-
   Under the night sky, the futuristic form of L’Hemisfèric is highlighted by

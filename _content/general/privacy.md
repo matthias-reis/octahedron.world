@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Privacy Policy
 superTitle: Datenschutzerklärung (DE)
 group: general

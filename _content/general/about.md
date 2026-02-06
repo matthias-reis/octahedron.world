@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: About Octahedron World
 superTitle: Author, Motivation and Used Technology
 group: general

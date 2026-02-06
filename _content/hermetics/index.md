@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: Worldbuilding
 title: Hermetics
 description: >-
@@ -31,7 +31,7 @@ started sketching out its details.
 You can look into those drafts here in the following article to start immersing
 into this world just like I did at that time:
 
-```teaser|
+```yaml teaser
 slug: hermetics-worldbuilding
 ```
 
@@ -47,7 +47,7 @@ publishing house.
 **And did I mention the landing web page, where you can buy your own physical
 copy?**
 
-```cta|
+```yaml cta
 url: https://amreis.de/
 text: Visit amreis.de
 ```
@@ -58,14 +58,14 @@ is mingling with the magical elements.
 
 Here's another full blown short story set in the same universe:
 
-```teaser|
+```yaml teaser
 slug: vlad
 ```
 
 Finally, here are some further thought and deep dives. This area might grow over
 time
 
-```group|
+```yaml group
 slugs:
   - puppets
   - academy

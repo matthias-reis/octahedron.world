@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Root
 description: Root, the most important node in the mesh
 date: 2024-08-20T00:00:00.000Z

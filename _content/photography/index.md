@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Photography
 description: >-
   Real world photos here. Favourite images taken with my Sony Alpha, my old

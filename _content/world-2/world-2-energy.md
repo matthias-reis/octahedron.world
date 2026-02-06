@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 superTitle: World 2
 title: Energy & Dimensions
 subTitle: Part One of the Series About the Climate Crisis
@@ -122,7 +122,7 @@ zero - carbon neutral - after 2050.
 Divided by 30 and the average expected population of 8,73 billion people, this
 makes 1,6 tons per year for every one of us. This is my new reference.
 
-```graphics|
+```yaml graphics
 
 ```
 
@@ -133,7 +133,7 @@ Now this is a value we can work with. We have a budget and we can put everything
 in relation to the budget. So I've decided to create a small calculator that
 spits out memes with chart graphics. Here we go.
 
-```calculator|
+```yaml calculator
 variant: budget
 ```
 
@@ -149,7 +149,7 @@ candidate in this list, who's emissions are rising.
 
 To get used to this metric, let's do some more comparisons.
 
-```calculator|
+```yaml calculator
 variant: coal
 ```
 
@@ -177,7 +177,7 @@ politicians.**
 
 Let's look at another example:
 
-```calculator|
+```yaml calculator
 variant: flights
 ```
 

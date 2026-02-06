@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: PCSC One
 description: >-
   All my music votes in one place. Over 10.000 datapoints, ratings on songs,
@@ -14,6 +14,6 @@ tags:
   - Statistics
 group: pcsc
 slug: pcsc-one
-layout: none
+type: none
 image: pcsc-blue
----
+```

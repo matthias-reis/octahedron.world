@@ -1,4 +1,5 @@
 import { Options } from 'hast-util-to-jsx-runtime';
+import { HastParseResult } from 'hast-mds';
 
 export type ItemMeta = {
   slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
@@ -25,7 +26,7 @@ export type ItemMeta = {
   hidden?: boolean;
   colorSpace?: string;
   weight?: number;
-  raw: string; // Raw markdown content for MDS rendering
+  mds: HastParseResult; // Parsed MDS structure for rendering
 };
 
 export type CompactItemMeta = Pick<

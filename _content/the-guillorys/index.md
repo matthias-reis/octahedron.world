@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: The Guillorys
 description: >-
   A series of children's tales. This time with a family of mouse superheroes.
@@ -23,7 +23,7 @@ weight: 0
 This series for children is still at a very early stage. There's only one story
 and it's also still in the making, not even half finished.
 
-```teaser|
+```yaml teaser
 slug: the-guillorys-white-monsters
 ```
 

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Asimov
 description: >-
   My first story for children. The only staring info was that it should be
@@ -24,12 +24,12 @@ set and then evolved around the idea that a boy from earth can talk to him.
 For now there's just this first story, but I'm sure this world has more than one
 to offer.
 
-```teaser|
+```yaml teaser
 slug: asimov-robot-planet
 ```
 
 As it was for my little nephew, I also have it in german.
 
-```teaser|
+```yaml teaser
 slug: asimov-planet-der-roboter
 ```

@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: Federated Social Networks
 description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the
@@ -261,31 +261,26 @@ differences are so huge, a bit up or down doesn’t make a difference, it’s ju
 to get a feeling about the activity on the networks)
 
 - **Instagram**:
-
   - Total Users: ~2 billion
   - Weekly Active Users (WAU): ~1.4 billion (est.)
   - Daily Active Users (DAU): ~400 million (est.)
 
 - **TikTok**:
-
   - Total Users: ~1.58 billion
   - Weekly Active Users (WAU): ~1.1 billion (est.)
   - Daily Active Users (DAU): ~700 million (est.)
 
 - **X (formerly Twitter)**:
-
   - Total Users: ~650 million
   - Weekly Active Users (WAU): ~400 million (est.)
   - Daily Active Users (DAU): 240–300 million
 
 - **Bluesky**:
-
   - Total Users: ~35 million
   - Weekly Active Users (WAU): ~19.4 million
   - Daily Active Users (DAU): ~5.2 million
 
 - **Mastodon**:
-
   - Total Users: ~9.5 million
   - Weekly Active Users (WAU): ~1 million (est.)
   - Daily Active Users (DAU): ~150,000 (est.)

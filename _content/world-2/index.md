@@ -1,4 +1,4 @@
-```@@|
+```yaml @@
 title: World 2
 description: >-
   A second earth? No, we don't need that, right? We can still save ours. But do
@@ -41,28 +41,28 @@ x toms of CO2" means. Even for me as someone who likes numbers and data, this
 was very helpful. It also covers many interesting facts on the topic of global
 energy consumptions
 
-```teaser|
+```yaml teaser
 slug: world-2-energy
 ```
 
 A second column of CO2 emissions comes from the transport sector. I also looked
 into that in more detail.
 
-```teaser|
+```yaml teaser
 slug: world-2-traffic
 ```
 
 And the third column is agriculture, food and our diet. We often tend to forget
 that when talking about the climate crisis. So here are those details.
 
-```teaser|
+```yaml teaser
 slug: world-2-vegan
 ```
 
 I've also found some more text circling around that topic over and over again
 and I'm sure I will return to it in the future.
 
-```group|
+```yaml group
 slugs:
   - big-city-life
   - tipping-points
@@ -82,7 +82,7 @@ As a result from time to time I want to dive deeper into the mechanics behins
 those movements and what you could do agains it. So if you're interested, here's
 a current list.
 
-```group|
+```yaml group
 slugs:
   - labour-day
   - political-systems
