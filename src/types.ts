@@ -26,8 +26,14 @@ export type ItemMeta = {
   hidden?: boolean;
   colorSpace?: string;
   weight?: number;
+  words?: number;
+  chars?: number;
   mds: HastParseResult; // Parsed MDS structure for rendering
 };
+
+export type GlobalScope = Omit<ItemMeta, 'mds'>;
+
+export type LocalScope = Record<string, never>;
 
 export type CompactItemMeta = Pick<
   ItemMeta,

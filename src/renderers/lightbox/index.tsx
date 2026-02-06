@@ -1,21 +1,54 @@
 import { JSX } from 'solid-js';
 import { transform } from 'solid-mds';
 import { HastParseResult } from 'hast-mds';
-import type { GlobalScope, LocalScope } from './types';
-import { A } from '@solidjs/router';
+import type { GlobalScope } from '~/types';
+import { A, createAsync, useNavigate } from '@solidjs/router';
 import { largeImageUrl } from '~/components/image-helpers';
 import { cx } from '~/components/cx';
 import dayjs from 'dayjs';
 import { canonicalComponents } from '~/components/canonical-components';
+import { getAllCompactRoutes } from '~/model/model';
+import { createEffect, onCleanup } from 'solid-js';
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global;
+  const navigate = useNavigate();
+  const routes = createAsync(() => getAllCompactRoutes());
+
+  createEffect(() => {
+    const allRoutes = routes();
+    if (!allRoutes || !item?.group || !item?.slug) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        navigate(`/${item.group}`);
+        return;
+      }
+
+      const siblings = Object.values(allRoutes).filter((r) => {
+        console.log(r.group, item.group, r);
+        return r.group === item.group && r.type === 'lightbox';
+      });
+
+      const currentIndex = siblings.findIndex((r) => r.slug === item.slug);
+
+      if (e.key === 'ArrowLeft') {
+        if (currentIndex > 0) {
+          navigate(`/${siblings[currentIndex - 1].slug}`);
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (currentIndex < siblings.length - 1) {
+          navigate(`/${siblings[currentIndex + 1].slug}`);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    onCleanup(() => window.removeEventListener('keydown', handleKeyDown));
+  });
 
   return (
     <div

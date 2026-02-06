@@ -1,7 +1,7 @@
 import { For, JSX, Suspense } from 'solid-js';
 import { transform } from 'solid-mds';
 import { HastParseResult } from 'hast-mds';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 import { A, createAsync } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons/index';
 import { largeImageUrl } from '~/components/image-helpers';
@@ -11,12 +11,9 @@ import { Loading } from '~/components/loading';
 import { LinkBox } from '~/components/link-box';
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global;
   const routes = createAsync(() => getAllCompactRoutes());
 

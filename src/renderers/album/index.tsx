@@ -8,15 +8,12 @@ import { getAllCompactRoutes } from '~/model/model';
 import { cx } from '~/components/cx';
 import { canonicalComponents } from '~/components/canonical-components';
 import { Loading } from '~/components/loading';
-import { FrontMatter } from '~/types';
+import { GlobalScope } from '~/types';
 
 export default function AlbumRenderer(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<FrontMatter, any>(
-    props.mds,
-    canonicalComponents as any
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
 
   const item = parsed.global;
   const routes = createAsync(() => getAllCompactRoutes());

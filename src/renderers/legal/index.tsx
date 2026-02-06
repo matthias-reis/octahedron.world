@@ -4,15 +4,12 @@ import { HastParseResult } from 'hast-mds';
 import { A } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid/icons/index';
 import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global;
 
   return (

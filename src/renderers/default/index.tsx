@@ -5,18 +5,15 @@ import { CalendarDays, ChevronLeft } from 'lucide-solid';
 import dayjs from 'dayjs';
 import { largeImageUrl } from '~/components/image-helpers';
 import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 import type { JSX } from 'solid-js/jsx-runtime';
 import { Related } from '~/components/related';
 import { ItemMeta } from '~/types';
 
 export default function createTemplate(props: {
-  mds: HastParseResult<GlobalScope, LocalScope>;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global as ItemMeta;
 
   return (
