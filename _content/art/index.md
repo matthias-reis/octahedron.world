@@ -5,10 +5,10 @@ description: >-
   It's an interpretation of the image, the street art piece or the sculpture.
 date: 2025-05-01T00:00:00.000Z
 tags:
-  - Midjourney
-  - DALL·E
-  - AI Art
-  - Nano Banana
+  - Museum
+  - Art Gallery
+  - Street Art
+  - Sculpture
 group: art
 root: true
 slug: art
