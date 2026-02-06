@@ -44,6 +44,9 @@ export default function createTemplate(props: {
       {item?.date && (
         <p class="uppercase text-center text-xs text-decent-600 tracking-wider"></p>
       )}
+      <div class="max-w-2xl mx-auto px-3 py-7 text-decent-600">
+        {item?.description}
+      </div>
 
       {/* Render any MDS content steps */}
       <div class="max-w-3xl mx-auto px-3 py-7">
