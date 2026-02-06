@@ -1,38 +1,32 @@
 import { Options } from 'hast-util-to-jsx-runtime';
-import { Component, JSX, ParentComponent } from 'solid-js';
-
-export type FrontMatter = {
-  title: string;
-  superTitle?: string;
-  subTitle?: string;
-  group: string; // new grouping. E.g. 'hermetics'
-  slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
-  alias?: string; // old url
-  type?: string; // MDS renderer type (e.g., 'post', 'storyline', 'lightbox', etc.)
-  description?: string | string[];
-  startDate?: string;
-  date?: string;
-  tags?: string[];
-  related?: string[]; // careful they need to change as well
-  ref?: string; // careful they need to change as well
-  language?: 'en' | 'de'; // default en
-  unfinished?: boolean;
-  hidden?: boolean;
-  root?: boolean;
-  colorSpace?: string;
-  weight?: number;
-  image: string; // mandatory from now on
-};
-
-export type Sec = { type: string; payload?: string };
 
 export type ItemMeta = {
-  sections: Sec[];
-  words: number;
-  chars: number;
-  raw?: string; // Raw markdown content for MDS rendering
+  slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
+  alias?: string; // old url
+  group: string; // new grouping. E.g. 'hermetics'
   type?: string; // MDS renderer type
-} & FrontMatter;
+  // titles //
+  superTitle?: string;
+  title: string;
+  subTitle?: string;
+  description?: string | string[];
+  image: string; // mandatory from now on
+  // dates //
+  startDate?: string;
+  date?: string;
+  // references //
+  tags?: string[];
+  language?: 'en' | 'de'; // default en
+  ref?: string; // careful they need to change as well
+  related?: string[]; // careful they need to change as well
+  // flags //
+  unfinished?: boolean;
+  root?: boolean;
+  hidden?: boolean;
+  colorSpace?: string;
+  weight?: number;
+  raw: string; // Raw markdown content for MDS rendering
+};
 
 export type CompactItemMeta = Pick<
   ItemMeta,
@@ -57,7 +51,5 @@ export type TagMeta = {
 export type DynamicPageProps = {
   params: Promise<{ slug?: string[]; tag?: string }>;
 };
-
-export type Plugin = Component<Sec & { wrapper?: ParentComponent }>;
 
 export type HtmlComponents = Options['components'];

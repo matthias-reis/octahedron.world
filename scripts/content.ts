@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { readFile, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
 import { parse } from 'solid-mds';
-import { FrontMatter, ItemMeta } from '~/types';
+import { ItemMeta } from '~/types';
 
 const read = promisify(readFile);
 
@@ -25,17 +25,14 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
     }
 
     // Parse with solid-mds
-    const result = parse(raw);
+    const result = parse<ItemMeta, unknown>(raw);
     if (!result.global) {
-      console.log(`[CON] ⚠️  No frontmatter found in: ${file}`);
+      console.log(`[CON] ⚠️  No MDS Global Scope found in: ${file}`);
       continue;
     }
 
     const meta: ItemMeta = {
-      ...(result.global as FrontMatter),
-      sections: [],
-      words: 0,
-      chars: 0,
+      ...result.global,
       raw,
     };
 
