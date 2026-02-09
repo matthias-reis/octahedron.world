@@ -381,11 +381,11 @@ preparations.
 
 Being connected to the monitoring systems was something Mijk had gotten used to.
 During the last year they had performed a total of eight test flights, reaching
-each time the maximum acceleration of 8 R—eight times his body-weight on Racoon.
-Over 400 kg pressed onto the body in those moments. Now he would face that
-again. The main difference this time was the duration. With two short breaks
-every four hours, they would have to endure this strain for the next twelve
-hours.
+each time the maximum acceleration of 8 R, eight times his body-weight on
+Racoon. Over 400 kg pressed onto the body in those moments. Now he would face
+that again. The main difference this time was the duration. With two short
+breaks every four hours, they would have to endure this strain for the next
+twelve hours.
 
 At first, however, they would transition through a phase of weightlessness. The
 rotors that generated gravity were switched off now. He noticed how he became

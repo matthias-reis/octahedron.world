@@ -2,9 +2,17 @@ import { JSX } from 'solid-js';
 
 export const Typography = {
   h1: (props: any) => (
-    <h3 class="text-4xl font-octa font-bold mb-6" {...props} />
+    <h3
+      class="text-4xl text-decent-600 font-octa font-bold mt-7 mb-6"
+      {...props}
+    />
   ),
-  h2: (props: any) => <h4 class="text-xl font-octa mt-5 mb-4" {...props} />,
+  h2: (props: any) => (
+    <h4
+      class="text-3xl text-decent-600 font-bold font-octa mt-5 mb-4"
+      {...props}
+    />
+  ),
   p: (props: any) => <p class="my-2 leading-relaxed" {...props} />,
   ul: (props: any) => <ul class="list-disc list-outside ml-6" {...props} />,
   ol: (props: any) => <ol class="list-decimal list-outside ml-6" {...props} />,

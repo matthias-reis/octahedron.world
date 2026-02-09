@@ -4,17 +4,14 @@ import { A } from '@solidjs/router';
 import { ChevronLeft } from 'lucide-solid';
 import { largeImageUrl } from '~/components/image-helpers';
 import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 import type { JSX } from 'solid-js/jsx-runtime';
 import { Related } from '~/components/related';
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global;
 
   return (
@@ -96,7 +93,7 @@ export default function createTemplate(props: {
         </div>
 
         {/* Related Content */}
-        <Related item={item} />
+        {item && <Related item={item} />}
       </main>
     </div>
   );

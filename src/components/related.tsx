@@ -4,9 +4,9 @@ import { getAllCompactRoutes } from '~/model/model';
 import { Loading } from './loading';
 import { LinkBox } from './link-box';
 import { cx } from './cx';
-import { ItemMeta } from '~/types';
+import { GlobalScope } from '~/types';
 
-export const Related: Component<{ item: ItemMeta }> = ({ item }) => {
+export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
   const items = createAsyncStore(() => getAllCompactRoutes());
 
   return (

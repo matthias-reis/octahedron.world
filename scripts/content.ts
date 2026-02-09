@@ -35,6 +35,7 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         'note',
         'calculator',
         'graphics',
+        'spacetravel',
       ])
     );
     if (!result.global) {
