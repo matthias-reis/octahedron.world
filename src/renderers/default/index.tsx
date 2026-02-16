@@ -38,20 +38,20 @@ export default function createTemplate(props: {
           )}
           <A
             href={`/${item?.group}`}
-            class="absolute top-3 left-3 xl:static flex items-center justify-start xl:justify-end xl:mt-7 text-decent-900 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
+            class="absolute top-3 left-3 xl:static flex items-center justify-start xl:justify-end xl:mt-7 text-cad2 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
           >
             <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
           </A>
         </div>
         <div class="xl:pt-7 px-6 pb-7 xl:pl-0">
           {item?.superTitle && (
-            <p class="uppercase text-cad5 mb-3">{item.superTitle}</p>
+            <p class="uppercase text-can5 mb-3">{item.superTitle}</p>
           )}
           <h1 class="text-6xl text-cad2 font-octa font-bold text-balance">
             {item?.title}
           </h1>
           {item?.subTitle && (
-            <p class="text-lg text-cad5 text-right">{item.subTitle}</p>
+            <p class="text-lg text-can5 text-right">{item.subTitle}</p>
           )}
           {item?.description && (
             <p class="xl:hidden text-lg font-sans text-cad4 w-3/4 text-balance">
@@ -61,7 +61,7 @@ export default function createTemplate(props: {
             </p>
           )}
           {item?.date && (
-            <p class="flex items-center text-cad5 mt-6 mb-7 gap-2 text-sm">
+            <p class="flex items-center text-can5 mt-6 mb-7 gap-2 text-sm">
               <CalendarDays />{' '}
               <span>{dayjs(item.date).format('YYYY-MM-DD')}</span>
               {item.words && (

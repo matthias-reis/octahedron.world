@@ -2,7 +2,7 @@
 title: Developers
 description: Are software engineers optimizing themselves away one day?
 date: 2022-07-28T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

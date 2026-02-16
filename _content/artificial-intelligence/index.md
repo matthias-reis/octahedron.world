@@ -6,7 +6,7 @@ description: >-
   it's also clear that all assumptions are outdated a week after the idea
   already because the field is moving so fast.
 date: 2025-05-01T00:00:00.000Z
-colorSpace: cyan
+colorSpace: petrol
 tags:
   - Robots
   - AI

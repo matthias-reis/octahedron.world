@@ -3,7 +3,7 @@ title: Construction Worker
 description:
   But the things you have to build with your bare hands should be safe, right?
 date: 2022-12-29T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

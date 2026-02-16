@@ -3,7 +3,7 @@ title: Cashiers
 description:
   Will the human factor be removed one day from the supermarket checkout?
 date: 2022-06-06T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

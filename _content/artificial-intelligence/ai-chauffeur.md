@@ -3,7 +3,7 @@ title: AI Chauffeur
 description:
   Self driving cars might be the backbone of our future transport system.
 date: 2024-08-02T00:00:00.000Z
-colorSpace: orange
+colorSpace: tangerine
 tags:
   - Climate Crisis
   - Cars

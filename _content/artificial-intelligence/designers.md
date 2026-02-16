@@ -2,7 +2,7 @@
 title: Designers
 description: Dall-E and Midjourney take over many art direction tasks already.
 date: 2022-06-14T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

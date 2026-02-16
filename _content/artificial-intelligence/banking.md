@@ -4,7 +4,7 @@ description: >-
   Algorithms rule investment for decades already, so where's the place for human
   brain?
 date: 2022-11-21T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

@@ -3,7 +3,7 @@ title: Judges
 description:
   Objectivity. A goal that notoriously biased humans may never achieve.
 date: 2023-04-11T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market

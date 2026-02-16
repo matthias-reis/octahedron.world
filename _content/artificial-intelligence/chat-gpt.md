@@ -3,7 +3,7 @@ title: ChatGPT
 description:
   Special topic about the rise of large language models and their impact
 date: 2022-12-06T00:00:00.000Z
-colorSpace: none
+colorSpace: sky
 tags:
   - AI
   - Job Market
