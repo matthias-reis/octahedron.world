@@ -4,7 +4,7 @@ title: The Hermetic World
 description: >-
   Let's dive into the worldbuilding of a fantasy story that circles around
   magicians. We have even created a novel out of it.
-colorSpace: sky
+colorSpace: berry
 start: 2022-05-25T00:00:00.000Z
 end: 2022-11-14T00:00:00.000Z
 related:
@@ -21,7 +21,7 @@ tags:
 group: hermetics
 alias: storylines/hermetics
 slug: hermetics-worldbuilding
-type: storyline
+type: report
 image: hermetics
 ```
 

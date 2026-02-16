@@ -20,6 +20,7 @@ type: digest
 image: hermetics
 root: true
 weight: 3
+colorSpace: berry
 ```
 
 My wifes and my biggest writing endeavour was our novel "Die Hermetiker". Around

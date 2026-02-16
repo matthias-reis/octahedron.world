@@ -4,7 +4,7 @@ title: Kamina and the Dragonfly Ship
 description: >-
   Little Kamina is always drawn into phantastic adventures. This time she jumps
   into a steampunk world with a lot of surprises.
-colorSpace: orange
+colorSpace: tangerine
 slug: kamina-and-the-dragonfly-ship
 language: en
 ref: kamina-und-das-libellenschiff

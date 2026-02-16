@@ -4,7 +4,7 @@ title: Kamina und die Wassergeister
 description: >-
   Genau wie Alice, wird die kleine Kamina in einen Kaninchenbau gezogen und
   findet sich in einem fantastischen Abenteuer wieder ... unter Wasser.
-colorSpace: red
+colorSpace: carmine
 language: de
 ref: kamina-and-the-water-spirits
 image: kamina-1

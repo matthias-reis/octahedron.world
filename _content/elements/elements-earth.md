@@ -2,7 +2,7 @@
 superTitle: Elements, Part 1
 title: Earth
 description: The start of a dystopian journey to hell and elysium and back.
-colorSpace: tan
+colorSpace: lemon
 startDate: 2022-09-20T00:00:00.000Z
 date: 2023-10-31T00:00:00.000Z
 tags:

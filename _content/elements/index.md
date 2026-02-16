@@ -5,7 +5,7 @@ description: >-
   of four short stories forming the four elements Earth, Water, Fire and Wind.
   We follow a group going on a wild roadtrip to hell and back.
 date: 2025-05-01T00:00:00.000Z
-colorSpace: cyan
+colorSpace: berry
 tags:
   - Demons
   - Angels

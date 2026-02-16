@@ -5,7 +5,7 @@ description: >-
   Die kleine Kamina wird immer wieder in phantastische Abenteuer hineingezogen.
   Diesmal gerät sie in eine Steampunk-Welt, in der Überraschungen an jeder Ecke
   lauern.
-colorSpace: orange
+colorSpace: tangerine
 language: de
 ref: kamina-and-the-dragonfly-ship
 image: kamina-2
