@@ -31,4 +31,5 @@ superTitle: Art
 slug: banksy-home-sweet-home-vandalised-oil
 type: lightbox
 image: banksy-home-sweet-home-vandalised-oil
+colorSpace: wood
 ```

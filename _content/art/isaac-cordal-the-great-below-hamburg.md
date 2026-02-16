@@ -28,4 +28,5 @@ superTitle: Art
 slug: isaac-cordal-the-great-below-hamburg
 type: lightbox
 image: isaac-cordal-the-great-below-hamburg
+colorSpace: carmine
 ```

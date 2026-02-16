@@ -29,4 +29,5 @@ superTitle: Art
 slug: black-metal-band
 type: lightbox
 image: black-metal-band
+colorSpace: lemon
 ```

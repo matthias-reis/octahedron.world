@@ -19,7 +19,7 @@ export default function App() {
             <>
               <Nav />
               <Suspense>
-                <div class="bg-neutral-100">
+                <div class="bg-cb">
                   {props.children}
                   <Footer />
                 </div>

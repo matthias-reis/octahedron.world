@@ -30,4 +30,5 @@ superTitle: Art
 slug: studio-65-gufram-marilyn-bocca-sofa
 type: lightbox
 image: studio-65-gufram-marilyn-bocca-sofa
+colorSpace: carmine
 ```

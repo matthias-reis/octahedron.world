@@ -5,7 +5,7 @@ import { LanguageSwitcher } from './language-switcher';
 export const Footer = () => {
   const { t } = useI18n();
   return (
-    <footer class="w-full bg-neutral-100 text-neutral-500 text-center py-4 mt-8 text-sm">
+    <footer class="w-full bg-can9 text-can4 text-center py-4 mt-8 text-sm">
       <p>
         &copy; 2022 - {new Date().getFullYear()} Octahedron World / Matthias
         Reis. {t('footer.copyright')}

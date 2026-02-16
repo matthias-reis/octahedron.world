@@ -48,16 +48,20 @@ export default function Page() {
   return (
     <div class="bg-decent-100">
       <div class="max-w-4xl mx-auto">
-        {['petrol', 'berry', 'carmine', 'sky', 'wood', 'tangerine'].map(
-          (color) => (
-            <div class={`${color}`}>
-              <div class="bg-cas6 text-can2 text-2xl font-bold p-2">
-                {color}
-              </div>
-              <Variants />
-            </div>
-          )
-        )}
+        {[
+          'petrol',
+          'berry',
+          'carmine',
+          'sky',
+          'wood',
+          'tangerine',
+          'lemon',
+        ].map((color) => (
+          <div class={`${color}`}>
+            <div class="bg-cas6 text-can2 text-2xl font-bold p-2">{color}</div>
+            <Variants />
+          </div>
+        ))}
       </div>
     </div>
   );

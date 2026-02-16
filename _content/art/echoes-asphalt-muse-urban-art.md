@@ -27,4 +27,5 @@ superTitle: Art
 slug: echoes-asphalt-muse-urban-art
 type: lightbox
 image: echoes-asphalt-muse-urban-art
+colorSpace: lemon
 ```

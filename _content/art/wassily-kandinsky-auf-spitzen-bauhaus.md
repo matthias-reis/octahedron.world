@@ -9,6 +9,7 @@ description: >-
   structure that reflects Kandinsky's fascination with the synesthetic 
   relationship between art and music.
 date: 2026-02-06T17:05:00.000Z
+colorSpace: lemon
 tags:
   - WassilyKandinsky
   - Bauhaus

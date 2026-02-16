@@ -27,4 +27,5 @@ superTitle: Art
 slug: doppeldenk-flamingo-neon-hamburg
 type: lightbox
 image: doppeldenk-flamingo-neon-hamburg
+colorSpace: berry
 ```

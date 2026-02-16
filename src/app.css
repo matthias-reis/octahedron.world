@@ -111,61 +111,14 @@
   --color-cbn7: oklch(var(--l-7) var(--s-n) var(--h-b));
   --color-cbn8: oklch(var(--l-8) var(--s-n) var(--h-b));
   --color-cbn9: oklch(var(--l-9) var(--s-n) var(--h-b));
-
+  /* 
   --color-neutral-100: hsl(var(--hue), 4%, 0%);
-  --color-neutral-150: hsl(var(--hue), 4%, 3%);
-  --color-neutral-200: hsl(var(--hue), 4%, 6%);
-  --color-neutral-300: hsl(var(--hue), 4%, 18%);
-  --color-neutral-400: hsl(var(--hue), 4%, 35%);
-  --color-neutral-500: hsl(var(--hue), 4%, 50%);
-  --color-neutral-600: hsl(var(--hue), 4%, 65%);
-  --color-neutral-700: hsl(var(--hue), 4%, 82%);
-  --color-neutral-800: hsl(var(--hue), 4%, 94%);
-  --color-neutral-900: hsl(var(--hue), 4%, 100%);
-
   --color-neutral-complement-100: hsl(var(--hue-complement), 4%, 0%);
-  --color-neutral-complement-150: hsl(var(--hue-complement), 4%, 3%);
-  --color-neutral-complement-200: hsl(var(--hue-complement), 4%, 6%);
-  --color-neutral-complement-300: hsl(var(--hue-complement), 4%, 18%);
-  --color-neutral-complement-400: hsl(var(--hue-complement), 4%, 35%);
-  --color-neutral-complement-500: hsl(var(--hue-complement), 4%, 50%);
-  --color-neutral-complement-600: hsl(var(--hue-complement), 4%, 65%);
-  --color-neutral-complement-700: hsl(var(--hue-complement), 4%, 82%);
-  --color-neutral-complement-800: hsl(var(--hue-complement), 4%, 94%);
-  --color-neutral-complement-900: hsl(var(--hue-complement), 4%, 100%);
-
   --color-decent-100: hsl(var(--hue), 20%, 0%);
-  --color-decent-200: hsl(var(--hue), 20%, 6%);
-  --color-decent-300: hsl(var(--hue), 20%, 18%);
-  --color-decent-400: hsl(var(--hue), 20%, 35%);
-  --color-decent-500: hsl(var(--hue), 20%, 50%);
-  --color-decent-600: hsl(var(--hue), 20%, 65%);
-  --color-decent-700: hsl(var(--hue), 20%, 82%);
-  --color-decent-800: hsl(var(--hue), 20%, 94%);
-  --color-decent-900: hsl(var(--hue), 20%, 100%);
-
   --color-saturated-100: hsl(var(--hue), 65%, 0%);
-  --color-saturated-200: hsl(var(--hue), 65%, 6%);
-  --color-saturated-300: hsl(var(--hue), 65%, 18%);
-  --color-saturated-400: hsl(var(--hue), 65%, 35%);
-  --color-saturated-500: hsl(var(--hue), 65%, 50%);
-  --color-saturated-600: hsl(var(--hue), 65%, 65%);
-  --color-saturated-700: hsl(var(--hue), 65%, 82%);
-  --color-saturated-800: hsl(var(--hue), 65%, 94%);
-  --color-saturated-900: hsl(var(--hue), 65%, 100%);
-
   --color-complement-100: hsl(var(--hue-complement), 30%, 0%);
-  --color-complement-200: hsl(var(--hue-complement), 30%, 6%);
-  --color-complement-300: hsl(var(--hue-complement), 30%, 18%);
-  --color-complement-400: hsl(var(--hue-complement), 30%, 35%);
-  --color-complement-500: hsl(var(--hue-complement), 30%, 50%);
-  --color-complement-600: hsl(var(--hue-complement), 30%, 65%);
-  --color-complement-700: hsl(var(--hue-complement), 30%, 82%);
-  --color-complement-800: hsl(var(--hue-complement), 30%, 94%);
-  --color-complement-900: hsl(var(--hue-complement), 30%, 100%);
-
   --color-main: hsl(var(--hue), 100%, 60%);
-  --color-complement: hsl(var(--hue-complement), 100%, 60%);
+  --color-complement: hsl(var(--hue-complement), 100%, 60%); */
 
   /* Spacings */
   --spacing-1: 0.1rem;
@@ -260,62 +213,14 @@ body {
   --h-g: 340;
 }
 
-.red {
-  --hue: 0;
-  --hue-complement: 200;
-}
-.orange {
-  --hue: 25;
-  --hue-complement: 180;
-}
-.tan {
-  --hue: 40;
-  --hue-complement: 220;
-}
-
-.yellow {
-  --hue: 60;
-  --hue-complement: 240;
-}
-
-.lime {
-  --hue: 80;
-  --hue-complement: 250;
-}
-
-.olive {
-  --hue: 95;
-  --hue-complement: 260;
-}
-
-.green {
-  --hue: 120;
-  --hue-complement: 280;
-}
-
-.cyan {
-  --hue: 170;
-  --hue-complement: 350;
-}
-
-.sky {
-  --hue: 210;
-  --hue-complement: 30;
-}
-
-.blue {
-  --hue: 240;
-  --hue-complement: 60;
-}
-
-.violet {
-  --hue: 270;
-  --hue-complement: 90;
-}
-
-.purple {
-  --hue: 315;
-  --hue-complement: 110;
+.lemon {
+  --h-a: 100;
+  --h-b: 300;
+  --h-c: 100;
+  --h-d: 125;
+  --h-e: 150;
+  --h-f: 175;
+  --h-g: 200;
 }
 
 .pcsc {
@@ -329,24 +234,24 @@ body {
 }
 
 .cta {
-  @apply px-4 py-2 bg-complement-500 text-neutral-900 font-bold rounded-md hover:bg-complement-600 transition-all duration-200 block max-w-md mx-auto text-center;
+  @apply px-4 py-2 bg-cbs5 text-cbn1 font-bold rounded-md hover:bg-cbs4 hover:text-cw transition-all duration-200 block max-w-md mx-auto text-center;
 }
 
 .dica-button {
-  @apply max-w-lg mx-auto inline-block px-6 py-3 bg-saturated-500 text-saturated-800 font-semibold rounded-full hover:bg-saturated-600 hover:text-saturated-900 transition-colors;
+  @apply max-w-lg mx-auto inline-block px-6 py-3 bg-cas5 text-cas2 font-semibold rounded-full hover:bg-cas4 hover:text-cw transition-colors;
 }
 
 .dica-selector-inactive {
-  @apply bg-neutral-complement-300 text-neutral-complement-700 hover:bg-neutral-400;
+  @apply bg-cbn7 text-cbn2 hover:bg-can7;
 }
 
 .dica-selector-active {
-  @apply bg-complement-600 text-complement-300;
+  @apply bg-can6 text-can2;
 }
 
 .dica-box-inactive {
-  @apply border-neutral-complement-500 text-neutral-complement-400;
+  @apply border-cbn7 text-cbn2;
 }
 .dica-box-active {
-  @apply border-complement-400 text-complement-300;
+  @apply border-can4 text-can2;
 }

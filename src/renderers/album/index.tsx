@@ -19,15 +19,15 @@ export default function AlbumRenderer(props: {
   const routes = createAsync(() => getAllCompactRoutes());
 
   return (
-    <div class={`${item?.colorSpace} bg-neutral-150 min-h-screen`}>
+    <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
       <main class="max-w-6xl mx-auto px-3 py-7">
         <A
           href={`/`}
-          class="flex items-center justify-start text-decent-600 mb-6 gap-2 uppercase"
+          class="flex items-center justify-start text-cbd2 mb-6 gap-2 uppercase"
         >
           <ChevronLeft /> <span>home</span>
         </A>
-        <h1 class="text-6xl md:text-8xl text-saturated-900 font-octa font-bold leading-none text-center mb-3">
+        <h1 class="text-6xl md:text-8xl text-can1 font-octa font-bold leading-none text-center mb-3">
           {item?.title}
         </h1>
         <Suspense
@@ -49,14 +49,14 @@ export default function AlbumRenderer(props: {
                     {(subItem) => (
                       <A
                         href={`/${subItem.slug}`}
-                        class="aspect-image relative bg-decent-300 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-saturated-500"
+                        class="aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
                       >
                         <img
                           src={smallImageUrl(subItem.image)}
                           alt=""
                           class={cx('h-full aspect-image object-cover')}
                         />
-                        <span class="absolute bottom-3 right-3 font-octa font-bold text-lg">
+                        <span class="absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw">
                           {subItem.title}
                         </span>
                       </A>

@@ -8,6 +8,7 @@ description: >-
   playful and boundary-breaking intersection of high fashion, street art, 
   and avant-garde pop-surrealism.
 date: 2026-02-06T17:10:00.000Z
+colorSpace: sky
 tags:
   - YayoiKusama
   - LouisVuitton

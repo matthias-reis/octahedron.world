@@ -36,7 +36,7 @@ export function LanguageSwitcher() {
   return (
     <button
       onClick={toggle}
-      class="px-3 py-1 rounded bg-neutral-200 hover:bg-neutral-300 text-sm font-medium transition-colors"
+      class="px-3 py-1 rounded bg-can7 hover:bg-can6 hover:text-cw text-sm font-medium transition-colors"
     >
       {locale() === 'en' ? 'DE' : 'EN'}
     </button>

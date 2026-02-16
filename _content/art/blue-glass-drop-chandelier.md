@@ -25,4 +25,5 @@ superTitle: Art
 slug: blue-glass-drop-chandelier
 type: lightbox
 image: blue-glass-drop-chandelier
+colorSpace: sky
 ```

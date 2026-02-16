@@ -4,7 +4,7 @@ description: >-
   Three cats sit on a wooden counter surrounded by vinyl records and CDs in a
   cozy, dimly lit jazz bar. An elderly man is seen in the background, seemingly
   lost in the music.
-colorSpace: orange
+colorSpace: tangerine
 date: 2025-06-25T00:00:00.000Z
 tags:
   - Cats

@@ -6,6 +6,7 @@ description: >-
   old-fashioned car parked nearby and the building’s classic details create a
   surreal, timeless atmosphere.
 date: 2023-01-20T00:00:00.000Z
+colorSpace: tangerine
 tags:
   - y2022
   - spo

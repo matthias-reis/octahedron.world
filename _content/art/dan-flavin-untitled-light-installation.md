@@ -26,4 +26,5 @@ superTitle: Art
 slug: dan-flavin-untitled-light-installation
 type: lightbox
 image: dan-flavin-untitled-light-installation
+colorSpace: lemon
 ```

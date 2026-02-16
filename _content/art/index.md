@@ -14,6 +14,6 @@ root: true
 slug: art
 type: album
 image: art
-colorSpace: orange
+colorSpace: carmine
 weight: 1
 ```

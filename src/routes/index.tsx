@@ -1,6 +1,5 @@
 import { A, createAsyncStore } from '@solidjs/router';
 import { For } from 'solid-js';
-import { Title } from '@solidjs/meta';
 import { cx } from '~/components/cx';
 import { largeImageUrl, smallImageUrl } from '~/components/image-helpers';
 import OctahedronLogo from '~/components/octahedron-logo';
@@ -41,12 +40,12 @@ export default function HomePage() {
               const isWide = index() % 5 === 0;
               const isTextTop = index() % 2 !== 0;
               const colorClass = [
-                'bg-saturated-300',
-                'bg-decent-300',
-                'bg-complement-300',
-                'bg-decent-300',
-                'bg-saturated-300',
-              ][index() % 4];
+                'bg-cas7',
+                'bg-cad7',
+                'bg-cbn7',
+                'bg-cad8',
+                'bg-cad7',
+              ][index() % 5];
 
               return (
                 <li
@@ -59,7 +58,7 @@ export default function HomePage() {
                   <A
                     href={`/${item.slug}`}
                     class={cx(
-                      `flex flex-col h-full outline-2 -outline-offset-2 outline-transparent hover:outline-saturated-500 transition-all duration-200`,
+                      `flex flex-col h-full outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 transition-all duration-200`,
                       isTextTop && 'md:flex-col-reverse',
                       colorClass
                     )}
@@ -75,7 +74,7 @@ export default function HomePage() {
                     <div class="grow">
                       <h3
                         class={cx(
-                          'font-octa font-bold px-4 mt-4 mb-2',
+                          'font-octa font-bold px-4 mt-4 mb-2 text-can2',
                           isWide ? 'text-5xl' : 'text-3xl'
                         )}
                       >
@@ -83,7 +82,7 @@ export default function HomePage() {
                       </h3>
                       <p
                         class={cx(
-                          'font-octa px-4 text-neutral-900 mb-4',
+                          'font-sans px-4 text-can3 mb-4',
                           isWide && 'text-lg sm:mr-8'
                         )}
                       >

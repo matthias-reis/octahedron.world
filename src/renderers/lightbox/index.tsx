@@ -29,7 +29,6 @@ export default function createTemplate(props: {
       }
 
       const siblings = Object.values(allRoutes).filter((r) => {
-        console.log(r.group, item.group, r);
         return r.group === item.group && r.type === 'lightbox';
       });
 
@@ -51,9 +50,7 @@ export default function createTemplate(props: {
   });
 
   return (
-    <div
-      class={cx(`min-h-screen gradient bg-neutral-100 pb-20`, item?.colorSpace)}
-    >
+    <div class={cx(`min-h-screen bg-xbn9 pb-8`, item?.colorSpace)}>
       {item?.image && (
         <div class="justify-center items-center pt-5 pb-2 relative w-full h-[90vh]">
           <img
@@ -63,21 +60,18 @@ export default function createTemplate(props: {
           />
         </div>
       )}
-      <h1 class="text-4xl font-octa font-bold text-decent-900 text-center">
+      <h1 class="text-4xl font-octa font-bold text-can1 text-center">
         {item?.title}
       </h1>
       <A
         href={`/${item?.group}`}
-        class="flex justify-center uppercase text-decent-600 gap-3 text-sm"
+        class="flex justify-center uppercase text-can5 gap-3 text-sm"
       >
         <span>{dayjs(item?.date).format('YYYY-MM-DD')}</span>
         <span>·</span>
-        <strong class="font-bold">{item?.group}</strong>
+        <strong class="font-bold hover:underline">{item?.group}</strong>
       </A>
-      {item?.date && (
-        <p class="uppercase text-center text-xs text-decent-600 tracking-wider"></p>
-      )}
-      <div class="max-w-2xl mx-auto px-3 py-7 text-decent-600">
+      <div class="max-w-2xl mx-auto px-3 py-7 text-cad4">
         {item?.description}
       </div>
 

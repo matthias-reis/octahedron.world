@@ -30,4 +30,5 @@ superTitle: Art
 slug: silent-trial-urban-echoes
 type: lightbox
 image: silent-trial-urban-echoes
+colorSpace: lemon
 ```

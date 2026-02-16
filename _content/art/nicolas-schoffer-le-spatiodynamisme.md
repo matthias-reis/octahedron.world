@@ -27,4 +27,5 @@ superTitle: Art
 slug: nicolas-schoffer-le-spatiodynamisme
 type: lightbox
 image: nicolas-schoffer-le-spatiodynamisme
+colorSpace: tangerine
 ```

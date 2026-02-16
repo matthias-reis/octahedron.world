@@ -28,4 +28,5 @@ superTitle: Art
 slug: marlow-moss-white-and-yellow-1935
 type: lightbox
 image: marlow-moss-white-and-yellow-1935
+colorSpace: lemon
 ```

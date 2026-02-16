@@ -4,7 +4,7 @@ description: >-
   A collection of AI generated images and remixes. Many of them are either
   related to my other projects or experiments with new tools.
 date: 2025-05-01T00:00:00.000Z
-colorSpace: cyan
+colorSpace: tangerine
 tags:
   - Midjourney
   - DALL·E

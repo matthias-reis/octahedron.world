@@ -21,4 +21,5 @@ superTitle: Art
 slug: unwritten-future-paris-murals
 type: lightbox
 image: unwritten-future-paris-murals
+colorSpace: sky
 ```

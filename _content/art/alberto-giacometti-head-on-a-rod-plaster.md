@@ -30,4 +30,5 @@ superTitle: Art
 slug: alberto-giacometti-head-on-a-rod-plaster
 type: lightbox
 image: alberto-giacometti-head-on-a-rod-plaster
+colorSpace: sky
 ```
