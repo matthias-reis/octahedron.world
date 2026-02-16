@@ -13,7 +13,7 @@ tags:
 group: asimov
 root: true
 slug: asimov
-type: entry
+type: digest
 image: asimov-home
 weight: 2
 ```

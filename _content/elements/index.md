@@ -14,7 +14,7 @@ tags:
 group: elements
 root: true
 slug: elements
-type: entry
+type: digest
 image: elements
 weight: 2
 ```

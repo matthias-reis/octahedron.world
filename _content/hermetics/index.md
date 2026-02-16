@@ -16,7 +16,7 @@ tags:
 group: hermetics
 alias: storylines/hermetics
 slug: hermetics
-type: entry
+type: digest
 image: hermetics
 root: true
 weight: 3

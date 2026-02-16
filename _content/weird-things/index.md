@@ -14,7 +14,7 @@ tags:
 group: weird-things
 root: true
 slug: weird-things
-type: entry
+type: digest
 image: weird-things
 weight: 0
 ```

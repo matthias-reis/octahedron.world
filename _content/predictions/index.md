@@ -14,7 +14,7 @@ tags:
   - Society
 group: predictions
 slug: predictions
-type: entry
+type: digest
 image: predictions
 root: true
 weight: 1

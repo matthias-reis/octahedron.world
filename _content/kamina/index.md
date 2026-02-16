@@ -14,7 +14,7 @@ tags:
   - For Children
 group: kamina
 slug: kamina
-type: entry
+type: digest
 image: kamina
 root: true
 weight: 2

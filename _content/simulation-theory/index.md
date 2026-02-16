@@ -15,7 +15,7 @@ tags:
 group: simulation-theory
 alias: storylines/simulation-theory
 slug: simulation-theory
-type: entry
+type: digest
 image: simulation-theory
 root: true
 weight: 0

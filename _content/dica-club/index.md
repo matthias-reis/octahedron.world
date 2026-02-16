@@ -12,7 +12,7 @@ tags:
   - Geolocation
 group: dica-club
 slug: dica-club
-type: entry
+type: digest
 image: dica-club
 root: true
 weight: 0

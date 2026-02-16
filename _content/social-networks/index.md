@@ -18,7 +18,7 @@ tags:
 group: social-networks
 root: true
 slug: social-networks
-type: entry
+type: digest
 image: social-networks
 weight: 3
 ```

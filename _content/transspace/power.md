@@ -2,7 +2,7 @@
 title: Distribution of Power
 description: Monitoring the different social balances of Earth and Kret
 date: 2024-08-08T00:00:00.000Z
-colorSpace: orange
+colorSpace: sky
 tags:
   - Kret
   - Aliens

@@ -5,7 +5,7 @@ import { getRoute } from '~/model/model';
 
 const renderers: Record<string, ReturnType<typeof clientOnly>> = {
   dica: clientOnly(() => import('~/renderers/dica/create-template')),
-  entry: clientOnly(() => import('~/renderers/entry')),
+  digest: clientOnly(() => import('~/renderers/digest')),
   grid: clientOnly(() => import('~/renderers/grid')),
   album: clientOnly(() => import('~/renderers/album')),
   legal: clientOnly(() => import('~/renderers/legal')),

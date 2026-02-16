@@ -17,7 +17,7 @@ tags:
 group: the-fourth-wave
 root: true
 slug: the-fourth-wave
-type: entry
+type: digest
 image: the-fourth-wave
 weight: 3
 ```

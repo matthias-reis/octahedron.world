@@ -40,12 +40,12 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
           <div class="px-3">
             {relatedItems.length > 0 && (
               <>
-                <h3 class="font-octa text-3xl font-bold text-saturated-700">
+                <h3 class="font-octa text-4xl font-bold text-cbn6">
                   Recommended Read
                 </h3>
                 <nav
                   class={cx(
-                    'grid gap-4 md:grid-cols-2 my-5',
+                    'grid gap-4 md:grid-cols-3 my-5',
                     relatedItems.length === 1 && 'md:grid-cols-1'
                   )}
                 >
@@ -59,12 +59,12 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
             )}
             {groupedItems.length > 0 && (
               <>
-                <h3 class="font-octa text-3xl font-bold text-saturated-700">
+                <h3 class="font-octa text-4xl font-bold text-cbn6">
                   All Posts on This Topic
                 </h3>
                 <nav
                   class={cx(
-                    'grid gap-4 md:grid-cols-2 my-5',
+                    'grid gap-4 md:grid-cols-3 my-5',
                     relatedItems.length === 1 && 'md:grid-cols-1'
                   )}
                 >

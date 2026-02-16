@@ -4,7 +4,7 @@ description: >-
   The sphere of human life expands into the universe, while some pioneers still
   find undiscovered ground.
 date: 2024-08-27T00:00:00.000Z
-colorSpace: cyan
+colorSpace: sky
 tags:
   - Space Opera
   - Settlement

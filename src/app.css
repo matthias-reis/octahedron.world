@@ -2,8 +2,15 @@
 @import "tailwindcss";
 
 :root {
-  --hue: 185;
-  --hue-complement: 330;
+  --hue: 195;
+  --hue-complement: 15;
+  --h-a: 195;
+  --h-b: 15;
+  --h-c: 150;
+  --h-d: 175;
+  --h-e: 195;
+  --h-f: 230;
+  --h-g: 260;
 }
 
 @theme inline {
@@ -15,6 +22,95 @@
   --color-transparent: transparent;
   --color-current: currentColor;
   --color-textpop: #0006;
+
+  /* Chroma (Saturation) */
+  --s-s: 0.21; /* Saturated */
+  --s-d: 0.095; /* Decent */
+  --s-n: 0.02; /* Neutral */
+
+  /* Lightness (1=Bright, 9=Dark) */
+  --l-1: 0.97;
+  --l-2: 0.9;
+  --l-3: 0.8;
+  --l-4: 0.7;
+  --l-5: 0.6;
+  --l-6: 0.5;
+  --l-7: 0.35;
+  --l-8: 0.2;
+  --l-9: 0.12;
+
+  /* --- 3. CHART TOKENS (Flattened) --- */
+  --color-cc: oklch(0.6 0.18 var(--h-c));
+  --color-cd: oklch(0.6 0.18 var(--h-d));
+  --color-ce: oklch(0.6 0.18 var(--h-e));
+  --color-cf: oklch(0.6 0.18 var(--h-f));
+  --color-cg: oklch(0.6 0.18 var(--h-g));
+
+  /* Utility base */
+  --color-cw: #ffffff;
+  --color-cb: #000000;
+
+  /* Main (a) + Saturation (s, d, n) + Lightness (1-9) */
+  --color-cas1: oklch(var(--l-1) var(--s-s) var(--h-a));
+  --color-cas2: oklch(var(--l-2) var(--s-s) var(--h-a));
+  --color-cas3: oklch(var(--l-3) var(--s-s) var(--h-a));
+  --color-cas4: oklch(var(--l-4) var(--s-s) var(--h-a));
+  --color-cas5: oklch(var(--l-5) var(--s-s) var(--h-a));
+  --color-cas6: oklch(var(--l-6) var(--s-s) var(--h-a));
+  --color-cas7: oklch(var(--l-7) var(--s-s) var(--h-a));
+  --color-cas8: oklch(var(--l-8) var(--s-s) var(--h-a));
+  --color-cas9: oklch(var(--l-9) var(--s-s) var(--h-a));
+
+  --color-cad1: oklch(var(--l-1) var(--s-d) var(--h-a));
+  --color-cad2: oklch(var(--l-2) var(--s-d) var(--h-a));
+  --color-cad3: oklch(var(--l-3) var(--s-d) var(--h-a));
+  --color-cad4: oklch(var(--l-4) var(--s-d) var(--h-a));
+  --color-cad5: oklch(var(--l-5) var(--s-d) var(--h-a));
+  --color-cad6: oklch(var(--l-6) var(--s-d) var(--h-a));
+  --color-cad7: oklch(var(--l-7) var(--s-d) var(--h-a));
+  --color-cad8: oklch(var(--l-8) var(--s-d) var(--h-a));
+  --color-cad9: oklch(var(--l-9) var(--s-d) var(--h-a));
+
+  --color-can1: oklch(var(--l-1) var(--s-n) var(--h-a));
+  --color-can2: oklch(var(--l-2) var(--s-n) var(--h-a));
+  --color-can3: oklch(var(--l-3) var(--s-n) var(--h-a));
+  --color-can4: oklch(var(--l-4) var(--s-n) var(--h-a));
+  --color-can5: oklch(var(--l-5) var(--s-n) var(--h-a));
+  --color-can6: oklch(var(--l-6) var(--s-n) var(--h-a));
+  --color-can7: oklch(var(--l-7) var(--s-n) var(--h-a));
+  --color-can8: oklch(var(--l-8) var(--s-n) var(--h-a));
+  --color-can9: oklch(var(--l-9) var(--s-n) var(--h-a));
+
+  /* Complementary (b) */
+  --color-cbs1: oklch(var(--l-1) var(--s-s) var(--h-b));
+  --color-cbs2: oklch(var(--l-2) var(--s-s) var(--h-b));
+  --color-cbs3: oklch(var(--l-3) var(--s-s) var(--h-b));
+  --color-cbs4: oklch(var(--l-4) var(--s-s) var(--h-b));
+  --color-cbs5: oklch(var(--l-5) var(--s-s) var(--h-b));
+  --color-cbs6: oklch(var(--l-6) var(--s-s) var(--h-b));
+  --color-cbs7: oklch(var(--l-7) var(--s-s) var(--h-b));
+  --color-cbs8: oklch(var(--l-8) var(--s-s) var(--h-b));
+  --color-cbs9: oklch(var(--l-9) var(--s-s) var(--h-b));
+
+  --color-cbd1: oklch(var(--l-1) var(--s-d) var(--h-b));
+  --color-cbd2: oklch(var(--l-2) var(--s-d) var(--h-b));
+  --color-cbd3: oklch(var(--l-3) var(--s-d) var(--h-b));
+  --color-cbd4: oklch(var(--l-4) var(--s-d) var(--h-b));
+  --color-cbd5: oklch(var(--l-5) var(--s-d) var(--h-b));
+  --color-cbd6: oklch(var(--l-6) var(--s-d) var(--h-b));
+  --color-cbd7: oklch(var(--l-7) var(--s-d) var(--h-b));
+  --color-cbd8: oklch(var(--l-8) var(--s-d) var(--h-b));
+  --color-cbd9: oklch(var(--l-9) var(--s-d) var(--h-b));
+
+  --color-cbn1: oklch(var(--l-1) var(--s-n) var(--h-b));
+  --color-cbn2: oklch(var(--l-2) var(--s-n) var(--h-b));
+  --color-cbn3: oklch(var(--l-3) var(--s-n) var(--h-b));
+  --color-cbn4: oklch(var(--l-4) var(--s-n) var(--h-b));
+  --color-cbn5: oklch(var(--l-5) var(--s-n) var(--h-b));
+  --color-cbn6: oklch(var(--l-6) var(--s-n) var(--h-b));
+  --color-cbn7: oklch(var(--l-7) var(--s-n) var(--h-b));
+  --color-cbn8: oklch(var(--l-8) var(--s-n) var(--h-b));
+  --color-cbn9: oklch(var(--l-9) var(--s-n) var(--h-b));
 
   --color-neutral-100: hsl(var(--hue), 4%, 0%);
   --color-neutral-150: hsl(var(--hue), 4%, 3%);
@@ -114,6 +210,56 @@ body {
   @apply backdrop-blur-md backdrop-brightness-110 backdrop-saturate-150 backdrop-contrast-75;
 }
 
+.berry {
+  --h-a: 350;
+  --h-b: 200;
+  --h-c: 250;
+  --h-d: 275;
+  --h-e: 295;
+  --h-f: 330;
+  --h-g: 360;
+}
+
+.carmine {
+  --h-a: 15;
+  --h-b: 170;
+  --h-c: 310;
+  --h-d: 340;
+  --h-e: 15;
+  --h-f: 140;
+  --h-g: 170;
+}
+
+.sky {
+  --h-a: 240;
+  --h-b: 50;
+  --h-c: 240;
+  --h-d: 210;
+  --h-e: 180;
+  --h-f: 120;
+  --h-g: 30;
+}
+
+.wood {
+  --h-a: 155;
+  --h-b: 20;
+  --h-c: 230;
+  --h-d: 200;
+  --h-e: 160;
+  --h-f: 40;
+  --h-g: 10;
+}
+
+.tangerine {
+  --h-a: 40;
+  --h-b: 180;
+  --h-c: 150;
+  --h-d: 100;
+  --h-e: 50;
+  --h-f: 10;
+  --h-g: 340;
+}
+
 .red {
   --hue: 0;
   --hue-complement: 200;
@@ -147,11 +293,6 @@ body {
   --hue-complement: 280;
 }
 
-.wood {
-  --hue: 145;
-  --hue-complement: 280;
-}
-
 .cyan {
   --hue: 170;
   --hue-complement: 350;
@@ -175,11 +316,6 @@ body {
 .purple {
   --hue: 315;
   --hue-complement: 110;
-}
-
-.carmine {
-  --hue: 335;
-  --hue-complement: 160;
 }
 
 .pcsc {

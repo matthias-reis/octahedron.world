@@ -4,7 +4,7 @@ title: The Kret
 description: >-
   Nerdy fiction experiments from my youth, part one. An alien race to discover
   more about our own species.
-colorSpace: cyan
+colorSpace: tangerine
 startDate: 2022-05-02T00:00:00.000Z
 date: 2022-10-30T00:00:00.000Z
 related:

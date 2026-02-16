@@ -1,10 +1,8 @@
-import { A, createAsyncStore } from '@solidjs/router';
-import { type JSX, Suspense, ParentComponent, For, Component } from 'solid-js';
-import { smallImageUrl } from '~/components/image-helpers';
+import { createAsyncStore } from '@solidjs/router';
+import { Suspense, For, Component } from 'solid-js';
 import { LinkBox } from '~/components/link-box';
 import { Loading } from '~/components/loading';
 import { getAllCompactRoutes } from '~/model/model';
-import { type Plugin } from '~/types';
 
 export const TeaserGroup: Component<{ data?: Record<string, any> }> = (
   props
@@ -35,7 +33,7 @@ export const TeaserGroup: Component<{ data?: Record<string, any> }> = (
 
         // Loaded and found - display the link
         return (
-          <nav class="grid gap-4 md:grid-cols-2 my-5">
+          <nav class="grid gap-4 md:grid-cols-3 my-5">
             <For each={visibleItems}>
               {(item) => <LinkBox item={item} small />}
             </For>

@@ -16,7 +16,7 @@ tags:
 group: world-2
 root: true
 slug: world-2
-type: entry
+type: digest
 image: world-2
 weight: 3
 ```

@@ -13,7 +13,7 @@ tags:
 group: pcsc
 colorSpace: wood
 slug: pcsc
-type: entry
+type: digest
 image: pcsc
 root: true
 weight: 0

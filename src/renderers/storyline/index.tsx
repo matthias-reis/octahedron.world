@@ -1,7 +1,7 @@
 import { JSX } from 'solid-js';
 import { transform } from 'solid-mds';
 import { HastParseResult } from 'hast-mds';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 import { A } from '@solidjs/router';
 import { largeImageUrl } from '~/components/image-helpers';
 import { ChevronLeft } from 'lucide-solid/icons/index';
@@ -10,12 +10,9 @@ import { canonicalComponents } from '~/components/canonical-components';
 import { Related } from '~/components/related';
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    canonicalComponents
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, canonicalComponents);
   const item = parsed.global;
 
   return (
@@ -85,7 +82,7 @@ export default function createTemplate(props: {
         )}
 
         {/* MDS Content Steps */}
-        <div class="space-y-7">
+        <div class="my-7 text-lg font-serif">
           {Object.values(parsed.steps).map((step) => (
             <section class="mx-5 sm:mx-7 md:mx-8 lg:mx-9">
               <step.Body />
@@ -93,7 +90,7 @@ export default function createTemplate(props: {
           ))}
         </div>
 
-        <Related item={item} />
+        <Related item={item!} />
       </main>
     </div>
   );

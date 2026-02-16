@@ -5,17 +5,19 @@ description: >-
   includes a way to overcome the speed limit of light. And it also includes the
   first drafts of an alien or almost alien race.
 date: 2025-05-01T00:00:00.000Z
-colorSpace: cyan
+colorSpace: berry
 tags:
-  - Mouse
-  - Mice Superheroes
-  - For Children
-  - Children's Story
-  - Family
+  - SciFi
+  - Space Opera
+  - Aliens
+  - Kret
+  - Faster Than Light
+  - FTL
+
 group: transspace
 root: true
 slug: transspace
-type: entry
+type: digest
 image: transspace
 weight: 3
 ```

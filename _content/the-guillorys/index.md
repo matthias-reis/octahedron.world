@@ -15,7 +15,7 @@ tags:
 group: the-guillorys
 root: true
 slug: the-guillorys
-type: entry
+type: digest
 image: the-guillorys
 weight: 0
 ```

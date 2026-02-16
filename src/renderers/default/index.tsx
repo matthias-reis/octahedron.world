@@ -18,10 +18,10 @@ export default function createTemplate(props: {
 
   return (
     <div
-      class={`${item?.colorSpace} min-h-screen gradient bg-linear-to-b from-neutral-200 to-neutral-300 pb-20`}
+      class={`${item?.colorSpace} min-h-screen gradient bg-linear-to-b from-cbn9 to-cbs9 pb-8`}
     >
-      <main class="max-w-2xl xl:max-w-5xl mx-auto bg-neutral-150 grid grid-cols-1 xl:grid-cols-2 items-start gap-6 justify-stretch">
-        <div class="relative">
+      <main class="max-w-2xl xl:max-w-5xl mx-auto bg-neutral-150 grid grid-cols-1 xl:grid-cols-2 items-start gap-6 justify-stretch relative">
+        <div class="relative xl:mr-7">
           {item?.image && (
             <img
               src={largeImageUrl(item.image)}
@@ -30,7 +30,7 @@ export default function createTemplate(props: {
             />
           )}
           {item?.description && (
-            <p class="hidden xl:block text-right text-lg font-sans text-decent-600 mt-8 w-1/2 text-balance ml-auto">
+            <p class="hidden xl:block text-right text-lg font-sans text-cad4 mt-8 w-1/2 text-balance ml-auto">
               {Array.isArray(item.description)
                 ? item.description.join(' ')
                 : item.description}
@@ -38,30 +38,30 @@ export default function createTemplate(props: {
           )}
           <A
             href={`/${item?.group}`}
-            class="absolute top-3 left-3 flex items-center justify-start text-decent-900 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
+            class="absolute top-3 left-3 xl:static flex items-center justify-start xl:justify-end xl:mt-7 text-decent-900 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
           >
             <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
           </A>
         </div>
-        <div class="xl:pt-8 px-6 pb-7">
+        <div class="xl:pt-7 px-6 pb-7 xl:pl-0">
           {item?.superTitle && (
-            <p class="uppercase text-decent-500 mb-3">{item.superTitle}</p>
+            <p class="uppercase text-cad5 mb-3">{item.superTitle}</p>
           )}
-          <h1 class="text-6xl text-saturated-800 font-octa font-bold text-balance">
+          <h1 class="text-6xl text-cad2 font-octa font-bold text-balance">
             {item?.title}
           </h1>
           {item?.subTitle && (
-            <p class="text-lg text-decent-400 text-right">{item.subTitle}</p>
+            <p class="text-lg text-cad5 text-right">{item.subTitle}</p>
           )}
           {item?.description && (
-            <p class="xl:hidden text-lg font-sans text-decent-600 w-3/4 text-balance">
+            <p class="xl:hidden text-lg font-sans text-cad4 w-3/4 text-balance">
               {Array.isArray(item.description)
                 ? item.description.join(' ')
                 : item.description}
             </p>
           )}
           {item?.date && (
-            <p class="flex items-center text-decent-500 mt-6 mb-7 gap-2 text-sm">
+            <p class="flex items-center text-cad5 mt-6 mb-7 gap-2 text-sm">
               <CalendarDays />{' '}
               <span>{dayjs(item.date).format('YYYY-MM-DD')}</span>
               {item.words && (

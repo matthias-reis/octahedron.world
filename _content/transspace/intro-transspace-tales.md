@@ -3,7 +3,7 @@ title: Intro to Transspace Tales
 description:
   More anecdotes, this time about transspace, my concept for space operas
 date: 2023-12-21T00:00:00.000Z
-colorSpace: cyan
+colorSpace: sky
 tags:
   - Space Opera
   - FTL

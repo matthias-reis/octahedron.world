@@ -14,15 +14,15 @@ export default function createTemplate(props: {
   const item = parsed.global;
 
   return (
-    <div class={`${item?.colorSpace} bg-neutral-150 min-h-screen`}>
+    <div class={`${item?.colorSpace} bg-cbd9 min-h-screen`}>
       <main class="max-w-3xl mx-auto px-3 py-7">
         <A
           href={`/`}
-          class="flex items-center justify-start text-decent-600 mb-6 gap-2 uppercase"
+          class="flex items-center justify-start text-cbs5 mb-6 gap-2 uppercase"
         >
           <ChevronLeft /> <span>home</span>
         </A>
-        <h1 class="text-6xl md:text-8xl text-saturated-900 font-octa font-bold leading-none text-center mb-3">
+        <h1 class="text-6xl md:text-8xl text-cad1 font-octa font-bold leading-none text-center mb-3">
           {item?.title}
         </h1>
         {item?.image && (
@@ -32,14 +32,16 @@ export default function createTemplate(props: {
             class="mx-auto mb-6 aspect-image w-full object-contain"
           />
         )}
-        <p class="text-center text-md font-sans text-decent-600 mb-6 mx-auto max-w-md">
+        <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
           {item?.description}
         </p>
 
         {/* Render the content (single step) */}
-        {Object.values(parsed.steps).map((step) => (
-          <step.Body />
-        ))}
+        <div class="text-lg">
+          {Object.values(parsed.steps).map((step) => (
+            <step.Body />
+          ))}
+        </div>
       </main>
     </div>
   );
