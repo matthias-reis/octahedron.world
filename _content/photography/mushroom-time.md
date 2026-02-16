@@ -21,4 +21,5 @@ alias: images/2025/2025-10-19-mushroom-time
 slug: mushroom-time
 type: lightbox
 image: mushroom-time
+colorSpace: wood
 ```

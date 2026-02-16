@@ -4,7 +4,7 @@ title: Octahedra
 description: >-
   A mystic journey through time and space. Eight different places, eight iconic
   rooms, portals, aliens.
-colorSpace: original
+colorSpace: sky
 unfinished: true
 startDate: 2023-05-03T00:00:00.000Z
 date: 2023-09-01T00:00:00.000Z
@@ -67,6 +67,8 @@ straight back to the team's institute.
 find the next piece."
 
 ---
+
+_To be continued soon..._
 
 <!--
 Deciphering

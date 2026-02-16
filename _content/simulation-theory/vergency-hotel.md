@@ -9,12 +9,12 @@ tags:
   - Fantasy
   - End of the World
   - Multiverse
-colorSpace: purple
+colorSpace: carmine
 group: simulation-theory
 superTitle: Vergency Hotel
 alias: posts/2024/2024-08-05-vergency-hotel
 slug: vergency-hotel
-type: post
+type: storyline
 image: vergency-hotel
 ```
 
@@ -43,3 +43,7 @@ have learned something after all.
 Today, I myself am assigned as a tutor for the fourth time. I volunteered again.
 Everyone does this here from time to time. It's the best source for new thoughts
 and new perspectives.
+
+---
+
+_To be continued soon..._

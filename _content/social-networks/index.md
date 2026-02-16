@@ -5,7 +5,7 @@ description: >-
   the topic of federated social networks and networking in general. Here's some
   of the outcome.
 date: 2025-05-01T00:00:00.000Z
-colorSpace: cyan
+colorSpace: carmine
 tags:
   - Meetup
   - Social Networks

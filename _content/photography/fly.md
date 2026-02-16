@@ -26,4 +26,5 @@ alias: images/2025/2025-04-08-fly
 slug: fly
 type: lightbox
 image: fly
+colorSpace: berry
 ```

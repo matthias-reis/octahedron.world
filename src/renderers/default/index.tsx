@@ -92,7 +92,7 @@ export default function createTemplate(props: {
           {/* MDS Content Steps */}
           <div>
             {Object.values(parsed.steps).map((step) => (
-              <section>
+              <section class="text-lg">
                 <step.Body />
               </section>
             ))}

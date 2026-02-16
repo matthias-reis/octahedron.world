@@ -30,4 +30,5 @@ alias: images/2025/2025-04-11-l-hemisferic
 slug: l-hemisferic
 type: lightbox
 image: l-hemisferic
+colorSpace: lemon
 ```

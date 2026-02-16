@@ -5,7 +5,7 @@ description: >-
   We are guests at an extraordinary family of mice in theire residence in New
   Orleans, the Guillorys. What's so special about them, you ask? Well, some of
   them have super powers.
-colorSpace: tan
+colorSpace: wood
 language: en
 ref: die-guillorys-und-die-weissen-monster
 unfinished: true

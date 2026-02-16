@@ -22,4 +22,5 @@ alias: images/2025/2025-05-02-subway
 slug: subway
 type: lightbox
 image: subway
+colorSpace: berry
 ```

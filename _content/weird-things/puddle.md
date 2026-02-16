@@ -4,7 +4,7 @@ title: Puddle
 type: post
 description: A hatch into a weird underworld.
 date: 2024-08-26T00:00:00.000Z
-colorSpace: original
+colorSpace: carmine
 tags:
   - Underworld
   - Mystery

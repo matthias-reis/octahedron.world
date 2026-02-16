@@ -28,4 +28,5 @@ alias: images/2025/2025-04-16-spo
 slug: spo
 type: lightbox
 image: spo
+colorSpace: sky
 ```

@@ -24,4 +24,5 @@ alias: images/2025/2025-05-16-gibraltar
 slug: gibraltar
 type: lightbox
 image: gibraltar
+colorSpace: sky
 ```

@@ -28,4 +28,5 @@ alias: images/2025/2025-04-28-mushrooms
 slug: mushrooms
 type: lightbox
 image: mushrooms
+colorSpace: wood
 ```

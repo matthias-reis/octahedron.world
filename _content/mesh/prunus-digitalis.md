@@ -1,6 +1,6 @@
 ```yaml @@
 superTitle: Tattoo Story
-title: The Old Owl
+title: Prunus Digitalis
 description: >-
   Just like in Ray Bradbury's "The Illustrated Man", I bring my tattoos to life.
   This time the creatures and flow on my left arms.
@@ -14,9 +14,9 @@ tags:
   - Short Story
   - Storyline
 group: mesh
-slug: the-old-owl
+slug: prunus-digitalis
 type: storyline
-image: the-old-owl
+image: prunus-digitalis
 ```
 
 Lucy is a designer by profession and design connoisseur in her free time. Others

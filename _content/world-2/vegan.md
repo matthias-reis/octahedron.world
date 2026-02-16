@@ -6,7 +6,7 @@ description: >-
   What are the biggest problems of our time and how do we overcome them? World 2
   is a deep dive into the climate crisis. This second part focuses on
   agriculture, food production and the vegan diet.
-colorSpace: olive
+colorSpace: wood
 startDate: 2022-08-18T00:00:00.000Z
 date: 2023-03-29T00:00:00.000Z
 related:

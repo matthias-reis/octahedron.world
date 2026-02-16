@@ -4,7 +4,7 @@ description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the
   early 17th century.
 date: 2025-04-22T00:00:00.000Z
-colorSpace: original
+colorSpace: carmine
 tags:
   - Somnium
   - JohannesKepler

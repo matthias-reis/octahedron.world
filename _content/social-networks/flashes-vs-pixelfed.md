@@ -4,7 +4,7 @@ description: >-
   I've made an experiment. I ran the two Instagram alternatives Pixelfed and
   Flashes (Bluesky) against each other.
 date: 2025-06-25T00:00:00.000Z
-colorSpace: cyan
+colorSpace: carmine
 tags:
   - Meetup
   - Social Networks
@@ -18,7 +18,7 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-06-25-flashes-vs-pixelfed
 slug: flashes-vs-pixelfed
-type: post
+type: report
 image: social-networks
 ```
 
@@ -111,22 +111,16 @@ Bluesky in general has a strong American bias
 
 # Appendix: Posted Images
 
-==> <item> images/2025/2025-04-06-cornwall
-
-==> <item> images/2025/2025-04-08-fly
-
-==> <item> images/2025/2025-04-11-l-hemisferic
-
-==> <item> images/2025/2025-04-16-spo
-
-==> <item> images/2025/2025-04-21-amenra
-
-==> <item> images/2025/2025-04-28-mushrooms
-
-==> <item> images/2025/2025-05-02-subway
-
-==> <item> images/2025/2025-05-06-sheep
-
-==> <item> images/2025/2025-05-14-metropolparasol
-
-==> <item> images/2025/2025-05-16-gibraltar
+```yaml group
+slugs:
+  - cornwall
+  - fly
+  - l-hemisferic
+  - spo
+  - amenra
+  - mushrooms
+  - subway
+  - sheep
+  - metropolparasol
+  - gibraltar
+```

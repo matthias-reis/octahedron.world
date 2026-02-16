@@ -5,7 +5,7 @@ import { ChevronLeft } from 'lucide-solid';
 import { largeImageUrl } from '~/components/image-helpers';
 import { World2Calculator } from '~/components/world-2-calculator';
 import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope, LocalScope } from './types';
+import type { GlobalScope } from '~/types';
 import type { JSX } from 'solid-js/jsx-runtime';
 import { Related } from '~/components/related';
 
@@ -37,23 +37,20 @@ const Graphic = () => (
 );
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
   // Parse with the extended component map
   const componentsWithExtras = {
     ...canonicalComponents,
-    graphics: Graphic,
-    calculator: World2Calculator,
+    graphics: Graphic as (props: any) => JSX.Element,
+    calculator: World2Calculator as (props: any) => JSX.Element,
   };
 
-  const parsed = transform<GlobalScope, LocalScope>(
-    props.mds,
-    componentsWithExtras
-  );
+  const parsed = transform<GlobalScope, {}>(props.mds, componentsWithExtras);
   const item = parsed.global;
 
   return (
-    <div class={`${item?.colorSpace} bg-neutral-150 min-h-screen`}>
+    <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
       <main class="max-w-4xl mx-auto px-3 pb-7 relative">
         {/* Image */}
         {item?.image && (
@@ -67,7 +64,7 @@ export default function createTemplate(props: {
         {/* Back Navigation */}
         <A
           href={`/${item?.group}`}
-          class="absolute top-3 left-3 flex items-center justify-start text-decent-900 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
+          class="absolute top-3 left-3 flex items-center justify-start text-cad2 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
         >
           <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
         </A>
@@ -75,15 +72,15 @@ export default function createTemplate(props: {
         {/* Title Section */}
         <div class="text-center relative -top-9 md:-top-10 -mb-8">
           {item?.superTitle && (
-            <p class="text-lg uppercase text-decent-900 mt-5 font-bold tracking-widest font-octa text-shadow-md text-shadow-neutral-500">
+            <p class="text-lg uppercase text-can1 mt-5 font-bold tracking-widest font-octa text-shadow-md text-shadow-can9">
               {item.superTitle}
             </p>
           )}
-          <h1 class="text-6xl md:text-8xl text-decent-900 font-octa font-bold leading-none text-shadow-md text-shadow-neutral-500">
+          <h1 class="text-6xl md:text-8xl text-can1 font-octa font-bold leading-none text-shadow-md text-shadow-can9">
             {item?.title}
           </h1>
           {item?.subTitle && (
-            <p class="text-lg text-decent-900 mt-2 text-shadow-md text-shadow-neutral-500">
+            <p class="text-lg text-can1 mt-2 text-shadow-md text-shadow-can9">
               {item.subTitle}
             </p>
           )}
@@ -91,7 +88,7 @@ export default function createTemplate(props: {
 
         {/* Description */}
         {item?.description && (
-          <p class="text-center text-md font-sans text-decent-600 mb-2 mx-auto max-w-md">
+          <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
             {Array.isArray(item.description)
               ? item.description.join(' ')
               : item.description}
@@ -131,7 +128,7 @@ export default function createTemplate(props: {
         </div>
 
         {/* Related Content */}
-        <Related item={item} />
+        <Related item={item!} />
       </main>
     </div>
   );

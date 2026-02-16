@@ -65,7 +65,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
                 <nav
                   class={cx(
                     'grid gap-4 md:grid-cols-3 my-5',
-                    relatedItems.length === 1 && 'md:grid-cols-1'
+                    groupedItems.length === 1 && 'md:grid-cols-1'
                   )}
                 >
                   <For each={groupedItems}>

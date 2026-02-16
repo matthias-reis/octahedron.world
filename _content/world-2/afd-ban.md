@@ -4,7 +4,7 @@ description: >-
   What is the legal framework for banning a party and what would be the
   consequences for the prliament?
 date: 2025-05-12T00:00:00.000Z
-colorSpace: tan
+colorSpace: tangerine
 tags:
   - Politics
   - Political Parties

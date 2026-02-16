@@ -4,7 +4,7 @@ description: >-
   Probably the first piece of SciFi is a story written by Johannes Kepler in the
   early 17th century.
 date: 2025-05-02T00:00:00.000Z
-colorSpace: cyan
+colorSpace: carmine
 tags:
   - Meetup
   - Social Networks
@@ -18,7 +18,7 @@ group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-05-02-federated-social-networks
 slug: federated-social-networks
-type: post
+type: report
 image: social-networks
 ```
 

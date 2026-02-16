@@ -4,7 +4,7 @@ title: The Pylons
 description: >-
   The second spin off of the Mesh cycle. Let's have a look into the daily life
   and the strange characters that live in the Pylons.
-colorSpace: olive
+colorSpace: wood
 unfinished: true
 startDate: 2023-09-01T00:00:00.000Z
 date: 2023-09-01T00:00:00.000Z

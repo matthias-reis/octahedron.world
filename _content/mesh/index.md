@@ -16,7 +16,7 @@ group: mesh
 slug: mesh
 type: digest
 image: mesh
-colorSpace: purple
+colorSpace: berry
 root: true
 weight: 2
 ```
@@ -55,7 +55,7 @@ mood board for what is possible in the mesh. Actually it's the story behind the
 tattoos on my left arm.
 
 ```yaml teaser
-slug: the-old-owl
+slug: prunus-digitalis
 ```
 
 Additionally, I have produced some flash fiction episodes to get into the mood.

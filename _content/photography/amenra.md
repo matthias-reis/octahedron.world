@@ -31,4 +31,5 @@ alias: images/2025/2025-04-21-amenra
 slug: amenra
 type: lightbox
 image: amenra
+colorSpace: lemon
 ```

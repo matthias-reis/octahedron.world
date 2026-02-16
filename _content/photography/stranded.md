@@ -20,4 +20,5 @@ alias: images/2025/2025-10-10-stranded
 slug: stranded
 type: lightbox
 image: stranded
+colorSpace: sky
 ```

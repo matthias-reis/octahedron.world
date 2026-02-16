@@ -6,7 +6,7 @@ description: >-
   What are the biggest problems of our time and how do we overcome them? World 2
   is a deep dive into the climate crisis. This first storyline focuses on the
   complex problems around energy creation and consumption.
-colorSpace: lime
+colorSpace: lemon
 startDate: 2022-08-01T00:00:00.000Z
 date: 2023-04-04T00:00:00.000Z
 related:

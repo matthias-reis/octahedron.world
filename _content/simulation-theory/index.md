@@ -1,10 +1,9 @@
 ```yaml @@
-superTitle: Short Story
 title: Simulation Theory
 description: >-
   Are we living in a simulation? Hard to find proof, but there are a bunch of
   interesting thought ecxperiments out there and even more stories to spin off.
-colorSpace: sky
+colorSpace: carmine
 unfinished: true
 startDate: 2022-05-12T00:00:00.000Z
 date: 2023-12-12T00:00:00.000Z

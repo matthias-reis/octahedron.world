@@ -3,7 +3,7 @@ superTitle: Worldbuilding
 title: The Mesh - Worldbuilding for a Cyberpunk World
 description:
   A vision of a hypothetical metaverse-esque three dimensional internet
-colorSpace: red
+colorSpace: tangerine
 startDate: 2022-05-18T00:00:00.000Z
 date: 2022-12-21T00:00:00.000Z
 related:
@@ -15,7 +15,7 @@ tags:
   - AmWriting
   - Worldbuilding
   - Storyline
-group: mesh-worldbuilding
+group: mesh
 alias: storylines/mesh
 slug: mesh-worldbuilding
 type: report

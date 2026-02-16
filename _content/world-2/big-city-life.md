@@ -2,7 +2,7 @@
 title: Big City Life
 description: Urban versus rural areas for the environment
 date: 2024-08-22T00:00:00.000Z
-colorSpace: orange
+colorSpace: lemon
 tags:
   - Cities
   - Villages

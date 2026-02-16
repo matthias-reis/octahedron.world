@@ -2,7 +2,7 @@
 title: The Swoosh
 description: Tales from the Mesh, starting off with the Mesh Logo
 date: 2023-10-05T00:00:00.000Z
-colorSpace: cyan
+colorSpace: berry
 tags:
   - VR
   - Logo
