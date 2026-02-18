@@ -9,23 +9,36 @@ import routes from '../routes.json';
 import { Footer } from './components/footer';
 import { MetaProvider } from '@solidjs/meta';
 import { I18nProvider } from './i18n/context';
+import { colorSpace, setColorSpace } from './store/color-space';
+import { createEffect } from 'solid-js';
+import { useLocation } from '@solidjs/router';
 
 export default function App() {
   return (
     <MetaProvider>
       <I18nProvider>
         <Router
-          root={(props) => (
-            <>
-              <Nav />
-              <Suspense>
-                <div class="bg-cb">
-                  {props.children}
-                  <Footer />
-                </div>
-              </Suspense>
-            </>
-          )}
+          root={(props) => {
+            const location = useLocation();
+            createEffect(() => {
+              // Reset colorSpace to petrol on every location change
+              // mds-template will override this if metadata is present
+              location.pathname;
+              setColorSpace('petrol');
+            });
+
+            return (
+              <div class={colorSpace()}>
+                <Nav />
+                <Suspense>
+                  <div class="bg-cb">
+                    {props.children}
+                    <Footer />
+                  </div>
+                </Suspense>
+              </div>
+            );
+          }}
         >
           <For each={routes}>
             {(route) => (

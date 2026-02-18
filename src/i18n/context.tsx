@@ -61,7 +61,7 @@ export function getLocale(): Locale {
 export type I18nContextInterface = {
   locale: () => Locale;
   setLocale: (l: Locale) => void;
-  t: i18n.Translator<i18n.Flatten<Dictionary>>;
+  t: i18n.Translator<i18n.Flatten<Dictionary>, any>;
 };
 
 export const I18nContext = createContext<I18nContextInterface>();
@@ -71,7 +71,32 @@ export function I18nProvider(props: { children: JSX.Element }) {
   const [locale, setLocale] = createSignal<Locale>(initialLocale);
 
   const dict = () => i18n.flatten(dictionaries[locale()]);
-  const t = i18n.translator(dict);
+  const baseT = i18n.translator(dict, i18n.resolveTemplate);
+
+  const t: i18n.Translator<i18n.Flatten<Dictionary>, any> = (path, ...args) => {
+    const currentDict = dict();
+    const value = currentDict[path];
+    const params = args[0] as any;
+
+    if (
+      value &&
+      typeof value === 'object' &&
+      params &&
+      typeof params === 'object' &&
+      'count' in params
+    ) {
+      const pr = new Intl.PluralRules(locale());
+      const rule = pr.select(params.count as number);
+      const pluralForm =
+        (value as any)[rule] || (value as any)['other'] || value;
+      if (typeof pluralForm === 'string') {
+        return i18n.resolveTemplate(pluralForm, params);
+      }
+      return pluralForm;
+    }
+
+    return baseT(path, ...(args as any));
+  };
 
   return (
     <I18nContext.Provider value={{ locale, setLocale, t }}>

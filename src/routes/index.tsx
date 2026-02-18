@@ -16,20 +16,20 @@ export default function HomePage() {
   const items = () => sortRootItems(getItems() || []);
 
   return (
-    <div>
+    <div class="bg-cn9">
       <Head />
       <main class="mx-auto mb-7 max-w-6xl">
         <div
           style={{ 'background-image': `url(${largeImageUrl('_home')})` }}
           class="bg-cover bg-center aspect-image md:aspect-wide border border-transparent"
         >
-          <div class="w-full h-full bg-center flex flex-col justify-center items-center text-center bg-linear-to-b from-transparent via-black to-transparent">
-            <h1 class="font-octa flex justify-center items-center gap-2 text-neutral-500 text-4xl w-full">
+          <div class="w-full h-full bg-center flex flex-col justify-center items-center text-center bg-linear-to-b from-transparent via-cb to-transparent">
+            <h1 class="font-octa flex justify-center items-center gap-2 text-can2 text-4xl w-full">
               <span class="text-decent-600 font-bold ">OCTAHEDRON</span>
-              <OctahedronLogo class="text-saturated-500 w-6 h-6" />
+              <OctahedronLogo class="text-cas4 w-6 h-6" />
               <span class="text-decent-400 font-light">WORLD</span>
             </h1>
-            <h2 class="text-decent-500 text-xl max-w-md font-lighter font-sans mt-3 text-balance">
+            <h2 class="text-can5 text-xl max-w-md font-lighter font-sans mt-3 text-balance">
               {t('home.tagline')}
             </h2>
           </div>

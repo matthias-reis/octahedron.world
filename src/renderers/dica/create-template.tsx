@@ -89,7 +89,7 @@ function mergeSteps(
 }
 
 export default function createTemplate(props: {
-  mds: HastParseResult;
+  mds: HastParseResult<GlobalScope, LocalScope>;
 }): JSX.Element {
   const state = {
     parsed: null as ReturnType<
@@ -151,7 +151,7 @@ export default function createTemplate(props: {
     ),
     blockquote: (props: any) => (
       <blockquote
-        class="border-l-4 border-neutral-500 text-neutral-500 font-serif pl-4 italic my-4 leading-loose"
+        class="border-l-4 border-can5 text-can4 font-serif pl-4 italic my-4 leading-loose"
         {...props}
       />
     ),
@@ -164,7 +164,7 @@ export default function createTemplate(props: {
       />
     ),
     note: (props: any) => (
-      <div class="my-4 p-5 bg-yellow-100 text-stone-700 font-mono leading-loose">
+      <div class="my-4 p-5 bg-cbd3 text-cbn8 font-mono leading-loose">
         {props.children}
       </div>
     ),
@@ -285,15 +285,15 @@ export default function createTemplate(props: {
       {/* Cover page */}
       <View visible={isViewingCover()} id="cover">
         <div class="text-center px-8 h-full flex flex-col items-stretch justify-center">
-          <h2 class="text-6xl md:text-8xl font-bold mb-6 font-octa">
+          <h2 class="text-6xl md:text-8xl font-bold mb-6 font-octa text-cw">
             {parsed.global?.title}
           </h2>
 
-          <p class="text-xl md:text-2xl text-gray-400 mb-8">
+          <p class="text-xl md:text-2xl text-can4 mb-8">
             {parsed.global?.subtitle}
           </p>
 
-          <p class="text-sm text-gray-500 mb-12">
+          <p class="text-sm text-can4 mb-12">
             {parsed.global?.start ? formatDateDE(parsed.global.start) : ''}
           </p>
 
@@ -315,16 +315,14 @@ export default function createTemplate(props: {
               {(step) => (
                 <Page id={step.id} visible={currentHash() === step.id}>
                   <div class="max-w-3xl mx-auto px-4">
-                    <h2 class="text-lg text-neutral-500 mb-2">
-                      {step.local.title}
-                    </h2>
+                    <h2 class="text-lg text-can2 mb-2">{step.local.title}</h2>
                     <step.Body />
                     <Show when={step.local.help}>
                       {(getHelp) => {
                         const Help = getHelp();
                         return (
-                          <div class="mt-8 p-5 border-2 border-neutral-400 bg-neutral-200 rounded-2xl">
-                            <p class="text-sm text-neutral-500 flex items-center gap-1">
+                          <div class="mt-8 p-5 border-2 border-cad7 bg-cad9 rounded-2xl text">
+                            <p class="text-sm text-cad4 flex items-center gap-1">
                               <Signpost size={16} />
                               {t('dica.help')}
                             </p>
@@ -341,20 +339,22 @@ export default function createTemplate(props: {
           <nav class="w-xs overflow-y-auto h-screen p-4">
             <div>
               <h1 class="font-octa text-3xl font-bold top-4 left-4 flex items-center justify-center gap-2 mt-16 mb-6 uppercase">
-                <LogoHorizontal class="h-5 w-5 text-saturated-500" />{' '}
+                <LogoHorizontal class="h-5 w-5 text-cas4" />{' '}
                 <span>{parsed.global?.title}</span>
               </h1>
               <h2 class="text-2xl font-bold font-octa mb-4">
                 {t('dica.progress')}: {progress().percent.toFixed() || 0}%
               </h2>
               <div class="flex gap-4 mb-4 items-center mr-2">
-                <p class="relative h-12px bg-neutral-300 p-0.5 rounded-full grow">
+                <p class="relative h-12px bg-can6 p-0.5 rounded-full grow">
                   <span
-                    class="block h-3 rounded-full bg-linear-to-b from-complement-600 to-complement-400"
+                    class="block h-3 rounded-full bg-linear-to-b from-cbs5 to-cbs3"
                     style={{ width: `${progress().percent || 0}%` }}
                   />
                 </p>
-                <p class="border rounded-full px-2">{average().toFixed()}</p>
+                <p class="border-2 rounded-full px-2 text-cbs3 border-cbs3 w-6 text-center">
+                  {average().toFixed()} p
+                </p>
               </div>
               <ul class="flex flex-col gap-2 mb-6">
                 <For each={revealedPages()}>

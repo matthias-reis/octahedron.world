@@ -2,6 +2,7 @@ import { Show, createSignal, createEffect, onCleanup } from 'solid-js';
 import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
 import { QuestWrapper } from './quest-wrapper';
 import { largeImageUrl } from '~/components/image-helpers';
+import { useI18n } from '~/i18n/context';
 
 export type ImageMapQuestConfig = BaseQuestConfig & {
   variant: 'imagemap';
@@ -32,7 +33,10 @@ export const ImageMapQuest: QuestVariant<
   const [isFinished, setIsFinished] = createSignal(props.status.finished);
   const [tries, setTries] = createSignal(props.status.tries ?? 0);
   const [showError, setShowError] = createSignal(false);
-  const [lastClick, setLastClick] = createSignal<[number, number] | null>(null);
+  const [_lastClick, setLastClick] = createSignal<[number, number] | null>(
+    null
+  );
+  const { t } = useI18n();
 
   let imageRef: HTMLImageElement | undefined;
   const [imageDimensions, setImageDimensions] = createSignal<{
@@ -133,9 +137,7 @@ export const ImageMapQuest: QuestVariant<
           alt="Quest image"
           class="max-w-sm mx-auto mb-6"
         />
-        <p class="text-emerald-500 max-w-sm mx-auto text-center">
-          {config().success}
-        </p>
+        <p class="text-cbs5 max-w-sm mx-auto text-center">{config().success}</p>
       </Show>
 
       <Show when={!isFinished()}>
@@ -157,7 +159,7 @@ export const ImageMapQuest: QuestVariant<
         <Show when={showError()}>
           <p class="text-saturated-500 mt-4 text-center">{config().failure}</p>
           <p class="text-neutral-500 text-sm text-center mt-1">
-            {tries()} wrong {tries() === 1 ? 'attempt' : 'attempts'}
+            {t('dica.wrongAttempts', { count: tries() })}
           </p>
         </Show>
       </Show>

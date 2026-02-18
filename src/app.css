@@ -159,6 +159,16 @@ body {
   font-stretch: 87.5%;
 }
 
+.petrol {
+  --h-a: 195;
+  --h-b: 15;
+  --h-c: 150;
+  --h-d: 175;
+  --h-e: 195;
+  --h-f: 230;
+  --h-g: 260;
+}
+
 .pcsc-bd {
   @apply backdrop-blur-md backdrop-brightness-110 backdrop-saturate-150 backdrop-contrast-75;
 }
@@ -238,15 +248,15 @@ body {
 }
 
 .dica-button {
-  @apply max-w-lg mx-auto inline-block px-6 py-3 bg-cas5 text-cas2 font-semibold rounded-full hover:bg-cas4 hover:text-cw transition-colors;
+  @apply max-w-lg mx-auto inline-block px-6 py-3 bg-cas5 text-can1 font-semibold rounded-full hover:bg-cas4 hover:text-cw transition-colors;
 }
 
 .dica-selector-inactive {
-  @apply bg-cbn7 text-cbn2 hover:bg-can7;
+  @apply bg-can7 text-cbn2 hover:bg-can6;
 }
 
 .dica-selector-active {
-  @apply bg-can6 text-can2;
+  @apply bg-cbs6 text-cw;
 }
 
 .dica-box-inactive {

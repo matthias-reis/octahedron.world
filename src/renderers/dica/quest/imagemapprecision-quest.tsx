@@ -2,6 +2,7 @@ import { Show, createSignal, createEffect, onCleanup } from 'solid-js';
 import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
 import { QuestWrapper } from './quest-wrapper';
 import { largeImageUrl } from '~/components/image-helpers';
+import { useI18n } from '~/i18n/context';
 
 export type ImageMapPrecisionQuestConfig = BaseQuestConfig & {
   variant: 'imagemapprecision';
@@ -29,6 +30,7 @@ export const ImageMapPrecisionQuest: QuestVariant<
   const [clickSpot, setClickSpot] = createSignal<[number, number] | null>(
     props.status.clickSpot ?? null
   );
+  const { t } = useI18n();
 
   const deviation = () => {
     const click = clickSpot();
@@ -113,29 +115,28 @@ export const ImageMapPrecisionQuest: QuestVariant<
 
         <Show when={config().debug && !isFinished() && imageDimensions()}>
           <div
-            class="bg-emerald-500/50"
+            class="bg-cbs5/50"
             style={dotStyle(config().spot[0], config().spot[1])}
           />
         </Show>
 
         <Show when={isFinished() && clickSpot()}>
           <div
-            class="bg-saturated-500/50"
+            class="bg-cas5/50"
             style={dotStyle(clickSpot()![0], clickSpot()![1])}
           />
           <div
-            class="bg-emerald-500/50"
+            class="bg-cbs5/50"
             style={dotStyle(config().spot[0], config().spot[1])}
           />
         </Show>
       </div>
 
       <Show when={isFinished()}>
-        <p class="text-emerald-500 mx-auto text-center mt-6">
-          {config().success}
-        </p>
-        <p class="text-neutral-500 text-sm text-center mt-2">
-          Deviation: {deviation()}% — Score: {computedScore()}/100
+        <p class="text-cbs4 mx-auto text-center mt-6">{config().success}</p>
+        <p class="text-can4 text-sm text-center mt-2">
+          {t('dica.deviation')}: {deviation()}% — {t('dica.score')}:{' '}
+          {computedScore()}/100
         </p>
       </Show>
     </QuestWrapper>

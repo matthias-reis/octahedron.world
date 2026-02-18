@@ -84,7 +84,7 @@ export const MultipleChoiceQuest: QuestVariant<
       <h3 class="text-2xl mb-4">{config().question}</h3>
 
       {isFinished() ? (
-        <p class="text-emerald-500 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cbs4 max-w-sm mx-auto my-6 text-center">
           {config().success}
         </p>
       ) : (
@@ -101,7 +101,7 @@ export const MultipleChoiceQuest: QuestVariant<
                   }}
                 >
                   <span
-                    class="w-5 h-5 border-2 rounded flex items-center justify-center shrink-0 bg-transparent"
+                    class="w-5 h-5 border-2 rounded flex items-center justify-center shrink-0 bg-transparent border-current"
                     classList={{
                       'dica-box-inactive': !selected().has(index()),
                       'dica-box-active': selected().has(index()),
@@ -109,7 +109,7 @@ export const MultipleChoiceQuest: QuestVariant<
                   >
                     <Show when={selected().has(index())}>
                       <svg
-                        class="w-4 h-34"
+                        class="w-4 h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -117,7 +117,7 @@ export const MultipleChoiceQuest: QuestVariant<
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          stroke-width="3"
+                          stroke-width="4"
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
@@ -130,10 +130,7 @@ export const MultipleChoiceQuest: QuestVariant<
           </div>
 
           <div class="mt-4 flex flex-col items-center gap-3">
-            <button
-              onClick={handleSubmit}
-              class="px-6 py-2 bg-saturated-500 hover:bg-saturated-600 text-white font-medium rounded-lg transition-colors"
-            >
+            <button onClick={handleSubmit} class="dica-button">
               Submit
             </button>
 

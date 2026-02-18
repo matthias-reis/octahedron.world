@@ -1,6 +1,7 @@
 import { Show, For, createSignal, createEffect } from 'solid-js';
 import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
 import { QuestWrapper } from './quest-wrapper';
+import { useI18n } from '~/i18n/context';
 
 export type MultitextQuestConfig = BaseQuestConfig & {
   variant: 'multitext';
@@ -32,6 +33,7 @@ export const MultitextQuest: QuestVariant<
   const [inputValue, setInputValue] = createSignal('');
   const [showError, setShowError] = createSignal(false);
   const [gaveUp, setGaveUp] = createSignal(false);
+  const { t } = useI18n();
 
   createEffect(() => {
     if (
@@ -105,13 +107,13 @@ export const MultitextQuest: QuestVariant<
       <h3 class="text-2xl mb-6">{config().question}</h3>
 
       <Show when={isFinished() && !gaveUp()}>
-        <p class="text-emerald-500 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cbs4 max-w-sm mx-auto my-6 text-center">
           {config().success}
         </p>
       </Show>
 
       <Show when={gaveUp()}>
-        <p class="text-saturated-400 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cas4 max-w-sm mx-auto my-6 text-center">
           {config().notfound}
         </p>
       </Show>
@@ -120,9 +122,9 @@ export const MultitextQuest: QuestVariant<
         <ul class="mb-6 space-y-2">
           <For each={found()}>
             {(solution) => (
-              <li class="flex items-center gap-2 font-mono text-emerald-400">
+              <li class="flex items-center gap-2 font-mono text-cbs4">
                 <svg
-                  class="w-5 h-5 text-emerald-500"
+                  class="w-4 h-4 text-cbs4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -130,7 +132,7 @@ export const MultitextQuest: QuestVariant<
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    stroke-width="3"
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
@@ -147,23 +149,24 @@ export const MultitextQuest: QuestVariant<
             type="text"
             value={inputValue()}
             onInput={(e) => setInputValue(e.currentTarget.value)}
-            class="w-full max-w-xs px-4 py-3 bg-neutral-complement-300 border border-neutral-complement-500 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-neutral-complement-500"
-            placeholder="Your answer..."
+            class="w-full max-w-xs px-4 py-3 bg-can7 border border-can4 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-can4"
+            placeholder={t('dica.answer')}
           />
           <button type="submit" class="dica-button">
-            Submit
+            {t('dica.submit')}
           </button>
         </form>
 
         <Show when={showError()}>
-          <p class="text-saturated-600 mt-4 text-center">{config().failure}</p>
-          <p class="text-neutral-500 text-sm text-center mt-1">
-            Attempt {tries()} of {MAX_TRIES}
+          <p class="text-cas4 mt-4 text-center">{config().failure}</p>
+          <p class="text-can4 text-sm text-center mt-1">
+            {t('dica.attempt')} {tries()} / {MAX_TRIES}
           </p>
         </Show>
 
-        <p class="text-neutral-500 text-sm text-center mt-4">
-          {found().length} of {config().solutions.length} solutions found
+        <p class="text-can4 text-sm text-center mt-4">
+          {found().length} / {config().solutions.length}{' '}
+          {t('dica.solutionsFound')}
         </p>
       </Show>
     </QuestWrapper>

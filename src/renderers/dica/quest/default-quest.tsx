@@ -21,12 +21,9 @@ export const DefaultQuest: QuestVariant<
   return (
     <Show
       when={!isFinished()}
-      fallback={<p class="text-pink-400 font-bold text-center">Completed!</p>}
+      fallback={<p class="text-cbs5 font-bold text-center">Completed!</p>}
     >
-      <button
-        onClick={handleClick}
-        class="px-6 py-3 bg-pink-700 text-black font-semibold rounded-lg hover:bg-pink-500 transition-colors mx-auto"
-      >
+      <button onClick={handleClick} class="dica-button">
         Complete Quest
       </button>
     </Show>

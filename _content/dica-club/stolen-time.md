@@ -69,15 +69,16 @@ reveal:
   - waste-no-time
 ```
 
-```@/help
-So let's go, if you feel like it, start with the first riddle. At the moment only a
-single track is visible on the right, so **click on it right away**.
+```md @/help
+So let's go, if you feel like it, start with the first riddle. At the moment
+only a single track is visible on the right, so **click on it right away**.
 
-Generally, riddles and cases are not always linear. The right column
-lets you navigate through the different scenes to find clues. It is under your control what you do next. The story will not continue by itself.
+Generally, riddles and cases are not always linear. The right column lets you
+navigate through the different scenes to find clues. It is under your control
+what you do next. The story will not continue by itself.
 
-So also pay attention if new entries appear here, because many pages only
-become visible when certain conditions are met.
+So also pay attention if new entries appear here, because many pages only become
+visible when certain conditions are met.
 ```
 
 +++waste-no-time
@@ -118,9 +119,12 @@ reveal:
   - the-webpage
 ```
 
-```@/help
-As you can see, you have to pay attention to every detail. But don't worry. You are
-welcome to go look again. Little hint, which is probably only free in this very first game: You will find the answer in the introduction text on the previous page. So if you forgot it, no problem, just navigate back, read tit up, remember it and come back to answer the question.
+```md @/help
+As you can see, you have to pay attention to every detail. But don't worry. You
+are welcome to go look again. Little hint, which is probably only free in this
+very first game: You will find the answer in the introduction text on the
+previous page. So if you forgot it, no problem, just navigate back, read tit up,
+remember it and come back to answer the question.
 ```
 
 +++the-webpage
@@ -154,9 +158,9 @@ Immediately a URL catches your eye:
 
 [https://www.time-flies.com/peter-henlein](#traces)
 
-```@/help
-Simply click on the link. It takes you to a hidden page.
-As soon as you are there, it will also appear in the right navigation column.
+```md @/help
+Simply click on the link. It takes you to a hidden page. As soon as you are
+there, it will also appear in the right navigation column.
 ```
 
 +++traces
@@ -202,8 +206,9 @@ reveal:
   - the-weapon
 ```
 
-```@/help
-As you can see, more riddles have now appeared in the overview on the right. You can tackle them in any order.
+```md @/help
+As you can see, more riddles have now appeared in the overview on the right. You
+can tackle them in any order.
 ```
 
 +++on-the-page
@@ -304,11 +309,11 @@ source, there is also this riddle:
 ```md note
 To find me you must solve this riddle:
 
-I cannot be grasped, yet I am always around you.
-Without me everything stands still, yet you cannot see me.
-I am the companion of seconds and hours – what am I called?
+I cannot be grasped, yet I am always around you. Without me everything stands
+still, yet you cannot see me. I am the companion of seconds and hours – what am
+I called?
 
-  Signed _The Silent Companion_
+Signed _The Silent Companion_
 ```
 
 ```yaml quest/input
@@ -609,9 +614,9 @@ reveal:
   - pinboard
 ```
 
-```@/help
-Here you have to find the one detail that is important for the case.
-Look exactly over the picture. One brother has something in his hand.
+```md @/help
+Here you have to find the one detail that is important for the case. Look
+exactly over the picture. One brother has something in his hand.
 ```
 
 +++backside
@@ -687,9 +692,9 @@ reveal:
   - interviews
 ```
 
-```@/help
-Alright. We'll help you. It's three postcards.
-Simply find the motifs that fit Switzerland.
+```md @/help
+Alright. We'll help you. It's three postcards. Simply find the motifs that fit
+Switzerland.
 ```
 
 +++interviews
@@ -729,9 +734,9 @@ reveal:
   - geometry
 ```
 
-```@/help
-Watch the "Clues" area on the right again. The two interrogations can be found there.
-Also, the next riddle has already been unlocked this time.
+```md @/help
+Watch the "Clues" area on the right again. The two interrogations can be found
+there. Also, the next riddle has already been unlocked this time.
 ```
 
 +++hieronymus
@@ -788,21 +793,26 @@ type: clue
 ```
 
 ```md note
-**KOK Berger:** Good day, this is Commissioner Berger speaking. I am calling from your brother's museum.
+**KOK Berger:** Good day, this is Commissioner Berger speaking. I am calling
+from your brother's museum.
 
 **FzF:** Yes, good day. How can I help you?
 
-**KOK Berger:** A burglary has taken place here in the museum. We are routinely checking all involved parties. You are currently at a watchmaker congress in Zurich, right?
+**KOK Berger:** A burglary has taken place here in the museum. We are routinely
+checking all involved parties. You are currently at a watchmaker congress in
+Zurich, right?
 
 **FzF:** Yes, that's correct.
 
 **KOK Berger:** For how long?
 
-**FzF:** Since about two weeks. The congress started the day before yesterday. Before that I had some business appointments in Switzerland.
+**FzF:** Since about two weeks. The congress started the day before yesterday.
+Before that I had some business appointments in Switzerland.
 
 **KOK Berger:** Can you give me a contact who confirms this?
 
-**FzF:** Yes, of course, several even. I can give you the contact details of my hotel and my business partner here in Zurich.
+**FzF:** Yes, of course, several even. I can give you the contact details of my
+hotel and my business partner here in Zurich.
 ```
 
 After checking with the mentioned persons, the alibi of Friedrich zu Feuerbach
@@ -862,10 +872,9 @@ reveal:
   - solution
 ```
 
-```@/help
+```md @/help
 Here you have to find the exact point where the cavity is located behind the
-wall. Best you simply continue the pendulum swing.
-Then you should hit the wall.
+wall. Best you simply continue the pendulum swing. Then you should hit the wall.
 ```
 
 +++solution

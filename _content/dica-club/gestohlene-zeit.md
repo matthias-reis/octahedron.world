@@ -72,15 +72,17 @@ reveal:
   - keine-zeit-verschwenden
 ```
 
-```@/help
-Also los, wenn Du Lust hast, steig in das erste Rätsel ein. Im Moment ist nur eine
-einzige Spur rechts zu sehen, also **klick doch gleich mal drauf**.
+```md @/help
+Also los, wenn Du Lust hast, steig in das erste Rätsel ein. Im Moment ist nur
+eine einzige Spur rechts zu sehen, also **klick doch gleich mal drauf**.
 
 Generell sind Rätsel und Fälle nicht immer linear aufgebaut. Die rechte Spalte
-lässt Dich durch die verschiedenen Szenen navigieren, um Hinweise zu finden. Es ist unter Deiner Kontrolle, was Du als nächstes machst. Die Geschichte wird also nicht von selbst weiter gehen.
+lässt Dich durch die verschiedenen Szenen navigieren, um Hinweise zu finden. Es
+ist unter Deiner Kontrolle, was Du als nächstes machst. Die Geschichte wird also
+nicht von selbst weiter gehen.
 
-Achte also auch darauf, ob hier neue Einträge auftauchen, denn viele Seiten werden
-nur dann sichtbar, wenn bestimmte Bedingungen erfüllt sind.
+Achte also auch darauf, ob hier neue Einträge auftauchen, denn viele Seiten
+werden nur dann sichtbar, wenn bestimmte Bedingungen erfüllt sind.
 ```
 
 +++keine-zeit-verschwenden
@@ -114,19 +116,19 @@ options:
 solution: 1
 success:
   Sehr gut! Wir befinden uns im Galerieflügel, wie man an den zahlreichen
-  Wandportraits gut sehen kann. Als Belohnung gibt es einen Hinweis.
-  Schau mal rechts in die Navigationsleiste.
+  Wandportraits gut sehen kann. Als Belohnung gibt es einen Hinweis. Schau mal
+  rechts in die Navigationsleiste.
 failure: Das war leider falsch. Probier es gleich nochmal!
 reveal:
   - die-webseite
 ```
 
-```@/help
+```md @/help
 Wie Du siehst, musst Du auf jedes Detail achten. Aber keine Sorge. Du kannst
 gerne nochmal nachsehen gehen. Kleiner Hinweis, den es wahrscheinlich nur in
-diesem einführunsrätsel gratis gibt: Die Antwort findest Du im
-Einführungstext. Also falls Du es vergessen hast, klicke in der rechten
-Navigationsspalte auf "Der Tatort" und lies nochmal nach.
+diesem einführunsrätsel gratis gibt: Die Antwort findest Du im Einführungstext.
+Also falls Du es vergessen hast, klicke in der rechten Navigationsspalte auf
+"Der Tatort" und lies nochmal nach.
 ```
 
 +++die-webseite
@@ -164,9 +166,9 @@ Sofort sticht Dir eine URL ins Auge:
 
 [https://www.zeitlenkung.de/peter-henlein](#spuren)
 
-```@/help
-Klicke einfach auf den Link. Er bringt dich zu einer versteckten Seite.
-Sobald Du dort bist, erscheint sie dann auch in der rechten Navigationsspalte.
+```md @/help
+Klicke einfach auf den Link. Er bringt dich zu einer versteckten Seite. Sobald
+Du dort bist, erscheint sie dann auch in der rechten Navigationsspalte.
 ```
 
 +++spuren
@@ -212,8 +214,9 @@ reveal:
   - die-tatwaffe
 ```
 
-```@/help
-Wie Du siehst, sind rechts in der Übersicht nun weitere Rätsel aufgetaucht. Du kannst sie in beliebiger Reihenfolge angehen.
+```md @/help
+Wie Du siehst, sind rechts in der Übersicht nun weitere Rätsel aufgetaucht. Du
+kannst sie in beliebiger Reihenfolge angehen.
 ```
 
 +++auf-der-webseite
@@ -251,12 +254,11 @@ options:
   - Knüppel
 solutions: [0, 2, 6, 8]
 success:
-  Sehr gut! Bist Du gelernter Uhrmacher oder was?
-  Wie Du vielleicht gesehen hast, wurde ein Clue freigeschaltet.
-  Eine weitere Unterseite ist aufgegangen.
+  Sehr gut! Bist Du gelernter Uhrmacher oder was? Wie Du vielleicht gesehen
+  hast, wurde ein Clue freigeschaltet. Eine weitere Unterseite ist aufgegangen.
 failure:
-  Das war leider falsch. Probier es gleich nochmal!
-  Wir müssen Dir aber leider ein paar Punkte abziehen.
+  Das war leider falsch. Probier es gleich nochmal! Wir müssen Dir aber leider
+  ein paar Punkte abziehen.
 reveal:
   - zugang
 ```
@@ -318,11 +320,11 @@ genannt wurde auch noch dieses Rätsel:
 ```md note
 Um mich zu finden musst Du dieses Rätsel lösen:
 
-Ich bin nicht zu greifen, doch stets um dich herum.
-Ohne mich steht alles still, doch sehen kannst du mich nicht.
-Ich bin der Begleiter von Sekunden und Stunden – wie nennt man mich?
+Ich bin nicht zu greifen, doch stets um dich herum. Ohne mich steht alles still,
+doch sehen kannst du mich nicht. Ich bin der Begleiter von Sekunden und Stunden
+– wie nennt man mich?
 
-  Gez. _Der stumme Begleiter_
+Gez. _Der stumme Begleiter_
 ```
 
 ```yaml quest/input
@@ -337,8 +339,8 @@ failure:
   es gleich nochmal!
 notfound:
   Zeit, das wäre die richtige Lösung gewesen. Leider hast Du dies auch nach 10
-  Versuchen nicht gefunden. Wir lassen Dich weiterkommen, müssen Dir aber für diese
-  Aufgabe 0 Punkte geben.
+  Versuchen nicht gefunden. Wir lassen Dich weiterkommen, müssen Dir aber für
+  diese Aufgabe 0 Punkte geben.
 reveal:
   - enttaeuscht
 ```
@@ -506,24 +508,24 @@ Kleine Hilfe: Am Ende sollten es 3 Wörter sein.
 
 ```yaml quest/multitext
 question:
-  Trage hier die Buchstabenkombinationen ein, die Du gefunden hast.
-  Du kannst auch auf andere Seiten gehen und wieder hierher zurückkehren um
-  verschiedene Informationen zusammenzusammeln.
+  Trage hier die Buchstabenkombinationen ein, die Du gefunden hast. Du kannst
+  auch auf andere Seiten gehen und wieder hierher zurückkehren um verschiedene
+  Informationen zusammenzusammeln.
 ref: notizbuch
 solutions:
   - FRIE
   - DRIC
   - H z. F.
 success:
-  Sehr gut, Du hast erstmal alle Hinweise im Raum gefunden. Doch was hat das zu bedeuten?
-  Es hat sich ein weiteres Rätsel geöffnet.
+  Sehr gut, Du hast erstmal alle Hinweise im Raum gefunden. Doch was hat das zu
+  bedeuten? Es hat sich ein weiteres Rätsel geöffnet.
 failure:
   Das hat leider nicht gepasst. Bitte versuche es nochmal. Du kannst auch gerne
   die Texte von den anderen Seiten kopieren.
 notfound:
   Das waren 10 Fehlversuchhe. Leider hast Du die richtigen Lösungen nicht alle
-  eingegeben. Wir lassen Dich weiterkommen, müssen Dir aber für diese
-  Aufgabe 0 Punkte geben.
+  eingegeben. Wir lassen Dich weiterkommen, müssen Dir aber für diese Aufgabe 0
+  Punkte geben.
 reveal:
   - der-name
 ```
@@ -560,8 +562,10 @@ FRIE
 ref: der-name
 weight: 3
 question: Was könnten diese Buchstaben in der richtigen Reihenfolgeergeben?
-solution: "FRIEDRICH z. F."
-success: z. F. wie bei "zu Feuerbach". Sehr gut kombiniert! Friedrich zu Feuerbach. Wir haben einen Namen
+solution: 'FRIEDRICH z. F.'
+success:
+  z. F. wie bei "zu Feuerbach". Sehr gut kombiniert! Friedrich zu Feuerbach. Wir
+  haben einen Namen
 failure:
   Das war leider falsch. Bitte achte auch auf Groß- und Kleinschreibung! Probier
   es gleich nochmal!
@@ -622,16 +626,15 @@ question: Welches spannende Detail ist hier zu sehen?
 success:
   Unglaublich! Auf dem Foto ist unsere Uhr zu sehen, die gestohlene Taschenuhr,
   die zugegebenermaßen für eine heutige Taschenuhr sehr bullig aussieht.
-failure:
-  Das war leider falsch. Probier es gleich nochmal!
+failure: Das war leider falsch. Probier es gleich nochmal!
 reveal:
   - rueckseite
   - pinnwand
 ```
 
-```@/help
-Hier musst Du das eine Detail finden, das für den Fall wichtig ist.
-Schau genau über das Bild. Der eine Bruder hat etwas in der Hand.
+```md @/help
+Hier musst Du das eine Detail finden, das für den Fall wichtig ist. Schau genau
+über das Bild. Der eine Bruder hat etwas in der Hand.
 ```
 
 +++rueckseite
@@ -700,17 +703,16 @@ spots:
 tolerance: 8
 question: Finde die drei Postkarten aus der Schweiz.
 success:
-  Sehr gut! Wir haben die drei Postkarten gefunden.
-  Die Poststempel bestätigen, dass sie aus der Schweiz kommen.
-failure:
-  Das war leider die falsche Stelle. Probier es gleich nochmal!
+  Sehr gut! Wir haben die drei Postkarten gefunden. Die Poststempel bestätigen,
+  dass sie aus der Schweiz kommen.
+failure: Das war leider die falsche Stelle. Probier es gleich nochmal!
 reveal:
   - verhoere
 ```
 
-```@/help
-Also gut. Wir helfen Dir. Es sind drei Postkarten.
-Finde einfach die Motive, die zur Schweiz passen.
+```md @/help
+Also gut. Wir helfen Dir. Es sind drei Postkarten. Finde einfach die Motive, die
+zur Schweiz passen.
 ```
 
 +++verhoere
@@ -752,9 +754,9 @@ reveal:
   - geometrie
 ```
 
-```@/help
-Achte wieder auf den "Clues" Bereich rechts. Dort sind die beiden Verhöre zu finden.
-Zudem ist diesmal schoon das nächste Rätsel freigeschaltet worden.
+```md @/help
+Achte wieder auf den "Clues" Bereich rechts. Dort sind die beiden Verhöre zu
+finden. Zudem ist diesmal schoon das nächste Rätsel freigeschaltet worden.
 ```
 
 +++hieronymus
@@ -812,21 +814,26 @@ type: clue
 ```
 
 ```md note
-**KOK Berger:** Guten Tag, hier spricht Kommissarin Berger. Ich rufe vom Museum Ihres Bruder aus an.
+**KOK Berger:** Guten Tag, hier spricht Kommissarin Berger. Ich rufe vom Museum
+Ihres Bruder aus an.
 
 **FzF:** Ja, guten Tag. Wie kann ich Ihnen helfen?
 
-**KOK Berger:** Hier im Museum hat ein Einbruch stattgefunden. Wir überprüfen routinemäßig alle Beteiligten. Sie sind ja zurzeit auf einem Uhrmacherkongress in Zürich, richtig?
+**KOK Berger:** Hier im Museum hat ein Einbruch stattgefunden. Wir überprüfen
+routinemäßig alle Beteiligten. Sie sind ja zurzeit auf einem Uhrmacherkongress
+in Zürich, richtig?
 
 **FzF:** Ja, das stimmt.
 
 **KOK Berger:** Wie lange schon?
 
-**FzF:** Seit etwa zwei Wochen. Der Kongress startete vorgestern. Davor hatte ich noch einige Geschäftstermine in der Schweiz.
+**FzF:** Seit etwa zwei Wochen. Der Kongress startete vorgestern. Davor hatte
+ich noch einige Geschäftstermine in der Schweiz.
 
 **KOK Berger:** Können Sie mir einen Kotakt nennen, der das bestätigt?
 
-**FzF:** Ja, natürlich, einige sogar. Ich kann Ihnen die Kontaktdaten meines Hotels und meines Geschäftspartners hier in Zürich geben.
+**FzF:** Ja, natürlich, einige sogar. Ich kann Ihnen die Kontaktdaten meines
+Hotels und meines Geschäftspartners hier in Zürich geben.
 ```
 
 Nach Rückfragen bei den genannten Personen bestätigt sich das Alibi von
@@ -874,15 +881,16 @@ question: An welcher Stelle könnte sich hinter der Wand ein Hohlraum befinden?
 image: geometry
 spot: [90.5, 50.8]
 success:
-  Unglaublich! Hinter der Wand über der Durchgangstür ist tatsächlich ein Hohlraum.
+  Unglaublich! Hinter der Wand über der Durchgangstür ist tatsächlich ein
+  Hohlraum.
 reveal:
   - loesung
 ```
 
-```@/help
-Hier musst Du den genauen Punkt finden, an dem sich der Hohlraum hinter der
-Wand befindet. Am besten Du führst einfach den Pendelschwung weiter.
-Dann solltest Du auf die Wand treffen.
+```md @/help
+Hier musst Du den genauen Punkt finden, an dem sich der Hohlraum hinter der Wand
+befindet. Am besten Du führst einfach den Pendelschwung weiter. Dann solltest Du
+auf die Wand treffen.
 ```
 
 +++loesung

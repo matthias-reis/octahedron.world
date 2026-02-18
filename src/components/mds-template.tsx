@@ -2,6 +2,8 @@ import { createAsync } from '@solidjs/router';
 import { Show } from 'solid-js';
 import { clientOnly } from '@solidjs/start';
 import { getRoute } from '~/model/model';
+import { setColorSpace } from '~/store/color-space';
+import { createEffect } from 'solid-js';
 
 const renderers: Record<string, ReturnType<typeof clientOnly>> = {
   dica: clientOnly(() => import('~/renderers/dica/create-template')),
@@ -20,6 +22,13 @@ const renderers: Record<string, ReturnType<typeof clientOnly>> = {
 export const MdsTemplate = ({ route }: { route: string }) => {
   const item = createAsync(() => getRoute(route));
 
+  createEffect(() => {
+    const data = item();
+    if (data && data.colorSpace) {
+      setColorSpace(data.colorSpace);
+    }
+  });
+
   return (
     <Show when={item()}>
       {(data) => {
@@ -31,9 +40,7 @@ export const MdsTemplate = ({ route }: { route: string }) => {
           return (
             <section class="max-w-4xl mx-auto p-8">
               <h1 class="text-2xl font-bold mb-4">{data().title}</h1>
-              <p class="text-red-500">
-                Unknown renderer type: {type ?? 'none'}
-              </p>
+              <p class="text-cbs5">Unknown renderer type: {type ?? 'none'}</p>
             </section>
           );
         }

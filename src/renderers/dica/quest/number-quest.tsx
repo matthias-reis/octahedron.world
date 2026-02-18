@@ -1,6 +1,7 @@
 import { Show, createSignal, createEffect } from 'solid-js';
 import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
 import { QuestWrapper } from './quest-wrapper';
+import { useI18n } from '~/i18n/context';
 
 export type NumberQuestConfig = BaseQuestConfig & {
   variant: 'number';
@@ -30,6 +31,7 @@ export const NumberQuest: QuestVariant<NumberQuestConfig, NumberQuestStatus> = (
   const [inputValue, setInputValue] = createSignal('');
   const [showError, setShowError] = createSignal(false);
   const [gaveUp, setGaveUp] = createSignal(false);
+  const { t } = useI18n();
 
   createEffect(() => {
     if (
@@ -97,16 +99,16 @@ export const NumberQuest: QuestVariant<NumberQuestConfig, NumberQuestStatus> = (
       <h3 class="text-2xl mb-6">{config().question}</h3>
 
       <Show when={isFinished() && !gaveUp()}>
-        <p class="text-emerald-500 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cbs4 max-w-sm mx-auto my-6 text-center">
           {config().success}
         </p>
       </Show>
 
       <Show when={gaveUp()}>
-        <p class="text-saturated-400 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cas4 max-w-sm mx-auto my-6 text-center">
           {config().notfound}
         </p>
-        <p class="text-saturated-500 text-sm text-center opacity-70">
+        <p class="text-can5 text-sm text-center opacity-70">
           The answer was: {config().solution}
         </p>
       </Show>
@@ -117,18 +119,18 @@ export const NumberQuest: QuestVariant<NumberQuestConfig, NumberQuestStatus> = (
             type="number"
             value={inputValue()}
             onInput={(e) => setInputValue(e.currentTarget.value)}
-            class="w-full max-w-xs px-4 py-3 bg-neutral-complement-300 border border-neutral-complement-500 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-neutral-complement-500"
-            placeholder="Your answer..."
+            class="w-full max-w-xs px-4 py-3 bg-cbn7 border border-cbn5 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-cbn5"
+            placeholder={t('dica.answer')}
           />
           <button type="submit" class="dica-button">
-            Submit
+            {t('dica.submit')}
           </button>
         </form>
 
         <Show when={showError()}>
-          <p class="text-saturated-400 mt-4 text-center">{config().failure}</p>
-          <p class="text-neutral-500 text-sm text-center mt-1">
-            Attempt {tries()} of {MAX_TRIES}
+          <p class="text-cas4 mt-4 text-center">{config().failure}</p>
+          <p class="text-can5 text-sm text-center mt-1">
+            {t('dica.attempt')} {tries()} / {MAX_TRIES}
           </p>
         </Show>
       </Show>

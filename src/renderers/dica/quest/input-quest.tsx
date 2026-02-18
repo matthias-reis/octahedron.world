@@ -1,6 +1,7 @@
 import { Show, createSignal, createEffect } from 'solid-js';
 import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
 import { QuestWrapper } from './quest-wrapper';
+import { useI18n } from '~/i18n/context';
 
 export type InputQuestConfig = BaseQuestConfig & {
   variant: 'input';
@@ -29,6 +30,7 @@ export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
   const [inputValue, setInputValue] = createSignal('');
   const [showError, setShowError] = createSignal(false);
   const [gaveUp, setGaveUp] = createSignal(false);
+  const { t } = useI18n();
 
   createEffect(() => {
     if (
@@ -95,18 +97,18 @@ export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
             type="text"
             value={inputValue()}
             onInput={(e) => setInputValue(e.currentTarget.value)}
-            class="w-full max-w-xs px-4 py-3 bg-neutral-complement-300 border border-neutral-complement-500 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-neutral-complement-500"
-            placeholder="Your answer..."
+            class="w-full max-w-xs px-4 py-3 bg-cbn7 border border-cbn5 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-cbn5"
+            placeholder={t('dica.answer')}
           />
           <button type="submit" class="dica-button">
-            Submit
+            {t('dica.submit')}
           </button>
         </form>
 
         <Show when={showError()}>
-          <p class="text-pink-400 mt-4 text-center">{config().failure}</p>
-          <p class="text-slate-500 text-sm text-center mt-1">
-            Attempt {tries()} of {MAX_TRIES}
+          <p class="text-cas4 mt-4 text-center">{config().failure}</p>
+          <p class="text-can5 text-sm text-center mt-1">
+            {t('dica.attempt')} {tries()} / {MAX_TRIES}
           </p>
         </Show>
       </Show>

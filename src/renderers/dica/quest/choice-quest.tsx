@@ -51,7 +51,7 @@ export const ChoiceQuest: QuestVariant<ChoiceQuestConfig, ChoiceQuestStatus> = (
       <h3 class="text-2xl mb-4">{config().question}</h3>
 
       {isFinished() ? (
-        <p class="text-emerald-500 max-w-sm mx-auto my-5 text-center">
+        <p class="text-cbs5 max-w-sm mx-auto my-5 text-center">
           {config().success}
         </p>
       ) : (
@@ -74,9 +74,7 @@ export const ChoiceQuest: QuestVariant<ChoiceQuestConfig, ChoiceQuestStatus> = (
           </div>
 
           <Show when={lastWrong() !== null}>
-            <p class="text-saturated-600 mt-4 text-center">
-              {config().failure}
-            </p>
+            <p class="text-cas5 mt-4 text-center">{config().failure}</p>
           </Show>
         </>
       )}

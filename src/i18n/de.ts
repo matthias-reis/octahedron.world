@@ -5,6 +5,24 @@ export const de: Dictionary = {
     help: 'Hilfe',
     progress: 'Fortschritt',
     clues: 'Hinweise',
+    openQuest: '🧐 Aufgabe',
+    finishedQuest: '✅ Abgeschlossene Aufgabe',
+    failedQuest: '❌ Fehlgeschlagene Aufgabe',
+    submit: 'Abschicken',
+    attempt: 'Versuch',
+    answer: 'Deine Antwort...',
+    solutionsFound: {
+      one: '{{count}} Lösung gefunden',
+      other: '{{count}} Lösungen gefunden',
+    },
+    solutionsFoundWithMax: '{{count}} von {{max}} Lösungen gefunden',
+    itemsCount: '{{count}} von {{sum}} Elementen',
+    wrongAttempts: {
+      one: '{{count}} Fehlversuch',
+      other: '{{count}} Fehlversuche',
+    },
+    deviation: 'Abweichung',
+    score: 'Ergebnis',
   },
   home: {
     tagline:
