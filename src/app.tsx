@@ -21,10 +21,13 @@ export default function App() {
           root={(props) => {
             const location = useLocation();
             createEffect(() => {
-              // Reset colorSpace to petrol on every location change
-              // mds-template will override this if metadata is present
-              location.pathname;
-              setColorSpace('petrol');
+              // Set colorSpace based on pathname to avoid flicker from a
+              // two-step reset→override pattern. Add more routes here as needed.
+              if (location.pathname.startsWith('/pcsc-one')) {
+                setColorSpace('pcsc-one');
+              } else {
+                setColorSpace('petrol');
+              }
             });
 
             return (

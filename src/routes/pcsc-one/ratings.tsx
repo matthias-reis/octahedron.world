@@ -4,7 +4,6 @@ import { PcscTitle } from '~/pcsc/pcsc-title';
 import { fetchRatings } from '~/pcsc/server/ratings';
 import { PcscTrack } from '~/pcsc/pcsc-track';
 import { cx } from '~/components/cx';
-
 const months = [
   'JAN',
   'FEB',
@@ -46,17 +45,16 @@ export default function PCSCOneRatings() {
                   <span
                     class={cx(
                       'w-5 h-5 rounded-full absolute -left-4 top-4 flex items-center justify-center font-mono font-bold text-lg',
-                      ratingItem.rating > 14 && 'bg-complement',
+                      ratingItem.rating > 14 && 'bg-cbs4',
                       ratingItem.rating > 9 &&
                         ratingItem.rating < 15 &&
-                        'bg-main',
-                      ratingItem.rating < 10 &&
-                        'bg-neutral-500 text-neutral-600'
+                        'bg-cas4',
+                      ratingItem.rating < 10 && 'bg-can5'
                     )}
                   >
                     {ratingItem.rating}
                   </span>
-                  <span class="ml-5 mt-4 flex flex-col text-sm">
+                  <span class="ml-5 mt-4 flex flex-col text-sm text-can1">
                     <span>
                       {new Date(ratingItem.ratingDate).getDate()}{' '}
                       {months[new Date(ratingItem.ratingDate).getMonth()]}

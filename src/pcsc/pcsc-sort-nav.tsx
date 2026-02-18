@@ -33,7 +33,7 @@ export interface PcscSortNavProps {
 export function PcscSortNav(props: PcscSortNavProps) {
   return (
     <nav class="mt-4">
-      <span class="text-sm opacity-60 mr-3">Sort by:</span>
+      <span class="text-sm text-can4 mr-3">Sort by:</span>
       <ul class="inline-flex gap-1 flex-wrap">
         <For each={props.options}>
           {(option) => (
@@ -42,8 +42,8 @@ export function PcscSortNav(props: PcscSortNavProps) {
                 onClick={() => props.onChange(option.value)}
                 class={`px-3 py-1 rounded-full text-sm transition-colors ${
                   props.current === option.value
-                    ? 'bg-neutral-100 text-neutral-900 font-medium'
-                    : 'bg-neutral-100/10 hover:bg-neutral-100/20'
+                    ? 'bg-cw text-can6 font-bold'
+                    : 'bg-cw/20 hover:bg-cw/40'
                 }`}
                 title={option.description}
               >

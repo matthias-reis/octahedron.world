@@ -3,7 +3,6 @@ import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
 import { PcscTitle } from '~/pcsc/pcsc-title';
 import { PcscTrack } from '~/pcsc/pcsc-track';
 import { fetchLeaderboard, fetchByQuery } from '~/pcsc/server/tracks';
-
 export default function PCSCOneHome() {
   const [searchTerm, setSearchTerm] = createSignal('');
 
@@ -38,7 +37,7 @@ export default function PCSCOneHome() {
           placeholder="Filter by albums, artists, title..."
           value={searchTerm()}
           onInput={(e) => setSearchTerm(e.currentTarget.value)}
-          class="w-full px-6 py-4 rounded-full pcsc-bd border border-neutral-900/20 focus:border-neutral-900/40 focus:outline-none text-lg placeholder:opacity-80"
+          class="w-full px-6 py-4 rounded-full pcsc-bd border border-cw/30 focus:border-cw/50 focus:outline-none text-lg placeholder:opacity-80"
         />
       </div>
 

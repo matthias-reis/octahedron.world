@@ -62,12 +62,11 @@ export default function PCSCOneTrackDetail() {
                             <span
                               class={cx(
                                 'w-5 h-5 rounded-full absolute -left-4 top-4 flex items-center justify-center font-mono font-bold text-lg',
-                                vote.rating > 14 && 'bg-complement',
+                                vote.rating > 14 && 'bg-cbs4',
                                 vote.rating > 9 &&
                                   vote.rating < 15 &&
-                                  'bg-main',
-                                vote.rating < 10 &&
-                                  'bg-neutral-500 text-neutral-600'
+                                  'bg-cas4',
+                                vote.rating < 10 && 'bg-can5'
                               )}
                             >
                               {vote.rating}
@@ -87,30 +86,30 @@ export default function PCSCOneTrackDetail() {
                     </For>
                   </div>
                   <div class="pcsc-bd flex flex-col gap-2 p-4 pr-6 relative grow">
-                    <h2 class="text-5xl font-octa font-bold">
+                    <h2 class="text-5xl font-octa font-bold text-cw">
                       {detail().track.title}
                     </h2>
                     <A
                       href={detail().track.artistUrl}
-                      class="text-lg hover:underline underline-offset-4 opacity-70"
+                      class="text-lg hover:underline underline-offset-4 text-can2"
                     >
                       {detail().track.artist}
                     </A>
                     <A
                       href={detail().track.albumUrl}
-                      class="text-sm hover:underline underline-offset-4 opacity-50 mt-6"
+                      class="text-sm hover:underline underline-offset-4 text-can4 mt-6"
                     >
                       {detail().track.album}
                     </A>
                     <A
                       href={detail().track.yearUrl}
-                      class="text-sm hover:underline underline-offset-4 opacity-50"
+                      class="text-sm hover:underline underline-offset-4 text-can4"
                     >
                       {detail().track.year}
                     </A>
                     <div class="w-12 text-center absolute bottom-3 right-3 flex flex-col items-stretch justify-stretch">
-                      <span class="opacity-50 text-sm">Rating</span>
-                      <span class="text-xl font-mono font-bold bg-complement">
+                      <span class="text-can4 text-sm">Rating</span>
+                      <span class="text-xl font-mono font-bold bg-cbs4 text-cw">
                         {detail().track.vote?.toFixed(1) ?? '-'}
                       </span>
                     </div>

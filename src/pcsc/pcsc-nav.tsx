@@ -19,7 +19,7 @@ export function PcscNav(props: PcscNavProps) {
             <li>
               <A
                 href={link.href}
-                class="pcsc-bd rounded-full px-4 py-2 bg-neutral-100/5 hover:bg-neutral-100/20 uppercase text-lg font-octa"
+                class="pcsc-bd rounded-full px-4 py-2 bg-cbn1/5 hover:bg-cbn1/20 uppercase text-lg font-octa text-cbn2 hover:text-cw transition-colors"
               >
                 {link.label}
               </A>

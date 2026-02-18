@@ -16,4 +16,5 @@ group: pcsc
 slug: pcsc-one
 type: none
 image: pcsc-blue
+colorSpace: pcsc-one
 ```

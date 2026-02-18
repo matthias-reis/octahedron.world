@@ -10,7 +10,7 @@ export default function PCSCOnePage(props: ParentProps) {
       style={{ 'background-image': `url(${largeImageUrl('pcsc-blue')})` }}
     >
       <main class="max-w-3xl mx-auto py-5 px-3">
-        <div class="flex gap-3 items-center justify-center text-3xl font-octa font-bold uppercase opacity-50">
+        <div class="flex gap-3 items-center justify-center text-3xl font-octa font-bold uppercase opacity-50 text-cw">
           <PcscLogo class="w-5 h-5" />
           <span>
             PCSC <span class="font-light">One</span>

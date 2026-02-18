@@ -12,18 +12,21 @@ export interface PcscBreadcrumbProps {
 
 export function PcscBreadcrumb(props: PcscBreadcrumbProps) {
   return (
-    <nav class="text-sm opacity-60">
+    <nav class="text-sm z-10">
       <ul class="flex gap-2 items-center">
         <For each={props.links}>
           {(link, index) => (
             <>
               <li>
-                <A href={link.href} class="hover:opacity-100">
+                <A
+                  href={link.href}
+                  class="text-can4 hover:text-can1 transition-colors cursor-pointer"
+                >
                   {link.label}
                 </A>
               </li>
               {index() < props.links.length - 1 && (
-                <li aria-hidden="true" class="select-none">
+                <li aria-hidden="true" class="text-can4 select-none">
                   //
                 </li>
               )}

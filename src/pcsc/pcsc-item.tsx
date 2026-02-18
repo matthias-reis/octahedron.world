@@ -15,27 +15,27 @@ export function PcscItem(props: PcscItemProps) {
   return (
     <A
       href={props.url}
-      class="relative block pcsc-bd bg-neutral-100/10 hover:bg-neutral-100/20 rounded-lg py-3 px-6 transition-colors overflow-hidden"
+      class="relative block pcsc-bd bg-cw/5 hover:bg-cw/15 rounded-lg py-3 px-6 transition-colors overflow-hidden"
     >
       <div>
         {/* Optional number on the left */}
         <Show when={props.number !== undefined}>
-          <div class="absolute min-w-5 px-2 h-5 bg-neutral-100 top-0 left-0 font-mono flex items-center justify-center">
+          <div class="absolute min-w-5 px-2 h-5 bg-can7 text-cad1 top-0 left-0 font-mono flex items-center justify-center">
             {props.number}
           </div>
         </Show>
-        <h3 class="text-3xl font-octa font-bold mb-2">{props.headline}</h3>
-        <div>{props.description}</div>
+        <h3 class="text-3xl font-octa font-bold mb-2 text-cw">
+          {props.headline}
+        </h3>
+        <div class="text-can2">{props.description}</div>
         <Show when={props.secondaryDescription}>
-          <div class="mt-4 text-sm opacity-50">
-            {props.secondaryDescription}
-          </div>
+          <div class="mt-4 text-sm text-can4">{props.secondaryDescription}</div>
         </Show>
       </div>
 
       <div class="w-12 text-center absolute bottom-3 right-3 flex flex-col items-stretch justify-stretch">
-        <span class="opacity-50 text-sm">{props.ratingTitle}</span>
-        <span class="text-xl font-mono font-bold bg-complement">
+        <span class="text-sm text-can4">{props.ratingTitle}</span>
+        <span class="text-xl font-mono font-bold bg-cbs4 text-cw">
           {props.ratingValue}
         </span>
       </div>
