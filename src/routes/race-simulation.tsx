@@ -1,5 +1,6 @@
 import { createMemo, For } from 'solid-js';
-import { simulateWeek, Stage, Racer } from '~/race-simulation';
+import { simulateWeek } from '~/race-simulation';
+import type { Racer } from "~/race-simulation/racer";
 
 const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
@@ -19,13 +20,15 @@ function DayCell(props: { racer: Racer; dayIndex: number }) {
       >
         {totalPts()}
       </div>
-      {/* Stage pattern */}
       <div
         class={`text-xs leading-snug tracking-tight mt-0.5 whitespace-nowrap text-can5`}
       >
         {pattern().slice(0, 4).join(' ')}
         <br />
         {pattern().slice(4, 8).join(' ')}
+      </div>
+      <div class="text-xs font-sans leading-snug tracking-tight mt-0.5 whitespace-nowrap text-can6">
+        AC: {day().baseAchievement.toFixed(2)}
       </div>
     </td>
   );
@@ -83,7 +86,7 @@ export default function Page() {
                       <div class="text-cas4">
                         FIN: {s.finishRate.toFixed()}%
                       </div>
-                      <div class="text-cbs4">DO: {s.dropped}#</div>
+                      <div class="text-cbs4">DO: {s.dropped}</div>
                     </td>
                   )}
                 </For>
@@ -124,7 +127,7 @@ export default function Page() {
                     {/* Weekly total */}
                     <td class="px-3 py-2 text-right">
                       <span class="font-bold text-cbs3 text-2xl">
-                        {racer.totalPoints}
+                        {racer.points}
                       </span>
                     </td>
 
