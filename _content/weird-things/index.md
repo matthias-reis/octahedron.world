@@ -29,6 +29,7 @@ So here's the collection now. Perfect to dive into my mind for a while. Enjoy!
 
 ```yaml group
 slugs:
+  - tsuru
   - trapdoor
   - puddle
   - somnium

@@ -13,10 +13,14 @@ tags:
   - Ray Bradbury
   - Short Story
   - Storyline
+  - Mesh
+  - Cyberpunk
 group: mesh
 slug: prunus-digitalis
 type: storyline
 image: prunus-digitalis
+related:
+  - tsuru
 ```
 
 Lucy is a designer by profession and design connoisseur in her free time. Others
