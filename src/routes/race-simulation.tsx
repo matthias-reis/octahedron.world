@@ -1,8 +1,8 @@
-import { createMemo, For } from 'solid-js';
-import { simulateWeek } from '~/race-simulation';
+import { createMemo, For } from "solid-js";
+import { simulateWeek } from "~/race-simulation";
 import type { Racer } from "~/race-simulation/racer";
 
-const DAY_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const DAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 function DayCell(props: { racer: Racer; dayIndex: number }) {
   const day = () => props.racer.days[props.dayIndex];
@@ -15,7 +15,7 @@ function DayCell(props: { racer: Racer; dayIndex: number }) {
       {/* Points — bold, bright/grey based on picked */}
       <div
         class={`font-bold tabular-nums leading-tight ${
-          picked() ? 'text-cad2' : 'text-cad6 line-through'
+          picked() ? "text-cad2" : "text-cad6 line-through"
         }`}
       >
         {totalPts()}
@@ -23,9 +23,9 @@ function DayCell(props: { racer: Racer; dayIndex: number }) {
       <div
         class={`text-xs leading-snug tracking-tight mt-0.5 whitespace-nowrap text-can5`}
       >
-        {pattern().slice(0, 4).join(' ')}
+        {pattern().slice(0, 4).join(" ")}
         <br />
-        {pattern().slice(4, 8).join(' ')}
+        {pattern().slice(4, 8).join(" ")}
       </div>
       <div class="text-xs font-sans leading-snug tracking-tight mt-0.5 whitespace-nowrap text-can6">
         AC: {day().baseAchievement.toFixed(2)}
@@ -43,11 +43,11 @@ export default function Page() {
       const dropped = all.filter((r) => r.days[d].dropped).length;
       const noScoreStages = all.reduce(
         (acc, r) => acc + r.days[d].noScoreCount,
-        0
+        0,
       );
       const finishRate = (1 - noScoreStages / 800) * 100;
       return { dropped, finishRate };
-    })
+    }),
   );
 
   return (

@@ -1,8 +1,8 @@
-import { query } from '@solidjs/router';
-import type { TrackCollectionItem } from '../model/track-map';
-import type { CompactTrack } from '../model/track';
-import type { AlbumSortOption } from '~/routes/pcsc-api/albums';
-import { fetchLocal } from './fetch';
+import { query } from "@solidjs/router";
+import type { AlbumSortOption } from "~/routes/pcsc-api/albums";
+import type { CompactTrack } from "../model/track";
+import type { TrackCollectionItem } from "../model/track-map";
+import { fetchLocal } from "./fetch";
 
 /**
  * Fetches all albums with the specified sorting.
@@ -11,11 +11,11 @@ import { fetchLocal } from './fetch';
  * @returns Promise<TrackCollectionItem[]> - Array of albums sorted by the specified option
  */
 export const fetchAlbums = query(
-  async (sort: AlbumSortOption = 'v3'): Promise<TrackCollectionItem[]> => {
+  async (sort: AlbumSortOption = "v3"): Promise<TrackCollectionItem[]> => {
     const albums = await fetchLocal(`/pcsc-api/albums?sort=${sort}`);
     return albums;
   },
-  'fetchAlbums'
+  "fetchAlbums",
 );
 
 /**
@@ -27,9 +27,9 @@ export const fetchAlbums = query(
 export const fetchAlbumTracks = query(
   async (albumName: string): Promise<CompactTrack[]> => {
     const tracks = await fetchLocal(
-      `/pcsc-api/albums/${encodeURIComponent(albumName)}`
+      `/pcsc-api/albums/${encodeURIComponent(albumName)}`,
     );
     return tracks;
   },
-  'fetchAlbumTracks'
+  "fetchAlbumTracks",
 );

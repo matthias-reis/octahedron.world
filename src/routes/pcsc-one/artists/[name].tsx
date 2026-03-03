@@ -1,13 +1,13 @@
-import { createResource, For, Suspense, Show } from 'solid-js';
-import { useParams } from '@solidjs/router';
-import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
-import { PcscTitle } from '~/pcsc/pcsc-title';
-import { PcscTrack } from '~/pcsc/pcsc-track';
-import { fetchArtistTracks } from '~/pcsc/server/artists';
+import { useParams } from "@solidjs/router";
+import { createResource, For, Show, Suspense } from "solid-js";
+import { PcscBreadcrumb } from "~/pcsc/pcsc-breadcrumb";
+import { PcscTitle } from "~/pcsc/pcsc-title";
+import { PcscTrack } from "~/pcsc/pcsc-track";
+import { fetchArtistTracks } from "~/pcsc/server/artists";
 
 export default function PCSCOneArtistDetail() {
   const params = useParams();
-  const artistName = () => decodeURIComponent(params.name || '');
+  const artistName = () => decodeURIComponent(params.name || "");
 
   const [tracks] = createResource(artistName, async (name) => {
     return await fetchArtistTracks(name);
@@ -17,17 +17,17 @@ export default function PCSCOneArtistDetail() {
 
   const description = () => {
     const count = trackCount();
-    return `${count} track${count !== 1 ? 's' : ''}`;
+    return `${count} track${count !== 1 ? "s" : ""}`;
   };
 
   return (
     <>
       <PcscBreadcrumb
         links={[
-          { href: '/pcsc-one', label: 'Home' },
-          { href: '/pcsc-one/artists', label: 'Artists' },
+          { href: "/pcsc-one", label: "Home" },
+          { href: "/pcsc-one/artists", label: "Artists" },
           {
-            href: `/pcsc-one/artists/${encodeURIComponent(params.name || '')}`,
+            href: `/pcsc-one/artists/${encodeURIComponent(params.name || "")}`,
             label: artistName(),
           },
         ]}

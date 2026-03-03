@@ -1,5 +1,5 @@
-import { fbReadRatingsHistory } from '~/pcsc/server/track-db';
-import { CompactTrack, TrackModel } from '~/pcsc/model/track';
+import { type CompactTrack, TrackModel } from "~/pcsc/model/track";
+import { fbReadRatingsHistory } from "~/pcsc/server/track-db";
 
 export type RatingHistoryItem = {
   track: CompactTrack;

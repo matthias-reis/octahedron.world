@@ -1,30 +1,30 @@
-import type { Component } from 'solid-js';
-import type { StepStatus } from '../types';
-import { DefaultQuestConfig, DefaultQuestStatus } from './default-quest';
-import { ViewQuestConfig, ViewQuestStatus } from './view-quest';
-import { ChoiceQuestConfig, ChoiceQuestStatus } from './choice-quest';
-import {
-  MultipleChoiceQuestConfig,
-  MultipleChoiceQuestStatus,
-} from './multiple-choice-quest';
-import { InputQuestConfig, InputQuestStatus } from './input-quest';
-import { NumberQuestConfig, NumberQuestStatus } from './number-quest';
-import {
-  MultitextQuestConfig,
-  MultitextQuestStatus,
-} from './multitext-quest';
-import {
+import type { Component } from "solid-js";
+import type { StepStatus } from "../types";
+import type { ChoiceQuestConfig, ChoiceQuestStatus } from "./choice-quest";
+import type { DefaultQuestConfig, DefaultQuestStatus } from "./default-quest";
+import type {
   ImageMapQuestConfig,
   ImageMapQuestStatus,
-} from './image-map-quest';
-import {
+} from "./image-map-quest";
+import type {
   ImageMapMultiQuestConfig,
   ImageMapMultiQuestStatus,
-} from './imagemapmulti-quest';
-import {
+} from "./imagemapmulti-quest";
+import type {
   ImageMapPrecisionQuestConfig,
   ImageMapPrecisionQuestStatus,
-} from './imagemapprecision-quest';
+} from "./imagemapprecision-quest";
+import type { InputQuestConfig, InputQuestStatus } from "./input-quest";
+import type {
+  MultipleChoiceQuestConfig,
+  MultipleChoiceQuestStatus,
+} from "./multiple-choice-quest";
+import type {
+  MultitextQuestConfig,
+  MultitextQuestStatus,
+} from "./multitext-quest";
+import type { NumberQuestConfig, NumberQuestStatus } from "./number-quest";
+import type { ViewQuestConfig, ViewQuestStatus } from "./view-quest";
 
 export interface BaseQuestConfig {
   ref: string;
@@ -58,16 +58,16 @@ export type QuestStatus =
   | ImageMapPrecisionQuestStatus;
 
 export type QuestVariantKey =
-  | 'default'
-  | 'view'
-  | 'choice'
-  | 'multiplechoice'
-  | 'input'
-  | 'number'
-  | 'multitext'
-  | 'imagemap'
-  | 'imagemapmulti'
-  | 'imagemapprecision';
+  | "default"
+  | "view"
+  | "choice"
+  | "multiplechoice"
+  | "input"
+  | "number"
+  | "multitext"
+  | "imagemap"
+  | "imagemapmulti"
+  | "imagemapprecision";
 
 export interface QuestVariantProps<
   C extends QuestConfig = QuestConfig,

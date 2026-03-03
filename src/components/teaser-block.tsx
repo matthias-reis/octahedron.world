@@ -1,8 +1,7 @@
-import { Show, createResource } from 'solid-js';
-import { createAsync } from '@solidjs/router';
-import { LinkBox } from '~/components/link-box';
-import { getRoute } from '~/model/model';
-import { JSX } from 'solid-js';
+import { createAsync } from "@solidjs/router";
+import { createResource, JSX, Show } from "solid-js";
+import { LinkBox } from "~/components/link-box";
+import { getRoute } from "~/model/model";
 
 const Teaser = (props: { slug: string }) => {
   const item = createAsync(() => getRoute(props.slug));

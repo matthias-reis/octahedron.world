@@ -1,13 +1,13 @@
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import { A } from '@solidjs/router';
-import { ChevronLeft } from 'lucide-solid';
-import { largeImageUrl } from '~/components/image-helpers';
-import { World2Calculator } from '~/components/world-2-calculator';
-import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope } from '~/types';
-import type { JSX } from 'solid-js/jsx-runtime';
-import { Related } from '~/components/related';
+import { A } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { ChevronLeft } from "lucide-solid";
+import type { JSX } from "solid-js/jsx-runtime";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { largeImageUrl } from "~/components/image-helpers";
+import { Related } from "~/components/related";
+import { World2Calculator } from "~/components/world-2-calculator";
+import type { GlobalScope } from "~/types";
 
 // Graphics plugin - the SVG chart from the world-2 layout
 const Graphic = () => (
@@ -66,7 +66,7 @@ export default function createTemplate(props: {
           href={`/${item?.group}`}
           class="absolute top-3 left-3 flex items-center justify-start text-cad2 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
         >
-          <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
+          <ChevronLeft /> <span>{item?.group?.replace(/-/g, " ")}</span>
         </A>
 
         {/* Title Section */}
@@ -90,7 +90,7 @@ export default function createTemplate(props: {
         {item?.description && (
           <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
             {Array.isArray(item.description)
-              ? item.description.join(' ')
+              ? item.description.join(" ")
               : item.description}
           </p>
         )}
@@ -98,8 +98,8 @@ export default function createTemplate(props: {
         {/* Reading Stats */}
         {item?.words && (
           <p class="text-center text-sm font-sans text-decent-500 mb-6">
-            Read: {Math.round(item.words / 200)} min ✧ Words:{' '}
-            {item.words.toLocaleString()} ✧ Chars:{' '}
+            Read: {Math.round(item.words / 200)} min ✧ Words:{" "}
+            {item.words.toLocaleString()} ✧ Chars:{" "}
             {item.chars?.toLocaleString()}
           </p>
         )}
@@ -111,9 +111,9 @@ export default function createTemplate(props: {
               href={`/${item.group}/${item.ref}`}
               class="text-decent-600 hover:text-saturated-700"
             >
-              {item.language === 'en'
-                ? '🇩🇪 Deutsche Version'
-                : '🇬🇧 English Version'}
+              {item.language === "en"
+                ? "🇩🇪 Deutsche Version"
+                : "🇬🇧 English Version"}
             </A>
           </div>
         )}

@@ -1,6 +1,5 @@
-import { Stage } from "./stage";
 import type { Racer } from "./racer";
-
+import { Stage } from "./stage";
 
 export class Day {
   readonly id: number;

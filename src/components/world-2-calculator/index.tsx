@@ -1,23 +1,23 @@
-import { Plugin } from '~/types';
+import type { Component } from "solid-js";
+import { Plugin } from "~/types";
 import {
-  World2CalculatorChart,
   type GraphData,
-} from './world-2-calculator-chart';
-import { Component } from 'solid-js';
+  World2CalculatorChart,
+} from "./world-2-calculator-chart";
 
 export const World2Calculator: Component<{ data: { variant: string } }> = (
-  props
+  props,
 ) => {
   console.log(props);
   const variant =
-    variants[(props.data.variant as keyof typeof variants) || ''] ||
+    variants[(props.data.variant as keyof typeof variants) || ""] ||
     variants.budget;
 
   const graph: GraphData = variant.lines.map(({ name, value, reference }) => ({
     name,
     result: Math.round((value * 100) / (inhabitants[reference] * budget)),
   }));
-  graph.push({ name: 'Budget', result: 100, reference: true });
+  graph.push({ name: "Budget", result: 100, reference: true });
 
   return (
     <div class="border border-decent-600 p-4">
@@ -34,48 +34,48 @@ export const World2Calculator: Component<{ data: { variant: string } }> = (
 
 const variants: Record<string, Variant> = {
   budget: {
-    title: 'What We Actually Emit',
-    text: 'Here are some reference numbers for the CO₂ emissions of the different regions of the world.',
+    title: "What We Actually Emit",
+    text: "Here are some reference numbers for the CO₂ emissions of the different regions of the world.",
     lines: [
-      { name: 'Germany', value: 675_000_000, reference: 'de' },
-      { name: 'EU', value: 3_619_000_000, reference: 'eu' },
-      { name: 'China', value: 11_472_000_000, reference: 'ch' },
-      { name: 'USA', value: 5_007_000_000, reference: 'us' },
-      { name: 'World', value: 54_590_000_000, reference: 'wo' },
+      { name: "Germany", value: 675_000_000, reference: "de" },
+      { name: "EU", value: 3_619_000_000, reference: "eu" },
+      { name: "China", value: 11_472_000_000, reference: "ch" },
+      { name: "USA", value: 5_007_000_000, reference: "us" },
+      { name: "World", value: 54_590_000_000, reference: "wo" },
     ],
   },
   vegan: {
-    title: 'Effect of a Vegan Diet',
-    text: 'This chart compares savings of a vegan diet to giving up your car with surprising results.',
+    title: "Effect of a Vegan Diet",
+    text: "This chart compares savings of a vegan diet to giving up your car with surprising results.",
     lines: [
-      { name: 'Savings No Car', value: 473_600_000, reference: 'eu' },
-      { name: 'Savings Vegan', value: 94_500_000, reference: 'de' },
-      { name: 'German', value: 675_000_000, reference: 'de' },
+      { name: "Savings No Car", value: 473_600_000, reference: "eu" },
+      { name: "Savings Vegan", value: 94_500_000, reference: "de" },
+      { name: "German", value: 675_000_000, reference: "de" },
     ],
   },
   coal: {
-    title: 'Fossile Energy Sources',
+    title: "Fossile Energy Sources",
     text: `The single coal plant Niederaußem contributes 36% to the budget of a german citizen but only 0.7% of the overall energy.
           Additinally, I've added coal as a whole and gas for comparison.
           `,
     lines: [
-      { name: 'Niederaußem', value: 29_600_000, reference: 'de' },
-      { name: 'Lignite', value: 116_000_000, reference: 'de' },
-      { name: 'Hard Coal', value: 49_000_000, reference: 'de' },
-      { name: 'Gas', value: 29_000_000, reference: 'de' },
+      { name: "Niederaußem", value: 29_600_000, reference: "de" },
+      { name: "Lignite", value: 116_000_000, reference: "de" },
+      { name: "Hard Coal", value: 49_000_000, reference: "de" },
+      { name: "Gas", value: 29_000_000, reference: "de" },
     ],
   },
   flights: {
-    title: 'Transport Sector - Flights',
+    title: "Transport Sector - Flights",
     text: `We all know that flying is bad for the environment. But how bad is it really?
           Let's compare the results to our budget and have a look at different distances including return flights.
           Hamburg - Sylt (180km) is a typical private jet route, which allows much less people per flight with
           a devastating impact compared to the distance. I'm assuming 9 tons per flight and six passengers on board.
           `,
     lines: [
-      { name: 'HH - Sydney', value: 12.893, reference: 'pe' },
-      { name: 'HH - Malaga', value: 0.918, reference: 'pe' },
-      { name: 'Hamburg - Sylt', value: 3, reference: 'pe' },
+      { name: "HH - Sydney", value: 12.893, reference: "pe" },
+      { name: "HH - Malaga", value: 0.918, reference: "pe" },
+      { name: "Hamburg - Sylt", value: 3, reference: "pe" },
     ],
   },
 };

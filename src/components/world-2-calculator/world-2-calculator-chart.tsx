@@ -1,34 +1,34 @@
-'use client';
+"use client";
 
-import { Component, onMount } from 'solid-js';
 import {
-  Chart,
-  Title,
-  Tooltip,
-  Legend,
-  Colors,
   BarController,
   BarElement,
   CategoryScale,
+  Chart,
+  Colors,
+  Legend,
   LinearScale,
-} from 'chart.js';
-import { DefaultChart } from 'solid-chartjs';
+  Title,
+  Tooltip,
+} from "chart.js";
+import { DefaultChart } from "solid-chartjs";
+import { type Component, onMount } from "solid-js";
 
 export type GraphData = { name: string; result: number; reference?: boolean }[];
 
 // Custom plugin to display percentage labels on bars
 const labelPlugin = {
-  id: 'customLabels',
+  id: "customLabels",
   afterDatasetsDraw(chart: any) {
     const ctx = chart.ctx;
     chart.data.datasets.forEach((dataset: any, datasetIndex: number) => {
       const meta = chart.getDatasetMeta(datasetIndex);
       meta.data.forEach((bar: any, index: number) => {
         const value = dataset.data[index];
-        ctx.fillStyle = '#fff';
-        ctx.font = '12px sans-serif';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
+        ctx.fillStyle = "#fff";
+        ctx.font = "12px sans-serif";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
         ctx.fillText(`${value}%`, bar.x + 5, bar.y);
       });
     });
@@ -48,7 +48,7 @@ export const World2CalculatorChart: Component<{ graph: GraphData }> = ({
       Tooltip,
       Legend,
       Colors,
-      labelPlugin
+      labelPlugin,
     );
   });
 
@@ -56,17 +56,17 @@ export const World2CalculatorChart: Component<{ graph: GraphData }> = ({
     labels: graph.map((d) => d.name),
     datasets: [
       {
-        label: 'CO₂ Emissions',
+        label: "CO₂ Emissions",
         data: graph.map((d) => d.result),
-        backgroundColor: graph.map((d) => (d.reference ? '#fff7' : '#fff2')),
-        borderColor: '#fff',
+        backgroundColor: graph.map((d) => (d.reference ? "#fff7" : "#fff2")),
+        borderColor: "#fff",
         borderWidth: 1,
       },
     ],
   };
 
   const chartOptions = {
-    indexAxis: 'y' as const,
+    indexAxis: "y" as const,
     responsive: false,
     maintainAspectRatio: false,
     layout: {
@@ -92,10 +92,10 @@ export const World2CalculatorChart: Component<{ graph: GraphData }> = ({
           display: false,
         },
         ticks: {
-          color: 'currentColor',
+          color: "currentColor",
         },
         border: {
-          color: '#fff8',
+          color: "#fff8",
         },
       },
       y: {
@@ -103,10 +103,10 @@ export const World2CalculatorChart: Component<{ graph: GraphData }> = ({
           display: false,
         },
         ticks: {
-          color: 'currentColor',
+          color: "currentColor",
         },
         border: {
-          color: '#fff8',
+          color: "#fff8",
         },
       },
     },

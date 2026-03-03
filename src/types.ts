@@ -1,5 +1,5 @@
-import { Options } from 'hast-util-to-jsx-runtime';
-import { HastParseResult } from 'hast-mds';
+import type { HastParseResult } from "hast-mds";
+import type { Options } from "hast-util-to-jsx-runtime";
 
 export type ItemMeta = {
   slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
@@ -17,7 +17,7 @@ export type ItemMeta = {
   date?: string;
   // references //
   tags?: string[];
-  language?: 'en' | 'de'; // default en
+  language?: "en" | "de"; // default en
   ref?: string; // careful they need to change as well
   related?: string[]; // careful they need to change as well
   // flags //
@@ -31,21 +31,21 @@ export type ItemMeta = {
   mds: HastParseResult; // Parsed MDS structure for rendering
 };
 
-export type GlobalScope = Omit<ItemMeta, 'mds'>;
+export type GlobalScope = Omit<ItemMeta, "mds">;
 
 export type LocalScope = Record<string, never>;
 
 export type CompactItemMeta = Pick<
   ItemMeta,
-  | 'slug'
-  | 'title'
-  | 'group'
-  | 'type'
-  | 'image'
-  | 'description'
-  | 'superTitle'
-  | 'subTitle'
-  | 'weight'
+  | "slug"
+  | "title"
+  | "group"
+  | "type"
+  | "image"
+  | "description"
+  | "superTitle"
+  | "subTitle"
+  | "weight"
 >;
 
 export type TagMeta = {
@@ -59,4 +59,4 @@ export type DynamicPageProps = {
   params: Promise<{ slug?: string[]; tag?: string }>;
 };
 
-export type HtmlComponents = Options['components'];
+export type HtmlComponents = Options["components"];

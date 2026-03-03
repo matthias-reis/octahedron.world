@@ -1,11 +1,11 @@
-import { JSX } from 'solid-js';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import type { GlobalScope } from '~/types';
-import { A } from '@solidjs/router';
-import { ChevronLeft } from 'lucide-solid/icons/index';
-import { largeImageUrl } from '~/components/image-helpers';
-import { canonicalComponents } from '~/components/canonical-components';
+import { A } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { ChevronLeft } from "lucide-solid/icons/index";
+import type { JSX } from "solid-js";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { largeImageUrl } from "~/components/image-helpers";
+import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
   mds: HastParseResult<GlobalScope, {}>;

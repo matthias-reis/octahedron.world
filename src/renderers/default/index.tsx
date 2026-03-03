@@ -1,14 +1,13 @@
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import { A } from '@solidjs/router';
-import { CalendarDays, ChevronLeft } from 'lucide-solid';
-import dayjs from 'dayjs';
-import { largeImageUrl } from '~/components/image-helpers';
-import { canonicalComponents } from '~/components/canonical-components';
-import type { GlobalScope } from '~/types';
-import type { JSX } from 'solid-js/jsx-runtime';
-import { Related } from '~/components/related';
-import { ItemMeta } from '~/types';
+import { A } from "@solidjs/router";
+import dayjs from "dayjs";
+import type { HastParseResult } from "hast-mds";
+import { CalendarDays, ChevronLeft } from "lucide-solid";
+import type { JSX } from "solid-js/jsx-runtime";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { largeImageUrl } from "~/components/image-helpers";
+import { Related } from "~/components/related";
+import type { GlobalScope, ItemMeta } from "~/types";
 
 export default function createTemplate(props: {
   mds: HastParseResult<GlobalScope, {}>;
@@ -32,7 +31,7 @@ export default function createTemplate(props: {
           {item?.description && (
             <p class="hidden xl:block text-right text-lg font-sans text-cad4 mt-8 w-1/2 text-balance ml-auto">
               {Array.isArray(item.description)
-                ? item.description.join(' ')
+                ? item.description.join(" ")
                 : item.description}
             </p>
           )}
@@ -40,7 +39,7 @@ export default function createTemplate(props: {
             href={`/${item?.group}`}
             class="absolute top-3 left-3 xl:static flex items-center justify-start xl:justify-end xl:mt-7 text-cad2 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
           >
-            <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
+            <ChevronLeft /> <span>{item?.group?.replace(/-/g, " ")}</span>
           </A>
         </div>
         <div class="xl:pt-7 px-6 pb-7 xl:pl-0">
@@ -56,22 +55,22 @@ export default function createTemplate(props: {
           {item?.description && (
             <p class="xl:hidden text-lg font-sans text-cad4 w-3/4 text-balance">
               {Array.isArray(item.description)
-                ? item.description.join(' ')
+                ? item.description.join(" ")
                 : item.description}
             </p>
           )}
           {item?.date && (
             <p class="flex items-center text-can5 mt-6 mb-7 gap-2 text-sm">
-              <CalendarDays />{' '}
-              <span>{dayjs(item.date).format('YYYY-MM-DD')}</span>
+              <CalendarDays />{" "}
+              <span>{dayjs(item.date).format("YYYY-MM-DD")}</span>
               {item.words && (
                 <>
                   <span>✧</span>
                   <span>Read: {Math.round(item.words / 200)} min</span>
                   <span>✧</span>
-                  <span>Words: {item.words.toLocaleString('en-GB')}</span>
+                  <span>Words: {item.words.toLocaleString("en-GB")}</span>
                   <span>✧</span>
-                  <span>Chars: {item.chars?.toLocaleString('en-GB')}</span>
+                  <span>Chars: {item.chars?.toLocaleString("en-GB")}</span>
                 </>
               )}
             </p>
@@ -83,9 +82,9 @@ export default function createTemplate(props: {
                 href={`/${item.group}/${item.ref}`}
                 class="text-decent-600 hover:text-saturated-700"
               >
-                {item.language === 'en'
-                  ? '🇩🇪 Deutsche Version'
-                  : '🇬🇧 English Version'}
+                {item.language === "en"
+                  ? "🇩🇪 Deutsche Version"
+                  : "🇬🇧 English Version"}
               </A>
             </div>
           )}

@@ -1,34 +1,41 @@
-import { JSX, Show, For, onMount, createSignal, createEffect } from 'solid-js';
-import { createStore } from 'solid-js/store';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import type { GlobalScope, LocalScope, StepStatus } from './types';
-import { A, useLocation } from '@solidjs/router';
-import { Page } from './page';
-import { LoaderCircle, Signpost } from 'lucide-solid';
-import { Step } from './step';
-import { Quest } from './quest';
-import { View } from './view';
-import { LogoHorizontal } from './logo';
-import { useI18n } from '~/i18n/context';
+import { A, useLocation } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { LoaderCircle, Signpost } from "lucide-solid";
+import {
+  createEffect,
+  createSignal,
+  For,
+  type JSX,
+  onMount,
+  Show,
+} from "solid-js";
+import { createStore } from "solid-js/store";
+import { transform } from "solid-mds";
+import { useI18n } from "~/i18n/context";
+import { LogoHorizontal } from "./logo";
+import { Page } from "./page";
+import { Quest } from "./quest";
+import { Step } from "./step";
+import type { GlobalScope, LocalScope, StepStatus } from "./types";
+import { View } from "./view";
 
 const MONTHS_DE = [
-  'Januar',
-  'Februar',
-  'März',
-  'April',
-  'Mai',
-  'Juni',
-  'Juli',
-  'August',
-  'September',
-  'Oktober',
-  'November',
-  'Dezember',
+  "Januar",
+  "Februar",
+  "März",
+  "April",
+  "Mai",
+  "Juni",
+  "Juli",
+  "August",
+  "September",
+  "Oktober",
+  "November",
+  "Dezember",
 ];
 
 function formatDateDE(dateStr: string): string {
-  const parts = dateStr.split('-');
+  const parts = dateStr.split("-");
   if (parts.length !== 3) return dateStr;
   const day = parseInt(parts[2], 10);
   const month = parseInt(parts[1], 10) - 1;
@@ -55,7 +62,7 @@ function loadStepsFromStorage(key: string): Record<string, StepStatus> | null {
 
 function saveStepsToStorage(
   key: string,
-  steps: Record<string, StepStatus>
+  steps: Record<string, StepStatus>,
 ): void {
   try {
     localStorage.setItem(key, JSON.stringify(steps));
@@ -66,7 +73,7 @@ function saveStepsToStorage(
 
 function mergeSteps(
   parsedSteps: Record<string, StepStatus>,
-  storedSteps: Record<string, StepStatus> | null
+  storedSteps: Record<string, StepStatus> | null,
 ): Record<string, StepStatus> {
   if (!storedSteps) return parsedSteps;
 
@@ -97,7 +104,7 @@ export default function createTemplate(props: {
     > | null,
   };
   const [stepsStatus, setStepsStatus] = createStore<Record<string, StepStatus>>(
-    {}
+    {},
   );
   const { t, locale } = useI18n();
 
@@ -144,7 +151,7 @@ export default function createTemplate(props: {
       <img
         class="my-6 mx-auto rounded-lg shadow-md select-none"
         src={
-          props.src?.startsWith('http') ? props.src : `/img/${props.src}/l.jpg`
+          props.src?.startsWith("http") ? props.src : `/img/${props.src}/l.jpg`
         }
         draggable={false}
       />
@@ -173,7 +180,7 @@ export default function createTemplate(props: {
   const parsed = transform<GlobalScope, LocalScope>(props.mds, components);
   state.parsed = parsed;
 
-  const slug = parsed.global?.slug ?? 'unknown';
+  const slug = parsed.global?.slug ?? "unknown";
 
   const storageKey = getStorageKey(slug, parsed.global?.version);
 
@@ -183,14 +190,14 @@ export default function createTemplate(props: {
       step.id,
       {
         id: step.id,
-        title: step.local.title || 'Untitled',
+        title: step.local.title || "Untitled",
         type: step.local.type,
         weight: step.local.weight || 1,
         finished: false,
         score: 0,
         revealed: false,
       },
-    ])
+    ]),
   ) as Record<string, StepStatus>;
 
   // Load stored steps and merge with parsed steps
@@ -208,8 +215,8 @@ export default function createTemplate(props: {
 
   const location = useLocation();
   const currentHash = () => {
-    if (!isHydrated()) return '';
-    return location.hash.replace(/^#/, '');
+    if (!isHydrated()) return "";
+    return location.hash.replace(/^#/, "");
   };
   const isViewingCover = () => !currentHash() || !parsed.steps[currentHash()];
 
@@ -233,23 +240,23 @@ export default function createTemplate(props: {
 
   const revealedPages = () => {
     return Object.values(stepsStatus).filter(
-      (step) => step.revealed && step.type === 'page'
+      (step) => step.revealed && step.type === "page",
     );
   };
 
   const revealedClues = () => {
     return Object.values(stepsStatus).filter(
-      (step) => step.revealed && step.type === 'clue'
+      (step) => step.revealed && step.type === "clue",
     );
   };
 
   const progress = () => {
     const total = Object.values(stepsStatus)
-      .filter((step) => step.type === 'page')
+      .filter((step) => step.type === "page")
       .reduce((sum, step) => sum + Number(step.weight), 0);
 
     const finished = Object.values(stepsStatus)
-      .filter((step) => step.type === 'page' && step.finished)
+      .filter((step) => step.type === "page" && step.finished)
       .reduce((sum, step) => sum + Number(step.weight), 0);
     const percent = total > 0 ? (finished / total) * 100 : 0;
     return { total, finished, percent };
@@ -260,24 +267,24 @@ export default function createTemplate(props: {
       .filter((step) => !!step.score)
       .reduce<number>((sum, step) => sum + step.score, 0);
     const count = Object.values(stepsStatus).filter(
-      (step) => !!step.score
+      (step) => !!step.score,
     ).length;
     return count > 0 ? scoreSum / count : 0;
   };
 
   return (
     <div
-      class={`w-full min-h-screen relative ${parsed.global?.colorSpace || 'original'}`}
+      class={`w-full min-h-screen relative ${parsed.global?.colorSpace || "original"}`}
     >
       {/* Loading indicator - shown until hydration completes */}
       <div
         class={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 transition-opacity duration-500 ${
-          isHydrated() ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          isHydrated() ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >
         <LoaderCircle
           class="animate-spin text-white"
-          style={{ width: '100px', height: '100px' }}
+          style={{ width: "100px", height: "100px" }}
           stroke-width="1"
         />
       </div>
@@ -294,11 +301,11 @@ export default function createTemplate(props: {
           </p>
 
           <p class="text-sm text-can4 mb-12">
-            {parsed.global?.start ? formatDateDE(parsed.global.start) : ''}
+            {parsed.global?.start ? formatDateDE(parsed.global.start) : ""}
           </p>
 
           <A
-            href={`/${slug}#${parsed.first ?? ''}`}
+            href={`/${slug}#${parsed.first ?? ""}`}
             class="dica-button"
             onClick={handleStart}
           >
@@ -324,7 +331,7 @@ export default function createTemplate(props: {
                           <div class="mt-8 p-5 border-2 border-cad7 bg-cad9 rounded-2xl text">
                             <p class="text-sm text-cad4 flex items-center gap-1">
                               <Signpost size={16} />
-                              {t('dica.help')}
+                              {t("dica.help")}
                             </p>
                             <Help />
                           </div>
@@ -339,11 +346,11 @@ export default function createTemplate(props: {
           <nav class="w-xs overflow-y-auto h-screen p-4">
             <div>
               <h1 class="font-octa text-3xl font-bold top-4 left-4 flex items-center justify-center gap-2 mt-16 mb-6 uppercase">
-                <LogoHorizontal class="h-5 w-5 text-cas4" />{' '}
+                <LogoHorizontal class="h-5 w-5 text-cas4" />{" "}
                 <span>{parsed.global?.title}</span>
               </h1>
               <h2 class="text-2xl font-bold font-octa mb-4">
-                {t('dica.progress')}: {progress().percent.toFixed() || 0}%
+                {t("dica.progress")}: {progress().percent.toFixed() || 0}%
               </h2>
               <div class="flex gap-4 mb-4 items-center mr-2">
                 <p class="relative h-12px bg-can6 p-0.5 rounded-full grow">
@@ -369,7 +376,7 @@ export default function createTemplate(props: {
             <Show when={revealedClues().length > 0}>
               <div>
                 <h2 class="text-2xl font-bold font-octa mb-4">
-                  {t('dica.clues')}
+                  {t("dica.clues")}
                 </h2>
                 <ul class="flex flex-col gap-2 mb-6">
                   <For each={revealedClues()}>

@@ -1,11 +1,11 @@
-import { createAsyncStore } from '@solidjs/router';
-import { Suspense, For, Component } from 'solid-js';
-import { LinkBox } from '~/components/link-box';
-import { Loading } from '~/components/loading';
-import { getAllCompactRoutes } from '~/model/model';
+import { createAsyncStore } from "@solidjs/router";
+import { type Component, For, Suspense } from "solid-js";
+import { LinkBox } from "~/components/link-box";
+import { Loading } from "~/components/loading";
+import { getAllCompactRoutes } from "~/model/model";
 
 export const TeaserGroup: Component<{ data?: Record<string, any> }> = (
-  props
+  props,
 ) => {
   const items = createAsyncStore(() => getAllCompactRoutes());
   const visibleSlugs = props.data?.slugs;

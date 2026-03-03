@@ -1,13 +1,13 @@
-import { ParentProps, Suspense } from 'solid-js';
-import { largeImageUrl } from '~/components/image-helpers';
-import { PcscLogo } from '~/pcsc/pcsc-logo';
-import { PcscNav } from '~/pcsc/pcsc-nav';
+import { type ParentProps, Suspense } from "solid-js";
+import { largeImageUrl } from "~/components/image-helpers";
+import { PcscLogo } from "~/pcsc/pcsc-logo";
+import { PcscNav } from "~/pcsc/pcsc-nav";
 
 export default function PCSCOnePage(props: ParentProps) {
   return (
     <div
       class="min-h-screen bg-center bg-cover bg-fixed pcsc-one"
-      style={{ 'background-image': `url(${largeImageUrl('pcsc-blue')})` }}
+      style={{ "background-image": `url(${largeImageUrl("pcsc-blue")})` }}
     >
       <main class="max-w-3xl mx-auto py-5 px-3">
         <div class="flex gap-3 items-center justify-center text-3xl font-octa font-bold uppercase opacity-50 text-cw">
@@ -18,11 +18,11 @@ export default function PCSCOnePage(props: ParentProps) {
         </div>
         <PcscNav
           links={[
-            { href: '/pcsc-one', label: 'Home' },
-            { href: '/pcsc-one/ratings', label: 'Ratings' },
-            { href: '/pcsc-one/albums', label: 'Albums' },
-            { href: '/pcsc-one/artists', label: 'Artists' },
-            { href: '/pcsc-one/years', label: 'Years' },
+            { href: "/pcsc-one", label: "Home" },
+            { href: "/pcsc-one/ratings", label: "Ratings" },
+            { href: "/pcsc-one/albums", label: "Albums" },
+            { href: "/pcsc-one/artists", label: "Artists" },
+            { href: "/pcsc-one/years", label: "Years" },
           ]}
         />
         <div class="my-6">

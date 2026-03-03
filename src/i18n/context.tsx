@@ -1,8 +1,7 @@
-import * as i18n from '@solid-primitives/i18n';
-import { createSignal, createContext, useContext, type JSX } from 'solid-js';
-import { isServer } from 'solid-js/web';
-import { getRequestEvent } from 'solid-js/web';
-import { dictionaries, locales, type Locale, type Dictionary } from './config';
+import * as i18n from "@solid-primitives/i18n";
+import { createContext, createSignal, type JSX, useContext } from "solid-js";
+import { getRequestEvent, isServer } from "solid-js/web";
+import { type Dictionary, dictionaries, type Locale, locales } from "./config";
 
 export function getLocale(): Locale {
   let detected: string | undefined | null;
@@ -11,42 +10,42 @@ export function getLocale(): Locale {
     const event = getRequestEvent();
     if (event) {
       // 1. Check Cookie header
-      const cookieHeader = event.request.headers.get('cookie');
+      const cookieHeader = event.request.headers.get("cookie");
       if (cookieHeader) {
-        const cookies = cookieHeader.split(';').reduce(
+        const cookies = cookieHeader.split(";").reduce(
           (acc, cookie) => {
-            const [name, value] = cookie.trim().split('=');
+            const [name, value] = cookie.trim().split("=");
             acc[name] = value;
             return acc;
           },
-          {} as Record<string, string>
+          {} as Record<string, string>,
         );
-        detected = cookies['locale'];
+        detected = cookies["locale"];
       }
 
       // 2. Check Accept-Language header
       if (!detected) {
-        const acceptLanguage = event.request.headers.get('accept-language');
+        const acceptLanguage = event.request.headers.get("accept-language");
         if (acceptLanguage) {
-          detected = acceptLanguage.split(',')[0].split('-')[0];
+          detected = acceptLanguage.split(",")[0].split("-")[0];
         }
       }
     }
   } else {
     // 1. Check Cookie
-    const cookies = document.cookie.split(';').reduce(
+    const cookies = document.cookie.split(";").reduce(
       (acc, cookie) => {
-        const [name, value] = cookie.trim().split('=');
+        const [name, value] = cookie.trim().split("=");
         acc[name] = value;
         return acc;
       },
-      {} as Record<string, string>
+      {} as Record<string, string>,
     );
-    detected = cookies['locale'];
+    detected = cookies["locale"];
 
     // 2. Check Navigator
     if (!detected && navigator.language) {
-      detected = navigator.language.split('-')[0];
+      detected = navigator.language.split("-")[0];
     }
   }
 
@@ -55,7 +54,7 @@ export function getLocale(): Locale {
     return detected as Locale;
   }
 
-  return 'en';
+  return "en";
 }
 
 export type I18nContextInterface = {
@@ -80,16 +79,16 @@ export function I18nProvider(props: { children: JSX.Element }) {
 
     if (
       value &&
-      typeof value === 'object' &&
+      typeof value === "object" &&
       params &&
-      typeof params === 'object' &&
-      'count' in params
+      typeof params === "object" &&
+      "count" in params
     ) {
       const pr = new Intl.PluralRules(locale());
       const rule = pr.select(params.count as number);
       const pluralForm =
-        (value as any)[rule] || (value as any)['other'] || value;
-      if (typeof pluralForm === 'string') {
+        (value as any)[rule] || (value as any)["other"] || value;
+      if (typeof pluralForm === "string") {
         return i18n.resolveTemplate(pluralForm, params);
       }
       return pluralForm;
@@ -108,7 +107,7 @@ export function I18nProvider(props: { children: JSX.Element }) {
 export function useI18n() {
   const context = useContext(I18nContext);
   if (!context) {
-    throw new Error('useI18n: cannot find a I18nContext');
+    throw new Error("useI18n: cannot find a I18nContext");
   }
   return context;
 }

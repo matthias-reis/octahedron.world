@@ -1,9 +1,9 @@
-import { Typography } from './typography';
-import { TeaserBlock } from './teaser-block';
-import { MdsCode } from './mds-code';
-import { Cta } from './cta';
-import { TeaserGroup } from './teaser-group';
-import { Spacetravel } from './spacetravel';
+import { Cta } from "./cta";
+import { MdsCode } from "./mds-code";
+import { Spacetravel } from "./spacetravel";
+import { TeaserBlock } from "./teaser-block";
+import { TeaserGroup } from "./teaser-group";
+import { Typography } from "./typography";
 
 export const canonicalComponents = {
   ...Typography,

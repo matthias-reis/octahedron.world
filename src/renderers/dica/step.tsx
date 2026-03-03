@@ -1,7 +1,7 @@
-import { Component, Show, createSignal, onMount } from 'solid-js';
-import { StepStatus } from './types';
-import { A, useLocation } from '@solidjs/router';
-import { Lightbulb, MapPin, Sparkle } from 'lucide-solid';
+import { A, useLocation } from "@solidjs/router";
+import { Lightbulb, MapPin, Sparkle } from "lucide-solid";
+import { type Component, createSignal, onMount, Show } from "solid-js";
+import type { StepStatus } from "./types";
 
 export const Step: Component<{ step: StepStatus }> = ({ step }) => {
   const location = useLocation();
@@ -13,15 +13,15 @@ export const Step: Component<{ step: StepStatus }> = ({ step }) => {
     return () => clearTimeout(timer);
   });
 
-  if (step.type === 'clue') {
+  if (step.type === "clue") {
     return (
       <A
         href={`#${step.id}`}
         class="h-12 pl-3 text-cbn2 bg-cbn7 border-cbn5 hover:border-cbn3 hover:bg-cbn6 flex items-center gap-2 rounded-l-full p-2 border border-r-4 leading-tight"
         classList={{
-          'border-r-cbn5': !isActive(),
-          'border-r-cbd3 hover:border-r-cbd3': isActive(),
-          'animate-shake': isNew(),
+          "border-r-cbn5": !isActive(),
+          "border-r-cbd3 hover:border-r-cbd3": isActive(),
+          "animate-shake": isNew(),
         }}
       >
         <Lightbulb />
@@ -36,9 +36,9 @@ export const Step: Component<{ step: StepStatus }> = ({ step }) => {
         href={`#${step.id}`}
         class="gap-2 text-can2 bg-can7 border-can5 hover:border-can3 hover:bg-can6 flex items-center rounded-r-full p-2 border border-l-4"
         classList={{
-          'opacity-70': step.finished,
-          'border-l-cad3 hover:border-l-cad3': isActive(),
-          'animate-shake': isNew(),
+          "opacity-70": step.finished,
+          "border-l-cad3 hover:border-l-cad3": isActive(),
+          "animate-shake": isNew(),
         }}
       >
         <MapPin />
@@ -46,8 +46,8 @@ export const Step: Component<{ step: StepStatus }> = ({ step }) => {
           <span>{step.title}</span>
           <span class="flex gap-0.5 text-can4">
             <Sparkle size={12} />
-            <Sparkle size={12} classList={{ 'opacity-50': step.weight < 2 }} />
-            <Sparkle size={12} classList={{ 'opacity-50': step.weight < 3 }} />
+            <Sparkle size={12} classList={{ "opacity-50": step.weight < 2 }} />
+            <Sparkle size={12} classList={{ "opacity-50": step.weight < 3 }} />
           </span>
         </span>
         <Show when={step.finished}>

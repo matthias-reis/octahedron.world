@@ -1,18 +1,18 @@
-import { Component } from 'solid-js';
-import { Dynamic } from 'solid-js/web';
-import type { CustomBlockProps } from 'solid-mds';
-import type { StepStatus } from '../types';
-import type { QuestVariant, QuestConfig, QuestVariantKey } from './types';
-import { DefaultQuest } from './default-quest';
-import { ViewQuest } from './view-quest';
-import { ChoiceQuest } from './choice-quest';
-import { MultipleChoiceQuest } from './multiple-choice-quest';
-import { InputQuest } from './input-quest';
-import { NumberQuest } from './number-quest';
-import { MultitextQuest } from './multitext-quest';
-import { ImageMapQuest } from './image-map-quest';
-import { ImageMapMultiQuest } from './imagemapmulti-quest';
-import { ImageMapPrecisionQuest } from './imagemapprecision-quest';
+import type { Component } from "solid-js";
+import { Dynamic } from "solid-js/web";
+import type { CustomBlockProps } from "solid-mds";
+import type { StepStatus } from "../types";
+import { ChoiceQuest } from "./choice-quest";
+import { DefaultQuest } from "./default-quest";
+import { ImageMapQuest } from "./image-map-quest";
+import { ImageMapMultiQuest } from "./imagemapmulti-quest";
+import { ImageMapPrecisionQuest } from "./imagemapprecision-quest";
+import { InputQuest } from "./input-quest";
+import { MultipleChoiceQuest } from "./multiple-choice-quest";
+import { MultitextQuest } from "./multitext-quest";
+import { NumberQuest } from "./number-quest";
+import type { QuestConfig, QuestVariant, QuestVariantKey } from "./types";
+import { ViewQuest } from "./view-quest";
 
 export interface QuestProps extends CustomBlockProps {
   onFinalize: (ref: string, weight: number, reveal: string[]) => void;
@@ -37,7 +37,7 @@ export const Quest: Component<QuestProps> = (props) => {
   if (!config()?.ref) return null;
 
   const variant = (): QuestVariantKey =>
-    (props.payload[0] as QuestVariantKey) ?? 'default';
+    (props.payload[0] as QuestVariantKey) ?? "default";
   const ref = () => config()!.ref;
   const questStatus = () => props.stepStatus[ref()];
 

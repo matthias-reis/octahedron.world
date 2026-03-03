@@ -1,14 +1,14 @@
-import { For, JSX, Suspense } from 'solid-js';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import type { GlobalScope } from '~/types';
-import { A, createAsync } from '@solidjs/router';
-import { ChevronLeft } from 'lucide-solid/icons/index';
-import { largeImageUrl } from '~/components/image-helpers';
-import { canonicalComponents } from '~/components/canonical-components';
-import { getAllCompactRoutes } from '~/model/model';
-import { Loading } from '~/components/loading';
-import { LinkBox } from '~/components/link-box';
+import { A, createAsync } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { ChevronLeft } from "lucide-solid/icons/index";
+import { For, type JSX, Suspense } from "solid-js";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { largeImageUrl } from "~/components/image-helpers";
+import { LinkBox } from "~/components/link-box";
+import { Loading } from "~/components/loading";
+import { getAllCompactRoutes } from "~/model/model";
+import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
   mds: HastParseResult<GlobalScope, {}>;
@@ -57,7 +57,7 @@ export default function createTemplate(props: {
             if (!item?.slug) return null;
 
             const relevantRoutes = Object.values(routes() || {})?.filter(
-              (route) => route.group === item.slug && route.slug !== item.slug
+              (route) => route.group === item.slug && route.slug !== item.slug,
             );
             if (!relevantRoutes || relevantRoutes.length === 0) return null;
             return (

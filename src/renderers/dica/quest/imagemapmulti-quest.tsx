@@ -1,11 +1,11 @@
-import { Show, For, createSignal, createEffect, onCleanup } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
-import { largeImageUrl } from '~/components/image-helpers';
-import { useI18n } from '~/i18n/context';
+import { createEffect, createSignal, For, onCleanup, Show } from "solid-js";
+import { largeImageUrl } from "~/components/image-helpers";
+import { useI18n } from "~/i18n/context";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type ImageMapMultiQuestConfig = BaseQuestConfig & {
-  variant: 'imagemapmulti';
+  variant: "imagemapmulti";
   question: string;
   image: string;
   spots: [number, number][];
@@ -16,7 +16,7 @@ export type ImageMapMultiQuestConfig = BaseQuestConfig & {
 };
 
 export type ImageMapMultiQuestStatus = BaseQuestStatus & {
-  variant: 'imagemapmulti';
+  variant: "imagemapmulti";
   tries?: number;
   foundSpots?: number[];
 };
@@ -34,7 +34,7 @@ export const ImageMapMultiQuest: QuestVariant<
   const [isFinished, setIsFinished] = createSignal(props.status.finished);
   const [tries, setTries] = createSignal(props.status.tries ?? 0);
   const [foundSpots, setFoundSpots] = createSignal<number[]>(
-    props.status.foundSpots ?? []
+    props.status.foundSpots ?? [],
   );
   const [showError, setShowError] = createSignal(false);
   const { t } = useI18n();
@@ -55,20 +55,20 @@ export const ImageMapMultiQuest: QuestVariant<
   };
 
   createEffect(() => {
-    window.addEventListener('resize', updateDimensions);
-    onCleanup(() => window.removeEventListener('resize', updateDimensions));
+    window.addEventListener("resize", updateDimensions);
+    onCleanup(() => window.removeEventListener("resize", updateDimensions));
   });
 
   const handleImageLoad = () => {
     updateDimensions();
   };
 
-  const getTolerancePercent = (dimension: 'x' | 'y') => {
+  const getTolerancePercent = (dimension: "x" | "y") => {
     const tolerance = config().tolerance ?? TOLERANCE_PERCENT;
     const dims = imageDimensions();
     if (!dims) return tolerance;
 
-    const size = dimension === 'x' ? dims.width : dims.height;
+    const size = dimension === "x" ? dims.width : dims.height;
     const tolerancePx = (tolerance / 100) * size;
 
     if (tolerancePx < MIN_TOLERANCE_PX) {
@@ -87,8 +87,8 @@ export const ImageMapMultiQuest: QuestVariant<
     const clickX = ((e.clientX - rect.left) / rect.width) * 100;
     const clickY = ((e.clientY - rect.top) / rect.height) * 100;
 
-    const toleranceX = getTolerancePercent('x');
-    const toleranceY = getTolerancePercent('y');
+    const toleranceX = getTolerancePercent("x");
+    const toleranceY = getTolerancePercent("y");
 
     const spots = config().spots;
     const currentFound = foundSpots();
@@ -131,18 +131,18 @@ export const ImageMapMultiQuest: QuestVariant<
 
   const debugOverlayStyle = (spot: [number, number]) => {
     const [spotX, spotY] = spot;
-    const toleranceX = getTolerancePercent('x');
-    const toleranceY = getTolerancePercent('y');
+    const toleranceX = getTolerancePercent("x");
+    const toleranceY = getTolerancePercent("y");
 
     return {
-      position: 'absolute' as const,
+      position: "absolute" as const,
       left: `${spotX - toleranceX}%`,
       top: `${spotY - toleranceY}%`,
       width: `${toleranceX * 2}%`,
       height: `${toleranceY * 2}%`,
-      'background-color': 'rgba(236, 72, 153, 0.4)',
-      'pointer-events': 'none' as const,
-      border: '2px dashed rgba(236, 72, 153, 0.8)',
+      "background-color": "rgba(236, 72, 153, 0.4)",
+      "pointer-events": "none" as const,
+      border: "2px dashed rgba(236, 72, 153, 0.8)",
     };
   };
 
@@ -150,21 +150,21 @@ export const ImageMapMultiQuest: QuestVariant<
     const [spotX, spotY] = spot;
 
     return {
-      position: 'absolute' as const,
+      position: "absolute" as const,
       left: `${spotX}%`,
       top: `${spotY}%`,
-      transform: 'translate(-50%, -50%)',
-      width: '24px',
-      height: '24px',
-      'background-color': 'rgba(16, 185, 129, 0.8)',
-      'border-radius': '50%',
-      'pointer-events': 'none' as const,
-      display: 'flex',
-      'align-items': 'center',
-      'justify-content': 'center',
-      color: 'white',
-      'font-size': '14px',
-      'font-weight': 'bold',
+      transform: "translate(-50%, -50%)",
+      width: "24px",
+      height: "24px",
+      "background-color": "rgba(16, 185, 129, 0.8)",
+      "border-radius": "50%",
+      "pointer-events": "none" as const,
+      display: "flex",
+      "align-items": "center",
+      "justify-content": "center",
+      color: "white",
+      "font-size": "14px",
+      "font-weight": "bold",
     };
   };
 
@@ -186,11 +186,11 @@ export const ImageMapMultiQuest: QuestVariant<
 
       <Show when={!isFinished()}>
         <p class="text-center text-can5 mb-4">
-          {t('dica.solutionsFoundWithMax', {
+          {t("dica.solutionsFoundWithMax", {
             count: foundCount(),
             max: totalSpots(),
           })}
-          {tries() > 0 && ` (${t('dica.wrongAttempts', { count: tries() })})`}
+          {tries() > 0 && ` (${t("dica.wrongAttempts", { count: tries() })})`}
         </p>
 
         <div class="relative w-full">

@@ -1,6 +1,6 @@
-import { A, createAsync } from '@solidjs/router';
-import { For } from 'solid-js';
-import { getAllCompactRoutes } from '~/model/model';
+import { A, createAsync } from "@solidjs/router";
+import { For } from "solid-js";
+import { getAllCompactRoutes } from "~/model/model";
 
 export default function AllRoutesPage() {
   const routes = createAsync(() => getAllCompactRoutes());
@@ -16,10 +16,10 @@ export default function AllRoutesPage() {
               <A href={`/${route.slug}`} class="text-main-600 hover:underline">
                 {route.title}
                 <span class="text-decent-500 ml-2 text-sm">
-                  ({route.group || '-'})
+                  ({route.group || "-"})
                 </span>
                 <span class="text-complement ml-2 text-sm">
-                  ({route.layout || '-'})
+                  ({route.type || "-"})
                 </span>
               </A>
             </li>

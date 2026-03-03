@@ -1,4 +1,4 @@
-import { For } from 'solid-js';
+import { For } from "solid-js";
 
 export interface SortOption {
   value: string;
@@ -7,21 +7,21 @@ export interface SortOption {
 }
 
 export const albumSortOptions: SortOption[] = [
-  { value: 'v3', label: 'Top 3', description: 'Average of top 3 tracks' },
-  { value: 'v5', label: 'Top 5', description: 'Average of top 5 tracks' },
-  { value: 'v7', label: 'Top 7', description: 'Average of top 7 tracks' },
-  { value: 'v9', label: 'Top 9', description: 'Average of top 9 tracks' },
-  { value: 'count', label: 'Tracks', description: 'Number of tracks' },
-  { value: 'name', label: 'A-Z', description: 'Alphabetical order' },
+  { value: "v3", label: "Top 3", description: "Average of top 3 tracks" },
+  { value: "v5", label: "Top 5", description: "Average of top 5 tracks" },
+  { value: "v7", label: "Top 7", description: "Average of top 7 tracks" },
+  { value: "v9", label: "Top 9", description: "Average of top 9 tracks" },
+  { value: "count", label: "Tracks", description: "Number of tracks" },
+  { value: "name", label: "A-Z", description: "Alphabetical order" },
 ];
 
 export const artistSortOptions: SortOption[] = [
-  { value: 'v3', label: 'Top 3', description: 'Average of top 3 tracks' },
-  { value: 'v5', label: 'Top 5', description: 'Average of top 5 tracks' },
-  { value: 'v7', label: 'Top 7', description: 'Average of top 7 tracks' },
-  { value: 'v9', label: 'Top 9', description: 'Average of top 9 tracks' },
-  { value: 'count', label: 'Tracks', description: 'Number of tracks' },
-  { value: 'name', label: 'A-Z', description: 'Alphabetical order' },
+  { value: "v3", label: "Top 3", description: "Average of top 3 tracks" },
+  { value: "v5", label: "Top 5", description: "Average of top 5 tracks" },
+  { value: "v7", label: "Top 7", description: "Average of top 7 tracks" },
+  { value: "v9", label: "Top 9", description: "Average of top 9 tracks" },
+  { value: "count", label: "Tracks", description: "Number of tracks" },
+  { value: "name", label: "A-Z", description: "Alphabetical order" },
 ];
 
 export interface PcscSortNavProps {
@@ -42,8 +42,8 @@ export function PcscSortNav(props: PcscSortNavProps) {
                 onClick={() => props.onChange(option.value)}
                 class={`px-3 py-1 rounded-full text-sm transition-colors ${
                   props.current === option.value
-                    ? 'bg-cw text-can6 font-bold'
-                    : 'bg-cw/20 hover:bg-cw/40'
+                    ? "bg-cw text-can6 font-bold"
+                    : "bg-cw/20 hover:bg-cw/40"
                 }`}
                 title={option.description}
               >

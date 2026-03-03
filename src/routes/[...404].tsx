@@ -1,6 +1,6 @@
-import { A, createAsync, query, redirect, useLocation } from '@solidjs/router';
-import rawRedirects from '../../redirects.json';
-import { Head } from '~/components/head';
+import { A, createAsync, query, redirect, useLocation } from "@solidjs/router";
+import { Head } from "~/components/head";
+import rawRedirects from "../../redirects.json";
 
 const redirects: Record<string, string> = rawRedirects;
 
@@ -11,8 +11,8 @@ const getHandleRedirectsQuery = query(async (path) => {
     return redirect(`/${redirectPath}`);
   }
 
-  return 'not-found';
-}, 'isRedirect');
+  return "not-found";
+}, "isRedirect");
 
 export default function NotFound() {
   const location = useLocation();

@@ -1,6 +1,6 @@
-import { query } from '@solidjs/router';
-import { type CompactTrack } from '../model/track';
-import { fetchLocal } from './fetch';
+import { query } from "@solidjs/router";
+import type { CompactTrack } from "../model/track";
+import { fetchLocal } from "./fetch";
 
 /**
  * Fetches the top 100 tracks sorted by rating.
@@ -8,9 +8,9 @@ import { fetchLocal } from './fetch';
  * @returns Promise<CompactTrack[]> - Array of top 100 tracks sorted by rating (highest first)
  */
 export const fetchLeaderboard = query(async (): Promise<CompactTrack[]> => {
-  const tracks = await fetchLocal('/pcsc-api/tracks/leaderboard');
+  const tracks = await fetchLocal("/pcsc-api/tracks/leaderboard");
   return tracks;
-}, 'fetchLeaderboard');
+}, "fetchLeaderboard");
 
 /**
  * Fetches tracks matching a search query.
@@ -21,9 +21,9 @@ export const fetchLeaderboard = query(async (): Promise<CompactTrack[]> => {
 export const fetchByQuery = query(
   async (searchQuery: string): Promise<CompactTrack[]> => {
     const tracks = await fetchLocal(
-      `/pcsc-api/tracks/search/${encodeURIComponent(searchQuery)}`
+      `/pcsc-api/tracks/search/${encodeURIComponent(searchQuery)}`,
     );
     return tracks;
   },
-  'fetchByQuery'
+  "fetchByQuery",
 );

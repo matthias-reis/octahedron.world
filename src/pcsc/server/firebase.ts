@@ -1,5 +1,5 @@
 "use server";
-import { initializeApp, cert, getApps, getApp } from "firebase-admin/app";
+import { cert, getApp, getApps, initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
 export let db: ReturnType<typeof getFirestore>;
@@ -12,7 +12,7 @@ try {
             projectId: "pcsc-app",
             privateKey: (process.env.FB_PRIVATE_KEY ?? "").replace(
               /\\n/g,
-              "\n"
+              "\n",
             ),
             clientEmail: process.env.FB_CLIENT_EMAIL,
           }),

@@ -1,21 +1,21 @@
-import { createAsync, useLocation } from '@solidjs/router';
-import { useI18n } from '~/i18n/context';
-import { getRoute } from '~/model/model';
+import { createAsync, useLocation } from "@solidjs/router";
+import { useI18n } from "~/i18n/context";
+import { getRoute } from "~/model/model";
 
 export function LanguageSwitcher() {
   const { locale } = useI18n();
   const location = useLocation();
 
   const slug = () => {
-    const s = location.pathname.split('/')[1];
-    return s || '';
+    const s = location.pathname.split("/")[1];
+    return s || "";
   };
 
   const routeData = createAsync(() => getRoute(slug()));
 
   const toggle = () => {
     const current = locale();
-    const next = current === 'en' ? 'de' : 'en';
+    const next = current === "en" ? "de" : "en";
 
     // 1. Set Cookie
     document.cookie = `locale=${next}; path=/; max-age=31536000`; // 1 year
@@ -38,7 +38,7 @@ export function LanguageSwitcher() {
       onClick={toggle}
       class="px-3 py-1 rounded bg-can7 hover:bg-can6 hover:text-cw text-sm font-medium transition-colors"
     >
-      {locale() === 'en' ? 'DE' : 'EN'}
+      {locale() === "en" ? "DE" : "EN"}
     </button>
   );
 }

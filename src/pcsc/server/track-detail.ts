@@ -1,6 +1,6 @@
-import { query } from '@solidjs/router';
-import { fetchLocal } from './fetch';
-import type { TrackDetail } from '~/routes/pcsc-api/songs/[slug]';
+import { query } from "@solidjs/router";
+import type { TrackDetail } from "~/routes/pcsc-api/songs/[slug]";
+import { fetchLocal } from "./fetch";
 
 /**
  * Fetches a track with its full vote history.
@@ -14,5 +14,5 @@ export const fetchTrackDetail = query(
     const track = await fetchLocal(`/pcsc-api/songs/${slug}`);
     return track;
   },
-  'fetchTrackDetail'
+  "fetchTrackDetail",
 );

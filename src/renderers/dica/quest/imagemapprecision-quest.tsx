@@ -1,11 +1,11 @@
-import { Show, createSignal, createEffect, onCleanup } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
-import { largeImageUrl } from '~/components/image-helpers';
-import { useI18n } from '~/i18n/context';
+import { createEffect, createSignal, onCleanup, Show } from "solid-js";
+import { largeImageUrl } from "~/components/image-helpers";
+import { useI18n } from "~/i18n/context";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type ImageMapPrecisionQuestConfig = BaseQuestConfig & {
-  variant: 'imagemapprecision';
+  variant: "imagemapprecision";
   question: string;
   image: string;
   spot: [number, number];
@@ -14,7 +14,7 @@ export type ImageMapPrecisionQuestConfig = BaseQuestConfig & {
 };
 
 export type ImageMapPrecisionQuestStatus = BaseQuestStatus & {
-  variant: 'imagemapprecision';
+  variant: "imagemapprecision";
   clickSpot?: [number, number];
 };
 
@@ -28,7 +28,7 @@ export const ImageMapPrecisionQuest: QuestVariant<
 
   const [isFinished, setIsFinished] = createSignal(props.status.finished);
   const [clickSpot, setClickSpot] = createSignal<[number, number] | null>(
-    props.status.clickSpot ?? null
+    props.status.clickSpot ?? null,
   );
   const { t } = useI18n();
 
@@ -60,8 +60,8 @@ export const ImageMapPrecisionQuest: QuestVariant<
   };
 
   createEffect(() => {
-    window.addEventListener('resize', updateDimensions);
-    onCleanup(() => window.removeEventListener('resize', updateDimensions));
+    window.addEventListener("resize", updateDimensions);
+    onCleanup(() => window.removeEventListener("resize", updateDimensions));
   });
 
   const handleImageLoad = () => {
@@ -86,16 +86,16 @@ export const ImageMapPrecisionQuest: QuestVariant<
   };
 
   const dotStyle = (x: number, y: number) => ({
-    position: 'absolute' as const,
+    position: "absolute" as const,
     left: `${x}%`,
     top: `${y}%`,
-    width: '16px',
-    height: '16px',
-    'border-radius': '50%',
+    width: "16px",
+    height: "16px",
+    "border-radius": "50%",
     border: `2px solid white`,
-    transform: 'translate(-50%, -50%)',
-    'pointer-events': 'none' as const,
-    'box-shadow': '0 0 4px rgba(0,0,0,0.4)',
+    transform: "translate(-50%, -50%)",
+    "pointer-events": "none" as const,
+    "box-shadow": "0 0 4px rgba(0,0,0,0.4)",
   });
 
   return (
@@ -107,7 +107,7 @@ export const ImageMapPrecisionQuest: QuestVariant<
           ref={imageRef}
           src={largeImageUrl(config().image)}
           alt="Quest image"
-          class={`w-full select-none ${isFinished() ? '' : 'cursor-crosshair'}`}
+          class={`w-full select-none ${isFinished() ? "" : "cursor-crosshair"}`}
           onClick={handleImageClick}
           onLoad={handleImageLoad}
           draggable={false}
@@ -135,7 +135,7 @@ export const ImageMapPrecisionQuest: QuestVariant<
       <Show when={isFinished()}>
         <p class="text-cbs4 mx-auto text-center mt-6">{config().success}</p>
         <p class="text-can4 text-sm text-center mt-2">
-          {t('dica.deviation')}: {deviation()}% — {t('dica.score')}:{' '}
+          {t("dica.deviation")}: {deviation()}% — {t("dica.score")}:{" "}
           {computedScore()}/100
         </p>
       </Show>

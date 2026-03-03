@@ -1,4 +1,4 @@
-import { LoaderCircle } from 'lucide-solid';
+import { LoaderCircle } from "lucide-solid";
 
 export function Loading() {
   return (

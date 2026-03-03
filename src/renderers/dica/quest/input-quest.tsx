@@ -1,10 +1,10 @@
-import { Show, createSignal, createEffect } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
-import { useI18n } from '~/i18n/context';
+import { createEffect, createSignal, Show } from "solid-js";
+import { useI18n } from "~/i18n/context";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type InputQuestConfig = BaseQuestConfig & {
-  variant: 'input';
+  variant: "input";
   question: string;
   solution: string;
   success: string;
@@ -13,7 +13,7 @@ export type InputQuestConfig = BaseQuestConfig & {
 };
 
 export type InputQuestStatus = BaseQuestStatus & {
-  variant: 'input';
+  variant: "input";
   tries?: number;
 };
 
@@ -21,13 +21,13 @@ const MAX_TRIES = 10;
 const PENALTY_PER_TRY = 7;
 
 export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
-  props
+  props,
 ) => {
   const config = () => props.config;
 
   const [isFinished, setIsFinished] = createSignal(props.status.finished);
   const [tries, setTries] = createSignal(props.status.tries ?? 0);
-  const [inputValue, setInputValue] = createSignal('');
+  const [inputValue, setInputValue] = createSignal("");
   const [showError, setShowError] = createSignal(false);
   const [gaveUp, setGaveUp] = createSignal(false);
   const { t } = useI18n();
@@ -59,7 +59,7 @@ export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
     } else {
       const newTries = tries() + 1;
       setTries(newTries);
-      setInputValue('');
+      setInputValue("");
       setShowError(true);
       props.onChange({ tries: newTries });
 
@@ -98,17 +98,17 @@ export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
             value={inputValue()}
             onInput={(e) => setInputValue(e.currentTarget.value)}
             class="w-full max-w-xs px-4 py-3 bg-cbn7 border border-cbn5 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-cbn5"
-            placeholder={t('dica.answer')}
+            placeholder={t("dica.answer")}
           />
           <button type="submit" class="dica-button">
-            {t('dica.submit')}
+            {t("dica.submit")}
           </button>
         </form>
 
         <Show when={showError()}>
           <p class="text-cas4 mt-4 text-center">{config().failure}</p>
           <p class="text-can5 text-sm text-center mt-1">
-            {t('dica.attempt')} {tries()} / {MAX_TRIES}
+            {t("dica.attempt")} {tries()} / {MAX_TRIES}
           </p>
         </Show>
       </Show>

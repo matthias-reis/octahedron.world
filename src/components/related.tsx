@@ -1,10 +1,10 @@
-import { createAsyncStore } from '@solidjs/router';
-import { Component, For, Suspense } from 'solid-js';
-import { getAllCompactRoutes } from '~/model/model';
-import { Loading } from './loading';
-import { LinkBox } from './link-box';
-import { cx } from './cx';
-import { GlobalScope } from '~/types';
+import { createAsyncStore } from "@solidjs/router";
+import { type Component, For, Suspense } from "solid-js";
+import { getAllCompactRoutes } from "~/model/model";
+import type { GlobalScope } from "~/types";
+import { cx } from "./cx";
+import { LinkBox } from "./link-box";
+import { Loading } from "./loading";
 
 export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
   const items = createAsyncStore(() => getAllCompactRoutes());
@@ -29,7 +29,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
 
         const groupedItems = Object.values(allItems).filter(
           (otherItem) =>
-            otherItem.group === item.group && !related.includes(otherItem.slug)
+            otherItem.group === item.group && !related.includes(otherItem.slug),
         );
 
         // Loaded but nothing found - display nothing
@@ -45,8 +45,8 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
                 </h3>
                 <nav
                   class={cx(
-                    'grid gap-4 md:grid-cols-3 my-5',
-                    relatedItems.length === 1 && 'md:grid-cols-1'
+                    "grid gap-4 md:grid-cols-3 my-5",
+                    relatedItems.length === 1 && "md:grid-cols-1",
                   )}
                 >
                   <For each={relatedItems}>
@@ -64,8 +64,8 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
                 </h3>
                 <nav
                   class={cx(
-                    'grid gap-4 md:grid-cols-3 my-5',
-                    groupedItems.length === 1 && 'md:grid-cols-1'
+                    "grid gap-4 md:grid-cols-3 my-5",
+                    groupedItems.length === 1 && "md:grid-cols-1",
                   )}
                 >
                   <For each={groupedItems}>

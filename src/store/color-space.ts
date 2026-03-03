@@ -1,3 +1,3 @@
-import { createSignal } from 'solid-js';
+import { createSignal } from "solid-js";
 
-export const [colorSpace, setColorSpace] = createSignal<string>('petrol');
+export const [colorSpace, setColorSpace] = createSignal<string>("petrol");

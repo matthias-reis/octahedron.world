@@ -1,44 +1,44 @@
-import { query } from '@solidjs/router';
-import { CompactItemMeta, ItemMeta } from '~/types';
+import { query } from "@solidjs/router";
+import type { CompactItemMeta, ItemMeta } from "~/types";
 
 let cachedData: Record<string, ItemMeta> | null = null;
 
 async function getData() {
-  'use server';
+  "use server";
   // Bypass cache in development mode for hot reloading
-  if (cachedData && process.env.NODE_ENV !== 'development') {
+  if (cachedData && process.env.NODE_ENV !== "development") {
     return cachedData;
   }
 
-  const { readFile } = await import('fs/promises');
-  const { join } = await import('path');
+  const { readFile } = await import("fs/promises");
+  const { join } = await import("path");
 
-  const dataPath = join(process.cwd(), 'data.json');
-  const fileContent = await readFile(dataPath, 'utf-8');
+  const dataPath = join(process.cwd(), "data.json");
+  const fileContent = await readFile(dataPath, "utf-8");
   cachedData = JSON.parse(fileContent) as Record<string, ItemMeta>;
 
   return cachedData;
 }
 
 export const getRoute = query(async (slug: string) => {
-  'use server';
+  "use server";
   const data = await getData();
   return data[slug] || null;
-}, 'route');
+}, "route");
 
 export async function getRedirect(slug: string) {
-  'use server';
+  "use server";
   const data = await getData();
 
   const redirects = Object.fromEntries(
-    Object.values(data).map((item) => [item.alias, item.slug])
+    Object.values(data).map((item) => [item.alias, item.slug]),
   );
 
   return redirects[slug] || null;
 }
 
 export async function getAllRoutes() {
-  'use server';
+  "use server";
   const data = await getData();
   return Object.values(data);
 }
@@ -46,7 +46,7 @@ export async function getAllRoutes() {
 export const getAllCompactRoutes: () => Promise<
   Record<string, CompactItemMeta>
 > = query(async () => {
-  'use server';
+  "use server";
   const data = await getData();
 
   return Object.fromEntries(
@@ -68,13 +68,13 @@ export const getAllCompactRoutes: () => Promise<
             subTitle,
           },
         ];
-      }
-    )
+      },
+    ),
   );
-}, 'all-routes-overview');
+}, "all-routes-overview");
 
 export const getAllRootRoutes = query(async () => {
-  'use server';
+  "use server";
   const data = await getData();
 
   const availableItems = Object.values(data)
@@ -88,4 +88,4 @@ export const getAllRootRoutes = query(async () => {
       weight: weight ?? 0,
     }));
   return availableItems as CompactItemMeta[];
-}, 'all-root-routes');
+}, "all-root-routes");

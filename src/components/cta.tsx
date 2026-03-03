@@ -1,9 +1,9 @@
-import { A } from '@solidjs/router';
-import { Component, ParentComponent } from 'solid-js';
-import type { CustomBlockProps } from 'solid-mds';
+import { A } from "@solidjs/router";
+import type { Component, ParentComponent } from "solid-js";
+import type { CustomBlockProps } from "solid-mds";
 
 const Button: ParentComponent<{ href: string }> = ({ children, href }) => {
-  if (href.startsWith('/')) {
+  if (href.startsWith("/")) {
     return (
       <A class="cta" href={href}>
         {children}
@@ -21,7 +21,7 @@ const Button: ParentComponent<{ href: string }> = ({ children, href }) => {
 export const Cta: Component<CustomBlockProps> = ({ data }) => {
   // Defensive checks: ensure data exists and has the required properties
   if (!data) {
-    console.warn('Cta component: data is missing');
+    console.warn("Cta component: data is missing");
     return null;
   }
 
@@ -29,7 +29,7 @@ export const Cta: Component<CustomBlockProps> = ({ data }) => {
   const text = Array.isArray(data.text) ? data.text[0] : data.text;
 
   if (!url || !text) {
-    console.warn('Cta component: url or text is missing', { data });
+    console.warn("Cta component: url or text is missing", { data });
     return null;
   }
 

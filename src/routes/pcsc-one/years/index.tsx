@@ -1,23 +1,23 @@
-import { createSignal, For, createResource, Suspense } from 'solid-js';
-import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
-import { PcscTitle } from '~/pcsc/pcsc-title';
-import { PcscItem } from '~/pcsc/pcsc-item';
-import { PcscSortNav } from '~/pcsc/pcsc-sort-nav';
-import { fetchYears } from '~/pcsc/server/years';
-import type { YearSortOption } from '~/routes/pcsc-api/years';
-import type { TrackCollectionItem } from '~/pcsc/model/track-map';
+import { createResource, createSignal, For, Suspense } from "solid-js";
+import type { TrackCollectionItem } from "~/pcsc/model/track-map";
+import { PcscBreadcrumb } from "~/pcsc/pcsc-breadcrumb";
+import { PcscItem } from "~/pcsc/pcsc-item";
+import { PcscSortNav } from "~/pcsc/pcsc-sort-nav";
+import { PcscTitle } from "~/pcsc/pcsc-title";
+import { fetchYears } from "~/pcsc/server/years";
+import type { YearSortOption } from "~/routes/pcsc-api/years";
 
 const yearSortOptions = [
-  { label: 'By Best 30', value: 'v3' as const },
-  { label: 'By Best 50', value: 'v5' as const },
-  { label: 'By Best 70', value: 'v7' as const },
-  { label: 'By Best 90', value: 'v9' as const },
-  { label: 'By Name (A-Z)', value: 'asc' as const },
-  { label: 'By Name (Z-A)', value: 'desc' as const },
+  { label: "By Best 30", value: "v3" as const },
+  { label: "By Best 50", value: "v5" as const },
+  { label: "By Best 70", value: "v7" as const },
+  { label: "By Best 90", value: "v9" as const },
+  { label: "By Name (A-Z)", value: "asc" as const },
+  { label: "By Name (Z-A)", value: "desc" as const },
 ];
 
 export default function PCSCOneYears() {
-  const [sortOption, setSortOption] = createSignal<YearSortOption>('v3');
+  const [sortOption, setSortOption] = createSignal<YearSortOption>("v3");
 
   const [years] = createResource(sortOption, async (sort) => {
     return await fetchYears(sort);
@@ -29,12 +29,12 @@ export default function PCSCOneYears() {
   };
 
   const ratingTitles = {
-    v3: 'Top 30',
-    v5: 'Top 50',
-    v7: 'Top 70',
-    v9: 'Top 90',
-    asc: 'Top 30',
-    desc: 'Top 30',
+    v3: "Top 30",
+    v5: "Top 50",
+    v7: "Top 70",
+    v9: "Top 90",
+    asc: "Top 30",
+    desc: "Top 30",
   };
 
   const ratingValues = {
@@ -50,8 +50,8 @@ export default function PCSCOneYears() {
     <>
       <PcscBreadcrumb
         links={[
-          { href: '/pcsc-one', label: 'Home' },
-          { href: '/pcsc-one/years', label: 'Years' },
+          { href: "/pcsc-one", label: "Home" },
+          { href: "/pcsc-one/years", label: "Years" },
         ]}
       />
       <PcscTitle headline="Years" description={description()} />
@@ -73,14 +73,14 @@ export default function PCSCOneYears() {
                 headline={year.name}
                 description={`${year.count} tracks`}
                 secondaryDescription={`Top 30: ${
-                  year.v3 ? year.v3.toFixed(1) : '-'
-                } · Top 50:  ${year.v5 ? year.v5.toFixed(1) : '-'} · Top 70: ${
-                  year.v7 ? year.v7.toFixed(1) : '-'
-                } · Top 90: ${year.v9 ? year.v9.toFixed(1) : '-'}`}
+                  year.v3 ? year.v3.toFixed(1) : "-"
+                } · Top 50:  ${year.v5 ? year.v5.toFixed(1) : "-"} · Top 70: ${
+                  year.v7 ? year.v7.toFixed(1) : "-"
+                } · Top 90: ${year.v9 ? year.v9.toFixed(1) : "-"}`}
                 url={year.url}
                 ratingTitle={ratingTitles[sortOption()]}
                 ratingValue={
-                  ratingValues[sortOption()](year)?.toFixed(1) || '-'
+                  ratingValues[sortOption()](year)?.toFixed(1) || "-"
                 }
               />
             )}

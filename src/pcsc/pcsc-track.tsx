@@ -1,7 +1,7 @@
-import { Show } from 'solid-js';
-import { A } from '@solidjs/router';
-import { TrackModel, type CompactTrack } from './model/track';
-import { PcscItem } from './pcsc-item';
+import { A } from "@solidjs/router";
+import { Show } from "solid-js";
+import { type CompactTrack, TrackModel } from "./model/track";
+import { PcscItem } from "./pcsc-item";
 
 export interface PcscItemProps {
   track: CompactTrack;

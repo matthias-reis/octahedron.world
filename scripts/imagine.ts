@@ -1,12 +1,12 @@
-import { glob } from 'glob';
-import { parse, join } from 'path';
-import sharp from 'sharp';
-import { mkdirpSync as mkdirp } from 'mkdirp';
+import { glob } from "glob";
+import { mkdirpSync as mkdirp } from "mkdirp";
+import { join, parse } from "path";
+import sharp from "sharp";
 
-const contentPath = join(process.cwd(), '_content');
+const contentPath = join(process.cwd(), "_content");
 
 async function run() {
-  console.log('[IMG] start');
+  console.log("[IMG] start");
   const files = await glob(`${contentPath}/**/*.{jpg,jpeg,png}`, {
     absolute: true,
   });
@@ -15,24 +15,24 @@ async function run() {
     const { name } = parse(file);
 
     // Create flat structure: public/img/{imageName}/s.jpg and public/img/{imageName}/l.jpg
-    const imageFolder = join(process.cwd(), 'public/img', name);
+    const imageFolder = join(process.cwd(), "public/img", name);
     mkdirp(imageFolder);
 
-    const newImageLargeName = join(imageFolder, 'l.jpg');
-    const newImageSmallName = join(imageFolder, 's.jpg');
+    const newImageLargeName = join(imageFolder, "l.jpg");
+    const newImageSmallName = join(imageFolder, "s.jpg");
 
     const imageSharp = sharp(file);
 
     const imageLarge = imageSharp
       .withMetadata()
       .resize(1280, 1280, {
-        fit: 'inside',
+        fit: "inside",
         withoutEnlargement: false,
       })
       .sharpen()
       .jpeg({
         quality: 90,
-        chromaSubsampling: '4:2:0',
+        chromaSubsampling: "4:2:0",
         progressive: true,
         force: true,
       });
@@ -40,20 +40,20 @@ async function run() {
     const imageSmall = imageSharp
       .withMetadata()
       .resize(600, 600, {
-        fit: 'inside',
+        fit: "inside",
         withoutEnlargement: false,
       })
       .sharpen()
       .jpeg({
         quality: 65,
-        chromaSubsampling: '4:2:0',
+        chromaSubsampling: "4:2:0",
         progressive: true,
         force: true,
       });
     await imageSmall.toFile(newImageSmallName);
     console.log(`[IMG] 🏞️  ${name}`);
   }
-  console.log('[IMG] 🏁 done');
+  console.log("[IMG] 🏁 done");
 }
 
 run();

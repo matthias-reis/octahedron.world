@@ -1,6 +1,6 @@
-import { fbReadFullTrack } from '~/pcsc/server/track-db';
-import { Track, TrackModel } from '~/pcsc/model/track';
-import { type APIEvent } from '@solidjs/start/server';
+import type { APIEvent } from "@solidjs/start/server";
+import { type Track, TrackModel } from "~/pcsc/model/track";
+import { fbReadFullTrack } from "~/pcsc/server/track-db";
 
 export type TrackDetail = {
   track: Track;
@@ -14,7 +14,7 @@ export async function GET({ params }: APIEvent) {
   const slug = params.slug;
 
   if (!slug) {
-    return new Response('Missing slug parameter', { status: 400 });
+    return new Response("Missing slug parameter", { status: 400 });
   }
 
   try {
@@ -22,7 +22,7 @@ export async function GET({ params }: APIEvent) {
     const track = await fbReadFullTrack(slug);
 
     if (!track) {
-      return new Response('Track not found', { status: 404 });
+      return new Response("Track not found", { status: 404 });
     }
 
     // Use TrackModel to process and sort votes
@@ -39,7 +39,7 @@ export async function GET({ params }: APIEvent) {
 
     return response;
   } catch (error) {
-    console.error('[API] Error fetching track:', error);
-    return new Response('Internal server error', { status: 500 });
+    console.error("[API] Error fetching track:", error);
+    return new Response("Internal server error", { status: 500 });
   }
 }

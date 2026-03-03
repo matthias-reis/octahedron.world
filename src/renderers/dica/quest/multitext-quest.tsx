@@ -1,10 +1,10 @@
-import { Show, For, createSignal, createEffect } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
-import { useI18n } from '~/i18n/context';
+import { createEffect, createSignal, For, Show } from "solid-js";
+import { useI18n } from "~/i18n/context";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type MultitextQuestConfig = BaseQuestConfig & {
-  variant: 'multitext';
+  variant: "multitext";
   question: string;
   solutions: string[];
   success: string;
@@ -13,7 +13,7 @@ export type MultitextQuestConfig = BaseQuestConfig & {
 };
 
 export type MultitextQuestStatus = BaseQuestStatus & {
-  variant: 'multitext';
+  variant: "multitext";
   tries?: number;
   found?: string[];
 };
@@ -30,7 +30,7 @@ export const MultitextQuest: QuestVariant<
   const [isFinished, setIsFinished] = createSignal(props.status.finished);
   const [tries, setTries] = createSignal(props.status.tries ?? 0);
   const [found, setFound] = createSignal<string[]>(props.status.found ?? []);
-  const [inputValue, setInputValue] = createSignal('');
+  const [inputValue, setInputValue] = createSignal("");
   const [showError, setShowError] = createSignal(false);
   const [gaveUp, setGaveUp] = createSignal(false);
   const { t } = useI18n();
@@ -54,7 +54,7 @@ export const MultitextQuest: QuestVariant<
 
   const isAlreadyFound = (solution: string): boolean => {
     return found().some(
-      (f) => normalizeAnswer(f) === normalizeAnswer(solution)
+      (f) => normalizeAnswer(f) === normalizeAnswer(solution),
     );
   };
 
@@ -69,12 +69,12 @@ export const MultitextQuest: QuestVariant<
 
     if (matchingSolution) {
       if (isAlreadyFound(matchingSolution)) {
-        setInputValue('');
+        setInputValue("");
         setShowError(false);
       } else {
         const newFound = [...found(), matchingSolution];
         setFound(newFound);
-        setInputValue('');
+        setInputValue("");
         setShowError(false);
         props.onChange({ found: newFound });
 
@@ -89,7 +89,7 @@ export const MultitextQuest: QuestVariant<
     } else {
       const newTries = tries() + 1;
       setTries(newTries);
-      setInputValue('');
+      setInputValue("");
       setShowError(true);
       props.onChange({ tries: newTries });
 
@@ -150,23 +150,23 @@ export const MultitextQuest: QuestVariant<
             value={inputValue()}
             onInput={(e) => setInputValue(e.currentTarget.value)}
             class="w-full max-w-xs px-4 py-3 bg-can7 border border-can4 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-can4"
-            placeholder={t('dica.answer')}
+            placeholder={t("dica.answer")}
           />
           <button type="submit" class="dica-button">
-            {t('dica.submit')}
+            {t("dica.submit")}
           </button>
         </form>
 
         <Show when={showError()}>
           <p class="text-cas4 mt-4 text-center">{config().failure}</p>
           <p class="text-can4 text-sm text-center mt-1">
-            {t('dica.attempt')} {tries()} / {MAX_TRIES}
+            {t("dica.attempt")} {tries()} / {MAX_TRIES}
           </p>
         </Show>
 
         <p class="text-can4 text-sm text-center mt-4">
-          {found().length} / {config().solutions.length}{' '}
-          {t('dica.solutionsFound')}
+          {found().length} / {config().solutions.length}{" "}
+          {t("dica.solutionsFound")}
         </p>
       </Show>
     </QuestWrapper>

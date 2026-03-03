@@ -1,13 +1,16 @@
-import type { Options } from 'hast-util-to-jsx-runtime';
-import { unified } from 'unified';
-import parse from 'remark-parse';
-import remarkMath from 'remark-math';
-import remarkRehype from 'remark-rehype';
-import rehypeKatex from 'rehype-katex';
-import { hastToSolidJsx } from './hast-to-solid';
-import type { JSX } from 'solid-js';
+import type { Options } from "hast-util-to-jsx-runtime";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+import parse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import type { JSX } from "solid-js";
+import { unified } from "unified";
+import { hastToSolidJsx } from "./hast-to-solid";
 
-export function parseMarkdown(s: string, components?: Options['components']): JSX.Element {
+export function parseMarkdown(
+  s: string,
+  components?: Options["components"],
+): JSX.Element {
   // Parse markdown string to MDAST (Markdown Abstract Syntax Tree)
   const mdastTree = unified()
     .use(parse)

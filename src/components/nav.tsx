@@ -1,11 +1,11 @@
-import { A, createAsyncStore, useLocation } from '@solidjs/router';
-import { cx } from './cx';
-import OctahedronLogo from './octahedron-logo';
-import { createSignal, For, Show, Suspense } from 'solid-js';
-import { House, X } from 'lucide-solid';
-import { getAllRootRoutes } from '~/model/model';
-import { smallImageUrl } from './image-helpers';
-import { sortRootItems } from '~/model/helpers';
+import { A, createAsyncStore, useLocation } from "@solidjs/router";
+import { House, X } from "lucide-solid";
+import { createSignal, For, Show, Suspense } from "solid-js";
+import { sortRootItems } from "~/model/helpers";
+import { getAllRootRoutes } from "~/model/model";
+import { cx } from "./cx";
+import { smallImageUrl } from "./image-helpers";
+import OctahedronLogo from "./octahedron-logo";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = createSignal<boolean>(false);
@@ -14,11 +14,11 @@ export default function Nav() {
   const location = useLocation();
 
   return (
-    <Show when={location.pathname !== '/'}>
+    <Show when={location.pathname !== "/"}>
       <nav
         class={cx(
-          'p-3 pr-4 fixed top-0 right-0 w-xs flex flex-col z-30 cursor-pointer',
-          isOpen() && 'bg-can8 border-l border-can6 h-screen'
+          "p-3 pr-4 fixed top-0 right-0 w-xs flex flex-col z-30 cursor-pointer",
+          isOpen() && "bg-can8 border-l border-can6 h-screen",
         )}
         onClick={() => setIsOpen(!isOpen())}
       >
@@ -31,14 +31,14 @@ export default function Nav() {
             WORLD
           </span>
         </h1>
-        <div class={cx('grow shrink overflow-y-auto', !isOpen() && 'hidden')}>
+        <div class={cx("grow shrink overflow-y-auto", !isOpen() && "hidden")}>
           <X class="absolute top-3 left-3 cursor-pointer" />
           <A
             href={`/`}
             class="flex items-center justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5 mb-2"
           >
             <img
-              src={smallImageUrl('_home')}
+              src={smallImageUrl("_home")}
               alt=""
               class="aspect-image object-cover h-6"
             />

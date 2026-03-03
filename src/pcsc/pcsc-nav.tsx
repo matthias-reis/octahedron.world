@@ -1,5 +1,5 @@
-import { A, useLocation } from '@solidjs/router';
-import { For } from 'solid-js';
+import { A, useLocation } from "@solidjs/router";
+import { For } from "solid-js";
 
 export interface NavLink {
   href: string;

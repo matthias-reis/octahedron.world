@@ -26,7 +26,7 @@ export class Stage {
       this.day.racer.risk
     );
   }
-  
+
   get countableScore() {
     if (this.noScore) return 0;
     return this.score;
@@ -63,9 +63,9 @@ export class Stage {
   }
 
   get token(): string {
-    if (this.dropped) return 'DO';
-    if (this.eliminated) return '..';
-    if (this.dnf) return 'NF';
-    return this.points.toString().padStart(2, '0');
+    if (this.dropped) return "DO";
+    if (this.eliminated) return "..";
+    if (this.dnf) return "NF";
+    return this.points.toString().padStart(2, "0");
   }
 }

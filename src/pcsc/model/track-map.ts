@@ -1,5 +1,5 @@
-import { slugify } from './slugify';
-import type { CompactTrack, Track, TrackModel } from './track';
+import { slugify } from "./slugify";
+import type { CompactTrack, Track, TrackModel } from "./track";
 
 export class TrackMapModel {
   private tracks: TrackModel[];
@@ -41,7 +41,7 @@ export class TrackMapModel {
     });
     Object.values(artistList).forEach((i) => {
       const songs = i.songs.sort(
-        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote)
+        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote),
       );
       i.data.name = songs[0].artist;
       i.data.url = songs[0].artistUrl;
@@ -80,7 +80,7 @@ export class TrackMapModel {
       });
     Object.values(albumList).forEach((i) => {
       const songs = i.songs.sort(
-        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote)
+        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote),
       );
       i.data.name = songs[0].album;
       i.data.sub = songs[0].artist;
@@ -119,7 +119,7 @@ export class TrackMapModel {
       });
     Object.values(yearsList).forEach((i) => {
       const songs = i.songs.sort(
-        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote)
+        (a, b) => parseFloat(b.storedVote) - parseFloat(a.storedVote),
       );
       i.data.sub = `${songs[0].artist} - ${songs[0].title} (${songs[0].storedVote})`;
       i.data.count = songs.length;
@@ -161,7 +161,7 @@ export class TrackMapModel {
     try {
       res = JSON.parse(JSON.stringify(tracks)) as CompactTrack[];
     } catch (e) {
-      console.error('TrackMapModel.find serialization error:', e);
+      console.error("TrackMapModel.find serialization error:", e);
       res = tracks;
     }
     return res;
@@ -184,7 +184,7 @@ export class TrackMapModel {
     try {
       res = JSON.parse(JSON.stringify(tracks)) as CompactTrack[];
     } catch (e) {
-      console.log('TrackMapModel.find serialization error:', e);
+      console.log("TrackMapModel.find serialization error:", e);
       res = tracks;
     }
     return res;
@@ -207,7 +207,7 @@ export type TrackCollectionItem = {
 const averageVote = (tracks: TrackModel[]) => {
   const total = tracks.reduce(
     (acc, track) => acc + parseFloat(track.storedVote),
-    0
+    0,
   );
   return total / tracks.length;
 };

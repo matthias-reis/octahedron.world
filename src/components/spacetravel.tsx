@@ -1,5 +1,5 @@
-import { Component, createSignal, createMemo, Show, JSX } from 'solid-js';
-import { Rocket, Star, ArrowRight } from 'lucide-solid';
+import { ArrowRight, Rocket, Star } from "lucide-solid";
+import { type Component, createMemo, createSignal, JSX, Show } from "solid-js";
 
 type SpacetravelProps = {
   data: {
@@ -10,7 +10,7 @@ type SpacetravelProps = {
     limit: boolean; // limit acceleration?
     time?: number; // months (acceleration time if limited)
     mass?: number; // tonnes
-    unit?: 'ly' | 'au'; // distance unit
+    unit?: "ly" | "au"; // distance unit
     editable?: boolean;
   };
 };
@@ -52,20 +52,20 @@ const formatDuration = (years: number) => {
 
 export const Spacetravel: Component<SpacetravelProps> = (props) => {
   // Initialize signals with props
-  const [from, setFrom] = createSignal(props.data.from || 'Earth');
-  const [to, setTo] = createSignal(props.data.to || 'Proxima Centauri');
+  const [from, setFrom] = createSignal(props.data.from || "Earth");
+  const [to, setTo] = createSignal(props.data.to || "Proxima Centauri");
   const [dist, setDist] = createSignal(props.data.dist || 4.24);
   const [acc, setAcc] = createSignal(props.data.acc || 1);
   const [limit, setLimit] = createSignal(props.data.limit || false);
   const [accTimeMonths, setAccTimeMonths] = createSignal(props.data.time || 12);
   const [mass, setMass] = createSignal(props.data.mass || 1000); // Default 1000 tonnes
-  const [unit, setUnit] = createSignal(props.data.unit || 'ly');
+  const [unit, setUnit] = createSignal(props.data.unit || "ly");
   const editable = props.data.editable || false;
 
   // Physics Calculations
   const results = createMemo(() => {
     // Convert distance to LY for physics
-    const d = unit() === 'au' ? dist() / LY_TO_AU : dist();
+    const d = unit() === "au" ? dist() / LY_TO_AU : dist();
     const a = acc() * G_TO_LYY2;
     const limited = limit();
     const t_acc_limit = accTimeMonths() / 12; // years
@@ -86,9 +86,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
 
       const d_half = d / 2;
       const t_ship_half = Math.acosh(a * d_half + 1) / a;
-      const t_earth_half = Math.sqrt(
-        Math.pow(d_half + 1 / a, 2) - Math.pow(1 / a, 2)
-      ); // Or simply sinh(a*t_ship_half)/a
+      const t_earth_half = Math.sqrt((d_half + 1 / a) ** 2 - (1 / a) ** 2); // Or simply sinh(a*t_ship_half)/a
 
       t_ship = 2 * t_ship_half;
       t_earth = 2 * t_earth_half;
@@ -114,7 +112,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
         const d_half = d / 2;
         const t_ship_half = Math.acosh(a * d_half + 1) / a;
         t_ship = 2 * t_ship_half;
-        const t_earth_half = Math.sqrt(Math.pow(d_half, 2) + (2 * d_half) / a);
+        const t_earth_half = Math.sqrt(d_half ** 2 + (2 * d_half) / a);
         t_earth = 2 * t_earth_half;
         max_v = Math.tanh(a * t_ship_half);
         d_acc = d_half;
@@ -157,7 +155,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
     const m_kg = mass() * 1000;
 
     // Energy in Joules for one acceleration phase
-    const e_joules = (gamma - 1) * m_kg * Math.pow(C_MS, 2);
+    const e_joules = (gamma - 1) * m_kg * C_MS ** 2;
 
     // Total energy (acc + dec)
     const total_e_joules = 2 * e_joules;
@@ -171,10 +169,10 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
     // E_input = E_kin / 0.25
     // E_input = m_am * c^2
     // m_am = E_kin / (0.25 * c^2)
-    const m_antimatter_kg = total_e_joules / (0.5 * Math.pow(C_MS, 2));
+    const m_antimatter_kg = total_e_joules / (0.5 * C_MS ** 2);
 
     // Hydrogen needed (0.7% mass defect at 25% efficiency)
-    const m_hydrogen_kg = total_e_joules / (0.00175 * Math.pow(C_MS, 2));
+    const m_hydrogen_kg = total_e_joules / (0.00175 * C_MS ** 2);
 
     return {
       pj: total_e_pj,
@@ -221,21 +219,21 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
           <div
             class="h-full bg-gradient-to-r from-complement-500 to-saturated-400 border-r-2 border-neutral-200"
             style={{
-              width: `${(results().d_acc / (unit() === 'au' ? dist() / LY_TO_AU : dist())) * 100}%`,
+              width: `${(results().d_acc / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
             title={`Acceleration: ${results().d_acc.toFixed(2)} ly`}
           />
           <div
             class="h-full bg-saturated-400"
             style={{
-              width: `${(results().d_coast / (unit() === 'au' ? dist() / LY_TO_AU : dist())) * 100}%`,
+              width: `${(results().d_coast / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
             title={`Coasting: ${results().d_coast.toFixed(2)} ly`}
           />
           <div
             class="h-full bg-gradient-to-r from-saturated-400 to-complement-500 border-l-2 border-neutral-200"
             style={{
-              width: `${(results().d_dec / (unit() === 'au' ? dist() / LY_TO_AU : dist())) * 100}%`,
+              width: `${(results().d_dec / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
             title={`Deceleration: ${results().d_dec.toFixed(2)} ly`}
           />
@@ -255,8 +253,8 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
             >
               {formatDuration(
                 Math.acosh(acc() * G_TO_LYY2 * results().d_acc + 1) /
-                  (acc() * G_TO_LYY2)
-              )}{' '}
+                  (acc() * G_TO_LYY2),
+              )}{" "}
               @ {acc()} g
             </div>
           </div>
@@ -269,8 +267,8 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
             >
               {formatDuration(
                 Math.acosh(acc() * G_TO_LYY2 * results().d_dec + 1) /
-                  (acc() * G_TO_LYY2)
-              )}{' '}
+                  (acc() * G_TO_LYY2),
+              )}{" "}
               @ {acc()} g
             </div>
           </div>
@@ -303,7 +301,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
           </div>
           <div class="text-2xl font-bold text-gray-900 dark:text-white font-mono">
             {results().max_v.toFixed(3)} c
-            <Show when={unit() === 'au'}>
+            <Show when={unit() === "au"}>
               <div class="text-sm text-neutral-500 font-normal mt-1">
                 {(results().max_v * C_MMS).toFixed(2)} Mm/s
               </div>
@@ -381,14 +379,14 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
             <div class="flex items-end mb-2">
               <div class="flex bg-neutral-300 p-1 rounded-lg w-full">
                 <button
-                  class={`flex-1 text-xs py-1.5 rounded-md transition-colors ${unit() === 'ly' ? 'bg-white shadow-sm text-neutral-900 font-medium' : 'text-neutral-500 hover:text-neutral-700'}`}
-                  onClick={() => setUnit('ly')}
+                  class={`flex-1 text-xs py-1.5 rounded-md transition-colors ${unit() === "ly" ? "bg-white shadow-sm text-neutral-900 font-medium" : "text-neutral-500 hover:text-neutral-700"}`}
+                  onClick={() => setUnit("ly")}
                 >
                   LY
                 </button>
                 <button
-                  class={`flex-1 text-xs py-1.5 rounded-md transition-colors ${unit() === 'au' ? 'bg-white shadow-sm text-neutral-900 font-medium' : 'text-neutral-500 hover:text-neutral-700'}`}
-                  onClick={() => setUnit('au')}
+                  class={`flex-1 text-xs py-1.5 rounded-md transition-colors ${unit() === "au" ? "bg-white shadow-sm text-neutral-900 font-medium" : "text-neutral-500 hover:text-neutral-700"}`}
+                  onClick={() => setUnit("au")}
                 >
                   AU
                 </button>
@@ -452,7 +450,7 @@ const InputGroup: Component<{
       {props.label}
     </label>
     <input
-      type={props.type || 'text'}
+      type={props.type || "text"}
       value={props.value}
       onInput={props.onInput}
       step={props.step}

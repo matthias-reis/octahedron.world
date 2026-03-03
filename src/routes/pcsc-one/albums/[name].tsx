@@ -1,14 +1,14 @@
-import { createResource, For, Suspense, Show } from 'solid-js';
-import { useParams } from '@solidjs/router';
-import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
-import { PcscTitle } from '~/pcsc/pcsc-title';
-import { PcscTrack } from '~/pcsc/pcsc-track';
-import { fetchAlbumTracks } from '~/pcsc/server/albums';
-import type { CompactTrack } from '~/pcsc/model/track';
+import { useParams } from "@solidjs/router";
+import { createResource, For, Show, Suspense } from "solid-js";
+import type { CompactTrack } from "~/pcsc/model/track";
+import { PcscBreadcrumb } from "~/pcsc/pcsc-breadcrumb";
+import { PcscTitle } from "~/pcsc/pcsc-title";
+import { PcscTrack } from "~/pcsc/pcsc-track";
+import { fetchAlbumTracks } from "~/pcsc/server/albums";
 
 export default function PCSCOneAlbumDetail() {
   const params = useParams();
-  const albumName = () => decodeURIComponent(params.name || '');
+  const albumName = () => decodeURIComponent(params.name || "");
 
   const [tracks] = createResource(albumName, async (name) => {
     return await fetchAlbumTracks(name);
@@ -16,23 +16,23 @@ export default function PCSCOneAlbumDetail() {
 
   const trackCount = () => tracks()?.length ?? 0;
   const firstTrack = (): CompactTrack | undefined => tracks()?.[0];
-  const artist = () => firstTrack()?.artist ?? '';
-  const year = () => firstTrack()?.year ?? '';
+  const artist = () => firstTrack()?.artist ?? "";
+  const year = () => firstTrack()?.year ?? "";
 
   const description = () => {
     const count = trackCount();
-    const yearStr = year() ? ` · ${year()}` : '';
-    return `${count} track${count !== 1 ? 's' : ''}${yearStr}`;
+    const yearStr = year() ? ` · ${year()}` : "";
+    return `${count} track${count !== 1 ? "s" : ""}${yearStr}`;
   };
 
   return (
     <>
       <PcscBreadcrumb
         links={[
-          { href: '/pcsc-one', label: 'Home' },
-          { href: '/pcsc-one/albums', label: 'Albums' },
+          { href: "/pcsc-one", label: "Home" },
+          { href: "/pcsc-one/albums", label: "Albums" },
           {
-            href: `/pcsc-one/albums/${encodeURIComponent(params.name || '')}`,
+            href: `/pcsc-one/albums/${encodeURIComponent(params.name || "")}`,
             label: albumName(),
           },
         ]}

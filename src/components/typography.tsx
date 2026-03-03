@@ -1,4 +1,4 @@
-import { JSX } from 'solid-js';
+import { JSX } from "solid-js";
 
 export const Typography = {
   h1: (props: any) => (
@@ -23,7 +23,7 @@ export const Typography = {
     <img
       class="my-6 mx-auto rounded-lg shadow-md select-none"
       src={
-        props.src?.startsWith('http') ? props.src : `/img/${props.src}/l.jpg`
+        props.src?.startsWith("http") ? props.src : `/img/${props.src}/l.jpg`
       }
       alt={props.alt}
       draggable={false}

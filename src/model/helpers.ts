@@ -1,4 +1,4 @@
-import { CompactItemMeta } from '~/types';
+import type { CompactItemMeta } from "~/types";
 
 export const sortRootItems = (items: CompactItemMeta[]) => {
   return items.sort((a, b) => {

@@ -1,14 +1,13 @@
-import { JSX } from 'solid-js';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import type { GlobalScope } from '~/types';
-import { A, createAsync, useNavigate } from '@solidjs/router';
-import { largeImageUrl } from '~/components/image-helpers';
-import { cx } from '~/components/cx';
-import dayjs from 'dayjs';
-import { canonicalComponents } from '~/components/canonical-components';
-import { getAllCompactRoutes } from '~/model/model';
-import { createEffect, onCleanup } from 'solid-js';
+import { A, createAsync, useNavigate } from "@solidjs/router";
+import dayjs from "dayjs";
+import type { HastParseResult } from "hast-mds";
+import { createEffect, type JSX, onCleanup } from "solid-js";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { cx } from "~/components/cx";
+import { largeImageUrl } from "~/components/image-helpers";
+import { getAllCompactRoutes } from "~/model/model";
+import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
   mds: HastParseResult<GlobalScope, {}>;
@@ -23,30 +22,30 @@ export default function createTemplate(props: {
     if (!allRoutes || !item?.group || !item?.slug) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         navigate(`/${item.group}`);
         return;
       }
 
       const siblings = Object.values(allRoutes).filter((r) => {
-        return r.group === item.group && r.type === 'lightbox';
+        return r.group === item.group && r.type === "lightbox";
       });
 
       const currentIndex = siblings.findIndex((r) => r.slug === item.slug);
 
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         if (currentIndex > 0) {
           navigate(`/${siblings[currentIndex - 1].slug}`);
         }
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         if (currentIndex < siblings.length - 1) {
           navigate(`/${siblings[currentIndex + 1].slug}`);
         }
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    onCleanup(() => window.removeEventListener('keydown', handleKeyDown));
+    window.addEventListener("keydown", handleKeyDown);
+    onCleanup(() => window.removeEventListener("keydown", handleKeyDown));
   });
 
   return (
@@ -67,7 +66,7 @@ export default function createTemplate(props: {
         href={`/${item?.group}`}
         class="flex justify-center uppercase text-can5 gap-3 text-sm"
       >
-        <span>{dayjs(item?.date).format('YYYY-MM-DD')}</span>
+        <span>{dayjs(item?.date).format("YYYY-MM-DD")}</span>
         <span>·</span>
         <strong class="font-bold hover:underline">{item?.group}</strong>
       </A>

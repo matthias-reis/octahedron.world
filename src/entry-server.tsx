@@ -1,6 +1,6 @@
 // @refresh reload
-import { createHandler, StartServer } from '@solidjs/start/server';
-import { getLocale } from './i18n/context';
+import { createHandler, StartServer } from "@solidjs/start/server";
+import { getLocale } from "./i18n/context";
 
 export default createHandler(() => (
   <StartServer

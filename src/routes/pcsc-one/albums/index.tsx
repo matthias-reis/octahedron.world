@@ -1,14 +1,14 @@
-import { createSignal, For, createResource, Suspense } from 'solid-js';
-import { PcscBreadcrumb } from '~/pcsc/pcsc-breadcrumb';
-import { PcscTitle } from '~/pcsc/pcsc-title';
-import { PcscItem } from '~/pcsc/pcsc-item';
-import { PcscSortNav, albumSortOptions } from '~/pcsc/pcsc-sort-nav';
-import { fetchAlbums } from '~/pcsc/server/albums';
-import type { AlbumSortOption } from '~/routes/pcsc-api/albums';
-import { TrackCollectionItem } from '~/pcsc/model/track-map';
+import { createResource, createSignal, For, Suspense } from "solid-js";
+import type { TrackCollectionItem } from "~/pcsc/model/track-map";
+import { PcscBreadcrumb } from "~/pcsc/pcsc-breadcrumb";
+import { PcscItem } from "~/pcsc/pcsc-item";
+import { albumSortOptions, PcscSortNav } from "~/pcsc/pcsc-sort-nav";
+import { PcscTitle } from "~/pcsc/pcsc-title";
+import { fetchAlbums } from "~/pcsc/server/albums";
+import type { AlbumSortOption } from "~/routes/pcsc-api/albums";
 
 export default function PCSCOneAlbums() {
-  const [sortOption, setSortOption] = createSignal<AlbumSortOption>('v3');
+  const [sortOption, setSortOption] = createSignal<AlbumSortOption>("v3");
 
   const [albums] = createResource(sortOption, async (sort) => {
     return await fetchAlbums(sort);
@@ -20,12 +20,12 @@ export default function PCSCOneAlbums() {
   };
 
   const ratingTitles = {
-    v3: 'Top 3',
-    v5: 'Top 5',
-    v7: 'Top 7',
-    v9: 'Top 9',
-    count: 'Top 3',
-    name: 'Top 3',
+    v3: "Top 3",
+    v5: "Top 5",
+    v7: "Top 7",
+    v9: "Top 9",
+    count: "Top 3",
+    name: "Top 3",
   };
 
   const ratingValues = {
@@ -41,8 +41,8 @@ export default function PCSCOneAlbums() {
     <>
       <PcscBreadcrumb
         links={[
-          { href: '/pcsc-one', label: 'Home' },
-          { href: '/pcsc-one/albums', label: 'Albums' },
+          { href: "/pcsc-one", label: "Home" },
+          { href: "/pcsc-one/albums", label: "Albums" },
         ]}
       />
       <PcscTitle headline="Albums" description={description()} />
@@ -64,14 +64,14 @@ export default function PCSCOneAlbums() {
                 headline={album.name}
                 description={`${album.sub}`}
                 secondaryDescription={`${album.count} tracks · Top 3: ${
-                  album.v3 ? album.v3.toFixed(1) : '-'
-                } · Top 5:  ${album.v5 ? album.v5.toFixed(1) : '-'} · Top 7: ${
-                  album.v7 ? album.v7.toFixed(1) : '-'
-                } · Top 9: ${album.v9 ? album.v9.toFixed(1) : '-'}`}
+                  album.v3 ? album.v3.toFixed(1) : "-"
+                } · Top 5:  ${album.v5 ? album.v5.toFixed(1) : "-"} · Top 7: ${
+                  album.v7 ? album.v7.toFixed(1) : "-"
+                } · Top 9: ${album.v9 ? album.v9.toFixed(1) : "-"}`}
                 url={album.url}
                 ratingTitle={ratingTitles[sortOption()]}
                 ratingValue={
-                  ratingValues[sortOption()](album)?.toFixed(1) || '-'
+                  ratingValues[sortOption()](album)?.toFixed(1) || "-"
                 }
               />
             )}

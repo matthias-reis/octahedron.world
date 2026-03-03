@@ -1,11 +1,11 @@
-import { Show, createSignal, createEffect, onCleanup } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
-import { largeImageUrl } from '~/components/image-helpers';
-import { useI18n } from '~/i18n/context';
+import { createEffect, createSignal, onCleanup, Show } from "solid-js";
+import { largeImageUrl } from "~/components/image-helpers";
+import { useI18n } from "~/i18n/context";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type ImageMapQuestConfig = BaseQuestConfig & {
-  variant: 'imagemap';
+  variant: "imagemap";
   question: string;
   image: string;
   spot: [number, number];
@@ -16,7 +16,7 @@ export type ImageMapQuestConfig = BaseQuestConfig & {
 };
 
 export type ImageMapQuestStatus = BaseQuestStatus & {
-  variant: 'imagemap';
+  variant: "imagemap";
   tries?: number;
 };
 
@@ -34,7 +34,7 @@ export const ImageMapQuest: QuestVariant<
   const [tries, setTries] = createSignal(props.status.tries ?? 0);
   const [showError, setShowError] = createSignal(false);
   const [_lastClick, setLastClick] = createSignal<[number, number] | null>(
-    null
+    null,
   );
   const { t } = useI18n();
 
@@ -54,20 +54,20 @@ export const ImageMapQuest: QuestVariant<
   };
 
   createEffect(() => {
-    window.addEventListener('resize', updateDimensions);
-    onCleanup(() => window.removeEventListener('resize', updateDimensions));
+    window.addEventListener("resize", updateDimensions);
+    onCleanup(() => window.removeEventListener("resize", updateDimensions));
   });
 
   const handleImageLoad = () => {
     updateDimensions();
   };
 
-  const getTolerancePercent = (dimension: 'x' | 'y') => {
+  const getTolerancePercent = (dimension: "x" | "y") => {
     const tolerance = config().tolerance ?? TOLERANCE_PERCENT;
     const dims = imageDimensions();
     if (!dims) return tolerance;
 
-    const size = dimension === 'x' ? dims.width : dims.height;
+    const size = dimension === "x" ? dims.width : dims.height;
     const tolerancePx = (tolerance / 100) * size;
 
     if (tolerancePx < MIN_TOLERANCE_PX) {
@@ -89,8 +89,8 @@ export const ImageMapQuest: QuestVariant<
     setLastClick([clickX, clickY]);
 
     const [spotX, spotY] = config().spot;
-    const toleranceX = getTolerancePercent('x');
-    const toleranceY = getTolerancePercent('y');
+    const toleranceX = getTolerancePercent("x");
+    const toleranceY = getTolerancePercent("y");
 
     const withinX = Math.abs(clickX - spotX) <= toleranceX;
     const withinY = Math.abs(clickY - spotY) <= toleranceY;
@@ -112,18 +112,18 @@ export const ImageMapQuest: QuestVariant<
 
   const debugOverlayStyle = () => {
     const [spotX, spotY] = config().spot;
-    const toleranceX = getTolerancePercent('x');
-    const toleranceY = getTolerancePercent('y');
+    const toleranceX = getTolerancePercent("x");
+    const toleranceY = getTolerancePercent("y");
 
     return {
-      position: 'absolute' as const,
+      position: "absolute" as const,
       left: `${spotX - toleranceX}%`,
       top: `${spotY - toleranceY}%`,
       width: `${toleranceX * 2}%`,
       height: `${toleranceY * 2}%`,
-      'background-color': 'rgba(236, 72, 153, 0.4)',
-      'pointer-events': 'none' as const,
-      border: '2px dashed rgba(236, 72, 153, 0.8)',
+      "background-color": "rgba(236, 72, 153, 0.4)",
+      "pointer-events": "none" as const,
+      border: "2px dashed rgba(236, 72, 153, 0.8)",
     };
   };
 
@@ -159,7 +159,7 @@ export const ImageMapQuest: QuestVariant<
         <Show when={showError()}>
           <p class="text-saturated-500 mt-4 text-center">{config().failure}</p>
           <p class="text-neutral-500 text-sm text-center mt-1">
-            {t('dica.wrongAttempts', { count: tries() })}
+            {t("dica.wrongAttempts", { count: tries() })}
           </p>
         </Show>
       </Show>

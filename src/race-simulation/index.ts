@@ -10,7 +10,8 @@ export function simulateWeek(): Racer[] {
       // sort racers by score of stage
       const sorted = [...racers].sort(
         (a, b) =>
-          b.days[day].stages[stage].countableScore - a.days[day].stages[stage].countableScore
+          b.days[day].stages[stage].countableScore -
+          a.days[day].stages[stage].countableScore,
       );
       // assign points to top 30
       sorted.slice(0, 30).forEach((racer, rank) => {
@@ -21,7 +22,7 @@ export function simulateWeek(): Racer[] {
 
     // Points are there, now bonus points
     const sorted = [...racers].sort(
-      (a, b) => b.days[day].stagePoints - a.days[day].stagePoints
+      (a, b) => b.days[day].stagePoints - a.days[day].stagePoints,
     );
     sorted.slice(0, 30).forEach((racer, rank) => {
       const rankPoints = 30 - rank; // rank 0 → 30pts, rank 29 → 1pt

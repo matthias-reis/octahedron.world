@@ -1,10 +1,10 @@
-import { Show } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
+import { Show } from "solid-js";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type DefaultQuestConfig = BaseQuestConfig & {
-  variant: 'default';
+  variant: "default";
 };
-export type DefaultQuestStatus = BaseQuestStatus & { variant: 'default' };
+export type DefaultQuestStatus = BaseQuestStatus & { variant: "default" };
 
 export const DefaultQuest: QuestVariant<
   DefaultQuestConfig,

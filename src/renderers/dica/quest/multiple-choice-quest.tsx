@@ -1,9 +1,9 @@
-import { For, Show, createSignal } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
+import { createSignal, For, Show } from "solid-js";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type MultipleChoiceQuestConfig = BaseQuestConfig & {
-  variant: 'multiplechoice';
+  variant: "multiplechoice";
   question: string;
   options: string[];
   solutions: number[];
@@ -12,12 +12,12 @@ export type MultipleChoiceQuestConfig = BaseQuestConfig & {
 };
 
 export type MultipleChoiceQuestStatus = BaseQuestStatus & {
-  variant: 'multiplechoice';
+  variant: "multiplechoice";
   tries?: number;
 };
 
 const parseSolutions = (solutions: number[] | string): number[] => {
-  if (typeof solutions === 'string') {
+  if (typeof solutions === "string") {
     try {
       return JSON.parse(solutions);
     } catch {
@@ -96,15 +96,15 @@ export const MultipleChoiceQuest: QuestVariant<
                   onClick={() => toggleOption(index())}
                   class="px-4 py-3 text-left rounded-lg transition-colors flex items-center gap-3"
                   classList={{
-                    'dica-selector-inactive': !selected().has(index()),
-                    'dica-selector-active': selected().has(index()),
+                    "dica-selector-inactive": !selected().has(index()),
+                    "dica-selector-active": selected().has(index()),
                   }}
                 >
                   <span
                     class="w-5 h-5 border-2 rounded flex items-center justify-center shrink-0 bg-transparent border-current"
                     classList={{
-                      'dica-box-inactive': !selected().has(index()),
-                      'dica-box-active': selected().has(index()),
+                      "dica-box-inactive": !selected().has(index()),
+                      "dica-box-active": selected().has(index()),
                     }}
                   >
                     <Show when={selected().has(index())}>

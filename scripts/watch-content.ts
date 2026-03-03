@@ -1,6 +1,6 @@
-import { watch } from 'node:fs';
-import { spawn } from 'node:child_process';
-import { glob } from 'glob';
+import { spawn } from "node:child_process";
+import { watch } from "node:fs";
+import { glob } from "glob";
 
 let isRunning = false;
 let contentDebounceTimer: NodeJS.Timeout | null = null;
@@ -8,22 +8,22 @@ let imagineDebounceTimer: NodeJS.Timeout | null = null;
 
 async function runContentScript() {
   if (isRunning) {
-    console.log('[WATCH] CONTENT script already running, skipping...');
+    console.log("[WATCH] CONTENT script already running, skipping...");
     return;
   }
 
   isRunning = true;
-  console.log('[WATCH] 🔄 Running CONTENT script...');
+  console.log("[WATCH] 🔄 Running CONTENT script...");
 
-  const child = spawn('pnpm', ['content'], {
-    stdio: 'inherit',
+  const child = spawn("pnpm", ["content"], {
+    stdio: "inherit",
     shell: true,
   });
 
-  child.on('close', (code) => {
+  child.on("close", (code) => {
     isRunning = false;
     if (code === 0) {
-      console.log('[WATCH] ✅ CONTENT script completed');
+      console.log("[WATCH] ✅ CONTENT script completed");
     } else {
       console.log(`[WATCH] ❌ CONTENT script exited with code ${code}`);
     }
@@ -32,22 +32,22 @@ async function runContentScript() {
 
 async function runImagineScript() {
   if (isRunning) {
-    console.log('[WATCH] IMAGINE script already running, skipping...');
+    console.log("[WATCH] IMAGINE script already running, skipping...");
     return;
   }
 
   isRunning = true;
-  console.log('[WATCH] 🔄 Running IMAGINE script...');
+  console.log("[WATCH] 🔄 Running IMAGINE script...");
 
-  const child = spawn('pnpm', ['imagine'], {
-    stdio: 'inherit',
+  const child = spawn("pnpm", ["imagine"], {
+    stdio: "inherit",
     shell: true,
   });
 
-  child.on('close', (code) => {
+  child.on("close", (code) => {
     isRunning = false;
     if (code === 0) {
-      console.log('[WATCH] ✅ IMAGINE script completed');
+      console.log("[WATCH] ✅ IMAGINE script completed");
     } else {
       console.log(`[WATCH] ❌ IMAGINE script exited with code ${code}`);
     }
@@ -55,7 +55,7 @@ async function runImagineScript() {
 }
 
 async function startWatcher() {
-  console.log('[WATCH] 🔍 Watching for changes in _content');
+  console.log("[WATCH] 🔍 Watching for changes in _content");
 
   // Initial run
   // await runContentScript();
@@ -63,10 +63,10 @@ async function startWatcher() {
 
   // Watch the _content directory recursively
   const watcher = watch(
-    '_content',
+    "_content",
     { recursive: true },
     (eventType, filename) => {
-      if (filename && filename.endsWith('.md')) {
+      if (filename && filename.endsWith(".md")) {
         console.log(`[WATCH] 📝 Detected CONTENT change: ${filename}`);
 
         // Debounce to avoid running multiple times for rapid changes
@@ -80,7 +80,7 @@ async function startWatcher() {
       }
       if (
         filename &&
-        (filename.endsWith('.jpg') || filename.endsWith('.png'))
+        (filename.endsWith(".jpg") || filename.endsWith(".png"))
       ) {
         console.log(`[WATCH] 🖼️ Detected IMAGINE change: ${filename}`);
 
@@ -93,12 +93,12 @@ async function startWatcher() {
           runImagineScript();
         }, 300);
       }
-    }
+    },
   );
 
   // Handle graceful shutdown
-  process.on('SIGINT', () => {
-    console.log('\n[WATCH] 🛑 Stopping watcher...');
+  process.on("SIGINT", () => {
+    console.log("\n[WATCH] 🛑 Stopping watcher...");
     watcher.close();
     process.exit(0);
   });

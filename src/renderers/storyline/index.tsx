@@ -1,13 +1,13 @@
-import { JSX } from 'solid-js';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import type { GlobalScope } from '~/types';
-import { A } from '@solidjs/router';
-import { largeImageUrl } from '~/components/image-helpers';
-import { ChevronLeft } from 'lucide-solid/icons/index';
-import { cx } from '~/components/cx';
-import { canonicalComponents } from '~/components/canonical-components';
-import { Related } from '~/components/related';
+import { A } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { ChevronLeft } from "lucide-solid/icons/index";
+import type { JSX } from "solid-js";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { cx } from "~/components/cx";
+import { largeImageUrl } from "~/components/image-helpers";
+import { Related } from "~/components/related";
+import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
   mds: HastParseResult<GlobalScope, {}>;
@@ -22,7 +22,7 @@ export default function createTemplate(props: {
           href={`/${item?.group}`}
           class="flex items-center justify-start text-cbd2 mb-6 gap-2 uppercase"
         >
-          <ChevronLeft /> <span>{item?.group?.replace(/-/g, ' ')}</span>
+          <ChevronLeft /> <span>{item?.group?.replace(/-/g, " ")}</span>
         </A>
 
         {/* Title Component */}
@@ -53,7 +53,7 @@ export default function createTemplate(props: {
         {item?.description && (
           <p class="text-center text-md font-sans text-cad4 mb-2 mx-auto max-w-md">
             {Array.isArray(item.description)
-              ? item.description.join(' ')
+              ? item.description.join(" ")
               : item.description}
           </p>
         )}
@@ -61,8 +61,8 @@ export default function createTemplate(props: {
         {/* Reading Stats */}
         {item?.words && (
           <p class="text-center text-sm font-sans text-cad4 mb-6">
-            Read: {Math.round(item.words / 200)} min ✧ Words:{' '}
-            {item.words.toLocaleString()} ✧ Chars:{' '}
+            Read: {Math.round(item.words / 200)} min ✧ Words:{" "}
+            {item.words.toLocaleString()} ✧ Chars:{" "}
             {item.chars?.toLocaleString()}
           </p>
         )}
@@ -71,9 +71,9 @@ export default function createTemplate(props: {
         {item?.ref && item?.language && (
           <div class="text-center mb-6">
             <A href={`/${item.ref}`} class="text-cad4 hover:text-cas2">
-              {item.language === 'en'
-                ? '🇩🇪 Deutsche Version'
-                : '🇬🇧 English Version'}
+              {item.language === "en"
+                ? "🇩🇪 Deutsche Version"
+                : "🇬🇧 English Version"}
             </A>
           </div>
         )}

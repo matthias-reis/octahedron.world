@@ -1,5 +1,5 @@
-import { Show } from 'solid-js';
-import { A } from '@solidjs/router';
+import { A } from "@solidjs/router";
+import { Show } from "solid-js";
 
 export interface PcscItemProps {
   number?: string | number;

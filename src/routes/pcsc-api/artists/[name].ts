@@ -1,12 +1,12 @@
-import { json } from '@solidjs/router';
-import type { APIEvent } from '@solidjs/start/server';
-import { getAllTracks } from '~/pcsc/server/track-cache';
+import { json } from "@solidjs/router";
+import type { APIEvent } from "@solidjs/start/server";
+import { getAllTracks } from "~/pcsc/server/track-cache";
 
 export async function GET(event: APIEvent) {
   const artistName = event.params.name;
 
   if (!artistName) {
-    return json({ error: 'Artist name is required' }, { status: 400 });
+    return json({ error: "Artist name is required" }, { status: 400 });
   }
 
   const decodedArtistName = decodeURIComponent(artistName);

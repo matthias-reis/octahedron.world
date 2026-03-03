@@ -1,14 +1,14 @@
-import { JSX, Suspense, For } from 'solid-js';
-import { transform } from 'solid-mds';
-import { HastParseResult } from 'hast-mds';
-import { A, createAsync } from '@solidjs/router';
-import { ChevronLeft } from 'lucide-solid/icons';
-import { smallImageUrl } from '~/components/image-helpers';
-import { getAllCompactRoutes } from '~/model/model';
-import { cx } from '~/components/cx';
-import { canonicalComponents } from '~/components/canonical-components';
-import { Loading } from '~/components/loading';
-import { GlobalScope } from '~/types';
+import { A, createAsync } from "@solidjs/router";
+import type { HastParseResult } from "hast-mds";
+import { ChevronLeft } from "lucide-solid/icons";
+import { For, type JSX, Suspense } from "solid-js";
+import { transform } from "solid-mds";
+import { canonicalComponents } from "~/components/canonical-components";
+import { cx } from "~/components/cx";
+import { smallImageUrl } from "~/components/image-helpers";
+import { Loading } from "~/components/loading";
+import { getAllCompactRoutes } from "~/model/model";
+import type { GlobalScope } from "~/types";
 
 export default function AlbumRenderer(props: {
   mds: HastParseResult<GlobalScope, {}>;
@@ -39,7 +39,8 @@ export default function AlbumRenderer(props: {
         >
           {(() => {
             const relevantRoutes = Object.values(routes() || {})?.filter(
-              (route) => route.group === item?.slug && route.slug !== item?.slug
+              (route) =>
+                route.group === item?.slug && route.slug !== item?.slug,
             );
             if (relevantRoutes.length === 0) return null;
             return (
@@ -54,7 +55,7 @@ export default function AlbumRenderer(props: {
                         <img
                           src={smallImageUrl(subItem.image)}
                           alt=""
-                          class={cx('h-full aspect-image object-cover')}
+                          class={cx("h-full aspect-image object-cover")}
                         />
                         <span class="absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw">
                           {subItem.title}

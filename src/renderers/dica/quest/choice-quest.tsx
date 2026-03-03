@@ -1,9 +1,9 @@
-import { For, Show, createSignal } from 'solid-js';
-import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from './types';
-import { QuestWrapper } from './quest-wrapper';
+import { createSignal, For, Show } from "solid-js";
+import { QuestWrapper } from "./quest-wrapper";
+import type { BaseQuestConfig, BaseQuestStatus, QuestVariant } from "./types";
 
 export type ChoiceQuestConfig = BaseQuestConfig & {
-  variant: 'choice';
+  variant: "choice";
   question: string;
   options: string[];
   solution: number;
@@ -12,12 +12,12 @@ export type ChoiceQuestConfig = BaseQuestConfig & {
 };
 
 export type ChoiceQuestStatus = BaseQuestStatus & {
-  variant: 'choice';
+  variant: "choice";
   tries?: number;
 };
 
 export const ChoiceQuest: QuestVariant<ChoiceQuestConfig, ChoiceQuestStatus> = (
-  props
+  props,
 ) => {
   const config = () => props.config;
 
@@ -33,7 +33,7 @@ export const ChoiceQuest: QuestVariant<ChoiceQuestConfig, ChoiceQuestStatus> = (
       const optionsCount = config().options.length;
       const score = Math.max(
         0,
-        Math.round((1 - currentTries * (1 / optionsCount)) * 100)
+        Math.round((1 - currentTries * (1 / optionsCount)) * 100),
       );
       const reveal = config().reveal ?? [];
       setIsFinished(true);
@@ -63,8 +63,8 @@ export const ChoiceQuest: QuestVariant<ChoiceQuestConfig, ChoiceQuestStatus> = (
                   onClick={() => handleChoice(index())}
                   class="px-4 py-3 text-left rounded-lg transition-colors"
                   classList={{
-                    'dica-selector-inactive': lastWrong() !== index(),
-                    'dica-selector-active': lastWrong() === index(),
+                    "dica-selector-inactive": lastWrong() !== index(),
+                    "dica-selector-active": lastWrong() === index(),
                   }}
                 >
                   {option}
