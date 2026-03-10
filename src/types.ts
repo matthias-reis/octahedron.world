@@ -46,6 +46,7 @@ export type CompactItemMeta = Pick<
   | "superTitle"
   | "subTitle"
   | "weight"
+  | "date"
 >;
 
 export type TagMeta = {

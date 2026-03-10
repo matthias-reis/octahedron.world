@@ -33,14 +33,16 @@ export default function createTemplate(props: {
 
       const currentIndex = siblings.findIndex((r) => r.slug === item.slug);
 
+      if (currentIndex === -1 || siblings.length === 0) return;
+
       if (e.key === "ArrowLeft") {
-        if (currentIndex > 0) {
-          navigate(`/${siblings[currentIndex - 1].slug}`);
-        }
+        const targetIndex =
+          currentIndex > 0 ? currentIndex - 1 : siblings.length - 1;
+        navigate(`/${siblings[targetIndex].slug}`);
       } else if (e.key === "ArrowRight") {
-        if (currentIndex < siblings.length - 1) {
-          navigate(`/${siblings[currentIndex + 1].slug}`);
-        }
+        const targetIndex =
+          currentIndex < siblings.length - 1 ? currentIndex + 1 : 0;
+        navigate(`/${siblings[targetIndex].slug}`);
       }
     };
 

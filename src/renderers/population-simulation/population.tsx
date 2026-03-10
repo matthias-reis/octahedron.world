@@ -9,9 +9,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Bar } from "solid-chartjs";
-import { createMemo, onMount } from "solid-js";
-import { pluginsRegistry } from "./plugins";
-import { Citizen, type SimulationState } from "./types";
+import { createSignal, createEffect, onCleanup } from "solid-js";
 
 // Register chart.js plugins and scales
 if (typeof window !== "undefined") {
@@ -29,64 +27,90 @@ if (typeof window !== "undefined") {
 export const Population = (props: {
   data: { plugins?: string[]; extract?: string[] };
 }) => {
-  const runSimulation = () => {
-    // 1. Initialize population of 1000 citizens
-    const citizens: Record<number, Citizen> = {};
-    for (let i = 0; i < 1000; i++) {
-      citizens[i] = new Citizen(i);
-    }
-    const state: SimulationState = {
-      citizens,
-      nextId: 1000,
-    };
+  const [simulationData, setSimulationData] = createSignal<
+    Record<string, number[]>
+  >({});
+  const [simRunning, setSimRunning] = createSignal(false);
 
-    const activePlugins = (props.data.plugins || [])
-      .map((p) => pluginsRegistry[p])
-      .filter(Boolean);
-    const metricsToExtract = props.data.extract || [];
+  const activePlugins = props.data.plugins || [];
+  const metricsToExtract = props.data.extract || [];
 
-    // Store results
-    const results: Record<string, number[]> = {};
-    for (const metric of metricsToExtract) {
-      results[metric] = [];
-    }
-
-    // 2. Core Simulation Loop (Year 1 to 1000)
-    for (let year = 1; year <= 1000; year++) {
-      // Allow plugins to transform the state every year
-      for (const plugin of activePlugins) {
-        if (plugin.transformer) {
-          plugin.transformer(state, year);
-        }
-      }
-
-      // 3. Take a snapshot every 10 years
-      if (year % 10 === 0) {
-        for (const metric of metricsToExtract) {
-          let extractedValue = 0;
-          for (const plugin of activePlugins) {
-            if (plugin.extractors && plugin.extractors[metric]) {
-              extractedValue = plugin.extractors[metric](state, year);
-              break;
-            }
-          }
-          results[metric].push(extractedValue);
-        }
-      }
-    }
-
-    return results;
-  };
-
-  const simulationData = createMemo(runSimulation);
   const labels = Array.from({ length: 100 }, (_, i) => (i + 1) * 10); // 10, 20... 1000
 
   // Curated color palette extending basic tailwind
-  const colors = ["#417f7f", "#339a9a"];
+
+  const startWorker = () => {
+    setSimRunning(true);
+    // Initialize state with zeros for all metrics to show the background "shadow data" pattern
+    const initialState: Record<string, number[]> = {};
+    for (const m of metricsToExtract) {
+      initialState[m] = new Array(100).fill(0);
+    }
+    setSimulationData(initialState);
+
+    // We can use a Vite/Next web worker syntax
+    const worker = new Worker(new URL("./worker.ts", import.meta.url), {
+      type: "module",
+    });
+
+    worker.onmessage = (e) => {
+      const { type, results } = e.data;
+      if (results) {
+        // Pad the newly arrived results up to 100 with zeros so the chart doesn't flicker/change size.
+        const paddedResults: Record<string, number[]> = {};
+        for (const [key, arr] of Object.entries(
+          results as Record<string, number[]>,
+        )) {
+          paddedResults[key] = [
+            ...arr,
+            ...new Array(Math.max(0, 100 - arr.length)).fill(0),
+          ];
+        }
+        setSimulationData(paddedResults);
+      }
+      if (type === "COMPLETE") {
+        setSimRunning(false);
+        worker.terminate();
+      }
+    };
+
+    worker.postMessage({
+      plugins: activePlugins,
+      extract: metricsToExtract,
+    });
+
+    return worker;
+  };
+
+  let currentWorker: Worker | undefined ;
+
+  createEffect(() => {
+    if (activePlugins.length && metricsToExtract.length) {
+      currentWorker?.terminate();
+      currentWorker = startWorker();
+    }
+  });
+
+  onCleanup(() => {
+    currentWorker?.terminate();
+  });
 
   return (
     <div class="flex flex-col gap-4 w-full py-2">
-      {props.data.extract?.map((metric, index) => {
+      <div class="flex justify-end items-center px-2">
+        <button
+          type="button"
+          class="px-4 py-2 bg-can6 hover:bg-can5 text-white rounded font-bold disabled:opacity-50 transition-colors"
+          onClick={() => {
+            currentWorker?.terminate();
+            currentWorker = startWorker();
+          }}
+          disabled={simRunning()}
+        >
+          {simRunning() ? "Calculating..." : "Rerun Simulation"}
+        </button>
+      </div>
+      {props.data.extract?.map((metric) => {
         const data = {
           labels,
           datasets: [
@@ -103,6 +127,9 @@ export const Population = (props: {
         const options = {
           responsive: true,
           maintainAspectRatio: false,
+          animation: {
+            duration: 0, // Disable animation to prevent layout bounce when worker chunks arrive
+          },
           plugins: {
             legend: {
               display: false,

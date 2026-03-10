@@ -52,8 +52,19 @@ export const getAllCompactRoutes: () => Promise<
   return Object.fromEntries(
     Object.entries(data).map(
       ([
-        key,
-        { slug, title, group, type, image, description, superTitle, subTitle },
+        _key,
+        {
+          slug,
+          title,
+          group,
+          type,
+          image,
+          description,
+          superTitle,
+          subTitle,
+          date,
+          weight,
+        },
       ]) => {
         return [
           slug,
@@ -66,6 +77,8 @@ export const getAllCompactRoutes: () => Promise<
             description,
             superTitle,
             subTitle,
+            date,
+            weight,
           },
         ];
       },

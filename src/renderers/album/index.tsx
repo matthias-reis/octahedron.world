@@ -38,33 +38,40 @@ export default function AlbumRenderer(props: {
           }
         >
           {(() => {
-            const relevantRoutes = Object.values(routes() || {})?.filter(
-              (route) =>
-                route.group === item?.slug && route.slug !== item?.slug,
-            );
+            const relevantRoutes = Object.values(routes() || {})
+              ?.filter(
+                (route) =>
+                  route.group === item?.slug && route.slug !== item?.slug,
+              )
+              .sort((a, b) => {
+                const dateA = a.date ? new Date(a.date).getTime() : 0;
+                const dateB = b.date ? new Date(b.date).getTime() : 0;
+                if (dateA !== dateB) {
+                  return dateB - dateA;
+                }
+                return (a.title || "").localeCompare(b.title || "");
+              });
             if (relevantRoutes.length === 0) return null;
             return (
-              <>
-                <nav class="grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5">
-                  <For each={relevantRoutes}>
-                    {(subItem) => (
-                      <A
-                        href={`/${subItem.slug}`}
-                        class="aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
-                      >
-                        <img
-                          src={smallImageUrl(subItem.image)}
-                          alt=""
-                          class={cx("h-full aspect-image object-cover")}
-                        />
-                        <span class="absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw">
-                          {subItem.title}
-                        </span>
-                      </A>
-                    )}
-                  </For>
-                </nav>
-              </>
+              <nav class="grid gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5">
+                <For each={relevantRoutes}>
+                  {(subItem) => (
+                    <A
+                      href={`/${subItem.slug}`}
+                      class="aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
+                    >
+                      <img
+                        src={smallImageUrl(subItem.image)}
+                        alt=""
+                        class={cx("h-full aspect-image object-cover")}
+                      />
+                      <span class="absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw">
+                        {subItem.title}
+                      </span>
+                    </A>
+                  )}
+                </For>
+              </nav>
             );
           })()}
         </Suspense>
