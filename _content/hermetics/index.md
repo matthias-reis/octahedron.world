@@ -70,6 +70,7 @@ time
 slugs:
   - puppets
   - academy
+  - cashel
 ```
 
 Hope you enjoyed the ride. Don't forget to buy the book! ;)
