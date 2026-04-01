@@ -17,7 +17,7 @@ slug: simulation-theory
 type: digest
 image: simulation-theory
 root: true
-weight: 0
+weight: 1
 ```
 
 There is an interesting thought experiment, I want to tell you about.
@@ -38,6 +38,12 @@ matryoshka can follow.
 But the likelihood, that we are the first in a potentially endless chain is next
 to zero. In that (quite realistic) moment, we will have proof that we ourselves
 live in a simulation.
+
+I've put a bit more context into this post, that would be a good start:
+
+```yaml teaser
+slug: in-the-simulation
+```
 
 I have started to develop two stories in that setting but they are at a very
 early stage.
