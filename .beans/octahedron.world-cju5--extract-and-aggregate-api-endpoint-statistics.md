@@ -1,13 +1,14 @@
 ---
 # octahedron.world-cju5
 title: Extract and Aggregate API Endpoint Statistics
-status: draft
+status: completed
 type: task
+priority: normal
 created_at: 2026-04-12T11:21:09Z
-updated_at: 2026-04-12T11:21:09Z
+updated_at: 2026-04-12T16:40:10Z
 parent: octahedron.world-4jdu
 blocked_by:
-  - octahedron.world-n26t
+    - octahedron.world-n26t
 ---
 
 Create an API endpoint under /api/traffic-stats.
@@ -55,3 +56,15 @@ day under the requested name, send a status 404.
     }
 }
 ```
+
+## Summary of Changes
+
+Created the following files:
+
+- ****: Shared utility with types, calendar helpers (ISO week/quarter math), merge/average helpers, and `loadTrafficData()`
+- ****: `GET /api/traffic-stats` — groups all days into weeks, then averages weeks into quarters
+- ****: `GET /api/traffic-stats/quarter/{year}-{1-4}` — returns per-week aggregations for the quarter
+- ****: `GET /api/traffic-stats/week/{year}-{ww}` — returns raw daily data for the 7 days of the ISO week
+- ****: `GET /api/traffic-stats/day/YYYY-MM-DD` — returns single day data
+
+Error handling: 501 if traffic.json missing, 404 if requested period has no data, 400 for bad params.

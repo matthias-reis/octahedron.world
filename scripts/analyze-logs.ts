@@ -1,4 +1,9 @@
-import { createReadStream, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import {
+  createReadStream,
+  existsSync,
+  readFileSync,
+  writeFileSync,
+} from 'node:fs';
 import { createInterface } from 'node:readline';
 import { createGunzip } from 'node:zlib';
 import { basename, dirname, resolve } from 'node:path';
@@ -11,9 +16,16 @@ const TRAFFIC_PATH = `${LOGS_DIR}/traffic.json`;
 
 // --- Config ---
 
-const CANONICAL_HOSTS = ['mreis.me', 'octahedron.world', 'beta.soundsvegan.com', 'soundsvegan.com'];
+const CANONICAL_HOSTS = [
+  'mreis.me',
+  'octahedron.world',
+  'beta.soundsvegan.com',
+  'soundsvegan.com',
+];
 
 const ASSET_PATH_GLOBS = ['/_next/**', '/favicon.ico', '/robots.txt'];
+
+const BOT_PATH_GLOBS = ['**/*.php', '**/wp-*', '/cgi-bin/**', '/xmlrpc'];
 
 // --- Types ---
 
@@ -22,6 +34,7 @@ type PathCounts = Record<string, StatusCounts>;
 
 interface HostData {
   assets: StatusCounts;
+  other: StatusCounts;
   [path: string]: StatusCounts | PathCounts;
 }
 
@@ -64,7 +77,40 @@ function isAssetPath(reqPath: string): boolean {
   });
 }
 
-function ensureDay(aggregations: Record<string, DayData>, day: string): DayData {
+function isBotPath(reqPath: string): boolean {
+  // Strip query string and normalize case for matching
+  const normalized = reqPath.split('?')[0].toLowerCase();
+
+  return BOT_PATH_GLOBS.some((pattern) => {
+    if (pattern.startsWith('**/')) {
+      const tail = pattern.slice(3).toLowerCase();
+      if (tail.startsWith('*.')) {
+        // **/*.ext → path contains .ext anywhere (catches .php, .php7, etc.)
+        return normalized.includes(tail.slice(1));
+      }
+      // **/segment* → path contains /segment anywhere
+      const segPrefix = tail.replace(/\*.*$/, '');
+      return normalized.includes(`/${segPrefix}`);
+    }
+    if (pattern.endsWith('/**')) {
+      const prefix = pattern.slice(0, -3).toLowerCase();
+      return normalized === prefix || normalized.startsWith(`${prefix}/`);
+    }
+    // Literal prefix: /foo matches /foo, /foo/, /foo.ext, /foo?query
+    const p = pattern.toLowerCase();
+    return (
+      normalized === p ||
+      normalized.startsWith(`${p}/`) ||
+      normalized.startsWith(`${p}.`) ||
+      normalized.startsWith(`${p}?`)
+    );
+  });
+}
+
+function ensureDay(
+  aggregations: Record<string, DayData>,
+  day: string
+): DayData {
   if (!aggregations[day]) {
     aggregations[day] = { other: {} };
   }
@@ -73,7 +119,7 @@ function ensureDay(aggregations: Record<string, DayData>, day: string): DayData 
 
 function ensureHost(dayData: DayData, host: string): HostData {
   if (!dayData[host]) {
-    dayData[host] = { assets: {} };
+    dayData[host] = { assets: {}, other: {} };
   }
   return dayData[host] as HostData;
 }
@@ -89,9 +135,14 @@ function incPath(bucket: PathCounts, path: string, status: string): void {
 
 // --- File parsing ---
 
-async function parseFile(filePath: string, aggregations: Record<string, DayData>): Promise<void> {
+async function parseFile(
+  filePath: string,
+  aggregations: Record<string, DayData>
+): Promise<void> {
   const fileStream = createReadStream(filePath);
-  const input = filePath.endsWith('.gz') ? fileStream.pipe(createGunzip()) : fileStream;
+  const input = filePath.endsWith('.gz')
+    ? fileStream.pipe(createGunzip())
+    : fileStream;
   const rl = createInterface({ input, crlfDelay: Infinity });
 
   let lineNum = 0;
@@ -107,7 +158,9 @@ async function parseFile(filePath: string, aggregations: Record<string, DayData>
       parsed = JSON.parse(trimmed) as LogLine;
     } catch {
       skipped++;
-      console.warn(`[LOG] Malformed line ${lineNum} in ${basename(filePath)}, skipping`);
+      console.warn(
+        `[LOG] Malformed line ${lineNum} in ${basename(filePath)}, skipping`
+      );
       continue;
     }
 
@@ -127,6 +180,8 @@ async function parseFile(filePath: string, aggregations: Record<string, DayData>
       const hostData = ensureHost(dayData, host);
       if (isAssetPath(reqPath)) {
         incStatus(hostData.assets, status);
+      } else if (isBotPath(reqPath)) {
+        incStatus(hostData.other, status);
       } else {
         incPath(hostData as PathCounts, reqPath, status);
       }
@@ -134,7 +189,9 @@ async function parseFile(filePath: string, aggregations: Record<string, DayData>
   }
 
   if (skipped > 0) {
-    console.log(`[LOG] ${basename(filePath)}: ${lineNum} lines, ${skipped} skipped`);
+    console.log(
+      `[LOG] ${basename(filePath)}: ${lineNum} lines, ${skipped} skipped`
+    );
   } else {
     console.log(`[LOG] ${basename(filePath)}: ${lineNum} lines parsed`);
   }
@@ -147,7 +204,7 @@ async function run(): Promise<void> {
   if (existsSync(TRAFFIC_PATH)) {
     existing = JSON.parse(readFileSync(TRAFFIC_PATH, 'utf-8')) as TrafficData;
     console.log(
-      `[LOG] Loaded existing traffic.json (${existing.parsedDocuments.length} docs already parsed)`,
+      `[LOG] Loaded existing traffic.json (${existing.parsedDocuments.length} docs already parsed)`
     );
   }
 
