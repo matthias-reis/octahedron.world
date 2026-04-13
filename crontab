@@ -1,0 +1,1 @@
+0 4 * * * node /app/scripts/analyze-logs.js >> /app/logs/cron.log 2>&1
