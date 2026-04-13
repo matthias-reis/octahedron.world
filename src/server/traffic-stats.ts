@@ -32,11 +32,17 @@ export interface TrafficResponse {
 // --- Data loader ---
 
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const TRAFFIC_PATH = resolve(PROJECT_ROOT, 'logs/traffic.json');
+const TRAFFIC_PATH =
+  process.env.LOGS_DIR != null
+    ? resolve(process.env.LOGS_DIR, 'traffic.json')
+    : resolve(PROJECT_ROOT, 'logs/traffic.json');
 
 export function loadTrafficData(): TrafficData {
   if (!existsSync(TRAFFIC_PATH)) {
-    throw new Response(`Traffic data not available at ${TRAFFIC_PATH}`, {
+    console.error(
+      `[loadTrafficData] Traffic data not available at ${TRAFFIC_PATH}`
+    );
+    throw new Response(`Traffic data not available`, {
       status: 501,
     });
   }

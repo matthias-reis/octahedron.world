@@ -19,6 +19,7 @@ RUN corepack enable pnpm && pnpm build && \
 FROM node:24-alpine AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
+ENV LOGS_DIR=/app/logs
 
 # SolidStart/Vinxi build output
 COPY --from=build /app/.output ./

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { glob } from 'glob';
 
 const PROJECT_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const LOGS_DIR = resolve(PROJECT_ROOT, 'logs');
+const LOGS_DIR = process.env.LOGS_DIR ?? resolve(PROJECT_ROOT, 'logs');
 const TRAFFIC_PATH = `${LOGS_DIR}/traffic.json`;
 
 // --- Config ---
