@@ -1,4 +1,6 @@
 onlyBuiltDependencies:
+  - protobufjs
+  - '@firebase/util'
   - '@parcel/watcher'
   - esbuild
   - sharp
