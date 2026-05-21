@@ -1,6 +1,7 @@
 {
   "name": "octahedron-world",
   "type": "module",
+  "packageManager": "pnpm@10.33.0",
   "scripts": {
     "predev": "pnpm content && pnpm imagine",
     "dev": "pnpm watch:content & vinxi dev --port 4242",
