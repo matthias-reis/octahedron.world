@@ -23,7 +23,7 @@ export default function Nav() {
         onClick={() => setIsOpen(!isOpen())}
       >
         <h1 class="font-octa font-bold flex justify-end items-center gap-2 text-can5 text-lg w-full">
-          <span class="text-decent-600 font-bold text-shadow-md text-shadow-textpop">
+          <span class="text-cad4 font-bold text-shadow-md text-shadow-textpop">
             OCTAHEDRON
           </span>
           <OctahedronLogo class="text-cas3 w-5 h-5" />

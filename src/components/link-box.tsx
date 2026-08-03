@@ -1,32 +1,29 @@
-import { A } from "@solidjs/router";
 import type { Component } from "solid-js";
 import type { CompactItemMeta } from "~/types";
-import { cx } from "./cx";
+import { LinkBox as SharedLinkBox } from "~/ui/link-box";
 import { smallImageUrl } from "./image-helpers";
 
-export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = ({
-  item,
-  small,
-}) => {
-  return (
-    <A
-      href={`/${item.slug}`}
-      class={cx(
-        "bg-can7 min-h-8 flex flex-col sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5",
-        small && "md:flex-col",
-      )}
-    >
-      <img
-        src={smallImageUrl(item.image)}
-        alt={item.title}
-        class={cx("aspect-image object-cover", small ? "h-8 md:h-auto" : "h-8")}
-      />
-      <span class="m-3 flex flex-col">
-        <span class="font-octa font-bold text-3xl text-can2 mb-2">
-          {item.title}
-        </span>
-        <span class="text-can4 text-lg">{item.description}</span>
-      </span>
-    </A>
-  );
-};
+/**
+ * Octahedron's adapter over the shared <LinkBox>: maps a content item onto the
+ * generic props and pins the palette and metrics that the semantic tokens do
+ * not cover one-to-one (surface is one step lighter here, and the box uses the
+ * numeric spacing scale).
+ */
+export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = (
+  props,
+) => (
+  <SharedLinkBox
+    variant="row"
+    href={`/${props.item.slug}`}
+    title={props.item.title}
+    description={props.item.description}
+    image={smallImageUrl(props.item.image)}
+    imageAlt={props.item.title}
+    class={`bg-can7 min-h-8 gap-3 hover:outline-cas5 ${
+      props.small ? "md:flex-col" : ""
+    }`}
+    imageClass={props.small ? "h-8 md:h-auto" : "h-8"}
+    titleClass="font-octa text-can2 mb-2"
+    descriptionClass="text-can4"
+  />
+);

@@ -146,7 +146,7 @@ export default function createTemplate(props: {
     li: (props: any) => <li class="my-1 leading-relaxed" {...props} />,
     strong: (props: any) => <strong class="font-bold" {...props} />,
     em: (props: any) => <em class="font-italic" {...props} />,
-    a: (props: any) => <a class="text-saturated-500 underline" {...props} />,
+    a: (props: any) => <a class="text-cas5 underline" {...props} />,
     img: (props: any) => (
       <img
         class="my-6 mx-auto rounded-lg shadow-md select-none"

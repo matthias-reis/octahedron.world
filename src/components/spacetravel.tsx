@@ -186,7 +186,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
     <div class="my-4 p-4 bg-neutral-200 rounded-xl border border-neutral-300 shadow-sm relative overflow-hidden group">
       <Show when={editable}>
         <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <span class="text-sm bg-saturated-400 text-neutral-700 px-2 py-1 rounded">
+          <span class="text-sm bg-cas6 text-neutral-700 px-2 py-1 rounded">
             Editable
           </span>
         </div>
@@ -194,7 +194,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
 
       {/* Header */}
       <h3 class="text-xl font-bold mb-5 flex items-center gap-2 text-neutral-900">
-        <Rocket class="w-6 h-6 text-saturated-500" />
+        <Rocket class="w-6 h-6 text-cas5" />
         <span>
           Space Travel: {from()} <ArrowRight class="inline w-4 h-4" /> {to()}
         </span>
@@ -213,25 +213,25 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
         <div class="h-4 bg-neutral-200 rounded-full flex overflow-hidden w-full relative group/vis">
           {/* Start Icon */}
           <div class="absolute -left-1 -top-1 z-10">
-            <div class="bg-complement-500 w-6 h-6 rounded-full border-2 border-neutral-200"></div>
+            <div class="bg-cbs5 w-6 h-6 rounded-full border-2 border-neutral-200"></div>
           </div>
 
           <div
-            class="h-full bg-gradient-to-r from-complement-500 to-saturated-400 border-r-2 border-neutral-200"
+            class="h-full bg-gradient-to-r from-cbs5 to-cas6 border-r-2 border-neutral-200"
             style={{
               width: `${(results().d_acc / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
             title={`Acceleration: ${results().d_acc.toFixed(2)} ly`}
           />
           <div
-            class="h-full bg-saturated-400"
+            class="h-full bg-cas6"
             style={{
               width: `${(results().d_coast / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
             title={`Coasting: ${results().d_coast.toFixed(2)} ly`}
           />
           <div
-            class="h-full bg-gradient-to-r from-saturated-400 to-complement-500 border-l-2 border-neutral-200"
+            class="h-full bg-gradient-to-r from-cas6 to-cbs5 border-l-2 border-neutral-200"
             style={{
               width: `${(results().d_dec / (unit() === "au" ? dist() / LY_TO_AU : dist())) * 100}%`,
             }}
@@ -240,7 +240,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
 
           {/* End Icon */}
           <div class="absolute -right-1 -top-1 z-10">
-            <div class="bg-complement-500 w-6 h-6 rounded-full border-2 border-neutral-200"></div>
+            <div class="bg-cbs5 w-6 h-6 rounded-full border-2 border-neutral-200"></div>
           </div>
         </div>
 
@@ -287,10 +287,10 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
         </div>
         <div class="text-center w-1/3 relative">
           <div class="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-neutral-600"></div>
-          <div class="text-xs text-complement-700 uppercase mb-1">
+          <div class="text-xs text-cbs3 uppercase mb-1">
             Duration (Traveler)
           </div>
-          <div class="text-3xl font-black text-complement-600 font-mono">
+          <div class="text-3xl font-black text-cbs4 font-mono">
             {formatDuration(results().t_ship)}
           </div>
           <div class="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-neutral-600"></div>
@@ -311,7 +311,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
       </div>
 
       <div class="mb-4 p-4 bg-neutral-300 border border-neutral-400 rounded-lg text-center">
-        <div class="text-xs text-complement-700 uppercase mb-1">
+        <div class="text-xs text-cbs3 uppercase mb-1">
           Energy Required for <strong>{mass().toLocaleString()}</strong> t
         </div>
 
@@ -347,7 +347,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
             </div>
           </div>
         </div>
-        <div class="text-sm text-complement-600 mt-4">
+        <div class="text-sm text-cbs4 mt-4">
           {Math.round(energy().pj).toLocaleString()} PJ
         </div>
       </div>
@@ -454,7 +454,7 @@ const InputGroup: Component<{
       value={props.value}
       onInput={props.onInput}
       step={props.step}
-      class="bg-neutral-300 border border-neutral-400 text-neutral-900 text-sm rounded-lg focus:ring-saturated-500 focus:border-saturated-500 block w-full p-2.5"
+      class="bg-neutral-300 border border-neutral-400 text-neutral-900 text-sm rounded-lg focus:ring-cas5 focus:border-cas5 block w-full p-2.5"
     />
   </div>
 );

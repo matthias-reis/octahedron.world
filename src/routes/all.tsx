@@ -15,7 +15,7 @@ export default function AllRoutesPage() {
             <li>
               <A href={`/${route.slug}`} class="text-main-600 hover:underline">
                 {route.title}
-                <span class="text-decent-500 ml-2 text-sm">
+                <span class="text-cad5 ml-2 text-sm">
                   ({route.group || "-"})
                 </span>
                 <span class="text-complement ml-2 text-sm">

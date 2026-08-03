@@ -157,7 +157,7 @@ export const ImageMapQuest: QuestVariant<
         </div>
 
         <Show when={showError()}>
-          <p class="text-saturated-500 mt-4 text-center">{config().failure}</p>
+          <p class="text-cas5 mt-4 text-center">{config().failure}</p>
           <p class="text-neutral-500 text-sm text-center mt-1">
             {t("dica.wrongAttempts", { count: tries() })}
           </p>

@@ -1,56 +1,46 @@
+import { MetaProvider } from "@solidjs/meta";
 import { Route, Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { For, Suspense } from "solid-js";
-import Nav from "~/components/nav";
+import { For, lazy } from "solid-js";
 import "./app.css";
 import "katex/dist/katex.min.css";
-import { MetaProvider } from "@solidjs/meta";
-import { useLocation } from "@solidjs/router";
-import { createEffect } from "solid-js";
 import routes from "../routes.json";
-import { Footer } from "./components/footer";
 import { MdsTemplate } from "./components/mds-template";
 import { I18nProvider } from "./i18n/context";
 import { getSite } from "./site/context";
-import { colorSpace, setColorSpace } from "./store/color-space";
+import { MreisShell } from "./sites/mreis/shell";
+import { OctahedronShell } from "./sites/octahedron/shell";
+
+// mreis's static pages are not file routes: `src/routes/` is shared by both
+// sites and these must never resolve on octahedron.
+const mreisRoutes = [
+  { path: "/cv", component: lazy(() => import("./sites/mreis/pages/cv")) },
+  {
+    path: "/portfolio",
+    component: lazy(() => import("./sites/mreis/pages/portfolio")),
+  },
+  {
+    path: "/contact",
+    component: lazy(() => import("./sites/mreis/pages/contact")),
+  },
+];
 
 export default function App() {
   const site = getSite();
   const siteRoutes = routes.filter((r) => (r.site ?? "octahedron") === site);
+  const extraRoutes = site === "mreis" ? mreisRoutes : [];
 
   return (
     <MetaProvider>
       <I18nProvider>
         <Router
-          root={(props) => {
-            if (site === "mreis") {
-              // Bare shell for mreis — no octa chrome.
-              return <Suspense>{props.children}</Suspense>;
-            }
-
-            const location = useLocation();
-            createEffect(() => {
-              // Set colorSpace based on pathname to avoid flicker from a
-              // two-step reset→override pattern. Add more routes here as needed.
-              if (location.pathname.startsWith("/pcsc-one")) {
-                setColorSpace("pcsc-one");
-              } else {
-                setColorSpace("petrol");
-              }
-            });
-
-            return (
-              <div class={colorSpace()}>
-                <Nav />
-                <Suspense>
-                  <div class="bg-cb">
-                    {props.children}
-                    <Footer />
-                  </div>
-                </Suspense>
-              </div>
-            );
-          }}
+          root={(props) =>
+            site === "mreis" ? (
+              <MreisShell>{props.children}</MreisShell>
+            ) : (
+              <OctahedronShell>{props.children}</OctahedronShell>
+            )
+          }
         >
           <For each={siteRoutes}>
             {(route) => (
@@ -59,6 +49,9 @@ export default function App() {
                 component={() => <MdsTemplate route={route.slug} />}
               />
             )}
+          </For>
+          <For each={extraRoutes}>
+            {(route) => <Route path={route.path} component={route.component} />}
           </For>
           <FileRoutes />
         </Router>

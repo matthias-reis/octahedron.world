@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Saira+Extra+Condensed:wght@300;800&family=Saira+Semi+Condensed:wght@300;700&display=swap");
+/* Self-hosted webfonts. @fontsource only emits @font-face declarations, so a
+   face is downloaded solely where it is actually referenced — mreis never
+   pulls Saira, octahedron never pulls DM Sans. */
+@import "@fontsource/saira-extra-condensed/300.css";
+@import "@fontsource/saira-extra-condensed/800.css";
+@import "@fontsource/saira-semi-condensed/300.css";
+@import "@fontsource/saira-semi-condensed/700.css";
+@import "@fontsource-variable/lora";
+@import "@fontsource-variable/lora/wght-italic.css";
+@import "@fontsource-variable/fira-code";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource/dm-serif-display";
 @import "tailwindcss";
 
 :root {
@@ -14,10 +25,14 @@
 }
 
 @theme inline {
-  --font-octa: "Saira Extra Condensed", sans-serif;
-  --font-sans: "Saira Semi Condensed", sans-serif;
-  --font-serif: "Lora", serif;
-  --font-mono: "Fira Code", monospace;
+  /* --- FONTS ---
+     Indirection through --f-*, so a site class can swap the whole type stack
+     without touching a single utility class. */
+  --font-octa: var(--f-display);
+  --font-display: var(--f-display);
+  --font-sans: var(--f-sans);
+  --font-serif: var(--f-serif);
+  --font-mono: var(--f-mono);
 
   --color-transparent: transparent;
   --color-current: currentColor;
@@ -111,16 +126,23 @@
   --color-cbn7: oklch(var(--l-7) var(--s-n) var(--h-b));
   --color-cbn8: oklch(var(--l-8) var(--s-n) var(--h-b));
   --color-cbn9: oklch(var(--l-9) var(--s-n) var(--h-b));
-  /* 
-  --color-neutral-100: hsl(var(--hue), 4%, 0%);
-  --color-neutral-complement-100: hsl(var(--hue-complement), 4%, 0%);
-  --color-decent-100: hsl(var(--hue), 20%, 0%);
-  --color-saturated-100: hsl(var(--hue), 65%, 0%);
-  --color-complement-100: hsl(var(--hue-complement), 30%, 0%);
-  --color-main: hsl(var(--hue), 100%, 60%);
-  --color-complement: hsl(var(--hue-complement), 100%, 60%); */
 
-  /* Spacings */
+  /* --- SHARED SEMANTIC TOKENS ---
+     The entire cross-site theming surface. Everything in src/ui/ may use only
+     these (plus the named spacing scale below); the c* palette above stays
+     octahedron-private. Each resolves through a --t-* indirection so a site
+     class can rebind it. */
+  --color-col-bg: var(--t-col-bg);
+  --color-col-surface: var(--t-col-surface);
+  --color-col-fg: var(--t-col-fg);
+  --color-col-fg-muted: var(--t-col-fg-muted);
+  --color-col-border: var(--t-col-border);
+  --color-col-hi-bg: var(--t-col-hi-bg);
+  --color-col-hi-fg: var(--t-col-hi-fg);
+  --color-col-accent: var(--t-col-accent);
+
+  /* Spacings — octahedron's legacy Fibonacci-ish numeric scale. Existing code
+     keeps using it; new/shared code uses the named scale below. */
   --spacing-1: 0.1rem;
   --spacing-2: 0.25rem;
   --spacing-3: 0.5rem;
@@ -132,18 +154,103 @@
   --spacing-9: 13rem;
   --spacing-10: 21rem;
 
+  /* Named spacing scale — the shared vocabulary. src/ui/ and both site shells
+     use only these steps, never the numeric ones.
+     The `s` prefix is load-bearing: `w-*`, `h-*` and `max-w-*` resolve against
+     the spacing scale as well as `--container-*`, and spacing wins. Plain
+     `--spacing-md` would silently turn every `max-w-md` in the codebase into
+     1rem. `--spacing-smd` cannot collide with a container name. */
+  --spacing-sxs: 0.25rem;
+  --spacing-ssm: 0.5rem;
+  --spacing-smd: 1rem;
+  --spacing-slg: 1.5rem;
+  --spacing-sxl: 2.5rem;
+  --spacing-s2xl: 4rem;
+  --spacing-s3xl: 6rem;
+
   /* aspect ratios */
   --aspect-double: 2 / 1;
   --aspect-wide: 3 / 1;
   --aspect-image: 3 / 2;
 }
 
+/* ---------------------------------------------------------------------------
+   Site identity 1 — octahedron.world (also the default for any unknown host)
+   --------------------------------------------------------------------------- */
+
+:root,
+.site-octahedron {
+  --f-display: "Saira Extra Condensed", sans-serif;
+  --f-sans: "Saira Semi Condensed", sans-serif;
+  /* @fontsource-variable registers variable faces under "<Name> Variable"; the
+     bare name stays as a fallback for anyone who has the font installed. */
+  --f-serif: "Lora Variable", "Lora", serif;
+  --f-mono: "Fira Code Variable", "Fira Code", monospace;
+
+  --t-col-bg: var(--color-cb);
+  --t-col-surface: var(--color-can8);
+  --t-col-fg: var(--color-can1);
+  --t-col-fg-muted: var(--color-can5);
+  --t-col-border: var(--color-can6);
+  --t-col-hi-bg: var(--color-cas5);
+  --t-col-hi-fg: var(--color-can1);
+  --t-col-accent: var(--color-cbs5);
+}
+
+/* ---------------------------------------------------------------------------
+   Site identity 2 — mreis.me
+   --------------------------------------------------------------------------- */
+
+.site-mreis {
+  --hue-primary: 35;
+  --hue-main: 230;
+
+  --black: oklch(0.18 0.015 var(--hue-main));
+  --white: oklch(0.97 0.015 var(--hue-main));
+  --primary: oklch(0.68 0.17 var(--hue-primary));
+
+  --f-display: "DM Serif Display", serif;
+  --f-sans: "DM Sans Variable", "DM Sans", sans-serif;
+  --f-serif: "DM Serif Display", serif;
+  --f-mono: "Menlo", monospace;
+
+  --t-col-bg: light-dark(var(--white), var(--black));
+  --t-col-surface: light-dark(#fff, oklch(0.22 0.015 var(--hue-main)));
+  --t-col-fg: light-dark(var(--black), var(--white));
+  --t-col-fg-muted: color-mix(in oklab, var(--t-col-fg) 65%, transparent);
+  --t-col-border: color-mix(in oklab, var(--t-col-fg) 25%, transparent);
+  --t-col-hi-bg: var(--primary);
+  --t-col-hi-fg: var(--white);
+  --t-col-accent: var(--primary);
+}
+
+/* ---------------------------------------------------------------------------
+   Root globals — scoped per site, or they leak across identities
+   --------------------------------------------------------------------------- */
+
 html {
-  color-scheme: dark;
   scroll-behavior: smooth;
-  font-size: 18px;
   margin: 0;
   padding: 0;
+}
+
+html.site-octahedron {
+  color-scheme: dark;
+  font-size: 18px;
+}
+
+/* mreis was designed against a 16px root and needs both schemes; the .dark /
+   .light classes set by its ThemeToggle still win over this. */
+html.site-mreis {
+  color-scheme: light dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
 }
 
 body {
@@ -151,11 +258,27 @@ body {
   padding: 0;
 }
 
-.font-octa {
+html.site-mreis body {
+  background-color: var(--color-col-bg);
+  color: var(--color-col-fg);
+  font-family: var(--font-sans);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html.site-mreis ::selection {
+  background-color: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
+}
+
+/* Saira ships as a static family per width; the extra stretch is an
+   octahedron-only refinement and would squash DM Sans on mreis. */
+.site-octahedron .font-octa,
+.site-octahedron .font-display {
   font-stretch: 75%;
 }
 
-.font-sans {
+.site-octahedron .font-sans {
   font-stretch: 87.5%;
 }
 
@@ -253,6 +376,9 @@ body {
   --h-g: 200;
 }
 
+/* Compatibility shim: hundreds of MDS content files and the dica renderer
+   reference `.cta` directly, so the class stays — with octahedron's exact
+   palette, unchanged. New code uses <ButtonLink> from src/ui. */
 .cta {
   @apply px-4 py-2 bg-cbs5 text-cbn1 font-bold rounded-md hover:bg-cbs4 hover:text-cw transition-all duration-200 block max-w-md mx-auto text-center;
 }
