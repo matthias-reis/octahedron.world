@@ -1,4 +1,5 @@
 import { query } from "@solidjs/router";
+import { getSite } from "~/site/context";
 import type { CompactItemMeta, ItemMeta } from "~/types";
 
 let cachedData: Record<string, ItemMeta> | null = null;
@@ -23,7 +24,11 @@ async function getData() {
 export const getRoute = query(async (slug: string) => {
   "use server";
   const data = await getData();
-  return data[slug] || null;
+  const item = data[slug];
+  if (!item || (item.site ?? "octahedron") !== getSite()) {
+    return null;
+  }
+  return item;
 }, "route");
 
 export async function getRedirect(slug: string) {
@@ -48,28 +53,17 @@ export const getAllCompactRoutes: () => Promise<
 > = query(async () => {
   "use server";
   const data = await getData();
+  const site = getSite();
 
   return Object.fromEntries(
-    Object.entries(data).map(
-      ([
-        _key,
-        {
-          slug,
-          title,
-          group,
-          type,
-          image,
-          description,
-          superTitle,
-          subTitle,
-          date,
-          weight,
-        },
-      ]) => {
-        return [
-          slug,
+    Object.entries(data)
+      .filter(([_key, item]) => (item.site ?? "octahedron") === site)
+      .map(
+        ([
+          _key,
           {
             slug,
+            site: itemSite,
             title,
             group,
             type,
@@ -80,25 +74,45 @@ export const getAllCompactRoutes: () => Promise<
             date,
             weight,
           },
-        ];
-      },
-    ),
+        ]) => {
+          return [
+            slug,
+            {
+              slug,
+              site: itemSite,
+              title,
+              group,
+              type,
+              image,
+              description,
+              superTitle,
+              subTitle,
+              date,
+              weight,
+            },
+          ];
+        },
+      ),
   );
 }, "all-routes-overview");
 
 export const getAllRootRoutes = query(async () => {
   "use server";
   const data = await getData();
+  const site = getSite();
 
   const availableItems = Object.values(data)
-    .filter((item) => item.root)
-    .map(({ slug, title, image, description, group, weight }) => ({
-      slug,
-      title,
-      group,
-      image,
-      description,
-      weight: weight ?? 0,
-    }));
+    .filter((item) => item.root && (item.site ?? "octahedron") === site)
+    .map(
+      ({ slug, site: itemSite, title, image, description, group, weight }) => ({
+        slug,
+        site: itemSite,
+        title,
+        group,
+        image,
+        description,
+        weight: weight ?? 0,
+      }),
+    );
   return availableItems as CompactItemMeta[];
 }, "all-root-routes");

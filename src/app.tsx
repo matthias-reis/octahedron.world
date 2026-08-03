@@ -11,14 +11,23 @@ import routes from "../routes.json";
 import { Footer } from "./components/footer";
 import { MdsTemplate } from "./components/mds-template";
 import { I18nProvider } from "./i18n/context";
+import { getSite } from "./site/context";
 import { colorSpace, setColorSpace } from "./store/color-space";
 
 export default function App() {
+  const site = getSite();
+  const siteRoutes = routes.filter((r) => (r.site ?? "octahedron") === site);
+
   return (
     <MetaProvider>
       <I18nProvider>
         <Router
           root={(props) => {
+            if (site === "mreis") {
+              // Bare shell for mreis — no octa chrome.
+              return <Suspense>{props.children}</Suspense>;
+            }
+
             const location = useLocation();
             createEffect(() => {
               // Set colorSpace based on pathname to avoid flicker from a
@@ -43,7 +52,7 @@ export default function App() {
             );
           }}
         >
-          <For each={routes}>
+          <For each={siteRoutes}>
             {(route) => (
               <Route
                 path={`/${route.slug}`}

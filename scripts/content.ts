@@ -1,11 +1,23 @@
 import { readFile, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, relative, sep } from "node:path";
 import { promisify } from "node:util";
 import { glob } from "glob";
 import { parse } from "hast-mds";
+import type { Site } from "~/site/context";
 import type { ItemMeta } from "~/types";
 
 const read = promisify(readFile);
+
+function deriveSite(file: string, explicit: unknown): Site {
+  // An explicit `site:` key in the MDS global scope overrides the folder rule.
+  if (explicit === "mreis" || explicit === "octahedron") {
+    return explicit;
+  }
+  const rel = relative(join(process.cwd(), "_content"), file);
+  return rel === "mreis" || rel.startsWith(`mreis${sep}`)
+    ? "mreis"
+    : "octahedron";
+}
 
 async function getMetaData(): Promise<Record<string, ItemMeta>> {
   const metaData = {} as Record<string, ItemMeta>;
@@ -46,13 +58,21 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
 
     const meta: ItemMeta = {
       ...(result.global as any),
+      site: deriveSite(file, (result.global as any).site),
       mds: result,
     };
 
     if (meta.title) {
+      const existing = metaData[meta.slug];
+      if (existing && existing.site !== meta.site) {
+        console.error(
+          `[CON] ❌ cross-site slug collision: "${meta.slug}" exists for ${existing.site}, skipping ${meta.site} entry from ${file}`,
+        );
+        continue;
+      }
       metaData[meta.slug] = meta;
       console.log(
-        `[CON] 📄 <${meta.type || "default"}> ${meta.slug} | ${meta.title}`,
+        `[CON] 📄 <${meta.type || "default"}> [${meta.site}] ${meta.slug} | ${meta.title}`,
       );
     }
   }
@@ -67,10 +87,10 @@ async function run() {
   const json = JSON.stringify(metadata, null, 2);
   writeFileSync(join(process.cwd(), "data.json"), json);
 
-  // Write routes.json - array of route objects with slug only (all are MDS now)
+  // Write routes.json - array of route objects with slug + site (all are MDS now)
   const routes = Object.entries(metadata)
     .filter(([_, item]) => item.type !== "none")
-    .map(([slug]) => ({ slug }));
+    .map(([slug, item]) => ({ slug, site: item.site }));
   const routesJson = JSON.stringify(routes, null, 2);
   writeFileSync(join(process.cwd(), "routes.json"), routesJson);
   console.log(`[CON] 🗺️  generated ${routes.length} routes`);
