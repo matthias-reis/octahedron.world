@@ -3,12 +3,12 @@ import { For } from "solid-js";
 import { cx } from "~/components/cx";
 import { Head } from "~/components/head";
 import { largeImageUrl, smallImageUrl } from "~/components/image-helpers";
-import { MreisHome } from "~/components/mreis/home";
 import OctahedronLogo from "~/components/octahedron-logo";
 import { useI18n } from "~/i18n/context";
 import { sortRootItems } from "~/model/helpers";
 import { getAllRootRoutes } from "~/model/model";
 import { getSite } from "~/site/context";
+import MreisHome from "~/sites/mreis/pages/home";
 import type { CompactItemMeta } from "~/types";
 
 export default function HomePage() {
@@ -22,7 +22,7 @@ export default function HomePage() {
   const items = () => sortRootItems(getItems() || []);
 
   return (
-    <div class="bg-cn9">
+    <div class="bg-can9">
       <Head />
       <main class="mx-auto mb-7 max-w-6xl">
         <div
@@ -31,9 +31,9 @@ export default function HomePage() {
         >
           <div class="w-full h-full bg-center flex flex-col justify-center items-center text-center bg-linear-to-b from-transparent via-cb to-transparent">
             <h1 class="font-octa flex justify-center items-center gap-2 text-can2 text-4xl w-full">
-              <span class="text-decent-600 font-bold ">OCTAHEDRON</span>
+              <span class="text-cad4 font-bold ">OCTAHEDRON</span>
               <OctahedronLogo class="text-cas4 w-6 h-6" />
-              <span class="text-decent-400 font-light">WORLD</span>
+              <span class="text-cad6 font-light">WORLD</span>
             </h1>
             <h2 class="text-can5 text-xl max-w-md font-lighter font-sans mt-3 text-balance">
               {t("home.tagline")}

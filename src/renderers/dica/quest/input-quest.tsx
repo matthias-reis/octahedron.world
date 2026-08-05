@@ -83,10 +83,10 @@ export const InputQuest: QuestVariant<InputQuestConfig, InputQuestStatus> = (
       </Show>
 
       <Show when={gaveUp()}>
-        <p class="text-saturated-400 max-w-sm mx-auto my-6 text-center">
+        <p class="text-cas6 max-w-sm mx-auto my-6 text-center">
           {config().notfound}
         </p>
-        <p class="text-saturated-500 text-sm text-center opacity-70">
+        <p class="text-cas5 text-sm text-center opacity-70">
           The answer was: {config().solution}
         </p>
       </Show>

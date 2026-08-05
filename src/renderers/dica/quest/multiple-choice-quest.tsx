@@ -135,7 +135,7 @@ export const MultipleChoiceQuest: QuestVariant<
             </button>
 
             <Show when={showError()}>
-              <p class="text-saturated-400 text-center">{config().failure}</p>
+              <p class="text-cas6 text-center">{config().failure}</p>
             </Show>
           </div>
         </>

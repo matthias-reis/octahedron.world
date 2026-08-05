@@ -31,7 +31,7 @@ export default function createTemplate(props: {
             {item?.title}
           </h1>
           {item?.subTitle && (
-            <p class="text-lg text-decent-500 mt-2">{item.subTitle}</p>
+            <p class="text-lg text-cad5 mt-2">{item.subTitle}</p>
           )}
           {item?.superTitle && (
             <p class="text-lg uppercase text-can5 mt-5 font-bold tracking-widest font-octa">

@@ -20,8 +20,8 @@ export const World2Calculator: Component<{ data: { variant: string } }> = (
   graph.push({ name: "Budget", result: 100, reference: true });
 
   return (
-    <div class="border border-decent-600 p-4">
-      <div class="text-decent-600">
+    <div class="border border-cad4 p-4">
+      <div class="text-cad4">
         <World2CalculatorChart graph={graph} />
       </div>
       <h3 class="text-2xl font-bold font-condensed text-center mt-5">

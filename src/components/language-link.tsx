@@ -12,7 +12,7 @@ export const LanguageLink: Component<{ item: ItemMeta }> = ({ item }) => {
     <p class="text-right mb-5">
       <A
         href={`/${item.ref}`}
-        class="text-decent-500 hover:text-decent-700 underline underline-offset-4"
+        class="text-cad5 hover:text-cad3 underline underline-offset-4"
       >
         {text}
       </A>

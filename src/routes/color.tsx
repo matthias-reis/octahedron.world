@@ -46,7 +46,7 @@ const Variants = () => (
 
 export default function Page() {
   return (
-    <div class="bg-decent-100">
+    <div class="bg-cad9">
       <div class="max-w-4xl mx-auto">
         {[
           "petrol",

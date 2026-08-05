@@ -19,7 +19,7 @@ export default function createTemplate(props: {
     <div
       class={`${item?.colorSpace} min-h-screen gradient bg-linear-to-b from-cbn9 to-cbs9 pb-8`}
     >
-      <main class="max-w-2xl xl:max-w-5xl mx-auto bg-neutral-150 grid grid-cols-1 xl:grid-cols-2 items-start gap-6 justify-stretch relative">
+      <main class="max-w-2xl xl:max-w-5xl mx-auto grid grid-cols-1 xl:grid-cols-2 items-start gap-6 justify-stretch relative">
         <div class="relative xl:mr-7">
           {item?.image && (
             <img
@@ -80,7 +80,7 @@ export default function createTemplate(props: {
             <div class="mb-6">
               <A
                 href={`/${item.group}/${item.ref}`}
-                class="text-decent-600 hover:text-saturated-700"
+                class="text-cad4 hover:text-cas3"
               >
                 {item.language === "en"
                   ? "🇩🇪 Deutsche Version"

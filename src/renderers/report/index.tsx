@@ -68,7 +68,7 @@ export default function createTemplate(
 
         {/* Reading Stats */}
         {item?.words && (
-          <p class="text-center text-sm font-sans text-decent-500 mb-6">
+          <p class="text-center text-sm font-sans text-cad5 mb-6">
             Read: {Math.round(item.words / 200)} min ✧ Words:{" "}
             {item.words.toLocaleString()} ✧ Chars:{" "}
             {item.chars?.toLocaleString()}
@@ -80,7 +80,7 @@ export default function createTemplate(
           <div class="text-center mb-6">
             <A
               href={`/${item.group}/${item.ref}`}
-              class="text-decent-600 hover:text-saturated-700"
+              class="text-cad4 hover:text-cas3"
             >
               {item.language === "en"
                 ? "🇩🇪 Deutsche Version"
