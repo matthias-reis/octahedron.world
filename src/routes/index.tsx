@@ -3,13 +3,19 @@ import { For } from "solid-js";
 import { cx } from "~/components/cx";
 import { Head } from "~/components/head";
 import { largeImageUrl, smallImageUrl } from "~/components/image-helpers";
+import { MreisHome } from "~/components/mreis/home";
 import OctahedronLogo from "~/components/octahedron-logo";
 import { useI18n } from "~/i18n/context";
 import { sortRootItems } from "~/model/helpers";
 import { getAllRootRoutes } from "~/model/model";
+import { getSite } from "~/site/context";
 import type { CompactItemMeta } from "~/types";
 
 export default function HomePage() {
+  if (getSite() === "mreis") {
+    return <MreisHome />;
+  }
+
   const getItems = createAsyncStore(() => getAllRootRoutes());
   const { t } = useI18n();
 

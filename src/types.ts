@@ -1,8 +1,10 @@
 import type { HastParseResult } from "hast-mds";
 import type { Options } from "hast-util-to-jsx-runtime";
+import type { Site } from "./site/context";
 
 export type ItemMeta = {
   slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
+  site: Site; // which site serves this item; derived from _content/ subfolder, overridable via explicit `site:` key
   alias?: string; // old url
   group: string; // new grouping. E.g. 'hermetics'
   type?: string; // MDS renderer type
@@ -38,6 +40,7 @@ export type LocalScope = Record<string, never>;
 export type CompactItemMeta = Pick<
   ItemMeta,
   | "slug"
+  | "site"
   | "title"
   | "group"
   | "type"
