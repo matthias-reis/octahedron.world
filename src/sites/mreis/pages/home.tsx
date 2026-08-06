@@ -1,8 +1,13 @@
-import { For } from "solid-js";
+import { createAsync } from "@solidjs/router";
+import dayjs from "dayjs";
+import { For, Show } from "solid-js";
+import { largeImageUrl } from "~/components/image-helpers";
 import { Box } from "~/ui/box";
 import { ButtonLink, Buttons } from "~/ui/button";
 import { Chips } from "~/ui/chips";
 import { Head } from "~/ui/head";
+import { LinkBox } from "~/ui/link-box";
+import { getMreisPosts } from "../posts";
 import { H1, H2, H3 } from "../typography";
 
 const skillsData = [
@@ -68,6 +73,8 @@ const impactData = [
 ];
 
 export default function MreisHome() {
+  const latestPosts = createAsync(() => getMreisPosts(2));
+
   return (
     <main class="max-w-4xl mx-auto px-smd">
       <Head />
@@ -125,6 +132,43 @@ export default function MreisHome() {
           </For>
         </div>
       </section>
+
+      <Show when={latestPosts()?.length}>
+        <section class="space-y-sxl mt-s3xl mb-s3xl">
+          <H2 class="!mt-0">Latest Posts</H2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-sxl">
+            <For each={latestPosts()}>
+              {(post) => (
+                <LinkBox
+                  variant="card"
+                  href={`/${post.slug}`}
+                  title={post.title}
+                  description={
+                    Array.isArray(post.description)
+                      ? post.description.join(" ")
+                      : post.description
+                  }
+                  image={post.image ? largeImageUrl(post.image) : undefined}
+                  meta={
+                    <Show when={post.date}>
+                      {(date) => (
+                        <span class="text-col-fg-muted text-sm">
+                          {dayjs(date()).format("D MMMM YYYY")}
+                        </span>
+                      )}
+                    </Show>
+                  }
+                />
+              )}
+            </For>
+          </div>
+          <Buttons>
+            <ButtonLink variant="secondary" href="/posts">
+              All posts
+            </ButtonLink>
+          </Buttons>
+        </section>
+      </Show>
     </main>
   );
 }
