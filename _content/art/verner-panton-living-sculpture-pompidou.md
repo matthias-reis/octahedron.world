@@ -1,5 +1,5 @@
 ```yaml @@
-ttitle: 'Siège Living Sculpture'
+title: 'Siège Living Sculpture'
 description: >-
   An immersive "Pop" furniture environment by Danish designer Verner Panton. 
   Originally conceived for his private residence and later showcased at the 

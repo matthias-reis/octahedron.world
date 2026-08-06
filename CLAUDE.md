@@ -6,25 +6,27 @@ A personal content publishing platform built with SolidStart and Tailwind CSS.
 
 - **Framework**: SolidStart 1.1+ (meta-framework for SolidJS)
 - **Styling**: Tailwind CSS 4.0+
-- **Routing**: SolidJS Router (file-based routing)
+- **Routing**: SolidJS Router (file-based routes + routes generated from content)
 - **Build Tool**: Vinxi
-- **Content**: Markdown files with YAML frontmatter or solid-mds format
+- **Content**: Markdown in MDS format (`hast-mds` on the build side, `solid-mds`
+  in the renderers)
 - **Images**: Sharp for processing
 
 ## Project Structure
 
 ```
 octahedron.world/
-├── _content/              # Markdown content files organized by topic
+├── _content/              # Markdown content files organized by group
 ├── src/
-│   ├── routes/           # SolidStart file-based routes
+│   ├── routes/           # SolidStart file-based routes (hand-written pages)
 │   ├── components/       # Reusable UI components
-│   │   ├── layouts/      # Layout components for different content types
-│   │   └── plugins/      # Content section renderers
-│   ├── model/            # Data access layer
+│   │   └── mds-template.tsx  # Maps an item's `type` to its renderer
+│   ├── renderers/        # One full-page renderer per content type
+│   ├── model/            # Data access layer (reads data.json)
+│   ├── sites/            # Per-site shells (octahedron, mreis)
 │   └── types.ts          # TypeScript type definitions
 ├── scripts/
-│   ├── content.ts        # Parses markdown and generates data.json
+│   ├── content.ts        # Parses MDS markdown and generates the JSON files
 │   ├── imagine.ts        # Processes images for web
 │   └── watch-content.ts  # Watches content changes in dev mode
 ├── public/
@@ -36,132 +38,107 @@ octahedron.world/
 
 ## Content System
 
-The content system supports two distinct workflows for processing and rendering content:
+There is exactly **one** content workflow: MDS. Every file in `_content/` is an
+MDS document, and every published page is rendered by a renderer in
+`src/renderers/`. There is no frontmatter workflow, no layouts and no plugins —
+those were removed in early 2026.
 
-1.  **Octa Workflow** (Legacy): Uses YAML frontmatter and Layouts.
-2.  **MDS Workflow** (New): Uses `solid-mds` parsing and Renderers.
+### The pipeline
 
-Both workflows coexist. The file format is detected automatically by `scripts/content.ts`.
-
-### 1. Octa Workflow (Frontmatter + Layouts)
-
-**File Format**: Standard markdown starting with `---` (YAML frontmatter).
-**Behavior**:
--   Parses YAML frontmatter for metadata.
--   Splits body into sections (text, custom plugins).
--   Uses **Layouts** in `src/components/layouts/` to render the page.
-
-**Structure**:
-```yaml
----
-workflow: octa # (Implicit)
-slug: my-octa-page
-layout: post # Selects src/components/layouts/post
----
+```
+_content/**/*.md
+   │   scripts/content.ts  (pnpm content)
+   ▼
+data.json  +  routes.json  +  redirects.json
+   │   src/app.tsx reads routes.json and creates a <Route> per entry
+   ▼
+MdsTemplate (src/components/mds-template.tsx)
+   │   looks up renderers[item.type]
+   ▼
+src/renderers/{type}
 ```
 
-### 2. MDS Workflow (solid-mds + Renderers)
+`src/model/model.ts` is the only thing that reads `data.json`; renderers receive
+the already-parsed MDS structure.
 
-**File Format**: Markdown starting with backticks ` ``` ` (solid-mds format).
-**Behavior**:
--   Parses using `solid-mds` package.
--   Extracts **Global Metadata** (`@@|`) for `data.json`.
--   Uses **Renderers** in `src/renderers/` to render the page.
--   The renderer is chosen by the `type` field in global metadata (defaults to `default` or `dica` depending on context).
+### File format
 
-**Structure**:
+An MDS file starts with a **global scope** — a fenced YAML block marked `@@`.
+It is mandatory: `pnpm content` aborts on a file that does not have one.
+
 ````markdown
-```@@|
-slug: my-mds-page
-type: dica     # Selects src/renderers/dica
-title: My Title
+```yaml @@
+slug: my-page
+group: my-group
+title: My Page Title
+type: post
+image: my-image
 ```
+
+# Heading
+
+Regular markdown content.
 ````
 
-**Syntax specific to this project**:
--   **Global Metadata** (`@@|`): Equivalent to frontmatter. Must be at the start.
--   **Steps** (`+++step-id`): Divides content into interactive steps/slides.
--   **Local Metadata** (`@|`): Per-step configuration.
--   **Custom Blocks** (`:::variant`): Special components (like Quests).
+The fence is ` ```yaml @@ ` — that is the only accepted form.
+
+### Syntax specific to this project
+
+- **Global scope** (` ```yaml @@ `): page metadata, must be the first thing in
+  the file. Feeds `data.json`.
+- **Steps** (`+++step-id`): divides a document into named steps/slides. Used by
+  the step-based renderers (`dica`, `storyline`).
+- **Local scope** (` ```yaml @ `): per-step configuration, placed directly under
+  a `+++` marker.
+- **Custom blocks** (` ```yaml <name> `): a fenced YAML block rendered by a
+  registered component instead of as code — e.g. ` ```yaml teaser `. The block
+  names known to the parser are listed in `scripts/content.ts`; the components
+  they map to live in `src/components/canonical-components.tsx`.
+
+### Required metadata
+
+`slug`, `title` and `image` are effectively mandatory (see `ItemMeta` in
+`src/types.ts`). A missing `title` aborts `pnpm content` — the page is not
+silently dropped.
 
 ## Renderers
 
-The `src/renderers/` directory contains full-page applications/templates for MDS content.
+`src/renderers/` holds one full-page renderer per content type. The renderer is
+selected by the `type` field in the global scope and wired up in the `renderers`
+map in `src/components/mds-template.tsx`.
 
--   **Path**: `src/renderers/{type}/create-template.tsx` (pattern may vary)
--   **Integration**: Loaded by `src/components/mds-template.tsx` based on the `type` field.
--   **Example**: `src/renderers/dica` is a comprehensive interactive renderer with state management, progress tracking, and a quest system.
+Registered types:
 
-## Layouts and Plugins (Octa Workflow)
+| `type`                  | renderer                              |
+| ----------------------- | ------------------------------------- |
+| `post`                  | `src/renderers/default`               |
+| `default`               | `src/renderers/default`               |
+| `album`                 | `src/renderers/album`                 |
+| `dica`                  | `src/renderers/dica`                  |
+| `digest`                | `src/renderers/digest`                |
+| `grid`                  | `src/renderers/grid`                  |
+| `legal`                 | `src/renderers/legal`                 |
+| `lightbox`              | `src/renderers/lightbox`              |
+| `population-simulation` | `src/renderers/population-simulation` |
+| `report`                | `src/renderers/report`                |
+| `storyline`             | `src/renderers/storyline`             |
+| `world2`                | `src/renderers/world2`                |
 
-### Layouts
+An unknown `type` renders a visible "Unknown renderer type" fallback rather than
+failing the build.
 
-Layouts define how content is displayed for the **Octa** workflow. Located in
-[src/components/layouts/](src/components/layouts/).
+**`type: none`** is not a renderer. It marks a page that belongs in `data.json`
+(so its metadata stays queryable) but must _not_ get a generated route —
+`content.ts` filters it out of `routes.json`. It is used by `pcsc-one` and
+`pcsc-contest`, which own hand-written file routes in `src/routes/`.
 
-Each layout provides:
+### Creating a new renderer
 
-- **Main component**: Overall page structure (header, container, styling)
-- **Section wrapper**: How to wrap each content section
-- **Plugins**: Custom renderers for special content types
-
-The `layout` field in frontmatter selects which layout to use. If omitted,
-`default` layout is used.
-
-### Plugins System
-
-Plugins are responsible for rendering individual content sections in the **Octa** workflow. The
-`pnpm content` script parses markdown files and creates a list of sections,
-where each section has a `type` and a `payload`.
-
-**How it works:**
-
-1. **Content parsing** ([scripts/content.ts](scripts/content.ts)):
-   - Markdown body is split into sections by `---` delimiters
-   - Plain text becomes `{ type: 'text', payload: '...' }`
-   - Special syntax `==> slug` becomes `{ type: 'link', payload: 'slug' }`
-   - Custom syntax `==> <type> payload` becomes
-     `{ type: 'type', payload: 'payload' }`
-
-2. **Section rendering** ([src/components/octa.tsx](src/components/octa.tsx)):
-   - For each section, looks up the plugin for that section's `type`
-   - If layout defines a plugin for that type, uses it
-   - Otherwise falls back to `DefaultPlugin` (shows error state)
-
-3. **Plugin interface**:
-
-   ```typescript
-   type Plugin = (props: {
-     type: string;
-     payload: string;
-     wrapper?: ParentComponent;
-   }) => JSX.Element;
-   ```
-
-**Built-in plugins** ([src/components/plugins/](src/components/plugins/)):
-
-- **`text`**: Default plugin that transforms markdown to HTML using
-  remark/rehype
-  - Handles all standard markdown syntax
-  - Can be customized per-layout with different component mappings
-  - Example: Headers, paragraphs, lists, code blocks, math (KaTeX)
-- **`link`**: Renders a link box to another page by slug
-  - Payload is a slug reference (e.g., `mesh`)
-  - Fetches metadata and displays as a card with image and description
-- **`group`**: Displays all pages within a content group
-- **`cta`**: Call-to-action component
-- **`world-2-calculator`**: Custom interactive calculator (example of special
-  functionality)
-- **`default`**: Fallback plugin that shows error for unknown types
-
-**Extensibility:**
-
-The plugin system is designed for future expansion. To add new section types:
-
-1. Create a new plugin in `src/components/plugins/{name}/index.tsx`
-2. Register it in the layout's plugin map
-3. Use the custom syntax in markdown: `==> <{name}> {payload}`
-
+1. Create `src/renderers/{name}/index.tsx` (plus a `types.ts` for its
+   `GlobalScope`/`LocalScope` if it needs one).
+2. Default-export a component taking the parsed MDS structure.
+3. Register the key in the `renderers` map in
+   `src/components/mds-template.tsx`.
 
 ## Data Layer (Model)
 
@@ -192,114 +169,53 @@ name `model` follows MVC-like conventions and is concise.
 
 ### Adding a New Content Page
 
-```bash
-# 1. Create markdown file
-# File: _content/my-group/my-page.md
----
+Create the file — `_content/my-group/my-page.md`:
+
+````markdown
+```yaml @@
 slug: my-page
-title: My Page Title
 group: my-group
-layout: post
+title: My Page Title
+type: post
 image: my-image
----
-
-This is my content.
-
-==> related-page
-
-More content here.
+description: What this page is about
 ```
 
-```bash
-# 2. Add image (same directory as markdown)
-# _content/my-group/my-image.jpg
+This is my content.
+````
 
-# 3. Process content
+Then:
+
+```bash
+# 1. Add the image next to the markdown file
+#    _content/my-group/my-image.jpg
+
+# 2. Process content and images
 pnpm content && pnpm imagine
 
-# 4. Verify in data.json
-# Check that my-page appears with correct metadata
+# 3. Verify in data.json that my-page appears with correct metadata
 ```
 
 ### Creating a Root Item (Homepage Entry)
 
-Add to existing content's frontmatter:
+Add to the page's global scope:
 
 ```yaml
 root: true
-weight: 5 # Lower numbers appear first
+weight: 5 # controls sort order
 description: Brief description shown on homepage
 ```
 
-### Linking Between Pages in Markdown
+### Linking Between Pages
 
-Use the link plugin syntax:
+Use ordinary markdown links, or a teaser block to render a card with the target
+page's image and metadata:
 
-```markdown
-Some paragraph of text.
-
-==> other-page-slug
-
-More content continues here.
+````markdown
+```yaml teaser
+slug: other-page-slug
 ```
-
-This renders as a styled link box with image and metadata.
-
-### Using Custom Section Types
-
-```markdown
-Regular markdown content here.
-
-==> <cta> https://example.com
-
-More markdown content.
-
-==> <world-2-calculator> config-data
-
-Text continues.
-```
-
-Each `==> <type> payload` creates a section with that type, rendered by the
-corresponding plugin.
-
-### Creating a New Plugin
-
-1. **Create plugin file**:
-
-   ```typescript
-   // src/components/plugins/my-plugin/index.tsx
-   import { Plugin } from '~/types';
-
-   export const MyPlugin: Plugin = ({ type, payload, wrapper }) => {
-     const Wrapper = wrapper || 'section';
-     return (
-       <Wrapper>
-         <div>Custom rendering for: {payload}</div>
-       </Wrapper>
-     );
-   };
-   ```
-
-2. **Register in layout**:
-
-   ```typescript
-   // src/components/layouts/my-layout/index.ts
-   import { MyPlugin } from '~/components/plugins/my-plugin';
-
-   export const myLayout = {
-     main: MyLayoutMain,
-     plugins: {
-       text: TextPlugin(),
-       link: LinkPlugin,
-       'my-plugin': MyPlugin, // Register here
-     },
-   };
-   ```
-
-3. **Use in markdown**:
-   ```markdown
-   ==> <my-plugin> some-payload-data
-   ```
+````
 
 ### Querying Data in Components
 
@@ -336,8 +252,8 @@ pnpm start        # Run production server
 
 ### Working with Content
 
-1. **Add new content**: Create `.md` file in `_content/{group}/` with proper
-   frontmatter
+1. **Add new content**: Create a `.md` file in `_content/{group}/` with a
+   ` ```yaml @@ ` global scope
 2. **Add images**: Place images in same directory as markdown file
 3. **Run scripts**: `pnpm content && pnpm imagine` (or restart dev server)
 4. **Check data.json**: Verify your content appears with correct metadata
@@ -346,16 +262,19 @@ pnpm start        # Run production server
 
 To show a page on the homepage:
 
-1. Add `root: true` to frontmatter
-2. Add `weight: N` to control sort order (higher numbers appear first)
+1. Add `root: true` to the global scope
+2. Add `weight: N` to control sort order
 3. Ensure `image` field points to an existing image
 
 ## Important Notes
 
 - **Never edit generated files**: `data.json`, `routes.json`, `redirects.json`
-  are auto-generated
-- **Image references**: Use filename without extension in frontmatter (e.g.,
-  `image: mesh` for `mesh.jpg`)
+  are auto-generated (and gitignored)
+- **Image references**: Use the filename without extension (e.g. `image: mesh`
+  for `mesh.jpg`)
 - **Slug uniqueness**: Each slug must be unique across all content
-- **Layout selection**: Layout determines the entire page structure and
-  available content section types
+- **Malformed content fails the build**: a file without a ` ```yaml @@ ` global
+  scope, or without a `title`, aborts `pnpm content`. Pages are never silently
+  dropped.
+- **Type selection**: `type` determines the entire page structure and which
+  custom blocks make sense

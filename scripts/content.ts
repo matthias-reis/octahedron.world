@@ -32,8 +32,10 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
     const trimmed = raw.trimStart();
 
     if (!trimmed.startsWith("```")) {
-      console.log(`[CON] ⚠️  Skipping non-MDS file: ${file}`);
-      continue;
+      console.error(
+        `[CON] ❌ not an MDS file: ${file} — every file in _content/ must open with a \`\`\`yaml @@ global scope`,
+      );
+      process.exit(1);
     }
 
     // Parse with hast-mds (server-side)
@@ -52,8 +54,10 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
       ]),
     );
     if (!result.global) {
-      console.log(`[CON] ⚠️  No MDS Global Scope found in: ${file}`);
-      continue;
+      console.error(
+        `[CON] ❌ no MDS global scope in: ${file} — expected a \`\`\`yaml @@ block at the top of the file`,
+      );
+      process.exit(1);
     }
 
     const meta: ItemMeta = {
@@ -62,19 +66,24 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
       mds: result,
     };
 
-    if (meta.title) {
-      const existing = metaData[meta.slug];
-      if (existing && existing.site !== meta.site) {
-        console.error(
-          `[CON] ❌ cross-site slug collision: "${meta.slug}" exists for ${existing.site}, skipping ${meta.site} entry from ${file}`,
-        );
-        continue;
-      }
-      metaData[meta.slug] = meta;
-      console.log(
-        `[CON] 📄 <${meta.type || "default"}> [${meta.site}] ${meta.slug} | ${meta.title}`,
+    if (!meta.title) {
+      console.error(
+        `[CON] ❌ missing \`title\` in the global scope of: ${file} — a page without a title cannot be published`,
       );
+      process.exit(1);
     }
+
+    const existing = metaData[meta.slug];
+    if (existing && existing.site !== meta.site) {
+      console.error(
+        `[CON] ❌ cross-site slug collision: "${meta.slug}" exists for ${existing.site}, skipping ${meta.site} entry from ${file}`,
+      );
+      continue;
+    }
+    metaData[meta.slug] = meta;
+    console.log(
+      `[CON] 📄 <${meta.type || "default"}> [${meta.site}] ${meta.slug} | ${meta.title}`,
+    );
   }
   return metaData;
 }
@@ -87,7 +96,9 @@ async function run() {
   const json = JSON.stringify(metadata, null, 2);
   writeFileSync(join(process.cwd(), "data.json"), json);
 
-  // Write routes.json - array of route objects with slug + site (all are MDS now)
+  // Write routes.json - array of route objects with slug + site.
+  // `type: none` keeps an item in data.json but generates no route: those pages
+  // own a hand-written file route in src/routes/.
   const routes = Object.entries(metadata)
     .filter(([_, item]) => item.type !== "none")
     .map(([slug, item]) => ({ slug, site: item.site }));
