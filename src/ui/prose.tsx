@@ -62,5 +62,16 @@ export const proseComponents: ComponentMap = {
       draggable={false}
     />
   ),
+  // Fenced code blocks. Octahedron layers its own `pre`/`code` handling on top
+  // (see `canonical-components.tsx`, which spreads `MdsCode` after this map),
+  // so this is the baseline both sites fall back to rather than a bare
+  // unstyled `<pre>`.
+  pre: (props: any) => (
+    <pre
+      class="my-smd p-smd overflow-x-auto rounded-lg bg-col-surface border border-col-border text-col-fg font-mono text-base"
+      {...props}
+    />
+  ),
+  code: (props: any) => <code class="font-mono text-[0.9em]" {...props} />,
   cta: Cta,
 };
