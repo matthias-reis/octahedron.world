@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import type { JSX, ParentComponent } from "solid-js";
-import { For, Show } from "solid-js";
+import { children, For, Show } from "solid-js";
 import { cx } from "./cx";
 
 export type FooterLink = {
@@ -61,6 +61,9 @@ const FooterLinkItem: ParentComponent<{ link: FooterLink; class?: string }> = (
 /** Shared site footer. The `children` slot takes site-specific extras. */
 export const Footer: ParentComponent<FooterProps> = (props) => {
   const layout = () => layouts[props.layout ?? "stacked"];
+  // Resolve once: reading `props.children` twice (in `when` and in the body)
+  // instantiates the children twice and breaks hydration keys.
+  const extras = children(() => props.children);
 
   return (
     <footer class={cx("w-full text-sm", props.class)}>
@@ -72,8 +75,8 @@ export const Footer: ParentComponent<FooterProps> = (props) => {
           </For>
         </ul>
       </div>
-      <Show when={props.children}>
-        <div class="mt-smd flex justify-center">{props.children}</div>
+      <Show when={extras()}>
+        <div class="mt-smd flex justify-center">{extras()}</div>
       </Show>
     </footer>
   );
