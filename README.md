@@ -6,48 +6,60 @@ Data System) workflow.
 ## Architecture
 
 This project uses a **pure MDS workflow** for all content. MDS allows markdown
-files to define their own rendering behavior through frontmatter and custom
-components.
+files to define their own rendering behavior through a YAML global scope and
+custom components. There is no second, frontmatter-based workflow.
 
 ### Content System
 
 All content is stored in `_content/` with the following structure:
 
-- **Frontmatter**: Wrapped in ` ```@@|` and ` ``` ` (MDS format)
+- **Global scope**: a fenced YAML block opened with ` ```yaml @@ ` — the only
+  accepted form. Mandatory, and must be the first thing in the file.
 - **Type**: Determines which renderer to use (e.g., `storyline`, `lightbox`,
   `report`, `post`)
 - **Content**: Standard markdown with optional custom components
 
 #### Example Content File
 
-```markdown
-\`\`\`@@| title: My Story type: storyline description: A great story group:
-stories slug: my-story image: my-image \`\`\`
+````markdown
+```yaml @@
+title: My Story
+type: storyline
+description: A great story
+group: stories
+slug: my-story
+image: my-image
+```
 
 # Chapter 1
 
 Content goes here...
-```
+````
 
 ### Renderers
 
-Renderers are located in `src/renderers/` and define how content is displayed:
+Renderers are located in `src/renderers/` and define how content is displayed.
+They are registered by `type` in `src/components/mds-template.tsx`:
 
-- **`storyline`**: For narrative stories with sequential steps
-- **`lightbox`**: For photo galleries and visual content
-- **`report`**: For in-depth articles with structured layout
-- **`world2`**: Extended report with calculator and graphics plugins
 - **`post`/`default`**: Standard blog posts with two-column layout
-- **`entry`**: For index/overview pages
-- **`grid`**: For grid-based layouts
 - **`album`**: For photo albums
 - **`dica`**: Interactive quest-based content
+- **`digest`**: Curated link/summary collections
+- **`grid`**: For grid-based layouts
 - **`legal`**: For legal pages
+- **`lightbox`**: For photo galleries and visual content
+- **`population-simulation`**: Interactive population model
+- **`report`**: For in-depth articles with structured layout
+- **`storyline`**: For narrative stories with sequential steps
+- **`world2`**: Extended report with calculator and graphics blocks
+
+`type: none` is not a renderer — it keeps a page in `data.json` while excluding
+it from `routes.json`, for pages that own a hand-written file route.
 
 Each renderer:
 
 1. Parses markdown using `solid-mds`
-2. Extracts frontmatter (global scope)
+2. Extracts the global scope
 3. Renders content using SolidJS components
 4. Can register custom components via `canonicalComponents`
 
@@ -57,7 +69,8 @@ Each renderer:
 
 Processes all markdown files in `_content/`:
 
-- Parses MDS frontmatter
+- Parses the MDS global scope of every file (and fails the build on a malformed
+  one)
 - Generates `data.json` with all metadata
 - Generates `routes.json` for routing
 - Generates `redirects.json` for URL aliases
@@ -73,7 +86,7 @@ Runs the development server with content watching
 ## Adding New Content
 
 1. Create a markdown file in `_content/[group]/[slug].md`
-2. Add MDS frontmatter with type and metadata
+2. Add a ` ```yaml @@ ` global scope with `type` and metadata
 3. Write content in markdown
 4. Run `pnpm content` to regenerate metadata
 5. The content will be automatically routed

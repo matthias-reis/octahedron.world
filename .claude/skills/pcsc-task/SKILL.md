@@ -21,7 +21,8 @@ documentation:** `src/pcsc/CLAUDE.md` (read this for PCSC-specific architecture)
 ## Guidelines
 
 1. Check `src/pcsc/CLAUDE.md` for PCSC-specific context before starting
-2. Reference `CLAUDE.md` for Octahedron patterns (layouts, plugins, data layer)
+2. Reference `CLAUDE.md` for Octahedron patterns (MDS content, renderers, data
+   layer)
 3. Look at original code in `../pcsc` when needed to understand existing
    implementation
 4. Update `src/pcsc/CLAUDE.md` with any architectural decisions or new
