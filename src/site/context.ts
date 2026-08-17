@@ -2,7 +2,11 @@ import { getRequestEvent, isServer } from "solid-js/web";
 
 export type Site = "octahedron" | "mreis";
 
-const MREIS_HOSTNAMES = new Set(["mreis.me", "mreis.localhost"]);
+const MREIS_HOSTNAMES = new Set([
+  "mreis.me",
+  "next.mreis.me",
+  "mreis.localhost",
+]);
 
 export function getSite(): Site {
   const host = isServer
