@@ -15,7 +15,7 @@ export {
   type FooterLink,
   type FooterProps,
 } from "./footer";
-export { Head } from "./head";
+export { Head, SiteIcons } from "./head";
 export { LinkBox, type LinkBoxProps, type LinkBoxVariant } from "./link-box";
 export { Loading } from "./loading";
 export { proseComponents } from "./prose";

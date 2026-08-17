@@ -49,12 +49,10 @@ Then, I guess it was during a meetuo organised through
 [meetup.com](https://www.meetup.com/de-DE), some of us had the idea to build
 that on our own. Fully open source and federated.
 
-I immediately dived into the architecture and the protocols they are using. So
-here's my summary on this.
-
-```yaml teaser
-slug: federated-social-networks
-```
+I immediately dived into the architecture and the protocols they are using. The
+write-up that came out of it — a high level architectural comparison of AT
+Proto and Activity Pub — now lives over on my professional site:
+[Federated Social Networks](https://mreis.me/posts/federated-social-networks).
 
 And finally, I created the pith for the new social network / groups platform /
 meetup site we will be working on in the future. It still has it's temporary

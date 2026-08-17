@@ -2,6 +2,7 @@
 import { createHandler, StartServer } from "@solidjs/start/server";
 import { getLocale } from "./i18n/context";
 import { getSite } from "./site/context";
+import { SiteIcons } from "./ui/head";
 
 export default createHandler(() => (
   <StartServer
@@ -14,7 +15,7 @@ export default createHandler(() => (
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.ico" />
+          <SiteIcons />
           {assets}
         </head>
         <body>

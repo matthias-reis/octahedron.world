@@ -1,25 +1,14 @@
 ```yaml @@
 title: Federated Social Networks
 description: >-
-  Probably the first piece of SciFi is a story written by Johannes Kepler in the
-  early 17th century.
+  In this post I take a high level architectural look at the two most popular
+  open source social network formats, AT Proto, which drives Bluesky, and
+  Activity Pub, which stands behind Mastodon.
+slug: posts/federated-social-networks
+group: posts
+type: article
 date: 2025-05-02T00:00:00.000Z
-colorSpace: carmine
-tags:
-  - Meetup
-  - Social Networks
-  - AT Protocol
-  - Activity Pub
-  - Communities
-  - Pitch
-  - Fediverse
-  - Content Federation
-group: social-networks
-superTitle: Social Networks
-alias: posts/2025/2025-05-02-federated-social-networks
-slug: federated-social-networks
-type: report
-image: social-networks
+image: federated-social-networks
 ```
 
 We live in weird times. For over fifteen years, we have willingly given all
@@ -28,12 +17,12 @@ selling this information. This went up to a level where theses social networks
 have been used to manipulate Britain into the Brexit and Trump onto the throne.
 
 But politics aside, far aside. How would a different world look like? What would
-we have to do if we wanted to own our data and still interact digitally with
-each other?
+we have to do if we wanted to own our data and still interact digitally in
+social networks with each other?
 
-One consequence out of this big mess are a handful of protocols that define such
-a social network, a network that is federated into many interacting but
-autonomous instances and still allows discovery and exchange on a global level.
+One result out of this big mess are a handful of technical protocols that define
+such a service a network that is federated with many interacting but autonomous
+instances and still allows discovery and exchange on a global level.
 
 On the one hand, there is **Activity Pub**, a protocol based on W3C standards
 developed by the Social Working Group, finalised around 2018 and used by many
@@ -44,7 +33,7 @@ On the other hand we have the one-company driven **AT Protocol**, published in
 Bluesky PBC from former Twitter boss Jack Dorsey).
 
 In this article - just out of curiosity - I want to dive a step deeper into both
-of them, dive into the primitives, building blocks and principles behind the
+of them, look into the primitives, building blocks and principles behind the
 protocols on an architectural level.
 
 So as I said, politics and business aside. We dive into some technicalities
@@ -256,9 +245,9 @@ not guaranteed that it’s deleted everywhere it had been federated to.
 
 Enough of the theoretical overhead. How do the networks behave in reality?
 
-First the size of the networks (I skip the sources as the dimensional
-differences are so huge, a bit up or down doesn’t make a difference, it’s just
-to get a feeling about the activity on the networks)
+First the size of the networks — all figures as of May 2025 (I skip the sources
+as the dimensional differences are so huge, a bit up or down doesn’t make a
+difference, it’s just to get a feeling about the activity on the networks)
 
 - **Instagram**:
   - Total Users: ~2 billion

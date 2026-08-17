@@ -64,8 +64,8 @@ const referencesData = [
     imageUrl: "/reference/soundsvegan.jpg",
   },
   {
-    title: "Mosquito Social (in progress)",
-    url: "https://mosquito.social",
+    title: "commonspace (in progress)",
+    url: "https://commonspace.tech",
     content:
       "Open Source and federated social network for small groups built on the AT Protocol (Bluesky). Exploring decentralised identity, federated data, and modern social UX patterns.",
     imageUrl: "/reference/mosquito-social.jpg",
@@ -74,7 +74,7 @@ const referencesData = [
     title: "Octahedron World",
     url: "https://octahedron.world",
     content:
-      "Constantly growing collection of short stories and digital experiments. Built with SolidStart and a remark based developer pipeline for content.",
+      "Constantly growing collection of short stories and digital experiments. One SolidStart app now serves two domains from a single content pipeline, whose building blocks — hast-mds and solid-mds — are published on npm.",
     imageUrl: "/reference/octahedron.jpg",
   },
 ];

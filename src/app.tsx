@@ -23,6 +23,10 @@ const mreisRoutes = [
     path: "/contact",
     component: lazy(() => import("./sites/mreis/pages/contact")),
   },
+  {
+    path: "/posts",
+    component: lazy(() => import("./sites/mreis/pages/posts")),
+  },
 ];
 
 export default function App() {
