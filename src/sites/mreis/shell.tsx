@@ -42,7 +42,7 @@ export const MreisShell: ParentComponent = (props) => (
         class="max-w-4xl mx-auto py-s2xl px-smd mt-auto font-sans"
         linkClass="hover:underline hover:text-col-hi-bg transition-colors outline-offset-2 outline-col-hi-bg focus:outline-2 rounded-sm"
         links={links}
-        copyright={<>© {new Date().getFullYear()} Matthias Reis</>}
+        copyright={<>© {new Date().getFullYear()} Matthias Reis.</>}
       />
     </div>
   </Suspense>
