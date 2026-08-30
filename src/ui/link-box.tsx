@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import type { Component, JSX } from "solid-js";
-import { Show } from "solid-js";
+import { children, Show } from "solid-js";
 import { cx } from "./cx";
 
 export type LinkBoxVariant = "row" | "tile" | "card";
@@ -54,6 +54,13 @@ const layouts: Record<
 export const LinkBox: Component<LinkBoxProps> = (props) => {
   const layout = () => layouts[props.variant ?? "row"];
 
+  // `meta` arrives as a JSX getter, so every read re-instantiates the element.
+  // Reading it twice — once for the `Show` condition, once as the content —
+  // burns a hydration id on markup the server then throws away, which puts the
+  // client's id counter out of step and breaks hydration. `children()` resolves
+  // it exactly once.
+  const meta = children(() => props.meta);
+
   const body = (
     <>
       <Show when={props.image}>
@@ -67,9 +74,9 @@ export const LinkBox: Component<LinkBoxProps> = (props) => {
         )}
       </Show>
       <span class={layout().body}>
-        <Show when={props.meta}>
+        <Show when={meta()}>
           <span class="mb-ssm flex items-center justify-between gap-ssm">
-            {props.meta}
+            {meta()}
           </span>
         </Show>
         <span
