@@ -40,7 +40,7 @@ export default function ArticleRenderer(props: {
         href="/posts"
         class="inline-flex items-center gap-sxs mb-slg text-col-fg-muted hover:text-col-hi-bg outline-offset-2 outline-col-hi-bg focus:outline-2 rounded-sm transition-colors"
       >
-        <ChevronLeft class="w-5 h-5" />
+        <ChevronLeft class="w-[1.25rem] h-[1.25rem]" />
         <span class="uppercase tracking-wide text-sm">All posts</span>
       </A>
 
@@ -65,7 +65,7 @@ export default function ArticleRenderer(props: {
       <Show when={item?.date}>
         {(date) => (
           <p class="flex items-center gap-sxs text-sm text-col-fg-muted mb-s2xl font-sans">
-            <CalendarDays class="w-4 h-4" />
+            <CalendarDays class="w-[1rem] h-[1rem]" />
             <span>{dayjs(date()).format("D MMMM YYYY")}</span>
           </p>
         )}

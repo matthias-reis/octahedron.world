@@ -115,7 +115,7 @@ export default function MreisCv() {
                 href="/reference/cv.pdf"
                 download="Matthias_Reis_CV.pdf"
               >
-                <Download class="w-5 h-5" />
+                <Download class="w-[1.25rem] h-[1.25rem]" />
                 Download PDF
               </ButtonLink>
               <ButtonLink href="/contact">Contact Me</ButtonLink>
@@ -129,7 +129,7 @@ export default function MreisCv() {
           <For each={experiences}>
             {(exp) => (
               <div class="relative pl-sxl md:pl-s2xl">
-                <span class="absolute -left-[9px] top-10 w-4 h-4 rounded-full bg-col-fg" />
+                <span class="absolute -left-[9px] top-sxl w-smd h-smd rounded-full bg-col-fg" />
 
                 <div class="flex flex-col sm:flex-row sm:items-baseline justify-between mb-ssm gap-ssm">
                   <div>
@@ -161,7 +161,7 @@ export default function MreisCv() {
                         <For each={exp.highlights}>
                           {(highlight) => (
                             <li class="flex gap-ssm items-start">
-                              <Check class="mt-1.5 w-5 h-5 shrink-0" />
+                              <Check class="mt-1.5 w-[1.25rem] h-[1.25rem] shrink-0" />
                               <span class="leading-relaxed text-lg">
                                 {highlight}
                               </span>
@@ -190,7 +190,7 @@ export default function MreisCv() {
             href="/reference/portfolio.pdf"
             download="Matthias_Reis_Portfolio.pdf"
           >
-            <Download class="w-5 h-5" />
+            <Download class="w-[1.25rem] h-[1.25rem]" />
             Download PDF
           </ButtonLink>
         </div>

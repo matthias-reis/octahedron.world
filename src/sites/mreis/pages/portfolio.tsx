@@ -112,7 +112,7 @@ export default function MreisPortfolio() {
             href="/reference/portfolio.pdf"
             download="Matthias_Reis_Portfolio.pdf"
           >
-            <Download class="w-5 h-5" />
+            <Download class="w-[1.25rem] h-[1.25rem]" />
             Download PDF
           </ButtonLink>
           <ButtonLink href="/contact">Let's talk</ButtonLink>

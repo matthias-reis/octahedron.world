@@ -100,7 +100,7 @@ export default function MreisContact() {
                 rel="noopener noreferrer"
                 class="flex gap-slg items-center hover:outline-2 outline-offset-2 outline-col-hi-bg focus:outline-2 rounded-lg p-ssm"
               >
-                <link.icon class="w-8 h-8 shrink-0 text-col-fg" />
+                <link.icon class="w-[2rem] h-[2rem] shrink-0 text-col-fg" />
                 <div class="flex flex-col gap-sxs">
                   <span class="text-xl font-bold">{link.label}</span>
                   <span>{link.value}</span>
