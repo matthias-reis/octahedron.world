@@ -10,6 +10,8 @@ tags:
   - End of the World
   - Multiverse
 colorSpace: carmine
+language: en
+ref: das-vergency-hotel
 group: simulation-theory
 superTitle: Vergency Hotel
 alias: posts/2024/2024-08-05-vergency-hotel

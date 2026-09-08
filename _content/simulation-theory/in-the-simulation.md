@@ -6,6 +6,8 @@ description: >-
   unsettling logic of a chain of nested realities.
 colorSpace: sky
 date: 2026-04-01T00:00:00.000Z
+language: en
+ref: in-der-simulation
 tags:
   - Simulation Theory
   - AI

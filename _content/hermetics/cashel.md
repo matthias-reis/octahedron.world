@@ -42,8 +42,8 @@ But I could tell a different story.
 The early Gothic times from the 12th and 13th century were the Golden Age of the
 Hermetic Order of St. Patrick. The order still exists today with fifteen
 branches and is spread around Ireland and Northern Ireland. The Order watched
-over the Irish Island during hard times with the plague and starvation period.
-BUt the Hermetics, closely entangled with the catholic church over here didn't
+over the Irish Island during hard times with the plague and starvation periods.
+But the Hermetics, closely entangled with the catholic church over here didn't
 show much mercy, barely offered help if their organisation wouldn't profit from
 it.
 
@@ -59,7 +59,7 @@ hermetic centers in Europe and after Stonehenge the biggest on the british
 isles. Some of the hermetic strongholds are still very active today. There is a
 magic wall around the Rock of Cashel in about 2 kilometers distance that was
 created to keep the enemies out, which still spreads its mana today. And the
-abbey close by, theo only other building inside that ring of mana, spreads even
+abbey close by, the only other building inside that ring of mana, spreads even
 stronger vibes showing the sheer power that was cooking there.
 
 Now I'm looking at a group of almost unrecognizable runes on a stone in the
