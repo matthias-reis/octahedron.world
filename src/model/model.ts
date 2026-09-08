@@ -1,6 +1,6 @@
 import { query } from "@solidjs/router";
 import { getSite } from "~/site/context";
-import type { CompactItemMeta, ItemMeta } from "~/types";
+import type { CompactItemMeta, ItemMeta, PostMeta } from "~/types";
 
 let cachedData: Record<string, ItemMeta> | null = null;
 
@@ -116,3 +116,43 @@ export const getAllRootRoutes = query(async () => {
     );
   return availableItems as CompactItemMeta[];
 }, "all-root-routes");
+
+/** All published posts of the current site, newest first.
+
+    Feeds the homepage timeline. Language is carried through untouched so the
+    caller can narrow to the reader's locale — a post without `language` is
+    English by convention and shows up everywhere. */
+export const getAllPosts = query(async () => {
+  "use server";
+  const data = await getData();
+  const site = getSite();
+
+  return Object.values(data)
+    .filter(
+      (item) =>
+        (item.site ?? "octahedron") === site &&
+        item.type === "post" &&
+        !item.hidden &&
+        !!item.date,
+    )
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+    .map(
+      ({
+        slug,
+        title,
+        group,
+        image,
+        description,
+        date,
+        language,
+      }): PostMeta => ({
+        slug,
+        title,
+        group,
+        image,
+        description,
+        date,
+        language,
+      }),
+    );
+}, "all-posts");

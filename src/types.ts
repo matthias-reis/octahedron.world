@@ -64,3 +64,8 @@ export type DynamicPageProps = {
 };
 
 export type HtmlComponents = Options["components"];
+
+export type PostMeta = Pick<
+  ItemMeta,
+  "slug" | "title" | "group" | "image" | "description" | "date" | "language"
+>;

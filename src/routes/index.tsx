@@ -1,15 +1,18 @@
-import { A, createAsyncStore } from "@solidjs/router";
-import { For } from "solid-js";
-import { cx } from "~/components/cx";
+import { createAsyncStore } from "@solidjs/router";
 import { Head } from "~/components/head";
-import { largeImageUrl, smallImageUrl } from "~/components/image-helpers";
+import { HomeTimeline } from "~/components/home-timeline";
+import { HomeWorlds } from "~/components/home-worlds";
+import { largeImageUrl } from "~/components/image-helpers";
 import OctahedronLogo from "~/components/octahedron-logo";
 import { useI18n } from "~/i18n/context";
 import { sortRootItems } from "~/model/helpers";
-import { getAllRootRoutes } from "~/model/model";
+import { getAllPosts, getAllRootRoutes } from "~/model/model";
 import { getSite } from "~/site/context";
 import MreisHome from "~/sites/mreis/pages/home";
-import type { CompactItemMeta } from "~/types";
+
+/** Tuned by eye: enough entries that the timeline column reaches — but does not
+    overshoot — the bottom of the three-column world grid next to it. */
+const TIMELINE_LENGTH = 38;
 
 export default function HomePage() {
   if (getSite() === "mreis") {
@@ -17,9 +20,17 @@ export default function HomePage() {
   }
 
   const getItems = createAsyncStore(() => getAllRootRoutes());
-  const { t } = useI18n();
+  const getPosts = createAsyncStore(() => getAllPosts());
+  const { t, locale } = useI18n();
 
   const items = () => sortRootItems(getItems() || []);
+
+  // A post without an explicit language is English by convention, so it stays
+  // visible in every locale; a translated pair collapses to the matching half.
+  const posts = () =>
+    (getPosts() || [])
+      .filter((post) => !post.language || post.language === locale())
+      .slice(0, TIMELINE_LENGTH);
 
   return (
     <div class="bg-can9">
@@ -40,67 +51,14 @@ export default function HomePage() {
             </h2>
           </div>
         </div>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0">
-          <For each={items()}>
-            {(item: CompactItemMeta, index) => {
-              const isWide = index() % 5 === 0;
-              const isTextTop = index() % 2 !== 0;
-              const colorClass = [
-                "bg-cas7",
-                "bg-cad7",
-                "bg-cbn7",
-                "bg-cad8",
-                "bg-cad7",
-              ][index() % 5];
-
-              return (
-                <li
-                  class={cx(
-                    "border border-transparent p-3 md:p-0",
-                    isWide && "sm:col-span-2",
-                  )}
-                  data-weight={item.weight}
-                >
-                  <A
-                    href={`/${item.slug}`}
-                    class={cx(
-                      `flex flex-col h-full outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 transition-all duration-200`,
-                      isTextTop && "md:flex-col-reverse",
-                      colorClass,
-                    )}
-                  >
-                    <img
-                      src={smallImageUrl(item.image)}
-                      alt="Reference"
-                      class={cx(
-                        "object-cover w-full",
-                        isWide ? "aspect-double" : "aspect-square",
-                      )}
-                    />
-                    <div class="grow">
-                      <h3
-                        class={cx(
-                          "font-octa font-bold px-4 mt-4 mb-2 text-can2",
-                          isWide ? "text-5xl" : "text-3xl",
-                        )}
-                      >
-                        {item.title}
-                      </h3>
-                      <p
-                        class={cx(
-                          "font-sans px-4 text-can3 mb-4",
-                          isWide && "text-lg sm:mr-8",
-                        )}
-                      >
-                        {item.description}
-                      </p>
-                    </div>
-                  </A>
-                </li>
-              );
-            }}
-          </For>
-        </ul>
+        <div class="grid grid-cols-1 md:grid-cols-5 items-start">
+          <div class="md:col-span-3">
+            <HomeWorlds items={items()} />
+          </div>
+          <div class="md:col-span-2 self-stretch border border-transparent p-3 md:p-0">
+            <HomeTimeline posts={posts()} />
+          </div>
+        </div>
       </main>
     </div>
   );
