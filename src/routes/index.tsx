@@ -12,7 +12,7 @@ import MreisHome from "~/sites/mreis/pages/home";
 
 /** Tuned by eye: enough entries that the timeline column reaches — but does not
     overshoot — the bottom of the three-column world grid next to it. */
-const TIMELINE_LENGTH = 38;
+const TIMELINE_LENGTH = 30;
 
 export default function HomePage() {
   if (getSite() === "mreis") {
@@ -52,10 +52,10 @@ export default function HomePage() {
           </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 items-start">
-          <div class="md:col-span-3">
+          <div class="md:col-span-3 order-2 md:order-1">
             <HomeWorlds items={items()} />
           </div>
-          <div class="md:col-span-2 self-stretch border border-transparent p-3 md:p-0">
+          <div class="md:col-span-2 order-1 md:order-2 self-stretch border border-transparent p-3 md:p-0">
             <HomeTimeline posts={posts()} />
           </div>
         </div>

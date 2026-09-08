@@ -6,7 +6,7 @@ import type { CompactItemMeta } from "~/types";
 
 const TILE_COLORS = ["bg-cas7", "bg-cad7", "bg-cbn7", "bg-cad8", "bg-cad7"];
 
-/** Every fifth world gets a double-width tile; with three columns the 1-wide +
+/** Every fifth world gets a double-width tile; at three columns the 1-wide +
     2-normal / 3-normal pattern repeats every two rows and leaves no holes. */
 const isWide = (index: number) => index % 5 === 0;
 const isTextTop = (index: number) => index % 2 !== 0;
@@ -62,7 +62,7 @@ const WorldTile: Component<{ item: CompactItemMeta; index: number }> = (
 /** The topic-based half of the homepage: one tile per world, unchanged in
     behaviour from before the timeline was added — only narrower. */
 export const HomeWorlds: Component<{ items: CompactItemMeta[] }> = (props) => (
-  <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-0">
+  <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0">
     <For each={props.items}>
       {(item, index) => <WorldTile item={item} index={index()} />}
     </For>
