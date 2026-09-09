@@ -60,7 +60,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
             {groupedItems.length > 0 && (
               <>
                 <h3 class="font-octa text-4xl font-bold text-cbn6">
-                  All Posts on This Topic
+                  More Content From This Topic
                 </h3>
                 <nav
                   class={cx(

@@ -18,7 +18,7 @@ const renderers: Record<string, Component<any>> = {
     () => import("~/renderers/population-simulation"),
   ),
   world2: clientOnly(() => import("~/renderers/world2")),
-  post: clientOnly(() => import("~/renderers/default")),
+  post: clientOnly(() => import("~/renderers/post")),
   default: clientOnly(() => import("~/renderers/default")),
   // mreis.me's long-form renderer — token-driven, no octahedron palette.
   article: clientOnly(() => import("~/sites/mreis/renderers/article")),
