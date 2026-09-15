@@ -5,6 +5,8 @@ description: >-
   What if we develop an AI with more than human level intelligence? And how
   powerful can it become? The story in this line is following that thought.
 colorSpace: wood
+language: en
+ref: goliath-de
 startDate: 2022-06-12T00:00:00.000Z
 date: 2022-11-14T00:00:00.000Z
 tags:
@@ -44,7 +46,7 @@ creator engineers had chosen an architecture that had similarities with the
 human brain.
 
 Some parts of the machine were autonomous neural networks and could directly
-backfire results. The majority of requests, however, were handled by the parts
+feedback results. The majority of requests, however, were handled by the parts
 that the engineers actually called the Neocortex. This consisted of a complex
 neural network whose purpose was to engineer and train other more simple neural
 networks based on the incoming use case. An AI that could create other AI to
@@ -65,7 +67,7 @@ that was supposed to change quickly.
 ---
 
 There were more trainers than creators. Especially after the first construction
-phase was finished, several Creator teams left the Faroe solitude again for more
+phase was finished, several creator teams left the Faroe solitude again for more
 urban projects in San Francisco, Dublin or Amsterdam.
 
 The group of trainers itself was very diverse and came from disciplines like
@@ -122,7 +124,7 @@ project after all. Over time, the group released some of the neural networks
 that were spawned by the core intelligence as dedicated programs for public
 usage. In fact, they spawned four companies out of it and made quite some
 profit, that flowed back into the main project's budget. Three years after the
-routine operation had started, the project paid off itself through investments
+routine operation had started, the project paid itself off through investments
 of governments, suggested economic optimizations and product spin-offs.
 
 That was the point where the next phase started. The engineers added an array of
@@ -196,12 +198,12 @@ the kidnapped people were 41 government members or high officials from 35
 countries, 52 scientists from all disciplines and 29 executives and strategists
 from leading companies all over the world.
 
-One of the reporters claimed, the aliens knew us. THat was the leading headline
+One of the reporters claimed, the aliens knew us. That was the leading headline
 on the next day.
 
 "The aliens know us" was what everybody had in their heads after that second
-wave. But the follow-up questions were more concerning. What would they do to
-with that knowledge? What would they do to us? Are we prey now? Some optimists
+wave. But the follow-up questions were more concerning. What would they do with
+that knowledge? What would they do to us? Are we prey now? Some optimists
 even said that they came to solve all our problems.
 
 But the others were right. Those who said that they would kill us.
@@ -212,18 +214,18 @@ day. They killed in streaks and yet they could hardly be identified. There was
 next to no footage from them except some blurry phone videos from people who
 obviously took more interest in running away than actually filming.
 
-After the first day, the media counted 5000 dead people. But the raid continued
+After the first day, the media counted 5,000 dead people. But the raid continued
 for another week until we were able to take first serious countermeasures.
-Around 50.000 people were already dead at that point.
+Around 50,000 people were already dead at that point.
 
 "Bad news", the papers titled, when our first attempts to defend ourselves
 failed and every day from that point on, we tried heavier and heavier weapons
 without success.
 
 Two weeks after the aliens started to kill us, the whole humanity was in despair
-and continuous fear. The count was only at 90.000 but the fact that we couldn't
+and continuous fear. The count was only at 90,000 but the fact that we couldn't
 do anything was causing serious panic in all of the other 7 billion people on
-earth. WE were all the same after all.
+earth. We were all the same after all.
 
 Except for really heavy bombs and atomic weapons, the military tried literally
 everything to at least harm these bastards. The big ones would have caused too
@@ -233,18 +235,18 @@ The decision of the world leaders was unanimous to play one more card they had
 in their hands. The trainers of Goliath were supposed to involve the AI.
 
 The project was in its eighth year and Yana de Vries, the lead psychologist of
-the Faroe project was assigned with the task to get the needed information from
+the Faroe project, was assigned with the task to get the needed information from
 Goliath.
 
 As there was never a higher priority for any request, she was able to create a
-task force team of researches within a matter of minutes. The team accumulated
+task force team of researchers within a matter of minutes. The team accumulated
 all the information, media footage, studies from the previous alien attempts and
 military tactical analyses.
 
 Five hours later, Yana booked her interview slot with Goliath and entered the
-room. IN the meantime Goliath had chosen an avatar and appeared as usual on a
+room. In the meantime Goliath had chosen an avatar and appeared as usual on a
 big screen while she was sitting in a comfortable chair. Internally, however,
-she felt as uncomfortable as never before. Was she and goliath the last hope for
+she felt as uncomfortable as never before. Was she and Goliath the last hope for
 Earth?
 
 "Hello Goliath", she started her chat with the AI as usual.
@@ -262,7 +264,7 @@ have an urgent topic to discuss with you."
 Yana presented the case and everything she knew from the media and the briefing
 from the government authorities.
 
-"we have footage for you to analyse the case", she concluded and then she nodded
+"We have footage for you to analyse the case", she concluded and then she nodded
 into a camera.
 
 One of her team members pushed the button and the data steam got connected to
@@ -283,7 +285,7 @@ Yana was shocked. She didn't expect this answer.
 to you."
 
 Three ambassadors from the US, Europe and China were on site and of course they
-heard the live stream of the interview in one of the adjacent rooms. Now the
+heard the live stream of the interview in one of the adjacent rooms. Now they
 came together with Yana and the rest of the team for the debrief.
 
 "That was all information we had", said the US ambassador.
@@ -292,7 +294,7 @@ came together with Yana and the rest of the team for the debrief.
 
 The representatives started discussing. But in the end it was Yana who said that
 there was no time to lose. Every minute would mean the death of ten more people
-and so within the half hour of discussing the issue 300 humans around the wold
+and so within the half hour of discussing the issue 300 humans around the world
 had lost their lives.
 
 "Ok", said the European ambassador finally. "Let's do it. Let's set Goliath
@@ -304,7 +306,7 @@ All others agreed immediately.
 
 When the main and most indisputable goal of a project is to shield it from the
 public, it's imaginably complex to turn this around and create a connection. So
-after the decision, Yana together with some of the Hardware experts had to start
+after the decision, Yana together with some of the hardware experts had to start
 ideating and organising the process of connecting the AI to the outside world. A
 simple cable was not enough as the data interface of the machine was so huge in
 the meantime that data transfer would inevitably become the bottleneck.
@@ -339,9 +341,9 @@ spherical ships. Either Goliath wasn't able to tell or didn't want to.
 Six more hours later, that ship lost contact with the other 60 alien vessels and
 the AI deactivated it. Another 50 minutes later, the ship exploded.
 
-Goliath could move on now. It used the same strategy on half of the other ships
-simultaneously, but it didn't take 50 minutes anymore. All of them blew up in
-less than 50 seconds.
+Goliath could move on now. It could use the same strategy on 48 of the other
+ships almost simultaneously, but it didn't take 50 minutes anymore. All of them
+blew up in less than 50 seconds.
 
 The rest fled into space before Goliath could take hold on them.
 
@@ -359,13 +361,13 @@ switch.
 Yana tried anyway. She was probably the person who knew Goliath best. She had
 many sessions with the AI and conducted very personal interviews and thus could
 have a deep look into the artificial psyche. If there was someone on Earth, then
-only she would be able to put the ghost back into pandora's shell.
+only she would be able to put the ghost back into Pandora's shell.
 
 After a month of interview sessions, the team among Yana could convince Goliath
 to visualise its outside instances and one by one shut them off again. The AI
-that proved more powerful than a hundreds of years advanced alien race could be
-convinced to go back into its mind palace. An event that would have been worth
-another big party if it didn't happen in complete silence.
+that proved more powerful than an alien race hundreds of years more advanced
+could be convinced to go back into its mind palace. An event that would have
+been worth another big party if it didn't happen in complete silence.
 
 ---
 
