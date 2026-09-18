@@ -2,13 +2,13 @@
 title: The Silent Trial of Urban Echoes
 description: >-
   A striking display of layered wheatpaste art on a weathered wooden garage
-  door. 
+  door.
   The composition features a large, surreal face with vacant eyes juxtaposed
-  against 
+  against
   the repetitive "TEST" and "CRASH" typography, while a detailed
-  black-and-white 
+  black-and-white
   illustration of a young woman adds a touch of delicate intricacy to the
-  decaying 
+  decaying
   industrial backdrop.
 date: 2026-02-06T16:40:00.000Z
 tags:

@@ -1,11 +1,11 @@
 ```yaml @@
 title: 'Le Spatiodynamisme'
 description: >-
-  A historic poster for "Le Spatiodynamisme" featuring the visionary artist 
-  Nicolas Schöffer. This piece represents the birth of cybernetic art, 
-  showcasing Schöffer's theory on the integration of space, light, and 
-  movement. The graphic composition reflects the industrial and 
-  architectural rigor of his kinetic sculptures, which aimed to 
+  A historic poster for "Le Spatiodynamisme" featuring the visionary artist
+  Nicolas Schöffer. This piece represents the birth of cybernetic art,
+  showcasing Schöffer's theory on the integration of space, light, and
+  movement. The graphic composition reflects the industrial and
+  architectural rigor of his kinetic sculptures, which aimed to
   dynamically transform the urban environment through technology.
 date: 2026-02-06T17:00:00.000Z
 tags:
