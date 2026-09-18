@@ -205,9 +205,9 @@ stuff is waiting for you.
 ## Work on Tasks in Parallel
 
 > **Addendum, August 2026:** the original version of this section recommended
-> git worktrees. I've since taken the opposite position and my setups now
-> forbid agents from creating worktrees entirely. What follows is what I
-> actually do instead.
+> git worktrees. I've since taken the opposite position and my setups now forbid
+> agents from creating worktrees entirely. What follows is what I actually do
+> instead.
 
 Parallelism is worth having. Letting an agent create its own worktree inside the
 project tree to get it is not. Every worktree is a second working directory with

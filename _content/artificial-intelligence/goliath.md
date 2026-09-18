@@ -203,8 +203,8 @@ on the next day.
 
 "The aliens know us" was what everybody had in their heads after that second
 wave. But the follow-up questions were more concerning. What would they do with
-that knowledge? What would they do to us? Are we prey now? Some optimists
-even said that they came to solve all our problems.
+that knowledge? What would they do to us? Are we prey now? Some optimists even
+said that they came to solve all our problems.
 
 But the others were right. Those who said that they would kill us.
 
