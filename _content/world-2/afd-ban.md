@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Banning the Right Wing Party AfD
-description: >-
-  What is the legal framework for banning a party and what would be the
-  consequences for the prliament?
+slug: afd-ban
+description: What is the legal framework for banning a party and what would be
+  the consequences for the prliament?
 date: 2025-05-12T00:00:00.000Z
 colorSpace: tangerine
 tags:
@@ -19,8 +20,6 @@ tags:
 group: world-2
 superTitle: Chat with GPT
 alias: posts/2025/2025-05-12-afd-ban
-slug: afd-ban
-type: post
 image: chat-with-gpt
 ```
 

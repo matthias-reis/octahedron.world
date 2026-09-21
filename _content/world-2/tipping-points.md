@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Tipping Points
+slug: tipping-points
 description: The unexpected acceleration of catastrophic climate effects
 date: 2024-09-24T00:00:00.000Z
 colorSpace: lemon
@@ -11,8 +13,6 @@ tags:
 group: world-2
 superTitle: Climate News
 alias: posts/2024/2024-09-24-tipping-points
-slug: tipping-points
-type: post
 image: climate-news
 ```
 

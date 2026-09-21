@@ -1,12 +1,12 @@
 ```yaml @@
+type: legal
 title: Datenschutzerklärung
+slug: datenschutz
+ref: privacy
 superTitle: Datenschutzerklärung
 group: general
-slug: datenschutz
 image: _home
-type: legal
 language: de
-ref: privacy
 ```
 
 # 1. Datenschutz auf einen Blick

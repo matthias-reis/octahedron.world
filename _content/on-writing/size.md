@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Alien Size
+slug: size
 date: 2024-07-30T00:00:00.000Z
 description: Tiny aliens, tiny spaceships. What if aliens are small?
 tags:
@@ -11,8 +13,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2024/2024-07-30-size
-slug: size
-type: post
 image: tropes
 ```
 

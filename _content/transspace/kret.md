@@ -1,9 +1,10 @@
 ```yaml @@
+type: report
 superTitle: Worldbuilding
 title: The Kret
-description: >-
-  Nerdy fiction experiments from my youth, part one. An alien race to discover
-  more about our own species.
+slug: kret
+description: Nerdy fiction experiments from my youth, part one. An alien race to
+  discover more about our own species.
 colorSpace: tangerine
 startDate: 2022-05-02T00:00:00.000Z
 date: 2022-10-30T00:00:00.000Z
@@ -20,8 +21,6 @@ tags:
   - Storyline
 group: transspace
 alias: storylines/kret
-slug: kret
-type: report
 image: kret
 ```
 

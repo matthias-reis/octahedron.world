@@ -1,12 +1,12 @@
 ```yaml @@
+type: storyline
 superTitle: Kindergeschichte
 title: Asimov - Planet der Roboter
-description: >-
-  Ein Roboter von einem fremden Planeten stellt Kontakt zu einem Jungen auf der
-  Erde her und fragt ihn nach Hilfe zu einem delikaten Problem.
-colorSpace: wood
-language: de
+slug: asimov-planet-der-roboter
 ref: asimov-robot-planet
+description: Ein Roboter von einem fremden Planeten stellt Kontakt zu einem
+  Jungen auf der Erde her und fragt ihn nach Hilfe zu einem delikaten Problem.
+colorSpace: wood
 image: asimov
 startDate: 2022-12-25T00:00:00.000Z
 date: 2023-12-11T00:00:00.000Z
@@ -16,8 +16,7 @@ related:
   - the-guillorys-de
 group: asimov
 alias: storylines/asimov-de
-slug: asimov-planet-der-roboter
-type: storyline
+language: de
 ```
 
 Vor etwa einem Monat wurde Peter elf. Es war ein fantastischer Tag. Er bekam

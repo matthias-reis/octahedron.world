@@ -1,12 +1,12 @@
 ```yaml @@
+type: storyline
 superTitle: Children's Story
 title: Kamina and the Water Spirits
-description: >-
-  Just like Alice, the little Kamina is drawn into a rabbit hole and experiences
-  a fantastic adventure ... under water.
-colorSpace: carmine
-language: en
+slug: kamina-and-the-water-spirits
 ref: kamina-und-die-wassergeister
+description: Just like Alice, the little Kamina is drawn into a rabbit hole and
+  experiences a fantastic adventure ... under water.
+colorSpace: carmine
 startDate: 2019-10-15T00:00:00.000Z
 date: 2023-11-01T00:00:00.000Z
 related:
@@ -22,9 +22,8 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-1
-slug: kamina-and-the-water-spirits
-type: storyline
 image: kamina-1
+language: en
 ```
 
 Kamina ran as fast as she could. She was angry because she once again argued

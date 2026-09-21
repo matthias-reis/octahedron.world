@@ -1,12 +1,11 @@
 ```yaml @@
-title: Octahedron World
-description: >-
-  My playground, my laboratory and the output of the more phantastic and
-  creative areas of my brain. But isn't coding also a creative process? Let's
-  dive into it.
-slug: posts/octahedron-world
-group: posts
 type: article
+title: Octahedron World
+slug: posts/octahedron-world
+description: My playground, my laboratory and the output of the more phantastic
+  and creative areas of my brain. But isn't coding also a creative process?
+  Let's dive into it.
+group: posts
 date: 2026-03-27T00:00:00.000Z
 image: octahedron-world
 ```

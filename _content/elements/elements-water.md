@@ -1,8 +1,9 @@
 ```yaml @@
+type: storyline
 superTitle: Elements, Part 2
 title: Water
-description: >-
-  The journey continues with a boat trip and a visit of the dystopian
+slug: elements-water
+description: The journey continues with a boat trip and a visit of the dystopian
   catastrophe site.
 colorSpace: sky
 startDate: 2022-09-20T00:00:00.000Z
@@ -24,8 +25,6 @@ related:
   - storylines/elements-earth
 group: elements
 alias: storylines/elements-water
-slug: elements-water
-type: storyline
 image: elements-water
 ```
 

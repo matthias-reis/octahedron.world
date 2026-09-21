@@ -1,16 +1,16 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: The Fourth Wave
-description: >-
-  A tribe of human civilisation, the Procyonites, embarks on a journey to
-  colonize a new star system, facing the challenges of space travel and social
-  development. Pioneering the galaxy. Paving the way for 15,000 more waves to
-  come.
+slug: the-fourth-wave-shortstory
+ref: die-vierte-welle
+description: A tribe of human civilisation, the Procyonites, embarks on a
+  journey to colonize a new star system, facing the challenges of space travel
+  and social development. Pioneering the galaxy. Paving the way for 15,000 more
+  waves to come.
 colorSpace: carmine
 startDate: 2017-08-01T00:00:00.000Z
 date: 2018-04-04T00:00:00.000Z
-language: en
-ref: die-vierte-welle
 related:
   - fermis-paradox
 tags:
@@ -20,9 +20,8 @@ tags:
   - Colonization
   - Sociology
 group: the-fourth-wave
-slug: the-fourth-wave-shortstory
-type: storyline
 image: the-fourth-wave
+language: en
 ```
 
 It appeared on every news channel in the morning. The ships were ready—an

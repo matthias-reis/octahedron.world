@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Intro to Transspace Tales
-description:
-  More anecdotes, this time about transspace, my concept for space operas
+slug: intro-transspace-tales
+description: More anecdotes, this time about transspace, my concept for space operas
 date: 2023-12-21T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -12,8 +13,6 @@ tags:
 group: transspace
 superTitle: Transspace Tales
 alias: posts/2023/2023-12-21-intro-transspace-tales
-slug: intro-transspace-tales
-type: post
 image: transspace-tales
 hidden: true
 ```

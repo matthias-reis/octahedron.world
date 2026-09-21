@@ -1,8 +1,9 @@
 ```yaml @@
+type: album
 title: Photography
-description: >-
-  Real world photos here. Favourite images taken with my Sony Alpha, my old
-  Nikon or my phone. Latest twist: IR photography.
+slug: photography
+description: "Real world photos here. Favourite images taken with my Sony Alpha,
+  my old Nikon or my phone. Latest twist: IR photography."
 date: 2025-05-01T00:00:00.000Z
 colorSpace: petrol
 tags:
@@ -13,8 +14,6 @@ tags:
   - Infrared
 group: photography
 root: true
-slug: photography
-type: album
 image: photography
 weight: 3
 ```

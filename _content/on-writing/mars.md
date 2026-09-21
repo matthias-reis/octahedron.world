@@ -1,9 +1,10 @@
 ```yaml @@
+type: post
 title: Mars
+slug: mars
 date: 2023-09-22T00:00:00.000Z
-description: >-
-  Our neighbour planet Mars is always worth a visit, at least for our sci-fi
-  writers.
+description: Our neighbour planet Mars is always worth a visit, at least for our
+  sci-fi writers.
 tags:
   - Archetypes
   - Tropes
@@ -13,8 +14,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-09-22-mars
-slug: mars
-type: post
 image: tropes
 ```
 

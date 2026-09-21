@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Cashel
+slug: cashel
 description: A rock, a cathedral and a hermetic brotherhood
 date: 2026-03-23T00:00:00.000Z
 colorSpace: cyan
@@ -15,8 +17,6 @@ tags:
   - Urban Fantasy
 group: hermetics
 superTitle: Hermetics Tales
-slug: cashel
-type: post
 image: cashel
 ```
 

@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Banking
-description: >-
-  Algorithms rule investment for decades already, so where's the place for human
-  brain?
+slug: banking
+description: Algorithms rule investment for decades already, so where's the
+  place for human brain?
 date: 2022-11-21T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -11,8 +12,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-11-21-banking
-slug: banking
-type: post
 image: ai-jobs
 ```
 

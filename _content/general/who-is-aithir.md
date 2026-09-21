@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Who is Aithir?
+slug: who-is-aithir
 description: Where does my alias come from?
 date: 2022-04-27T00:00:00.000Z
 tags:
@@ -12,8 +14,6 @@ tags:
 group: general
 superTitle: General
 alias: posts/2022/2022-04-27-who-is-aithir
-slug: who-is-aithir
-type: post
 image: general
 ```
 

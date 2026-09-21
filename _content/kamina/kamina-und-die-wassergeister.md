@@ -1,12 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Kindergeschichte
 title: Kamina und die Wassergeister
-description: >-
-  Genau wie Alice, wird die kleine Kamina in einen Kaninchenbau gezogen und
-  findet sich in einem fantastischen Abenteuer wieder ... unter Wasser.
-colorSpace: carmine
-language: de
+slug: kamina-und-die-wassergeister
 ref: kamina-and-the-water-spirits
+description: Genau wie Alice, wird die kleine Kamina in einen Kaninchenbau
+  gezogen und findet sich in einem fantastischen Abenteuer wieder ... unter
+  Wasser.
+colorSpace: carmine
 image: kamina-1
 startDate: 2019-10-15T00:00:00.000Z
 date: 2023-11-01T00:00:00.000Z
@@ -21,8 +22,7 @@ tags:
   - For Children
 group: kamina
 alias: storylines/kamina-1-de
-slug: kamina-und-die-wassergeister
-type: storyline
+language: de
 ```
 
 Kamina rannte, so schnell sie konnte. Sie war wütend, weil sie sich mal wieder

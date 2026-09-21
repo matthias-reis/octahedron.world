@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: SciFi & Fantasy - A Journey
+slug: scifi-fantasy-tropes
 date: 2023-05-18T00:00:00.000Z
 description: From typical characters to shared topics and tropes.
 tags:
@@ -11,8 +13,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-05-18-scifi-fantasy-tropes
-slug: scifi-fantasy-tropes
-type: post
 image: tropes
 hidden: true
 ```

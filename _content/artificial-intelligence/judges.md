@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Judges
-description:
-  Objectivity. A goal that notoriously biased humans may never achieve.
+slug: judges
+description: Objectivity. A goal that notoriously biased humans may never achieve.
 date: 2023-04-11T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -12,8 +13,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2023/2023-04-11-judges
-slug: judges
-type: post
 image: ai-jobs
 ```
 

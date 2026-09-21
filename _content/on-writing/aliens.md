@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Aliens
+slug: aliens
 date: 2023-05-30T00:00:00.000Z
-description:
-  Extra terrestrial intelligent species are at the heart of many sci-fi stories.
+description: Extra terrestrial intelligent species are at the heart of many sci-fi stories.
 tags:
   - Archetypes
   - Tropes
@@ -12,8 +13,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-05-30-aliens
-slug: aliens
-type: post
 image: tropes
 ```
 

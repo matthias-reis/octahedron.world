@@ -1,10 +1,11 @@
 ```yaml @@
+type: digest
 title: PCSC
-description: >-
-  PCSC is the chapter that contains real time data from my music collection and
-  a contest for a small group of people to vote for songs. It's a very personal
-  project.
-start: 2018-08-01T00:00:00.000Z
+slug: pcsc
+description: PCSC is the chapter that contains real time data from my music
+  collection and a contest for a small group of people to vote for songs. It's a
+  very personal project.
+startDate: 2018-08-01T00:00:00.000Z
 tags:
   - Music
   - Song Contest
@@ -12,8 +13,6 @@ tags:
   - Videos
 group: pcsc
 colorSpace: wood
-slug: pcsc
-type: digest
 image: pcsc
 root: true
 weight: 0

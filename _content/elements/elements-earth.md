@@ -1,6 +1,8 @@
 ```yaml @@
+type: storyline
 superTitle: Elements, Part 1
 title: Earth
+slug: elements-earth
 description: The start of a dystopian journey to hell and elysium and back.
 colorSpace: lemon
 startDate: 2022-09-20T00:00:00.000Z
@@ -21,8 +23,6 @@ related:
   - storylines/elements-water
 group: elements
 alias: storylines/elements-earth
-slug: elements-earth
-type: storyline
 image: elements-earth
 ```
 

@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Types of SciFi
+slug: types-of-scifi
 date: 2023-08-01T00:00:00.000Z
 description: How do the different types of science fiction work?
 tags:
@@ -10,8 +12,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-08-01-types-of-scifi
-slug: types-of-scifi
-type: post
 image: tropes
 ```
 

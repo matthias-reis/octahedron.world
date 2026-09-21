@@ -1,14 +1,14 @@
 ```yaml @@
+type: storyline
 superTitle: Children's Story
 title: Asimov - Robot Planet
-description: >-
-  A robot from another planet is making contact with a boy on earth and asking
-  for his help.
-colorSpace: wood
-language: en
+slug: asimov-robot-planet
 ref: asimov-planet-der-roboter
-start: 2022-12-25T00:00:00.000Z
-end: 2023-12-11T00:00:00.000Z
+description: A robot from another planet is making contact with a boy on earth
+  and asking for his help.
+colorSpace: wood
+startDate: 2022-12-25T00:00:00.000Z
+date: 2023-12-11T00:00:00.000Z
 related:
   - kamina-and-the-water-spirits
   - kamina-and-the-dragonfly-ship
@@ -21,9 +21,8 @@ tags:
   - Storyline
 group: asimov
 alias: storylines/asimov
-slug: asimov-robot-planet
-type: storyline
 image: asimov
+language: en
 ```
 
 About a month ago Peter turned eleven. It was an amazing day. He got a lot of

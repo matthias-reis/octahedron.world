@@ -1,11 +1,13 @@
 ```yaml @@
+type: world2
 superTitle: World 2
 title: Traffic & Transport
+slug: world-2-traffic
 subTitle: Part Three of the Series About the Climate Crisis
-description: >-
-  What are the biggest problems of our time and how do we overcome them? World 2
-  is a deep dive into the climate crisis. Part number three focuses on traffic,
-  transport, travel and their effects on climate and wellness.
+description: What are the biggest problems of our time and how do we overcome
+  them? World 2 is a deep dive into the climate crisis. Part number three
+  focuses on traffic, transport, travel and their effects on climate and
+  wellness.
 colorSpace: tangerine
 startDate: 2022-08-09T00:00:00.000Z
 date: 2023-11-06T00:00:00.000Z
@@ -21,8 +23,6 @@ tags:
   - Essay
 group: world-2
 alias: storylines/traffic
-slug: world-2-traffic
-type: world2
 image: traffic
 ```
 

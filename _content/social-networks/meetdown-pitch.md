@@ -1,8 +1,9 @@
 ```yaml @@
+type: report
 title: Meetdown - A Pitch
-description: >-
-  Somethig seems to be missing in the landscape of social networks. So why don't
-  we try to build it?
+slug: meetdown-pitch
+description: Somethig seems to be missing in the landscape of social networks.
+  So why don't we try to build it?
 date: 2025-09-08T00:00:00.000Z
 colorSpace: tangerine
 tags:
@@ -17,8 +18,6 @@ tags:
 group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-09-08-meetdown-pitch
-slug: meetdown-pitch
-type: report
 image: social-networks
 ```
 

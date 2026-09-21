@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Big City Life
+slug: big-city-life
 description: Urban versus rural areas for the environment
 date: 2024-08-22T00:00:00.000Z
 colorSpace: lemon
@@ -13,8 +15,6 @@ tags:
 group: world-2
 superTitle: Climate News
 alias: posts/2024/2024-08-22-big-city-life
-slug: big-city-life
-type: post
 image: climate-news
 ```
 

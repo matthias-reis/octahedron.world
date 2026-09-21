@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Hermetics Tales
+slug: intro-hermetics-tales
 description: Anecdotes and rumors from the world of magic.
 date: 2024-02-08T00:00:00.000Z
 colorSpace: cyan
@@ -12,8 +14,6 @@ tags:
 group: hermetics
 superTitle: Hermetics Tales
 alias: posts/2024/2024-02-08-intro-hermetics-tales
-slug: intro-hermetics-tales
-type: post
 image: hermetics-tales
 hidden: true
 ```

@@ -1,10 +1,11 @@
 ```yaml @@
+type: lightbox
 title: Metal Album Cover Proposal
-description: >-
-  A solitary wooden post stands like a silent sentinel in a misty field under a
-  turbulent - cloud‑laden sky. The wide‑open landscape and muted tones evoke the
-  raw intensity of an Amenra album cover - conjuring themes of solitude and
-  existential longing. (Hamburg, Boberger Dünen)
+slug: amenra
+description: A solitary wooden post stands like a silent sentinel in a misty
+  field under a turbulent - cloud‑laden sky. The wide‑open landscape and muted
+  tones evoke the raw intensity of an Amenra album cover - conjuring themes of
+  solitude and existential longing. (Hamburg, Boberger Dünen)
 date: 2025-04-21T00:00:00.000Z
 tags:
   - nature
@@ -28,8 +29,6 @@ tags:
 group: photography
 superTitle: Photography
 alias: images/2025/2025-04-21-amenra
-slug: amenra
-type: lightbox
 image: amenra
 colorSpace: lemon
 ```

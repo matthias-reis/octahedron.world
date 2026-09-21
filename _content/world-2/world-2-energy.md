@@ -1,11 +1,12 @@
 ```yaml @@
+type: world2
 superTitle: World 2
 title: Energy & Dimensions
+slug: world-2-energy
 subTitle: Part One of the Series About the Climate Crisis
-description: >-
-  What are the biggest problems of our time and how do we overcome them? World 2
-  is a deep dive into the climate crisis. This first storyline focuses on the
-  complex problems around energy creation and consumption.
+description: What are the biggest problems of our time and how do we overcome
+  them? World 2 is a deep dive into the climate crisis. This first storyline
+  focuses on the complex problems around energy creation and consumption.
 colorSpace: lemon
 startDate: 2022-08-01T00:00:00.000Z
 date: 2023-04-04T00:00:00.000Z
@@ -20,8 +21,6 @@ tags:
   - Storyline
 group: world-2
 alias: storylines/world-2
-slug: world-2-energy
-type: world2
 image: world-2-energy
 ```
 

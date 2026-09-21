@@ -1,11 +1,12 @@
 ```yaml @@
+type: digest
 superTitle: Worldbuilding
 title: Hermetics
-description: >-
-  My take on the fantasy genre. We are in a classical magic theme and move
-  between the sub-genres of dark academia and urban fantasy. The story focuses
-  on secret societies of magicians in a modern world setting.
-start: 2018-08-01T00:00:00.000Z
+slug: hermetics
+description: My take on the fantasy genre. We are in a classical magic theme and
+  move between the sub-genres of dark academia and urban fantasy. The story
+  focuses on secret societies of magicians in a modern world setting.
+startDate: 2018-08-01T00:00:00.000Z
 tags:
   - Fantasy
   - Magic
@@ -15,8 +16,6 @@ tags:
   - Dark Academia
 group: hermetics
 alias: storylines/hermetics
-slug: hermetics
-type: digest
 image: hermetics
 root: true
 weight: 3
