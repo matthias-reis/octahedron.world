@@ -177,7 +177,7 @@ export const ImageMapMultiQuest: QuestVariant<
 
       <Show when={isFinished()}>
         <img
-          src={`/img/${config().image}/l.jpg`}
+          src={largeImageUrl(config().image)}
           alt="Quest image"
           class="max-w-sm mx-auto mb-6"
         />
