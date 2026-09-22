@@ -4,10 +4,12 @@
  * Octahedron's prose overrides — everything the shared map in `~/ui/prose`
  * cannot express through semantic tokens: this site's decent-chroma heading
  * colour, its numeric spacing scale, the pure-white `strong`, and the image
- * source rewriting for the `imagine` asset pipeline.
+ * source rewriting for the editorial asset bucket.
  *
  * Spread on top of `proseComponents`; see `canonical-components.tsx`.
  */
+import { largeImageUrl } from "~/components/image-helpers";
+
 export const Typography = {
   h1: (props: any) => (
     <h3 class="text-4xl text-cad2 font-octa font-bold mt-7 mb-6" {...props} />
@@ -32,7 +34,7 @@ export const Typography = {
     <img
       class="my-6 mx-auto rounded-lg shadow-md select-none"
       src={
-        props.src?.startsWith("http") ? props.src : `/img/${props.src}/l.jpg`
+        props.src?.startsWith("http") ? props.src : largeImageUrl(props.src)
       }
       alt={props.alt}
       draggable={false}
