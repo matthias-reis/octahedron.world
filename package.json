@@ -11,6 +11,7 @@
     "content": "tsx ./scripts/content.ts",
     "watch:content": "tsx ./scripts/watch-content.ts",
     "ms-image": "tsx ./scripts/microsite-image.ts",
+    "seiten-link": "tsx ./scripts/seiten-link.ts",
     "format": "biome format --write .",
     "lint": "biome lint --write .",
     "check": "biome check --write .",

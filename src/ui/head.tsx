@@ -11,6 +11,23 @@ type IconLink = { rel: string; href: string; sizes?: string; type?: string };
  * under `public/icons/`. Octahedron's legacy root-level files stay where they
  * are for anything still linking to them directly.
  */
+const mreisIcons: IconLink[] = [
+  { rel: "icon", href: "/icons/mreis/favicon.ico", sizes: "any" },
+  { rel: "icon", href: "/icons/mreis/favicon.svg", type: "image/svg+xml" },
+  {
+    rel: "icon",
+    href: "/icons/mreis/favicon-96x96.png",
+    type: "image/png",
+    sizes: "96x96",
+  },
+  {
+    rel: "apple-touch-icon",
+    href: "/icons/mreis/apple-touch-icon.png",
+    sizes: "180x180",
+  },
+  { rel: "manifest", href: "/icons/mreis/site.webmanifest" },
+];
+
 const icons: Record<Site, IconLink[]> = {
   octahedron: [
     { rel: "icon", href: "/icons/octahedron/favicon.ico", sizes: "any" },
@@ -27,22 +44,8 @@ const icons: Record<Site, IconLink[]> = {
     },
     { rel: "manifest", href: "/icons/octahedron/site.webmanifest" },
   ],
-  mreis: [
-    { rel: "icon", href: "/icons/mreis/favicon.ico", sizes: "any" },
-    { rel: "icon", href: "/icons/mreis/favicon.svg", type: "image/svg+xml" },
-    {
-      rel: "icon",
-      href: "/icons/mreis/favicon-96x96.png",
-      type: "image/png",
-      sizes: "96x96",
-    },
-    {
-      rel: "apple-touch-icon",
-      href: "/icons/mreis/apple-touch-icon.png",
-      sizes: "180x180",
-    },
-    { rel: "manifest", href: "/icons/mreis/site.webmanifest" },
-  ],
+  mreis: mreisIcons,
+  seiten: mreisIcons,
 };
 
 /**

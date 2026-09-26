@@ -81,6 +81,8 @@ function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
  */
 export default function MicrositeRenderer(props: {
   mds: HastParseResult;
+  /** The `?k=` code that opened the page, carried into asset URLs. */
+  accessCode?: string;
 }): JSX.Element {
   const parsed = transform<MicrositeGlobal, MicrositeLocal>(
     props.mds as HastParseResult<MicrositeGlobal, MicrositeLocal>,
@@ -97,7 +99,8 @@ export default function MicrositeRenderer(props: {
   const slug = global?.slug ?? "";
   const ogTitle = global?.og?.title ?? global?.title ?? brand.name;
   const ogDescription = global?.og?.description ?? global?.description;
-  const ogImage = global?.og?.image && assetUrl(slug, global.og.image);
+  const code = props.accessCode;
+  const ogImage = global?.og?.image && assetUrl(slug, global.og.image, code);
   const sections = Object.values(parsed.steps);
   const quickbar = (global?.quickbar ?? []).filter((l) => isIconName(l.icon));
   const nav: NavItem[] = sections.flatMap((s) =>
@@ -127,7 +130,13 @@ export default function MicrositeRenderer(props: {
         property="og:locale"
         content={global?.language === "en" ? "en_US" : "de_DE"}
       />
-      <Meta property="og:url" content={absoluteUrl(`/${slug}`)} />
+      {/* With the code: Facebook/LinkedIn re-fetch og:url for the preview. */}
+      <Meta
+        property="og:url"
+        content={absoluteUrl(
+          `/${slug}${code ? `?k=${encodeURIComponent(code)}` : ""}`,
+        )}
+      />
       <Meta property="og:title" content={ogTitle} />
       <Show when={ogDescription}>
         {(d) => <Meta property="og:description" content={d()} />}
@@ -143,7 +152,7 @@ export default function MicrositeRenderer(props: {
         )}
       </Show>
 
-      <PageContext.Provider value={{ slug }}>
+      <PageContext.Provider value={{ slug, code }}>
         <Show when={global?.notice}>
           {(notice) => (
             <NoticeBar text={notice().text} short={notice().short} />

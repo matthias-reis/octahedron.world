@@ -25,6 +25,9 @@ ENV LOGS_DIR=/app/logs
 COPY --from=build /app/.output ./
 # Generated data files
 COPY --from=build /app/data.json /app/routes.json /app/redirects.json ./
+# seiten.mreis.me images — served by the access-checked /asset route, never
+# part of the public build
+COPY --from=build /app/_content/seiten ./_content/seiten
 # Compiled log analysis script
 COPY --from=build /app/scripts/analyze-logs.js ./scripts/analyze-logs.js
 

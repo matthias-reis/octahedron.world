@@ -2,6 +2,7 @@ import { createAsync } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
 import { type Component, createEffect, lazy, Show } from "solid-js";
 import { getRoute } from "~/model/model";
+import { LockedPage } from "~/sites/seiten/locked";
 import { setColorSpace } from "~/store/color-space";
 
 // biome-ignore lint/suspicious/noExplicitAny: renderers take differently typed MDS props
@@ -22,7 +23,7 @@ const renderers: Record<string, Component<any>> = {
   default: clientOnly(() => import("~/renderers/default")),
   // mreis.me's long-form renderer — token-driven, no octahedron palette.
   article: clientOnly(() => import("~/sites/mreis/renderers/article")),
-  // Microsites (mreis.me/p/*) are server-rendered: first paint is the page.
+  // Microsites (seiten.mreis.me) are server-rendered: first paint is the page.
   microsite: lazy(() => import("~/renderers/microsite")),
 };
 
@@ -42,6 +43,10 @@ export const MdsTemplate = ({ route }: { route: string }) => {
   return (
     <Show when={item()}>
       {(data) => {
+        if (data().locked) {
+          return <LockedPage slug={data().slug} reason={data().lockReason} />;
+        }
+
         const type = data().type;
         const mds = data().mds;
         const Renderer = type ? renderers[type] : undefined;
@@ -55,7 +60,7 @@ export const MdsTemplate = ({ route }: { route: string }) => {
           );
         }
 
-        return <Renderer mds={mds} />;
+        return <Renderer mds={mds} accessCode={data().accessCode} />;
       }}
     </Show>
   );

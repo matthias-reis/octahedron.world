@@ -37,10 +37,10 @@ const Logo: Component<{ brand: Brand }> = (props) => {
   const logo = usePageAsset(() => props.brand.logo);
   return (
     // Demo navigation: every wordmark leads back to the overview of all
-    // microsites at /p.
+    // microsites (the seiten homepage; for clients it only offers a login).
     <a
-      href="/p"
-      title="Alle Microsites"
+      href="/"
+      title="Alle Seiten"
       class="flex flex-col shrink-0 min-w-0 font-ms-display text-copy-strong"
     >
       <Show

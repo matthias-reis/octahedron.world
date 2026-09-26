@@ -1,6 +1,6 @@
 ```yaml @@
-slug: p/002-elektro-schuster
-group: p
+slug: 002-elektro-schuster
+group: seiten
 title: Elektro Schuster – Elektriker in Herne
 type: microsite
 language: de

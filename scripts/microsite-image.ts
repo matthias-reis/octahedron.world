@@ -4,15 +4,15 @@ import sharp from "sharp";
 
 /**
  * Turns a source image into a microsite's optimised assets, next to the page:
- * `_content/mreis/p/<page>/`.
+ * `_content/seiten/<page>/`.
  *
  *   pnpm ms-image <input> <page> <name>          → <name>.webp (≤1600w) + <name>-800.webp
  *   pnpm ms-image <input> <page> <name> --wide   → <name>.webp (≤2400w) + <name>-800.webp (1200w), for full-bleed backdrops
  *   pnpm ms-image <input> <page> <name> --logo   → <name>.webp (≤480w, alpha kept)
  *   pnpm ms-image <input> <page> og --og         → og.jpg (1200×630, cropped)
  *
- * The renderer picks the files up through `import.meta.glob` (see
- * src/renderers/microsite/assets.ts), so they ship fingerprinted.
+ * They are served through the access-checked /asset route (see
+ * src/routes/asset/), never from the public build.
  */
 
 const [input, page, name, ...flags] = process.argv.slice(2);
@@ -28,13 +28,13 @@ const positionFlag = flags.indexOf("--position");
 const position =
   positionFlag >= 0 ? (flags[positionFlag + 1] ?? "attention") : "attention";
 
-const dir = join(process.cwd(), "_content", "mreis", "p", page);
+const dir = join(process.cwd(), "_content", "seiten", page);
 mkdirSync(dir, { recursive: true });
 
 function report(file: string) {
   const kb = (statSync(file).size / 1024).toFixed(0);
   console.log(
-    `[IMG] ${join("_content/mreis/p", page, basename(file))} ${kb} kB`,
+    `[IMG] ${join("_content/seiten", page, basename(file))} ${kb} kB`,
   );
 }
 

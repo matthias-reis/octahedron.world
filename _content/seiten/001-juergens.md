@@ -1,6 +1,6 @@
 ```yaml @@
-slug: p/001-juergens
-group: p
+slug: 001-juergens
+group: seiten
 title: Jürgens – Heizung, Sanitär, Elektro in Großefehn
 type: microsite
 language: de

@@ -9,6 +9,7 @@ import { sortRootItems } from "~/model/helpers";
 import { getAllPosts, getAllRootRoutes } from "~/model/model";
 import { getSite } from "~/site/context";
 import MreisHome from "~/sites/mreis/pages/home";
+import SeitenHome from "~/sites/seiten/pages/home";
 
 /** Tuned by eye: enough entries that the timeline column reaches — but does not
     overshoot — the bottom of the three-column world grid next to it. */
@@ -17,6 +18,9 @@ const TIMELINE_LENGTH = 30;
 export default function HomePage() {
   if (getSite() === "mreis") {
     return <MreisHome />;
+  }
+  if (getSite() === "seiten") {
+    return <SeitenHome />;
   }
 
   const getItems = createAsyncStore(() => getAllRootRoutes());

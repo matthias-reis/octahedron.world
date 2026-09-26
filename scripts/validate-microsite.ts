@@ -38,12 +38,14 @@ export function validateMicrosite(
 ): string[] {
   const problems: string[] = [];
   const slug = String(global.slug ?? "");
-  const dir = join(process.cwd(), "_content", "mreis", slug);
+  const dir = join(process.cwd(), "_content", "seiten", slug);
   const exists = (file: unknown) =>
     typeof file === "string" && existsSync(join(dir, file));
 
-  if (!slug.startsWith("p/")) {
-    problems.push(`slug must start with "p/", got "${slug}"`);
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    problems.push(
+      `slug must be one lowercase segment (a-z, 0-9, -), got "${slug}"`,
+    );
   }
 
   // --- sharing card ---

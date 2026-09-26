@@ -38,6 +38,16 @@ const configs: Record<Site, SiteConfig> = {
     defaultImage: "/reference/matze.jpg",
     resolveImage: (image) => image,
   },
+  // Microsites set their own title and meta; this only covers the overview
+  // and login pages.
+  seiten: {
+    titleSuffix: " – Seiten",
+    defaultTitle: "Konzeptvorschauen",
+    brandTitle: "Seiten",
+    defaultDescription: "Konzeptvorschauen von Matthias Reis.",
+    defaultImage: "/reference/matze.jpg",
+    resolveImage: (image) => image,
+  },
 };
 
 export function getSiteConfig(site: Site = getSite()): SiteConfig {
