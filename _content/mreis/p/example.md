@@ -1,104 +1,103 @@
 ```yaml @@
 slug: p/example
 group: p
-title: Fern & Flour
+title: Fern & Flour – Bäckerei in Leipzig-Plagwitz
 type: microsite
-description: Neighbourhood bakery in Leipzig-Plagwitz. Sourdough, pastries and coffee, baked every morning since 2014.
+language: de
+description: Bäckerei in Leipzig-Plagwitz. Sauerteigbrot, Gebäck und Kaffee, jeden Morgen frisch gebacken, seit 2014.
+og:
+  title: Fern & Flour – Brot, das sich Zeit nimmt
+  image: og.jpg
 brand:
   name: Fern & Flour
   mark: F&F
-  tagline: Neighbourhood bakery since 2014
+  tagline: Bäckerei in Plagwitz seit 2014
 theme:
-  hue: 55
-  accentHue: 150
-  neutralHue: 60
-  chroma: 0.13
-  neutralChroma: 0.014
-  radius: 1
+  hue: 30
+  radius: 0.5
   fonts: editorial
 legal:
-  - Imprint
-  - Privacy
+  - Impressum
+  - Datenschutz
 ```
 
 +++hero
 
 ```yaml @
-variant: tint
 layout: hero
 ```
 
-# Bread that takes its time.
+# Brot, das sich Zeit nimmt
 
-Sourdough, pastries and good coffee from a small bakery in Plagwitz. Everything
-is baked every morning on site, from flour we know by name.
-
-```yaml cta
-primary: { text: Visit us, url: "#contact" }
-secondary: { text: What we bake, url: "#offer" }
-```
-
-+++offer
-
-```yaml @
-nav: What we bake
-```
-
-## What we bake
-
-A short list, done properly. The range changes with the seasons, the sourdough
-never does.
-
-```yaml cards
-items:
-  - icon: leaf
-    title: Sourdough loaves
-    text: Rye, spelt and our country loaf, fermented for 36 hours.
-  - icon: sun
-    title: Morning pastries
-    text: Croissants, cardamom buns and the daily danish.
-  - icon: coffee
-    title: Coffee bar
-    text: Filter and espresso from a roaster two streets away.
-  - icon: heart
-    title: Cakes to order
-    text: Birthday, wedding or just because. Two days' notice.
-  - icon: users
-    title: Baking classes
-    text: Saturday mornings, six people, one starter to take home.
-  - icon: truck
-    title: Wholesale
-    text: Bread for cafés and restaurants in the west of Leipzig.
-```
-
-+++about
-
-```yaml @
-nav: About
-variant: inverted
-```
-
-## Flour, water, salt and patience.
-
-We started in 2014 with one oven and a sourdough starter that is older than
-the shop. Today eight people bake, sell and pour coffee here. The recipes have
-changed less than the team.
+Sauerteig, Gebäck und guter Kaffee aus einer kleinen Bäckerei in Plagwitz.
+Alles wird jeden Morgen vor Ort gebacken, aus Mehl, dessen Mühle wir kennen.
 
 ```yaml cta
-primary: { text: Join a class, url: "#contact" }
+primary: { text: So findest du uns, url: "#kontakt" }
+secondary: { text: Unser Sortiment, url: "#sortiment" }
 ```
 
-+++contact
++++sortiment
 
 ```yaml @
-nav: Contact
+nav: Sortiment
 variant: surface
 ```
 
-## Come by.
+## Was wir backen
 
-Fresh bread from 7 in the morning. Orders for cakes and wholesale by phone or
-email.
+Eine kurze Liste, dafür ordentlich gemacht. Das Sortiment wechselt mit den
+Jahreszeiten, der Sauerteig bleibt.
+
+```yaml cards
+items:
+  - icon: wheat
+    title: Sauerteigbrote
+    text: Roggen, Dinkel und unser Landbrot, 36 Stunden geführt.
+  - icon: croissant
+    title: Frühstücksgebäck
+    text: Croissants, Kardamomschnecken und das Plunderstück des Tages.
+  - icon: coffee
+    title: Kaffeebar
+    text: Filterkaffee und Espresso von einer Rösterei zwei Straßen weiter.
+  - icon: cake-slice
+    title: Torten auf Bestellung
+    text: Geburtstag, Hochzeit oder einfach so. Zwei Tage Vorlauf.
+  - icon: users
+    title: Backkurse
+    text: Samstagvormittag, sechs Leute, ein Sauerteigansatz zum Mitnehmen.
+  - icon: truck
+    title: Für die Gastronomie
+    text: Brot für Cafés und Restaurants im Leipziger Westen.
+```
+
++++ueber-uns
+
+```yaml @
+nav: Über uns
+variant: inverted
+```
+
+## Mehl, Wasser, Salz und Geduld
+
+2014 haben wir mit einem Ofen angefangen und mit einem Sauerteig, der älter
+ist als der Laden. Heute backen, verkaufen und brühen hier acht Leute. Die
+Rezepte haben sich weniger verändert als das Team.
+
+```yaml cta
+primary: { text: Backkurs buchen, url: "#kontakt" }
+```
+
++++kontakt
+
+```yaml @
+nav: Kontakt
+```
+
+## Komm vorbei
+
+Frisches Brot gibt es ab 7 Uhr. Torten und Bestellungen für die Gastronomie
+nehmen wir telefonisch oder per Mail an.
 
 ```yaml contact
 name: Fern & Flour
@@ -106,22 +105,23 @@ address:
   - Karl-Heine-Straße 42
   - 04229 Leipzig
 phone: +49 341 1234567
-email: hello@fern-and-flour.example
+email: hallo@fern-and-flour.example
 hours:
-  - Tue–Fri 7:00–18:00
-  - Sat 7:00–14:00
+  - Di–Fr 7:00–18:00
+  - Sa 7:00–14:00
 ```
 
 +++palette
 
 ```yaml @
-variant: plain
+variant: surface
 ```
 
-## Palette calibration
+## Farbschema
 
-The three ramps and the role tokens of this page, as the theme knobs resolve
-them.
+Sechs Paletten aus einem Basis-Farbton: main, adjacent (±42,5°), accent
+(±137,5°) und complementary (180°), jede mit drei hellen, drei mittleren und
+drei dunklen Tönen.
 
 ```yaml palette
 ```
