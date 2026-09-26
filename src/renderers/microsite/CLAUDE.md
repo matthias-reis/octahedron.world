@@ -1,15 +1,16 @@
 # Microsites
 
-Standalone one-pagers for small businesses, served under `mreis.me/p/*`. A
+Standalone one-pagers for small businesses, served at `seiten.mreis.me/<name>`. A
 briefing goes in, a page comes out. Every page looks unique, but all of them
 are built from this one renderer and its design system.
 
-Reference page: `_content/mreis/p/example.md`. New pages are drafted with the
-`/handzettel` skill (`.claude/skills/handzettel/`). `mreis.me/p` lists every
-microsite as its sharing card (`src/sites/mreis/pages/microsites.tsx`).
+Reference page: `_content/seiten/example.md`. New pages are drafted with the
+`/handzettel` skill (`.claude/skills/handzettel/`). The homepage
+`seiten.mreis.me` lists every microsite as its sharing card, for admins only
+(`src/sites/seiten/pages/home.tsx`).
 
 **Every page must look different from the ones before it.** Before
-composing, look at the existing pages under `_content/mreis/p/` and vary the
+composing, look at the existing pages under `_content/seiten/` and vary the
 hero (image column, backdrop, typographic), the section layouts, the blocks
 and the color combination.
 
@@ -63,10 +64,10 @@ sharing card must be perfect. `pnpm content` enforces the checkable parts
 
 - Every image and logo is made for the page: generated or composed, then
   converted with `pnpm ms-image`. Never hotlink, never use stock URLs.
-- Files live next to the page in `_content/mreis/p/<name>/` and are
-  imported through `import.meta.glob` in `assets.ts`. They ship with
-  fingerprinted URLs and are deleted together with the page. No `public/`
-  folder.
+- Files live next to the page in `_content/seiten/<name>/` and are served by
+  the access-checked `/asset/<slug>/<file>` route — never from the public
+  build (`src/routes/asset/`). They are deleted together with the page. No
+  `public/` folder.
 - `pnpm ms-image <src> <name> <file>`: `<file>.webp` (≤1600 px) plus
   `<file>-800.webp` for the srcset. `--wide`: 2400 + 1200 px, for
   backdrops. `--logo`: one webp ≤480 px, alpha kept. `--og`: `og.jpg`,
@@ -106,10 +107,33 @@ Each is documented (YAML shape) in a comment above its component.
   `002-elektro-schuster`) always get
   `noindex: true` and a `notice` saying the page is not official.
 
+## Access
+
+Every page is private by default (`src/sites/seiten/`, stateless, no
+database):
+
+- **Admins** log in at `/login` (`SEITEN_ADMIN_PASSWORD`) and see every page
+  plus the overview with a link generator.
+- **Clients** get a link `seiten.mreis.me/<slug>?k=<code>`: an HMAC-signed
+  code for exactly one page with a fixed expiry (24 h – 7 days, chosen at
+  creation). The first visit turns it into a page cookie; without it, the
+  page shows only a code field. CLI: `pnpm seiten-link <slug> [hours]`
+  (needs the production `SEITEN_SECRET`).
+- `access: 2` (global scope) invalidates every code issued for the page —
+  bump it to revoke. `public: true` opens a page to everyone (only the
+  example page).
+- Unknown slugs show the same locked page as real ones, and images go
+  through the same check (`/asset/<slug>/<file>`, `?k=` carried along for
+  link-preview crawlers).
+- Env: `SEITEN_SECRET`, `SEITEN_ADMIN_PASSWORD`. In development both fall
+  back to `dev`; in production a missing one keeps everything locked.
+
 ## Content rules
 
-- One file per page: `_content/mreis/p/<name>.md`, `slug: p/<name>`,
-  `group: p`, `type: microsite`. The site (`mreis`) comes from the folder.
+- One file per page: `_content/seiten/<name>.md`, `slug: <name>` (one
+  segment, a-z 0-9 -), `group: seiten`, `type: microsite`. The site
+  (`seiten`) comes from the folder. Client pages are numbered:
+  `003-<business>`.
 - Every `+++step` is one section. The step id is the anchor (`#<id>`), so
   keep it short, lowercase and meaningful (`offer`, `about`, `contact`).
 - Only sections with a `nav` label show up in the header. The hero and the
@@ -240,7 +264,8 @@ The `palette` block previews all of them live.
 
 ## Checking a page
 
-- `pnpm content` must pass. Open `http://mreis.localhost:4242/p/<name>` at
+- `pnpm content` must pass. Open `http://seiten.localhost:4242/<name>` (log
+  in at `/login`, dev password `dev`) at
   desktop and mobile widths.
 - Check the header anchors, the mobile menu, no horizontal scroll, and
   contrast in every variant.

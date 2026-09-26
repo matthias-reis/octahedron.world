@@ -1,6 +1,6 @@
 ---
 name: handzettel
-description: Draft a new microsite (a one-page "Handzettel" for a small business under mreis.me/p/*) from a briefing blip and/or a reference page. Use when the user types /handzettel, or asks to create, draft or start a microsite / one-pager / Handzettel for a business.
+description: Draft a new microsite (a one-page "Handzettel" for a small business on seiten.mreis.me) from a briefing blip and/or a reference page. Use when the user types /handzettel, or asks to create, draft or start a microsite / one-pager / Handzettel for a business.
 argument-hint: "[briefing blip id] [reference URL or page] [slug]"
 ---
 
@@ -11,7 +11,7 @@ Input, any combination:
 - a **briefing blip** (life-brain id like `26-1ce`) — the business and what it
   wants;
 - a **reference page** — the business's current website, a page it likes, or
-  an existing microsite (`p/<name>`);
+  an existing microsite (`_content/seiten/<name>`);
 - optionally the **slug**. Otherwise derive a short, lowercase one from the
   business name.
 
@@ -21,7 +21,7 @@ Neither given → ask for one. Don't start from nothing.
 
 Read `src/renderers/microsite/CLAUDE.md` in full, every time. It is the
 contract: color system and approved combinations, SEO and sharing, images,
-content rules, the no-slop list. Then look at `_content/mreis/p/example.md`
+content rules, the no-slop list. Then look at `_content/seiten/example.md`
 for the syntax, not for the design.
 
 ## 1. Understand the business
@@ -53,7 +53,7 @@ the report.
   the CLAUDE.md. Nothing else. If none fits the brief, stop and ask Matze:
   describe what is missing and propose an extension. Don't build it yourself.
 - **Composition.** Section order, variants, what's in the hero, rhythm,
-  density. Open the existing pages in `_content/mreis/p/` first and make
+  density. Open the existing pages in `_content/seiten/` first and make
   this one clearly different — another hero type, other layouts, other
   blocks, another color combination. Load the `frontend-design` skill and use it. Design for this
   business, not for `example.md`. If the page needs a layout the blocks
@@ -83,7 +83,8 @@ as a thumbnail, and it matches the page's hue and type.
 
 ## 4. Write the page
 
-`_content/mreis/p/<name>.md`, `type: microsite`, German by default. Follow
+`_content/seiten/<name>.md` (`slug: <name>`, numbered `NNN-<business>`),
+`type: microsite`, German by default. Follow
 the content, SEO and no-slop rules from the CLAUDE.md. In particular:
 
 - exactly one `h1` (hero) and an `h2` opening every other section
@@ -96,19 +97,22 @@ the content, SEO and no-slop rules from the CLAUDE.md. In particular:
 
 1. `pnpm content`. It enforces the heading outline, the sharing card and
    the image references. Fix until it passes.
-2. Open `http://mreis.localhost:4242/p/<name>` (the dev server; start it
+2. Open `http://seiten.localhost:4242/<name>` after logging in at `/login`
+   (dev password `dev`) (the dev server; start it
    with `preview_start` if nothing is running). Check desktop and mobile:
    hierarchy, header anchors, mobile menu, no horizontal scroll, contrast
    in every section, images sharp and not stretched.
-3. Check the SSR head (`curl -s -H "Host: mreis.localhost:4242"
-   http://localhost:4242/p/<name>`): `<title>`, `description`, `og:title`,
+3. Check the SSR head with a client code (`pnpm seiten-link <name> 1
+   http://seiten.localhost:4242`, then `curl -s -H "Host:
+   seiten.localhost:4242" "http://localhost:4242/<name>?k=<code>"`): `<title>`, `description`, `og:title`,
    `og:description`, `og:image` (absolute) must all be there.
 4. Look at the page as a stranger would. Does it feel like *this*
    business, or like a template? If a template, go back to step 2.
 
 ## 6. Report
 
-- the URL, and a screenshot of the hero
+- the URL, a client link (`pnpm seiten-link <name> 48`, or the overview's
+  generator), and a screenshot of the hero
 - the decisions: font pairing and why, hue and combination, composition idea
 - every placeholder and open question for the business
 - anything that needs an extension of the system (colors, blocks)

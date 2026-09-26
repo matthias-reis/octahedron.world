@@ -135,10 +135,14 @@ failing the build.
 
 ### Microsites (`type: microsite`)
 
-Standalone one-pagers for small businesses under `mreis.me/p/*`. Content lives
-in `_content/mreis/p/<name>.md` with `slug: p/<name>`. The router skips the
-mreis shell for `/p/*`, and the renderer is server-rendered (not
-`clientOnly`).
+Standalone one-pagers for small businesses, on their own subdomain:
+`seiten.mreis.me/<name>` (site `seiten`, `src/sites/seiten/`). Content lives
+in `_content/seiten/<name>.md` with `slug: <name>`. The homepage is the
+admin overview; every page is access-controlled (see "Access" in the
+microsite CLAUDE.md). The renderer is server-rendered (not `clientOnly`).
+seiten slugs are deliberately **not** in `routes.json` (they name clients and
+that file ships to the browser) — a catch-all route in `src/app.tsx` resolves
+them. `mreis.me/p/*` redirects there (`src/middleware.ts`).
 
 - Every `+++step` is a section. Local scope: `nav` (header label; omit to
   keep it out of the nav), `variant` (`plain | surface | tint | inverted`),
@@ -149,7 +153,7 @@ mreis shell for `/p/*`, and the renderer is server-rendered (not
 - Blocks: `cards`, `cta`, `contact`, `palette` (see `blocks.tsx`).
 - Colors: base hue → six palettes × nine shades → copy/background/button
   groups → semantic colors (`text-copy`, `bg-page`, `bg-button` …).
-  `_content/mreis/p/example.md` is the reference page.
+  `_content/seiten/example.md` is the reference page.
 - **Rules for building and checking microsites live in
   `src/renderers/microsite/CLAUDE.md`. Read it before touching a microsite.**
   (It cannot live next to the content: every `.md` under `_content/` is parsed
