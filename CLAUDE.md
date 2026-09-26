@@ -141,16 +141,19 @@ mreis shell for `/p/*`, and the renderer is server-rendered (not
 `clientOnly`).
 
 - Every `+++step` is a section. Local scope: `nav` (header label; omit to
-  keep it out of the nav), `variant` (`plain | surface | tint | inverted |
-  accent`), `layout: hero`.
+  keep it out of the nav), `variant` (`plain | surface | tint | inverted`),
+  `colors` (group override), `layout: hero`.
 - Global scope: `brand` (`name`, `mark`, `tagline`), `legal` (footer labels),
-  and `theme`, the per-page knobs: `hue`, `accentHue`, `neutralHue`, `chroma`,
-  `neutralChroma`, `radius` (rem), `fonts` (a key of `fontPairings` in
-  `theme.ts`).
+  and `theme`, the per-page knobs: `hue`, `radius` (rem), `fonts` (a key of
+  `fontPairings` in `theme.ts`), `colors` (group assignment).
 - Blocks: `cards`, `cta`, `contact`, `palette` (see `blocks.tsx`).
-- Colors: knobs → three 9-step oklch ramps → role tokens (`theme.css`), used
-  as `bg-ms-*` / `text-ms-*` utilities. `_content/mreis/p/example.md` is the
-  reference page.
+- Colors: base hue → six palettes × nine shades → copy/background/button
+  groups → semantic colors (`text-copy`, `bg-page`, `bg-button` …).
+  `_content/mreis/p/example.md` is the reference page.
+- **Rules for building and checking microsites live in
+  `src/renderers/microsite/CLAUDE.md`. Read it before touching a microsite.**
+  (It cannot live next to the content: every `.md` under `_content/` is parsed
+  as MDS.)
 
 ### Creating a new renderer
 
