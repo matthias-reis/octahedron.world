@@ -1,10 +1,11 @@
 import { createAsync } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
-import { createEffect, Show } from "solid-js";
+import { type Component, createEffect, lazy, Show } from "solid-js";
 import { getRoute } from "~/model/model";
 import { setColorSpace } from "~/store/color-space";
 
-const renderers: Record<string, ReturnType<typeof clientOnly>> = {
+// biome-ignore lint/suspicious/noExplicitAny: renderers take differently typed MDS props
+const renderers: Record<string, Component<any>> = {
   dica: clientOnly(() => import("~/renderers/dica/create-template")),
   digest: clientOnly(() => import("~/renderers/digest")),
   grid: clientOnly(() => import("~/renderers/grid")),
@@ -21,6 +22,8 @@ const renderers: Record<string, ReturnType<typeof clientOnly>> = {
   default: clientOnly(() => import("~/renderers/default")),
   // mreis.me's long-form renderer — token-driven, no octahedron palette.
   article: clientOnly(() => import("~/sites/mreis/renderers/article")),
+  // Microsites (mreis.me/p/*) are server-rendered: first paint is the page.
+  microsite: lazy(() => import("~/renderers/microsite")),
 };
 
 export const MdsTemplate = ({ route }: { route: string }) => {

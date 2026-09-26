@@ -1,0 +1,206 @@
+/* Microsite design system — parametric oklch tokens.
+
+   Three steps, same idea as octahedron's `c*` palette and commonspace's
+   `--cs-*` layer:
+     1. knobs   — a handful of numbers per page (hues, chroma, radius, fonts),
+                  written as an inline style on `.ms-root` by the renderer
+     2. ramps   — three 9-step ladders (primary, accent, neutral) derived
+                  from the knobs, 1 = lightest … 9 = darkest
+     3. roles   — semantic tokens (`--ms-bg`, `--ms-fg`, …) that components
+                  use; section variants re-bind only these.
+
+   Tailwind sees the roles through `--color-ms-*` in app.css (`bg-ms-bg`,
+   `text-ms-fg`, …). Nothing inside a microsite references the ramps directly
+   except the calibration palette.
+
+   The derivation lives on the same element as the inline knobs on purpose:
+   custom properties inherit as computed values, so ramps derived on an
+   ancestor would bake in the ancestor's knobs. */
+
+/* Every face a pairing can pick. @fontsource only emits @font-face rules, so
+   a browser downloads just the faces a page actually uses. */
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+
+.ms-root {
+  /* --- 1. knobs (defaults; overridden inline per page) --- */
+  --ms-hue: 28;
+  --ms-hue-accent: calc(var(--ms-hue) + 180);
+  --ms-hue-neutral: var(--ms-hue);
+  --ms-chroma: 0.15;
+  --ms-neutral-chroma: 0.012;
+  --ms-radius: 0.75rem;
+  --ms-font-display: "Fraunces Variable", serif;
+  --ms-font-body: "Inter Variable", sans-serif;
+
+  /* lightness ladder, shared by all ramps */
+  --ms-l-1: 0.975;
+  --ms-l-2: 0.93;
+  --ms-l-3: 0.86;
+  --ms-l-4: 0.76;
+  --ms-l-5: 0.66;
+  --ms-l-6: 0.56;
+  --ms-l-7: 0.44;
+  --ms-l-8: 0.32;
+  --ms-l-9: 0.21;
+
+  /* chroma taper — oklch runs out of gamut fast at the lightness extremes,
+     so the ends of every ramp get a fraction of the page chroma */
+  --ms-k-1: 0.18;
+  --ms-k-2: 0.35;
+  --ms-k-3: 0.6;
+  --ms-k-4: 0.85;
+  --ms-k-5: 1;
+  --ms-k-6: 1;
+  --ms-k-7: 0.85;
+  --ms-k-8: 0.6;
+  --ms-k-9: 0.4;
+
+  /* --- 2. ramps --- */
+  --ms-p1: oklch(
+    var(--ms-l-1) calc(var(--ms-chroma) * var(--ms-k-1)) var(--ms-hue)
+  );
+  --ms-p2: oklch(
+    var(--ms-l-2) calc(var(--ms-chroma) * var(--ms-k-2)) var(--ms-hue)
+  );
+  --ms-p3: oklch(
+    var(--ms-l-3) calc(var(--ms-chroma) * var(--ms-k-3)) var(--ms-hue)
+  );
+  --ms-p4: oklch(
+    var(--ms-l-4) calc(var(--ms-chroma) * var(--ms-k-4)) var(--ms-hue)
+  );
+  --ms-p5: oklch(
+    var(--ms-l-5) calc(var(--ms-chroma) * var(--ms-k-5)) var(--ms-hue)
+  );
+  --ms-p6: oklch(
+    var(--ms-l-6) calc(var(--ms-chroma) * var(--ms-k-6)) var(--ms-hue)
+  );
+  --ms-p7: oklch(
+    var(--ms-l-7) calc(var(--ms-chroma) * var(--ms-k-7)) var(--ms-hue)
+  );
+  --ms-p8: oklch(
+    var(--ms-l-8) calc(var(--ms-chroma) * var(--ms-k-8)) var(--ms-hue)
+  );
+  --ms-p9: oklch(
+    var(--ms-l-9) calc(var(--ms-chroma) * var(--ms-k-9)) var(--ms-hue)
+  );
+
+  --ms-a1: oklch(
+    var(--ms-l-1) calc(var(--ms-chroma) * var(--ms-k-1)) var(--ms-hue-accent)
+  );
+  --ms-a2: oklch(
+    var(--ms-l-2) calc(var(--ms-chroma) * var(--ms-k-2)) var(--ms-hue-accent)
+  );
+  --ms-a3: oklch(
+    var(--ms-l-3) calc(var(--ms-chroma) * var(--ms-k-3)) var(--ms-hue-accent)
+  );
+  --ms-a4: oklch(
+    var(--ms-l-4) calc(var(--ms-chroma) * var(--ms-k-4)) var(--ms-hue-accent)
+  );
+  --ms-a5: oklch(
+    var(--ms-l-5) calc(var(--ms-chroma) * var(--ms-k-5)) var(--ms-hue-accent)
+  );
+  --ms-a6: oklch(
+    var(--ms-l-6) calc(var(--ms-chroma) * var(--ms-k-6)) var(--ms-hue-accent)
+  );
+  --ms-a7: oklch(
+    var(--ms-l-7) calc(var(--ms-chroma) * var(--ms-k-7)) var(--ms-hue-accent)
+  );
+  --ms-a8: oklch(
+    var(--ms-l-8) calc(var(--ms-chroma) * var(--ms-k-8)) var(--ms-hue-accent)
+  );
+  --ms-a9: oklch(
+    var(--ms-l-9) calc(var(--ms-chroma) * var(--ms-k-9)) var(--ms-hue-accent)
+  );
+
+  --ms-n1: oklch(var(--ms-l-1) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n2: oklch(var(--ms-l-2) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n3: oklch(var(--ms-l-3) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n4: oklch(var(--ms-l-4) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n5: oklch(var(--ms-l-5) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n6: oklch(var(--ms-l-6) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n7: oklch(var(--ms-l-7) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n8: oklch(var(--ms-l-8) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+  --ms-n9: oklch(var(--ms-l-9) var(--ms-neutral-chroma) var(--ms-hue-neutral));
+
+  /* --- 3. roles (the `plain` variant) --- */
+  --ms-bg: var(--ms-n1);
+  --ms-surface: #fff;
+  --ms-soft: var(--ms-p2);
+  --ms-fg: var(--ms-n9);
+  --ms-muted: var(--ms-n7);
+  --ms-border: var(--ms-n3);
+  --ms-primary: var(--ms-p6);
+  --ms-primary-hover: var(--ms-p7);
+  --ms-primary-fg: var(--ms-n1);
+  --ms-accent: var(--ms-a6);
+  --ms-accent-fg: var(--ms-n1);
+
+  color-scheme: light;
+  background-color: var(--ms-bg);
+  color: var(--ms-fg);
+  font-family: var(--ms-font-body);
+}
+
+/* --- section variants: re-bind roles only --- */
+
+.ms-variant-surface {
+  --ms-bg: var(--ms-n2);
+  --ms-border: var(--ms-n3);
+}
+
+.ms-variant-tint {
+  --ms-bg: var(--ms-p1);
+  --ms-soft: var(--ms-p2);
+  --ms-border: var(--ms-p3);
+}
+
+.ms-variant-inverted {
+  --ms-bg: var(--ms-n9);
+  --ms-surface: var(--ms-n8);
+  --ms-soft: var(--ms-p8);
+  --ms-fg: var(--ms-n1);
+  --ms-muted: var(--ms-n4);
+  --ms-border: var(--ms-n7);
+  --ms-primary: var(--ms-p4);
+  --ms-primary-hover: var(--ms-p3);
+  --ms-primary-fg: var(--ms-n9);
+  --ms-accent: var(--ms-a4);
+  --ms-accent-fg: var(--ms-n9);
+}
+
+.ms-variant-accent {
+  --ms-bg: var(--ms-p6);
+  --ms-surface: var(--ms-p5);
+  --ms-soft: var(--ms-p5);
+  --ms-fg: var(--ms-n1);
+  --ms-muted: var(--ms-p2);
+  --ms-border: var(--ms-p5);
+  --ms-primary: var(--ms-n1);
+  --ms-primary-hover: var(--ms-p1);
+  --ms-primary-fg: var(--ms-p8);
+  --ms-accent: var(--ms-a3);
+  --ms-accent-fg: var(--ms-n9);
+}
+
+/* A variant class re-binds tokens, so it also has to repaint. */
+.ms-variant-plain,
+.ms-variant-surface,
+.ms-variant-tint,
+.ms-variant-inverted,
+.ms-variant-accent {
+  background-color: var(--ms-bg);
+  color: var(--ms-fg);
+}
+
+/* Section anchors land below the sticky header. */
+.ms-root section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Hero sections: bigger lead copy under the display headline. */
+.ms-hero h1 + p {
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
+}

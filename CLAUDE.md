@@ -119,6 +119,7 @@ Registered types:
 | `grid`                  | `src/renderers/grid`                  |
 | `legal`                 | `src/renderers/legal`                 |
 | `lightbox`              | `src/renderers/lightbox`              |
+| `microsite`             | `src/renderers/microsite`             |
 | `population-simulation` | `src/renderers/population-simulation` |
 | `report`                | `src/renderers/report`                |
 | `storyline`             | `src/renderers/storyline`             |
@@ -131,6 +132,25 @@ failing the build.
 (so its metadata stays queryable) but must _not_ get a generated route —
 `content.ts` filters it out of `routes.json`. It is used by `pcsc-one` and
 `pcsc-contest`, which own hand-written file routes in `src/routes/`.
+
+### Microsites (`type: microsite`)
+
+Standalone one-pagers for small businesses under `mreis.me/p/*`. Content lives
+in `_content/mreis/p/<name>.md` with `slug: p/<name>`. The router skips the
+mreis shell for `/p/*`, and the renderer is server-rendered (not
+`clientOnly`).
+
+- Every `+++step` is a section. Local scope: `nav` (header label; omit to
+  keep it out of the nav), `variant` (`plain | surface | tint | inverted |
+  accent`), `layout: hero`.
+- Global scope: `brand` (`name`, `mark`, `tagline`), `legal` (footer labels),
+  and `theme`, the per-page knobs: `hue`, `accentHue`, `neutralHue`, `chroma`,
+  `neutralChroma`, `radius` (rem), `fonts` (a key of `fontPairings` in
+  `theme.ts`).
+- Blocks: `cards`, `cta`, `contact`, `palette` (see `blocks.tsx`).
+- Colors: knobs → three 9-step oklch ramps → role tokens (`theme.css`), used
+  as `bg-ms-*` / `text-ms-*` utilities. `_content/mreis/p/example.md` is the
+  reference page.
 
 ### Creating a new renderer
 

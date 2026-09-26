@@ -1,7 +1,7 @@
 import { MetaProvider } from "@solidjs/meta";
-import { Route, Router } from "@solidjs/router";
+import { Route, Router, useLocation } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { For, lazy } from "solid-js";
+import { For, lazy, type ParentComponent, Show, Suspense } from "solid-js";
 import "./app.css";
 import "katex/dist/katex.min.css";
 import routes from "../routes.json";
@@ -29,6 +29,20 @@ const mreisRoutes = [
   },
 ];
 
+// Microsites under mreis.me/p/* are standalone one-pagers: they bring their
+// own header and footer, so the mreis chrome must not wrap them.
+const MreisRoot: ParentComponent = (props) => {
+  const location = useLocation();
+  return (
+    <Show
+      when={location.pathname.startsWith("/p/")}
+      fallback={<MreisShell>{props.children}</MreisShell>}
+    >
+      <Suspense>{props.children}</Suspense>
+    </Show>
+  );
+};
+
 export default function App() {
   const site = getSite();
   const siteRoutes = routes.filter((r) => (r.site ?? "octahedron") === site);
@@ -40,7 +54,7 @@ export default function App() {
         <Router
           root={(props) =>
             site === "mreis" ? (
-              <MreisShell>{props.children}</MreisShell>
+              <MreisRoot>{props.children}</MreisRoot>
             ) : (
               <OctahedronShell>{props.children}</OctahedronShell>
             )

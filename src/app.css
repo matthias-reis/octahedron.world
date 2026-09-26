@@ -141,6 +141,24 @@
   --color-col-hi-fg: var(--t-col-hi-fg);
   --color-col-accent: var(--t-col-accent);
 
+  /* --- MICROSITE ROLE TOKENS ---
+     Resolved per page by src/renderers/microsite/theme.css; only meaningful
+     inside `.ms-root`. */
+  --color-ms-bg: var(--ms-bg);
+  --color-ms-surface: var(--ms-surface);
+  --color-ms-soft: var(--ms-soft);
+  --color-ms-fg: var(--ms-fg);
+  --color-ms-muted: var(--ms-muted);
+  --color-ms-border: var(--ms-border);
+  --color-ms-primary: var(--ms-primary);
+  --color-ms-primary-hover: var(--ms-primary-hover);
+  --color-ms-primary-fg: var(--ms-primary-fg);
+  --color-ms-accent: var(--ms-accent);
+  --color-ms-accent-fg: var(--ms-accent-fg);
+  --font-ms-display: var(--ms-font-display);
+  --font-ms-body: var(--ms-font-body);
+  --radius-ms: var(--ms-radius);
+
   /* Spacings — octahedron's legacy Fibonacci-ish numeric scale. Existing code
      keeps using it; new/shared code uses the named scale below. */
   --spacing-1: 0.1rem;
