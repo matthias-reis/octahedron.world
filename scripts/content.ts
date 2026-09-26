@@ -5,6 +5,7 @@ import { glob } from "glob";
 import { parse } from "hast-mds";
 import type { Site } from "~/site/context";
 import type { ItemMeta } from "~/types";
+import { validateMicrosite } from "./validate-microsite";
 
 const read = promisify(readFile);
 
@@ -54,6 +55,9 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         // microsite blocks (src/renderers/microsite/blocks.tsx)
         "cards",
         "contact",
+        "features",
+        "image",
+        "rating",
         "palette",
       ]),
     );
@@ -75,6 +79,19 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         `[CON] ❌ missing \`title\` in the global scope of: ${file} — a page without a title cannot be published`,
       );
       process.exit(1);
+    }
+
+    if (meta.type === "microsite") {
+      const problems = validateMicrosite(
+        result,
+        result.global as Record<string, unknown>,
+      );
+      if (problems.length > 0) {
+        console.error(
+          `[CON] ❌ microsite rules broken in: ${file}\n${problems.map((p) => `        - ${p}`).join("\n")}`,
+        );
+        process.exit(1);
+      }
     }
 
     const existing = metaData[meta.slug];

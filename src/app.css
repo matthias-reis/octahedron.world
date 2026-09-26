@@ -141,20 +141,76 @@
   --color-col-hi-fg: var(--t-col-hi-fg);
   --color-col-accent: var(--t-col-accent);
 
-  /* --- MICROSITE ROLE TOKENS ---
-     Resolved per page by src/renderers/microsite/theme.css; only meaningful
-     inside `.ms-root`. */
-  --color-ms-bg: var(--ms-bg);
-  --color-ms-surface: var(--ms-surface);
-  --color-ms-soft: var(--ms-soft);
-  --color-ms-fg: var(--ms-fg);
-  --color-ms-muted: var(--ms-muted);
-  --color-ms-border: var(--ms-border);
-  --color-ms-primary: var(--ms-primary);
-  --color-ms-primary-hover: var(--ms-primary-hover);
-  --color-ms-primary-fg: var(--ms-primary-fg);
-  --color-ms-accent: var(--ms-accent);
-  --color-ms-accent-fg: var(--ms-accent-fg);
+  /* --- MICROSITE COLORS ---
+     Resolved by src/renderers/microsite/theme.css; only meaningful inside
+     `.ms-root`. Palette shades first, then the semantic names shared
+     components must use. */
+  --color-main-b1: var(--ms-main-b1);
+  --color-main-b2: var(--ms-main-b2);
+  --color-main-b3: var(--ms-main-b3);
+  --color-main-m1: var(--ms-main-m1);
+  --color-main-m2: var(--ms-main-m2);
+  --color-main-m3: var(--ms-main-m3);
+  --color-main-d1: var(--ms-main-d1);
+  --color-main-d2: var(--ms-main-d2);
+  --color-main-d3: var(--ms-main-d3);
+  --color-adjacent-left-b1: var(--ms-adjacent-left-b1);
+  --color-adjacent-left-b2: var(--ms-adjacent-left-b2);
+  --color-adjacent-left-b3: var(--ms-adjacent-left-b3);
+  --color-adjacent-left-m1: var(--ms-adjacent-left-m1);
+  --color-adjacent-left-m2: var(--ms-adjacent-left-m2);
+  --color-adjacent-left-m3: var(--ms-adjacent-left-m3);
+  --color-adjacent-left-d1: var(--ms-adjacent-left-d1);
+  --color-adjacent-left-d2: var(--ms-adjacent-left-d2);
+  --color-adjacent-left-d3: var(--ms-adjacent-left-d3);
+  --color-adjacent-right-b1: var(--ms-adjacent-right-b1);
+  --color-adjacent-right-b2: var(--ms-adjacent-right-b2);
+  --color-adjacent-right-b3: var(--ms-adjacent-right-b3);
+  --color-adjacent-right-m1: var(--ms-adjacent-right-m1);
+  --color-adjacent-right-m2: var(--ms-adjacent-right-m2);
+  --color-adjacent-right-m3: var(--ms-adjacent-right-m3);
+  --color-adjacent-right-d1: var(--ms-adjacent-right-d1);
+  --color-adjacent-right-d2: var(--ms-adjacent-right-d2);
+  --color-adjacent-right-d3: var(--ms-adjacent-right-d3);
+  --color-accent-left-b1: var(--ms-accent-left-b1);
+  --color-accent-left-b2: var(--ms-accent-left-b2);
+  --color-accent-left-b3: var(--ms-accent-left-b3);
+  --color-accent-left-m1: var(--ms-accent-left-m1);
+  --color-accent-left-m2: var(--ms-accent-left-m2);
+  --color-accent-left-m3: var(--ms-accent-left-m3);
+  --color-accent-left-d1: var(--ms-accent-left-d1);
+  --color-accent-left-d2: var(--ms-accent-left-d2);
+  --color-accent-left-d3: var(--ms-accent-left-d3);
+  --color-accent-right-b1: var(--ms-accent-right-b1);
+  --color-accent-right-b2: var(--ms-accent-right-b2);
+  --color-accent-right-b3: var(--ms-accent-right-b3);
+  --color-accent-right-m1: var(--ms-accent-right-m1);
+  --color-accent-right-m2: var(--ms-accent-right-m2);
+  --color-accent-right-m3: var(--ms-accent-right-m3);
+  --color-accent-right-d1: var(--ms-accent-right-d1);
+  --color-accent-right-d2: var(--ms-accent-right-d2);
+  --color-accent-right-d3: var(--ms-accent-right-d3);
+  --color-complementary-b1: var(--ms-complementary-b1);
+  --color-complementary-b2: var(--ms-complementary-b2);
+  --color-complementary-b3: var(--ms-complementary-b3);
+  --color-complementary-m1: var(--ms-complementary-m1);
+  --color-complementary-m2: var(--ms-complementary-m2);
+  --color-complementary-m3: var(--ms-complementary-m3);
+  --color-complementary-d1: var(--ms-complementary-d1);
+  --color-complementary-d2: var(--ms-complementary-d2);
+  --color-complementary-d3: var(--ms-complementary-d3);
+
+  --color-page: var(--ms-page);
+  --color-card: var(--ms-card);
+  --color-tint: var(--ms-tint);
+  --color-line: var(--ms-line);
+  --color-copy-strong: var(--ms-copy-strong);
+  --color-copy: var(--ms-copy);
+  --color-copy-soft: var(--ms-copy-soft);
+  --color-link: var(--ms-link);
+  --color-button: var(--ms-button);
+  --color-button-hover: var(--ms-button-hover);
+  --color-button-copy: var(--ms-button-copy);
   --font-ms-display: var(--ms-font-display);
   --font-ms-body: var(--ms-font-body);
   --radius-ms: var(--ms-radius);

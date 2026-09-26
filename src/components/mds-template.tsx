@@ -27,7 +27,10 @@ const renderers: Record<string, Component<any>> = {
 };
 
 export const MdsTemplate = ({ route }: { route: string }) => {
-  const item = createAsync(() => getRoute(route));
+  // deferStream: hold the first flush until the page data is there, so the
+  // <title> and og:* tags a renderer sets end up in the server-rendered
+  // <head> — link-preview crawlers do not run JavaScript.
+  const item = createAsync(() => getRoute(route), { deferStream: true });
 
   createEffect(() => {
     const data = item();

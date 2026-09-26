@@ -1,22 +1,49 @@
 import {
+  ArrowDownRight,
+  ArrowUpRight,
+  BadgeCheck,
+  Building,
+  CakeSlice,
   Clock,
   Coffee,
   Compass,
+  Croissant,
+  Droplets,
+  Flame,
+  GraduationCap,
   Hammer,
   Heart,
+  Heater,
+  House,
+  Landmark,
   Leaf,
   Mail,
   MapPin,
+  PaintRoller,
   Phone,
+  Route,
   Scissors,
   Shield,
+  ShieldCheck,
+  Siren,
   Sparkles,
   Star,
   Sun,
+  ThermometerSun,
   Truck,
   Users,
+  Wheat,
+  Wind,
+  Wrench,
+  Zap,
 } from "lucide-solid";
-import type { Component, ParentComponent } from "solid-js";
+import {
+  type Component,
+  children,
+  type JSX,
+  type ParentComponent,
+  Show,
+} from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { cx } from "~/ui/cx";
 
@@ -25,22 +52,43 @@ import { cx } from "~/ui/cx";
  * lucide by dynamic name would pull the whole library into the bundle.
  */
 const icons = {
+  "arrow-down-right": ArrowDownRight,
+  "arrow-up-right": ArrowUpRight,
+  "badge-check": BadgeCheck,
+  building: Building,
+  "cake-slice": CakeSlice,
   clock: Clock,
   coffee: Coffee,
   compass: Compass,
+  croissant: Croissant,
+  droplets: Droplets,
+  flame: Flame,
+  "graduation-cap": GraduationCap,
   hammer: Hammer,
   heart: Heart,
+  heater: Heater,
+  house: House,
+  landmark: Landmark,
   leaf: Leaf,
   mail: Mail,
   "map-pin": MapPin,
+  "paint-roller": PaintRoller,
   phone: Phone,
+  route: Route,
   scissors: Scissors,
   shield: Shield,
+  "shield-check": ShieldCheck,
+  siren: Siren,
   sparkles: Sparkles,
   star: Star,
   sun: Sun,
+  "thermometer-sun": ThermometerSun,
   truck: Truck,
   users: Users,
+  wheat: Wheat,
+  wind: Wind,
+  wrench: Wrench,
+  zap: Zap,
 } as const;
 
 export type IconName = keyof typeof icons;
@@ -58,6 +106,7 @@ export type ButtonVariant = "primary" | "secondary";
 export const ButtonLink: ParentComponent<{
   href: string;
   variant?: ButtonVariant;
+  icon?: IconName;
   class?: string;
 }> = (props) => (
   <a
@@ -65,23 +114,23 @@ export const ButtonLink: ParentComponent<{
     class={cx(
       "inline-flex items-center justify-center gap-ssm px-slg py-ssm min-h-[2.75rem]",
       "rounded-ms font-semibold transition-colors",
-      "outline-offset-2 focus-visible:outline-2 outline-ms-primary",
+      "outline-offset-2 focus-visible:outline-2 outline-button",
       props.variant === "secondary"
-        ? "border border-ms-border text-ms-fg hover:bg-ms-soft"
-        : "bg-ms-primary text-ms-primary-fg hover:bg-ms-primary-hover",
+        ? "border-2 border-button text-copy-strong hover:bg-button hover:text-button-copy"
+        : "bg-button text-button-copy hover:bg-button-hover",
       props.class,
     )}
   >
+    <Show when={props.icon}>
+      {(name) => <Icon name={name()} class="w-[1.2rem] h-[1.2rem]" />}
+    </Show>
     {props.children}
   </a>
 );
 
 export const Card: ParentComponent<{ class?: string }> = (props) => (
   <div
-    class={cx(
-      "rounded-ms bg-ms-surface border border-ms-border p-slg flex flex-col gap-ssm",
-      props.class,
-    )}
+    class={cx("rounded-ms bg-card p-slg flex flex-col gap-ssm", props.class)}
   >
     {props.children}
   </div>
@@ -94,19 +143,13 @@ export const Container: ParentComponent<{ class?: string }> = (props) => (
   </div>
 );
 
-export type SectionVariant =
-  | "plain"
-  | "surface"
-  | "tint"
-  | "inverted"
-  | "accent";
+export type SectionVariant = "plain" | "surface" | "tint" | "inverted";
 
 const variants: readonly SectionVariant[] = [
   "plain",
   "surface",
   "tint",
   "inverted",
-  "accent",
 ];
 
 export function toVariant(value: unknown): SectionVariant {
@@ -115,36 +158,100 @@ export function toVariant(value: unknown): SectionVariant {
     : "plain";
 }
 
+export type Kicker = { text: string; icon?: IconName };
+
+/**
+ * The small label above a headline. With an icon it becomes a pill (hero),
+ * without one it gets a square dot.
+ */
+export const KickerLabel: Component<{ kicker: Kicker }> = (props) => (
+  <Show
+    when={props.kicker.icon}
+    fallback={
+      <p class="ms-kicker flex items-center gap-ssm text-sm font-semibold tracking-wide text-button">
+        <span
+          aria-hidden="true"
+          class="w-[0.5rem] h-[0.5rem] rounded-[3px] bg-button"
+        />
+        {props.kicker.text}
+      </p>
+    }
+  >
+    {(icon) => (
+      <p class="ms-kicker inline-flex items-center gap-ssm self-start rounded-full bg-tint px-smd py-[0.375rem] text-sm font-semibold text-button">
+        <Icon name={icon()} class="w-[1.1rem] h-[1.1rem]" />
+        {props.kicker.text}
+      </p>
+    )}
+  </Show>
+);
+
+/** `hero` · `split` · `side` · `band` (compact strip, e.g. a trust bar). */
+export type SectionLayout = "default" | "hero" | "split" | "side" | "band";
+
+const layouts: readonly SectionLayout[] = ["hero", "split", "side", "band"];
+
+export function toLayout(value: unknown): SectionLayout {
+  return layouts.includes(value as SectionLayout)
+    ? (value as SectionLayout)
+    : "default";
+}
+
 export const Section: ParentComponent<{
   id: string;
   variant: SectionVariant;
-  hero?: boolean;
+  layout: SectionLayout;
   label?: string;
-}> = (props) => (
-  <section
-    id={props.id}
-    aria-label={props.label}
-    class={cx(
-      `ms-variant-${props.variant}`,
-      props.hero ? "py-s3xl md:py-[8rem]" : "py-s2xl md:py-s3xl",
-    )}
-  >
-    <Container class={props.hero ? "ms-hero" : undefined}>
-      {props.children}
-    </Container>
-  </section>
-);
+  kicker?: Kicker;
+  /** Right-hand column of a hero (see `HeroVisual`). */
+  visual?: JSX.Element;
+  /** `.ms-<group>-<palette>` classes for a section-level override. */
+  colors?: string[];
+}> = (props) => {
+  const kicker = () =>
+    props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
+  // JSX props are getters: reading `props.visual` twice would build it twice.
+  const visual = children(() => props.visual);
 
-export type SwatchProps = { color: string; label: string; dark?: boolean };
-
-export const Swatch: Component<SwatchProps> = (props) => (
-  <div
-    class="h-[4.5rem] rounded-ms flex items-end p-ssm text-xs font-mono"
-    style={{
-      "background-color": props.color,
-      color: props.dark ? "var(--ms-n1)" : "var(--ms-n9)",
-    }}
-  >
-    {props.label}
-  </div>
-);
+  return (
+    <section
+      id={props.id}
+      aria-label={props.label}
+      class={cx(
+        "ms-section",
+        props.variant !== "plain" && `ms-${props.variant}`,
+        props.colors,
+        props.layout === "hero"
+          ? "py-s2xl md:py-s3xl"
+          : props.layout === "band"
+            ? "py-slg md:py-sxl"
+            : "py-s2xl md:py-[7rem]",
+      )}
+    >
+      <Show
+        when={props.layout === "hero" && visual()}
+        fallback={
+          <Container
+            class={cx(
+              props.layout === "hero" && "ms-hero",
+              props.layout === "split" && "ms-layout-split",
+              props.layout === "side" && "ms-layout-side",
+              "[&>.ms-kicker]:mb-smd",
+            )}
+          >
+            {kicker()}
+            {props.children}
+          </Container>
+        }
+      >
+        <Container class="grid lg:grid-cols-[1.05fr_1fr] gap-sxl lg:gap-[4rem] items-center">
+          <div class="ms-hero flex flex-col [&>.ms-kicker]:mb-slg">
+            {kicker()}
+            {props.children}
+          </div>
+          {visual()}
+        </Container>
+      </Show>
+    </section>
+  );
+};

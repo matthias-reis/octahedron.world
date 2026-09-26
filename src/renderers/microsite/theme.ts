@@ -17,25 +17,47 @@ export const fontPairings = {
     display: '"DM Serif Display", Georgia, serif',
     body: '"DM Sans Variable", system-ui, sans-serif',
   },
+  /** Sturdy, trustworthy trade: optical-size serif over a friendly sans. */
+  craft: {
+    display: '"Newsreader Variable", Georgia, serif',
+    body: '"DM Sans Variable", system-ui, sans-serif',
+    /** The h1 runs light; `**bold**` words inside it carry the emphasis. */
+    h1Weight: 300,
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
 
+export const paletteNames = [
+  "main",
+  "adjacent-left",
+  "adjacent-right",
+  "accent-left",
+  "accent-right",
+  "complementary",
+] as const;
+
+export type PaletteName = (typeof paletteNames)[number];
+
+export const colorGroups = ["copy", "background", "button"] as const;
+
+export type ColorGroup = (typeof colorGroups)[number];
+
+/**
+ * Which palette each color group points at. Unset groups keep the defaults
+ * from theme.css (copy + background → accent-left, button → main).
+ */
+export type ColorAssignment = Partial<Record<ColorGroup, PaletteName>>;
+
 /** The `theme` key of a microsite's global scope — every knob is optional. */
 export type MicrositeTheme = {
-  /** Primary hue, 0–360. */
+  /** Base hue, 0–360; all six palettes derive from it. */
   hue?: number;
-  /** Accent hue; defaults to the complement of `hue`. */
-  accentHue?: number;
-  /** Hue the near-greys are tinted with; defaults to `hue`. */
-  neutralHue?: number;
-  /** Peak chroma of the primary/accent ramps, ~0.04 (muted) – 0.25 (loud). */
-  chroma?: number;
-  /** Chroma of the neutral ramp; 0 = pure grey. */
-  neutralChroma?: number;
   /** Corner radius in rem. */
   radius?: number;
   fonts?: FontPairing;
+  /** Page-wide group assignment. */
+  colors?: ColorAssignment;
 };
 
 function num(value: unknown): number | undefined {
@@ -52,25 +74,33 @@ export function themeStyle(
   if (!theme) return style;
 
   const hue = num(theme.hue);
-  const accentHue = num(theme.accentHue);
-  const neutralHue = num(theme.neutralHue);
-  const chroma = num(theme.chroma);
-  const neutralChroma = num(theme.neutralChroma);
   const radius = num(theme.radius);
 
   if (hue !== undefined) style["--ms-hue"] = String(hue);
-  if (accentHue !== undefined) style["--ms-hue-accent"] = String(accentHue);
-  if (neutralHue !== undefined) style["--ms-hue-neutral"] = String(neutralHue);
-  if (chroma !== undefined) style["--ms-chroma"] = String(chroma);
-  if (neutralChroma !== undefined)
-    style["--ms-neutral-chroma"] = String(neutralChroma);
   if (radius !== undefined) style["--ms-radius"] = `${radius}rem`;
 
   const fonts = theme.fonts && fontPairings[theme.fonts];
   if (fonts) {
     style["--ms-font-display"] = fonts.display;
     style["--ms-font-body"] = fonts.body;
+    if ("h1Weight" in fonts) style["--ms-h1-weight"] = String(fonts.h1Weight);
   }
 
   return style;
+}
+
+/**
+ * `.ms-<group>-<palette>` classes for a group assignment — used on
+ * `.ms-root` for the page and on a section for a section override.
+ * Unknown groups or palettes are ignored.
+ */
+export function colorClasses(colors: unknown): string[] {
+  if (typeof colors !== "object" || colors === null) return [];
+  const assignment = colors as Record<string, unknown>;
+  return colorGroups.flatMap((group) => {
+    const palette = assignment[group];
+    return paletteNames.includes(palette as PaletteName)
+      ? [`ms-${group}-${palette}`]
+      : [];
+  });
 }

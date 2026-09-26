@@ -2,27 +2,72 @@ import { Meta, Title } from "@solidjs/meta";
 import type { HastParseResult } from "hast-mds";
 import { For, type JSX, Show } from "solid-js";
 import { transform } from "solid-mds";
+import { absoluteUrl, assetUrl, PageContext } from "./assets";
 import { micrositeComponents } from "./blocks";
-import { type Brand, type NavItem, SiteFooter, SiteHeader } from "./chrome";
-import { type MicrositeTheme, themeStyle } from "./theme";
-import { Section, toVariant } from "./ui";
+import {
+  type Brand,
+  type FooterOptions,
+  type HeaderActions,
+  type NavItem,
+  NoticeBar,
+  QuickBar,
+  type QuickLink,
+  SiteFooter,
+  SiteHeader,
+} from "./chrome";
+import { HeroVisual, type HeroVisualData } from "./hero-visual";
+import {
+  type ColorAssignment,
+  colorClasses,
+  type MicrositeTheme,
+  themeStyle,
+} from "./theme";
+import { isIconName, type Kicker, Section, toLayout, toVariant } from "./ui";
 import "./theme.css";
 
 type MicrositeGlobal = {
+  slug: string;
   title: string;
   description?: string;
+  /** Sharing card. `image` is a JPEG next to the page (`pnpm ms-image … --og`). */
+  og?: { title?: string; description?: string; image?: string };
   brand?: Partial<Brand>;
   theme?: MicrositeTheme;
   legal?: string[];
+  language?: "de" | "en";
+  /** Keep search engines out, e.g. for a concept preview of a real business. */
+  noindex?: boolean;
+  /** Thin strip above the header. */
+  notice?: { text: string; short?: string };
+  header?: HeaderActions;
+  footer?: FooterOptions;
+  /** Fixed action bar on phones: `[{ icon, text, url }]`, first = primary. */
+  quickbar?: QuickLink[];
 };
 
 type MicrositeLocal = {
   /** Header label; a section without one stays out of the nav. */
   nav?: string;
   variant?: string;
-  /** `hero` gives the section display-size type and extra air. */
+  /** Section-level group override, e.g. `{ copy: main }`. */
+  colors?: ColorAssignment;
+  /** `hero` · `split` · `side` · `band`, see `SectionLayout` in ui.tsx. */
   layout?: string;
+  /** Small label above the headline: a string, or `{ text, icon }`. */
+  kicker?: string | { text?: string; icon?: string };
+  /** Hero image column (layout: hero), see hero-visual.tsx. */
+  visual?: HeroVisualData;
 };
+
+function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
+  if (typeof value === "string") return { text: value };
+  if (value?.text)
+    return {
+      text: value.text,
+      icon: isIconName(value.icon) ? value.icon : undefined,
+    };
+  return undefined;
+}
 
 /**
  * One-pager for a small business, registered for `type: microsite` and served
@@ -43,8 +88,15 @@ export default function MicrositeRenderer(props: {
     name: global?.brand?.name ?? global?.title ?? "",
     mark: global?.brand?.mark,
     tagline: global?.brand?.tagline,
+    logo: global?.brand?.logo,
+    sub: global?.brand?.sub,
   };
+  const slug = global?.slug ?? "";
+  const ogTitle = global?.og?.title ?? global?.title ?? brand.name;
+  const ogDescription = global?.og?.description ?? global?.description;
+  const ogImage = global?.og?.image && assetUrl(slug, global.og.image);
   const sections = Object.values(parsed.steps);
+  const quickbar = (global?.quickbar ?? []).filter((l) => isIconName(l.icon));
   const nav: NavItem[] = sections.flatMap((s) =>
     typeof s.local.nav === "string" ? [{ id: s.id, label: s.local.nav }] : [],
   );
@@ -52,30 +104,80 @@ export default function MicrositeRenderer(props: {
   return (
     <div
       id="top"
-      class="ms-root min-h-screen"
+      lang={global?.language ?? "de"}
+      class={[
+        "ms-root min-h-screen",
+        ...colorClasses(global?.theme?.colors),
+      ].join(" ")}
       style={themeStyle(global?.theme)}
     >
-      <Title>{brand.name}</Title>
+      <Title>{global?.title ?? brand.name}</Title>
       <Show when={global?.description}>
         {(d) => <Meta name="description" content={d()} />}
       </Show>
+      <Show when={global?.noindex}>
+        <Meta name="robots" content="noindex,nofollow" />
+      </Show>
+      <Meta property="og:type" content="website" />
+      <Meta property="og:site_name" content={brand.name} />
+      <Meta
+        property="og:locale"
+        content={global?.language === "en" ? "en_US" : "de_DE"}
+      />
+      <Meta property="og:url" content={absoluteUrl(`/${slug}`)} />
+      <Meta property="og:title" content={ogTitle} />
+      <Show when={ogDescription}>
+        {(d) => <Meta property="og:description" content={d()} />}
+      </Show>
+      <Show when={ogImage}>
+        {(url) => (
+          <>
+            <Meta property="og:image" content={absoluteUrl(url())} />
+            <Meta property="og:image:width" content="1200" />
+            <Meta property="og:image:height" content="630" />
+            <Meta name="twitter:card" content="summary_large_image" />
+          </>
+        )}
+      </Show>
 
-      <SiteHeader brand={brand} nav={nav} />
-      <main>
-        <For each={sections}>
-          {(section) => (
-            <Section
-              id={section.id}
-              variant={toVariant(section.local.variant)}
-              hero={section.local.layout === "hero"}
-              label={section.local.nav}
-            >
-              <section.Body />
-            </Section>
+      <PageContext.Provider value={{ slug }}>
+        <Show when={global?.notice}>
+          {(notice) => (
+            <NoticeBar text={notice().text} short={notice().short} />
           )}
-        </For>
-      </main>
-      <SiteFooter brand={brand} legal={global?.legal ?? []} />
+        </Show>
+        <SiteHeader brand={brand} nav={nav} actions={global?.header} />
+        <main>
+          <For each={sections}>
+            {(section) => (
+              <Section
+                id={section.id}
+                variant={toVariant(section.local.variant)}
+                layout={toLayout(section.local.layout)}
+                label={section.local.nav}
+                kicker={toKicker(section.local.kicker)}
+                visual={
+                  section.local.visual ? (
+                    <HeroVisual visual={section.local.visual} />
+                  ) : undefined
+                }
+                colors={colorClasses(section.local.colors)}
+              >
+                <section.Body />
+              </Section>
+            )}
+          </For>
+        </main>
+        <SiteFooter
+          brand={brand}
+          legal={global?.legal ?? []}
+          options={global?.footer}
+          quickbar={quickbar.length > 0}
+        />
+        <Show when={quickbar.length > 0}>
+          <QuickBar links={quickbar} />
+        </Show>
+      </PageContext.Provider>
     </div>
   );
 }
