@@ -6,6 +6,7 @@ import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
 import { ButtonLink, Card, Icon, type IconName, isIconName } from "./ui";
+import { Video } from "./video";
 
 type Data = Record<string, unknown> | undefined;
 
@@ -57,6 +58,7 @@ function tel(phone: string): string {
  *     title: …
  *     text: …           # optional
  *     tags: [a, b]      # optional chips below the title
+ *     link: { text: …, url: … }   # optional link at the bottom
  * ```
  */
 const Cards: Component<CustomBlockProps> = (props) => {
@@ -112,6 +114,17 @@ const Cards: Component<CustomBlockProps> = (props) => {
             <Show when={str(item.text)}>
               {(text) => (
                 <p class="mt-ssm text-copy leading-relaxed">{text()}</p>
+              )}
+            </Show>
+            <Show when={link(item.link)}>
+              {(l) => (
+                <a
+                  href={l().url}
+                  class="mt-auto pt-slg inline-flex items-center gap-sxs self-start font-semibold text-link underline underline-offset-4"
+                >
+                  {l().text}
+                  <Icon name="arrow-up-right" class="w-[1rem] h-[1rem]" />
+                </a>
               )}
             </Show>
             <Show when={strings(item.tags).length > 0}>
@@ -203,6 +216,146 @@ const Features: Component<CustomBlockProps> = (props) => {
           )}
         </For>
       </ul>
+    </Show>
+  );
+};
+
+/**
+ * ```yaml index
+ * items:
+ *   - icon: cable        # optional
+ *     title: …
+ *     text: …            # a few sentences
+ * ```
+ * A numbered list (01, 02, …) in two columns on wide screens — for a longer
+ * list of services that deserves real text instead of card blurbs.
+ */
+const IndexList: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items);
+
+  return (
+    <ol class="ms-block mt-sxl grid lg:grid-cols-2 gap-x-[4rem]">
+      <For each={items()}>
+        {(item, index) => (
+          <li class="grid grid-cols-[3.5rem_1fr] md:grid-cols-[4.5rem_1fr] gap-x-smd border-t border-line py-slg">
+            <span
+              aria-hidden="true"
+              class="font-ms-display text-4xl md:text-5xl font-extrabold leading-none text-button tabular-nums"
+            >
+              {String(index() + 1).padStart(2, "0")}
+            </span>
+            <div>
+              <h3 class="font-ms-display text-2xl leading-tight text-copy-strong">
+                {str(item.title)}
+                <Show when={icon(item.icon)}>
+                  {(name) => (
+                    <Icon
+                      name={name()}
+                      class="inline-block ml-ssm w-[1.25rem] h-[1.25rem] align-[-0.1em] text-copy-soft"
+                    />
+                  )}
+                </Show>
+              </h3>
+              <Show when={str(item.text)}>
+                {(text) => (
+                  <p class="mt-ssm leading-relaxed text-copy">{text()}</p>
+                )}
+              </Show>
+            </div>
+          </li>
+        )}
+      </For>
+    </ol>
+  );
+};
+
+/**
+ * ```yaml stats
+ * items:
+ *   - { value: "4", text: Tage Woche }
+ * ```
+ * Big figures with a short line each — for the two or three numbers that
+ * sell an offer. Only real numbers.
+ */
+const Stats: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () =>
+    list(data()?.items).flatMap((item) => {
+      const value = str(String(item.value ?? ""));
+      const text = str(item.text);
+      return value && text ? [{ value, text }] : [];
+    });
+
+  return (
+    <dl class="ms-block my-sxl grid grid-cols-3 gap-smd sm:gap-slg">
+      <For each={items()}>
+        {(item) => (
+          <div class="flex flex-col-reverse border-t-4 border-button pt-smd">
+            <dt class="mt-ssm text-sm sm:text-lg font-semibold leading-snug text-copy-strong">
+              {item.text}
+            </dt>
+            <dd class="font-ms-display text-[clamp(2.6rem,11vw,8rem)] font-black leading-[0.85] text-button">
+              {item.value}
+            </dd>
+          </div>
+        )}
+      </For>
+    </dl>
+  );
+};
+
+/**
+ * ```yaml callout
+ * label: Direkt durchwählen      # optional, small line above
+ * text: (02323) 23485
+ * url: "tel:+49232323485"        # optional — makes it a link
+ * icon: phone                    # optional
+ * ```
+ * One oversized line — the phone number, an address, a claim. Meant to be
+ * the loudest thing in its section.
+ */
+const Callout: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const text = () => str(data()?.text);
+  const url = () => str(data()?.url);
+  const body = () => (
+    <>
+      <Show when={icon(data()?.icon)}>
+        {(name) => (
+          <Icon
+            name={name()}
+            class="w-[0.7em] h-[0.7em] shrink-0 text-button"
+          />
+        )}
+      </Show>
+      <span>{text()}</span>
+    </>
+  );
+  const lineClass =
+    "inline-flex items-center gap-[0.25em] font-ms-display font-black leading-[0.95] text-[clamp(2.8rem,9vw,7.5rem)] text-copy-strong";
+
+  return (
+    <Show when={text()}>
+      <div class="ms-block my-sxl">
+        <Show when={str(data()?.label)}>
+          {(label) => (
+            <p class="mb-ssm text-sm font-semibold uppercase tracking-[0.14em] text-copy-soft">
+              {label()}
+            </p>
+          )}
+        </Show>
+        <Show when={url()} fallback={<p class={lineClass}>{body()}</p>}>
+          {(href) => (
+            <a
+              href={href()}
+              class={`${lineClass} decoration-button decoration-[0.06em] underline-offset-[0.12em] hover:underline`}
+            >
+              {body()}
+            </a>
+          )}
+        </Show>
+      </div>
     </Show>
   );
 };
@@ -304,9 +457,11 @@ const Cta: Component<CustomBlockProps> = (props) => {
  * name: …                       # optional heading line of the address
  * address: [Street 1, 12345 City]
  * phone: 04943 91940
+ * fax: 02323 924109             # optional
  * email: …
  * hours: [Mo–Fr 9–18, Sa 10–14]
  * route: https://www.google.com/maps/dir/?api=1&destination=…   # optional
+ * style: grid                   # optional: tiles side by side instead of a card
  * ```
  * Rows with a label; phone, mail and route are links.
  */
@@ -314,7 +469,9 @@ const Contact: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const phone = () => str(data()?.phone);
   const email = () => str(data()?.email);
+  const fax = () => str(data()?.fax);
   const route = () => str(data()?.route);
+  const grid = () => data()?.style === "grid";
   const address = () =>
     [str(data()?.name), ...strings(data()?.address)].filter(Boolean);
 
@@ -341,14 +498,20 @@ const Contact: Component<CustomBlockProps> = (props) => {
     return (
       <Show
         when={row.href}
-        fallback={<div class="flex gap-smd items-start p-smd">{body}</div>}
+        fallback={
+          <div
+            class={`flex gap-smd items-start p-smd ${grid() ? "rounded-ms bg-card" : ""}`}
+          >
+            {body}
+          </div>
+        }
       >
         {(href) => (
           <a
             href={href()}
             target={row.external ? "_blank" : undefined}
             rel={row.external ? "noopener" : undefined}
-            class="flex gap-smd items-start p-smd rounded-ms transition-colors hover:bg-tint"
+            class={`flex gap-smd items-start p-smd rounded-ms transition-colors hover:bg-tint ${grid() ? "bg-card" : ""}`}
           >
             {body}
             <Icon
@@ -362,7 +525,13 @@ const Contact: Component<CustomBlockProps> = (props) => {
   };
 
   return (
-    <address class="ms-block not-italic my-sxl rounded-[calc(var(--ms-radius)*2)] bg-card border border-line p-ssm flex flex-col divide-y divide-line max-w-xl">
+    <address
+      class={
+        grid()
+          ? "ms-block not-italic my-sxl grid gap-ssm sm:grid-cols-2 lg:grid-cols-4"
+          : "ms-block not-italic my-sxl rounded-[calc(var(--ms-radius)*2)] bg-card border border-line p-ssm flex flex-col divide-y divide-line max-w-xl"
+      }
+    >
       <Show when={address().length > 0}>
         <Row icon="map-pin" label="Adresse">
           <For each={address()}>
@@ -374,6 +543,13 @@ const Contact: Component<CustomBlockProps> = (props) => {
         {(p) => (
           <Row icon="phone" label="Telefon" href={tel(p())}>
             {p()}
+          </Row>
+        )}
+      </Show>
+      <Show when={fax()}>
+        {(f) => (
+          <Row icon="printer" label="Fax">
+            {f()}
           </Row>
         )}
       </Show>
@@ -494,6 +670,10 @@ export const micrositeComponents: ComponentMap = {
   contact: Contact,
   features: Features,
   rating: Rating,
+  callout: Callout,
+  index: IndexList,
+  stats: Stats,
+  video: Video,
   palette: Palette,
   image: Image,
 };

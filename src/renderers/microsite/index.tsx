@@ -3,6 +3,7 @@ import type { HastParseResult } from "hast-mds";
 import { For, type JSX, Show } from "solid-js";
 import { transform } from "solid-mds";
 import { absoluteUrl, assetUrl, PageContext } from "./assets";
+import { Backdrop, type BackdropData } from "./backdrop";
 import { micrositeComponents } from "./blocks";
 import {
   type Brand,
@@ -57,6 +58,8 @@ type MicrositeLocal = {
   kicker?: string | { text?: string; icon?: string };
   /** Hero image column (layout: hero), see hero-visual.tsx. */
   visual?: HeroVisualData;
+  /** Full-bleed background image, see backdrop.tsx. */
+  backdrop?: BackdropData;
 };
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
@@ -159,6 +162,11 @@ export default function MicrositeRenderer(props: {
                 visual={
                   section.local.visual ? (
                     <HeroVisual visual={section.local.visual} />
+                  ) : undefined
+                }
+                backdrop={
+                  section.local.backdrop ? (
+                    <Backdrop backdrop={section.local.backdrop} />
                   ) : undefined
                 }
                 colors={colorClasses(section.local.colors)}

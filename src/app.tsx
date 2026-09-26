@@ -27,6 +27,10 @@ const mreisRoutes = [
     path: "/posts",
     component: lazy(() => import("./sites/mreis/pages/posts")),
   },
+  {
+    path: "/p",
+    component: lazy(() => import("./sites/mreis/pages/microsites")),
+  },
 ];
 
 // Microsites under mreis.me/p/* are standalone one-pagers: they bring their

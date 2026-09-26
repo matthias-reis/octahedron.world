@@ -36,33 +36,37 @@ const Logo: Component<{ brand: Brand }> = (props) => {
   const mark = () => props.brand.mark ?? props.brand.name.charAt(0);
   const logo = usePageAsset(() => props.brand.logo);
   return (
+    // Demo navigation: every wordmark leads back to the overview of all
+    // microsites at /p.
     <a
-      href="#top"
+      href="/p"
+      title="Alle Microsites"
       class="flex flex-col shrink-0 min-w-0 font-ms-display text-copy-strong"
     >
-      <span class="flex items-center gap-ssm text-2xl font-semibold tracking-tight leading-none">
-        <Show
-          when={logo()}
-          fallback={
+      <Show
+        when={logo()}
+        fallback={
+          <span class="flex items-center gap-ssm text-2xl font-semibold tracking-tight leading-none">
             <span
               aria-hidden="true"
               class={`min-w-[1.75rem] h-[1.75rem] px-[0.3rem] rounded-[calc(var(--ms-radius)*0.6)] bg-button text-button-copy flex items-center justify-center ${mark().length > 1 ? "text-xs" : "text-lg"}`}
             >
               {mark()}
             </span>
-          }
-        >
-          {(url) => (
-            <img
-              src={url()}
-              alt=""
-              class="h-[1.75rem] w-auto"
-              decoding="async"
-            />
-          )}
-        </Show>
-        <span>{props.brand.name}</span>
-      </span>
+            <span>{props.brand.name}</span>
+          </span>
+        }
+      >
+        {/* A logo file is the whole wordmark: no name next to it. */}
+        {(url) => (
+          <img
+            src={url()}
+            alt={props.brand.name}
+            class="h-[2.4rem] md:h-[2.9rem] w-auto"
+            decoding="async"
+          />
+        )}
+      </Show>
       <Show when={props.brand.sub}>
         <span class="mt-[0.4rem] font-ms-body text-[0.625rem] sm:text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-copy-soft whitespace-nowrap">
           {props.brand.sub}

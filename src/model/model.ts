@@ -156,3 +156,36 @@ export const getAllPosts = query(async () => {
       }),
     );
 }, "all-posts");
+
+/** Card data for the microsite overview at mreis.me/p — what a link preview
+    would show: og title, description and the og image file. */
+export type MicrositeCard = {
+  slug: string;
+  title: string;
+  description?: string;
+  /** og.jpg (or whatever `og.image` names) next to the page. */
+  ogImage?: string;
+};
+
+export const getMicrosites = query(async () => {
+  "use server";
+  const data = await getData();
+
+  return Object.values(data)
+    .filter((item) => item.site === "mreis" && item.type === "microsite")
+    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .map((item): MicrositeCard => {
+      const og = (item as unknown as { og?: Record<string, unknown> }).og;
+      const description = og?.description ?? item.description;
+      return {
+        slug: item.slug,
+        title: typeof og?.title === "string" ? og.title : item.title,
+        description: Array.isArray(description)
+          ? description.join(" ")
+          : typeof description === "string"
+            ? description
+            : undefined,
+        ogImage: typeof og?.image === "string" ? og.image : undefined,
+      };
+    });
+}, "microsites");

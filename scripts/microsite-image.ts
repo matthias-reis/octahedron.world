@@ -7,6 +7,7 @@ import sharp from "sharp";
  * `_content/mreis/p/<page>/`.
  *
  *   pnpm ms-image <input> <page> <name>          → <name>.webp (≤1600w) + <name>-800.webp
+ *   pnpm ms-image <input> <page> <name> --wide   → <name>.webp (≤2400w) + <name>-800.webp (1200w), for full-bleed backdrops
  *   pnpm ms-image <input> <page> <name> --logo   → <name>.webp (≤480w, alpha kept)
  *   pnpm ms-image <input> <page> og --og         → og.jpg (1200×630, cropped)
  *
@@ -18,7 +19,7 @@ const [input, page, name, ...flags] = process.argv.slice(2);
 
 if (!input || !page || !name) {
   console.error(
-    "usage: pnpm ms-image <input> <page> <name> [--logo | --og] [--position <sharp position>]",
+    "usage: pnpm ms-image <input> <page> <name> [--wide | --logo | --og] [--position <sharp position>]",
   );
   process.exit(1);
 }
@@ -55,6 +56,10 @@ if (flags.includes("--og")) {
     .jpeg({ quality: 82, mozjpeg: true })
     .toFile(file);
   report(file);
+} else if (flags.includes("--wide")) {
+  // The small variant keeps the `-800` name so the srcset helper finds it.
+  await webp(2400, join(dir, `${name}.webp`), 72);
+  await webp(1200, join(dir, `${name}-800.webp`), 72);
 } else if (flags.includes("--logo")) {
   await webp(480, join(dir, `${name}.webp`), 90);
 } else {

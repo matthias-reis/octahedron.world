@@ -24,6 +24,18 @@ export const fontPairings = {
     /** The h1 runs light; `**bold**` words inside it carry the emphasis. */
     h1Weight: 300,
   },
+  /** Loud and direct, for trades: one grotesk, condensed and heavy on top. */
+  industrial: {
+    display: '"Archivo Variable", "Arial Narrow", sans-serif',
+    body: '"Archivo Variable", system-ui, sans-serif',
+    h1Weight: 850,
+    headingWeight: 800,
+    /** font-stretch for display type — Archivo runs 62–125 %. */
+    displayStretch: "72%",
+    /** Condensed faces need their spacing back: no tight tracking. */
+    displayTracking: "0.005em",
+    displayWordSpacing: "0.08em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -84,6 +96,14 @@ export function themeStyle(
     style["--ms-font-display"] = fonts.display;
     style["--ms-font-body"] = fonts.body;
     if ("h1Weight" in fonts) style["--ms-h1-weight"] = String(fonts.h1Weight);
+    if ("headingWeight" in fonts)
+      style["--ms-heading-weight"] = String(fonts.headingWeight);
+    if ("displayStretch" in fonts)
+      style["--ms-display-stretch"] = fonts.displayStretch;
+    if ("displayTracking" in fonts)
+      style["--ms-display-tracking"] = fonts.displayTracking;
+    if ("displayWordSpacing" in fonts)
+      style["--ms-display-word-spacing"] = fonts.displayWordSpacing;
   }
 
   return style;

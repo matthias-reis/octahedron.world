@@ -53,11 +53,15 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         "spacetravel",
         "population",
         // microsite blocks (src/renderers/microsite/blocks.tsx)
+        "callout",
         "cards",
         "contact",
         "features",
         "image",
+        "index",
         "rating",
+        "stats",
+        "video",
         "palette",
       ]),
     );

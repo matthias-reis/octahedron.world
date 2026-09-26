@@ -86,6 +86,15 @@ export function validateMicrosite(
       }
     }
 
+    const backdrop = (step.local as Record<string, unknown>).backdrop as
+      | Record<string, unknown>
+      | undefined;
+    if (backdrop && !exists(backdrop.src)) {
+      problems.push(
+        `section "${step.id}": backdrop not found: ${String(backdrop.src)}`,
+      );
+    }
+
     walk(step.body.node as Node, (node) => {
       if (node.type !== "element" || !node.tagName) return;
 

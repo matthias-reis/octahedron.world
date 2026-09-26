@@ -31,6 +31,8 @@
 @import "@fontsource-variable/space-grotesk";
 /* opsz: optical sizes (wght + opsz axes), not just the default cut */
 @import "@fontsource-variable/newsreader/opsz.css";
+/* wdth: the width axis (62–125 %), not just the default width */
+@import "@fontsource-variable/archivo/wdth.css";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -508,6 +510,22 @@
 .ms-root :is(h1, h2, h3) {
   text-wrap: balance;
   font-optical-sizing: auto;
+}
+
+/* A pairing may condense its display face (font-stretch) and set the
+   heading weight; both default to the face's normal cut. */
+.ms-root :is(h1, h2, h3, .font-ms-display) {
+  font-stretch: var(--ms-display-stretch, normal);
+  word-spacing: var(--ms-display-word-spacing, normal);
+}
+
+/* Headlines default to tight tracking (Tailwind's `tracking-tight`). */
+.ms-root :is(h1, h2) {
+  letter-spacing: var(--ms-display-tracking, -0.025em);
+}
+
+.ms-root :is(h2, h3) {
+  font-weight: var(--ms-heading-weight, 700);
 }
 
 /* A pairing may run the h1 light and let `**bold**` words carry it. */

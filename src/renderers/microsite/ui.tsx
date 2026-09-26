@@ -1,27 +1,41 @@
 import {
+  AlarmSmoke,
   ArrowDownRight,
   ArrowUpRight,
   BadgeCheck,
+  BellRing,
+  Briefcase,
   Building,
+  Cable,
   CakeSlice,
+  CalendarCheck,
+  ClipboardCheck,
   Clock,
   Coffee,
   Compass,
+  Cpu,
   Croissant,
   Droplets,
+  EvCharger,
   Flame,
   GraduationCap,
   Hammer,
   Heart,
   Heater,
   House,
+  HouseWifi,
   Landmark,
   Leaf,
+  Lightbulb,
   Mail,
   MapPin,
+  Network,
   PaintRoller,
   Phone,
+  Play,
+  Printer,
   Route,
+  SatelliteDish,
   Scissors,
   Shield,
   ShieldCheck,
@@ -52,29 +66,43 @@ import { cx } from "~/ui/cx";
  * lucide by dynamic name would pull the whole library into the bundle.
  */
 const icons = {
+  "alarm-smoke": AlarmSmoke,
   "arrow-down-right": ArrowDownRight,
   "arrow-up-right": ArrowUpRight,
   "badge-check": BadgeCheck,
+  "bell-ring": BellRing,
+  briefcase: Briefcase,
   building: Building,
+  cable: Cable,
   "cake-slice": CakeSlice,
+  "calendar-check": CalendarCheck,
+  "clipboard-check": ClipboardCheck,
   clock: Clock,
   coffee: Coffee,
   compass: Compass,
+  cpu: Cpu,
   croissant: Croissant,
   droplets: Droplets,
+  "ev-charger": EvCharger,
   flame: Flame,
   "graduation-cap": GraduationCap,
   hammer: Hammer,
   heart: Heart,
   heater: Heater,
   house: House,
+  "house-wifi": HouseWifi,
   landmark: Landmark,
   leaf: Leaf,
+  lightbulb: Lightbulb,
   mail: Mail,
   "map-pin": MapPin,
+  network: Network,
   "paint-roller": PaintRoller,
   phone: Phone,
+  play: Play,
+  printer: Printer,
   route: Route,
+  "satellite-dish": SatelliteDish,
   scissors: Scissors,
   shield: Shield,
   "shield-check": ShieldCheck,
@@ -205,6 +233,8 @@ export const Section: ParentComponent<{
   kicker?: Kicker;
   /** Right-hand column of a hero (see `HeroVisual`). */
   visual?: JSX.Element;
+  /** Full-bleed background image (see `Backdrop`); copy goes on a panel. */
+  backdrop?: JSX.Element;
   /** `.ms-<group>-<palette>` classes for a section-level override. */
   colors?: string[];
 }> = (props) => {
@@ -212,6 +242,7 @@ export const Section: ParentComponent<{
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
   // JSX props are getters: reading `props.visual` twice would build it twice.
   const visual = children(() => props.visual);
+  const backdrop = children(() => props.backdrop);
 
   return (
     <section
@@ -219,6 +250,7 @@ export const Section: ParentComponent<{
       aria-label={props.label}
       class={cx(
         "ms-section",
+        backdrop() && "relative isolate overflow-hidden",
         props.variant !== "plain" && `ms-${props.variant}`,
         props.colors,
         props.layout === "hero"
@@ -229,27 +261,50 @@ export const Section: ParentComponent<{
       )}
     >
       <Show
-        when={props.layout === "hero" && visual()}
+        when={backdrop()}
         fallback={
-          <Container
+          <Show
+            when={props.layout === "hero" && visual()}
+            fallback={
+              <Container
+                class={cx(
+                  props.layout === "hero" && "ms-hero",
+                  props.layout === "split" && "ms-layout-split",
+                  props.layout === "side" && "ms-layout-side",
+                  "[&>.ms-kicker]:mb-smd",
+                )}
+              >
+                {kicker()}
+                {props.children}
+              </Container>
+            }
+          >
+            <Container class="grid lg:grid-cols-[1.05fr_1fr] gap-sxl lg:gap-[4rem] items-center">
+              <div class="ms-hero flex flex-col [&>.ms-kicker]:mb-slg">
+                {kicker()}
+                {props.children}
+              </div>
+              {visual()}
+            </Container>
+          </Show>
+        }
+      >
+        {backdrop()}
+        <Container
+          class={cx(
+            "flex items-center",
+            props.layout === "hero" && "min-h-[min(86vh,50rem)]",
+          )}
+        >
+          <div
             class={cx(
+              "flex flex-col max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl [&>.ms-kicker]:mb-slg",
               props.layout === "hero" && "ms-hero",
-              props.layout === "split" && "ms-layout-split",
-              props.layout === "side" && "ms-layout-side",
-              "[&>.ms-kicker]:mb-smd",
             )}
           >
             {kicker()}
             {props.children}
-          </Container>
-        }
-      >
-        <Container class="grid lg:grid-cols-[1.05fr_1fr] gap-sxl lg:gap-[4rem] items-center">
-          <div class="ms-hero flex flex-col [&>.ms-kicker]:mb-slg">
-            {kicker()}
-            {props.children}
           </div>
-          {visual()}
         </Container>
       </Show>
     </section>
