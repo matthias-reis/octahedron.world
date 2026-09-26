@@ -5,7 +5,13 @@ briefing goes in, a page comes out. Every page looks unique, but all of them
 are built from this one renderer and its design system.
 
 Reference page: `_content/mreis/p/example.md`. New pages are drafted with the
-`/handzettel` skill (`.claude/skills/handzettel/`).
+`/handzettel` skill (`.claude/skills/handzettel/`). `mreis.me/p` lists every
+microsite as its sharing card (`src/sites/mreis/pages/microsites.tsx`).
+
+**Every page must look different from the ones before it.** Before
+composing, look at the existing pages under `_content/mreis/p/` and vary the
+hero (image column, backdrop, typographic), the section layouts, the blocks
+and the color combination.
 
 ## Who decides what
 
@@ -62,8 +68,9 @@ sharing card must be perfect. `pnpm content` enforces the checkable parts
   fingerprinted URLs and are deleted together with the page. No `public/`
   folder.
 - `pnpm ms-image <src> <name> <file>`: `<file>.webp` (≤1600 px) plus
-  `<file>-800.webp` for the srcset. `--logo`: one webp ≤480 px, alpha
-  kept. `--og`: `og.jpg`, 1200×630 cover crop (`--position` to steer it).
+  `<file>-800.webp` for the srcset. `--wide`: 2400 + 1200 px, for
+  backdrops. `--logo`: one webp ≤480 px, alpha kept. `--og`: `og.jpg`,
+  1200×630 cover crop (`--position` to steer it).
 - In MDS: `brand.logo: logo.webp`, `og.image: og.jpg`, and
   `` ```yaml image `` blocks (`src`, `alt`, `ratio`, `caption`, `eager` for the
   first image on screen).
@@ -77,16 +84,26 @@ Each is documented (YAML shape) in a comment above its component.
   `footer` (`note`, `meta`, `variant`), `quickbar` (fixed call/mail/route bar
   on phones), `legal`, `og`, `noindex`.
 - **Section local scope:** `nav`, `variant`, `colors`, `kicker` (string, or
-  `{ text, icon }` for a pill), `layout`:
+  `{ text, icon }` for a pill), `backdrop` (full-bleed background image, the
+  copy moves onto a frosted panel — `backdrop.tsx`), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`)
   - `split` — kicker + h2 left, the first paragraph right, the rest below
   - `side` — text left, the last block right (lists, contact card)
   - `band` — compact strip without a headline (trust bar)
-- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`), `features`
-  (`plain` / `tiles` / `chips`), `cta` (buttons with icons), `contact` (rows
-  incl. `route`), `rating`, `image`, `palette`.
-- **Concept previews of real businesses** (like `001-juergens`) always get
+- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`),
+  `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
+  with real text — for a long service list), `stats` (two or three big real
+  figures), `video` (YouTube, two-click: nothing loads from YouTube before
+  the click; the poster is a local file), `cta` (buttons with icons),
+  `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
+  `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
+  `palette`.
+- **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
+  next to it (it becomes the `alt`). An existing logo on white gets its
+  background turned into alpha before `pnpm ms-image … --logo`.
+- **Concept previews of real businesses** (like `001-juergens`,
+  `002-elektro-schuster`) always get
   `noindex: true` and a `notice` saying the page is not official.
 
 ## Content rules
@@ -102,9 +119,8 @@ Each is documented (YAML shape) in a comment above its component.
   `##` heading.
 - Alternate `variant`s so neighbouring sections never share a background.
   At most one `inverted` and one `accent` section per page.
-- Keep the `palette` section at the end while a page is being calibrated.
-  Remove it before the page goes to the client. It shows the base scheme
-  (see below) and has a hue slider; `hue:` in the block sets the start value.
+- The `palette` section (color system + hue slider) lives on the example
+  page only. Real pages don't get one; test a hue there with the slider.
 - Card grids: 3 or 6 items for three columns, 2 or 4 with `columns: 2`.
   Icons only from the curated set in `ui.tsx`.
 
@@ -201,6 +217,9 @@ The `palette` block previews all of them live.
 - The font pairing carries the mood of the business and matters more than
   the colors: a plumber and a florist must not share one. Pick (or add) a
   pairing per briefing, and don't default to the example page's pairing.
+- A pairing can shape its display face: `h1Weight`, `headingWeight`,
+  `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
+  `displayWordSpacing` — see `industrial` for a condensed, heavy setup.
 - Fonts come only from `fontPairings` in `theme.ts`. A new pairing needs a
   Fontsource package, an `@import` in `theme.css` and a registry entry. No
   Google Fonts, no CDN (GDPR).

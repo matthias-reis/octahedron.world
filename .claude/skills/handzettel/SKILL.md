@@ -53,7 +53,9 @@ the report.
   the CLAUDE.md. Nothing else. If none fits the brief, stop and ask Matze:
   describe what is missing and propose an extension. Don't build it yourself.
 - **Composition.** Section order, variants, what's in the hero, rhythm,
-  density. Load the `frontend-design` skill and use it. Design for this
+  density. Open the existing pages in `_content/mreis/p/` first and make
+  this one clearly different — another hero type, other layouts, other
+  blocks, another color combination. Load the `frontend-design` skill and use it. Design for this
   business, not for `example.md`. If the page needs a layout the blocks
   can't express, build it as a new reusable block (semantic colors only,
   registered in `scripts/content.ts`, documented), never as per-page CSS.
@@ -88,7 +90,7 @@ the content, SEO and no-slop rules from the CLAUDE.md. In particular:
 - `title` as business – what – where; a 120–160-character `description`;
   `og.title` written for a chat preview
 - no full stops in headlines; one text element, one color
-- keep the `palette` section at the end while drafting
+- no `palette` section: that lives on the example page; test hues there
 
 ## 5. Check it
 
