@@ -14,17 +14,17 @@ export default function MreisMicrosites() {
   const sites = createAsync(() => getMicrosites());
 
   return (
-    <main class="max-w-5xl mx-auto px-smd py-s2xl">
+    <main lang="de" class="max-w-5xl mx-auto px-smd py-s2xl">
       <Head
         title="Microsites"
-        description="One-pager concepts for small businesses — built on one renderer, each with its own look."
+        description="Onepager-Konzepte für kleine Unternehmen – ein Renderer, ein Designsystem, jede Seite mit eigenem Look."
       />
       <Meta name="robots" content="noindex,nofollow" />
 
       <H1 class="mb-smd">Microsites</H1>
       <p class="text-xl leading-relaxed text-col-fg-muted mb-s2xl max-w-2xl">
-        One-pager concepts for small businesses. One renderer and one design
-        system underneath, a different look on top.
+        Onepager-Konzepte für kleine Unternehmen. Darunter ein Renderer und ein
+        Designsystem, darüber jedes Mal ein anderer Auftritt.
       </p>
 
       <ul class="grid grid-cols-1 sm:grid-cols-2 gap-sxl">
