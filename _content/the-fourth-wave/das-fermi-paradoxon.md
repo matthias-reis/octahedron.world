@@ -1,17 +1,17 @@
 ```yaml @@
+type: report
 superTitle: Worldbuilding
 title: Das Fermi Paradoxon
+slug: das-fermi-paradoxon
+ref: fermis-paradox
 subTitle: Auf der Suche nach Außerirdischen
-description: >-
-  Die Menschheit is alleine im Universun. So sieht es zumindest aus, wenn man
-  einige der Verschwörungstheorien ignoriert. Aber warum ist das so? Das Fermi
-  Paradoxon beschreibt dieses Phänomen. Und mit der so genannten Drake Gleichung
-  kommt man den Wahrscheinlichkeiten etwas näher.
+description: Die Menschheit is alleine im Universun. So sieht es zumindest aus,
+  wenn man einige der Verschwörungstheorien ignoriert. Aber warum ist das so?
+  Das Fermi Paradoxon beschreibt dieses Phänomen. Und mit der so genannten Drake
+  Gleichung kommt man den Wahrscheinlichkeiten etwas näher.
 colorSpace: carmine
 startDate: 2017-08-01T00:00:00.000Z
 date: 2018-04-04T00:00:00.000Z
-language: de
-ref: fermis-paradox
 related:
   - die-vierte-welle
 tags:
@@ -21,9 +21,8 @@ tags:
   - Raumfahrt
   - Zivilisationen
 group: the-fourth-wave
-slug: das-fermi-paradoxon
-type: report
 image: the-fourth-wave
+language: de
 ```
 
 Aliens, Außerirdische. Andere Lebensformen. Einer der wesentlichen Antriebe

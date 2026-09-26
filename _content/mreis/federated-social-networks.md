@@ -1,12 +1,11 @@
 ```yaml @@
-title: Federated Social Networks
-description: >-
-  In this post I take a high level architectural look at the two most popular
-  open source social network formats, AT Proto, which drives Bluesky, and
-  Activity Pub, which stands behind Mastodon.
-slug: posts/federated-social-networks
-group: posts
 type: article
+title: Federated Social Networks
+slug: posts/federated-social-networks
+description: In this post I take a high level architectural look at the two most
+  popular open source social network formats, AT Proto, which drives Bluesky,
+  and Activity Pub, which stands behind Mastodon.
+group: posts
 date: 2025-05-02T00:00:00.000Z
 image: federated-social-networks
 ```

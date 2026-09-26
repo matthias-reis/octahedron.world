@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Introducing the SPINs
+slug: introducing-the-spins
 description: About joint law enforcement and special units in the Canon
 date: 2024-08-19T00:00:00.000Z
 colorSpace: sky
@@ -15,8 +17,6 @@ tags:
 group: transspace
 superTitle: Kret Tales
 alias: posts/2024/2024-08-19-introducing-the-spins
-slug: introducing-the-spins
-type: post
 image: kret-tales
 ```
 

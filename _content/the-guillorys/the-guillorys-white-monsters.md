@@ -1,13 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Children's Story
 title: The Guillorys - White Monsters
-description: >-
-  We are guests at an extraordinary family of mice in theire residence in New
-  Orleans, the Guillorys. What's so special about them, you ask? Well, some of
-  them have super powers.
-colorSpace: wood
-language: en
+slug: the-guillorys-white-monsters
 ref: die-guillorys-und-die-weissen-monster
+description: We are guests at an extraordinary family of mice in theire
+  residence in New Orleans, the Guillorys. What's so special about them, you
+  ask? Well, some of them have super powers.
+colorSpace: wood
 unfinished: true
 startDate: 2023-03-27T00:00:00.000Z
 date: 2023-08-04T00:00:00.000Z
@@ -24,9 +24,8 @@ tags:
   - SciFi
 group: the-guillorys
 alias: storylines/the-guillorys
-slug: the-guillorys-white-monsters
-type: storyline
 image: the-guillorys
+language: en
 ```
 
 _Louis_

@@ -1,9 +1,10 @@
 ```yaml @@
+type: lightbox
 title: No Strings Attached
-description: >-
-  Skeletal marionette figures hang suspended in a dim stone theater, hollow eyes
-  and bony frames locked in a dance that teeters between performance and
-  something far more unsettling.
+slug: no-strings-attached
+description: Skeletal marionette figures hang suspended in a dim stone theater,
+  hollow eyes and bony frames locked in a dance that teeters between performance
+  and something far more unsettling.
 colorSpace: shadow
 date: 2026-03-07T00:00:00.000Z
 tags:
@@ -17,7 +18,5 @@ tags:
 group: ai-worlds
 superTitle: AI Worlds
 alias: images/2026/2026-03-07-no-strings-attached
-slug: no-strings-attached
-type: lightbox
 image: no-strings-attached
 ```

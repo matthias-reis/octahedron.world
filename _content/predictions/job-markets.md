@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Job Markets 2023-2033
+slug: job-markets
 description: Automation vs. Demographic Change. Who will win?
 date: 2023-07-06T00:00:00.000Z
 colorSpace: yellow
@@ -11,8 +13,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-07-06-job-markets
-slug: job-markets
-type: post
 image: predictions
 ```
 

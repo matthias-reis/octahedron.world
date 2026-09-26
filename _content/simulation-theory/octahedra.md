@@ -1,9 +1,10 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: Octahedra
-description: >-
-  A mystic journey through time and space. Eight different places, eight iconic
-  rooms, portals, aliens.
+slug: octahedra
+description: A mystic journey through time and space. Eight different places,
+  eight iconic rooms, portals, aliens.
 colorSpace: sky
 unfinished: true
 startDate: 2023-05-03T00:00:00.000Z
@@ -21,8 +22,6 @@ tags:
   - Storyline
 group: simulation-theory
 alias: storylines/octahedra
-slug: octahedra
-type: storyline
 image: octahedra
 ```
 

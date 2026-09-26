@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Somnium
-description: >-
-  Probably the first piece of SciFi is a story written by Johannes Kepler in the
-  early 17th century.
+slug: somnium
+description: Probably the first piece of SciFi is a story written by Johannes
+  Kepler in the early 17th century.
 date: 2025-04-22T00:00:00.000Z
 colorSpace: carmine
 tags:
@@ -16,8 +17,6 @@ tags:
 group: weird-things
 superTitle: Weird Things
 alias: posts/2025/2025-04-22-somnium
-slug: somnium
-type: post
 image: weird-things
 ```
 

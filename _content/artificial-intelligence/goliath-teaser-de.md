@@ -1,21 +1,20 @@
 ```yaml @@
+type: post
 title: Goliath und der Anbruch der AGI
-description: >-
-  Gerade herrscht viel Wirbel um das Thema AGI — bei jedem großen Release
-  steht schnell die Behauptung im Raum, das sei jetzt so weit. Eine
-  Kurzgeschichte aus der Zeit vor dem Hype erkundet genau diese Kollision:
-  nicht Aliens gegen Cowboys, sondern Aliens gegen AGI.
+slug: goliath-teaser-de
+ref: goliath-teaser
+description: "Gerade herrscht viel Wirbel um das Thema AGI — bei jedem großen
+  Release steht schnell die Behauptung im Raum, das sei jetzt so weit. Eine
+  Kurzgeschichte aus der Zeit vor dem Hype erkundet genau diese Kollision: nicht
+  Aliens gegen Cowboys, sondern Aliens gegen AGI."
 colorSpace: wood
 date: 2026-09-14T00:00:00.000Z
-language: de
-ref: goliath-teaser
 tags:
   - AI
   - AGI
 group: artificial-intelligence
-slug: goliath-teaser-de
-type: post
 image: goliath
+language: de
 ```
 
 Gerade herrscht viel Wirbel um das Thema KI, jeder hat das inzwischen

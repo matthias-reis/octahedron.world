@@ -1,24 +1,23 @@
 ```yaml @@
+type: storyline
 superTitle: Kindergeschichte
 title: Kamina und das Libellenschiff
-description: >-
-  Die kleine Kamina wird immer wieder in phantastische Abenteuer hineingezogen.
-  Diesmal gerät sie in eine Steampunk-Welt, in der Überraschungen an jeder Ecke
-  lauern.
-colorSpace: tangerine
-language: de
+slug: kamina-und-das-libellenschiff
 ref: kamina-and-the-dragonfly-ship
+description: Die kleine Kamina wird immer wieder in phantastische Abenteuer
+  hineingezogen. Diesmal gerät sie in eine Steampunk-Welt, in der Überraschungen
+  an jeder Ecke lauern.
+colorSpace: tangerine
 image: kamina-2
-start: 2023-01-11T00:00:00.000Z
-end: 2023-11-21T00:00:00.000Z
+startDate: 2023-01-11T00:00:00.000Z
+date: 2023-11-21T00:00:00.000Z
 related:
   - kamina-1-de
   - asimov-de
   - the-guillorys-de
 group: kamina
 alias: storylines/kamina-2-de
-slug: kamina-und-das-libellenschiff
-type: storyline
+language: de
 ```
 
 Kamina war elf Jahre alt. Ihre Eltern sagten ihr immer, sie habe eine

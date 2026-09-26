@@ -1,11 +1,12 @@
 ```yaml @@
+type: digest
 title: The Fourth Wave and the Aliens that never came
-description: >-
-  Two things came together for this experience. We needed a Guinnea Pig for
-  online publishing and print on demand. So we had to create a short story. and
-  by accident, I had written some things about Fermi's paradox and wanted to
-  proof something. The outcome was ashort storie that is also available as an
-  online book. But also in here for free in EN and DE.
+slug: the-fourth-wave
+description: Two things came together for this experience. We needed a Guinnea
+  Pig for online publishing and print on demand. So we had to create a short
+  story. and by accident, I had written some things about Fermi's paradox and
+  wanted to proof something. The outcome was ashort storie that is also
+  available as an online book. But also in here for free in EN and DE.
 date: 2025-05-01T00:00:00.000Z
 colorSpace: cyan
 tags:
@@ -16,8 +17,6 @@ tags:
   - Drake Equation
 group: the-fourth-wave
 root: true
-slug: the-fourth-wave
-type: digest
 image: the-fourth-wave
 weight: 3
 ```

@@ -1,16 +1,16 @@
 ```yaml @@
+type: storyline
 superTitle: Kurzgeschichte
 title: Die vierte Welle
-description: >-
-  Ein Stamm der menschlichen Zivilisation, die Procyoniten, begibt sich auf eine
-  Reise, um ein neues Sternsystem zu besiedeln, und steht dabei vor den
-  Herausforderungen der Raumfahrt und der sozialen Entwicklung. Die Galaxie
-  erschließen. Den Weg für 15.000 weitere Wellen ebnen.
+slug: die-vierte-welle
+ref: the-fourth-wave-shortstory
+description: Ein Stamm der menschlichen Zivilisation, die Procyoniten, begibt
+  sich auf eine Reise, um ein neues Sternsystem zu besiedeln, und steht dabei
+  vor den Herausforderungen der Raumfahrt und der sozialen Entwicklung. Die
+  Galaxie erschließen. Den Weg für 15.000 weitere Wellen ebnen.
 colorSpace: carmine
 startDate: 2017-08-01T00:00:00.000Z
 date: 2018-04-04T00:00:00.000Z
-language: de
-ref: the-fourth-wave-shortstory
 related:
   - das-fermi-paradoxon
 tags:
@@ -20,9 +20,8 @@ tags:
   - Kolonisierung
   - Soziologie
 group: the-fourth-wave
-slug: die-vierte-welle
-type: storyline
 image: the-fourth-wave
+language: de
 ```
 
 Es kam am Morgen auf allen Nachrichtenkanälen. Die Schiffe standen bereit, ein

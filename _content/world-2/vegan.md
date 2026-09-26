@@ -1,11 +1,12 @@
 ```yaml @@
+type: world2
 superTitle: World 2
 title: Veganism & Agriculture
+slug: world-2-vegan
 subTitle: Part Two of the Series About the Climate Crisis
-description: >-
-  What are the biggest problems of our time and how do we overcome them? World 2
-  is a deep dive into the climate crisis. This second part focuses on
-  agriculture, food production and the vegan diet.
+description: What are the biggest problems of our time and how do we overcome
+  them? World 2 is a deep dive into the climate crisis. This second part focuses
+  on agriculture, food production and the vegan diet.
 colorSpace: wood
 startDate: 2022-08-18T00:00:00.000Z
 date: 2023-03-29T00:00:00.000Z
@@ -22,8 +23,6 @@ tags:
   - Essay
 group: world-2
 alias: storylines/vegan
-slug: world-2-vegan
-type: world2
 image: vegan
 ```
 

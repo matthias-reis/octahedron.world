@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Natural Catastrophes 2023-2033
-description:
-  We are already facing superlatives of natural catastrophes on a monthly basis.
+slug: natural-catastrophes
+description: We are already facing superlatives of natural catastrophes on a monthly basis.
 date: 2023-09-04T00:00:00.000Z
 colorSpace: yellow
 tags:
@@ -15,8 +16,6 @@ related:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-09-04-natural-catastrophes
-slug: natural-catastrophes
-type: post
 image: predictions
 ```
 

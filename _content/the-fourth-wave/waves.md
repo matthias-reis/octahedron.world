@@ -1,14 +1,13 @@
 ```yaml @@
-title: 'Waves'
-subTitle: 'Space Travel in Numbers'
-description:
-  Let's calculate us through some hard scifi constraints. THe Fourth Wave is
-  sending a gigantic generation spaceship to the next star system. How long does
-  that take and how much energy would you need to make it work?
+type: report
+title: Waves
 slug: waves
-group: 'the-fourth-wave'
-type: 'report'
-image: 'the-fourth-wave'
+subTitle: Space Travel in Numbers
+description: Let's calculate us through some hard scifi constraints. THe Fourth
+  Wave is sending a gigantic generation spaceship to the next star system. How
+  long does that take and how much energy would you need to make it work?
+group: the-fourth-wave
+image: the-fourth-wave
 ```
 
 I've created a hard scifi space travel calculator. With this you can find out

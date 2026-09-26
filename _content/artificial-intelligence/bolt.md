@@ -1,9 +1,10 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: Bolt
-description: >-
-  An unexpected announcement reveals the greatest surprise in media history and
-  starts a race for the truth.
+slug: bolt
+description: An unexpected announcement reveals the greatest surprise in media
+  history and starts a race for the truth.
 colorSpace: lemon
 unfinished: true
 startDate: 2023-09-01T00:00:00.000Z
@@ -17,7 +18,5 @@ tags:
   - Running
 group: artificial-intelligence
 alias: storylines/bolt
-slug: bolt
-type: storyline
 image: bolt
 ```

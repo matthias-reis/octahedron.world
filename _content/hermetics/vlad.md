@@ -1,11 +1,12 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: Vlad
+slug: vlad
 subTitle: The Truth About Dracula
-description: >-
-  Everyone knows that Dracula was a real historic figure. But did you also know
-  that he was a magician? This is the first short in my series around the
-  Hermetic Society.
+description: Everyone knows that Dracula was a real historic figure. But did you
+  also know that he was a magician? This is the first short in my series around
+  the Hermetic Society.
 colorSpace: tangerine
 startDate: 2022-12-07T00:00:00.000Z
 date: 2023-06-23T00:00:00.000Z
@@ -21,8 +22,6 @@ tags:
   - Short Story
 group: hermetics
 alias: storylines/vlad
-slug: vlad
-type: storyline
 image: vlad
 ```
 

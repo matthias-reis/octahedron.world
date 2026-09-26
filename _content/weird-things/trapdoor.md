@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: The Trapdoor
+slug: trapdoor
 description: A hatch into a weird underworld.
 date: 2024-08-26T00:00:00.000Z
 colorSpace: carmine
@@ -11,8 +13,6 @@ tags:
 group: weird-things
 superTitle: Weird Things
 alias: posts/2024/2024-08-26-trapdoor
-slug: trapdoor
-type: post
 image: weird-things
 ```
 

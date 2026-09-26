@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: AI Chauffeur
-description:
-  Self driving cars might be the backbone of our future transport system.
+slug: ai-chauffeur
+description: Self driving cars might be the backbone of our future transport system.
 date: 2024-08-02T00:00:00.000Z
 colorSpace: tangerine
 tags:
@@ -13,8 +14,6 @@ tags:
 group: artificial-intelligence
 superTitle: Real World
 alias: posts/2024/2024-08-02-ai-chauffeur
-slug: ai-chauffeur
-type: post
 image: real-world
 related:
   - self-driving-cars

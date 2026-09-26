@@ -1,9 +1,10 @@
 ```yaml @@
+type: post
 title: Old Man's War
+slug: old-mans-war
 subTitle: John Scalzi
-description: >-
-  Thought-provoking sci-fi novel for an engaging exploration of ethics and
-  mechanics in warfare
+description: Thought-provoking sci-fi novel for an engaging exploration of
+  ethics and mechanics in warfare
 date: 2023-09-19T00:00:00.000Z
 colorSpace: cyan
 tags:
@@ -11,11 +12,8 @@ tags:
   - John Scalzi
   - War
 group: reviews
-
 superTitle: Reviews
 alias: posts/2023/2023-09-19-old-mans-war
-slug: old-mans-war
-type: post
 image: reviews
 hidden: true
 ```

@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Augmented Reality 2023-2033
-description:
-  What could happen in the next ten years. Let's start with AR headsets
+slug: augmented-reality
+description: What could happen in the next ten years. Let's start with AR headsets
 date: 2023-01-02T00:00:00.000Z
 colorSpace: yellow
 tags:
@@ -11,8 +12,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-01-02-augmented-reality
-slug: augmented-reality
-type: post
 image: predictions
 ```
 

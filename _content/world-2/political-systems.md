@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Political Systems
-description:
-  There are two main points of view in ideologies. Individual vs State.
+slug: political-systems
+description: There are two main points of view in ideologies. Individual vs State.
 date: 2022-05-23T00:00:00.000Z
 tags:
   - China
@@ -9,8 +10,6 @@ tags:
 group: world-2
 superTitle: General
 alias: posts/2022/2022-05-23-political-systems
-slug: political-systems
-type: post
 image: general
 hidden: true
 ```
