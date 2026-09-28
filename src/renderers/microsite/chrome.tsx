@@ -240,7 +240,7 @@ export const SiteFooter: Component<{
           )}
         </Show>
         <li>
-          © {new Date().getFullYear()} {props.brand.name}
+          © Webdesign and Layout: Hein Altenbroxter & Matthias Reis
         </li>
       </ul>
     </Container>
