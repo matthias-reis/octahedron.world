@@ -1,0 +1,32 @@
+```yaml @@
+type: page
+title: Echoes of the Asphalt Muse
+format: lightbox
+publishedAs: echoes-asphalt-muse-urban-art
+language: en
+superTitle: Art
+description: A gritty yet poetic slice of urban life where street art meets daily utility. The wheat-pasted guitarist and silhouette figures on weathered wooden shutters create a silent, rock-and-roll stage for a stationary cargo bike, blending French culinary slogans with the raw texture of a sun-drenched alleyway.
+image: echoes-asphalt-muse-urban-art
+colorSpace: lemon
+time: 2026-02-06T16:34:00.000Z
+tags:
+  - streetart
+  - urban-poetry
+  - photography
+  - france
+  - cargobike
+  - wheatpaste
+  - textures
+  - lifestyle
+  - fast-good
+  - guitar-art
+  - cobblestone
+  - city-soul
+  - travel
+  - art
+  - y2026
+relations:
+  - rel: parent
+    to: 26-50-visuals/oc.album.art.art.en
+```
+

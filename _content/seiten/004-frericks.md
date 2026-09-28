@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 004-frericks
-group: seiten
+type: page
+format: microsite
+publishedAs: 004-frericks
 title: Adolf Frericks – Hochbau und Sanierung in Borken
-type: microsite
 language: de
 noindex: true
 description: Hochbau in Borken seit 1956 – Adolf Frericks baut Wohnungen, Industrie- und Gewerbebauten und übernimmt Altbausanierung und Umbauten im Kreis Borken.
