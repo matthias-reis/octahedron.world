@@ -58,6 +58,7 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         "cards",
         "contact",
         "features",
+        "gallery",
         "image",
         "index",
         "rating",

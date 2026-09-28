@@ -17,6 +17,7 @@ import {
   SiteHeader,
 } from "./chrome";
 import { HeroVisual, type HeroVisualData } from "./hero-visual";
+import { patternMask } from "./patterns";
 import {
   type ColorAssignment,
   colorClasses,
@@ -54,8 +55,10 @@ type MicrositeLocal = {
   colors?: ColorAssignment;
   /** `hero` · `split` · `side` · `band`, see `SectionLayout` in ui.tsx. */
   layout?: string;
-  /** Small label above the headline: a string, or `{ text, icon }`. */
-  kicker?: string | { text?: string; icon?: string };
+  /** Small label above the headline: a string, or `{ text, icon, tone }`. */
+  kicker?: string | { text?: string; icon?: string; tone?: string };
+  /** Subtle repeating motif behind the section, see `patterns.ts`. */
+  pattern?: string;
   /** Hero image column (layout: hero), see hero-visual.tsx. */
   visual?: HeroVisualData;
   /** Full-bleed background image, see backdrop.tsx. */
@@ -68,6 +71,7 @@ function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
     return {
       text: value.text,
       icon: isIconName(value.icon) ? value.icon : undefined,
+      tone: value.tone === "copy" ? "copy" : undefined,
     };
   return undefined;
 }
@@ -155,7 +159,11 @@ export default function MicrositeRenderer(props: {
       <PageContext.Provider value={{ slug, code }}>
         <Show when={global?.notice}>
           {(notice) => (
-            <NoticeBar text={notice().text} short={notice().short} />
+            <NoticeBar
+              text={notice().text}
+              short={notice().short}
+              colors={global?.footer?.colors}
+            />
           )}
         </Show>
         <SiteHeader brand={brand} nav={nav} actions={global?.header} />
@@ -179,6 +187,13 @@ export default function MicrositeRenderer(props: {
                   ) : undefined
                 }
                 colors={colorClasses(section.local.colors)}
+                pattern={patternMask(section.local.pattern)}
+                backdropStyle={
+                  section.local.backdrop?.style === "cover" ? "cover" : "panel"
+                }
+                visualStyle={
+                  section.local.visual?.style === "bleed" ? "bleed" : "card"
+                }
               >
                 <section.Body />
               </Section>
@@ -192,7 +207,7 @@ export default function MicrositeRenderer(props: {
           quickbar={quickbar.length > 0}
         />
         <Show when={quickbar.length > 0}>
-          <QuickBar links={quickbar} />
+          <QuickBar links={quickbar} colors={global?.footer?.colors} />
         </Show>
       </PageContext.Provider>
     </div>

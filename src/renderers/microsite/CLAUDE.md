@@ -82,13 +82,19 @@ Each is documented (YAML shape) in a comment above its component.
 
 - **Global scope:** `brand` (`name`, `mark`, `sub`, `tagline`, `logo`),
   `theme`, `header` (`phone`, `cta`), `notice` (strip above the header),
-  `footer` (`note`, `meta`, `variant`), `quickbar` (fixed call/mail/route bar
-  on phones), `legal`, `og`, `noindex`.
+  `footer` (`note`, `meta`, `variant`, `colors` — a group override for the
+  dark chrome: footer, notice bar and quick bar, e.g. to match the
+  highlighted section), `quickbar` (fixed call/mail/route bar on phones),
+  `legal`, `og`, `noindex`.
 - **Section local scope:** `nav`, `variant`, `colors`, `kicker` (string, or
-  `{ text, icon }` for a pill), `backdrop` (full-bleed background image, the
-  copy moves onto a frosted panel — `backdrop.tsx`), `layout`:
+  `{ text, icon }` for a pill; `tone: copy` sets it in the text color instead
+  of the button color), `pattern` (a subtle repeating motif behind the
+  section in its text color — `patterns.ts`, e.g. `roof`), `backdrop` (full-bleed background image, the
+  copy moves onto a frosted panel; `style: cover` sets it straight onto the
+  photo, bottom left, magazine-cover style — `backdrop.tsx`), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
-    it becomes two columns (`hero-visual.tsx`)
+    it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs
+    the photo edge to edge over the right half instead of a framed card
   - `split` — kicker + h2 left, the first paragraph right, the rest below
   - `side` — text left, the last block right (lists, contact card)
   - `band` — compact strip without a headline (trust bar)
@@ -99,7 +105,8 @@ Each is documented (YAML shape) in a comment above its component.
   the click; the poster is a local file), `cta` (buttons with icons),
   `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
   `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
-  `palette`.
+  `gallery` (asymmetric photo mosaic, first image large, optional captions on
+  the photos — 3 or 6 items), `palette`.
 - **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
   next to it (it becomes the `alt`). An existing logo on white gets its
   background turned into alpha before `pnpm ms-image … --logo`.

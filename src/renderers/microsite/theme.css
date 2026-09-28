@@ -33,6 +33,12 @@
 @import "@fontsource-variable/newsreader/opsz.css";
 /* wdth: the width axis (62–125 %), not just the default width */
 @import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/source-serif-4/opsz.css";
+@import "@fontsource-variable/instrument-sans/wdth.css";
+/* standard: wght + wdth + opsz in one file */
+@import "@fontsource-variable/bricolage-grotesque/standard.css";
+@import "@fontsource-variable/red-hat-display";
+@import "@fontsource-variable/red-hat-text";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */

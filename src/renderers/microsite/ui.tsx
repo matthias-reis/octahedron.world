@@ -186,7 +186,8 @@ export function toVariant(value: unknown): SectionVariant {
     : "plain";
 }
 
-export type Kicker = { text: string; icon?: IconName };
+/** `tone: copy` sets the kicker in the text color instead of the button's. */
+export type Kicker = { text: string; icon?: IconName; tone?: "copy" };
 
 /**
  * The small label above a headline. With an icon it becomes a pill (hero),
@@ -196,17 +197,21 @@ export const KickerLabel: Component<{ kicker: Kicker }> = (props) => (
   <Show
     when={props.kicker.icon}
     fallback={
-      <p class="ms-kicker flex items-center gap-ssm text-sm font-semibold tracking-wide text-button">
+      <p
+        class={`ms-kicker flex items-center gap-ssm text-sm font-semibold tracking-wide ${props.kicker.tone === "copy" ? "text-copy-strong" : "text-button"}`}
+      >
         <span
           aria-hidden="true"
-          class="w-[0.5rem] h-[0.5rem] rounded-[3px] bg-button"
+          class={`w-[0.5rem] h-[0.5rem] rounded-[3px] ${props.kicker.tone === "copy" ? "bg-copy-soft" : "bg-button"}`}
         />
         {props.kicker.text}
       </p>
     }
   >
     {(icon) => (
-      <p class="ms-kicker inline-flex items-center gap-ssm self-start rounded-full bg-tint px-smd py-[0.375rem] text-sm font-semibold text-button">
+      <p
+        class={`ms-kicker inline-flex items-center gap-ssm self-start rounded-full bg-tint px-smd py-[0.375rem] text-sm font-semibold ${props.kicker.tone === "copy" ? "text-copy-strong" : "text-button"}`}
+      >
         <Icon name={icon()} class="w-[1.1rem] h-[1.1rem]" />
         {props.kicker.text}
       </p>
@@ -237,12 +242,21 @@ export const Section: ParentComponent<{
   backdrop?: JSX.Element;
   /** `.ms-<group>-<palette>` classes for a section-level override. */
   colors?: string[];
+  /** `cover`: copy sits on the backdrop photo itself, no panel. */
+  backdropStyle?: "panel" | "cover";
+  /** `bleed`: the hero visual fills the right half, edge to edge. */
+  visualStyle?: "card" | "bleed";
+  /** CSS mask for a repeating motif, drawn in the section's text color. */
+  pattern?: JSX.CSSProperties;
 }> = (props) => {
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
   // JSX props are getters: reading `props.visual` twice would build it twice.
   const visual = children(() => props.visual);
   const backdrop = children(() => props.backdrop);
+  const bleed = () =>
+    props.layout === "hero" && props.visualStyle === "bleed" && !!visual();
+  const cover = () => props.backdropStyle === "cover";
 
   return (
     <section
@@ -250,7 +264,9 @@ export const Section: ParentComponent<{
       aria-label={props.label}
       class={cx(
         "ms-section",
-        backdrop() && "relative isolate overflow-hidden",
+        (backdrop() || props.pattern) && "relative isolate overflow-hidden",
+        bleed() &&
+          "relative lg:min-h-[min(88vh,50rem)] lg:flex lg:items-center pb-0 lg:pb-s3xl",
         props.variant !== "plain" && `ms-${props.variant}`,
         props.colors,
         props.layout === "hero"
@@ -260,45 +276,76 @@ export const Section: ParentComponent<{
             : "py-s2xl md:py-[7rem]",
       )}
     >
+      <Show when={props.pattern}>
+        {(mask) => (
+          <div
+            aria-hidden="true"
+            class="absolute inset-0 -z-10 bg-copy-strong opacity-[0.06] pointer-events-none"
+            style={mask()}
+          />
+        )}
+      </Show>
       <Show
         when={backdrop()}
         fallback={
           <Show
-            when={props.layout === "hero" && visual()}
+            when={!bleed()}
             fallback={
-              <Container
-                class={cx(
-                  props.layout === "hero" && "ms-hero",
-                  props.layout === "split" && "ms-layout-split",
-                  props.layout === "side" && "ms-layout-side",
-                  "[&>.ms-kicker]:mb-smd",
-                )}
-              >
-                {kicker()}
-                {props.children}
-              </Container>
+              <>
+                <Container class="lg:grid lg:grid-cols-2">
+                  <div class="ms-hero flex flex-col lg:pr-[4rem] [&>.ms-kicker]:mb-slg">
+                    {kicker()}
+                    {props.children}
+                  </div>
+                </Container>
+                {visual()}
+              </>
             }
           >
-            <Container class="grid lg:grid-cols-[1.05fr_1fr] gap-sxl lg:gap-[4rem] items-center">
-              <div class="ms-hero flex flex-col [&>.ms-kicker]:mb-slg">
-                {kicker()}
-                {props.children}
-              </div>
-              {visual()}
-            </Container>
+            <Show
+              when={props.layout === "hero" && visual()}
+              fallback={
+                <Container
+                  class={cx(
+                    props.layout === "hero" && "ms-hero",
+                    props.layout === "split" && "ms-layout-split",
+                    props.layout === "side" && "ms-layout-side",
+                    "[&>.ms-kicker]:mb-smd",
+                  )}
+                >
+                  {kicker()}
+                  {props.children}
+                </Container>
+              }
+            >
+              <Container class="grid lg:grid-cols-[1.05fr_1fr] gap-sxl lg:gap-[4rem] items-center">
+                <div class="ms-hero flex flex-col [&>.ms-kicker]:mb-slg">
+                  {kicker()}
+                  {props.children}
+                </div>
+                {visual()}
+              </Container>
+            </Show>
           </Show>
         }
       >
         {backdrop()}
         <Container
           class={cx(
-            "flex items-center",
-            props.layout === "hero" && "min-h-[min(86vh,50rem)]",
+            "flex",
+            cover() ? "items-end" : "items-center",
+            props.layout === "hero" &&
+              (cover()
+                ? "min-h-[min(92vh,54rem)] pt-[14rem]"
+                : "min-h-[min(86vh,50rem)]"),
           )}
         >
           <div
             class={cx(
-              "flex flex-col max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl [&>.ms-kicker]:mb-slg",
+              "flex flex-col [&>.ms-kicker]:mb-slg",
+              cover()
+                ? "max-w-[50rem]"
+                : "max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl",
               props.layout === "hero" && "ms-hero",
             )}
           >

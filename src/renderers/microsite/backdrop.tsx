@@ -8,12 +8,19 @@ import { smallVariant, usePageAsset } from "./assets";
  * backdrop:
  *   src: backdrop.webp     # pnpm ms-image … --wide (2400 + 1200 px)
  *   position: 80% 50%      # optional object-position — keep the subject clear
+ *   style: cover           # optional: magazine cover instead of the panel
  * ```
  *
- * Decorative (empty alt): the section's text carries the content. Section
- * puts its copy on a frosted panel (`backdrop-blur`) so it stays readable.
+ * Decorative (empty alt): the section's text carries the content. By default
+ * Section puts its copy on a frosted panel (`backdrop-blur`); `cover` sets
+ * it straight onto the photo, bottom left, over a gradient that rises from
+ * the page color — use it on an `inverted` section.
  */
-export type BackdropData = { src?: string; position?: string };
+export type BackdropData = {
+  src?: string;
+  position?: string;
+  style?: "panel" | "cover";
+};
 
 export const Backdrop: Component<{ backdrop: BackdropData }> = (props) => {
   const src = usePageAsset(() => props.backdrop.src);
@@ -36,8 +43,16 @@ export const Backdrop: Component<{ backdrop: BackdropData }> = (props) => {
             class="h-full w-full object-cover"
             style={{ "object-position": props.backdrop.position ?? "50% 50%" }}
           />
-          {/* Darken towards the text side; the subject side stays clear. */}
-          <div class="absolute inset-0 bg-linear-to-r from-page/75 via-page/30 to-transparent" />
+          <Show
+            when={props.backdrop.style === "cover"}
+            fallback={
+              // Darken towards the text side; the subject side stays clear.
+              <div class="absolute inset-0 bg-linear-to-r from-page/75 via-page/30 to-transparent" />
+            }
+          >
+            <div class="absolute inset-0 bg-linear-to-t from-page via-page/70 to-page/5 lg:via-page/45" />
+            <div class="absolute inset-0 bg-linear-to-r from-page/60 via-page/10 to-transparent" />
+          </Show>
         </div>
       )}
     </Show>

@@ -36,6 +36,31 @@ export const fontPairings = {
     displayTracking: "0.005em",
     displayWordSpacing: "0.08em",
   },
+  /** Northern, sober, trustworthy: an optical-size book serif over a crisp sans. */
+  masonry: {
+    display: '"Source Serif 4 Variable", Georgia, serif',
+    body: '"Instrument Sans Variable", system-ui, sans-serif',
+    h1Weight: 500,
+    headingWeight: 600,
+    displayTracking: "-0.015em",
+  },
+  /** One characterful grotesk for everything, narrow and heavy on top. */
+  workshop: {
+    display: '"Bricolage Grotesque Variable", "Arial Narrow", sans-serif',
+    body: '"Bricolage Grotesque Variable", system-ui, sans-serif',
+    h1Weight: 800,
+    headingWeight: 750,
+    displayStretch: "80%",
+    displayTracking: "-0.01em",
+  },
+  /** Solid and geometric: a black display grotesk over its text cut. */
+  solid: {
+    display: '"Red Hat Display Variable", system-ui, sans-serif',
+    body: '"Red Hat Text Variable", system-ui, sans-serif',
+    h1Weight: 900,
+    headingWeight: 800,
+    displayTracking: "-0.03em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;

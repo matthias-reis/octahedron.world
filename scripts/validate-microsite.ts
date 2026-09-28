@@ -113,17 +113,25 @@ export function validateMicrosite(
         previous = n;
       }
 
-      if (node.tagName === "image") {
+      if (node.tagName === "image" || node.tagName === "gallery") {
         const data = blockData(node);
-        if (!exists(data.src)) {
-          problems.push(
-            `section "${step.id}": image not found: ${String(data.src)}`,
-          );
-        }
-        if (typeof data.alt !== "string" || !data.alt.trim()) {
-          problems.push(
-            `section "${step.id}": image ${String(data.src)} needs an \`alt\``,
-          );
+        const images =
+          node.tagName === "gallery"
+            ? Array.isArray(data.items)
+              ? (data.items as Record<string, unknown>[])
+              : []
+            : [data];
+        for (const image of images) {
+          if (!exists(image?.src)) {
+            problems.push(
+              `section "${step.id}": image not found: ${String(image?.src)}`,
+            );
+          }
+          if (typeof image?.alt !== "string" || !image.alt.trim()) {
+            problems.push(
+              `section "${step.id}": image ${String(image?.src)} needs an \`alt\``,
+            );
+          }
         }
       }
     });

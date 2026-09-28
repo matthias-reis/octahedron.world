@@ -2,6 +2,7 @@ import { Menu, X } from "lucide-solid";
 import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
 import { usePageAsset } from "./assets";
+import { type ColorAssignment, colorClasses } from "./theme";
 import { ButtonLink, Container, Icon, type IconName } from "./ui";
 
 export type Brand = {
@@ -41,7 +42,7 @@ const Logo: Component<{ brand: Brand }> = (props) => {
     <a
       href="/"
       title="Alle Seiten"
-      class="flex flex-col shrink-0 min-w-0 font-ms-display text-copy-strong"
+      class={`flex flex-col min-w-0 font-ms-display text-copy-strong ${logo() ? "shrink" : "shrink-0"}`}
     >
       <Show
         when={logo()}
@@ -62,7 +63,7 @@ const Logo: Component<{ brand: Brand }> = (props) => {
           <img
             src={url()}
             alt={props.brand.name}
-            class="h-[2.4rem] md:h-[2.9rem] w-auto"
+            class="h-auto max-h-[2.4rem] md:max-h-[2.9rem] w-auto max-w-full object-contain object-left"
             decoding="async"
           />
         )}
@@ -126,7 +127,10 @@ export const SiteHeader: Component<{
         </Show>
         <Show when={props.actions?.cta}>
           {(cta) => (
-            <ButtonLink href={cta().url} class="hidden md:inline-flex">
+            <ButtonLink
+              href={cta().url}
+              class="hidden md:inline-flex whitespace-nowrap"
+            >
               {cta().text}
             </ButtonLink>
           )}
@@ -182,6 +186,12 @@ export type FooterOptions = {
   meta?: { icon?: IconName; text: string };
   /** `plain` sits on the page background; default `inverted`. */
   variant?: "plain" | "inverted";
+  /**
+   * Group override for the dark chrome — footer, notice bar and the phone
+   * quick bar — e.g. `{ copy: main, background: main }` to match the
+   * page's highlighted section instead of its page palette.
+   */
+  colors?: ColorAssignment;
 };
 
 export const SiteFooter: Component<{
@@ -192,7 +202,7 @@ export const SiteFooter: Component<{
   quickbar?: boolean;
 }> = (props) => (
   <footer
-    class={`ms-section py-sxl text-sm ${props.options?.variant === "plain" ? "" : "ms-inverted"} ${props.quickbar ? "pb-[7rem] lg:pb-sxl" : ""}`}
+    class={`ms-section py-sxl text-sm ${props.options?.variant === "plain" ? "" : "ms-inverted"} ${props.quickbar ? "pb-[7rem] lg:pb-sxl" : ""} ${colorClasses(props.options?.colors).join(" ")}`}
   >
     <Container class="flex flex-col md:flex-row gap-smd md:items-start justify-between">
       <div class="flex flex-col gap-sxs max-w-2xl">
@@ -238,10 +248,14 @@ export const SiteFooter: Component<{
 );
 
 /** Thin strip above the header, e.g. "Konzeptvorschau". */
-export const NoticeBar: Component<{ text: string; short?: string }> = (
-  props,
-) => (
-  <div class="ms-section ms-inverted px-smd py-ssm text-center text-xs leading-snug text-copy-soft">
+export const NoticeBar: Component<{
+  text: string;
+  short?: string;
+  colors?: ColorAssignment;
+}> = (props) => (
+  <div
+    class={`ms-section ms-inverted px-smd py-ssm text-center text-xs leading-snug text-copy-soft ${colorClasses(props.colors).join(" ")}`}
+  >
     <span class={props.short ? "hidden sm:inline" : ""}>{props.text}</span>
     <Show when={props.short}>
       <span class="sm:hidden">{props.short}</span>
@@ -253,10 +267,13 @@ export const NoticeBar: Component<{ text: string; short?: string }> = (
  * Fixed action bar at the bottom on phones and tablets: call, mail, route.
  * The first link is the primary action.
  */
-export const QuickBar: Component<{ links: QuickLink[] }> = (props) => (
+export const QuickBar: Component<{
+  links: QuickLink[];
+  colors?: ColorAssignment;
+}> = (props) => (
   <nav
     aria-label="Schnellkontakt"
-    class="ms-section ms-inverted lg:hidden fixed left-ssm right-ssm bottom-ssm z-30 grid auto-cols-fr grid-flow-col gap-[0.25rem] p-[0.375rem] rounded-[calc(var(--ms-radius)*1.5)] shadow-2xl"
+    class={`ms-section ms-inverted lg:hidden fixed left-ssm right-ssm bottom-ssm z-30 grid auto-cols-fr grid-flow-col gap-[0.25rem] p-[0.375rem] rounded-[calc(var(--ms-radius)*1.5)] shadow-2xl ${colorClasses(props.colors).join(" ")}`}
   >
     <For each={props.links}>
       {(link, index) => (

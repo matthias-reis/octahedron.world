@@ -196,7 +196,9 @@ const Features: Component<CustomBlockProps> = (props) => {
         </ul>
       }
     >
-      <ul class={`ms-block grid gap-smd ${columns()}`}>
+      <ul
+        class={`ms-block grid gap-smd ${columns()} ${style() === "tiles" ? "mt-sxl" : ""}`}
+      >
         <For each={items()}>
           {(item) => (
             <li
@@ -291,7 +293,7 @@ const Stats: Component<CustomBlockProps> = (props) => {
     <dl class="ms-block my-sxl grid grid-cols-3 gap-smd sm:gap-slg">
       <For each={items()}>
         {(item) => (
-          <div class="flex flex-col-reverse border-t-4 border-button pt-smd">
+          <div class="flex flex-col-reverse justify-end border-t-4 border-button pt-smd">
             <dt class="mt-ssm text-sm sm:text-lg font-semibold leading-snug text-copy-strong">
               {item.text}
             </dt>
@@ -632,6 +634,77 @@ const Image: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/** Grid placement per mosaic slot: one large tile, two beside it, then thirds. */
+const mosaicSlots = [
+  "col-span-2 row-span-2 lg:col-span-7",
+  "lg:col-span-5",
+  "lg:col-span-5",
+];
+const mosaicRest = "lg:col-span-4";
+
+/**
+ * ```yaml gallery
+ * items:
+ *   - src: rohbau.webp       # pnpm ms-image … — the first tile is the big one
+ *     alt: Beschreibung      # required
+ *     caption: Wohnhaus, Friesoythe   # optional, set on the photo
+ * ```
+ * An asymmetric photo mosaic: the first image large, two beside it, any
+ * further ones in thirds below. Three or six items fill it cleanly.
+ */
+const Gallery: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items).filter((item) => str(item.src));
+
+  const Tile: Component<{ item: Record<string, unknown>; index: number }> = (
+    tile,
+  ) => {
+    const src = usePageAsset(() => str(tile.item.src));
+    const small = usePageAsset(() => {
+      const f = str(tile.item.src);
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <figure
+        class={`relative overflow-hidden rounded-ms bg-card ${mosaicSlots[tile.index] ?? mosaicRest}`}
+      >
+        <Show when={src()}>
+          {(url) => (
+            <img
+              src={url()}
+              srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+              sizes={
+                tile.index === 0
+                  ? "(min-width: 64rem) 40rem, 100vw"
+                  : "(min-width: 64rem) 28rem, 50vw"
+              }
+              alt={str(tile.item.alt) ?? ""}
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          )}
+        </Show>
+        <Show when={str(tile.item.caption)}>
+          {(caption) => (
+            <figcaption class="ms-section ms-inverted absolute left-ssm bottom-ssm max-w-[calc(100%-1.5rem)] rounded-[calc(var(--ms-radius)*0.75)] px-ssm py-[0.3rem] text-xs sm:text-sm font-semibold text-copy-strong">
+              {caption()}
+            </figcaption>
+          )}
+        </Show>
+      </figure>
+    );
+  };
+
+  return (
+    <div class="ms-block my-sxl grid grid-cols-2 lg:grid-cols-12 auto-rows-[9.5rem] sm:auto-rows-[13rem] lg:auto-rows-[15rem] gap-ssm md:gap-smd">
+      <For each={items()}>
+        {(item, index) => <Tile item={item} index={index()} />}
+      </For>
+    </div>
+  );
+};
+
 /** Prose + blocks for a microsite section body. */
 export const micrositeComponents: ComponentMap = {
   h1: (props: any) => (
@@ -676,4 +749,5 @@ export const micrositeComponents: ComponentMap = {
   video: Video,
   palette: Palette,
   image: Image,
+  gallery: Gallery,
 };
