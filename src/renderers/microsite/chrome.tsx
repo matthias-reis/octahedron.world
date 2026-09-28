@@ -240,7 +240,7 @@ export const SiteFooter: Component<{
           )}
         </Show>
         <li>
-          © Webdesign and Layout: Hein Altenbroxter & Matthias Reis
+          © Webdesign und Layout: Hein Altenbroxter & Matthias Reis
         </li>
       </ul>
     </Container>
