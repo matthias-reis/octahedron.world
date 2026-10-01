@@ -144,7 +144,8 @@ export const ButtonLink: ParentComponent<{
       "rounded-ms font-semibold transition-colors",
       "outline-offset-2 focus-visible:outline-2 outline-button",
       props.variant === "secondary"
-        ? "border-2 border-button text-copy-strong hover:bg-button hover:text-button-copy"
+        ? // Half-opaque fill: stays readable on photos and tinted backdrops.
+          "border-2 border-button bg-page/75 backdrop-blur-sm text-copy-strong hover:bg-button hover:text-button-copy"
         : "bg-button text-button-copy hover:bg-button-hover",
       props.class,
     )}
@@ -357,7 +358,7 @@ export const Section: ParentComponent<{
                 ? "max-w-[60rem]"
                 : cover()
                   ? "max-w-[50rem]"
-                  : "max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl",
+                  : "ms-panel max-w-[38rem] min-w-0 rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/40 p-slg md:p-sxl shadow-2xl backdrop-blur-2xl backdrop-saturate-150",
               props.layout === "hero" && "ms-hero",
             )}
           >

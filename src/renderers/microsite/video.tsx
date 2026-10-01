@@ -14,8 +14,50 @@ import { Icon } from "./ui";
  * YouTube — no request, no cookie. The click swaps the poster for a
  * youtube-nocookie iframe. Without JavaScript the poster links to YouTube.
  */
+/**
+ * ```yaml video
+ * src: bad.mp4              # local file next to the page (no YouTube)
+ * poster: bad.webp          # optional still
+ * alt: Beschreibung         # what the clip shows
+ * ratio: 16/9               # optional
+ * ```
+ *
+ * A short silent loop, played inline like a moving photo: muted, looped,
+ * no controls. Nothing leaves the page — the file comes from /asset.
+ */
+const LocalVideo: Component<{ data: Record<string, unknown> }> = (props) => {
+  const str = (v: unknown) => (typeof v === "string" && v ? v : undefined);
+  const src = usePageAsset(() => str(props.data.src));
+  const poster = usePageAsset(() => str(props.data.poster));
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <video
+          src={url()}
+          poster={poster()}
+          aria-label={str(props.data.alt)}
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          // Hydration can leave an autoplay video paused; nudge it once ready.
+          onCanPlay={(e) => {
+            if (e.currentTarget.paused) e.currentTarget.play().catch(() => {});
+          }}
+          class="ms-block my-sxl block w-full rounded-ms object-cover bg-card"
+          style={{
+            "aspect-ratio": str(String(props.data.ratio ?? "")) ?? "16/9",
+          }}
+        />
+      )}
+    </Show>
+  );
+};
+
 export const Video: Component<CustomBlockProps> = (props) => {
   const data = () => (props.data ?? {}) as Record<string, unknown>;
+  if (typeof data().src === "string") return <LocalVideo data={data()} />;
   const id = () => {
     const v = data().youtube;
     return typeof v === "string" && /^[\w-]{6,20}$/.test(v) ? v : undefined;

@@ -573,6 +573,11 @@
 
 .ms-root :is(h1, h2, h3) {
   text-wrap: balance;
+  /* Long German compounds break with a hyphen instead of overflowing. */
+  hyphens: auto;
+  /* …but only words of 12+ letters, split no closer than 5 to either end. */
+  hyphenate-limit-chars: 12 5 5;
+  overflow-wrap: break-word;
   font-optical-sizing: auto;
 }
 
@@ -660,4 +665,9 @@
 }
 .ms-center > .ms-block {
   justify-content: center;
+}
+
+/* A hero on a frosted panel has half the width: one step smaller. */
+.ms-panel h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.75rem);
 }
