@@ -19,11 +19,12 @@ theme:
   hue: 250
   radius: 1
   fonts: studio
-  colors: { copy: main, background: main }
+  colors: { copy: complementary, background: complementary }
 header:
   phone: 0511 604 57 22
   cta: { text: Beratung anfragen, url: "#kontakt" }
 footer:
+  colors: { copy: main, background: main }
   note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos von m-brandt-haustechnik.de und listerbadstudio.de (CAT Photography, Catrin Rörig). Wolfgang Grube · Inh. Martin Brandt · Gehägestraße 20b · 30655 Hannover
 legal:
   - Impressum
@@ -127,7 +128,7 @@ caption: Unterwegs zum hydraulischen Abgleich
 ```yaml @
 nav: Badstudio
 variant: inverted
-colors: { copy: complementary, background: complementary }
+colors: { copy: main, background: main }
 kicker: { text: Lister Badstudio, tone: copy }
 layout: split
 ```
