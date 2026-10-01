@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 001-juergens
-group: seiten
+type: page
+format: microsite
+publishedAs: 001-juergens
 title: Jürgens – Heizung, Sanitär, Elektro in Großefehn
-type: microsite
 language: de
 noindex: true
 description: Heizung, Sanitär und Elektro aus Großefehn – Wärmepumpen, Lüftung, Klima, Wartung und Notdienst rund um die Uhr für Privatkunden, Gewerbe und Kommunen.

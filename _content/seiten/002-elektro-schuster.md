@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 002-elektro-schuster
-group: seiten
+type: page
+format: microsite
+publishedAs: 002-elektro-schuster
 title: Elektro Schuster – Elektriker in Herne
-type: microsite
 language: de
 noindex: true
 description: Elektro Schuster GmbH, Ihr Elektriker in Herne – Installation, Netzwerke, KNX und Smart Home, Rauchmelder, DGUV-V3-Prüfung und Ladestationen für E-Autos.

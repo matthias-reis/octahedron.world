@@ -1,8 +1,8 @@
 ```yaml @@
-slug: example
-group: seiten
+type: page
+format: microsite
+publishedAs: example
 title: Fern & Flour – Bäckerei in Leipzig-Plagwitz
-type: microsite
 language: de
 public: true
 description: Bäckerei in Leipzig-Plagwitz. Sauerteigbrot, Gebäck und Kaffee, jeden Morgen frisch gebacken, seit 2014.

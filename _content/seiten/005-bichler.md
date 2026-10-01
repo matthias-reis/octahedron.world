@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 005-bichler
-group: seiten
+type: page
+format: microsite
+publishedAs: 005-bichler
 title: Bichler – Bauunternehmen in Großnöbach bei Freising und Dachau
-type: microsite
 language: de
 noindex: true
 description: Bichler Bauunternehmen aus Großnöbach – Rohbau, An- und Umbau, Sanierung, Gewerbebau und schlüsselfertiges Bauen nach Ihren Plänen, zum Festpreis.

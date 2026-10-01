@@ -3,10 +3,10 @@ import type { Options } from "hast-util-to-jsx-runtime";
 import type { Site } from "./site/context";
 
 export type ItemMeta = {
-  slug: string; // new url ${group}/${slug} - when slug = group then it's a root entry
-  site: Site; // which site serves this item; derived from _content/ subfolder, overridable via explicit `site:` key
-  alias?: string; // old url
-  group: string; // new grouping. E.g. 'hermetics'
+  slug: string; // the route — `publishedAs` in the unified schema
+  site: Site; // which site serves this item — from its parent chain (mreis-home) or the seiten/ folder
+  alias?: string | string[]; // old urls, redirected to the slug
+  group: string; // the series — slug of the primary `parent` relation. E.g. 'hermetics'
   type?: string; // MDS renderer type
   // titles //
   superTitle?: string;
@@ -24,7 +24,7 @@ export type ItemMeta = {
   related?: string[]; // careful they need to change as well
   // flags //
   unfinished?: boolean;
-  root?: boolean;
+  root?: boolean; // primary parent is a site homepage anchor
   hidden?: boolean;
   colorSpace?: string;
   weight?: number;
