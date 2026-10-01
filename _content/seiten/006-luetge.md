@@ -23,7 +23,7 @@ header:
   phone: 040 48 509 066
   cta: { text: Angebot anfragen, url: "#kontakt" }
 footer:
-  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos und Innungslogo von sanitaer-heizung-notdienst.de. Kartengrundlage Bezirksgrenzen © Freie und Hansestadt Hamburg, LGV (dl-de/by-2.0). LÜTGE HAUSTECHNIK GmbH · Orchideenring 11b · 22607 Hamburg
+  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos und Innungslogo von sanitaer-heizung-notdienst.de, Symbolbilder KI-generiert. Kartengrundlage Bezirksgrenzen © Freie und Hansestadt Hamburg, LGV (dl-de/by-2.0). LÜTGE HAUSTECHNIK GmbH · Orchideenring 11b · 22607 Hamburg
 legal:
   - Impressum
   - Datenschutz
@@ -102,6 +102,13 @@ items:
     text: Reparatur und Instandhaltung von Öl- und Gasanlagen.
 ```
 
+```yaml image
+src: notdienst.webp
+alt: Ein Installateur mit Stirnlampe kniet nachts in einem Backsteinkeller und dichtet ein tropfendes Kupferrohr ab
+ratio: 21/9
+caption: Symbolbild (KI-generiert)
+```
+
 ```yaml callout
 label: 24-Stunden-Rufnummer
 text: 040 48 509 066
@@ -170,6 +177,13 @@ items:
   - { icon: droplets, text: Duschen und Duschkabinen }
   - { icon: sparkles, text: Badewannen und Whirlpools }
   - { icon: wrench, text: Neue Rohrleitungen }
+```
+
+```yaml image
+src: bad.webp
+alt: Renoviertes Bad mit bodengleicher Glasdusche, grauen Großformatfliesen, Waschtisch und Fenster
+ratio: 3/2
+caption: Symbolbild (KI-generiert)
 ```
 
 ```yaml cta
