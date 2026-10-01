@@ -23,7 +23,7 @@ header:
   phone: 040 48 509 066
   cta: { text: Angebot anfragen, url: "#kontakt" }
 footer:
-  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Kartengrundlage Bezirksgrenzen © Freie und Hansestadt Hamburg, LGV (dl-de/by-2.0). LÜTGE HAUSTECHNIK GmbH · Orchideenring 11b · 22607 Hamburg
+  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos und Innungslogo von sanitaer-heizung-notdienst.de. Kartengrundlage Bezirksgrenzen © Freie und Hansestadt Hamburg, LGV (dl-de/by-2.0). LÜTGE HAUSTECHNIK GmbH · Orchideenring 11b · 22607 Hamburg
 legal:
   - Impressum
   - Datenschutz
@@ -122,17 +122,26 @@ Von der Beratung über die Planung bis zum Einbau – und danach Wartung und
 Reparatur, alles vom selben Meisterbetrieb.
 
 ```yaml index
+style: icons
 items:
   - icon: heater
+    image: heizung.webp
+    alt: Heizkörper an einer hellen Wand über Holzboden
     title: Heizungsanlagen
     text: Neubau, Modernisierung und Wartung von Gas- und Ölheizungen. Nur jede zehnte Heizung ist auf dem aktuellen Stand der Technik – wir beraten Sie zum „richtigen Heizen“ und zu einer neuen, energieeffizienten Anlage, mit Viessmann, Vaillant, Buderus, Junkers und weiteren führenden Herstellern.
   - icon: droplets
+    image: sanitaer.webp
+    alt: Brausekopf mit fließendem Wasser
     title: Sanitäranlagen
     text: Toiletten und Sanitäranlagen, neue Rohrleitungen und die Installation Ihrer Küche – fachgerecht, termingerecht und ausschließlich mit Markenprodukten führender Hersteller.
   - icon: wind
+    image: lueftung.webp
+    alt: Eine Hand öffnet ein Fenster
     title: Lüftungsanlagen
     text: Lüftungsanlagen für Küchen und kontrollierte Wohnraumlüftung mit und ohne Wärmerückgewinnung. Sie hält bis zu 90 % der Energie im Haus, die beim üblichen Fensterlüften verloren geht, und beugt Schimmel vor. Die Wartung der kompletten Anlage übernehmen wir.
   - icon: sun
+    image: solar.webp
+    alt: Solarkollektoren auf einem Ziegeldach
     title: Thermische Solaranlagen
     text: Solarwärme für Ihr Warmwasser – oder als Kombianlage, die zusätzlich die Heizung unterstützt. Auch eine bestehende Heizung lässt sich um Solar erweitern. Mit Energieberatung, Planung, Wartung und Reparatur.
 ```
@@ -180,6 +189,12 @@ kicker: Kontakt
 Für Angebote, Wartungstermine und alle Fragen rund um Heizung und Bad. Im
 Notfall wählen Sie die 24-Stunden-Rufnummer – mobil erreichen Sie uns unter
 0176 64995356.
+
+```yaml emblem
+src: innung.webp
+alt: Logo der Innung Sanitär Heizung Klempner Hamburg
+size: 14
+```
 
 ```yaml contact
 name: LÜTGE HAUSTECHNIK GmbH
