@@ -634,6 +634,38 @@ const Image: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/**
+ * ```yaml emblem
+ * src: logo-gross.webp     # pnpm ms-image … --logo (alpha kept)
+ * alt: Logo von …          # required
+ * size: 22                 # optional max width in rem (default 18)
+ * ```
+ * A logo or seal shown big and uncropped — no frame, no rounding. In a
+ * centered section it sits on the axis.
+ */
+const Emblem: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const src = usePageAsset(() => str(data()?.src));
+  const size = () => {
+    const n = Number(data()?.size);
+    return Number.isFinite(n) && n > 0 ? n : 18;
+  };
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <img
+          src={url()}
+          alt={str(data()?.alt) ?? ""}
+          loading="eager"
+          decoding="async"
+          class="ms-block block w-full h-auto my-slg"
+          style={{ "max-width": `${size()}rem` }}
+        />
+      )}
+    </Show>
+  );
+};
+
 /** Grid placement per mosaic slot: one large tile, two beside it, then thirds. */
 const mosaicSlots = [
   "col-span-2 row-span-2 lg:col-span-7",
@@ -750,4 +782,5 @@ export const micrositeComponents: ComponentMap = {
   palette: Palette,
   image: Image,
   gallery: Gallery,
+  emblem: Emblem,
 };

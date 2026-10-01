@@ -244,10 +244,15 @@ export const Section: ParentComponent<{
   colors?: string[];
   /** `cover`: copy sits on the backdrop photo itself, no panel. */
   backdropStyle?: "panel" | "cover";
+  /** Where the copy sits on the backdrop (see `BackdropData`). */
+  backdropAlign?: "left" | "right";
+  backdropValign?: "top" | "bottom";
   /** `bleed`: the hero visual fills the right half, edge to edge. */
   visualStyle?: "card" | "bleed";
   /** CSS mask for a repeating motif, drawn in the section's text color. */
   pattern?: JSX.CSSProperties;
+  /** `center`: everything on the vertical axis (no visual, no backdrop). */
+  align?: "center";
 }> = (props) => {
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
@@ -257,6 +262,7 @@ export const Section: ParentComponent<{
   const bleed = () =>
     props.layout === "hero" && props.visualStyle === "bleed" && !!visual();
   const cover = () => props.backdropStyle === "cover";
+  const top = () => cover() && props.backdropValign === "top";
 
   return (
     <section
@@ -310,6 +316,7 @@ export const Section: ParentComponent<{
                     props.layout === "hero" && "ms-hero",
                     props.layout === "split" && "ms-layout-split",
                     props.layout === "side" && "ms-layout-side",
+                    props.align === "center" && "ms-center",
                     "[&>.ms-kicker]:mb-smd",
                   )}
                 >
@@ -333,19 +340,24 @@ export const Section: ParentComponent<{
         <Container
           class={cx(
             "flex",
-            cover() ? "items-end" : "items-center",
+            top() ? "items-start" : cover() ? "items-end" : "items-center",
+            props.backdropAlign === "right" && "justify-end",
             props.layout === "hero" &&
-              (cover()
-                ? "min-h-[min(92vh,54rem)] pt-[14rem]"
-                : "min-h-[min(86vh,50rem)]"),
+              (top()
+                ? "min-h-[min(92vh,54rem)] pb-[16rem]"
+                : cover()
+                  ? "min-h-[min(92vh,54rem)] pt-[14rem]"
+                  : "min-h-[min(86vh,50rem)]"),
           )}
         >
           <div
             class={cx(
               "flex flex-col [&>.ms-kicker]:mb-slg",
-              cover()
-                ? "max-w-[50rem]"
-                : "max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl",
+              top()
+                ? "max-w-[60rem]"
+                : cover()
+                  ? "max-w-[50rem]"
+                  : "max-w-[38rem] rounded-[calc(var(--ms-radius)*3)] border border-line/40 bg-page/55 p-slg md:p-sxl shadow-2xl backdrop-blur-xl",
               props.layout === "hero" && "ms-hero",
             )}
           >

@@ -113,7 +113,7 @@ export function validateMicrosite(
         previous = n;
       }
 
-      if (node.tagName === "image" || node.tagName === "gallery") {
+      if (["image", "gallery", "emblem"].includes(node.tagName)) {
         const data = blockData(node);
         const images =
           node.tagName === "gallery"

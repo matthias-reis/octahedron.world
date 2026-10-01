@@ -39,6 +39,14 @@
 @import "@fontsource-variable/bricolage-grotesque/standard.css";
 @import "@fontsource-variable/red-hat-display";
 @import "@fontsource-variable/red-hat-text";
+@import "@fontsource-variable/schibsted-grotesk";
+@import "@fontsource-variable/figtree";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/ibm-plex-sans";
+@import "@fontsource/anton/400.css";
+@import "@fontsource-variable/work-sans";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -217,6 +225,22 @@
   --ms-complementary-d3: oklch(
     var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) + 180)
   );
+
+  /* --- signal: a brand color plus a dark ink, set per page (theme.signal).
+     Bright shades are the brand color, dark shades the ink — so a signal
+     button is ink with brand-colored copy, and an inverted signal section is
+     ink with brand-colored headlines. --- */
+  --ms-signal: oklch(0.82 0.16 85);
+  --ms-ink: oklch(0.25 0.004 85);
+  --ms-signal-b1: var(--ms-signal);
+  --ms-signal-b2: color-mix(in oklch, var(--ms-signal) 45%, white);
+  --ms-signal-b3: color-mix(in oklch, var(--ms-signal) 85%, var(--ms-ink));
+  --ms-signal-m1: var(--ms-signal);
+  --ms-signal-m2: var(--ms-ink);
+  --ms-signal-m3: color-mix(in oklch, var(--ms-ink) 70%, white);
+  --ms-signal-d1: var(--ms-ink);
+  --ms-signal-d2: color-mix(in oklch, var(--ms-ink) 85%, white);
+  --ms-signal-d3: color-mix(in oklch, var(--ms-ink) 80%, black);
 
   /* --- group defaults --- */
   --ms-copy-b1: var(--ms-accent-left-b1);
@@ -452,6 +476,40 @@
   --ms-button-d3: var(--ms-complementary-d3);
 }
 
+.ms-copy-signal {
+  --ms-copy-b1: var(--ms-signal-b1);
+  --ms-copy-b2: var(--ms-signal-b2);
+  --ms-copy-b3: var(--ms-signal-b3);
+  --ms-copy-m1: var(--ms-signal-m1);
+  --ms-copy-m2: var(--ms-signal-m2);
+  --ms-copy-m3: var(--ms-signal-m3);
+  --ms-copy-d1: var(--ms-signal-d1);
+  --ms-copy-d2: var(--ms-signal-d2);
+  --ms-copy-d3: var(--ms-signal-d3);
+}
+.ms-background-signal {
+  --ms-background-b1: var(--ms-signal-b1);
+  --ms-background-b2: var(--ms-signal-b2);
+  --ms-background-b3: var(--ms-signal-b3);
+  --ms-background-m1: var(--ms-signal-m1);
+  --ms-background-m2: var(--ms-signal-m2);
+  --ms-background-m3: var(--ms-signal-m3);
+  --ms-background-d1: var(--ms-signal-d1);
+  --ms-background-d2: var(--ms-signal-d2);
+  --ms-background-d3: var(--ms-signal-d3);
+}
+.ms-button-signal {
+  --ms-button-b1: var(--ms-signal-b1);
+  --ms-button-b2: var(--ms-signal-b2);
+  --ms-button-b3: var(--ms-signal-b3);
+  --ms-button-m1: var(--ms-signal-m1);
+  --ms-button-m2: var(--ms-signal-m2);
+  --ms-button-m3: var(--ms-signal-m3);
+  --ms-button-d1: var(--ms-signal-d1);
+  --ms-button-d2: var(--ms-signal-d2);
+  --ms-button-d3: var(--ms-signal-d3);
+}
+
 /* --- semantic layer (light) — re-declared on every section --- */
 
 .ms-root,
@@ -588,4 +646,18 @@
     grid-row: 1 / span 12;
     margin-block: 0;
   }
+}
+
+/* A centered section (local `align: center`): every child on the axis. */
+.ms-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ms-center > :is(h1, h2, p) {
+  margin-inline: auto;
+}
+.ms-center > .ms-block {
+  justify-content: center;
 }

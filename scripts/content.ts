@@ -57,6 +57,7 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         "callout",
         "cards",
         "contact",
+        "emblem",
         "features",
         "gallery",
         "image",

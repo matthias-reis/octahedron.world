@@ -91,7 +91,10 @@ Each is documented (YAML shape) in a comment above its component.
   of the button color), `pattern` (a subtle repeating motif behind the
   section in its text color — `patterns.ts`, e.g. `roof`), `backdrop` (full-bleed background image, the
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
-  photo, bottom left, magazine-cover style — `backdrop.tsx`), `layout`:
+  photo, bottom left, magazine-cover style; `align: right` puts the copy on
+  the right half, `valign: top` (cover only) sets it into the sky with the
+  subject below — `backdrop.tsx`), `align: center` (everything on the vertical
+  axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs
     the photo edge to edge over the right half instead of a framed card
@@ -106,7 +109,8 @@ Each is documented (YAML shape) in a comment above its component.
   `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
   `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
   `gallery` (asymmetric photo mosaic, first image large, optional captions on
-  the photos — 3 or 6 items), `palette`.
+  the photos — 3 or 6 items), `emblem` (a logo or seal shown big and
+  uncropped, `size` in rem), `palette`.
 - **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
   next to it (it becomes the `alt`). An existing logo on white gets its
   background turned into alpha before `pnpm ms-image … --logo`.
@@ -163,7 +167,12 @@ Defined in `theme.css`, exposed to Tailwind in `app.css`. Four layers:
 2. **Palettes** — six hues derived from it: `main` (H),
    `adjacent-left` / `adjacent-right` (H ∓ 42.5), `accent-left` /
    `accent-right` (H ∓ 137.5, golden angle), `complementary` (H + 180).
-   Left = minus, right = plus. Each has nine shades:
+   Left = minus, right = plus. A seventh palette, `signal`, is not derived
+   from the hue: it is the page's own brand color (`theme.signal: "#efb814"`)
+   with a dark ink — bright shades are the brand color, dark shades the ink.
+   Use it when the brand color is one the hue ladder can't reach (a true
+   yellow); as the button group it gives ink buttons with brand-colored copy.
+   Each has nine shades:
    - `b1` `b2` (desaturated) `b3`: bright, for backgrounds
    - `m1` `m2` `m3` (desaturated): mid, for accents
    - `d1` `d2` (desaturated) `d3`: dark, for text and inverted sections

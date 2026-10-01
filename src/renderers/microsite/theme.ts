@@ -61,6 +61,41 @@ export const fontPairings = {
     headingWeight: 800,
     displayTracking: "-0.03em",
   },
+  /** Hanseatic and direct: a newspaper grotesk, heavy on top, over a round sans. */
+  hanse: {
+    display: '"Schibsted Grotesk Variable", system-ui, sans-serif',
+    body: '"Figtree Variable", system-ui, sans-serif',
+    h1Weight: 800,
+    headingWeight: 750,
+    displayTracking: "-0.02em",
+  },
+  /** Showroom calm: a single-weight display serif over a clear geometric sans. */
+  studio: {
+    display: '"Instrument Serif", Georgia, serif',
+    body: '"Plus Jakarta Sans Variable", system-ui, sans-serif',
+    /** Instrument Serif has one weight: never let the browser fake bold. */
+    h1Weight: 400,
+    headingWeight: 400,
+    displayTracking: "-0.01em",
+  },
+  /** Engineering: a wide technical display face over a plain grotesk. */
+  technik: {
+    display: '"Sora Variable", system-ui, sans-serif',
+    body: '"IBM Plex Sans Variable", system-ui, sans-serif',
+    h1Weight: 700,
+    headingWeight: 650,
+    displayTracking: "-0.035em",
+  },
+  /** Poster type: a tall condensed headline face over a sturdy sans. */
+  poster: {
+    display: 'Anton, "Arial Narrow", sans-serif',
+    body: '"Work Sans Variable", system-ui, sans-serif',
+    /** Anton has one weight. */
+    h1Weight: 400,
+    headingWeight: 400,
+    displayTracking: "0.01em",
+    displayWordSpacing: "0.04em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -76,6 +111,16 @@ export const paletteNames = [
 
 export type PaletteName = (typeof paletteNames)[number];
 
+/**
+ * Palettes a color group can point at: the six hue palettes plus `signal`,
+ * built from the page's own brand color (`theme.signal`) and a dark ink
+ * instead of from the hue — for a brand color the hue ladder can't reach
+ * (a true yellow, a signal red).
+ */
+export const groupPalettes = [...paletteNames, "signal"] as const;
+
+export type GroupPalette = (typeof groupPalettes)[number];
+
 export const colorGroups = ["copy", "background", "button"] as const;
 
 export type ColorGroup = (typeof colorGroups)[number];
@@ -84,7 +129,7 @@ export type ColorGroup = (typeof colorGroups)[number];
  * Which palette each color group points at. Unset groups keep the defaults
  * from theme.css (copy + background → accent-left, button → main).
  */
-export type ColorAssignment = Partial<Record<ColorGroup, PaletteName>>;
+export type ColorAssignment = Partial<Record<ColorGroup, GroupPalette>>;
 
 /** The `theme` key of a microsite's global scope — every knob is optional. */
 export type MicrositeTheme = {
@@ -95,6 +140,8 @@ export type MicrositeTheme = {
   fonts?: FontPairing;
   /** Page-wide group assignment. */
   colors?: ColorAssignment;
+  /** Brand color for the `signal` palette, as hex (`#efb814`). */
+  signal?: string;
 };
 
 function num(value: unknown): number | undefined {
@@ -115,6 +162,11 @@ export function themeStyle(
 
   if (hue !== undefined) style["--ms-hue"] = String(hue);
   if (radius !== undefined) style["--ms-radius"] = `${radius}rem`;
+  if (
+    typeof theme.signal === "string" &&
+    /^#[0-9a-f]{3,8}$/i.test(theme.signal)
+  )
+    style["--ms-signal"] = theme.signal;
 
   const fonts = theme.fonts && fontPairings[theme.fonts];
   if (fonts) {
@@ -144,7 +196,7 @@ export function colorClasses(colors: unknown): string[] {
   const assignment = colors as Record<string, unknown>;
   return colorGroups.flatMap((group) => {
     const palette = assignment[group];
-    return paletteNames.includes(palette as PaletteName)
+    return groupPalettes.includes(palette as GroupPalette)
       ? [`ms-${group}-${palette}`]
       : [];
   });
