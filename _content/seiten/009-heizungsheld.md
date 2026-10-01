@@ -109,6 +109,12 @@ items:
   - { icon: hammer, text: Sanierung und Modernisierung }
 ```
 
+```yaml image
+src: bad.webp
+alt: Helles Bad mit Holzwand, schwarzer freistehender Wanne, rundem Spiegel und Sechseckfliesen
+ratio: 3/2
+```
+
 ```yaml video
 src: bad-film.mp4
 poster: bad-film.webp
