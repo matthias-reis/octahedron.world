@@ -144,7 +144,6 @@ items:
 ```yaml @
 nav: Referenzen
 variant: inverted
-colors: { copy: adjacent-right, background: adjacent-right }
 kicker: { text: Referenzen, tone: copy }
 ```
 
