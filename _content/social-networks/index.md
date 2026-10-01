@@ -50,8 +50,8 @@ Then, I guess it was during a meetuo organised through
 that on our own. Fully open source and federated.
 
 I immediately dived into the architecture and the protocols they are using. The
-write-up that came out of it — a high level architectural comparison of AT
-Proto and Activity Pub — now lives over on my professional site:
+write-up that came out of it — a high level architectural comparison of AT Proto
+and Activity Pub — now lives over on my professional site:
 [Federated Social Networks](https://mreis.me/posts/federated-social-networks).
 
 And finally, I created the pith for the new social network / groups platform /

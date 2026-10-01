@@ -1,10 +1,10 @@
 ```yaml @@
 title: 'Untitled (to Saura and Brian)'
 description: >-
-  A mesmerizing fluorescent light installation by Dan Flavin, typically 
-  exhibited in major contemporary art institutions like the Centre Pompidou. 
-  The piece utilizes a geometric arrangement of yellow and blue light tubes 
-  to transform the gallery space, creating a glowing trapezoidal portal that 
+  A mesmerizing fluorescent light installation by Dan Flavin, typically
+  exhibited in major contemporary art institutions like the Centre Pompidou.
+  The piece utilizes a geometric arrangement of yellow and blue light tubes
+  to transform the gallery space, creating a glowing trapezoidal portal that
   blurs the line between physical sculpture and pure radiant energy.
 date: 2026-02-06T16:50:00.000Z
 tags:
