@@ -26,7 +26,7 @@ header:
   cta: { text: Anfrage senden, url: "#kontakt" }
 footer:
   colors: { copy: signal, background: signal }
-  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo und Foto von mw-heizungsheld.de. Heizungsheld Matthias & Weismüller GmbH · Am Münzenkamp 12 · 44319 Dortmund
+  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo, Fotos und Film von mw-heizungsheld.de. Heizungsheld Matthias & Weismüller GmbH · Am Münzenkamp 12 · 44319 Dortmund
 legal:
   - Impressum
   - Datenschutz
@@ -88,33 +88,53 @@ ratio: 4/3
 caption: Sven Weismüller und Thomas Matthias, Inhaber
 ```
 
-+++leistungen
++++bad
 
 ```yaml @
-nav: Leistungen
-kicker: Leistungen
+nav: Bad
+layout: side
+kicker: Sanitär
 ```
 
-## Alles aus Meisterhand – vom Gäste-WC bis zur Wärmepumpe
+## Badsanierung in Dortmund-Wickede
 
-```yaml cards
-icons: tile
+Badgestaltung und Modernisierung – vom kleinen Gäste-WC bis zum barrierefreien,
+altersgerechten Badezimmer. Gemeinsam planen und bauen wir Ihr Traumbad.
+
+```yaml features
+style: chips
 items:
-  - icon: droplets
-    label: Sanitär
-    title: Badsanierung in Dortmund
-    text: Badgestaltung und Modernisierung – vom kleinen Gäste-WC bis zum barrierefreien, altersgerechten Badezimmer. Gemeinsam planen und bauen wir Ihr Traumbad.
-    tags: [Gäste-WC, Barrierefrei, Modernisierung]
-  - icon: heater
-    label: Heizung
-    title: Heizungsmodernisierung
-    text: Reparatur verschiedener Hersteller wie Vaillant, jährliche Wartung, Umrüstung von Heizsystemen, Fußbodenheizungen – und neue Heizungsanlagen als Komplettlösung, auch kombiniert mit Solar.
-    tags: [Wartung, Fußbodenheizung, Solar]
-  - icon: wrench
-    label: Service
-    title: Rohrbruch und Verstopfung
-    text: Rohrbrüche, Rohrverstopfungen, Trinkwasserfilter und Kundendienst. Ihr Anliegen ist nicht dabei? Melden Sie sich trotzdem bei uns.
-    tags: [Kundendienst, Trinkwasserfilter]
+  - { icon: droplets, text: Gäste-WC }
+  - { icon: heart, text: Barrierefrei und altersgerecht }
+  - { icon: hammer, text: Sanierung und Modernisierung }
+```
+
+```yaml video
+src: bad-film.mp4
+poster: bad-film.webp
+alt: Kamerafahrt durch ein modernes Bad mit dunklen Fliesen, freistehender Wanne und rundem Spiegel
+ratio: 16/9
+```
+
++++heizung
+
+```yaml @
+nav: Heizung
+variant: surface
+layout: side
+kicker: Heizung
+```
+
+## Heizung modernisieren – vom Meister
+
+Reparatur verschiedener Hersteller wie Vaillant und die jährliche Wartung,
+Umrüstung von Heizsystemen, Fußbodenheizungen und neue Heizungsanlagen als
+Komplettlösung für Ihr Objekt – auch kombiniert mit Solar.
+
+```yaml image
+src: heizung.webp
+alt: Ein Monteur im karierten Hemd arbeitet mit einem Schraubenschlüssel an einem geöffneten Heizgerät
+ratio: 4/3
 ```
 
 +++waermepumpe
@@ -146,19 +166,43 @@ items:
 primary: { text: Beratung zur Wärmepumpe, url: "mailto:info@mw-heizungsheld.de?subject=W%C3%A4rmepumpe", icon: mail }
 ```
 
++++service
+
+```yaml @
+layout: side
+kicker: Service
+```
+
+## Rohrbruch, Verstopfung, Kundendienst
+
+Wir beheben Rohrbrüche und Rohrverstopfungen, setzen Trinkwasserfilter und
+sind im Kundendienst für Sie da – am Wochenende und an Feiertagen auch im
+Notdienst von 9:00 bis 19:00. Ihr Anliegen ist nicht dabei? Melden Sie sich
+trotzdem bei uns.
+
+```yaml image
+src: service.webp
+alt: Orangefarbene Tastaturtaste mit der Aufschrift services
+ratio: 4/3
+```
+
 +++klima
 
 ```yaml @
-layout: band
 variant: tint
+layout: side
+kicker: Demnächst
 ```
 
-```yaml features
-style: plain
-columns: 2
-items:
-  - { icon: wind, text: "Demnächst: Klimatechnik vom Meisterbetrieb" }
-  - { icon: siren, text: "Notdienst am Wochenende und an Feiertagen, 9:00–19:00" }
+## Klimatechnik vom Meisterbetrieb
+
+Bald auch bei uns: Klimaanlagen für Wohnung und Haus. Fragen Sie schon jetzt
+an – wir melden uns, sobald es losgeht.
+
+```yaml image
+src: klima.webp
+alt: Helles Wohnzimmer mit Sofa, Stehlampe und einem Wand-Klimagerät über dem Fenster
+ratio: 4/3
 ```
 
 +++kontakt
