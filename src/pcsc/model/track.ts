@@ -61,6 +61,9 @@ export class TrackModel {
     if (!t.trackNumber) {
       t.trackNumber = o.trackNumber;
     }
+    if (!t.appleId) {
+      t.appleId = o.appleId ?? null;
+    }
     //we take the earliest release date
     this.releaseDate = earliest(this.releaseDate, other.releaseDate);
     this.dateAdded = earliest(this.dateAdded, other.dateAdded);
@@ -127,6 +130,20 @@ export class TrackModel {
 
   get appleRating() {
     return (this.track as Track).appleRating ?? 0;
+  }
+
+  /** Apple Music persistent id (16 hex digits), once a voter has sent it. */
+  get appleId() {
+    return (this.track as Track).appleId ?? null;
+  }
+
+  set appleId(value: string | null) {
+    (this.track as Track).appleId = value;
+  }
+
+  /** Number of votes; from the cache's count when the votes aren't loaded. */
+  get voteCount() {
+    return this.votes.length || ((this.track as Track).voteCount ?? 0);
   }
 
   get vote() {
@@ -242,6 +259,7 @@ export class TrackModel {
     return {
       ...this.compact,
       appleRating: this.starRating,
+      appleId: t.appleId ?? null,
       albumArtist: t.albumArtist || null,
       discNumber: t.discNumber,
       discCount: t.discCount,
@@ -272,6 +290,9 @@ export class TrackModel {
     );
   }
 }
+
+export const isPersistentId = (value: unknown): value is string =>
+  typeof value === "string" && /^[0-9A-Fa-f]{16}$/.test(value);
 
 export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
   const aa = new Date(a);
@@ -352,6 +373,9 @@ export type CompactTrack = {
 
 export type Track = CompactTrack & {
   albumArtist?: string | null;
+  appleId?: string | null;
+  /** Set by the cache, which drops the votes themselves. Never stored. */
+  voteCount?: number;
   vote: number;
   appleRating?: number | null;
   discNumber: number | null;
