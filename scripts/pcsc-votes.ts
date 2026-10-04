@@ -22,12 +22,15 @@ import { db } from "../src/pcsc/server/firebase";
 const apply = process.argv.includes("--apply");
 
 const legacyVote = (votes: Vote[]) => {
-  const latest = votes.map((vote) => vote.date).sort().reverse()[0];
+  const latest = votes
+    .map((vote) => vote.date)
+    .sort()
+    .reverse()[0];
   let sum = 0;
   let weights = 0;
   for (const vote of votes) {
     const age = dayjs(latest).diff(vote.date, "day");
-    // biome-ignore lint/suspicious/noBitwiseOperator: reproduces the old bug
+    // reproduces the old bug: ^ is XOR, not a power
     const weight = (1 / (1000 - age)) ^ (2 * 0.8 + 0.2);
     sum += vote.rating * weight;
     weights += weight;
@@ -35,7 +38,8 @@ const legacyVote = (votes: Vote[]) => {
   return Math.round((sum * 10) / weights) / 10;
 };
 
-const band = (vote: number) => (vote >= 15 ? "15+" : vote >= 10 ? "10+" : "<10");
+const band = (vote: number) =>
+  vote >= 15 ? "15+" : vote >= 10 ? "10+" : "<10";
 
 const snapshot = await db.collection("tracks").get();
 type Row = {

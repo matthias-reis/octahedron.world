@@ -299,7 +299,7 @@ export class TrackModel {
 export const voteWeight = (ageInDays: number) =>
   ((1000 - Math.min(Math.max(ageInDays, 0), 999)) / 1000) ** 1.8;
 
-export const isPersistentId =(value: unknown): value is string =>
+export const isPersistentId = (value: unknown): value is string =>
   typeof value === "string" && /^[0-9A-Fa-f]{16}$/.test(value);
 
 export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
