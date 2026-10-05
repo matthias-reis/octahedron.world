@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: On Earth
+slug: on-earth
 description: How did the discovery of the Kret change the world?
 date: 2024-08-01T00:00:00.000Z
 colorSpace: sky
@@ -11,8 +13,6 @@ tags:
 group: transspace
 superTitle: Kret Tales
 alias: posts/2024/2024-08-01-on-earth
-slug: on-earth
-type: post
 image: kret-tales
 ```
 

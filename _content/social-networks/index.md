@@ -1,9 +1,10 @@
 ```yaml @@
+type: digest
 title: On Social Networks
-description: >-
-  I'm currently working on a bunch of product and technology ideas and dive into
-  the topic of federated social networks and networking in general. Here's some
-  of the outcome.
+slug: social-networks
+description: I'm currently working on a bunch of product and technology ideas
+  and dive into the topic of federated social networks and networking in
+  general. Here's some of the outcome.
 date: 2025-05-01T00:00:00.000Z
 colorSpace: carmine
 tags:
@@ -17,8 +18,6 @@ tags:
   - Content Federation
 group: social-networks
 root: true
-slug: social-networks
-type: digest
 image: social-networks
 weight: 3
 ```
@@ -50,8 +49,8 @@ Then, I guess it was during a meetuo organised through
 that on our own. Fully open source and federated.
 
 I immediately dived into the architecture and the protocols they are using. The
-write-up that came out of it — a high level architectural comparison of AT
-Proto and Activity Pub — now lives over on my professional site:
+write-up that came out of it — a high level architectural comparison of AT Proto
+and Activity Pub — now lives over on my professional site:
 [Federated Social Networks](https://mreis.me/posts/federated-social-networks).
 
 And finally, I created the pith for the new social network / groups platform /

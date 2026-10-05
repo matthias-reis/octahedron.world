@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Space
+slug: space
 description: How fictional stories can pass the vast emptiness of space.
 date: 2022-05-10T00:00:00.000Z
 tags:
@@ -10,8 +12,6 @@ tags:
 group: on-writing
 superTitle: General
 alias: posts/2022/2022-05-10-space
-slug: space
-type: post
 image: general
 hidden: true
 ```

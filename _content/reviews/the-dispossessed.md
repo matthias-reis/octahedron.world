@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: The Dispossessed
+slug: the-dispossessed
 subTitle: Ursula K. Le Guin
 description: Reviewing the 1974 sci-fi novel by Ursula K. Le Guin
 date: 2023-04-17T00:00:00.000Z
@@ -12,8 +14,6 @@ tags:
 group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-04-17-the-dispossessed
-slug: the-dispossessed
-type: post
 image: reviews
 ```
 

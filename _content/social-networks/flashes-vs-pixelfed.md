@@ -1,8 +1,9 @@
 ```yaml @@
+type: report
 title: Flashes vs Pixelfed
-description: >-
-  I've made an experiment. I ran the two Instagram alternatives Pixelfed and
-  Flashes (Bluesky) against each other.
+slug: flashes-vs-pixelfed
+description: I've made an experiment. I ran the two Instagram alternatives
+  Pixelfed and Flashes (Bluesky) against each other.
 date: 2025-06-25T00:00:00.000Z
 colorSpace: carmine
 tags:
@@ -17,8 +18,6 @@ tags:
 group: social-networks
 superTitle: Social Networks
 alias: posts/2025/2025-06-25-flashes-vs-pixelfed
-slug: flashes-vs-pixelfed
-type: report
 image: social-networks
 ```
 

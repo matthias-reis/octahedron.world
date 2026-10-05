@@ -1,7 +1,8 @@
 ```yaml @@
+type: population-simulation
 title: Population Simulation
-description:
-  What could happen in the next ten years. Let's start with AR headsets
+slug: population-simulation
+description: What could happen in the next ten years. Let's start with AR headsets
 date: 2023-01-02T00:00:00.000Z
 colorSpace: yellow
 tags:
@@ -9,8 +10,6 @@ tags:
   - population simulation
 group: population-simulation
 superTitle: Predictions
-slug: population-simulation
-type: population-simulation
 image: predictions
 ```
 

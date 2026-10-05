@@ -1,8 +1,8 @@
 ```yaml @@
+type: post
 title: Surgeon
-description: >-
-  A job that relies on precision? That's worth a look from machine's
-  perspective.
+slug: surgeon
+description: A job that relies on precision? That's worth a look from machine's perspective.
 date: 2023-03-07T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -12,8 +12,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2023/2023-03-07-surgeon
-slug: surgeon
-type: post
 image: ai-jobs
 ```
 

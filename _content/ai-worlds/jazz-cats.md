@@ -1,9 +1,10 @@
 ```yaml @@
+type: lightbox
 title: Jazz Cats
-description: >-
-  Three cats sit on a wooden counter surrounded by vinyl records and CDs in a
-  cozy, dimly lit jazz bar. An elderly man is seen in the background, seemingly
-  lost in the music.
+slug: jazz-cats
+description: Three cats sit on a wooden counter surrounded by vinyl records and
+  CDs in a cozy, dimly lit jazz bar. An elderly man is seen in the background,
+  seemingly lost in the music.
 colorSpace: tangerine
 date: 2025-06-25T00:00:00.000Z
 tags:
@@ -18,7 +19,5 @@ tags:
 group: ai-worlds
 superTitle: AI Worlds
 alias: images/2025/2025-06-25-jazz-cats
-slug: jazz-cats
-type: lightbox
 image: jazz-cats
 ```

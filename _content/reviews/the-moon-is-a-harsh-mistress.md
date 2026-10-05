@@ -1,9 +1,10 @@
 ```yaml @@
+type: post
 title: The Moon is a Harsh Mistress
+slug: the-moon-is-a-harsh-mistress
 subTitle: Robert Heinlein
-description: >-
-  The 1966 novel about the mechanics of a revolution is one of the classics of
-  sci-fi.
+description: The 1966 novel about the mechanics of a revolution is one of the
+  classics of sci-fi.
 date: 2023-10-16T00:00:00.000Z
 colorSpace: cyan
 tags:
@@ -13,8 +14,6 @@ tags:
 group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-10-16-the-moon-is-a-harsh-mistress
-slug: the-moon-is-a-harsh-mistress
-type: post
 image: reviews
 ```
 

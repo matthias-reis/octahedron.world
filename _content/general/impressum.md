@@ -1,11 +1,11 @@
 ```yaml @@
-title: Impressum
-group: general
-slug: impressum
-image: _home
 type: legal
-language: de
+title: Impressum
+slug: impressum
 ref: imprint
+group: general
+image: _home
+language: de
 ```
 
 # Angaben gemäß § 5 TMG

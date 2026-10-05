@@ -1,17 +1,17 @@
 ```yaml @@
+type: report
 superTitle: Worldbuilding
 title: Fermi's Paradox
+slug: fermis-paradox
+ref: das-fermi-paradoxon
 subTitle: In Search of Extraterrestrials
-description: >-
-  Humanity is alone in the universe. At least, that's what it looks like if you
-  ignore some of the conspiracy theories. But why is that? The Fermi Paradox
-  describes this phenomenon. And with the so-called Drake Equation, one gets
-  closer to the probabilities.
+description: Humanity is alone in the universe. At least, that's what it looks
+  like if you ignore some of the conspiracy theories. But why is that? The Fermi
+  Paradox describes this phenomenon. And with the so-called Drake Equation, one
+  gets closer to the probabilities.
 colorSpace: carmine
 startDate: 2017-08-01T00:00:00.000Z
 date: 2018-04-04T00:00:00.000Z
-language: en
-ref: das-fermi-paradoxon
 related:
   - the-fourth-wave
 tags:
@@ -22,9 +22,8 @@ tags:
   - Space Exploration
   - Civilizations
 group: the-fourth-wave
-slug: fermis-paradox
-type: report
 image: the-fourth-wave
+language: en
 ```
 
 Aliens. Extraterrestrial Lifeforms. One of the big drivers behind human space

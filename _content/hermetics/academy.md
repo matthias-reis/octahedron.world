@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: The Academic Council
+slug: academy
 description: Knowledge and Science as one of the pillars of power
 date: 2024-09-04T00:00:00.000Z
 colorSpace: cyan
@@ -14,8 +16,6 @@ tags:
 group: hermetics
 superTitle: Hermetics Tales
 alias: posts/2024/2024-09-04-academy
-slug: academy
-type: post
 image: hermetics-tales
 ```
 

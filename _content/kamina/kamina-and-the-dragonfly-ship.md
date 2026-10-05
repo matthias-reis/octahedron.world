@@ -1,13 +1,12 @@
 ```yaml @@
+type: storyline
 superTitle: Children's Story
 title: Kamina and the Dragonfly Ship
-description: >-
-  Little Kamina is always drawn into phantastic adventures. This time she jumps
-  into a steampunk world with a lot of surprises.
-colorSpace: tangerine
 slug: kamina-and-the-dragonfly-ship
-language: en
 ref: kamina-und-das-libellenschiff
+description: Little Kamina is always drawn into phantastic adventures. This time
+  she jumps into a steampunk world with a lot of surprises.
+colorSpace: tangerine
 startDate: 2023-01-11T00:00:00.000Z
 date: 2023-11-21T00:00:00.000Z
 related:
@@ -23,8 +22,8 @@ tags:
   - Storyline
 group: kamina
 alias: storylines/kamina-2
-type: storyline
 image: kamina-2
+language: en
 ```
 
 Kamina was eleven. Her parents always told her that she had an exuberant

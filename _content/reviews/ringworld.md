@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Ringworld
+slug: ringworld
 subTitle: Larry Niven
 description: The 1970 sci-fi classic by Larry Niven
 date: 2023-05-23T00:00:00.000Z
@@ -13,8 +15,6 @@ tags:
 group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-05-23-ringworld
-slug: ringworld
-type: post
 image: reviews
 ```
 

@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Developers
+slug: developers
 description: Are software engineers optimizing themselves away one day?
 date: 2022-07-28T00:00:00.000Z
 colorSpace: sky
@@ -11,8 +13,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-07-28-developers
-slug: developers
-type: post
 image: ai-jobs
 ```
 

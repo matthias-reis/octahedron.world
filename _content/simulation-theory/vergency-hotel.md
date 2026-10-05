@@ -1,23 +1,22 @@
 ```yaml @@
+type: storyline
 title: The Vergency Hotel
+slug: vergency-hotel
+ref: das-vergency-hotel
 date: 2024-08-05T00:00:00.000Z
-description:
-  Anecdotes from the center of the universe. Who would have thought that it's a
-  venerable hotel?
+description: Anecdotes from the center of the universe. Who would have thought
+  that it's a venerable hotel?
 tags:
   - SciFi
   - Fantasy
   - End of the World
   - Multiverse
 colorSpace: carmine
-language: en
-ref: das-vergency-hotel
 group: simulation-theory
 superTitle: Vergency Hotel
 alias: posts/2024/2024-08-05-vergency-hotel
-slug: vergency-hotel
-type: storyline
 image: vergency-hotel
+language: en
 ```
 
 About a hundred years ago, I was invited to the hotel for the first time. But

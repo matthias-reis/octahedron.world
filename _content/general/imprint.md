@@ -1,11 +1,11 @@
 ```yaml @@
-title: Imprint
-group: general
-slug: imprint
-image: _home
 type: legal
-language: en
+title: Imprint
+slug: imprint
 ref: impressum
+group: general
+image: _home
+language: en
 ```
 
 # Details according to § 5 TMG

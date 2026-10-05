@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Speculative Apocalypses
-description:
-  What is the most likely extinction e vent and how many are actually affected?
+slug: speculative-apocalypses
+description: What is the most likely extinction e vent and how many are actually affected?
 date: 2022-05-05T00:00:00.000Z
 tags:
   - Atomic War
@@ -11,8 +12,6 @@ tags:
 group: on-writing
 superTitle: General
 alias: posts/2022/2022-05-05-speculative-apocalypses
-slug: speculative-apocalypses
-type: post
 image: general
 ```
 

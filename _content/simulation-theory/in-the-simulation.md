@@ -1,13 +1,13 @@
 ```yaml @@
+type: post
 title: In the Simulation
-description: >-
-  What if the universe we inhabit is not the first of its kind — and not the
-  last? Drawing on Nick Bostrom's Simulation Argument, this piece explores the
-  unsettling logic of a chain of nested realities.
+slug: in-the-simulation
+ref: in-der-simulation
+description: What if the universe we inhabit is not the first of its kind — and
+  not the last? Drawing on Nick Bostrom's Simulation Argument, this piece
+  explores the unsettling logic of a chain of nested realities.
 colorSpace: sky
 date: 2026-04-01T00:00:00.000Z
-language: en
-ref: in-der-simulation
 tags:
   - Simulation Theory
   - AI
@@ -15,9 +15,8 @@ tags:
   - Simulation
   - Reality
 group: simulation-theory
-slug: in-the-simulation
-type: post
 image: in-the-simulation
+language: en
 ```
 
 # In the Simulation

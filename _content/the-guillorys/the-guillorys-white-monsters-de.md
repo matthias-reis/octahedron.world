@@ -1,13 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Kindergeschichte
 title: Die Guillorys und die weißen Monster
-description: >-
-  Wir sind Gäste bei einr außergewöhnlichen Familie, einer Mäusefamilie in ihrer
-  Villa in New Orleans. Was ist so außergewöhnlich an den Guillorys, fragst Du
-  Dich sicher? Na ja, einige von ihnen haben Superkräfte.
-colorSpace: wood
-language: de
+slug: die-guillorys-und-die-weissen-monster
 ref: the-guillorys
+description: Wir sind Gäste bei einr außergewöhnlichen Familie, einer
+  Mäusefamilie in ihrer Villa in New Orleans. Was ist so außergewöhnlich an den
+  Guillorys, fragst Du Dich sicher? Na ja, einige von ihnen haben Superkräfte.
+colorSpace: wood
 image: the-guillorys
 unfinished: true
 startDate: 2023-03-27T00:00:00.000Z
@@ -22,8 +22,7 @@ tags:
   - Fantasy
 group: the-guillorys
 alias: storylines/the-guillorys-de
-slug: die-guillorys-und-die-weissen-monster
-type: storyline
+language: de
 ```
 
 _Louis_

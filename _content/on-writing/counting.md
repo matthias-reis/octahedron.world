@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Counting
+slug: counting
 date: 2023-12-22T00:00:00.000Z
 description: How to achieve tension? Count down. Ten to one.
 tags:
@@ -10,8 +12,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-12-22-counting
-slug: counting
-type: post
 image: tropes
 ```
 

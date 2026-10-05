@@ -1,9 +1,10 @@
 ```yaml @@
+type: digest
 title: Transspace
-description: >-
-  An author needs a go-to world for spacefaring stories. Here's mine. It
-  includes a way to overcome the speed limit of light. And it also includes the
-  first drafts of an alien or almost alien race.
+slug: transspace
+description: An author needs a go-to world for spacefaring stories. Here's mine.
+  It includes a way to overcome the speed limit of light. And it also includes
+  the first drafts of an alien or almost alien race.
 date: 2025-05-01T00:00:00.000Z
 colorSpace: berry
 tags:
@@ -13,11 +14,8 @@ tags:
   - Kret
   - Faster Than Light
   - FTL
-
 group: transspace
 root: true
-slug: transspace
-type: digest
 image: transspace
 weight: 3
 ```

@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Cashiers
-description:
-  Will the human factor be removed one day from the supermarket checkout?
+slug: cashiers
+description: Will the human factor be removed one day from the supermarket checkout?
 date: 2022-06-06T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -11,8 +12,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-06-cashiers
-slug: cashiers
-type: post
 image: ai-jobs
 ```
 

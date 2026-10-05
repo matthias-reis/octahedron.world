@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Metaverse 2023-2033
-description: >-
-  Built to fail, Facebooks metaverse. Yet it was the dream of a whole cyberpunk
-  generation.
+slug: metaverse
+description: Built to fail, Facebooks metaverse. Yet it was the dream of a whole
+  cyberpunk generation.
 date: 2023-06-12T00:00:00.000Z
 colorSpace: yellow
 tags:
@@ -13,8 +14,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-06-12-metaverse
-slug: metaverse
-type: post
 image: predictions
 ```
 

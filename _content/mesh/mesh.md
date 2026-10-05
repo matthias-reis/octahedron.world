@@ -1,8 +1,9 @@
 ```yaml @@
+type: report
 superTitle: Worldbuilding
 title: The Mesh - Worldbuilding for a Cyberpunk World
-description:
-  A vision of a hypothetical metaverse-esque three dimensional internet
+slug: mesh-worldbuilding
+description: A vision of a hypothetical metaverse-esque three dimensional internet
 colorSpace: tangerine
 startDate: 2022-05-18T00:00:00.000Z
 date: 2022-12-21T00:00:00.000Z
@@ -17,8 +18,6 @@ tags:
   - Storyline
 group: mesh
 alias: storylines/mesh
-slug: mesh-worldbuilding
-type: report
 image: mesh-worldbuilding
 ```
 

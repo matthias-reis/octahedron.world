@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Puppets
+slug: puppets
 description: Are we the toys for the Hermetic Society?
 date: 2024-07-31T00:00:00.000Z
 colorSpace: cyan
@@ -14,8 +16,6 @@ tags:
 group: hermetics
 superTitle: Hermetics Tales
 alias: posts/2024/2024-07-31-puppets
-slug: puppets
-type: post
 image: hermetics-tales
 ```
 

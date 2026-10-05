@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Distribution of Power
+slug: power
 description: Monitoring the different social balances of Earth and Kret
 date: 2024-08-08T00:00:00.000Z
 colorSpace: sky
@@ -11,8 +13,6 @@ tags:
 group: transspace
 superTitle: Kret Tales
 alias: posts/2024/2024-08-08-power
-slug: power
-type: post
 image: kret-tales
 ```
 

@@ -1,12 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: Goliath
-description: >-
-  What if we develop an AI with more than human level intelligence? And how
-  powerful can it become? The story in this line is following that thought.
-colorSpace: wood
-language: en
+slug: goliath
 ref: goliath-de
+description: What if we develop an AI with more than human level intelligence?
+  And how powerful can it become? The story in this line is following that
+  thought.
+colorSpace: wood
 startDate: 2022-06-12T00:00:00.000Z
 date: 2022-11-14T00:00:00.000Z
 tags:
@@ -17,9 +18,8 @@ tags:
   - Storyline
 group: artificial-intelligence
 alias: storylines/goliath
-slug: goliath
-type: storyline
 image: goliath
+language: en
 ```
 
 ## Part 1: The Goliath Reports
@@ -203,8 +203,8 @@ on the next day.
 
 "The aliens know us" was what everybody had in their heads after that second
 wave. But the follow-up questions were more concerning. What would they do with
-that knowledge? What would they do to us? Are we prey now? Some optimists
-even said that they came to solve all our problems.
+that knowledge? What would they do to us? Are we prey now? Some optimists even
+said that they came to solve all our problems.
 
 But the others were right. Those who said that they would kill us.
 
