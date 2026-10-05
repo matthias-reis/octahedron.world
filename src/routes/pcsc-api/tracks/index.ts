@@ -1,10 +1,12 @@
 import type { APIEvent } from "@solidjs/start/server";
-import { type Track, TrackModel } from "~/pcsc/model/track";
+import { isPersistentId, type Track, TrackModel } from "~/pcsc/model/track";
+import { rejectUnauthorizedWrite } from "~/pcsc/server/auth";
 import { refreshTracksCache } from "~/pcsc/server/track-cache";
 import { fbReadFullTrack, fbWriteTrack } from "~/pcsc/server/track-db";
 
 type PostRequestBody = {
   vote?: number;
+  /** `id` is the voter's Apple Music persistent id, kept as `appleId`. */
   track?: Track & { name?: string };
 };
 
@@ -21,7 +23,11 @@ type PostResponse = {
   };
 };
 
-export async function POST({ request }: APIEvent): Promise<PostResponse> {
+export async function POST({
+  request,
+}: APIEvent): Promise<PostResponse | Response> {
+  const rejected = rejectUnauthorizedWrite(request);
+  if (rejected) return rejected;
   try {
     const body = (await request.json()) as PostRequestBody;
 
@@ -34,9 +40,15 @@ export async function POST({ request }: APIEvent): Promise<PostResponse> {
 
     // Create model from incoming track
     // Handle both 'title' and 'name' fields for compatibility
+    const appleId = isPersistentId(body.track.appleId)
+      ? body.track.appleId
+      : isPersistentId(body.track.id)
+        ? body.track.id
+        : null;
     const incomingTrackModel = new TrackModel({
       ...body.track,
       title: body.track.title || body.track.name || "No Title",
+      appleId: appleId?.toUpperCase() ?? null,
     });
 
     const t0 = Date.now();
@@ -67,7 +79,7 @@ export async function POST({ request }: APIEvent): Promise<PostResponse> {
     const responseData: PostResponse = {
       success: true,
       payload: {
-        id: `https://pcsc.rocks/songs/${saveableModel.id}`,
+        id: `https://octahedron.world${saveableModel.songUrl}`,
         newVote,
         track: saveableModel.serialised,
       },
