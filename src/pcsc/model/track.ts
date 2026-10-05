@@ -312,13 +312,17 @@ export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
   }
 };
 
+/**
+ * A vote as Apple Music's 0–100 rating: linear from 0 to 80 (4★) at 10, then
+ * to 100 (5★) at 15, capped there. So 4★ means "10+", 5★ means "15+".
+ */
 export const p1toStarRating = (x: number) => {
-  if (x < 0) {
+  if (x <= 0) {
     return 0;
   } else if (x <= 10) {
-    return Math.round(x * 9);
+    return Math.round(x * 8);
   } else if (x <= 15) {
-    return 90 + Math.round((x - 10) * 2);
+    return Math.round(80 + (x - 10) * 4);
   } else {
     return 100;
   }

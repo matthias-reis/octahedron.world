@@ -7,8 +7,10 @@
  * Old: the formula as it ran — `^` was XOR, so every weight was 1 (a plain
  * mean), except a vote exactly 999 days older than the newest, which got 0.
  * New: `voteWeight` in src/pcsc/model/track.ts. Single-vote tracks never
- * change. Reads every track (with votes) from Firestore; writes only with
- * --apply, and only `vote` and `appleRating` of tracks that shift.
+ * change their vote. `appleRating` is recomputed for every track from the
+ * current `p1toStarRating`. Reads every track (with votes) from Firestore;
+ * writes only with --apply, and only `vote` and `appleRating` where they differ
+ * from what is stored.
  */
 import dayjs from "dayjs";
 import {
@@ -47,6 +49,7 @@ type Row = {
   label: string;
   votes: number;
   stored: number;
+  storedRating: number | null;
   before: number;
   after: number;
 };
@@ -60,6 +63,7 @@ snapshot.forEach((doc) => {
     label: `${model.artist} – ${model.title}`,
     votes: model.votes.length,
     stored: data.vote,
+    storedRating: data.appleRating ?? null,
     before: legacyVote(model.votes),
     after: model.vote,
   });
@@ -68,8 +72,8 @@ snapshot.forEach((doc) => {
 const multi = rows.filter((row) => row.votes > 1);
 const shifted = rows.filter((row) => row.after !== row.before);
 const crossed = shifted.filter((row) => band(row.after) !== band(row.before));
-const stars = shifted.filter(
-  (row) => p1toStarRating(row.after) !== p1toStarRating(row.before),
+const stars = rows.filter(
+  (row) => p1toStarRating(row.after) !== row.storedRating,
 );
 const deltas = shifted.map((row) => Math.abs(row.after - row.before));
 const bucket = (lo: number, hi: number) =>
@@ -87,7 +91,7 @@ console.log(
   `  |Δ| <0.5: ${bucket(0, 0.5)}  0.5–1: ${bucket(0.5, 1)}  1–2: ${bucket(1, 2)}  2–4: ${bucket(2, 4)}  ≥4: ${bucket(4, Infinity)}`,
 );
 console.log(`  change band (<10 / 10+ / 15+)  ${crossed.length}`);
-console.log(`  change appleRating             ${stars.length}`);
+console.log(`  appleRating ≠ stored (new curve) ${stars.length}`);
 console.log("\nlargest shifts:");
 for (const row of [...shifted]
   .sort((a, b) => Math.abs(b.after - b.before) - Math.abs(a.after - a.before))
@@ -104,7 +108,11 @@ for (const row of crossed.slice(0, 20)) {
 }
 
 if (apply) {
-  const changed = rows.filter((row) => row.after !== row.stored);
+  const changed = rows.filter(
+    (row) =>
+      row.after !== row.stored ||
+      p1toStarRating(row.after) !== row.storedRating,
+  );
   for (let start = 0; start < changed.length; start += 400) {
     const batch = db.batch();
     for (const row of changed.slice(start, start + 400)) {
