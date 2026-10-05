@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Van Der Belt
-description: >-
-  The sphere of human life expands into the universe, while some pioneers still
-  find undiscovered ground.
+slug: van-der-belt
+description: The sphere of human life expands into the universe, while some
+  pioneers still find undiscovered ground.
 date: 2024-08-27T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -14,8 +15,6 @@ tags:
 group: transspace
 superTitle: Transspace Tales
 alias: posts/2024/2024-08-27-van-der-belt
-slug: van-der-belt
-type: post
 image: transspace-tales
 ```
 

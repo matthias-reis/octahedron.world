@@ -1,9 +1,10 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: The Bond
-description: >-
-  The great mash up between the transspace story and the study of my first alien
-  race, the Kret.
+slug: the-bond
+description: The great mash up between the transspace story and the study of my
+  first alien race, the Kret.
 colorSpace: cyan
 startDate: 2021-11-15T00:00:00.000Z
 date: 2024-02-02T00:00:00.000Z
@@ -20,8 +21,6 @@ tags:
   - Storyline
 group: transspace
 alias: storylines/the-bond
-slug: the-bond
-type: storyline
 image: the-bond
 ```
 

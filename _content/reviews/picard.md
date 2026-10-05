@@ -1,9 +1,10 @@
 ```yaml @@
+type: post
 title: Picard
+slug: picard
 subTitle: The Star Trek Series
-description: >-
-  The third and final season of Star Trek Picard is over. Time for a little
-  review.
+description: The third and final season of Star Trek Picard is over. Time for a
+  little review.
 date: 2023-04-26T00:00:00.000Z
 colorSpace: cyan
 tags:
@@ -13,11 +14,8 @@ tags:
   - SciFi
   - Space Opera
 group: reviews
-
 superTitle: Reviews
 alias: posts/2023/2023-04-26-picard
-slug: picard
-type: post
 image: reviews
 ```
 

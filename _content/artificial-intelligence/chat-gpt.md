@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: ChatGPT
-description:
-  Special topic about the rise of large language models and their impact
+slug: chat-gpt
+description: Special topic about the rise of large language models and their impact
 date: 2022-12-06T00:00:00.000Z
 colorSpace: sky
 tags:
@@ -13,8 +14,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-12-06-chat-gpt
-slug: chat-gpt
-type: post
 image: ai-jobs
 ```
 

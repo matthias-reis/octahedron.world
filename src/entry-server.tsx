@@ -11,7 +11,12 @@ export default createHandler(() => (
       // font-size and every design token hang off it. It has to sit on <html>
       // (UA background, rem base) and be set during SSR so there is no theme
       // flash and no hydration mismatch.
-      <html lang={getLocale()} class={`site-${getSite()}`}>
+      // seiten (client previews) borrows mreis's tokens for its overview and
+      // login pages; the microsites themselves paint their own `.ms-root`.
+      <html
+        lang={getSite() === "seiten" ? "de" : getLocale()}
+        class={getSite() === "seiten" ? "site-mreis site-seiten" : `site-${getSite()}`}
+      >
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Self Driving Cars 2023-2033
+slug: self-driving-cars
 description: When will I order a car and ask it to drive me to the supermarket?
 date: 2023-05-02T00:00:00.000Z
 colorSpace: yellow
@@ -10,8 +12,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-05-02-self-driving-cars
-slug: self-driving-cars
-type: post
 image: predictions
 ```
 

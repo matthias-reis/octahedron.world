@@ -1,0 +1,673 @@
+/* Microsite color system.
+
+   1. base hue   `--ms-hue`, set inline on `.ms-root` from the page's
+                 `theme.hue` (the palette slider rewrites it live).
+   2. palettes   six hues derived from it — main, adjacent-left/-right
+                 (∓42.5), accent-left/-right (∓137.5, golden angle),
+                 complementary (+180) — each with nine shades:
+                 b1 b2 b3 (bright, backgrounds; b1 b2 desaturated)
+                 m1 m2 m3 (mid, accents; m3 desaturated)
+                 d1 d2 d3 (dark, text + inverted sections; d1 d2 desaturated)
+                 → `--ms-<palette>-<shade>`, Tailwind `bg-main-b1`, `text-accent-left-d1` …
+   3. groups     copy, background, button each point at one palette:
+                 `--ms-<group>-<shade>`. Defaults: copy + background →
+                 accent-left, button → main. Re-pointed per page or per
+                 section with `.ms-<group>-<palette>` classes.
+   4. semantic   `--ms-copy`, `--ms-page`, `--ms-button` … built from the
+                 groups → Tailwind `text-copy`, `bg-page`, `bg-button` …
+                 Shared components use ONLY these.
+
+   Custom properties inherit as computed values, so the semantic layer is
+   re-declared on every `.ms-section`: that is what lets a section-level
+   group class or `.ms-inverted` change the semantic colors below it.
+
+   This file is written by hand but is regular on purpose — when adding a
+   palette or shade, extend every block, plus the Tailwind names in app.css. */
+
+/* Every face a pairing can pick. @fontsource only emits @font-face rules, so
+   a browser downloads just the faces a page actually uses. */
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/space-grotesk";
+/* opsz: optical sizes (wght + opsz axes), not just the default cut */
+@import "@fontsource-variable/newsreader/opsz.css";
+/* wdth: the width axis (62–125 %), not just the default width */
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/source-serif-4/opsz.css";
+@import "@fontsource-variable/instrument-sans/wdth.css";
+/* standard: wght + wdth + opsz in one file */
+@import "@fontsource-variable/bricolage-grotesque/standard.css";
+@import "@fontsource-variable/red-hat-display";
+@import "@fontsource-variable/red-hat-text";
+@import "@fontsource-variable/schibsted-grotesk";
+@import "@fontsource-variable/figtree";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/ibm-plex-sans";
+@import "@fontsource/anton/400.css";
+@import "@fontsource-variable/work-sans";
+
+.ms-root {
+  /* --- knobs (defaults; overridden inline per page) --- */
+  --ms-hue: 30;
+  --ms-radius: 0.5rem;
+  --ms-font-display: "Fraunces Variable", serif;
+  --ms-font-body: "Inter Variable", sans-serif;
+
+  /* --- shade shape: lightness + chroma, shared by all palettes --- */
+  --ms-l-b1: 0.985;
+  --ms-c-b1: 0.003;
+  --ms-l-b2: 0.95;
+  --ms-c-b2: 0.008;
+  --ms-l-b3: 0.93;
+  --ms-c-b3: 0.04;
+  --ms-l-m1: 0.64;
+  --ms-c-m1: 0.18;
+  --ms-l-m2: 0.5;
+  --ms-c-m2: 0.16;
+  --ms-l-m3: 0.58;
+  --ms-c-m3: 0.03;
+  --ms-l-d1: 0.18;
+  --ms-c-d1: 0.008;
+  --ms-l-d2: 0.3;
+  --ms-c-d2: 0.015;
+  --ms-l-d3: 0.3;
+  --ms-c-d3: 0.09;
+
+  /* --- palettes --- */
+  --ms-main-b1: oklch(var(--ms-l-b1) var(--ms-c-b1) var(--ms-hue));
+  --ms-main-b2: oklch(var(--ms-l-b2) var(--ms-c-b2) var(--ms-hue));
+  --ms-main-b3: oklch(var(--ms-l-b3) var(--ms-c-b3) var(--ms-hue));
+  --ms-main-m1: oklch(var(--ms-l-m1) var(--ms-c-m1) var(--ms-hue));
+  --ms-main-m2: oklch(var(--ms-l-m2) var(--ms-c-m2) var(--ms-hue));
+  --ms-main-m3: oklch(var(--ms-l-m3) var(--ms-c-m3) var(--ms-hue));
+  --ms-main-d1: oklch(var(--ms-l-d1) var(--ms-c-d1) var(--ms-hue));
+  --ms-main-d2: oklch(var(--ms-l-d2) var(--ms-c-d2) var(--ms-hue));
+  --ms-main-d3: oklch(var(--ms-l-d3) var(--ms-c-d3) var(--ms-hue));
+
+  --ms-adjacent-left-b1: oklch(
+    var(--ms-l-b1) var(--ms-c-b1) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-b2: oklch(
+    var(--ms-l-b2) var(--ms-c-b2) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-b3: oklch(
+    var(--ms-l-b3) var(--ms-c-b3) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-m1: oklch(
+    var(--ms-l-m1) var(--ms-c-m1) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-m2: oklch(
+    var(--ms-l-m2) var(--ms-c-m2) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-m3: oklch(
+    var(--ms-l-m3) var(--ms-c-m3) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-d1: oklch(
+    var(--ms-l-d1) var(--ms-c-d1) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-d2: oklch(
+    var(--ms-l-d2) var(--ms-c-d2) calc(var(--ms-hue) - 42.5)
+  );
+  --ms-adjacent-left-d3: oklch(
+    var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) - 42.5)
+  );
+
+  --ms-adjacent-right-b1: oklch(
+    var(--ms-l-b1) var(--ms-c-b1) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-b2: oklch(
+    var(--ms-l-b2) var(--ms-c-b2) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-b3: oklch(
+    var(--ms-l-b3) var(--ms-c-b3) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-m1: oklch(
+    var(--ms-l-m1) var(--ms-c-m1) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-m2: oklch(
+    var(--ms-l-m2) var(--ms-c-m2) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-m3: oklch(
+    var(--ms-l-m3) var(--ms-c-m3) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-d1: oklch(
+    var(--ms-l-d1) var(--ms-c-d1) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-d2: oklch(
+    var(--ms-l-d2) var(--ms-c-d2) calc(var(--ms-hue) + 42.5)
+  );
+  --ms-adjacent-right-d3: oklch(
+    var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) + 42.5)
+  );
+
+  --ms-accent-left-b1: oklch(
+    var(--ms-l-b1) var(--ms-c-b1) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-b2: oklch(
+    var(--ms-l-b2) var(--ms-c-b2) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-b3: oklch(
+    var(--ms-l-b3) var(--ms-c-b3) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-m1: oklch(
+    var(--ms-l-m1) var(--ms-c-m1) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-m2: oklch(
+    var(--ms-l-m2) var(--ms-c-m2) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-m3: oklch(
+    var(--ms-l-m3) var(--ms-c-m3) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-d1: oklch(
+    var(--ms-l-d1) var(--ms-c-d1) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-d2: oklch(
+    var(--ms-l-d2) var(--ms-c-d2) calc(var(--ms-hue) - 137.5)
+  );
+  --ms-accent-left-d3: oklch(
+    var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) - 137.5)
+  );
+
+  --ms-accent-right-b1: oklch(
+    var(--ms-l-b1) var(--ms-c-b1) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-b2: oklch(
+    var(--ms-l-b2) var(--ms-c-b2) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-b3: oklch(
+    var(--ms-l-b3) var(--ms-c-b3) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-m1: oklch(
+    var(--ms-l-m1) var(--ms-c-m1) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-m2: oklch(
+    var(--ms-l-m2) var(--ms-c-m2) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-m3: oklch(
+    var(--ms-l-m3) var(--ms-c-m3) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-d1: oklch(
+    var(--ms-l-d1) var(--ms-c-d1) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-d2: oklch(
+    var(--ms-l-d2) var(--ms-c-d2) calc(var(--ms-hue) + 137.5)
+  );
+  --ms-accent-right-d3: oklch(
+    var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) + 137.5)
+  );
+
+  --ms-complementary-b1: oklch(
+    var(--ms-l-b1) var(--ms-c-b1) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-b2: oklch(
+    var(--ms-l-b2) var(--ms-c-b2) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-b3: oklch(
+    var(--ms-l-b3) var(--ms-c-b3) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-m1: oklch(
+    var(--ms-l-m1) var(--ms-c-m1) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-m2: oklch(
+    var(--ms-l-m2) var(--ms-c-m2) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-m3: oklch(
+    var(--ms-l-m3) var(--ms-c-m3) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-d1: oklch(
+    var(--ms-l-d1) var(--ms-c-d1) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-d2: oklch(
+    var(--ms-l-d2) var(--ms-c-d2) calc(var(--ms-hue) + 180)
+  );
+  --ms-complementary-d3: oklch(
+    var(--ms-l-d3) var(--ms-c-d3) calc(var(--ms-hue) + 180)
+  );
+
+  /* --- signal: a brand color plus a dark ink, set per page (theme.signal).
+     Bright shades are the brand color, dark shades the ink — so a signal
+     button is ink with brand-colored copy, and an inverted signal section is
+     ink with brand-colored headlines. --- */
+  --ms-signal: oklch(0.82 0.16 85);
+  --ms-ink: oklch(0.25 0.004 85);
+  --ms-signal-b1: var(--ms-signal);
+  --ms-signal-b2: color-mix(in oklch, var(--ms-signal) 45%, white);
+  --ms-signal-b3: color-mix(in oklch, var(--ms-signal) 85%, var(--ms-ink));
+  --ms-signal-m1: var(--ms-signal);
+  --ms-signal-m2: var(--ms-ink);
+  --ms-signal-m3: color-mix(in oklch, var(--ms-ink) 70%, white);
+  --ms-signal-d1: var(--ms-ink);
+  --ms-signal-d2: color-mix(in oklch, var(--ms-ink) 85%, white);
+  --ms-signal-d3: color-mix(in oklch, var(--ms-ink) 80%, black);
+
+  /* --- group defaults --- */
+  --ms-copy-b1: var(--ms-accent-left-b1);
+  --ms-copy-b2: var(--ms-accent-left-b2);
+  --ms-copy-b3: var(--ms-accent-left-b3);
+  --ms-copy-m1: var(--ms-accent-left-m1);
+  --ms-copy-m2: var(--ms-accent-left-m2);
+  --ms-copy-m3: var(--ms-accent-left-m3);
+  --ms-copy-d1: var(--ms-accent-left-d1);
+  --ms-copy-d2: var(--ms-accent-left-d2);
+  --ms-copy-d3: var(--ms-accent-left-d3);
+  --ms-background-b1: var(--ms-accent-left-b1);
+  --ms-background-b2: var(--ms-accent-left-b2);
+  --ms-background-b3: var(--ms-accent-left-b3);
+  --ms-background-m1: var(--ms-accent-left-m1);
+  --ms-background-m2: var(--ms-accent-left-m2);
+  --ms-background-m3: var(--ms-accent-left-m3);
+  --ms-background-d1: var(--ms-accent-left-d1);
+  --ms-background-d2: var(--ms-accent-left-d2);
+  --ms-background-d3: var(--ms-accent-left-d3);
+  --ms-button-b1: var(--ms-main-b1);
+  --ms-button-b2: var(--ms-main-b2);
+  --ms-button-b3: var(--ms-main-b3);
+  --ms-button-m1: var(--ms-main-m1);
+  --ms-button-m2: var(--ms-main-m2);
+  --ms-button-m3: var(--ms-main-m3);
+  --ms-button-d1: var(--ms-main-d1);
+  --ms-button-d2: var(--ms-main-d2);
+  --ms-button-d3: var(--ms-main-d3);
+
+  color-scheme: light;
+  font-family: var(--ms-font-body);
+}
+
+/* --- group classes: re-point a group at another palette --- */
+
+.ms-copy-main {
+  --ms-copy-b1: var(--ms-main-b1);
+  --ms-copy-b2: var(--ms-main-b2);
+  --ms-copy-b3: var(--ms-main-b3);
+  --ms-copy-m1: var(--ms-main-m1);
+  --ms-copy-m2: var(--ms-main-m2);
+  --ms-copy-m3: var(--ms-main-m3);
+  --ms-copy-d1: var(--ms-main-d1);
+  --ms-copy-d2: var(--ms-main-d2);
+  --ms-copy-d3: var(--ms-main-d3);
+}
+.ms-copy-adjacent-left {
+  --ms-copy-b1: var(--ms-adjacent-left-b1);
+  --ms-copy-b2: var(--ms-adjacent-left-b2);
+  --ms-copy-b3: var(--ms-adjacent-left-b3);
+  --ms-copy-m1: var(--ms-adjacent-left-m1);
+  --ms-copy-m2: var(--ms-adjacent-left-m2);
+  --ms-copy-m3: var(--ms-adjacent-left-m3);
+  --ms-copy-d1: var(--ms-adjacent-left-d1);
+  --ms-copy-d2: var(--ms-adjacent-left-d2);
+  --ms-copy-d3: var(--ms-adjacent-left-d3);
+}
+.ms-copy-adjacent-right {
+  --ms-copy-b1: var(--ms-adjacent-right-b1);
+  --ms-copy-b2: var(--ms-adjacent-right-b2);
+  --ms-copy-b3: var(--ms-adjacent-right-b3);
+  --ms-copy-m1: var(--ms-adjacent-right-m1);
+  --ms-copy-m2: var(--ms-adjacent-right-m2);
+  --ms-copy-m3: var(--ms-adjacent-right-m3);
+  --ms-copy-d1: var(--ms-adjacent-right-d1);
+  --ms-copy-d2: var(--ms-adjacent-right-d2);
+  --ms-copy-d3: var(--ms-adjacent-right-d3);
+}
+.ms-copy-accent-left {
+  --ms-copy-b1: var(--ms-accent-left-b1);
+  --ms-copy-b2: var(--ms-accent-left-b2);
+  --ms-copy-b3: var(--ms-accent-left-b3);
+  --ms-copy-m1: var(--ms-accent-left-m1);
+  --ms-copy-m2: var(--ms-accent-left-m2);
+  --ms-copy-m3: var(--ms-accent-left-m3);
+  --ms-copy-d1: var(--ms-accent-left-d1);
+  --ms-copy-d2: var(--ms-accent-left-d2);
+  --ms-copy-d3: var(--ms-accent-left-d3);
+}
+.ms-copy-accent-right {
+  --ms-copy-b1: var(--ms-accent-right-b1);
+  --ms-copy-b2: var(--ms-accent-right-b2);
+  --ms-copy-b3: var(--ms-accent-right-b3);
+  --ms-copy-m1: var(--ms-accent-right-m1);
+  --ms-copy-m2: var(--ms-accent-right-m2);
+  --ms-copy-m3: var(--ms-accent-right-m3);
+  --ms-copy-d1: var(--ms-accent-right-d1);
+  --ms-copy-d2: var(--ms-accent-right-d2);
+  --ms-copy-d3: var(--ms-accent-right-d3);
+}
+.ms-copy-complementary {
+  --ms-copy-b1: var(--ms-complementary-b1);
+  --ms-copy-b2: var(--ms-complementary-b2);
+  --ms-copy-b3: var(--ms-complementary-b3);
+  --ms-copy-m1: var(--ms-complementary-m1);
+  --ms-copy-m2: var(--ms-complementary-m2);
+  --ms-copy-m3: var(--ms-complementary-m3);
+  --ms-copy-d1: var(--ms-complementary-d1);
+  --ms-copy-d2: var(--ms-complementary-d2);
+  --ms-copy-d3: var(--ms-complementary-d3);
+}
+.ms-background-main {
+  --ms-background-b1: var(--ms-main-b1);
+  --ms-background-b2: var(--ms-main-b2);
+  --ms-background-b3: var(--ms-main-b3);
+  --ms-background-m1: var(--ms-main-m1);
+  --ms-background-m2: var(--ms-main-m2);
+  --ms-background-m3: var(--ms-main-m3);
+  --ms-background-d1: var(--ms-main-d1);
+  --ms-background-d2: var(--ms-main-d2);
+  --ms-background-d3: var(--ms-main-d3);
+}
+.ms-background-adjacent-left {
+  --ms-background-b1: var(--ms-adjacent-left-b1);
+  --ms-background-b2: var(--ms-adjacent-left-b2);
+  --ms-background-b3: var(--ms-adjacent-left-b3);
+  --ms-background-m1: var(--ms-adjacent-left-m1);
+  --ms-background-m2: var(--ms-adjacent-left-m2);
+  --ms-background-m3: var(--ms-adjacent-left-m3);
+  --ms-background-d1: var(--ms-adjacent-left-d1);
+  --ms-background-d2: var(--ms-adjacent-left-d2);
+  --ms-background-d3: var(--ms-adjacent-left-d3);
+}
+.ms-background-adjacent-right {
+  --ms-background-b1: var(--ms-adjacent-right-b1);
+  --ms-background-b2: var(--ms-adjacent-right-b2);
+  --ms-background-b3: var(--ms-adjacent-right-b3);
+  --ms-background-m1: var(--ms-adjacent-right-m1);
+  --ms-background-m2: var(--ms-adjacent-right-m2);
+  --ms-background-m3: var(--ms-adjacent-right-m3);
+  --ms-background-d1: var(--ms-adjacent-right-d1);
+  --ms-background-d2: var(--ms-adjacent-right-d2);
+  --ms-background-d3: var(--ms-adjacent-right-d3);
+}
+.ms-background-accent-left {
+  --ms-background-b1: var(--ms-accent-left-b1);
+  --ms-background-b2: var(--ms-accent-left-b2);
+  --ms-background-b3: var(--ms-accent-left-b3);
+  --ms-background-m1: var(--ms-accent-left-m1);
+  --ms-background-m2: var(--ms-accent-left-m2);
+  --ms-background-m3: var(--ms-accent-left-m3);
+  --ms-background-d1: var(--ms-accent-left-d1);
+  --ms-background-d2: var(--ms-accent-left-d2);
+  --ms-background-d3: var(--ms-accent-left-d3);
+}
+.ms-background-accent-right {
+  --ms-background-b1: var(--ms-accent-right-b1);
+  --ms-background-b2: var(--ms-accent-right-b2);
+  --ms-background-b3: var(--ms-accent-right-b3);
+  --ms-background-m1: var(--ms-accent-right-m1);
+  --ms-background-m2: var(--ms-accent-right-m2);
+  --ms-background-m3: var(--ms-accent-right-m3);
+  --ms-background-d1: var(--ms-accent-right-d1);
+  --ms-background-d2: var(--ms-accent-right-d2);
+  --ms-background-d3: var(--ms-accent-right-d3);
+}
+.ms-background-complementary {
+  --ms-background-b1: var(--ms-complementary-b1);
+  --ms-background-b2: var(--ms-complementary-b2);
+  --ms-background-b3: var(--ms-complementary-b3);
+  --ms-background-m1: var(--ms-complementary-m1);
+  --ms-background-m2: var(--ms-complementary-m2);
+  --ms-background-m3: var(--ms-complementary-m3);
+  --ms-background-d1: var(--ms-complementary-d1);
+  --ms-background-d2: var(--ms-complementary-d2);
+  --ms-background-d3: var(--ms-complementary-d3);
+}
+.ms-button-main {
+  --ms-button-b1: var(--ms-main-b1);
+  --ms-button-b2: var(--ms-main-b2);
+  --ms-button-b3: var(--ms-main-b3);
+  --ms-button-m1: var(--ms-main-m1);
+  --ms-button-m2: var(--ms-main-m2);
+  --ms-button-m3: var(--ms-main-m3);
+  --ms-button-d1: var(--ms-main-d1);
+  --ms-button-d2: var(--ms-main-d2);
+  --ms-button-d3: var(--ms-main-d3);
+}
+.ms-button-adjacent-left {
+  --ms-button-b1: var(--ms-adjacent-left-b1);
+  --ms-button-b2: var(--ms-adjacent-left-b2);
+  --ms-button-b3: var(--ms-adjacent-left-b3);
+  --ms-button-m1: var(--ms-adjacent-left-m1);
+  --ms-button-m2: var(--ms-adjacent-left-m2);
+  --ms-button-m3: var(--ms-adjacent-left-m3);
+  --ms-button-d1: var(--ms-adjacent-left-d1);
+  --ms-button-d2: var(--ms-adjacent-left-d2);
+  --ms-button-d3: var(--ms-adjacent-left-d3);
+}
+.ms-button-adjacent-right {
+  --ms-button-b1: var(--ms-adjacent-right-b1);
+  --ms-button-b2: var(--ms-adjacent-right-b2);
+  --ms-button-b3: var(--ms-adjacent-right-b3);
+  --ms-button-m1: var(--ms-adjacent-right-m1);
+  --ms-button-m2: var(--ms-adjacent-right-m2);
+  --ms-button-m3: var(--ms-adjacent-right-m3);
+  --ms-button-d1: var(--ms-adjacent-right-d1);
+  --ms-button-d2: var(--ms-adjacent-right-d2);
+  --ms-button-d3: var(--ms-adjacent-right-d3);
+}
+.ms-button-accent-left {
+  --ms-button-b1: var(--ms-accent-left-b1);
+  --ms-button-b2: var(--ms-accent-left-b2);
+  --ms-button-b3: var(--ms-accent-left-b3);
+  --ms-button-m1: var(--ms-accent-left-m1);
+  --ms-button-m2: var(--ms-accent-left-m2);
+  --ms-button-m3: var(--ms-accent-left-m3);
+  --ms-button-d1: var(--ms-accent-left-d1);
+  --ms-button-d2: var(--ms-accent-left-d2);
+  --ms-button-d3: var(--ms-accent-left-d3);
+}
+.ms-button-accent-right {
+  --ms-button-b1: var(--ms-accent-right-b1);
+  --ms-button-b2: var(--ms-accent-right-b2);
+  --ms-button-b3: var(--ms-accent-right-b3);
+  --ms-button-m1: var(--ms-accent-right-m1);
+  --ms-button-m2: var(--ms-accent-right-m2);
+  --ms-button-m3: var(--ms-accent-right-m3);
+  --ms-button-d1: var(--ms-accent-right-d1);
+  --ms-button-d2: var(--ms-accent-right-d2);
+  --ms-button-d3: var(--ms-accent-right-d3);
+}
+.ms-button-complementary {
+  --ms-button-b1: var(--ms-complementary-b1);
+  --ms-button-b2: var(--ms-complementary-b2);
+  --ms-button-b3: var(--ms-complementary-b3);
+  --ms-button-m1: var(--ms-complementary-m1);
+  --ms-button-m2: var(--ms-complementary-m2);
+  --ms-button-m3: var(--ms-complementary-m3);
+  --ms-button-d1: var(--ms-complementary-d1);
+  --ms-button-d2: var(--ms-complementary-d2);
+  --ms-button-d3: var(--ms-complementary-d3);
+}
+
+.ms-copy-signal {
+  --ms-copy-b1: var(--ms-signal-b1);
+  --ms-copy-b2: var(--ms-signal-b2);
+  --ms-copy-b3: var(--ms-signal-b3);
+  --ms-copy-m1: var(--ms-signal-m1);
+  --ms-copy-m2: var(--ms-signal-m2);
+  --ms-copy-m3: var(--ms-signal-m3);
+  --ms-copy-d1: var(--ms-signal-d1);
+  --ms-copy-d2: var(--ms-signal-d2);
+  --ms-copy-d3: var(--ms-signal-d3);
+}
+.ms-background-signal {
+  --ms-background-b1: var(--ms-signal-b1);
+  --ms-background-b2: var(--ms-signal-b2);
+  --ms-background-b3: var(--ms-signal-b3);
+  --ms-background-m1: var(--ms-signal-m1);
+  --ms-background-m2: var(--ms-signal-m2);
+  --ms-background-m3: var(--ms-signal-m3);
+  --ms-background-d1: var(--ms-signal-d1);
+  --ms-background-d2: var(--ms-signal-d2);
+  --ms-background-d3: var(--ms-signal-d3);
+}
+.ms-button-signal {
+  --ms-button-b1: var(--ms-signal-b1);
+  --ms-button-b2: var(--ms-signal-b2);
+  --ms-button-b3: var(--ms-signal-b3);
+  --ms-button-m1: var(--ms-signal-m1);
+  --ms-button-m2: var(--ms-signal-m2);
+  --ms-button-m3: var(--ms-signal-m3);
+  --ms-button-d1: var(--ms-signal-d1);
+  --ms-button-d2: var(--ms-signal-d2);
+  --ms-button-d3: var(--ms-signal-d3);
+}
+
+/* --- semantic layer (light) — re-declared on every section --- */
+
+.ms-root,
+.ms-section {
+  --ms-page: var(--ms-background-b1);
+  --ms-card: var(--ms-background-b2);
+  --ms-tint: var(--ms-background-b3);
+  --ms-line: var(--ms-background-b3);
+  --ms-copy-strong: var(--ms-copy-d1);
+  --ms-copy: var(--ms-copy-d2);
+  --ms-copy-soft: var(--ms-copy-m3);
+  --ms-link: var(--ms-copy-m2);
+  --ms-button: var(--ms-button-m2);
+  --ms-button-hover: var(--ms-button-d3);
+  --ms-button-copy: var(--ms-button-b1);
+
+  background-color: var(--ms-page);
+  color: var(--ms-copy);
+}
+
+/* --- section variants --- */
+
+.ms-section.ms-surface {
+  --ms-page: var(--ms-background-b2);
+  --ms-card: var(--ms-background-b1);
+}
+
+.ms-section.ms-tint {
+  --ms-page: var(--ms-background-b3);
+  --ms-card: var(--ms-background-b1);
+  --ms-line: var(--ms-background-b2);
+}
+
+/* The highlighted section: dark background, bright copy. */
+.ms-section.ms-inverted {
+  --ms-page: var(--ms-background-d3);
+  --ms-card: var(--ms-background-d2);
+  --ms-tint: var(--ms-background-d2);
+  --ms-line: var(--ms-background-d2);
+  --ms-copy-strong: var(--ms-copy-b1);
+  --ms-copy: var(--ms-copy-b2);
+  --ms-copy-soft: var(--ms-copy-b3);
+  --ms-link: var(--ms-copy-m1);
+  --ms-button: var(--ms-button-m1);
+  --ms-button-hover: var(--ms-button-b3);
+  --ms-button-copy: var(--ms-button-d1);
+}
+
+/* Section anchors land below the sticky header. */
+.ms-root section[id] {
+  scroll-margin-top: 4.5rem;
+}
+
+/* Hero sections: bigger lead copy under the display headline. */
+.ms-hero h1 + p {
+  font-size: 1.35rem;
+  margin-top: 1.5rem;
+}
+
+/* --- typography hooks --- */
+
+.ms-root :is(h1, h2, h3) {
+  text-wrap: balance;
+  /* Long German compounds break with a hyphen instead of overflowing. */
+  hyphens: auto;
+  /* …but only words of 12+ letters, split no closer than 5 to either end. */
+  hyphenate-limit-chars: 12 5 5;
+  overflow-wrap: break-word;
+  font-optical-sizing: auto;
+}
+
+/* A pairing may condense its display face (font-stretch) and set the
+   heading weight; both default to the face's normal cut. */
+.ms-root :is(h1, h2, h3, .font-ms-display) {
+  font-stretch: var(--ms-display-stretch, normal);
+  word-spacing: var(--ms-display-word-spacing, normal);
+}
+
+/* Headlines default to tight tracking (Tailwind's `tracking-tight`). */
+.ms-root :is(h1, h2) {
+  letter-spacing: var(--ms-display-tracking, -0.025em);
+}
+
+.ms-root :is(h2, h3) {
+  font-weight: var(--ms-heading-weight, 700);
+}
+
+/* A pairing may run the h1 light and let `**bold**` words carry it. */
+.ms-root h1 {
+  font-weight: var(--ms-h1-weight, 600);
+}
+
+.ms-root h1 strong {
+  font-weight: 700;
+}
+
+/* --- section layouts (local `layout:`) ---
+   The body renders as flat siblings, so the layouts place them with grid
+   rules instead of wrappers. Below 64rem everything stacks. */
+
+@media (min-width: 64rem) {
+  /* split: kicker + h2 left, the first paragraph right, the rest below */
+  .ms-layout-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+  .ms-layout-split > * {
+    grid-column: 1 / -1;
+  }
+  .ms-layout-split > .ms-kicker {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .ms-layout-split > h2 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .ms-layout-split > h2 + p {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: end;
+    justify-self: end;
+    max-width: 30rem;
+  }
+
+  /* side: text left, the last block right, vertically centered */
+  .ms-layout-side {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    column-gap: 4.5rem;
+    align-items: center;
+  }
+  .ms-layout-side > * {
+    grid-column: 1;
+  }
+  .ms-layout-side > .ms-block:last-child {
+    grid-column: 2;
+    grid-row: 1 / span 12;
+    margin-block: 0;
+  }
+}
+
+/* A centered section (local `align: center`): every child on the axis. */
+.ms-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ms-center > :is(h1, h2, p) {
+  margin-inline: auto;
+}
+.ms-center > .ms-block {
+  justify-content: center;
+}
+
+/* A hero on a frosted panel has half the width: one step smaller. */
+.ms-panel h1 {
+  font-size: clamp(2.2rem, 4.2vw, 3.75rem);
+}

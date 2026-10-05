@@ -1,7 +1,7 @@
 import { MetaProvider } from "@solidjs/meta";
-import { Route, Router } from "@solidjs/router";
+import { Route, Router, useParams } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { For, lazy } from "solid-js";
+import { For, lazy, Show, Suspense } from "solid-js";
 import "./app.css";
 import "katex/dist/katex.min.css";
 import routes from "../routes.json";
@@ -29,10 +29,33 @@ const mreisRoutes = [
   },
 ];
 
+/**
+ * seiten.mreis.me (client previews). Its page slugs are NOT in routes.json —
+ * they name the clients, and routes.json ships in the client bundle — so a
+ * catch-all resolves them. The homepage (overview) is src/routes/index.tsx.
+ */
+const SeitenPage = () => {
+  const params = useParams();
+  return (
+    <Show when={params.slug} keyed>
+      {(slug) => <MdsTemplate route={slug} />}
+    </Show>
+  );
+};
+
+const seitenRoutes = [
+  {
+    path: "/login",
+    component: lazy(() => import("./sites/seiten/pages/login")),
+  },
+  { path: "/:slug", component: SeitenPage },
+];
+
 export default function App() {
   const site = getSite();
   const siteRoutes = routes.filter((r) => (r.site ?? "octahedron") === site);
-  const extraRoutes = site === "mreis" ? mreisRoutes : [];
+  const extraRoutes =
+    site === "mreis" ? mreisRoutes : site === "seiten" ? seitenRoutes : [];
 
   return (
     <MetaProvider>
@@ -41,6 +64,9 @@ export default function App() {
           root={(props) =>
             site === "mreis" ? (
               <MreisShell>{props.children}</MreisShell>
+            ) : site === "seiten" ? (
+              // Microsites bring their own header and footer: no shell.
+              <Suspense>{props.children}</Suspense>
             ) : (
               <OctahedronShell>{props.children}</OctahedronShell>
             )

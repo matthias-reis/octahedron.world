@@ -31,6 +31,10 @@ export type ItemMeta = {
   words?: number;
   chars?: number;
   mds: HastParseResult; // Parsed MDS structure for rendering
+  // seiten (client previews) — set by getRoute, never by content //
+  locked?: boolean; // no access: render the code form instead of the page
+  lockReason?: "missing" | "invalid" | "expired";
+  accessCode?: string; // the ?k= code that opened the page, for asset URLs
 };
 
 export type GlobalScope = Omit<ItemMeta, "mds">;

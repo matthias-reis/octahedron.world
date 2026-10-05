@@ -1,12 +1,12 @@
 ```yaml @@
+type: storyline
 superTitle: Kurzgeschichte
 title: Goliath
-description: >-
-  Was, wenn wir eine KI mit übermenschlicher Intelligenz erschaffen? Und wie
-  mächtig kann sie werden? Diese Geschichte folgt genau diesem Gedanken.
-colorSpace: wood
-language: de
+slug: goliath-de
 ref: goliath
+description: Was, wenn wir eine KI mit übermenschlicher Intelligenz erschaffen?
+  Und wie mächtig kann sie werden? Diese Geschichte folgt genau diesem Gedanken.
+colorSpace: wood
 startDate: 2022-06-12T00:00:00.000Z
 date: 2022-11-14T00:00:00.000Z
 tags:
@@ -17,9 +17,8 @@ tags:
   - Storyline
 group: artificial-intelligence
 alias: storylines/goliath-de
-slug: goliath-de
-type: storyline
 image: goliath
+language: de
 ```
 
 ## Teil 1: Die Goliath-Berichte

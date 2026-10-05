@@ -7,3 +7,10 @@ onlyBuiltDependencies:
 
 patchedDependencies:
   html-to-image@1.11.13: patches/html-to-image@1.11.13.patch
+
+# Security overrides — patched transitive deps of firebase-admin.
+# protobufjs: CVE-2026-41242 (arbitrary code execution)
+# fast-xml-parser: CVE-2026-25896 (entity-encoding bypass)
+overrides:
+  protobufjs: 7.5.5
+  fast-xml-parser: 4.5.4

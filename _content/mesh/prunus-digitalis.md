@@ -1,9 +1,10 @@
 ```yaml @@
+type: storyline
 superTitle: Tattoo Story
 title: Prunus Digitalis
-description: >-
-  Just like in Ray Bradbury's "The Illustrated Man", I bring my tattoos to life.
-  This time the creatures and flow on my left arms.
+slug: prunus-digitalis
+description: Just like in Ray Bradbury's "The Illustrated Man", I bring my
+  tattoos to life. This time the creatures and flow on my left arms.
 colorSpace: carmine
 startDate: 2022-05-25T00:00:00.000Z
 date: 2023-02-13T00:00:00.000Z
@@ -16,8 +17,6 @@ tags:
   - Mesh
   - Cyberpunk
 group: mesh
-slug: prunus-digitalis
-type: storyline
 image: prunus-digitalis
 related:
   - tsuru

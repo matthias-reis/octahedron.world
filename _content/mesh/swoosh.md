@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: The Swoosh
+slug: swoosh
 description: Tales from the Mesh, starting off with the Mesh Logo
 date: 2023-10-05T00:00:00.000Z
 colorSpace: berry
@@ -11,8 +13,6 @@ tags:
 group: mesh
 superTitle: Mesh Tales
 alias: posts/2023/2023-10-05-swoosh
-slug: swoosh
-type: post
 image: mesh-tales
 ```
 

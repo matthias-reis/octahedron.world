@@ -1,10 +1,12 @@
 import { createAsync } from "@solidjs/router";
 import { clientOnly } from "@solidjs/start";
-import { createEffect, Show } from "solid-js";
+import { type Component, createEffect, lazy, Show } from "solid-js";
 import { getRoute } from "~/model/model";
+import { LockedPage } from "~/sites/seiten/locked";
 import { setColorSpace } from "~/store/color-space";
 
-const renderers: Record<string, ReturnType<typeof clientOnly>> = {
+// biome-ignore lint/suspicious/noExplicitAny: renderers take differently typed MDS props
+const renderers: Record<string, Component<any>> = {
   dica: clientOnly(() => import("~/renderers/dica/create-template")),
   digest: clientOnly(() => import("~/renderers/digest")),
   grid: clientOnly(() => import("~/renderers/grid")),
@@ -17,14 +19,19 @@ const renderers: Record<string, ReturnType<typeof clientOnly>> = {
     () => import("~/renderers/population-simulation"),
   ),
   world2: clientOnly(() => import("~/renderers/world2")),
-  post: clientOnly(() => import("~/renderers/default")),
+  post: clientOnly(() => import("~/renderers/post")),
   default: clientOnly(() => import("~/renderers/default")),
   // mreis.me's long-form renderer — token-driven, no octahedron palette.
   article: clientOnly(() => import("~/sites/mreis/renderers/article")),
+  // Microsites (seiten.mreis.me) are server-rendered: first paint is the page.
+  microsite: lazy(() => import("~/renderers/microsite")),
 };
 
 export const MdsTemplate = ({ route }: { route: string }) => {
-  const item = createAsync(() => getRoute(route));
+  // deferStream: hold the first flush until the page data is there, so the
+  // <title> and og:* tags a renderer sets end up in the server-rendered
+  // <head> — link-preview crawlers do not run JavaScript.
+  const item = createAsync(() => getRoute(route), { deferStream: true });
 
   createEffect(() => {
     const data = item();
@@ -36,6 +43,10 @@ export const MdsTemplate = ({ route }: { route: string }) => {
   return (
     <Show when={item()}>
       {(data) => {
+        if (data().locked) {
+          return <LockedPage slug={data().slug} reason={data().lockReason} />;
+        }
+
         const type = data().type;
         const mds = data().mds;
         const Renderer = type ? renderers[type] : undefined;
@@ -49,7 +60,7 @@ export const MdsTemplate = ({ route }: { route: string }) => {
           );
         }
 
-        return <Renderer mds={mds} />;
+        return <Renderer mds={mds} accessCode={data().accessCode} />;
       }}
     </Show>
   );

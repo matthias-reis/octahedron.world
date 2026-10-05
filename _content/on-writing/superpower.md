@@ -1,8 +1,9 @@
 ```yaml @@
+type: post
 title: Superpower
+slug: superpower
 date: 2023-06-27T00:00:00.000Z
-description:
-  Marvel, DC, Batman or Hulk. Super human power are the mega trend at cinemas.
+description: Marvel, DC, Batman or Hulk. Super human power are the mega trend at cinemas.
 tags:
   - Archetypes
   - Tropes
@@ -13,8 +14,6 @@ colorSpace: carmine
 group: on-writing
 superTitle: Tropes
 alias: posts/2023/2023-06-27-superpower
-slug: superpower
-type: post
 image: tropes
 ```
 

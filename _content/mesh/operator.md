@@ -1,13 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Shortstory
 title: The Operator
-description: >-
-  The first deep-dive into the cyberpunk world of the Mesh and its inhabitants.
-  We follow some hackers in Hamburg on a data heist.
+slug: operator
+description: The first deep-dive into the cyberpunk world of the Mesh and its
+  inhabitants. We follow some hackers in Hamburg on a data heist.
 colorSpace: carmine
 startDate: 2022-11-29T00:00:00.000Z
 date: 2023-06-05T00:00:00.000Z
-finished: true
 related:
   - mesh
 tags:
@@ -20,8 +20,6 @@ tags:
   - Storyline
 group: mesh
 alias: storylines/operator
-slug: operator
-type: storyline
 image: operator
 ```
 

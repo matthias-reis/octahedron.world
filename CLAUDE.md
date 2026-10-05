@@ -119,6 +119,7 @@ Registered types:
 | `grid`                  | `src/renderers/grid`                  |
 | `legal`                 | `src/renderers/legal`                 |
 | `lightbox`              | `src/renderers/lightbox`              |
+| `microsite`             | `src/renderers/microsite`             |
 | `population-simulation` | `src/renderers/population-simulation` |
 | `report`                | `src/renderers/report`                |
 | `storyline`             | `src/renderers/storyline`             |
@@ -131,6 +132,32 @@ failing the build.
 (so its metadata stays queryable) but must _not_ get a generated route —
 `content.ts` filters it out of `routes.json`. It is used by `pcsc-one` and
 `pcsc-contest`, which own hand-written file routes in `src/routes/`.
+
+### Microsites (`type: microsite`)
+
+Standalone one-pagers for small businesses, on their own subdomain:
+`seiten.mreis.me/<name>` (site `seiten`, `src/sites/seiten/`). Content lives
+in `_content/seiten/<name>.md` with `slug: <name>`. The homepage is the
+admin overview; every page is access-controlled (see "Access" in the
+microsite CLAUDE.md). The renderer is server-rendered (not `clientOnly`).
+seiten slugs are deliberately **not** in `routes.json` (they name clients and
+that file ships to the browser) — a catch-all route in `src/app.tsx` resolves
+them. `mreis.me/p/*` redirects there (`src/middleware.ts`).
+
+- Every `+++step` is a section. Local scope: `nav` (header label; omit to
+  keep it out of the nav), `variant` (`plain | surface | tint | inverted`),
+  `colors` (group override), `layout: hero`.
+- Global scope: `brand` (`name`, `mark`, `tagline`), `legal` (footer labels),
+  and `theme`, the per-page knobs: `hue`, `radius` (rem), `fonts` (a key of
+  `fontPairings` in `theme.ts`), `colors` (group assignment).
+- Blocks: `cards`, `cta`, `contact`, `palette` (see `blocks.tsx`).
+- Colors: base hue → six palettes × nine shades → copy/background/button
+  groups → semantic colors (`text-copy`, `bg-page`, `bg-button` …).
+  `_content/seiten/example.md` is the reference page.
+- **Rules for building and checking microsites live in
+  `src/renderers/microsite/CLAUDE.md`. Read it before touching a microsite.**
+  (It cannot live next to the content: every `.md` under `_content/` is parsed
+  as MDS.)
 
 ### Creating a new renderer
 

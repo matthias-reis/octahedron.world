@@ -1,9 +1,10 @@
 ```yaml @@
+type: lightbox
 title: Framed Sheep
-description: >-
-  A single sheep stands on a grassy hilltop, captured in profile against an
-  overcast sky. The black-and-white tone emphasizes the texture of its wool and
-  the solitude of the scene.
+slug: sheep
+description: A single sheep stands on a grassy hilltop, captured in profile
+  against an overcast sky. The black-and-white tone emphasizes the texture of
+  its wool and the solitude of the scene.
 date: 2025-05-06T00:00:00.000Z
 tags:
   - sheep
@@ -19,7 +20,5 @@ tags:
 group: photography
 superTitle: Photography
 alias: images/2025/2025-05-06-sheep
-slug: sheep
-type: lightbox
 image: sheep
 ```

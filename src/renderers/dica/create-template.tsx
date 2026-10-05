@@ -10,6 +10,7 @@ import {
   Show,
 } from "solid-js";
 import { createStore } from "solid-js/store";
+import { largeImageUrl } from "~/components/image-helpers";
 import { transform } from "solid-mds";
 import { useI18n } from "~/i18n/context";
 import { LogoHorizontal } from "./logo";
@@ -151,7 +152,7 @@ export default function createTemplate(props: {
       <img
         class="my-6 mx-auto rounded-lg shadow-md select-none"
         src={
-          props.src?.startsWith("http") ? props.src : `/img/${props.src}/l.jpg`
+          props.src?.startsWith("http") ? props.src : largeImageUrl(props.src)
         }
         draggable={false}
       />
@@ -297,11 +298,13 @@ export default function createTemplate(props: {
           </h2>
 
           <p class="text-xl md:text-2xl text-can4 mb-8">
-            {parsed.global?.subtitle}
+            {parsed.global?.subTitle}
           </p>
 
           <p class="text-sm text-can4 mb-12">
-            {parsed.global?.start ? formatDateDE(parsed.global.start) : ""}
+            {parsed.global?.startDate
+              ? formatDateDE(parsed.global.startDate)
+              : ""}
           </p>
 
           <A

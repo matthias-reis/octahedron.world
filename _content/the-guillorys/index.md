@@ -1,9 +1,10 @@
 ```yaml @@
+type: digest
 title: The Guillorys
-description: >-
-  A series of children's tales. This time with a family of mouse superheroes.
-  Every member in that really large familh has a special power and their
-  playground is a big victorian mansion.
+slug: the-guillorys
+description: A series of children's tales. This time with a family of mouse
+  superheroes. Every member in that really large familh has a special power and
+  their playground is a big victorian mansion.
 date: 2025-05-01T00:00:00.000Z
 colorSpace: wood
 tags:
@@ -14,8 +15,6 @@ tags:
   - Family
 group: the-guillorys
 root: true
-slug: the-guillorys
-type: digest
 image: the-guillorys
 weight: 0
 ```

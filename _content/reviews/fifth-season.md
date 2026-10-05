@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: The Fifth Season
+slug: fifth-season
 subTitle: N.K. Jemisin
 description: Reviewing the Hugo Award winning novel by N.K. Jemisin
 date: 2023-06-20T00:00:00.000Z
@@ -13,8 +15,6 @@ tags:
 group: reviews
 superTitle: Reviews
 alias: posts/2023/2023-06-20-fifth-season
-slug: fifth-season
-type: post
 image: reviews
 hidden: true
 ```

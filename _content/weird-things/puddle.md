@@ -1,7 +1,7 @@
 ```yaml @@
-slug: puddle
-title: Puddle
 type: post
+title: Puddle
+slug: puddle
 description: A hatch into a weird underworld.
 date: 2024-08-26T00:00:00.000Z
 colorSpace: carmine

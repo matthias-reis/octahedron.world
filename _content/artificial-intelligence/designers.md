@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Designers
+slug: designers
 description: Dall-E and Midjourney take over many art direction tasks already.
 date: 2022-06-14T00:00:00.000Z
 colorSpace: sky
@@ -12,8 +14,6 @@ tags:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-14-designers
-slug: designers
-type: post
 image: ai-jobs
 ```
 

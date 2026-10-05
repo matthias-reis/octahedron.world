@@ -13,6 +13,7 @@ function printBanner() {
   console.log("");
   console.log("  ➜ octahedron  http://octa.localhost:4242/");
   console.log("  ➜ mreis       http://mreis.localhost:4242/");
+  console.log("  ➜ seiten      http://seiten.localhost:4242/");
   console.log("");
 }
 

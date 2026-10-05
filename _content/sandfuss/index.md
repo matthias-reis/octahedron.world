@@ -1,11 +1,12 @@
 ```yaml @@
+type: lightbox
 superTitle: Children's Story
 title: Sandfuss P.I.
+slug: sandfuss
+ref: storylines/asimov-de
 description: An animalic short story
 colorSpace: sky
-language: en
-ref: storylines/asimov-de
-start: 2024-04-16T00:00:00.000Z
+startDate: 2024-04-16T00:00:00.000Z
 unfinished: true
 related:
   - storylines/kamina-2
@@ -17,10 +18,9 @@ tags:
   - Crime
 group: sandfuss
 alias: storylines/sandfuss
-slug: sandfuss
-type: lightbox
 image: sandfuss-tint
 hidden: true
+language: en
 ```
 
 My wife Anne had the idea sketched out a year or two ago. So this category is a

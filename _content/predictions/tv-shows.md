@@ -1,8 +1,8 @@
 ```yaml @@
+type: post
 title: TV Shows 2023-2033
-description: >-
-  Will there still be TV shows, when AI can produce bespoke content for
-  everyone?
+slug: tv-shows
+description: Will there still be TV shows, when AI can produce bespoke content for everyone?
 date: 2023-03-28T00:00:00.000Z
 colorSpace: yellow
 tags:
@@ -13,8 +13,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-03-28-tv-shows
-slug: tv-shows
-type: post
 image: predictions
 ```
 

@@ -1,20 +1,19 @@
 ```yaml @@
+type: post
 title: Goliath and the Dawn of AGI
-description: >-
-  AGI hype is everywhere right now — every big release gets called the god
-  mode of AI. A short story written years before the wave explores exactly
-  that collision: not Aliens vs Cowboys, but Aliens vs AGI.
+slug: goliath-teaser
+ref: goliath-teaser-de
+description: "AGI hype is everywhere right now — every big release gets called
+  the god mode of AI. A short story written years before the wave explores
+  exactly that collision: not Aliens vs Cowboys, but Aliens vs AGI."
 colorSpace: wood
 date: 2026-09-14T00:00:00.000Z
-language: en
-ref: goliath-teaser-de
 tags:
   - AI
   - AGI
 group: artificial-intelligence
-slug: goliath-teaser
-type: post
 image: goliath
+language: en
 ```
 
 Everyone knows that there's a lot of buzz around the topic of AI at the moment.

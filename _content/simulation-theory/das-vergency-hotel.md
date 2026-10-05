@@ -1,23 +1,22 @@
 ```yaml @@
+type: storyline
 title: Das Vergency Hotel
+slug: das-vergency-hotel
+ref: vergency-hotel
 date: 2024-08-05T00:00:00.000Z
-description:
-  Anekdoten aus dem Zentrum des Universums. Wer hätte gedacht, dass es sich um
-  ein altehrwürdiges Hotel handelt?
+description: Anekdoten aus dem Zentrum des Universums. Wer hätte gedacht, dass
+  es sich um ein altehrwürdiges Hotel handelt?
 tags:
   - Science Fiction
   - Fantasy
   - Weltuntergang
   - Multiversum
 colorSpace: carmine
-language: de
-ref: vergency-hotel
 group: simulation-theory
 superTitle: Vergency Hotel
 alias: posts/2024/2024-08-05-vergency-hotel-de
-slug: das-vergency-hotel
-type: storyline
 image: vergency-hotel
+language: de
 ```
 
 Vor etwa hundert Jahren wurde ich zum ersten Mal ins Hotel eingeladen. Aber wer

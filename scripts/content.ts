@@ -5,15 +5,17 @@ import { glob } from "glob";
 import { parse } from "hast-mds";
 import type { Site } from "~/site/context";
 import type { ItemMeta } from "~/types";
+import { validateMicrosite } from "./validate-microsite";
 
 const read = promisify(readFile);
 
 function deriveSite(file: string, explicit: unknown): Site {
   // An explicit `site:` key in the MDS global scope overrides the folder rule.
-  if (explicit === "mreis" || explicit === "octahedron") {
+  if (explicit === "mreis" || explicit === "octahedron" || explicit === "seiten") {
     return explicit;
   }
   const rel = relative(join(process.cwd(), "_content"), file);
+  if (rel.startsWith(`seiten${sep}`)) return "seiten";
   return rel === "mreis" || rel.startsWith(`mreis${sep}`)
     ? "mreis"
     : "octahedron";
@@ -51,6 +53,19 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         "graphics",
         "spacetravel",
         "population",
+        // microsite blocks (src/renderers/microsite/blocks.tsx)
+        "callout",
+        "cards",
+        "contact",
+        "emblem",
+        "features",
+        "gallery",
+        "image",
+        "index",
+        "rating",
+        "stats",
+        "video",
+        "palette",
       ]),
     );
     if (!result.global) {
@@ -71,6 +86,19 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
         `[CON] ❌ missing \`title\` in the global scope of: ${file} — a page without a title cannot be published`,
       );
       process.exit(1);
+    }
+
+    if (meta.type === "microsite") {
+      const problems = validateMicrosite(
+        result,
+        result.global as Record<string, unknown>,
+      );
+      if (problems.length > 0) {
+        console.error(
+          `[CON] ❌ microsite rules broken in: ${file}\n${problems.map((p) => `        - ${p}`).join("\n")}`,
+        );
+        process.exit(1);
+      }
     }
 
     const existing = metaData[meta.slug];
@@ -99,8 +127,11 @@ async function run() {
   // Write routes.json - array of route objects with slug + site.
   // `type: none` keeps an item in data.json but generates no route: those pages
   // own a hand-written file route in src/routes/.
+  // seiten (client previews) is left out on purpose: routes.json ships in the
+  // client bundle, and its slugs name the clients. Those pages resolve through
+  // a catch-all route instead (src/app.tsx).
   const routes = Object.entries(metadata)
-    .filter(([_, item]) => item.type !== "none")
+    .filter(([_, item]) => item.type !== "none" && item.site !== "seiten")
     .map(([slug, item]) => ({ slug, site: item.site }));
   const routesJson = JSON.stringify(routes, null, 2);
   writeFileSync(join(process.cwd(), "routes.json"), routesJson);

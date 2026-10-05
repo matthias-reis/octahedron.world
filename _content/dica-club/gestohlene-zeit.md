@@ -1,10 +1,9 @@
 ```yaml @@
-slug: gestohlene-zeit
-language: de
-ref: stolen-time
+type: dica
 title: Gestohlene Zeit
-description:
-  Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests
+slug: gestohlene-zeit
+ref: stolen-time
+description: Der erste DICA Fall mit ausführlichen Erläuterungen wie die Quests
   funktionieren.
 group: dica-club
 image: crime-scene
@@ -14,12 +13,12 @@ tags:
   - Riddles
   - Geolocation
 version: 1
-subtitle: Der erste DICA Fall
-start: 2024-12-21
-type: dica
+subTitle: Der erste DICA Fall
+startDate: 2024-12-21
 colorSpace: carmine
 reveal:
   - fall
+language: de
 ```
 
 +++fall

@@ -1,12 +1,13 @@
 ```yaml @@
+type: storyline
 superTitle: Short Story
 title: Goliath
-description: >-
-  What if we develop an AI with more than human level intelligence? And how
-  powerful can it become? The story in this line is following that thought.
-colorSpace: wood
-language: en
+slug: goliath
 ref: goliath-de
+description: What if we develop an AI with more than human level intelligence?
+  And how powerful can it become? The story in this line is following that
+  thought.
+colorSpace: wood
 startDate: 2022-06-12T00:00:00.000Z
 date: 2022-11-14T00:00:00.000Z
 tags:
@@ -17,9 +18,8 @@ tags:
   - Storyline
 group: artificial-intelligence
 alias: storylines/goliath
-slug: goliath
-type: storyline
 image: goliath
+language: en
 ```
 
 ## Part 1: The Goliath Reports

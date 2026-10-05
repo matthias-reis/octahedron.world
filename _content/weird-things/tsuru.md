@@ -1,9 +1,11 @@
 ```yaml @@
+type: storyline
 superTitle: Tattoo Story
 title: Tsuru
-description: >-
-  Just like in Ray Bradbury's "The Illustrated Man", I bring my tattoos to life.
-  This story is about my right arm and the japanese spirits that live on it.
+slug: tsuru
+description: Just like in Ray Bradbury's "The Illustrated Man", I bring my
+  tattoos to life. This story is about my right arm and the japanese spirits
+  that live on it.
 colorSpace: carmine
 startDate: 2022-05-25T00:00:00.000Z
 date: 2023-02-13T00:00:00.000Z
@@ -16,8 +18,6 @@ tags:
   - Japanese Culture
 group: weird-things
 alias: storylines/tattoos
-slug: tsuru
-type: storyline
 image: tsuru
 related:
   - prunus-digitalis

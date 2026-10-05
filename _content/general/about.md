@@ -1,12 +1,12 @@
 ```yaml @@
+type: legal
 title: About Octahedron World
+slug: about
+ref: ueber-uns
 superTitle: Author, Motivation and Used Technology
 group: general
-slug: about
-type: legal
 image: _home
 language: en
-ref: ueber-uns
 ```
 
 # Who am I?

@@ -8,6 +8,7 @@ export const fbReadAllTracks = async () => {
   const tracks: Track[] = [];
   snapshot.forEach((doc) => {
     const data = doc.data() as Track;
+    data.voteCount = data.votes?.length ?? 0;
     delete data.votes; // remove votes from data
     data.releaseDate = toSerialisedDate(data.releaseDate);
     data.dateAdded = toSerialisedDate(data.dateAdded);
@@ -57,6 +58,19 @@ export const fbWriteTrack = async (track: TrackModel) => {
       .set(serialized, { merge: true });
   } catch (error) {
     console.error("[FIREBASE] Error in writeTrack:", error);
+    throw error;
+  }
+};
+
+export const fbDeleteTracks = async (ids: string[]) => {
+  try {
+    const batch = db.batch();
+    for (const id of ids) {
+      batch.delete(db.collection("tracks").doc(id));
+    }
+    await batch.commit();
+  } catch (error) {
+    console.error("[FIREBASE] Error in fbDeleteTracks:", error);
     throw error;
   }
 };

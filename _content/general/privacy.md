@@ -1,12 +1,12 @@
 ```yaml @@
+type: legal
 title: Privacy Policy
+slug: privacy
+ref: datenschutz
 superTitle: Datenschutzerklärung (DE)
 group: general
-slug: privacy
 image: _home
-type: legal
 language: en
-ref: datenschutz
 ```
 
 The following text is and stays in German language as it is the only legally

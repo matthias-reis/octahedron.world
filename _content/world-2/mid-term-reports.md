@@ -1,7 +1,8 @@
 ```yaml @@
+type: post
 title: Mid Term Reports
-description:
-  Mid 2023. Elections in important German regions with catastrophic results.
+slug: mid-term-reports
+description: Mid 2023. Elections in important German regions with catastrophic results.
 date: 2023-10-09T00:00:00.000Z
 colorSpace: orange
 tags:
@@ -14,8 +15,6 @@ tags:
 group: world-2
 superTitle: Real World
 alias: posts/2023/2023-10-09-mid-term-reports
-slug: mid-term-reports
-type: post
 image: real-world
 hidden: true
 ```

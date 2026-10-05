@@ -1,9 +1,10 @@
 ```yaml @@
+type: lightbox
 title: Empty Subway Station
-description: >-
-  A modern subway station in Hamburg’s Hafencity, illuminated by striking purple
-  and blue light panels. A train approaches the platform, surrounded by sleek
-  architecture and glowing reflections.
+slug: subway
+description: A modern subway station in Hamburg’s Hafencity, illuminated by
+  striking purple and blue light panels. A train approaches the platform,
+  surrounded by sleek architecture and glowing reflections.
 date: 2025-05-02T00:00:00.000Z
 tags:
   - subway
@@ -19,8 +20,6 @@ tags:
 group: photography
 superTitle: Photography
 alias: images/2025/2025-05-02-subway
-slug: subway
-type: lightbox
 image: subway
 colorSpace: berry
 ```

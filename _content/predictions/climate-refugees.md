@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Climate Refugees 2023-2050
+slug: climate-refugees
 description: Central Europe is the place to be in 50 years. For everyone.
 date: 2023-04-20T00:00:00.000Z
 colorSpace: yellow
@@ -12,8 +14,6 @@ tags:
 group: predictions
 superTitle: Predictions
 alias: posts/2023/2023-04-20-climate-refugees
-slug: climate-refugees
-type: post
 image: predictions
 ```
 

@@ -1,4 +1,5 @@
 import { query } from "@solidjs/router";
+import { getRequestEvent } from "solid-js/web";
 import { getSite } from "~/site/context";
 import type { CompactItemMeta, ItemMeta, PostMeta } from "~/types";
 
@@ -25,8 +26,44 @@ export const getRoute = query(async (slug: string) => {
   "use server";
   const data = await getData();
   const item = data[slug];
-  if (!item || (item.site ?? "octahedron") !== getSite()) {
+  const site = getSite();
+  if (site === "seiten" && item?.site !== "seiten") {
+    // Unknown slug on seiten: the same locked page as a real one, so the
+    // answer never tells whether a page exists.
+    return {
+      slug,
+      site: "seiten",
+      group: "seiten",
+      title: "Geschützte Vorschau",
+      image: "",
+      type: "locked",
+      locked: true,
+      lockReason: "missing",
+    } as unknown as ItemMeta;
+  }
+  if (!item || (item.site ?? "octahedron") !== site) {
     return null;
+  }
+  if (item.site === "seiten") {
+    // Client previews: nothing of the page leaves the server without access.
+    const { authorize } = await import("~/sites/seiten/server");
+    const request = getRequestEvent()?.request;
+    const access = request
+      ? authorize(request, item)
+      : ({ ok: false, reason: "missing" } as const);
+    if (!access.ok) {
+      return {
+        slug,
+        site: "seiten",
+        group: "seiten",
+        title: "Geschützte Vorschau",
+        image: "",
+        type: "locked",
+        locked: true,
+        lockReason: access.reason,
+      } as unknown as ItemMeta;
+    }
+    return access.via === "code" ? { ...item, accessCode: access.code } : item;
   }
   return item;
 }, "route");
@@ -156,3 +193,65 @@ export const getAllPosts = query(async () => {
       }),
     );
 }, "all-posts");
+
+/** Card data for the seiten overview — what a link preview would show: og
+    title, description and the og image file. Admins only: null otherwise. */
+export type MicrositeCard = {
+  slug: string;
+  title: string;
+  description?: string;
+  /** og.jpg (or whatever `og.image` names) next to the page. */
+  ogImage?: string;
+  public: boolean;
+};
+
+export const getMicrosites = query(async () => {
+  "use server";
+  const { allSeitenItems, isAdmin } = await import("~/sites/seiten/server");
+  const request = getRequestEvent()?.request;
+  if (!request || !isAdmin(request)) return null;
+
+  return (await allSeitenItems())
+    .filter((item) => item.type === "microsite")
+    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .map((item): MicrositeCard => {
+      const og = (item as unknown as { og?: Record<string, unknown> }).og;
+      const description = og?.description ?? item.description;
+      return {
+        slug: item.slug,
+        title: typeof og?.title === "string" ? og.title : item.title,
+        description: Array.isArray(description)
+          ? description.join(" ")
+          : typeof description === "string"
+            ? description
+            : undefined,
+        ogImage: typeof og?.image === "string" ? og.image : undefined,
+        public: item.public === true,
+      };
+    });
+}, "microsites");
+
+/** A client link for one page, valid `hours` from now. Admins only. */
+export const getAccessLink = query(async (slug: string, hours: number) => {
+  "use server";
+  const { seitenItem, isAdmin, accessVersion } = await import(
+    "~/sites/seiten/server"
+  );
+  const { createPageCode } = await import("~/sites/seiten/access");
+  const request = getRequestEvent()?.request;
+  if (!request || !isAdmin(request)) return null;
+  const item = await seitenItem(slug);
+  if (!item) return null;
+  const code = createPageCode(slug, accessVersion(item), hours);
+  if (!code) return null;
+  const origin = new URL(request.url).origin.replace(
+    /^http:\/\/(?!.*localhost)/,
+    "https://",
+  );
+  return {
+    slug,
+    code: code.code,
+    expires: code.expires.toISOString(),
+    url: `${origin}/${slug}?k=${code.code}`,
+  };
+}, "access-link");

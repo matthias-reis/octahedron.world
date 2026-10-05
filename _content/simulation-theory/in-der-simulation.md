@@ -1,14 +1,14 @@
 ```yaml @@
+type: post
 title: In der Simulation
-description: >-
-  Was, wenn das Universum, das wir bewohnen, nicht das erste seiner Art ist —
-  und nicht das letzte? Ausgehend von Nick Bostroms Simulationsargument
-  erkundet dieser Text die beunruhigende Logik einer Kette verschachtelter
-  Realitäten.
+slug: in-der-simulation
+ref: in-the-simulation
+description: Was, wenn das Universum, das wir bewohnen, nicht das erste seiner
+  Art ist — und nicht das letzte? Ausgehend von Nick Bostroms
+  Simulationsargument erkundet dieser Text die beunruhigende Logik einer Kette
+  verschachtelter Realitäten.
 colorSpace: sky
 date: 2026-04-01T00:00:00.000Z
-language: de
-ref: in-the-simulation
 tags:
   - Simulationstheorie
   - KI
@@ -16,9 +16,8 @@ tags:
   - Simulation
   - Realität
 group: simulation-theory
-slug: in-der-simulation
-type: post
 image: in-the-simulation
+language: de
 ```
 
 # In der Simulation

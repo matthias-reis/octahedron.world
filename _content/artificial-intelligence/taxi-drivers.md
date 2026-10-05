@@ -1,5 +1,7 @@
 ```yaml @@
+type: post
 title: Taxi Drivers
+slug: taxi-drivers
 description: What's happening to taxi drivers as soon as cars can drive alone?
 date: 2022-06-28T00:00:00.000Z
 colorSpace: sky
@@ -12,8 +14,6 @@ related:
 group: artificial-intelligence
 superTitle: AI Jobs
 alias: posts/2022/2022-06-28-taxi-drivers
-slug: taxi-drivers
-type: post
 image: ai-jobs
 ```
 
