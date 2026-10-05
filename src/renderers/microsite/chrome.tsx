@@ -95,7 +95,7 @@ const NavLinks: Component<{ nav: NavItem[]; class: string }> = (props) => (
 );
 
 /**
- * Sticky header: logo left, section anchors right. Below `md` the anchors
+ * Sticky header: logo left, section anchors right. Below `lg` the anchors
  * fold into a <details> menu — works before hydration, no state to manage.
  */
 export const SiteHeader: Component<{
@@ -106,7 +106,7 @@ export const SiteHeader: Component<{
   <header class="sticky top-0 z-20 bg-page/90 backdrop-blur border-b border-line">
     <Container class="flex items-center gap-slg h-[4rem] md:h-[4.75rem]">
       <Logo brand={props.brand} />
-      <nav aria-label="Bereiche" class="hidden md:flex flex-1 justify-center">
+      <nav aria-label="Bereiche" class="hidden lg:flex flex-1 justify-center">
         <NavLinks
           nav={props.nav}
           class="flex gap-slg text-[0.95rem] font-medium whitespace-nowrap"
@@ -129,7 +129,7 @@ export const SiteHeader: Component<{
           {(cta) => (
             <ButtonLink
               href={cta().url}
-              class="hidden md:inline-flex whitespace-nowrap"
+              class="hidden lg:inline-flex whitespace-nowrap"
             >
               {cta().text}
             </ButtonLink>
@@ -137,7 +137,7 @@ export const SiteHeader: Component<{
         </Show>
         {/* biome-ignore lint/a11y/useKeyWithClickEvents: delegated from the anchors, which fire click on Enter too */}
         <details
-          class="md:hidden group"
+          class="lg:hidden group"
           onClick={(e) => {
             // Close the menu once an anchor is picked.
             if ((e.target as HTMLElement).closest("a"))
@@ -153,7 +153,7 @@ export const SiteHeader: Component<{
           </summary>
           <nav
             aria-label="Bereiche"
-            class="absolute left-0 right-0 top-[4rem] bg-page border-b border-line"
+            class="absolute left-0 right-0 top-[4rem] md:top-[4.75rem] bg-page border-b border-line"
           >
             <Container>
               <NavLinks

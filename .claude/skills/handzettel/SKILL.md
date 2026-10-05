@@ -67,10 +67,13 @@ the report.
 
 For every image, the logo and the og image:
 
-1. Generate it with the image tooling available in the session
-   (`nano-banana` skill, the `mcp-image` server, or ComfyUI). Prompt for the
-   business's real context: the actual trade, the region, the mood. No
-   generic stock scenes and no text baked into photos.
+1. Generate it with Life Brain's local engine: the `image-engine` skill in
+   `~/code/life-brain` (start ComfyUI, render with Z-Image Turbo, shut it
+   down again). Fall back to `nano-banana` / `mcp-image` only when the engine
+   can't start. Prompt for the business's real context: the actual trade,
+   the region, the mood. No generic stock scenes and no text baked into
+   photos. Generated photos get `caption: Symbolbild (KI-generiert)` and a
+   footer note.
 2. Convert it next to the page:
    - `pnpm ms-image <src> <name> <file>` for content images
    - `pnpm ms-image <src> <name> logo --logo` for the logo

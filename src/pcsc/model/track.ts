@@ -61,6 +61,9 @@ export class TrackModel {
     if (!t.trackNumber) {
       t.trackNumber = o.trackNumber;
     }
+    if (!t.appleId) {
+      t.appleId = o.appleId ?? null;
+    }
     //we take the earliest release date
     this.releaseDate = earliest(this.releaseDate, other.releaseDate);
     this.dateAdded = earliest(this.dateAdded, other.dateAdded);
@@ -129,16 +132,29 @@ export class TrackModel {
     return (this.track as Track).appleRating ?? 0;
   }
 
+  /** Apple Music persistent id (16 hex digits), once a voter has sent it. */
+  get appleId() {
+    return (this.track as Track).appleId ?? null;
+  }
+
+  set appleId(value: string | null) {
+    (this.track as Track).appleId = value;
+  }
+
+  /** Number of votes; from the cache's count when the votes aren't loaded. */
+  get voteCount() {
+    return this.votes.length || ((this.track as Track).voteCount ?? 0);
+  }
+
   get vote() {
-    const latestDate = this.votes
-      .map((vote) => vote.date)
-      .sort()
-      .reverse()[0];
+    const latestDate = new Date(
+      Math.max(...this.votes.map((vote) => vote.date.getTime())),
+    );
 
     const [voteSum, weightSum] = this.votes
       .map((vote) => {
         const ageInDays = dayjs(latestDate).diff(vote.date, "day");
-        const weight = (1 / (1000 - ageInDays)) ^ (2 * 0.8 + 0.2);
+        const weight = voteWeight(ageInDays);
         return [vote.rating * weight, weight];
       })
       .reduce(
@@ -242,6 +258,7 @@ export class TrackModel {
     return {
       ...this.compact,
       appleRating: this.starRating,
+      appleId: t.appleId ?? null,
       albumArtist: t.albumArtist || null,
       discNumber: t.discNumber,
       discCount: t.discCount,
@@ -273,6 +290,18 @@ export class TrackModel {
   }
 }
 
+/**
+ * How much a vote counts, by its age in days relative to the track's newest
+ * vote: 1 for the newest, fading to ~0 at 1000 days (≈ 0.44 after a year,
+ * 0.16 after two). Replaces `(1 / (1000 - age)) ^ 1.8`, where `^` was a
+ * bitwise XOR and every weight came out as 1 — a plain mean.
+ */
+export const voteWeight = (ageInDays: number) =>
+  ((1000 - Math.min(Math.max(ageInDays, 0), 999)) / 1000) ** 1.8;
+
+export const isPersistentId = (value: unknown): value is string =>
+  typeof value === "string" && /^[0-9A-Fa-f]{16}$/.test(value);
+
 export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
   const aa = new Date(a);
   const bb = new Date(b);
@@ -283,13 +312,17 @@ export const earliest = (a: Date = new Date(), b: Date = new Date()) => {
   }
 };
 
+/**
+ * A vote as Apple Music's 0–100 rating: linear from 0 to 80 (4★) at 10, then
+ * to 100 (5★) at 15, capped there. So 4★ means "10+", 5★ means "15+".
+ */
 export const p1toStarRating = (x: number) => {
-  if (x < 0) {
+  if (x <= 0) {
     return 0;
   } else if (x <= 10) {
-    return Math.round(x * 9);
+    return Math.round(x * 8);
   } else if (x <= 15) {
-    return 90 + Math.round((x - 10) * 2);
+    return Math.round(80 + (x - 10) * 4);
   } else {
     return 100;
   }
@@ -352,6 +385,9 @@ export type CompactTrack = {
 
 export type Track = CompactTrack & {
   albumArtist?: string | null;
+  appleId?: string | null;
+  /** Set by the cache, which drops the votes themselves. Never stored. */
+  voteCount?: number;
   vote: number;
   appleRating?: number | null;
   discNumber: number | null;

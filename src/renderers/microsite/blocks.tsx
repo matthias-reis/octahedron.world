@@ -224,10 +224,12 @@ const Features: Component<CustomBlockProps> = (props) => {
 
 /**
  * ```yaml index
+ * style: icons           # optional: big icon tiles instead of 01, 02, …
  * items:
  *   - icon: cable        # optional
  *     title: …
  *     text: …            # a few sentences
+ *     image: foto.webp   # optional small photo, never shown above its own size
  * ```
  * A numbered list (01, 02, …) in two columns on wide screens — for a longer
  * list of services that deserves real text instead of card blurbs.
@@ -235,25 +237,63 @@ const Features: Component<CustomBlockProps> = (props) => {
 const IndexList: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items);
+  const icons = () => data()?.style === "icons";
+
+  const Thumb: Component<{ file?: string; alt: string }> = (thumb) => {
+    const src = usePageAsset(() => thumb.file);
+    return (
+      <Show when={src()}>
+        {(url) => (
+          // Small source photos: shown at most at their own width.
+          <img
+            src={url()}
+            alt={thumb.alt}
+            loading="lazy"
+            decoding="async"
+            class="col-start-2 sm:col-start-3 sm:row-start-1 mt-smd sm:mt-0 w-auto max-w-full h-auto rounded-ms"
+          />
+        )}
+      </Show>
+    );
+  };
 
   return (
     <ol class="ms-block mt-sxl grid lg:grid-cols-2 gap-x-[4rem]">
       <For each={items()}>
         {(item, index) => (
-          <li class="grid grid-cols-[3.5rem_1fr] md:grid-cols-[4.5rem_1fr] gap-x-smd border-t border-line py-slg">
-            <span
-              aria-hidden="true"
-              class="font-ms-display text-4xl md:text-5xl font-extrabold leading-none text-button tabular-nums"
+          <li
+            class={`grid gap-x-smd border-t border-line py-slg ${str(item.image) ? "grid-cols-[3.5rem_1fr] sm:grid-cols-[3.5rem_1fr_auto] md:grid-cols-[4.5rem_1fr_auto]" : "grid-cols-[3.5rem_1fr] md:grid-cols-[4.5rem_1fr]"}`}
+          >
+            <Show
+              when={icons() && icon(item.icon)}
+              fallback={
+                <span
+                  aria-hidden="true"
+                  class="font-ms-display text-4xl md:text-5xl font-extrabold leading-none text-button tabular-nums"
+                >
+                  {String(index() + 1).padStart(2, "0")}
+                </span>
+              }
             >
-              {String(index() + 1).padStart(2, "0")}
-            </span>
+              {(name) => (
+                <span
+                  aria-hidden="true"
+                  class="w-[3.5rem] h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] rounded-ms bg-tint text-button flex items-center justify-center"
+                >
+                  <Icon
+                    name={name()}
+                    class="w-[1.9rem] h-[1.9rem] md:w-[2.4rem] md:h-[2.4rem]"
+                  />
+                </span>
+              )}
+            </Show>
             <div>
               <h3 class="font-ms-display text-2xl leading-tight text-copy-strong">
                 {str(item.title)}
-                <Show when={icon(item.icon)}>
+                <Show when={!icons() && icon(item.icon)}>
                   {(name) => (
                     <Icon
-                      name={name()}
+                      name={name() as IconName}
                       class="inline-block ml-ssm w-[1.25rem] h-[1.25rem] align-[-0.1em] text-copy-soft"
                     />
                   )}
@@ -265,6 +305,7 @@ const IndexList: Component<CustomBlockProps> = (props) => {
                 )}
               </Show>
             </div>
+            <Thumb file={str(item.image)} alt={str(item.alt) ?? ""} />
           </li>
         )}
       </For>
@@ -290,14 +331,15 @@ const Stats: Component<CustomBlockProps> = (props) => {
     });
 
   return (
-    <dl class="ms-block my-sxl grid grid-cols-3 gap-smd sm:gap-slg">
+    <dl class="ms-block my-sxl grid grid-cols-3 gap-smd sm:gap-slg [container-type:inline-size]">
       <For each={items()}>
         {(item) => (
           <div class="flex flex-col-reverse justify-end border-t-4 border-button pt-smd">
             <dt class="mt-ssm text-sm sm:text-lg font-semibold leading-snug text-copy-strong">
               {item.text}
             </dt>
-            <dd class="font-ms-display text-[clamp(2.6rem,11vw,8rem)] font-black leading-[0.85] text-button">
+            {/* Sized to the block, not the viewport: a figure never wraps. */}
+            <dd class="font-ms-display text-[clamp(1.6rem,8.5cqi,8rem)] whitespace-nowrap font-black leading-[0.85] text-button">
               {item.value}
             </dd>
           </div>
@@ -634,6 +676,38 @@ const Image: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/**
+ * ```yaml emblem
+ * src: logo-gross.webp     # pnpm ms-image … --logo (alpha kept)
+ * alt: Logo von …          # required
+ * size: 22                 # optional max width in rem (default 18)
+ * ```
+ * A logo or seal shown big and uncropped — no frame, no rounding. In a
+ * centered section it sits on the axis.
+ */
+const Emblem: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const src = usePageAsset(() => str(data()?.src));
+  const size = () => {
+    const n = Number(data()?.size);
+    return Number.isFinite(n) && n > 0 ? n : 18;
+  };
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <img
+          src={url()}
+          alt={str(data()?.alt) ?? ""}
+          loading="eager"
+          decoding="async"
+          class="ms-block block w-full h-auto my-slg"
+          style={{ "max-width": `${size()}rem` }}
+        />
+      )}
+    </Show>
+  );
+};
+
 /** Grid placement per mosaic slot: one large tile, two beside it, then thirds. */
 const mosaicSlots = [
   "col-span-2 row-span-2 lg:col-span-7",
@@ -750,4 +824,5 @@ export const micrositeComponents: ComponentMap = {
   palette: Palette,
   image: Image,
   gallery: Gallery,
+  emblem: Emblem,
 };

@@ -298,11 +298,13 @@ export default function createTemplate(props: {
           </h2>
 
           <p class="text-xl md:text-2xl text-can4 mb-8">
-            {parsed.global?.subtitle}
+            {parsed.global?.subTitle}
           </p>
 
           <p class="text-sm text-can4 mb-12">
-            {parsed.global?.start ? formatDateDE(parsed.global.start) : ""}
+            {parsed.global?.startDate
+              ? formatDateDE(parsed.global.startDate)
+              : ""}
           </p>
 
           <A

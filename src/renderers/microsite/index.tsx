@@ -63,6 +63,8 @@ type MicrositeLocal = {
   visual?: HeroVisualData;
   /** Full-bleed background image, see backdrop.tsx. */
   backdrop?: BackdropData;
+  /** `center` puts the section's content on the vertical axis. */
+  align?: string;
 };
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
@@ -191,6 +193,13 @@ export default function MicrositeRenderer(props: {
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"
                 }
+                backdropAlign={
+                  section.local.backdrop?.align === "right" ? "right" : "left"
+                }
+                backdropValign={
+                  section.local.backdrop?.valign === "top" ? "top" : "bottom"
+                }
+                align={section.local.align === "center" ? "center" : undefined}
                 visualStyle={
                   section.local.visual?.style === "bleed" ? "bleed" : "card"
                 }

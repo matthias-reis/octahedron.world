@@ -199,6 +199,15 @@
   --color-complementary-d1: var(--ms-complementary-d1);
   --color-complementary-d2: var(--ms-complementary-d2);
   --color-complementary-d3: var(--ms-complementary-d3);
+  --color-signal-b1: var(--ms-signal-b1);
+  --color-signal-b2: var(--ms-signal-b2);
+  --color-signal-b3: var(--ms-signal-b3);
+  --color-signal-m1: var(--ms-signal-m1);
+  --color-signal-m2: var(--ms-signal-m2);
+  --color-signal-m3: var(--ms-signal-m3);
+  --color-signal-d1: var(--ms-signal-d1);
+  --color-signal-d2: var(--ms-signal-d2);
+  --color-signal-d3: var(--ms-signal-d3);
 
   --color-page: var(--ms-page);
   --color-card: var(--ms-card);
