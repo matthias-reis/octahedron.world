@@ -80,7 +80,9 @@ console.log(`multi-vote tracks   ${multi.length}`);
 console.log(
   `stored ≠ old formula ${rows.filter((r) => r.stored !== r.before).length}  (drift before any change)`,
 );
-console.log(`shift               ${shifted.length}`);
+console.log(
+  `shift               ${shifted.length}  (up ${shifted.filter((r) => r.after > r.before).length}, down ${shifted.filter((r) => r.after < r.before).length})`,
+);
 console.log(
   `  |Δ| <0.5: ${bucket(0, 0.5)}  0.5–1: ${bucket(0.5, 1)}  1–2: ${bucket(1, 2)}  2–4: ${bucket(2, 4)}  ≥4: ${bucket(4, Infinity)}`,
 );
