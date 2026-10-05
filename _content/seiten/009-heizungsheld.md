@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 009-heizungsheld
-group: seiten
+type: page
+format: microsite
+publishedAs: 009-heizungsheld
 title: Heizungsheld – Sanitär, Heizung und Wärmepumpe in Dortmund-Wickede
-type: microsite
 language: de
 noindex: true
 description: Heizungsheld aus Dortmund-Wickede – zwei Meister für Badsanierung, Heizungsmodernisierung, Wärmepumpen, Reparatur und Notdienst am Wochenende.

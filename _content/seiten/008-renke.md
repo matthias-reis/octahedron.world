@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 008-renke
-group: seiten
+type: page
+format: microsite
+publishedAs: 008-renke
 title: Renke Gebäudetechnik – Heizung, Lüftung, Sanitär und Elektro in Bremen
-type: microsite
 language: de
 noindex: true
 description: Renke Gebäudetechnik in Bremen seit 1932 – Heizung, Lüftung, Sanitär, Elektro und regenerative Energien für Privathaus und Großprojekt, mit 24-Stunden-Notdienst.

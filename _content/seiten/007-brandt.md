@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 007-brandt
-group: seiten
+type: page
+format: microsite
+publishedAs: 007-brandt
 title: Wolfgang Grube, Inh. Martin Brandt – Wärmepumpe, Heizung und Bad in Hannover
-type: microsite
 language: de
 noindex: true
 description: SHK-Meisterbetrieb in Hannover – Wärmepumpen, hydraulischer Abgleich, Wartung, Badmodernisierung mit eigenem Lister Badstudio und 24h-Notdienst.

@@ -78,10 +78,7 @@ export default function createTemplate(props: {
           {/* Language Link */}
           {item?.ref && item?.language && (
             <div class="mb-6">
-              <A
-                href={`/${item.group}/${item.ref}`}
-                class="text-cad4 hover:text-cas3"
-              >
+              <A href={`/${item.ref}`} class="text-cad4 hover:text-cas3">
                 {item.language === "en"
                   ? "🇩🇪 Deutsche Version"
                   : "🇬🇧 English Version"}

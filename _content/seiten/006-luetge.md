@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 006-luetge
-group: seiten
+type: page
+format: microsite
+publishedAs: 006-luetge
 title: Lütge Haustechnik – Heizungs- und Sanitärnotdienst in Hamburg
-type: microsite
 language: de
 noindex: true
 description: Lütge Haustechnik aus Hamburg-Bahrenfeld – 24-Stunden-Notdienst bei Rohrbruch und Heizungsausfall, dazu Badsanierung, Heizung, Lüftung und Solar.

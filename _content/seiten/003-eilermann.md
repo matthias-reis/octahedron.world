@@ -1,8 +1,8 @@
 ```yaml @@
-slug: 003-eilermann
-group: seiten
+type: page
+format: microsite
+publishedAs: 003-eilermann
 title: Eilermann – Bauunternehmen für Hausbau in Friesoythe
-type: microsite
 language: de
 noindex: true
 description: Hausbau in Friesoythe seit 1989 – Eilermann baut Ein-, Zwei- und Mehrfamilienhäuser, auf Wunsch schlüsselfertig zum Festpreis, dazu Gewerbebau und Sanierung.
