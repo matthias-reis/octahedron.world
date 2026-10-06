@@ -55,7 +55,7 @@
     "firebase-admin": "^13.6.0",
     "hast-mds": "^0.1.0",
     "hast-util-to-jsx-runtime": "^2.3.6",
-    "katex": "^0.16.27",
+    "katex": "^0.18.2",
     "lucide-solid": "^0.562.0",
     "rehype-katex": "^7.0.1",
     "rehype-react": "^8.0.0",
