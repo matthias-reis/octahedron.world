@@ -96,6 +96,15 @@ export const fontPairings = {
     displayTracking: "0.01em",
     displayWordSpacing: "0.04em",
   },
+  /** Rooted and clear: a warm mid-century serif over a plain modern sans. */
+  quelle: {
+    display: '"Young Serif", Georgia, serif',
+    body: '"Onest Variable", system-ui, sans-serif',
+    /** Young Serif has one weight: never let the browser fake bold. */
+    h1Weight: 400,
+    headingWeight: 400,
+    displayTracking: "-0.01em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;

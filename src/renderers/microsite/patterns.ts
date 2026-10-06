@@ -20,6 +20,13 @@ const tiles = {
     size: "240px 140px",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="140" viewBox="0 0 240 140"><g fill="#000"><path d="M16 56 L36 30 L81 30 L65 56 Z"/><path d="M136 126 L156 100 L201 100 L185 126 Z"/></g><g stroke="#000" stroke-width="3.5" fill="none" stroke-linecap="square"><path d="M81 30 L100 55"/><path d="M201 100 L220 125"/></g></svg>`,
   },
+  /** Loose water lines, two staggered rows — for water and sanitary trades. */
+  wave: {
+    // One wave period is 80 px, so the 160 px tile repeats seamlessly; the
+    // second row runs half a period behind the first.
+    size: "160px 72px",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="72" viewBox="0 0 160 72"><g stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M0 18 Q20 8 40 18 T80 18 T120 18 T160 18"/><path d="M-40 54 Q-20 44 0 54 T40 54 T80 54 T120 54 T160 54 T200 54"/></g></svg>`,
+  },
 } as const;
 
 export type PatternName = keyof typeof tiles;

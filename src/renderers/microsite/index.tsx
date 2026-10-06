@@ -28,7 +28,10 @@ import { isIconName, type Kicker, Section, toLayout, toVariant } from "./ui";
 import "./theme.css";
 
 type MicrositeGlobal = {
-  slug: string;
+  /** The page's slug under the unified document schema. */
+  publishedAs?: string;
+  /** Pre-schema name of the slug, still read as a fallback. */
+  slug?: string;
   title: string;
   description?: string;
   /** Sharing card. `image` is a JPEG next to the page (`pnpm ms-image … --og`). */
@@ -102,7 +105,7 @@ export default function MicrositeRenderer(props: {
     logo: global?.brand?.logo,
     sub: global?.brand?.sub,
   };
-  const slug = global?.slug ?? "";
+  const slug = global?.publishedAs ?? global?.slug ?? "";
   const ogTitle = global?.og?.title ?? global?.title ?? brand.name;
   const ogDescription = global?.og?.description ?? global?.description;
   const code = props.accessCode;

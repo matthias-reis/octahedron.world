@@ -89,7 +89,7 @@ Each is documented (YAML shape) in a comment above its component.
 - **Section local scope:** `nav`, `variant`, `colors`, `kicker` (string, or
   `{ text, icon }` for a pill; `tone: copy` sets it in the text color instead
   of the button color), `pattern` (a subtle repeating motif behind the
-  section in its text color — `patterns.ts`, e.g. `roof`), `backdrop` (full-bleed background image, the
+  section in its text color — `patterns.ts`, e.g. `roof`, `wave`), `backdrop` (full-bleed background image, the
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
