@@ -47,6 +47,8 @@
 @import "@fontsource-variable/ibm-plex-sans";
 @import "@fontsource/anton/400.css";
 @import "@fontsource-variable/work-sans";
+@import "@fontsource/young-serif/400.css";
+@import "@fontsource-variable/onest";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
