@@ -1,44 +1,22 @@
 /**
- * Dry-run diff (default) or migration (--apply) for the PCSC vote formula.
+ * Dry-run diff (default) or migration (--apply) after a change to the PCSC
+ * vote formula (`voteWeight` / `p1toStarRating` in src/pcsc/model/track.ts).
  *
  *   bun scripts/pcsc-votes.ts            # report how stored votes would shift
  *   bun scripts/pcsc-votes.ts --apply    # write the new vote + appleRating
  *
- * Old: the formula as it ran — `^` was XOR, so every weight was 1 (a plain
- * mean), except a vote exactly 999 days older than the newest, which got 0.
- * New: `voteWeight` in src/pcsc/model/track.ts. Single-vote tracks never
- * change their vote. `appleRating` is recomputed for every track from the
- * current `p1toStarRating`. Reads every track (with votes) from Firestore;
- * writes only with --apply, and only `vote` and `appleRating` where they differ
- * from what is stored.
+ * "Before" is what Firestore stores today; "after" is the current formula.
+ * Single-vote tracks never change their vote. Reads every track (with votes);
+ * writes only with --apply, and only `vote` and `appleRating` where they differ.
  */
-import dayjs from "dayjs";
 import {
   p1toStarRating,
   type Track,
   TrackModel,
-  type Vote,
 } from "../src/pcsc/model/track";
 import { db } from "../src/pcsc/server/firebase";
 
 const apply = process.argv.includes("--apply");
-
-const legacyVote = (votes: Vote[]) => {
-  const latest = votes
-    .map((vote) => vote.date)
-    .sort()
-    .reverse()[0];
-  let sum = 0;
-  let weights = 0;
-  for (const vote of votes) {
-    const age = dayjs(latest).diff(vote.date, "day");
-    // reproduces the old bug: ^ is XOR, not a power
-    const weight = (1 / (1000 - age)) ^ (2 * 0.8 + 0.2);
-    sum += vote.rating * weight;
-    weights += weight;
-  }
-  return Math.round((sum * 10) / weights) / 10;
-};
 
 const band = (vote: number) =>
   vote >= 15 ? "15+" : vote >= 10 ? "10+" : "<10";
@@ -64,7 +42,7 @@ snapshot.forEach((doc) => {
     votes: model.votes.length,
     stored: data.vote,
     storedRating: data.appleRating ?? null,
-    before: legacyVote(model.votes),
+    before: data.vote,
     after: model.vote,
   });
 });
@@ -81,9 +59,6 @@ const bucket = (lo: number, hi: number) =>
 
 console.log(`tracks with votes   ${rows.length}`);
 console.log(`multi-vote tracks   ${multi.length}`);
-console.log(
-  `stored ≠ old formula ${rows.filter((r) => r.stored !== r.before).length}  (drift before any change)`,
-);
 console.log(
   `shift               ${shifted.length}  (up ${shifted.filter((r) => r.after > r.before).length}, down ${shifted.filter((r) => r.after < r.before).length})`,
 );
