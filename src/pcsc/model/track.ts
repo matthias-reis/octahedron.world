@@ -290,14 +290,19 @@ export class TrackModel {
   }
 }
 
+/** The least a vote ever counts, however old: every vote keeps a tenth. */
+export const MIN_VOTE_WEIGHT = 0.1;
+
 /**
  * How much a vote counts, by its age in days relative to the track's newest
- * vote: 1 for the newest, fading to ~0 at 1000 days (≈ 0.44 after a year,
- * 0.16 after two). Replaces `(1 / (1000 - age)) ^ 1.8`, where `^` was a
- * bitwise XOR and every weight came out as 1 — a plain mean.
+ * vote: 1 for the newest, fading towards MIN_VOTE_WEIGHT at 1000 days
+ * (≈ 0.50 after a year, 0.25 after two, 0.1 from ~2.7 years on). Old votes —
+ * many were migrated without dates and parked around 2015 — keep a say.
  */
 export const voteWeight = (ageInDays: number) =>
-  ((1000 - Math.min(Math.max(ageInDays, 0), 999)) / 1000) ** 1.8;
+  MIN_VOTE_WEIGHT +
+  (1 - MIN_VOTE_WEIGHT) *
+    ((1000 - Math.min(Math.max(ageInDays, 0), 999)) / 1000) ** 1.8;
 
 export const isPersistentId = (value: unknown): value is string =>
   typeof value === "string" && /^[0-9A-Fa-f]{16}$/.test(value);
