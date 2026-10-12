@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: HAST passes untyped props */
 
 import type { Component } from "solid-js";
-import { createUniqueId, For, Show } from "solid-js";
+import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
@@ -798,16 +798,83 @@ const Gallery: Component<CustomBlockProps> = (props) => {
  *     gallery:             # optional: the item's own photo mosaic below the text
  *       - { src: a.webp, alt: …, caption: … }
  * ```
- * Titles that open in place, one at a time: a native exclusive accordion
- * (`<details name>`), animated where the browser can (theme.css). Each item
- * is a whole chapter — text and its photos — so a service list needs no
- * sections of its own and no numbers. Works without JavaScript; the first
- * item starts open.
+ * Titles that open in place, one at a time. Without JavaScript it is a
+ * native exclusive accordion (`<details name>`); with it, the chapter
+ * grows and fades in (Web Animations API, height + opacity, honouring
+ * reduced motion) and the previously open one folds away. Each item is a
+ * whole chapter — text and its photos — so a service list needs no
+ * sections of its own and no numbers. The first item starts open.
  */
 const Reveal: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items).filter((item) => str(item.title));
   const group = createUniqueId();
+  let root!: HTMLDivElement;
+
+  const EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
+  const reduced = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const bodyOf = (d: HTMLDetailsElement) =>
+    d.querySelector<HTMLElement>(".ms-reveal-body");
+
+  const fold = (d: HTMLDetailsElement) => {
+    const body = bodyOf(d);
+    if (!body || reduced()) {
+      d.open = false;
+      return;
+    }
+    body.getAnimations().forEach((a) => a.cancel());
+    body.style.overflow = "hidden";
+    const a = body.animate(
+      [
+        { height: `${body.offsetHeight}px`, opacity: 1 },
+        { height: "0px", opacity: 0 },
+      ],
+      { duration: 320, easing: EASE, fill: "forwards" },
+    );
+    a.onfinish = () => {
+      d.open = false;
+      a.cancel();
+      body.style.overflow = "";
+    };
+  };
+
+  const unfold = (d: HTMLDetailsElement) => {
+    for (const other of root.querySelectorAll<HTMLDetailsElement>(
+      "details[open]",
+    ))
+      if (other !== d) fold(other);
+    d.open = true;
+    const body = bodyOf(d);
+    if (!body || reduced()) return;
+    body.getAnimations().forEach((a) => a.cancel());
+    body.style.overflow = "hidden";
+    const a = body.animate(
+      [
+        { height: "0px", opacity: 0, translate: "0 0.5rem" },
+        { height: `${body.offsetHeight}px`, opacity: 1, translate: "0 0" },
+      ],
+      { duration: 450, easing: EASE },
+    );
+    a.onfinish = () => {
+      body.style.overflow = "";
+    };
+  };
+
+  const toggle = (event: MouseEvent) => {
+    const d = (event.currentTarget as HTMLElement)
+      .parentElement as HTMLDetailsElement;
+    event.preventDefault();
+    if (d.open) fold(d);
+    else unfold(d);
+  };
+
+  // With JavaScript the script keeps the group exclusive (animated); the
+  // native `name` would snap the others shut before they can fold.
+  onMount(() => {
+    for (const d of root.querySelectorAll("details")) d.removeAttribute("name");
+  });
 
   const Photo: Component<{ file?: string; alt: string }> = (photo) => {
     const src = usePageAsset(() => photo.file);
@@ -833,7 +900,7 @@ const Reveal: Component<CustomBlockProps> = (props) => {
   };
 
   return (
-    <div class="ms-block ms-reveal mt-sxl border-t border-line">
+    <div ref={root} class="ms-block ms-reveal mt-sxl border-t border-line">
       <For each={items()}>
         {(item, index) => (
           <details
@@ -841,7 +908,10 @@ const Reveal: Component<CustomBlockProps> = (props) => {
             open={index() === 0}
             class="border-b border-line"
           >
-            <summary class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong transition-colors hover:text-button">
+            <summary
+              onClick={toggle}
+              class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong transition-colors hover:text-button"
+            >
               <Show when={icon(item.icon)}>
                 {(name) => (
                   <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
