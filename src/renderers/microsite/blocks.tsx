@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: HAST passes untyped props */
 
 import type { Component } from "solid-js";
-import { For, Show } from "solid-js";
+import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
@@ -81,7 +81,7 @@ const Cards: Component<CustomBlockProps> = (props) => {
                     <span
                       class={
                         tiles()
-                          ? "w-[3.25rem] h-[3.25rem] rounded-ms bg-tint text-link flex items-center justify-center"
+                          ? "w-[3.25rem] h-[3.25rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center"
                           : ""
                       }
                     >
@@ -184,7 +184,7 @@ const Features: Component<CustomBlockProps> = (props) => {
               <li class="inline-flex items-center gap-ssm rounded-full bg-card border border-line py-ssm pl-ssm pr-smd font-semibold text-copy-strong">
                 <Show when={item.icon}>
                   {(name) => (
-                    <span class="w-[2rem] h-[2rem] rounded-full bg-tint text-link flex items-center justify-center">
+                    <span class="w-[2rem] h-[2rem] rounded-full bg-icon-tile text-icon flex items-center justify-center">
                       <Icon name={name()} class="w-[1.05rem] h-[1.05rem]" />
                     </span>
                   )}
@@ -207,7 +207,7 @@ const Features: Component<CustomBlockProps> = (props) => {
               <Show when={item.icon}>
                 {(name) => (
                   <span
-                    class={`w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms flex items-center justify-center ${style() === "tiles" ? "bg-tint text-link" : "bg-card text-button"}`}
+                    class={`w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms flex items-center justify-center ${style() === "tiles" ? "bg-icon-tile text-icon" : "bg-icon-tile text-icon"}`}
                   >
                     <Icon name={name()} class="w-[1.25rem] h-[1.25rem]" />
                   </span>
@@ -262,7 +262,7 @@ const IndexList: Component<CustomBlockProps> = (props) => {
       <For each={items()}>
         {(item, index) => (
           <li
-            class={`grid gap-x-smd border-t border-line py-slg ${str(item.image) ? "grid-cols-[3.5rem_1fr] sm:grid-cols-[3.5rem_1fr_auto] md:grid-cols-[4.5rem_1fr_auto]" : "grid-cols-[3.5rem_1fr] md:grid-cols-[4.5rem_1fr]"}`}
+            class={`grid gap-x-smd border-t border-line py-slg ${str(item.image) ? "grid-cols-[minmax(3.5rem,auto)_1fr] sm:grid-cols-[minmax(3.5rem,auto)_1fr_auto] md:grid-cols-[minmax(4.5rem,auto)_1fr_auto]" : "grid-cols-[minmax(3.5rem,auto)_1fr] md:grid-cols-[minmax(4.5rem,auto)_1fr]"}`}
           >
             <Show
               when={icons() && icon(item.icon)}
@@ -278,7 +278,7 @@ const IndexList: Component<CustomBlockProps> = (props) => {
               {(name) => (
                 <span
                   aria-hidden="true"
-                  class="w-[3.5rem] h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] rounded-ms bg-tint text-button flex items-center justify-center"
+                  class="w-[3.5rem] h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center"
                 >
                   <Icon
                     name={name()}
@@ -528,7 +528,7 @@ const Contact: Component<CustomBlockProps> = (props) => {
   }> = (row) => {
     const body = (
       <>
-        <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-tint text-button flex items-center justify-center">
+        <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
           <Icon name={row.icon} class="w-[1.25rem] h-[1.25rem]" />
         </span>
         <span class="min-w-0">
@@ -716,20 +716,11 @@ const mosaicSlots = [
 ];
 const mosaicRest = "lg:col-span-4";
 
-/**
- * ```yaml gallery
- * items:
- *   - src: rohbau.webp       # pnpm ms-image … — the first tile is the big one
- *     alt: Beschreibung      # required
- *     caption: Wohnhaus, Friesoythe   # optional, set on the photo
- * ```
- * An asymmetric photo mosaic: the first image large, two beside it, any
- * further ones in thirds below. Three or six items fill it cleanly.
- */
-const Gallery: Component<CustomBlockProps> = (props) => {
-  const data = () => props.data as Data;
-  const items = () => list(data()?.items).filter((item) => str(item.src));
-
+/** The asymmetric photo mosaic shared by `gallery` and `reveal` items. */
+const Mosaic: Component<{
+  items: Record<string, unknown>[];
+  class?: string;
+}> = (props) => {
   const Tile: Component<{ item: Record<string, unknown>; index: number }> = (
     tile,
   ) => {
@@ -771,9 +762,195 @@ const Gallery: Component<CustomBlockProps> = (props) => {
   };
 
   return (
-    <div class="ms-block my-sxl grid grid-cols-2 lg:grid-cols-12 auto-rows-[9.5rem] sm:auto-rows-[13rem] lg:auto-rows-[15rem] gap-ssm md:gap-smd">
-      <For each={items()}>
+    <div
+      class={`grid grid-cols-2 lg:grid-cols-12 auto-rows-[9.5rem] sm:auto-rows-[13rem] lg:auto-rows-[15rem] gap-ssm md:gap-smd ${props.class ?? ""}`}
+    >
+      <For each={props.items.filter((item) => str(item.src))}>
         {(item, index) => <Tile item={item} index={index()} />}
+      </For>
+    </div>
+  );
+};
+
+/**
+ * ```yaml gallery
+ * items:
+ *   - src: rohbau.webp       # pnpm ms-image … — the first tile is the big one
+ *     alt: Beschreibung      # required
+ *     caption: Wohnhaus, Friesoythe   # optional, set on the photo
+ * ```
+ * An asymmetric photo mosaic: the first image large, two beside it, any
+ * further ones in thirds below. Three or six items fill it cleanly.
+ */
+const Gallery: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  return <Mosaic items={list(data()?.items)} class="ms-block my-sxl" />;
+};
+
+/**
+ * ```yaml reveal
+ * items:
+ *   - title: …
+ *     text: …              # a few sentences
+ *     icon: hammer         # optional
+ *     image: foto.webp     # optional single photo beside the text
+ *     alt: …               # required with image
+ *     gallery:             # optional: the item's own photo mosaic below the text
+ *       - { src: a.webp, alt: …, caption: … }
+ * ```
+ * Titles that open in place, one at a time. Without JavaScript it is a
+ * native exclusive accordion (`<details name>`); with it, the chapter
+ * grows and fades in (Web Animations API, height + opacity, honouring
+ * reduced motion) and the previously open one folds away. Each item is a
+ * whole chapter — text and its photos — so a service list needs no
+ * sections of its own and no numbers. The first item starts open.
+ */
+const Reveal: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items).filter((item) => str(item.title));
+  const group = createUniqueId();
+  let root!: HTMLDivElement;
+
+  const EASE = "cubic-bezier(0.4, 0, 0.2, 1)";
+  const reduced = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const bodyOf = (d: HTMLDetailsElement) =>
+    d.querySelector<HTMLElement>(".ms-reveal-body");
+
+  const fold = (d: HTMLDetailsElement) => {
+    const body = bodyOf(d);
+    if (!body || reduced()) {
+      d.open = false;
+      return;
+    }
+    body.getAnimations().forEach((a) => a.cancel());
+    body.style.overflow = "hidden";
+    const a = body.animate(
+      [
+        { height: `${body.offsetHeight}px`, opacity: 1 },
+        { height: "0px", opacity: 0 },
+      ],
+      { duration: 320, easing: EASE, fill: "forwards" },
+    );
+    a.onfinish = () => {
+      d.open = false;
+      a.cancel();
+      body.style.overflow = "";
+    };
+  };
+
+  const unfold = (d: HTMLDetailsElement) => {
+    for (const other of root.querySelectorAll<HTMLDetailsElement>(
+      "details[open]",
+    ))
+      if (other !== d) fold(other);
+    d.open = true;
+    const body = bodyOf(d);
+    if (!body || reduced()) return;
+    body.getAnimations().forEach((a) => a.cancel());
+    body.style.overflow = "hidden";
+    const a = body.animate(
+      [
+        { height: "0px", opacity: 0, translate: "0 0.5rem" },
+        { height: `${body.offsetHeight}px`, opacity: 1, translate: "0 0" },
+      ],
+      { duration: 450, easing: EASE },
+    );
+    a.onfinish = () => {
+      body.style.overflow = "";
+    };
+  };
+
+  const toggle = (event: MouseEvent) => {
+    const d = (event.currentTarget as HTMLElement)
+      .parentElement as HTMLDetailsElement;
+    event.preventDefault();
+    if (d.open) fold(d);
+    else unfold(d);
+  };
+
+  // With JavaScript the script keeps the group exclusive (animated); the
+  // native `name` would snap the others shut before they can fold.
+  onMount(() => {
+    for (const d of root.querySelectorAll("details")) d.removeAttribute("name");
+  });
+
+  const Photo: Component<{ file?: string; alt: string }> = (photo) => {
+    const src = usePageAsset(() => photo.file);
+    const small = usePageAsset(() => {
+      const f = photo.file;
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <Show when={src()}>
+        {(url) => (
+          <img
+            src={url()}
+            srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+            sizes="(min-width: 1024px) 24rem, 100vw"
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
+          />
+        )}
+      </Show>
+    );
+  };
+
+  return (
+    <div ref={root} class="ms-block ms-reveal mt-sxl border-t border-line">
+      <For each={items()}>
+        {(item, index) => (
+          <details
+            name={group}
+            open={index() === 0}
+            class="border-b border-line"
+          >
+            <summary
+              onClick={toggle}
+              class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong transition-colors hover:text-button"
+            >
+              <Show when={icon(item.icon)}>
+                {(name) => (
+                  <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
+                    <Icon name={name()} class="w-[1.4rem] h-[1.4rem]" />
+                  </span>
+                )}
+              </Show>
+              <h3 class="flex-1 font-ms-display text-2xl md:text-3xl leading-tight">
+                {str(item.title)}
+              </h3>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                class="ms-reveal-mark w-[1.6rem] h-[1.6rem] shrink-0 text-button transition-transform duration-300"
+              >
+                <path d="M5 12h14M12 5v14" />
+              </svg>
+            </summary>
+            <div
+              class={`ms-reveal-body pb-slg md:pb-sxl ${icon(item.icon) ? "md:pl-[3.5rem]" : ""}`}
+            >
+              <div
+                class={`grid gap-slg ${str(item.image) ? "lg:grid-cols-[minmax(0,1fr)_24rem]" : ""}`}
+              >
+                <p class="max-w-prose leading-relaxed text-copy">
+                  {str(item.text)}
+                </p>
+                <Photo file={str(item.image)} alt={str(item.alt) ?? ""} />
+              </div>
+              <Show when={list(item.gallery).length > 0}>
+                <Mosaic items={list(item.gallery)} class="mt-slg" />
+              </Show>
+            </div>
+          </details>
+        )}
       </For>
     </div>
   );
@@ -819,6 +996,7 @@ export const micrositeComponents: ComponentMap = {
   rating: Rating,
   callout: Callout,
   index: IndexList,
+  reveal: Reveal,
   stats: Stats,
   video: Video,
   palette: Palette,

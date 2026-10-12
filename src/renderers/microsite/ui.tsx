@@ -251,6 +251,8 @@ export const Section: ParentComponent<{
   backdrop?: JSX.Element;
   /** `.ms-<group>-<palette>` classes for a section-level override. */
   colors?: string[];
+  /** `ms-depth-<n>`: an inverted section one or two steps above d3. */
+  depth?: string;
   /** `cover`: copy sits on the backdrop photo itself, no panel. */
   backdropStyle?: "panel" | "cover";
   /** Where the copy sits on the backdrop (see `BackdropData`). */
@@ -284,6 +286,7 @@ export const Section: ParentComponent<{
           "relative lg:min-h-[min(88vh,50rem)] lg:flex lg:items-center pb-0 lg:pb-s3xl",
         props.variant !== "plain" && `ms-${props.variant}`,
         props.colors,
+        props.depth,
         props.layout === "hero"
           ? "py-s2xl md:py-s3xl"
           : props.layout === "band"

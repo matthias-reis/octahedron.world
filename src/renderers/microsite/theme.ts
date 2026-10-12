@@ -96,6 +96,17 @@ export const fontPairings = {
     displayTracking: "0.01em",
     displayWordSpacing: "0.04em",
   },
+  /** Black geometric: one rounded-geometric family, black (900) and in capitals on top. */
+  monolith: {
+    display: '"Outfit Variable", system-ui, sans-serif',
+    body: '"Outfit Variable", system-ui, sans-serif',
+    h1Weight: 900,
+    headingWeight: 900,
+    /** Capitals need air: open tracking instead of the tight default. */
+    displayTracking: "0.01em",
+    /** h1 and h2 run in capitals; h3 and body keep their case. */
+    displayTransform: "uppercase",
+  },
   /** Rooted and clear: a warm mid-century serif over a plain modern sans. */
   quelle: {
     display: '"Young Serif", Georgia, serif',
@@ -151,7 +162,14 @@ export type MicrositeTheme = {
   colors?: ColorAssignment;
   /** Brand color for the `signal` palette, as hex (`#efb814`). */
   signal?: string;
+  /** Inverted sections on d1 (1, near black) or d2 (2) instead of d3. */
+  depth?: number;
 };
+
+/** `ms-depth-<n>` for a valid depth, else nothing. */
+export function depthClass(depth: unknown): string | undefined {
+  return depth === 1 || depth === 2 ? `ms-depth-${depth}` : undefined;
+}
 
 function num(value: unknown): number | undefined {
   return typeof value === "number" && Number.isFinite(value)
@@ -190,6 +208,8 @@ export function themeStyle(
       style["--ms-display-tracking"] = fonts.displayTracking;
     if ("displayWordSpacing" in fonts)
       style["--ms-display-word-spacing"] = fonts.displayWordSpacing;
+    if ("displayTransform" in fonts)
+      style["--ms-display-transform"] = fonts.displayTransform;
   }
 
   return style;

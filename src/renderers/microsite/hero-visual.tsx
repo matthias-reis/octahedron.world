@@ -62,7 +62,7 @@ export const HeroVisual: Component<{ visual: HeroVisualData }> = (props) => {
             <div class="absolute left-smd bottom-smd lg:left-slg lg:bottom-slg flex items-center gap-ssm rounded-ms bg-page py-ssm pl-ssm pr-smd shadow-xl">
               <Show when={iconOf(badge().icon)}>
                 {(name) => (
-                  <span class="w-[2.5rem] h-[2.5rem] rounded-ms bg-tint text-button flex items-center justify-center">
+                  <span class="w-[2.5rem] h-[2.5rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center">
                     <Icon name={name()} class="w-[1.25rem] h-[1.25rem]" />
                   </span>
                 )}
@@ -104,7 +104,7 @@ export const HeroVisual: Component<{ visual: HeroVisualData }> = (props) => {
           <div class="absolute top-smd right-smd md:top-slg md:right-slg flex items-center gap-ssm rounded-ms bg-page py-ssm pl-ssm pr-smd shadow-xl">
             <Show when={iconOf(badge().icon)}>
               {(name) => (
-                <span class="w-[2.5rem] h-[2.5rem] rounded-ms bg-tint text-button flex items-center justify-center">
+                <span class="w-[2.5rem] h-[2.5rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center">
                   <Icon name={name()} class="w-[1.25rem] h-[1.25rem]" />
                 </span>
               )}

@@ -14,6 +14,8 @@ export type Brand = {
   sub?: string;
   /** Logo file next to the page (`pnpm ms-image … --logo`); replaces the mark. */
   logo?: string;
+  /** Max height of the logo in rem (default 2.4, 2.9 from md) — for a tall mark. */
+  logoHeight?: number;
 };
 
 export type NavItem = { id: string; label: string };
@@ -42,7 +44,9 @@ const Logo: Component<{ brand: Brand }> = (props) => {
     <a
       href="/"
       title="Alle Seiten"
-      class={`flex flex-col min-w-0 font-ms-display text-copy-strong ${logo() ? "shrink" : "shrink-0"}`}
+      // Never the item that gives way: a header that overflows (too many nav
+      // labels) must not collapse the logo to nothing.
+      class="flex flex-col shrink-0 font-ms-display text-copy-strong"
     >
       <Show
         when={logo()}
@@ -64,6 +68,11 @@ const Logo: Component<{ brand: Brand }> = (props) => {
             src={url()}
             alt={props.brand.name}
             class="h-auto max-h-[2.4rem] md:max-h-[2.9rem] w-auto max-w-full object-contain object-left"
+            style={
+              props.brand.logoHeight
+                ? { "max-height": `${props.brand.logoHeight}rem` }
+                : undefined
+            }
             decoding="async"
           />
         )}
@@ -239,9 +248,7 @@ export const SiteFooter: Component<{
             </li>
           )}
         </Show>
-        <li>
-          © Webdesign und Layout: Hein Altenbroxter & Matthias Reis
-        </li>
+        <li>© Webdesign und Layout: Hein Altenbroxter & Matthias Reis</li>
       </ul>
     </Container>
   </footer>

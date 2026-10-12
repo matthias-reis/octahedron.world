@@ -212,6 +212,8 @@
   --color-page: var(--ms-page);
   --color-card: var(--ms-card);
   --color-tint: var(--ms-tint);
+  --color-icon-tile: var(--ms-icon-tile);
+  --color-icon: var(--ms-icon);
   --color-line: var(--ms-line);
   --color-copy-strong: var(--ms-copy-strong);
   --color-copy: var(--ms-copy);

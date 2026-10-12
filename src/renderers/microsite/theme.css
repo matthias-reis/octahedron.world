@@ -49,6 +49,7 @@
 @import "@fontsource-variable/work-sans";
 @import "@fontsource/young-serif/400.css";
 @import "@fontsource-variable/onest";
+@import "@fontsource-variable/outfit";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -527,6 +528,9 @@
   --ms-button: var(--ms-button-m2);
   --ms-button-hover: var(--ms-button-d3);
   --ms-button-copy: var(--ms-button-b1);
+  /* Icon tiles keep their own contrast pair in every variant. */
+  --ms-icon-tile: var(--ms-background-b3);
+  --ms-icon: var(--ms-button-m2);
 
   background-color: var(--ms-page);
   color: var(--ms-copy);
@@ -558,6 +562,37 @@
   --ms-button: var(--ms-button-m1);
   --ms-button-hover: var(--ms-button-b3);
   --ms-button-copy: var(--ms-button-d1);
+  --ms-icon-tile: var(--ms-background-b1);
+  --ms-icon: var(--ms-button-m2);
+}
+
+/* A mostly dark page reads better one step above the deepest shade:
+   `depth: 1` sets inverted sections on d1 (near black), `depth: 2` on d2
+   (desaturated dark). Page-wide via `theme.depth`, per section via `depth`. */
+.ms-root.ms-depth-1 .ms-section.ms-inverted,
+.ms-section.ms-inverted.ms-depth-1 {
+  --ms-page: var(--ms-background-d1);
+  --ms-card: var(--ms-background-d2);
+  --ms-tint: var(--ms-background-d2);
+  --ms-line: var(--ms-background-d2);
+}
+
+.ms-root.ms-depth-2 .ms-section.ms-inverted,
+.ms-section.ms-inverted.ms-depth-2 {
+  --ms-page: var(--ms-background-d2);
+  --ms-card: var(--ms-background-d1);
+  --ms-tint: var(--ms-background-d3);
+  --ms-line: var(--ms-background-d3);
+}
+
+/* --- reveal block: the open/close motion is scripted (blocks.tsx, Web
+   Animations API); CSS only hides the marker and turns the plus. --- */
+.ms-reveal summary::-webkit-details-marker {
+  display: none;
+}
+
+.ms-reveal details[open] .ms-reveal-mark {
+  transform: rotate(45deg);
 }
 
 /* Section anchors land below the sticky header. */
@@ -590,9 +625,11 @@
   word-spacing: var(--ms-display-word-spacing, normal);
 }
 
-/* Headlines default to tight tracking (Tailwind's `tracking-tight`). */
+/* Headlines default to tight tracking (Tailwind's `tracking-tight`). A
+   pairing may also set them in capitals (`displayTransform`). */
 .ms-root :is(h1, h2) {
   letter-spacing: var(--ms-display-tracking, -0.025em);
+  text-transform: var(--ms-display-transform, none);
 }
 
 .ms-root :is(h2, h3) {

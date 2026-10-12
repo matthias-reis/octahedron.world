@@ -21,6 +21,7 @@ import { patternMask } from "./patterns";
 import {
   type ColorAssignment,
   colorClasses,
+  depthClass,
   type MicrositeTheme,
   themeStyle,
 } from "./theme";
@@ -68,6 +69,8 @@ type MicrositeLocal = {
   backdrop?: BackdropData;
   /** `center` puts the section's content on the vertical axis. */
   align?: string;
+  /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
+  depth?: number;
 };
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
@@ -103,6 +106,7 @@ export default function MicrositeRenderer(props: {
     mark: global?.brand?.mark,
     tagline: global?.brand?.tagline,
     logo: global?.brand?.logo,
+    logoHeight: global?.brand?.logoHeight,
     sub: global?.brand?.sub,
   };
   const slug = global?.publishedAs ?? global?.slug ?? "";
@@ -122,8 +126,11 @@ export default function MicrositeRenderer(props: {
       lang={global?.language ?? "de"}
       class={[
         "ms-root min-h-screen",
+        depthClass(global?.theme?.depth),
         ...colorClasses(global?.theme?.colors),
-      ].join(" ")}
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={themeStyle(global?.theme)}
     >
       <Title>{global?.title ?? brand.name}</Title>
@@ -192,6 +199,7 @@ export default function MicrositeRenderer(props: {
                   ) : undefined
                 }
                 colors={colorClasses(section.local.colors)}
+                depth={depthClass(section.local.depth)}
                 pattern={patternMask(section.local.pattern)}
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"

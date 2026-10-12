@@ -103,7 +103,11 @@ Each is documented (YAML shape) in a comment above its component.
   - `band` — compact strip without a headline (trust bar)
 - **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`),
   `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
-  with real text — for a long service list), `stats` (two or three big real
+  with real text — only for things that have an order; `style: icons` for
+  the rest), `reveal` (titles that open in place one at a time — the native
+  `<details name>` accordion, animated; each item is a whole chapter with
+  text, icon, a photo or its own `gallery` mosaic, so a service list needs
+  no sections of its own and no numbers), `stats` (two or three big real
   figures), `video` (YouTube, two-click: nothing loads from YouTube before
   the click; the poster is a local file), `cta` (buttons with icons),
   `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
@@ -112,7 +116,8 @@ Each is documented (YAML shape) in a comment above its component.
   the photos — 3 or 6 items), `emblem` (a logo or seal shown big and
   uncropped, `size` in rem), `palette`.
 - **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
-  next to it (it becomes the `alt`). An existing logo on white gets its
+  next to it (it becomes the `alt`). `brand.logoHeight` (rem) lets a tall
+  mark, like a logo on a shape, run higher than the default 2.4/2.9 rem. An existing logo on white gets its
   background turned into alpha before `pnpm ms-image … --logo`.
 - **Concept previews of real businesses** (like `001-juergens`,
   `002-elektro-schuster`) always get
@@ -197,6 +202,7 @@ Defined in `theme.css`, exposed to Tailwind in `app.css`. Four layers:
    | `bg-button` | button m2 | button m1 |
    | `bg-button-hover` | button d3 | button b3 |
    | `text-button-copy` | button b1 | button d1 |
+  | `bg-icon-tile` / `text-icon` | background b3 / button m2 | background b1 / button m2 |
 
 **Approved combinations** (buttons always in the page's button group,
 default `main`):
@@ -242,6 +248,9 @@ The `palette` block previews all of them live.
   Both become `.ms-<group>-<palette>` classes that re-point the group.
 - Section `variant`s: `plain` (page b1), `surface` (b2), `tint` (b3),
   `inverted` (the highlighted section: d3 background, bright copy).
+  `depth: 1 | 2` (section, or page-wide as `theme.depth`) sets inverted
+  sections on d1 (near black) or d2 (desaturated dark) instead of d3 — for a
+  page that is mostly dark; alternate 1 and 2 so neighbours differ.
 - The semantic layer is re-declared on every `.ms-section`. Anything that
   should respond to a group class or `ms-inverted` must be (inside) an
   element with `ms-section`.
@@ -259,7 +268,8 @@ The `palette` block previews all of them live.
   pairing per briefing, and don't default to the example page's pairing.
 - A pairing can shape its display face: `h1Weight`, `headingWeight`,
   `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
-  `displayWordSpacing` — see `industrial` for a condensed, heavy setup.
+  `displayWordSpacing`, `displayTransform` (`uppercase` sets h1 and h2 in
+  capitals, see `monolith`) — see `industrial` for a condensed, heavy setup.
 - Fonts come only from `fontPairings` in `theme.ts`. A new pairing needs a
   Fontsource package, an `@import` in `theme.css` and a registry entry. No
   Google Fonts, no CDN (GDPR).

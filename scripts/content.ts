@@ -109,6 +109,7 @@ async function readDocuments(): Promise<Document[]> {
         "image",
         "index",
         "rating",
+        "reveal",
         "stats",
         "video",
         "palette",
