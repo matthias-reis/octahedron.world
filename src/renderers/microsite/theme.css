@@ -49,6 +49,7 @@
 @import "@fontsource-variable/work-sans";
 @import "@fontsource/young-serif/400.css";
 @import "@fontsource-variable/onest";
+@import "@fontsource-variable/syne";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -590,9 +591,11 @@
   word-spacing: var(--ms-display-word-spacing, normal);
 }
 
-/* Headlines default to tight tracking (Tailwind's `tracking-tight`). */
+/* Headlines default to tight tracking (Tailwind's `tracking-tight`). A
+   pairing may also set them in capitals (`displayTransform`). */
 .ms-root :is(h1, h2) {
   letter-spacing: var(--ms-display-tracking, -0.025em);
+  text-transform: var(--ms-display-transform, none);
 }
 
 .ms-root :is(h2, h3) {

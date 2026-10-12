@@ -262,7 +262,7 @@ const IndexList: Component<CustomBlockProps> = (props) => {
       <For each={items()}>
         {(item, index) => (
           <li
-            class={`grid gap-x-smd border-t border-line py-slg ${str(item.image) ? "grid-cols-[3.5rem_1fr] sm:grid-cols-[3.5rem_1fr_auto] md:grid-cols-[4.5rem_1fr_auto]" : "grid-cols-[3.5rem_1fr] md:grid-cols-[4.5rem_1fr]"}`}
+            class={`grid gap-x-smd border-t border-line py-slg ${str(item.image) ? "grid-cols-[minmax(3.5rem,auto)_1fr] sm:grid-cols-[minmax(3.5rem,auto)_1fr_auto] md:grid-cols-[minmax(4.5rem,auto)_1fr_auto]" : "grid-cols-[minmax(3.5rem,auto)_1fr] md:grid-cols-[minmax(4.5rem,auto)_1fr]"}`}
           >
             <Show
               when={icons() && icon(item.icon)}

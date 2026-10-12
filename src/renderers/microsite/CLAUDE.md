@@ -259,7 +259,8 @@ The `palette` block previews all of them live.
   pairing per briefing, and don't default to the example page's pairing.
 - A pairing can shape its display face: `h1Weight`, `headingWeight`,
   `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
-  `displayWordSpacing` — see `industrial` for a condensed, heavy setup.
+  `displayWordSpacing`, `displayTransform` (`uppercase` sets h1 and h2 in
+  capitals, see `arthaus`) — see `industrial` for a condensed, heavy setup.
 - Fonts come only from `fontPairings` in `theme.ts`. A new pairing needs a
   Fontsource package, an `@import` in `theme.css` and a registry entry. No
   Google Fonts, no CDN (GDPR).

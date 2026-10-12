@@ -96,6 +96,17 @@ export const fontPairings = {
     displayTracking: "0.01em",
     displayWordSpacing: "0.04em",
   },
+  /** Arthaus poster: a quirky extended grotesk in capitals over a serious plain sans. */
+  arthaus: {
+    display: '"Syne Variable", system-ui, sans-serif',
+    body: '"IBM Plex Sans Variable", system-ui, sans-serif',
+    h1Weight: 800,
+    headingWeight: 700,
+    /** Capitals need air: open tracking instead of the tight default. */
+    displayTracking: "0.02em",
+    /** h1 and h2 run in capitals; h3 and body keep their case. */
+    displayTransform: "uppercase",
+  },
   /** Rooted and clear: a warm mid-century serif over a plain modern sans. */
   quelle: {
     display: '"Young Serif", Georgia, serif',
@@ -190,6 +201,8 @@ export function themeStyle(
       style["--ms-display-tracking"] = fonts.displayTracking;
     if ("displayWordSpacing" in fonts)
       style["--ms-display-word-spacing"] = fonts.displayWordSpacing;
+    if ("displayTransform" in fonts)
+      style["--ms-display-transform"] = fonts.displayTransform;
   }
 
   return style;
