@@ -113,14 +113,19 @@ export function validateMicrosite(
         previous = n;
       }
 
-      if (["image", "gallery", "emblem"].includes(node.tagName)) {
+      if (["image", "gallery", "emblem", "reveal"].includes(node.tagName)) {
         const data = blockData(node);
+        const items = Array.isArray(data.items)
+          ? (data.items as Record<string, unknown>[])
+          : [];
         const images =
           node.tagName === "gallery"
-            ? Array.isArray(data.items)
-              ? (data.items as Record<string, unknown>[])
-              : []
-            : [data];
+            ? items
+            : node.tagName === "reveal"
+              ? items
+                  .filter((item) => item.image)
+                  .map((item) => ({ src: item.image, alt: item.alt }))
+              : [data];
         for (const image of images) {
           if (!exists(image?.src)) {
             problems.push(
