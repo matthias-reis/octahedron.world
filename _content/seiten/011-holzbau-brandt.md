@@ -14,13 +14,14 @@ notice:
   short: Konzeptvorschau · keine offizielle Website
 brand:
   name: dach+holzbau brandt
-  mark: b
-  sub: Zimmerei · Holzbau · Blomberg
+  logo: logo.webp
+  logoHeight: 3.6
 theme:
   hue: 15
-  radius: 0
-  fonts: arthaus
-  colors: { copy: main, background: main }
+  radius: 0.25
+  fonts: monolith
+  colors: { copy: adjacent-right, background: adjacent-right }
+  depth: 1
 header:
   phone: 0151 44818935
   cta: { text: Projekt anfragen, url: "#kontakt" }
@@ -40,12 +41,13 @@ quickbar:
 
 ```yaml @
 layout: hero
-variant: inverted
 kicker: { icon: map-pin, text: ZIMMEREI · MEISTERBETRIEB · BLOMBERG }
-backdrop:
+visual:
   src: kran.webp
+  alt: Schwarz-weiß-Aufnahme eines Baukrans, der ein Holzrahmenbau-Wandelement vor bewölktem Himmel hebt
   position: 62% 50%
-  style: cover
+  style: bleed
+  badge: { icon: badge-check, title: Zimmerermeister, text: Handwerkskammer Ostwestfalen-Lippe }
 ```
 
 # Aus Liebe zum Holz
@@ -63,8 +65,7 @@ secondary: { text: Leistungen ansehen, url: "#leistungen", icon: arrow-down-righ
 
 ```yaml @
 layout: band
-variant: surface
-colors: { copy: complementary }
+variant: inverted
 ```
 
 ```yaml features
@@ -82,7 +83,6 @@ items:
 ```yaml @
 nav: Leistungen
 variant: inverted
-colors: { copy: adjacent-right, background: adjacent-right }
 kicker: { text: LEISTUNGEN, tone: copy }
 ```
 
@@ -92,44 +92,52 @@ Wir planen Ihr Projekt gemeinsam mit Ihnen und setzen es mit eigenem Team um –
 vom Carport über Anbau und Aufstockung bis zum kompletten Holzhaus oder zur
 Fachwerksanierung.
 
-```yaml index
+```yaml reveal
 items:
-  - title: Ökologischer Holzrahmenbau und Holzhausbau
+  - icon: house
+    title: Ökologischer Holzrahmenbau und Holzhausbau
     text: Der Holzrahmenbau kommt mit dem geringsten Holzverbrauch aller Holzbauweisen aus. In Verbindung mit Zellulose-Einblasdämmung entsteht eine ökologische Bauweise – ein behagliches Raumklima ist nur einer ihrer Vorteile.
-    image: fassade-klein.webp
-    alt: Wohnhaus mit Holzgiebel
-  - title: Dachstühle und Dacheindeckungen
+    image: holzgiebel.webp
+    alt: Klinkerhaus mit holzverkleidetem Giebel und Wintergarten
+  - icon: hammer
+    title: Dachstühle und Dacheindeckungen
     text: Der Dachstuhl ist eines der wichtigsten Elemente eines Gebäudes, statisch wie optisch. Wir planen, errichten und sanieren Dachstühle vom Neubau bis zur Instandsetzung – und decken Ihr Dach sauber und präzise ein.
-    image: dachstuhl-klein.webp
-    alt: Sternförmiger Dachstuhl von innen
-  - title: Fachwerk und Altbausanierung
+    image: dachstuhl.webp
+    alt: Sternförmiger Dachstuhl eines Pavillons von innen
+  - icon: landmark
+    title: Fachwerk und Altbausanierung
     text: Historische Gebäude verdienen besondere Sorgfalt. Wir restaurieren Fachwerkhäuser und sanieren Altbauten mit hochwertigen Materialien und Blick fürs Detail – die ursprüngliche Substanz bleibt erhalten.
-    image: fachwerk-innen-klein.webp
-    alt: Saniertes Fachwerk innen
-  - title: Anbauten und Aufstockungen
+    image: fachwerk-innen.webp
+    alt: Sanierter Fachwerkraum mit freigelegten Balken und neuem Boden
+  - icon: building
+    title: Anbauten und Aufstockungen
     text: Individuell an den Bestand angepasste Erweiterungen und Umbauten lassen Gebäude neu erstrahlen. Anbauten und Aufstockungen schaffen Wohnraum – und damit mehr Lebensqualität.
-    image: anbau-klein.webp
-    alt: Anbau mit Holzfassade
-  - title: Carports, Brücken, Balkone und Terrassen
+    image: anbau.webp
+    alt: Anbau mit Holzfassade und großen Fenstern an einem Klinkerhaus
+  - icon: route
+    title: Carports, Brücken, Balkone und Terrassen
     text: Ob Carport, Holzbrücke, Balkon oder Terrasse – wir planen und fertigen individuelle Holzkonstruktionen nach Ihren Wünschen und vereinen Ästhetik mit konstruktivem Holzschutz.
-    image: bruecke-klein.webp
-    alt: Holzbrücke
-  - title: Fassaden und Außenhülle
+    image: bruecke.webp
+    alt: Neue Holzbrücke mit Geländer durch den Wald, in der Mitte sitzt ein Hund
+  - icon: sun
+    title: Fassaden und Außenhülle
     text: Die Fassade liefert den ersten Eindruck eines Gebäudes und schützt vor Wärme, Kälte und Wind. Neben Bauphysik und Konstruktion ist ihre Gestaltung entscheidend für die Wirkung nach außen.
-    image: gaube-klein.webp
-    alt: Gaube mit Holzverkleidung
-  - title: Fußböden und Innenausbau
+    image: gaube.webp
+    alt: Dachgaube mit senkrechter Holzverschalung und drei Fenstern in einem Ziegeldach
+  - icon: paint-roller
+    title: Fußböden und Innenausbau
     text: Wir gestalten und verlegen hochwertige Holzböden und realisieren individuellen Innenausbau aus Holz – im Neubau, bei der Renovierung oder als maßgefertigte Einbauten.
-    image: boden-klein.webp
-    alt: Dielenboden
+    image: boden.webp
+    alt: Heller Dielenboden in einem Raum unter dem Dach mit Fenster und Treppengeländer
 ```
 
 +++holzrahmenbau
 
 ```yaml @
 nav: Holzrahmenbau
+variant: inverted
 layout: split
-kicker: HOLZRAHMENBAU
+kicker: { text: HOLZRAHMENBAU, tone: copy }
 ```
 
 ## Vorgefertigt in der Werkstatt, montiert in Tagen
@@ -173,10 +181,8 @@ items:
 +++dach
 
 ```yaml @
-nav: Dach
 variant: inverted
 layout: split
-pattern: roof
 kicker: { text: DACHSTÜHLE UND DÄCHER, tone: copy }
 ```
 
@@ -213,7 +219,6 @@ items:
 +++fachwerk
 
 ```yaml @
-nav: Fachwerk
 variant: surface
 layout: split
 kicker: FACHWERK UND ALTBAU
@@ -243,9 +248,7 @@ items:
 +++aussen
 
 ```yaml @
-nav: Anbau & Außen
 variant: inverted
-colors: { copy: adjacent-right, background: adjacent-right }
 layout: split
 kicker: { text: ANBAU · TERRASSE · BRÜCKE, tone: copy }
 ```
@@ -282,7 +285,8 @@ items:
 
 ```yaml @
 nav: Projekte
-kicker: PROJEKTE
+variant: inverted
+kicker: { text: PROJEKTE, tone: copy }
 ```
 
 ## Gebaut aus Holz
@@ -316,9 +320,9 @@ items:
 
 ```yaml @
 nav: Team
-variant: inverted
+variant: surface
 layout: split
-kicker: { text: ÜBER UNS, tone: copy }
+kicker: ÜBER UNS
 ```
 
 ## Vier Menschen, ein Betrieb
@@ -352,19 +356,13 @@ items:
     alt: Platzhalter für das Foto von Kirill Enns
 ```
 
-```yaml emblem
-src: logo.webp
-alt: Logo von dach+holzbau brandt – weiße Schrift auf einer schwarzen Hausform mit Dachschräge
-size: 14
-```
-
 +++karriere
 
 ```yaml @
 nav: Karriere
-variant: surface
+variant: inverted
 layout: split
-kicker: KARRIERE
+kicker: { text: KARRIERE, tone: copy }
 ```
 
 ## Wir suchen dich
@@ -408,7 +406,7 @@ erste Einschätzung reicht oft schon ein Foto.
 
 ```yaml callout
 label: Direkt erreichen
-text: 0151 448 18 935
+text: 0151 44818935
 url: "tel:+4915144818935"
 icon: phone
 ```
