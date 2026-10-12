@@ -122,9 +122,12 @@ export function validateMicrosite(
           node.tagName === "gallery"
             ? items
             : node.tagName === "reveal"
-              ? items
-                  .filter((item) => item.image)
-                  .map((item) => ({ src: item.image, alt: item.alt }))
+              ? items.flatMap((item) => [
+                  ...(item.image ? [{ src: item.image, alt: item.alt }] : []),
+                  ...(Array.isArray(item.gallery)
+                    ? (item.gallery as Record<string, unknown>[])
+                    : []),
+                ])
               : [data];
         for (const image of images) {
           if (!exists(image?.src)) {

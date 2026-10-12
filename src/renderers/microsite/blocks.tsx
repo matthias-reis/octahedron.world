@@ -708,95 +708,6 @@ const Emblem: Component<CustomBlockProps> = (props) => {
   );
 };
 
-/**
- * ```yaml reveal
- * items:
- *   - title: …
- *     text: …              # a few sentences
- *     icon: hammer         # optional
- *     image: foto.webp     # optional, shown inside the open item
- *     alt: …               # required with image
- * ```
- * Titles that open in place, one at a time: a native exclusive accordion
- * (`<details name>`), animated where the browser can (theme.css). For a
- * service list without an order — no numbers, no card grid. Works without
- * JavaScript; the first item starts open.
- */
-const Reveal: Component<CustomBlockProps> = (props) => {
-  const data = () => props.data as Data;
-  const items = () => list(data()?.items).filter((item) => str(item.title));
-  const group = createUniqueId();
-
-  const Photo: Component<{ file?: string; alt: string }> = (photo) => {
-    const src = usePageAsset(() => photo.file);
-    const small = usePageAsset(() => {
-      const f = photo.file;
-      return f ? smallVariant(f) : undefined;
-    });
-    return (
-      <Show when={src()}>
-        {(url) => (
-          <img
-            src={url()}
-            srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
-            sizes="(min-width: 1024px) 24rem, 100vw"
-            alt={photo.alt}
-            loading="lazy"
-            decoding="async"
-            class="w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
-          />
-        )}
-      </Show>
-    );
-  };
-
-  return (
-    <div class="ms-block ms-reveal mt-sxl border-t border-line">
-      <For each={items()}>
-        {(item, index) => (
-          <details
-            name={group}
-            open={index() === 0}
-            class="border-b border-line"
-          >
-            <summary class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong hover:text-link">
-              <Show when={icon(item.icon)}>
-                {(name) => (
-                  <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
-                    <Icon name={name()} class="w-[1.4rem] h-[1.4rem]" />
-                  </span>
-                )}
-              </Show>
-              <h3 class="flex-1 font-ms-display text-2xl md:text-3xl leading-tight">
-                {str(item.title)}
-              </h3>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                class="ms-reveal-mark w-[1.6rem] h-[1.6rem] shrink-0 text-button transition-transform duration-300"
-              >
-                <path d="M5 12h14M12 5v14" />
-              </svg>
-            </summary>
-            <div
-              class={`ms-reveal-body grid gap-slg pb-slg md:pb-sxl ${str(item.image) ? "lg:grid-cols-[minmax(0,1fr)_24rem]" : ""} ${icon(item.icon) ? "md:pl-[3.5rem]" : ""}`}
-            >
-              <p class="max-w-prose leading-relaxed text-copy">
-                {str(item.text)}
-              </p>
-              <Photo file={str(item.image)} alt={str(item.alt) ?? ""} />
-            </div>
-          </details>
-        )}
-      </For>
-    </div>
-  );
-};
-
 /** Grid placement per mosaic slot: one large tile, two beside it, then thirds. */
 const mosaicSlots = [
   "col-span-2 row-span-2 lg:col-span-7",
@@ -805,20 +716,11 @@ const mosaicSlots = [
 ];
 const mosaicRest = "lg:col-span-4";
 
-/**
- * ```yaml gallery
- * items:
- *   - src: rohbau.webp       # pnpm ms-image … — the first tile is the big one
- *     alt: Beschreibung      # required
- *     caption: Wohnhaus, Friesoythe   # optional, set on the photo
- * ```
- * An asymmetric photo mosaic: the first image large, two beside it, any
- * further ones in thirds below. Three or six items fill it cleanly.
- */
-const Gallery: Component<CustomBlockProps> = (props) => {
-  const data = () => props.data as Data;
-  const items = () => list(data()?.items).filter((item) => str(item.src));
-
+/** The asymmetric photo mosaic shared by `gallery` and `reveal` items. */
+const Mosaic: Component<{
+  items: Record<string, unknown>[];
+  class?: string;
+}> = (props) => {
   const Tile: Component<{ item: Record<string, unknown>; index: number }> = (
     tile,
   ) => {
@@ -860,9 +762,125 @@ const Gallery: Component<CustomBlockProps> = (props) => {
   };
 
   return (
-    <div class="ms-block my-sxl grid grid-cols-2 lg:grid-cols-12 auto-rows-[9.5rem] sm:auto-rows-[13rem] lg:auto-rows-[15rem] gap-ssm md:gap-smd">
-      <For each={items()}>
+    <div
+      class={`grid grid-cols-2 lg:grid-cols-12 auto-rows-[9.5rem] sm:auto-rows-[13rem] lg:auto-rows-[15rem] gap-ssm md:gap-smd ${props.class ?? ""}`}
+    >
+      <For each={props.items.filter((item) => str(item.src))}>
         {(item, index) => <Tile item={item} index={index()} />}
+      </For>
+    </div>
+  );
+};
+
+/**
+ * ```yaml gallery
+ * items:
+ *   - src: rohbau.webp       # pnpm ms-image … — the first tile is the big one
+ *     alt: Beschreibung      # required
+ *     caption: Wohnhaus, Friesoythe   # optional, set on the photo
+ * ```
+ * An asymmetric photo mosaic: the first image large, two beside it, any
+ * further ones in thirds below. Three or six items fill it cleanly.
+ */
+const Gallery: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  return <Mosaic items={list(data()?.items)} class="ms-block my-sxl" />;
+};
+
+/**
+ * ```yaml reveal
+ * items:
+ *   - title: …
+ *     text: …              # a few sentences
+ *     icon: hammer         # optional
+ *     image: foto.webp     # optional single photo beside the text
+ *     alt: …               # required with image
+ *     gallery:             # optional: the item's own photo mosaic below the text
+ *       - { src: a.webp, alt: …, caption: … }
+ * ```
+ * Titles that open in place, one at a time: a native exclusive accordion
+ * (`<details name>`), animated where the browser can (theme.css). Each item
+ * is a whole chapter — text and its photos — so a service list needs no
+ * sections of its own and no numbers. Works without JavaScript; the first
+ * item starts open.
+ */
+const Reveal: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items).filter((item) => str(item.title));
+  const group = createUniqueId();
+
+  const Photo: Component<{ file?: string; alt: string }> = (photo) => {
+    const src = usePageAsset(() => photo.file);
+    const small = usePageAsset(() => {
+      const f = photo.file;
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <Show when={src()}>
+        {(url) => (
+          <img
+            src={url()}
+            srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+            sizes="(min-width: 1024px) 24rem, 100vw"
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
+          />
+        )}
+      </Show>
+    );
+  };
+
+  return (
+    <div class="ms-block ms-reveal mt-sxl border-t border-line">
+      <For each={items()}>
+        {(item, index) => (
+          <details
+            name={group}
+            open={index() === 0}
+            class="border-b border-line"
+          >
+            <summary class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong transition-colors hover:text-button">
+              <Show when={icon(item.icon)}>
+                {(name) => (
+                  <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
+                    <Icon name={name()} class="w-[1.4rem] h-[1.4rem]" />
+                  </span>
+                )}
+              </Show>
+              <h3 class="flex-1 font-ms-display text-2xl md:text-3xl leading-tight">
+                {str(item.title)}
+              </h3>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                class="ms-reveal-mark w-[1.6rem] h-[1.6rem] shrink-0 text-button transition-transform duration-300"
+              >
+                <path d="M5 12h14M12 5v14" />
+              </svg>
+            </summary>
+            <div
+              class={`ms-reveal-body pb-slg md:pb-sxl ${icon(item.icon) ? "md:pl-[3.5rem]" : ""}`}
+            >
+              <div
+                class={`grid gap-slg ${str(item.image) ? "lg:grid-cols-[minmax(0,1fr)_24rem]" : ""}`}
+              >
+                <p class="max-w-prose leading-relaxed text-copy">
+                  {str(item.text)}
+                </p>
+                <Photo file={str(item.image)} alt={str(item.alt) ?? ""} />
+              </div>
+              <Show when={list(item.gallery).length > 0}>
+                <Mosaic items={list(item.gallery)} class="mt-slg" />
+              </Show>
+            </div>
+          </details>
+        )}
       </For>
     </div>
   );

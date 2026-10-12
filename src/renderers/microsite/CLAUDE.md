@@ -104,9 +104,10 @@ Each is documented (YAML shape) in a comment above its component.
 - **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`),
   `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
   with real text — only for things that have an order; `style: icons` for
-  the rest), `reveal` (titles that open in place one at a time, with text,
-  icon and photo — the native `<details name>` accordion, animated; for a
-  service list without an order), `stats` (two or three big real
+  the rest), `reveal` (titles that open in place one at a time — the native
+  `<details name>` accordion, animated; each item is a whole chapter with
+  text, icon, a photo or its own `gallery` mosaic, so a service list needs
+  no sections of its own and no numbers), `stats` (two or three big real
   figures), `video` (YouTube, two-click: nothing loads from YouTube before
   the click; the poster is a local file), `cta` (buttons with icons),
   `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
