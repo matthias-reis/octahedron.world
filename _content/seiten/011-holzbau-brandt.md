@@ -41,7 +41,7 @@ quickbar:
 
 ```yaml @
 layout: hero
-kicker: { icon: map-pin, text: ZIMMEREI · MEISTERBETRIEB · BLOMBERG }
+kicker: { text: ZIMMEREI · MEISTERBETRIEB · BLOMBERG, tone: copy }
 visual:
   src: kran.webp
   alt: Schwarz-weiß-Aufnahme eines Baukrans, der ein Holzrahmenbau-Wandelement vor bewölktem Himmel hebt
@@ -96,224 +96,119 @@ Fachwerksanierung.
 items:
   - icon: house
     title: Ökologischer Holzrahmenbau und Holzhausbau
-    text: Der Holzrahmenbau kommt mit dem geringsten Holzverbrauch aller Holzbauweisen aus. In Verbindung mit Zellulose-Einblasdämmung entsteht eine ökologische Bauweise – ein behagliches Raumklima ist nur einer ihrer Vorteile.
-    image: holzgiebel.webp
-    alt: Klinkerhaus mit holzverkleidetem Giebel und Wintergarten
+    text: Wände, Decken und Dach entstehen als Elemente in der Werkstatt und werden auf der Baustelle mit dem Kran gesetzt. Der Holzrahmenbau kommt mit dem geringsten Holzverbrauch aller Holzbauweisen aus; mit Zellulose-Einblasdämmung entsteht eine ökologische Bauweise mit behaglichem Raumklima – das ganze Jahr.
+    gallery:
+      - src: wandelement.webp
+        alt: Ein vorgefertigtes Holzrahmenbau-Wandelement mit Fensteröffnung hängt am Kranhaken vor grauem Himmel
+        caption: Wandelement am Kran
+      - src: osb-waende.webp
+        alt: Rohbau aus Holzrahmenbauwänden mit OSB-Beplankung, von oben gesehen
+        caption: Rohbau in Holzrahmenbauweise
+      - src: montage.webp
+        alt: Holzrahmenbauwände auf einer Bodenplatte, dahinter ein Gerüst
+        caption: Montage auf der Bodenplatte
+      - src: rohbau.webp
+        alt: Holzständerwand mit OSB-Platten vor einem Gerüst
+        caption: Ständerwand mit Beplankung
+      - src: haus-geruest.webp
+        alt: Eingerüstetes Holzhaus im Rohbau unter Abendhimmel
+        caption: Holzhaus im Rohbau
+      - src: hero.webp
+        alt: Zwei Zimmerer richten Holzrahmenbauwände aus OSB-Platten auf einer Bodenplatte aus
+        caption: Zimmerer beim Ausrichten der Wände
   - icon: hammer
     title: Dachstühle und Dacheindeckungen
-    text: Der Dachstuhl ist eines der wichtigsten Elemente eines Gebäudes, statisch wie optisch. Wir planen, errichten und sanieren Dachstühle vom Neubau bis zur Instandsetzung – und decken Ihr Dach sauber und präzise ein.
-    image: dachstuhl.webp
-    alt: Sternförmiger Dachstuhl eines Pavillons von innen
+    text: An den Dachstuhl werden statische und optische Ansprüche gestellt. Wir planen, errichten und sanieren Dachstühle fachgerecht – vom Neubau bis zur Instandsetzung bestehender Konstruktionen – und sorgen bei der Dacheindeckung für eine saubere, präzise Ausführung, damit das Dach dauerhaft vor Wind und Wetter schützt.
+    gallery:
+      - src: dachstuhl.webp
+        alt: Sternförmiger Dachstuhl eines Pavillons von innen, Sparren laufen in der Mitte zusammen
+        caption: Sternförmiger Dachstuhl
+      - src: dachstuhl-bau.webp
+        alt: Neuer Dachstuhl aus hellem Konstruktionsholz im Bau, mit Sparren und Pfetten
+        caption: Dachstuhl im Bau
+      - src: dach-luftbild.webp
+        alt: Luftaufnahme eines frisch aufgestellten Dachstuhls auf einem Rohbau
+        caption: Dachstuhl aus der Luft
+      - src: dach-neu.webp
+        alt: Klinkerhaus mit neu eingedecktem roten Ziegeldach und Dachfenster
+        caption: Neue Dacheindeckung
+      - src: villa.webp
+        alt: Gelbe Gründerzeitvilla mit neu eingedecktem, schneebedecktem Dach
+        caption: Villa mit neuem Dach
+      - src: pavillon-bau.webp
+        alt: Holzpavillon mit Zeltdach im Bau auf einer Wiese
+        caption: Pavillon im Bau
   - icon: landmark
     title: Fachwerk und Altbausanierung
-    text: Historische Gebäude verdienen besondere Sorgfalt. Wir restaurieren Fachwerkhäuser und sanieren Altbauten mit hochwertigen Materialien und Blick fürs Detail – die ursprüngliche Substanz bleibt erhalten.
-    image: fachwerk-innen.webp
-    alt: Sanierter Fachwerkraum mit freigelegten Balken und neuem Boden
+    text: Blomberg und das Lipperland sind Fachwerkland. Wir restaurieren Fachwerkhäuser und sanieren Altbauten mit viel Erfahrung, hochwertigen Materialien und dem Blick für jedes Detail. Die ursprüngliche Bausubstanz und der Charakter des Hauses bleiben erhalten – Stabilität, Langlebigkeit und Wohnkomfort kommen auf den heutigen Stand.
+    gallery:
+      - src: fachwerkhaus.webp
+        alt: Saniertes Fachwerkhaus mit roter Dacheindeckung, Holzgaube und gelb lasierten Sprossenfenstern
+        caption: Fachwerkhaus nach der Sanierung
+      - src: fachwerk-innen.webp
+        alt: Sanierter Fachwerkraum mit freigelegten Balken und neuem Boden
+        caption: Fachwerk innen, saniert
+      - src: balken.webp
+        alt: Freigelegte historische Fachwerkbalken mit neuen Holzergänzungen
+        caption: Alte und neue Balken
   - icon: building
     title: Anbauten und Aufstockungen
-    text: Individuell an den Bestand angepasste Erweiterungen und Umbauten lassen Gebäude neu erstrahlen. Anbauten und Aufstockungen schaffen Wohnraum – und damit mehr Lebensqualität.
-    image: anbau.webp
-    alt: Anbau mit Holzfassade und großen Fenstern an einem Klinkerhaus
+    text: Individuell an den Bestand angepasste Erweiterungen und Umbauten lassen Gebäude neu erstrahlen. Anbauten, Aufstockungen und Gauben schaffen Wohnraum – und damit mehr Lebensqualität.
+    gallery:
+      - src: anbau.webp
+        alt: Anbau mit Holzfassade und großen Fenstern an einem Klinkerhaus
+        caption: Anbau mit Holzfassade
+      - src: anbau-treppe.webp
+        alt: Holzanbau auf Stützen mit Außentreppe aus Beton, im Rohbau
+        caption: Aufgeständerter Anbau
+      - src: gaube.webp
+        alt: Dachgaube mit senkrechter Holzverschalung und drei Fenstern in einem Ziegeldach
+        caption: Gaube mit Holzverschalung
   - icon: route
     title: Carports, Brücken, Balkone und Terrassen
-    text: Ob Carport, Holzbrücke, Balkon oder Terrasse – wir planen und fertigen individuelle Holzkonstruktionen nach Ihren Wünschen und vereinen Ästhetik mit konstruktivem Holzschutz.
-    image: bruecke.webp
-    alt: Neue Holzbrücke mit Geländer durch den Wald, in der Mitte sitzt ein Hund
+    text: Ob Carport, Holzbrücke, Balkon oder Terrasse – wir planen und fertigen individuelle Holzkonstruktionen nach Ihren Wünschen und vereinen Ästhetik mit konstruktivem Holzschutz, damit sie lange halten.
+    gallery:
+      - src: bruecke.webp
+        alt: Neue Holzbrücke mit Geländer durch den Wald, in der Mitte sitzt ein Hund
+        caption: Holzbrücke mit Geländer
+      - src: terrasse.webp
+        alt: Holzterrasse mit weißer Pergola und Glasdach, darunter Tisch und Stühle
+        caption: Terrasse mit Glasdach
+      - src: carport.webp
+        alt: Holzkonstruktion eines Carports mit Pfosten und Sparren, im Bau vor einem Haus
+        caption: Carport im Bau
+      - src: bruecke-luftbild.webp
+        alt: Luftaufnahme einer Holzbrücke über einen Bach zwischen Bäumen
+        caption: Brücke über den Bach
+      - src: treppe.webp
+        alt: Außentreppe aus Holzstufen auf Stahlwangen zu einer Terrasse mit Holzdeck
+        caption: Außentreppe und Holzdeck
+      - src: pavillon.webp
+        alt: Blick in die Dachkonstruktion eines achteckigen Holzpavillons mit Laterne in der Mitte
+        caption: Pavillon mit Laterne
   - icon: sun
     title: Fassaden und Außenhülle
     text: Die Fassade liefert den ersten Eindruck eines Gebäudes und schützt vor Wärme, Kälte und Wind. Neben Bauphysik und Konstruktion ist ihre Gestaltung entscheidend für die Wirkung nach außen.
-    image: gaube.webp
-    alt: Dachgaube mit senkrechter Holzverschalung und drei Fenstern in einem Ziegeldach
+    gallery:
+      - src: holzgiebel.webp
+        alt: Klinkerhaus mit holzverkleidetem Giebel und Wintergarten
+        caption: Holzgiebel am Klinkerhaus
+      - src: klinkerhaus.webp
+        alt: Klinkerhaus mit neuem Dach, Dachfenstern und Holzelementen an der Fassade
+        caption: Dach und Fassade erneuert
+      - src: holzhaus.webp
+        alt: Modernes Wohnhaus mit Holzfassade, Pultdach und großen Fenstern
+        caption: Holzhaus mit Holzfassade
   - icon: paint-roller
     title: Fußböden und Innenausbau
     text: Wir gestalten und verlegen hochwertige Holzböden und realisieren individuellen Innenausbau aus Holz – im Neubau, bei der Renovierung oder als maßgefertigte Einbauten.
-    image: boden.webp
-    alt: Heller Dielenboden in einem Raum unter dem Dach mit Fenster und Treppengeländer
-```
-
-+++holzrahmenbau
-
-```yaml @
-nav: Holzrahmenbau
-variant: inverted
-layout: split
-kicker: { text: HOLZRAHMENBAU, tone: copy }
-```
-
-## Vorgefertigt in der Werkstatt, montiert in Tagen
-
-Wände, Decken und Dach entstehen als Elemente in der Werkstatt und werden auf
-der Baustelle mit dem Kran gesetzt. Das spart Holz, verkürzt die Bauzeit vor
-Ort und ergibt mit Zellulose-Einblasdämmung ein Haus, das sich das ganze Jahr
-behaglich anfühlt.
-
-```yaml features
-style: chips
-items:
-  - { icon: leaf, text: Geringster Holzverbrauch aller Holzbauweisen }
-  - { icon: house, text: Zellulose-Einblasdämmung }
-  - { icon: thermometer-sun, text: Behagliches Raumklima }
-  - { icon: hammer, text: "Vorgefertigt, vor Ort montiert" }
-```
-
-```yaml gallery
-items:
-  - src: wandelement.webp
-    alt: Ein vorgefertigtes Holzrahmenbau-Wandelement mit Fensteröffnung hängt am Kranhaken vor grauem Himmel
-    caption: Wandelement am Kran
-  - src: osb-waende.webp
-    alt: Rohbau aus Holzrahmenbauwänden mit OSB-Beplankung, von oben gesehen
-    caption: Rohbau in Holzrahmenbauweise
-  - src: montage.webp
-    alt: Holzrahmenbauwände auf einer Bodenplatte, dahinter ein Gerüst
-    caption: Montage auf der Bodenplatte
-  - src: rohbau.webp
-    alt: Holzständerwand mit OSB-Platten vor einem Gerüst
-    caption: Ständerwand mit Beplankung
-  - src: haus-geruest.webp
-    alt: Eingerüstetes Holzhaus im Rohbau unter Abendhimmel
-    caption: Holzhaus im Rohbau
-  - src: hero.webp
-    alt: Zwei Zimmerer richten Holzrahmenbauwände aus OSB-Platten auf einer Bodenplatte aus
-    caption: Zimmerer beim Ausrichten der Wände
-```
-
-+++dach
-
-```yaml @
-variant: inverted
-layout: split
-kicker: { text: DACHSTÜHLE UND DÄCHER, tone: copy }
-```
-
-## Der Dachstuhl trägt das Haus
-
-An den Dachstuhl werden statische und optische Ansprüche gestellt. Wir planen,
-errichten und sanieren Dachstühle fachgerecht – vom Neubau bis zur
-Instandsetzung bestehender Konstruktionen – und sorgen bei der Dacheindeckung
-für eine saubere, präzise Ausführung, damit das Dach dauerhaft vor Wind und
-Wetter schützt.
-
-```yaml gallery
-items:
-  - src: dachstuhl.webp
-    alt: Sternförmiger Dachstuhl eines Pavillons von innen, Sparren laufen in der Mitte zusammen
-    caption: Sternförmiger Dachstuhl
-  - src: dachstuhl-bau.webp
-    alt: Neuer Dachstuhl aus hellem Konstruktionsholz im Bau, mit Sparren und Pfetten
-    caption: Dachstuhl im Bau
-  - src: dach-luftbild.webp
-    alt: Luftaufnahme eines frisch aufgestellten Dachstuhls auf einem Rohbau
-    caption: Dachstuhl aus der Luft
-  - src: dach-neu.webp
-    alt: Klinkerhaus mit neu eingedecktem roten Ziegeldach und Dachfenster
-    caption: Neue Dacheindeckung
-  - src: villa.webp
-    alt: Gelbe Gründerzeitvilla mit neu eingedecktem, schneebedecktem Dach
-    caption: Villa mit neuem Dach
-  - src: pavillon-bau.webp
-    alt: Holzpavillon mit Zeltdach im Bau auf einer Wiese
-    caption: Pavillon im Bau
-```
-
-+++fachwerk
-
-```yaml @
-variant: surface
-layout: split
-kicker: FACHWERK UND ALTBAU
-```
-
-## Fachwerk sanieren, Substanz bewahren
-
-Blomberg und das Lipperland sind Fachwerkland. Wir restaurieren Fachwerkhäuser
-und sanieren Altbauten mit viel Erfahrung, hochwertigen Materialien und dem
-Blick für jedes Detail. Die ursprüngliche Bausubstanz und der Charakter des
-Hauses bleiben erhalten – Stabilität, Langlebigkeit und Wohnkomfort kommen auf
-den heutigen Stand.
-
-```yaml gallery
-items:
-  - src: fachwerkhaus.webp
-    alt: Saniertes Fachwerkhaus mit roter Dacheindeckung, Holzgaube und gelb lasierten Sprossenfenstern
-    caption: Fachwerkhaus nach der Sanierung
-  - src: fachwerk-innen.webp
-    alt: Sanierter Fachwerkraum mit freigelegten Balken und neuem Boden
-    caption: Fachwerk innen, saniert
-  - src: balken.webp
-    alt: Freigelegte historische Fachwerkbalken mit neuen Holzergänzungen
-    caption: Alte und neue Balken
-```
-
-+++aussen
-
-```yaml @
-variant: inverted
-layout: split
-kicker: { text: ANBAU · TERRASSE · BRÜCKE, tone: copy }
-```
-
-## Mehr Raum, draußen wie drinnen
-
-Anbauten und Aufstockungen erweitern den Wohnraum, Terrassen und Balkone holen
-ihn ins Freie. Carports, Pergolen und Holzbrücken fertigen wir nach Ihren
-Wünschen – mit konstruktivem Holzschutz, damit sie lange halten.
-
-```yaml gallery
-items:
-  - src: anbau.webp
-    alt: Anbau mit Holzfassade und großen Fenstern an einem Klinkerhaus
-    caption: Anbau mit Holzfassade
-  - src: anbau-treppe.webp
-    alt: Holzanbau auf Stützen mit Außentreppe aus Beton, im Rohbau
-    caption: Aufgeständerter Anbau
-  - src: terrasse.webp
-    alt: Holzterrasse mit weißer Pergola und Glasdach, darunter Tisch und Stühle
-    caption: Terrasse mit Glasdach
-  - src: treppe.webp
-    alt: Außentreppe aus Holzstufen auf Stahlwangen zu einer Terrasse mit Holzdeck
-    caption: Außentreppe und Holzdeck
-  - src: bruecke.webp
-    alt: Neue Holzbrücke mit Geländer durch den Wald, in der Mitte sitzt ein Hund
-    caption: Holzbrücke mit Geländer
-  - src: bruecke-luftbild.webp
-    alt: Luftaufnahme einer Holzbrücke über einen Bach zwischen Bäumen
-    caption: Brücke über den Bach
-```
-
-+++projekte
-
-```yaml @
-nav: Projekte
-variant: inverted
-kicker: { text: PROJEKTE, tone: copy }
-```
-
-## Gebaut aus Holz
-
-Neubau, Umbau, Dach und Fassade: ein Blick auf Arbeiten aus unserer Werkstatt
-und von unseren Baustellen.
-
-```yaml gallery
-items:
-  - src: gaube.webp
-    alt: Dachgaube mit senkrechter Holzverschalung und drei Fenstern in einem Ziegeldach
-    caption: Gaube mit Holzverschalung
-  - src: holzgiebel.webp
-    alt: Klinkerhaus mit holzverkleidetem Giebel und Wintergarten
-    caption: Holzgiebel am Klinkerhaus
-  - src: klinkerhaus.webp
-    alt: Klinkerhaus mit neuem Dach, Dachfenstern und Holzelementen an der Fassade
-    caption: Dach und Fassade erneuert
-  - src: innenausbau.webp
-    alt: Innenausbau aus Holz mit Dielenboden und Einbauten unter der Dachschräge
-    caption: Innenausbau unterm Dach
-  - src: carport.webp
-    alt: Holzkonstruktion eines Carports mit Pfosten und Sparren, im Bau vor einem Haus
-    caption: Carport im Bau
-  - src: holzhaus.webp
-    alt: Modernes Wohnhaus mit Holzfassade, Pultdach und großen Fenstern
-    caption: Holzhaus mit Holzfassade
+    gallery:
+      - src: boden.webp
+        alt: Heller Dielenboden in einem Raum unter dem Dach mit Fenster und Treppengeländer
+        caption: Dielenboden unterm Dach
+      - src: innenausbau.webp
+        alt: Innenausbau aus Holz mit Dielenboden und Einbauten unter der Dachschräge
+        caption: Innenausbau unterm Dach
 ```
 
 +++team
