@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noExplicitAny: HAST passes untyped props */
 
 import type { Component } from "solid-js";
-import { For, Show } from "solid-js";
+import { createUniqueId, For, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
@@ -81,7 +81,7 @@ const Cards: Component<CustomBlockProps> = (props) => {
                     <span
                       class={
                         tiles()
-                          ? "w-[3.25rem] h-[3.25rem] rounded-ms bg-tint text-link flex items-center justify-center"
+                          ? "w-[3.25rem] h-[3.25rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center"
                           : ""
                       }
                     >
@@ -184,7 +184,7 @@ const Features: Component<CustomBlockProps> = (props) => {
               <li class="inline-flex items-center gap-ssm rounded-full bg-card border border-line py-ssm pl-ssm pr-smd font-semibold text-copy-strong">
                 <Show when={item.icon}>
                   {(name) => (
-                    <span class="w-[2rem] h-[2rem] rounded-full bg-tint text-link flex items-center justify-center">
+                    <span class="w-[2rem] h-[2rem] rounded-full bg-icon-tile text-icon flex items-center justify-center">
                       <Icon name={name()} class="w-[1.05rem] h-[1.05rem]" />
                     </span>
                   )}
@@ -207,7 +207,7 @@ const Features: Component<CustomBlockProps> = (props) => {
               <Show when={item.icon}>
                 {(name) => (
                   <span
-                    class={`w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms flex items-center justify-center ${style() === "tiles" ? "bg-tint text-link" : "bg-card text-button"}`}
+                    class={`w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms flex items-center justify-center ${style() === "tiles" ? "bg-icon-tile text-icon" : "bg-icon-tile text-icon"}`}
                   >
                     <Icon name={name()} class="w-[1.25rem] h-[1.25rem]" />
                   </span>
@@ -278,7 +278,7 @@ const IndexList: Component<CustomBlockProps> = (props) => {
               {(name) => (
                 <span
                   aria-hidden="true"
-                  class="w-[3.5rem] h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] rounded-ms bg-tint text-button flex items-center justify-center"
+                  class="w-[3.5rem] h-[3.5rem] md:w-[4.5rem] md:h-[4.5rem] rounded-ms bg-icon-tile text-icon flex items-center justify-center"
                 >
                   <Icon
                     name={name()}
@@ -528,7 +528,7 @@ const Contact: Component<CustomBlockProps> = (props) => {
   }> = (row) => {
     const body = (
       <>
-        <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-tint text-button flex items-center justify-center">
+        <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
           <Icon name={row.icon} class="w-[1.25rem] h-[1.25rem]" />
         </span>
         <span class="min-w-0">
@@ -708,6 +708,95 @@ const Emblem: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/**
+ * ```yaml reveal
+ * items:
+ *   - title: …
+ *     text: …              # a few sentences
+ *     icon: hammer         # optional
+ *     image: foto.webp     # optional, shown inside the open item
+ *     alt: …               # required with image
+ * ```
+ * Titles that open in place, one at a time: a native exclusive accordion
+ * (`<details name>`), animated where the browser can (theme.css). For a
+ * service list without an order — no numbers, no card grid. Works without
+ * JavaScript; the first item starts open.
+ */
+const Reveal: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items).filter((item) => str(item.title));
+  const group = createUniqueId();
+
+  const Photo: Component<{ file?: string; alt: string }> = (photo) => {
+    const src = usePageAsset(() => photo.file);
+    const small = usePageAsset(() => {
+      const f = photo.file;
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <Show when={src()}>
+        {(url) => (
+          <img
+            src={url()}
+            srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+            sizes="(min-width: 1024px) 24rem, 100vw"
+            alt={photo.alt}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
+          />
+        )}
+      </Show>
+    );
+  };
+
+  return (
+    <div class="ms-block ms-reveal mt-sxl border-t border-line">
+      <For each={items()}>
+        {(item, index) => (
+          <details
+            name={group}
+            open={index() === 0}
+            class="border-b border-line"
+          >
+            <summary class="flex items-center gap-smd py-smd md:py-slg cursor-pointer list-none select-none text-copy-strong hover:text-link">
+              <Show when={icon(item.icon)}>
+                {(name) => (
+                  <span class="w-[2.75rem] h-[2.75rem] shrink-0 rounded-ms bg-icon-tile text-icon flex items-center justify-center">
+                    <Icon name={name()} class="w-[1.4rem] h-[1.4rem]" />
+                  </span>
+                )}
+              </Show>
+              <h3 class="flex-1 font-ms-display text-2xl md:text-3xl leading-tight">
+                {str(item.title)}
+              </h3>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                class="ms-reveal-mark w-[1.6rem] h-[1.6rem] shrink-0 text-button transition-transform duration-300"
+              >
+                <path d="M5 12h14M12 5v14" />
+              </svg>
+            </summary>
+            <div
+              class={`ms-reveal-body grid gap-slg pb-slg md:pb-sxl ${str(item.image) ? "lg:grid-cols-[minmax(0,1fr)_24rem]" : ""} ${icon(item.icon) ? "md:pl-[3.5rem]" : ""}`}
+            >
+              <p class="max-w-prose leading-relaxed text-copy">
+                {str(item.text)}
+              </p>
+              <Photo file={str(item.image)} alt={str(item.alt) ?? ""} />
+            </div>
+          </details>
+        )}
+      </For>
+    </div>
+  );
+};
+
 /** Grid placement per mosaic slot: one large tile, two beside it, then thirds. */
 const mosaicSlots = [
   "col-span-2 row-span-2 lg:col-span-7",
@@ -819,6 +908,7 @@ export const micrositeComponents: ComponentMap = {
   rating: Rating,
   callout: Callout,
   index: IndexList,
+  reveal: Reveal,
   stats: Stats,
   video: Video,
   palette: Palette,
