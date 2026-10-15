@@ -20,7 +20,7 @@ theme:
   hue: 250
   radius: 0.375
   fonts: norm
-  colors: { copy: adjacent-right, background: adjacent-right }
+  colors: { copy: accent-right, background: accent-right }
 header:
   phone: 0 27 78 / 69 669-0
   cta: { text: Katalog, url: "#katalog" }
@@ -42,10 +42,9 @@ quickbar:
 
 ```yaml @
 layout: hero
+variant: inverted
+colors: { copy: main, background: main }
 kicker: { text: GROSSHANDEL · MITTENAAR-BICKEN, tone: copy }
-backdrop:
-  src: zentrallager-luft.webp
-  position: 62% 55%
 ```
 
 # Großhandel für Arbeitshygiene und Arbeitsschutz
@@ -212,9 +211,7 @@ items:
 ```yaml @
 nav: Standort
 layout: split
-variant: inverted
-colors: { copy: main, background: main }
-pattern: swoosh
+variant: plain
 kicker: { text: STANDORT, icon: warehouse, tone: copy }
 ```
 
