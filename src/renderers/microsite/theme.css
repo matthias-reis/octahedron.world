@@ -625,6 +625,14 @@
   font-optical-sizing: auto;
 }
 
+/* From tablet width the h1 has room for its words: hyphenating there only
+   splits a compound at the line end („Arbeitshy-giene“). */
+@media (min-width: 48rem) {
+  .ms-root h1 {
+    hyphens: manual;
+  }
+}
+
 /* A pairing may condense its display face (font-stretch) and set the
    heading weight; both default to the face's normal cut. */
 .ms-root :is(h1, h2, h3, .font-ms-display) {

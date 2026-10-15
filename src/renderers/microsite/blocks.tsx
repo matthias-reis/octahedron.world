@@ -1019,14 +1019,11 @@ const Catalog: Component<CustomBlockProps> = (props) => {
       <Show when={link(data()?.link)}>
         {(l) => (
           <div class="mb-smd flex flex-wrap items-center justify-between gap-smd rounded-ms bg-tint px-slg py-smd">
-            <div class="flex items-center gap-smd min-w-0">
-              <Swoosh class="hidden sm:block w-[4.5rem] h-[1rem] shrink-0 text-icon" />
-              <Show when={str(data()?.note)}>
-                {(note) => (
-                  <p class="font-semibold text-copy-strong">{note()}</p>
-                )}
-              </Show>
-            </div>
+            <Show when={str(data()?.note)}>
+              {(note) => (
+                <p class="min-w-0 font-semibold text-copy-strong">{note()}</p>
+              )}
+            </Show>
             <ButtonLink href={l().url} icon={l().icon ?? "book-open"}>
               {l().text}
             </ButtonLink>
