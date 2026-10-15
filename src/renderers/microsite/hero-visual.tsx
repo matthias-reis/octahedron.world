@@ -62,9 +62,10 @@ const VisualLink: Component<{ visual: HeroVisualData }> = (props) => (
     {(url) => (
       <a
         href={url()}
-        aria-label={props.visual.label ?? props.visual.alt}
         class="absolute inset-0 outline-offset-[-3px] focus-visible:outline-2 outline-button"
-      />
+      >
+        <span class="sr-only">{props.visual.label ?? props.visual.alt}</span>
+      </a>
     )}
   </Show>
 );
