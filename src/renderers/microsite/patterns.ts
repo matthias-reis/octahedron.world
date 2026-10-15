@@ -27,6 +27,13 @@ const tiles = {
     size: "160px 72px",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="72" viewBox="0 0 160 72"><g stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M0 18 Q20 8 40 18 T80 18 T120 18 T160 18"/><path d="M-40 54 Q-20 44 0 54 T40 54 T80 54 T120 54 T160 54 T200 54"/></g></svg>`,
   },
+  /** Crescent swooshes, staggered — after the Obgartel logo's lower arc. */
+  swoosh: {
+    // One crescent is the logo's arc at 1/5 scale (~147 × 31 px); the second
+    // row sits half a tile to the right, so the rows read as a loose drift.
+    size: "300px 120px",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120"><defs><path id="s" d="M0 16 C96 140 384 154 736 2 C414 78 174 58 66 0 Z"/></defs><g fill="#000"><use href="#s" transform="translate(12 14) scale(0.2)"/><use href="#s" transform="translate(162 74) scale(0.2)"/></g></svg>`,
+  },
 } as const;
 
 export type PatternName = keyof typeof tiles;

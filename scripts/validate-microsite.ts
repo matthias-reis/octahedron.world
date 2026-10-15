@@ -113,22 +113,32 @@ export function validateMicrosite(
         previous = n;
       }
 
-      if (["image", "gallery", "emblem", "reveal"].includes(node.tagName)) {
+      if (
+        ["image", "gallery", "emblem", "reveal", "catalog", "logos"].includes(
+          node.tagName,
+        )
+      ) {
         const data = blockData(node);
         const items = Array.isArray(data.items)
           ? (data.items as Record<string, unknown>[])
           : [];
         const images =
-          node.tagName === "gallery"
+          node.tagName === "gallery" || node.tagName === "logos"
             ? items
-            : node.tagName === "reveal"
-              ? items.flatMap((item) => [
-                  ...(item.image ? [{ src: item.image, alt: item.alt }] : []),
-                  ...(Array.isArray(item.gallery)
-                    ? (item.gallery as Record<string, unknown>[])
-                    : []),
-                ])
-              : [data];
+            : node.tagName === "catalog"
+              ? items.flatMap((item) =>
+                  Array.isArray(item.images)
+                    ? (item.images as Record<string, unknown>[])
+                    : [],
+                )
+              : node.tagName === "reveal"
+                ? items.flatMap((item) => [
+                    ...(item.image ? [{ src: item.image, alt: item.alt }] : []),
+                    ...(Array.isArray(item.gallery)
+                      ? (item.gallery as Record<string, unknown>[])
+                      : []),
+                  ])
+                : [data];
         for (const image of images) {
           if (!exists(image?.src)) {
             problems.push(
