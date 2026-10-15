@@ -5,7 +5,14 @@ import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
-import { ButtonLink, Card, Icon, type IconName, isIconName } from "./ui";
+import {
+  ButtonLink,
+  Card,
+  Icon,
+  type IconName,
+  isIconName,
+  Swoosh,
+} from "./ui";
 import { Video } from "./video";
 
 type Data = Record<string, unknown> | undefined;
@@ -956,6 +963,166 @@ const Reveal: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/** A product cut-out on the tile's card: white grounds melt into it. */
+const CatalogPicture: Component<{ item: Record<string, unknown> }> = (
+  props,
+) => {
+  // No srcset: product shots are small originals, and the browser must see
+  // their true width so `max-w-full` never blows a 240 px cut-out up.
+  const src = usePageAsset(() => str(props.item.src));
+  const cover = () => props.item.fit === "cover";
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <img
+          src={url()}
+          alt={str(props.item.alt) ?? ""}
+          loading="lazy"
+          decoding="async"
+          class={
+            cover()
+              ? "absolute inset-0 w-full h-full object-cover"
+              : "relative min-w-0 max-w-full max-h-full object-contain mix-blend-multiply transition-transform duration-300 group-hover:scale-[1.04]"
+          }
+        />
+      )}
+    </Show>
+  );
+};
+
+/**
+ * ```yaml catalog
+ * link: { text: Gesamtkatalog öffnen, url: "#katalog" }   # optional bar above the grid
+ * note: 14 Warengruppen …     # optional line beside the bar's link
+ * items:
+ *   - title: Reinigungstechnik   # long names: a soft hyphen (U+00AD) marks where they may break
+ *     text: …                 # optional, one line: what the group covers
+ *     url: "#katalog"         # the group's entry in the catalog
+ *     feature: true           # optional: a wide tile (two columns)
+ *     images:                 # 1 (2 on a feature tile), pnpm ms-image …
+ *       - src: sauger.webp
+ *         alt: …              # required
+ *         fit: cover          # optional: fill the plate (photos), default contain (cut-outs)
+ * ```
+ * The opening spread of a product catalog: one tile per product group, each
+ * a product on the card, the group's name and one line, all linking into the
+ * catalog. Groups only — never the level below. Feature tiles (the groups the
+ * business leads with) span two columns; the grid packs densely, so any mix
+ * fills it. On hover the swoosh under the name sweeps out. Light sections
+ * only: the cut-outs blend into the plate with `multiply`.
+ */
+const Catalog: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items);
+  return (
+    <div class="ms-block my-sxl">
+      <Show when={link(data()?.link)}>
+        {(l) => (
+          <div class="mb-smd flex flex-wrap items-center justify-between gap-smd rounded-ms bg-tint px-slg py-smd">
+            <Show when={str(data()?.note)}>
+              {(note) => (
+                <p class="min-w-0 font-semibold text-copy-strong">{note()}</p>
+              )}
+            </Show>
+            <ButtonLink href={l().url} icon={l().icon ?? "book-open"}>
+              {l().text}
+            </ButtonLink>
+          </div>
+        )}
+      </Show>
+      <ul class="grid grid-cols-2 lg:grid-cols-4 grid-flow-dense gap-ssm md:gap-smd">
+        <For each={items()}>
+          {(item) => {
+            const feature = () => item.feature === true;
+            const pictures = () =>
+              list(item.images).slice(0, feature() ? 2 : 1);
+            return (
+              <li class={feature() ? "col-span-2" : ""}>
+                <a
+                  href={str(item.url) ?? "#"}
+                  class="group flex h-full flex-col rounded-ms bg-card overflow-hidden outline-offset-2 focus-visible:outline-2 outline-button"
+                >
+                  <div
+                    class={`relative flex items-center justify-center gap-smd overflow-hidden p-smd ${feature() ? "aspect-[8/3]" : "aspect-[4/3]"}`}
+                  >
+                    <For each={pictures()}>
+                      {(picture) => <CatalogPicture item={picture} />}
+                    </For>
+                  </div>
+                  <div class="flex flex-1 flex-col px-smd pt-smd pb-slg">
+                    <div class="flex items-start justify-between gap-ssm">
+                      <h3 class="font-ms-display text-lg sm:text-xl font-bold leading-tight text-balance hyphens-manual text-copy-strong">
+                        {str(item.title)}
+                      </h3>
+                      <Icon
+                        name="arrow-up-right"
+                        class="mt-[0.15rem] w-[1.1rem] h-[1.1rem] shrink-0 text-icon transition-transform group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                      />
+                    </div>
+                    <Swoosh class="mt-sxs w-[3rem] h-[0.6rem] origin-left text-icon transition-transform duration-300 group-hover:scale-x-[2.2]" />
+                    <Show when={str(item.text)}>
+                      {(text) => (
+                        <p class="mt-ssm text-sm leading-snug text-copy-soft">
+                          {text()}
+                        </p>
+                      )}
+                    </Show>
+                  </div>
+                </a>
+              </li>
+            );
+          }}
+        </For>
+      </ul>
+    </div>
+  );
+};
+
+/**
+ * ```yaml logos
+ * label: Marken im Sortiment   # optional, small line above
+ * items:
+ *   - { src: marke-tork.webp, alt: Tork }   # pnpm ms-image … --logo
+ * ```
+ * A strip of partner or manufacturer marks at one height, toned down to
+ * grey so no brand outshouts the page; full color on hover.
+ */
+const Logos: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const Mark: Component<{ item: Record<string, unknown> }> = (mark) => {
+    const src = usePageAsset(() => str(mark.item.src));
+    return (
+      <Show when={src()}>
+        {(url) => (
+          <li class="flex items-center justify-center rounded-ms bg-page px-smd py-ssm">
+            <img
+              src={url()}
+              alt={str(mark.item.alt) ?? ""}
+              loading="lazy"
+              decoding="async"
+              class="h-[2.4rem] w-auto max-w-[8.5rem] object-contain mix-blend-multiply grayscale opacity-75 transition hover:grayscale-0 hover:opacity-100"
+            />
+          </li>
+        )}
+      </Show>
+    );
+  };
+  return (
+    <div class="ms-block my-slg">
+      <Show when={str(data()?.label)}>
+        {(label) => (
+          <p class="mb-smd text-sm font-semibold uppercase tracking-wider text-copy-soft">
+            {label()}
+          </p>
+        )}
+      </Show>
+      <ul class="flex flex-wrap gap-ssm">
+        <For each={list(data()?.items)}>{(item) => <Mark item={item} />}</For>
+      </ul>
+    </div>
+  );
+};
+
 /** Prose + blocks for a microsite section body. */
 export const micrositeComponents: ComponentMap = {
   h1: (props: any) => (
@@ -990,6 +1157,7 @@ export const micrositeComponents: ComponentMap = {
     <a class="text-link underline underline-offset-4" {...props} />
   ),
   cards: Cards,
+  catalog: Catalog,
   cta: Cta,
   contact: Contact,
   features: Features,
@@ -1003,4 +1171,5 @@ export const micrositeComponents: ComponentMap = {
   image: Image,
   gallery: Gallery,
   emblem: Emblem,
+  logos: Logos,
 };

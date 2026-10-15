@@ -5,6 +5,8 @@ import {
   BadgeCheck,
   Bath,
   BellRing,
+  BookOpen,
+  Boxes,
   Briefcase,
   Building,
   Cable,
@@ -49,6 +51,7 @@ import {
   ThermometerSun,
   Truck,
   Users,
+  Warehouse,
   Waves,
   Wheat,
   Wind,
@@ -76,6 +79,8 @@ const icons = {
   "badge-check": BadgeCheck,
   bath: Bath,
   "bell-ring": BellRing,
+  "book-open": BookOpen,
+  boxes: Boxes,
   briefcase: Briefcase,
   building: Building,
   cable: Cable,
@@ -120,6 +125,7 @@ const icons = {
   "thermometer-sun": ThermometerSun,
   truck: Truck,
   users: Users,
+  warehouse: Warehouse,
   waves: Waves,
   wheat: Wheat,
   wind: Wind,
@@ -163,6 +169,25 @@ export const ButtonLink: ParentComponent<{
     </Show>
     {props.children}
   </a>
+);
+
+/**
+ * A crescent swoosh — needle tip on the right, swelling to a blunt left end
+ * (after the Obgartel logo's lower arc). Filled with `currentColor`, so the
+ * caller sets its color with a semantic text class.
+ */
+export const Swoosh: Component<{ class?: string }> = (props) => (
+  <svg
+    viewBox="0 0 740 156"
+    class={props.class}
+    aria-hidden="true"
+    preserveAspectRatio="none"
+  >
+    <path
+      fill="currentColor"
+      d="M0 16 C96 140 384 154 736 2 C414 78 174 58 66 0 Z"
+    />
+  </svg>
 );
 
 export const Card: ParentComponent<{ class?: string }> = (props) => (

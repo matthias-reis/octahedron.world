@@ -107,6 +107,14 @@ export const fontPairings = {
     /** h1 and h2 run in capitals; h3 and body keep their case. */
     displayTransform: "uppercase",
   },
+  /** Standard and orderly, after DIN: a semi-condensed engineering grotesk over its text cut. */
+  norm: {
+    display: '"Barlow Semi Condensed", "Arial Narrow", sans-serif',
+    body: "Barlow, system-ui, sans-serif",
+    h1Weight: 700,
+    headingWeight: 700,
+    displayTracking: "-0.005em",
+  },
   /** Rooted and clear: a warm mid-century serif over a plain modern sans. */
   quelle: {
     display: '"Young Serif", Georgia, serif',

@@ -50,6 +50,13 @@
 @import "@fontsource/young-serif/400.css";
 @import "@fontsource-variable/onest";
 @import "@fontsource-variable/outfit";
+/* static cuts: Barlow has no variable build — only the weights `norm` uses */
+@import "@fontsource/barlow/400.css";
+@import "@fontsource/barlow/500.css";
+@import "@fontsource/barlow/600.css";
+@import "@fontsource/barlow/700.css";
+@import "@fontsource/barlow-semi-condensed/600.css";
+@import "@fontsource/barlow-semi-condensed/700.css";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -616,6 +623,14 @@
   hyphenate-limit-chars: 12 5 5;
   overflow-wrap: break-word;
   font-optical-sizing: auto;
+}
+
+/* From tablet width the h1 has room for its words: hyphenating there only
+   splits a compound at the line end („Arbeitshy-giene“). */
+@media (min-width: 48rem) {
+  .ms-root h1 {
+    hyphens: manual;
+  }
 }
 
 /* A pairing may condense its display face (font-stretch) and set the
