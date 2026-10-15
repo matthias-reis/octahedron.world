@@ -25,7 +25,7 @@ header:
   phone: 0 27 78 / 69 669-0
   cta: { text: Katalog, url: "#katalog" }
 footer:
-  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos, Produktbilder und Herstellerlogos von obgartelgmbh.de, Logo nachgezeichnet; der Katalog ist in dieser Vorschau nicht verlinkt. Obgartel GmbH & Co. KG · Kalkwerk 4 · 35756 Mittenaar-Bicken · AG Wetzlar HRA 7562 · persönlich haftende Gesellschafterin: Obgartel Verwaltungs GmbH, AG Wetzlar HRB 7259 · Geschäftsführer: Klaus Obgartel"
+  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Fotos, Produktbilder und Herstellerlogos von obgartelgmbh.de, Logo nachgezeichnet; Karte: Daten © OpenStreetMap-Mitwirkende (ODbL); der Katalog ist in dieser Vorschau nicht verlinkt. Obgartel GmbH & Co. KG · Kalkwerk 4 · 35756 Mittenaar-Bicken · AG Wetzlar HRA 7562 · persönlich haftende Gesellschafterin: Obgartel Verwaltungs GmbH, AG Wetzlar HRB 7259 · Geschäftsführer: Klaus Obgartel"
   meta: { icon: shield-check, text: Kein Tracking · keine Cookies }
   colors: { copy: main, background: main }
 legal:
@@ -45,9 +45,16 @@ layout: hero
 variant: inverted
 colors: { copy: main, background: main }
 kicker: { text: GROSSHANDEL · MITTENAAR-BICKEN, tone: copy }
+visual:
+  src: karte.webp
+  alt: Karte von Bicken und Offenbach an der B 255 mit dem Standort der Obgartel GmbH & Co. KG am Kalkwerk 4
+  url: https://www.google.com/maps/dir/?api=1&destination=Kalkwerk+4,+35756+Mittenaar
+  label: Route zur Obgartel GmbH & Co. KG planen
+  credit: { text: © OpenStreetMap-Mitwirkende, url: "https://www.openstreetmap.org/copyright" }
+  badge: { icon: route, title: Route planen, text: Kalkwerk 4 · an der B 255 }
 ```
 
-# Großhandel für Arbeitshygiene und Arbeitsschutz
+# Großhandel für Arbeitshygiene & Arbeitsschutz
 
 Ein mittelständisches Familienunternehmen mit Firmensitz, Lager vor Ort und
 Zentrallager in Mittenaar-Bicken – für Hygiene, Reinigung, Schutzausrüstung
