@@ -32,7 +32,7 @@ export async function GET({ request, params }: APIEvent) {
   const { seitenItem, authorize } = await import("~/sites/seiten/server");
   const item = await seitenItem(slug);
   if (!item) return notFound();
-  if (!authorize(request, item).ok) {
+  if (!(await authorize(request, item)).ok) {
     return new Response("Forbidden", { status: 403 });
   }
 

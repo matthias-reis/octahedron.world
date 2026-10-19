@@ -50,6 +50,8 @@
 @import "@fontsource/young-serif/400.css";
 @import "@fontsource-variable/onest";
 @import "@fontsource-variable/outfit";
+@import "@fontsource/marcellus/400.css";
+@import "@fontsource-variable/source-sans-3";
 /* static cuts: Barlow has no variable build — only the weights `norm` uses */
 @import "@fontsource/barlow/400.css";
 @import "@fontsource/barlow/500.css";
@@ -573,6 +575,22 @@
   --ms-icon: var(--ms-button-m2);
 }
 
+/* `theme.buttonShade: m3` — buttons on the desaturated mid shade instead of
+   m2, for a page whose buttons should sit back (wood, stone). Copy stays
+   bright in every variant; hover goes one step darker or brighter. */
+.ms-root.ms-button-shade-m3,
+.ms-root.ms-button-shade-m3 .ms-section {
+  --ms-button: var(--ms-button-m3);
+  --ms-button-hover: var(--ms-button-d3);
+  --ms-button-copy: var(--ms-button-b1);
+}
+
+.ms-root.ms-button-shade-m3 .ms-section.ms-inverted {
+  --ms-button: var(--ms-button-m3);
+  --ms-button-hover: var(--ms-button-m2);
+  --ms-button-copy: var(--ms-button-b1);
+}
+
 /* A mostly dark page reads better one step above the deepest shade:
    `depth: 1` sets inverted sections on d1 (near black), `depth: 2` on d2
    (desaturated dark). Page-wide via `theme.depth`, per section via `depth`. */
@@ -605,6 +623,13 @@
 /* Section anchors land below the sticky header. */
 .ms-root section[id] {
   scroll-margin-top: 4.5rem;
+}
+
+/* …which grows by the page switch row on phones and tablets. */
+@media (max-width: 63.99rem) {
+  .ms-root:has(.ms-switch-row) section[id] {
+    scroll-margin-top: 7.25rem;
+  }
 }
 
 /* Hero sections: bigger lead copy under the display headline. */

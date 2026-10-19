@@ -27,6 +27,13 @@ const tiles = {
     size: "160px 72px",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="72" viewBox="0 0 160 72"><g stroke="#000" stroke-width="2.5" fill="none" stroke-linecap="round"><path d="M0 18 Q20 8 40 18 T80 18 T120 18 T160 18"/><path d="M-40 54 Q-20 44 0 54 T40 54 T80 54 T120 54 T160 54 T200 54"/></g></svg>`,
   },
+  /** Wood grain: long drifting lines bending round a knot — for joiners. */
+  grain: {
+    // The lines start and end at the same height, so the 320 px tile
+    // repeats sideways; the knot sits in every other row by the y offset.
+    size: "320px 120px",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120"><g stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M0 14 C80 8 160 22 240 12 S300 10 320 14"/><path d="M0 34 C70 30 120 26 150 40 C176 52 210 30 260 32 S310 36 320 34"/><path d="M0 54 C60 54 110 46 140 58 C160 66 196 66 214 56 C240 44 290 52 320 54"/><path d="M0 76 C50 80 112 70 150 76 C190 82 250 88 320 76"/><path d="M0 98 C90 104 170 92 250 100 S300 102 320 98"/><ellipse cx="176" cy="54" rx="13" ry="6"/></g></svg>`,
+  },
 } as const;
 
 export type PatternName = keyof typeof tiles;

@@ -49,7 +49,7 @@ export const getRoute = query(async (slug: string) => {
     const { authorize } = await import("~/sites/seiten/server");
     const request = getRequestEvent()?.request;
     const access = request
-      ? authorize(request, item)
+      ? await authorize(request, item)
       : ({ ok: false, reason: "missing" } as const);
     if (!access.ok) {
       return {

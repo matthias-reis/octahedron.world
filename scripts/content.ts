@@ -104,6 +104,7 @@ async function readDocuments(): Promise<Document[]> {
         "cards",
         "catalog",
         "contact",
+        "doors",
         "emblem",
         "features",
         "gallery",
