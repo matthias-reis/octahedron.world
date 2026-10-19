@@ -76,7 +76,7 @@ export default createMiddleware({
     if (request.method === "GET" && slug && url.searchParams.has("k")) {
       const { seitenItem, authorize } = await import("./sites/seiten/server");
       const item = await seitenItem(slug);
-      const result = item ? authorize(request, item) : undefined;
+      const result = item ? await authorize(request, item) : undefined;
       if (
         result?.ok &&
         result.via === "code" &&
@@ -88,7 +88,13 @@ export default createMiddleware({
         );
         event.response.headers.append(
           "Set-Cookie",
-          access.cookieHeader(access.pageCookie(slug), result.code, maxAge),
+          // A child page opened with its parent's code keeps the parent's
+          // cookie, which opens the whole family.
+          access.cookieHeader(
+            access.pageCookie(result.slug ?? slug),
+            result.code,
+            maxAge,
+          ),
         );
       }
     }

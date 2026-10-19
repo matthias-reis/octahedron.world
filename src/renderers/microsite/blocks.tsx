@@ -5,6 +5,7 @@ import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
+import { colorClasses } from "./theme";
 import {
   ButtonLink,
   Card,
@@ -66,8 +67,35 @@ function tel(phone: string): string {
  *     text: …           # optional
  *     tags: [a, b]      # optional chips below the title
  *     link: { text: …, url: … }   # optional link at the bottom
+ *     image: foto.webp  # optional photo on top of the card (4:3, cropped)
+ *     alt: …            # required with image
  * ```
+ * With photos, a list of services stays visible at once — every item a
+ * card with its picture — instead of folding into a `reveal`.
  */
+/** The photo on top of a card, edge to edge over the card's padding. */
+const CardPhoto: Component<{ file?: string; alt: string }> = (photo) => {
+  const src = usePageAsset(() => photo.file);
+  const small = usePageAsset(() =>
+    photo.file ? smallVariant(photo.file) : undefined,
+  );
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <img
+          src={url()}
+          srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+          sizes="(min-width: 64rem) 24rem, (min-width: 40rem) 50vw, 100vw"
+          alt={photo.alt}
+          loading="lazy"
+          decoding="async"
+          class="-mx-slg -mt-slg mb-slg max-w-none aspect-[4/3] object-cover bg-tint"
+        />
+      )}
+    </Show>
+  );
+};
+
 const Cards: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items);
@@ -80,7 +108,8 @@ const Cards: Component<CustomBlockProps> = (props) => {
     >
       <For each={items()}>
         {(item) => (
-          <Card class="gap-0">
+          <Card class="gap-0 overflow-hidden">
+            <CardPhoto file={str(item.image)} alt={str(item.alt) ?? ""} />
             <Show when={icon(item.icon) || str(item.label)}>
               <div class="flex items-start justify-between gap-smd mb-slg">
                 <Show when={icon(item.icon)}>
@@ -240,11 +269,14 @@ const Features: Component<CustomBlockProps> = (props) => {
  * ```
  * A numbered list (01, 02, …) in two columns on wide screens — for a longer
  * list of services that deserves real text instead of card blurbs.
+ * `numbers: plain` counts 1., 2., 3. in large figures — for steps a
+ * reader follows in order (what to do in a bereavement).
  */
 const IndexList: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items);
   const icons = () => data()?.style === "icons";
+  const plain = () => data()?.numbers === "plain";
 
   const Thumb: Component<{ file?: string; alt: string }> = (thumb) => {
     const src = usePageAsset(() => thumb.file);
@@ -276,9 +308,11 @@ const IndexList: Component<CustomBlockProps> = (props) => {
               fallback={
                 <span
                   aria-hidden="true"
-                  class="font-ms-display text-4xl md:text-5xl font-extrabold leading-none text-button tabular-nums"
+                  class={`font-ms-display font-extrabold leading-none text-button tabular-nums ${plain() ? "text-6xl md:text-7xl" : "text-4xl md:text-5xl"}`}
                 >
-                  {String(index() + 1).padStart(2, "0")}
+                  {plain()
+                    ? `${index() + 1}.`
+                    : String(index() + 1).padStart(2, "0")}
                 </span>
               }
             >
@@ -804,6 +838,7 @@ const Gallery: Component<CustomBlockProps> = (props) => {
  *     alt: …               # required with image
  *     gallery:             # optional: the item's own photo mosaic below the text
  *       - { src: a.webp, alt: …, caption: … }
+ * photos: natural          # optional: photos at their own size (small originals), not cropped to 3:2
  * ```
  * Titles that open in place, one at a time. Without JavaScript it is a
  * native exclusive accordion (`<details name>`); with it, the chapter
@@ -814,6 +849,8 @@ const Gallery: Component<CustomBlockProps> = (props) => {
  */
 const Reveal: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
+  // Small originals (old websites) stay at their own size, never upscaled.
+  const natural = () => data()?.photos === "natural";
   const items = () => list(data()?.items).filter((item) => str(item.title));
   const group = createUniqueId();
   let root!: HTMLDivElement;
@@ -899,7 +936,11 @@ const Reveal: Component<CustomBlockProps> = (props) => {
             alt={photo.alt}
             loading="lazy"
             decoding="async"
-            class="w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
+            class={
+              natural()
+                ? "w-auto max-w-full h-auto rounded-ms"
+                : "w-full h-auto aspect-[3/2] rounded-ms bg-card object-cover"
+            }
           />
         )}
       </Show>
@@ -1123,6 +1164,156 @@ const Logos: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/**
+ * ```yaml doors
+ * items:
+ *   - kicker: { text: Tischlerei, icon: hammer }    # or a plain string
+ *     title: Sie planen etwas aus Holz              # h2 of the door
+ *     text: …                                       # one or two sentences
+ *     image: werkbank.webp                          # pnpm ms-image …
+ *     alt: …                                        # required with image
+ *     position: 50% 40%                             # optional object-position
+ *     caption: Symbolbild (KI-generiert)            # optional, on the photo
+ *     primary: { text: Zur Tischlerei, url: /…, icon: arrow-up-right }
+ *     secondary: { text: …, url: … }                # optional
+ *     note: { icon: clock, text: Mo–Do 7:30–17:00 } # optional small line
+ *     variant: inverted                             # optional: a dark door
+ *     colors: { copy: adjacent-right, background: adjacent-right }   # optional
+ * ```
+ * A start page that sends two (or three) audiences their own way: big
+ * doors side by side, each a photo, a headline in the visitor's own words
+ * and the one action that door is for. Every door is a section in
+ * miniature (`ms-section`), so a dark door follows the page's color groups
+ * like an inverted section. Two doors fill the row, three run in thirds.
+ */
+const Doors: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items);
+
+  const Door: Component<{ item: Record<string, unknown> }> = (door) => {
+    const file = () => str(door.item.image);
+    const src = usePageAsset(file);
+    const small = usePageAsset(() => {
+      const f = file();
+      return f ? smallVariant(f) : undefined;
+    });
+    const kicker = () => {
+      const k = door.item.kicker;
+      if (typeof k === "string") return { text: k, icon: undefined };
+      const v = (k ?? {}) as Record<string, unknown>;
+      return str(v.text)
+        ? { text: str(v.text), icon: icon(v.icon) }
+        : undefined;
+    };
+    const note = () => {
+      const n = door.item.note;
+      if (typeof n === "string") return { text: n, icon: undefined };
+      const v = (n ?? {}) as Record<string, unknown>;
+      return str(v.text)
+        ? { text: str(v.text), icon: icon(v.icon) }
+        : undefined;
+    };
+    const primary = () => link(door.item.primary);
+    const secondary = () => link(door.item.secondary);
+    const dark = () => door.item.variant === "inverted";
+
+    return (
+      <article
+        class={[
+          "ms-section flex flex-col rounded-[calc(var(--ms-radius)*2)] overflow-hidden border border-line",
+          dark() ? "ms-inverted" : "ms-surface",
+          ...colorClasses(door.item.colors),
+        ].join(" ")}
+      >
+        <Show when={src()}>
+          {(url) => (
+            <div class="relative aspect-[16/9] lg:aspect-auto lg:min-h-[14rem] lg:flex-1">
+              <img
+                src={url()}
+                srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+                sizes="(min-width: 64rem) 36rem, 100vw"
+                alt={str(door.item.alt) ?? ""}
+                loading="eager"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  "object-position": str(door.item.position) ?? "50% 50%",
+                }}
+              />
+              <Show when={str(door.item.caption)}>
+                {(c) => (
+                  <span class="absolute right-ssm bottom-ssm rounded-[calc(var(--ms-radius)*0.5)] bg-page/85 px-ssm py-[0.15rem] text-[0.7rem] text-copy-soft">
+                    {c()}
+                  </span>
+                )}
+              </Show>
+            </div>
+          )}
+        </Show>
+        <div class="flex flex-col gap-ssm p-slg md:p-sxl">
+          <Show when={kicker()}>
+            {(k) => (
+              <p class="flex items-center gap-ssm text-sm font-semibold uppercase tracking-[0.14em] text-copy-soft">
+                <Show when={k().icon}>
+                  {(name) => (
+                    <Icon
+                      name={name()}
+                      class="w-[1.1rem] h-[1.1rem] text-icon"
+                    />
+                  )}
+                </Show>
+                {k().text}
+              </p>
+            )}
+          </Show>
+          <h2 class="font-ms-display text-[clamp(1.9rem,3.2vw,2.75rem)] leading-[1.08] tracking-tight text-copy-strong">
+            {str(door.item.title)}
+          </h2>
+          <Show when={str(door.item.text)}>
+            {(text) => (
+              <p class="text-lg leading-relaxed text-copy max-w-xl">{text()}</p>
+            )}
+          </Show>
+          <div class="flex flex-col sm:flex-row flex-wrap gap-ssm mt-ssm">
+            <Show when={primary()}>
+              {(l) => (
+                <ButtonLink href={l().url} icon={l().icon}>
+                  {l().text}
+                </ButtonLink>
+              )}
+            </Show>
+            <Show when={secondary()}>
+              {(l) => (
+                <ButtonLink href={l().url} variant="secondary" icon={l().icon}>
+                  {l().text}
+                </ButtonLink>
+              )}
+            </Show>
+          </div>
+          <Show when={note()}>
+            {(n) => (
+              <p class="mt-ssm flex items-center gap-ssm text-sm text-copy-soft">
+                <Show when={n().icon}>
+                  {(name) => <Icon name={name()} class="w-[1rem] h-[1rem]" />}
+                </Show>
+                {n().text}
+              </p>
+            )}
+          </Show>
+        </div>
+      </article>
+    );
+  };
+
+  return (
+    <div
+      class={`ms-block grid gap-smd mt-slg items-stretch ${items().length > 2 ? "lg:grid-cols-3" : "md:grid-cols-2"}`}
+    >
+      <For each={items()}>{(item) => <Door item={item} />}</For>
+    </div>
+  );
+};
+
 /** Prose + blocks for a microsite section body. */
 export const micrositeComponents: ComponentMap = {
   h1: (props: any) => (
@@ -1160,6 +1351,7 @@ export const micrositeComponents: ComponentMap = {
   catalog: Catalog,
   cta: Cta,
   contact: Contact,
+  doors: Doors,
   features: Features,
   rating: Rating,
   callout: Callout,

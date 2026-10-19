@@ -19,6 +19,7 @@ import {
 import { HeroVisual, type HeroVisualData } from "./hero-visual";
 import { patternMask } from "./patterns";
 import {
+  buttonShadeClass,
   type ColorAssignment,
   colorClasses,
   depthClass,
@@ -49,6 +50,12 @@ type MicrositeGlobal = {
   footer?: FooterOptions;
   /** Fixed action bar on phones: `[{ icon, text, url }]`, first = primary. */
   quickbar?: QuickLink[];
+  /**
+   * Slug of the start page this page belongs to (connected pages of one
+   * business): a client code for the parent opens this page too, see
+   * `authorize()` in src/sites/seiten/server.ts.
+   */
+  parent?: string;
 };
 
 type MicrositeLocal = {
@@ -71,6 +78,8 @@ type MicrositeLocal = {
   align?: string;
   /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
   depth?: number;
+  /** `stacked`: the h2 runs one word per line, larger — a headline that stands out. */
+  headline?: string;
 };
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
@@ -108,6 +117,7 @@ export default function MicrositeRenderer(props: {
     logo: global?.brand?.logo,
     logoHeight: global?.brand?.logoHeight,
     sub: global?.brand?.sub,
+    href: global?.brand?.href,
   };
   const slug = global?.publishedAs ?? global?.slug ?? "";
   const ogTitle = global?.og?.title ?? global?.title ?? brand.name;
@@ -127,6 +137,7 @@ export default function MicrositeRenderer(props: {
       class={[
         "ms-root min-h-screen",
         depthClass(global?.theme?.depth),
+        buttonShadeClass(global?.theme?.buttonShade),
         ...colorClasses(global?.theme?.colors),
       ]
         .filter(Boolean)
@@ -200,6 +211,9 @@ export default function MicrositeRenderer(props: {
                 }
                 colors={colorClasses(section.local.colors)}
                 depth={depthClass(section.local.depth)}
+                headline={
+                  section.local.headline === "stacked" ? "stacked" : undefined
+                }
                 pattern={patternMask(section.local.pattern)}
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"

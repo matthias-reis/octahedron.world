@@ -1,29 +1,38 @@
 import {
   AlarmSmoke,
+  Armchair,
   ArrowDownRight,
   ArrowUpRight,
   BadgeCheck,
   Bath,
+  BedDouble,
   BellRing,
   BookOpen,
   Boxes,
   Briefcase,
+  Brush,
   Building,
   Cable,
   CakeSlice,
   Calculator,
   CalendarCheck,
+  ChefHat,
+  Church,
   ClipboardCheck,
   Clock,
   Coffee,
   Compass,
   Cpu,
   Croissant,
+  DoorOpen,
   Droplets,
   EvCharger,
+  FileText,
   Flame,
+  Flower2,
   GraduationCap,
   Hammer,
+  HandHeart,
   Heart,
   Heater,
   House,
@@ -39,6 +48,7 @@ import {
   Play,
   Printer,
   Route,
+  Ruler,
   SatelliteDish,
   Scissors,
   Shield,
@@ -74,6 +84,16 @@ import { cx } from "~/ui/cx";
  */
 const icons = {
   "alarm-smoke": AlarmSmoke,
+  armchair: Armchair,
+  "bed-double": BedDouble,
+  brush: Brush,
+  "chef-hat": ChefHat,
+  church: Church,
+  "door-open": DoorOpen,
+  "file-text": FileText,
+  flower: Flower2,
+  "hand-heart": HandHeart,
+  ruler: Ruler,
   "arrow-down-right": ArrowDownRight,
   "arrow-up-right": ArrowUpRight,
   "badge-check": BadgeCheck,
@@ -289,6 +309,8 @@ export const Section: ParentComponent<{
   pattern?: JSX.CSSProperties;
   /** `center`: everything on the vertical axis (no visual, no backdrop). */
   align?: "center";
+  /** `stacked`: the section's h2 one word per line, larger. */
+  headline?: "stacked";
 }> = (props) => {
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
@@ -312,6 +334,7 @@ export const Section: ParentComponent<{
         props.variant !== "plain" && `ms-${props.variant}`,
         props.colors,
         props.depth,
+        props.headline === "stacked" && "ms-headline-stacked",
         props.layout === "hero"
           ? "py-s2xl md:py-s3xl"
           : props.layout === "band"

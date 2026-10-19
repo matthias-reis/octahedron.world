@@ -124,6 +124,15 @@ export const fontPairings = {
     headingWeight: 400,
     displayTracking: "-0.01em",
   },
+  /** Lapidary and calm: a flared-serif capital face over a quiet humanist sans. */
+  lapidar: {
+    display: "Marcellus, Georgia, serif",
+    body: '"Source Sans 3 Variable", system-ui, sans-serif',
+    /** Marcellus has one weight: never let the browser fake bold. */
+    h1Weight: 400,
+    headingWeight: 400,
+    displayTracking: "0.005em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -172,7 +181,14 @@ export type MicrositeTheme = {
   signal?: string;
   /** Inverted sections on d1 (1, near black) or d2 (2) instead of d3. */
   depth?: number;
+  /** Button background shade: `m3` (desaturated mid) instead of the default m2. */
+  buttonShade?: "m3";
 };
+
+/** `ms-button-shade-m3` for `buttonShade: m3`, else nothing. */
+export function buttonShadeClass(shade: unknown): string | undefined {
+  return shade === "m3" ? "ms-button-shade-m3" : undefined;
+}
 
 /** `ms-depth-<n>` for a valid depth, else nothing. */
 export function depthClass(depth: unknown): string | undefined {

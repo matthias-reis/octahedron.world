@@ -18,6 +18,8 @@ type SeitenMeta = ItemMeta & {
   public?: boolean;
   /** Bump to invalidate every client code issued for this page. */
   access?: number;
+  /** Start page of connected pages: its client codes open this page too. */
+  parent?: string;
 };
 
 let cache: Record<string, ItemMeta> | null = null;
@@ -58,6 +60,8 @@ export type Access =
   | {
       ok: true;
       via: "public" | "admin" | "cookie" | "code";
+      /** The page the code or cookie belongs to (the parent, for a child). */
+      slug?: string;
       /** The code from the URL — carried into asset URLs for crawlers. */
       code?: string;
       expires?: Date;
@@ -67,9 +71,23 @@ export type Access =
 /**
  * May this request see `item`? Public pages and admins always; otherwise a
  * valid code from `?k=` (links, the code form, link-preview crawlers) or
- * from the page cookie the middleware sets after a valid `?k=`.
+ * from the page cookie the middleware sets after a valid `?k=`. A page with
+ * a `parent` (connected pages of one business) also opens with the parent's
+ * code or cookie, so one client link covers the whole family.
  */
-export function authorize(request: Request, item: SeitenMeta): Access {
+export async function authorize(
+  request: Request,
+  item: SeitenMeta,
+): Promise<Access> {
+  const own = authorizePage(request, item);
+  if (own.ok || typeof item.parent !== "string") return own;
+  const parent = await seitenItem(item.parent);
+  if (!parent || parent.slug === item.slug) return own;
+  const viaParent = authorizePage(request, parent);
+  return viaParent.ok ? viaParent : own;
+}
+
+function authorizePage(request: Request, item: SeitenMeta): Access {
   if (item.public) return { ok: true, via: "public" };
   if (isAdmin(request)) return { ok: true, via: "admin" };
 
@@ -78,7 +96,13 @@ export function authorize(request: Request, item: SeitenMeta): Access {
   if (fromUrl) {
     const check = checkPageCode(fromUrl, item.slug, version);
     return check.ok
-      ? { ok: true, via: "code", code: fromUrl, expires: check.expires }
+      ? {
+          ok: true,
+          via: "code",
+          slug: item.slug,
+          code: fromUrl,
+          expires: check.expires,
+        }
       : { ok: false, reason: check.reason };
   }
 
@@ -88,7 +112,7 @@ export function authorize(request: Request, item: SeitenMeta): Access {
   if (fromCookie) {
     const check = checkPageCode(fromCookie, item.slug, version);
     return check.ok
-      ? { ok: true, via: "cookie", expires: check.expires }
+      ? { ok: true, via: "cookie", slug: item.slug, expires: check.expires }
       : { ok: false, reason: check.reason };
   }
   return { ok: false, reason: "missing" };

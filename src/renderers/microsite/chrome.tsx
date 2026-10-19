@@ -16,15 +16,36 @@ export type Brand = {
   logo?: string;
   /** Max height of the logo in rem (default 2.4, 2.9 from md) — for a tall mark. */
   logoHeight?: number;
+  /**
+   * Where the wordmark leads, e.g. `/013-kahn` — the start page of a family
+   * of connected pages. Default: the overview of all microsites.
+   */
+  href?: string;
 };
 
 export type NavItem = { id: string; label: string };
+
+/** One page of a family of connected pages, see `HeaderActions.switch`. */
+export type SwitchItem = { text: string; url: string; current?: boolean };
 
 /** `header:` in the global scope — optional actions on the right. */
 export type HeaderActions = {
   /** Shown as a phone button; icon-only on phones. */
   phone?: string;
   cta?: { text: string; url: string };
+  /**
+   * Connected pages of one business (e.g. a joinery and a funeral home):
+   * a segmented switch next to the logo, a full-width row under the header
+   * below `lg`. `current` marks the page it sits on.
+   *
+   * ```yaml
+   * header:
+   *   switch:
+   *     - { text: Tischlerei, url: /013-kahn-tischlerei, current: true }
+   *     - { text: Bestattungen, url: /013-kahn-bestattungen }
+   * ```
+   */
+  switch?: SwitchItem[];
 };
 
 export type QuickLink = { icon: IconName; text: string; url: string };
@@ -42,8 +63,8 @@ const Logo: Component<{ brand: Brand }> = (props) => {
     // Demo navigation: every wordmark leads back to the overview of all
     // microsites (the seiten homepage; for clients it only offers a login).
     <a
-      href="/"
-      title="Alle Seiten"
+      href={props.brand.href ?? "/"}
+      title={props.brand.href ? "Startseite" : "Alle Seiten"}
       // Never the item that gives way: a header that overflows (too many nav
       // labels) must not collapse the logo to nothing.
       class="flex flex-col shrink-0 font-ms-display text-copy-strong"
@@ -103,6 +124,28 @@ const NavLinks: Component<{ nav: NavItem[]; class: string }> = (props) => (
   </ul>
 );
 
+/** Segmented links between the pages of one business. */
+const PageSwitch: Component<{ items: SwitchItem[]; class?: string }> = (
+  props,
+) => (
+  <nav
+    aria-label="Bereiche des Betriebs"
+    class={`grid auto-cols-fr grid-flow-col gap-[0.2rem] p-[0.2rem] rounded-[calc(var(--ms-radius)*1.2)] bg-tint ${props.class ?? ""}`}
+  >
+    <For each={props.items}>
+      {(item) => (
+        <a
+          href={item.url}
+          aria-current={item.current ? "page" : undefined}
+          class={`flex items-center justify-center px-smd h-[2.25rem] rounded-ms text-sm font-semibold whitespace-nowrap transition-colors ${item.current ? "bg-page text-copy-strong shadow-sm" : "text-copy hover:text-copy-strong"}`}
+        >
+          {item.text}
+        </a>
+      )}
+    </For>
+  </nav>
+);
+
 /**
  * Sticky header: logo left, section anchors right. Below `lg` the anchors
  * fold into a <details> menu — works before hydration, no state to manage.
@@ -115,6 +158,12 @@ export const SiteHeader: Component<{
   <header class="sticky top-0 z-20 bg-page/90 backdrop-blur border-b border-line">
     <Container class="flex items-center gap-slg h-[4rem] md:h-[4.75rem]">
       <Logo brand={props.brand} />
+      <Show when={props.actions?.switch?.length}>
+        <PageSwitch
+          items={props.actions?.switch ?? []}
+          class="hidden lg:grid"
+        />
+      </Show>
       <nav aria-label="Bereiche" class="hidden lg:flex flex-1 justify-center">
         <NavLinks
           nav={props.nav}
@@ -162,7 +211,7 @@ export const SiteHeader: Component<{
           </summary>
           <nav
             aria-label="Bereiche"
-            class="absolute left-0 right-0 top-[4rem] md:top-[4.75rem] bg-page border-b border-line"
+            class="absolute left-0 right-0 top-full bg-page border-b border-line"
           >
             <Container>
               <NavLinks
@@ -184,6 +233,11 @@ export const SiteHeader: Component<{
         </details>
       </div>
     </Container>
+    <Show when={props.actions?.switch?.length}>
+      <Container class="ms-switch-row lg:hidden pb-ssm">
+        <PageSwitch items={props.actions?.switch ?? []} />
+      </Container>
+    </Show>
   </header>
 );
 

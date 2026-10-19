@@ -71,6 +71,9 @@ importers:
       '@fontsource-variable/sora':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource-variable/source-sans-3':
+        specifier: ^5.3.1
+        version: 5.3.1
       '@fontsource-variable/source-serif-4':
         specifier: ^5.3.0
         version: 5.3.0
@@ -93,6 +96,9 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/instrument-serif':
+        specifier: ^5.3.0
+        version: 5.3.0
+      '@fontsource/marcellus':
         specifier: ^5.3.0
         version: 5.3.0
       '@fontsource/saira-extra-condensed':
@@ -922,6 +928,9 @@ packages:
   '@fontsource-variable/sora@5.3.0':
     resolution: {integrity: sha512-h8kHta4Z8SkfUGeI82TUy1n3rbrKpBRGwuk4t4qCwto5oEHxlbOFD2yGP+Df5fbmTXwKGn+o667vYp0E4K8Whw==}
 
+  '@fontsource-variable/source-sans-3@5.3.1':
+    resolution: {integrity: sha512-u0p5Z/PM2e1uxYOMiodLM6NVzxHwULcB6Oi7QSr2WU/sdoLBFP/BeOZ3YYHeJ6rHsjPZA1nZweZVaV7sf2MAyQ==}
+
   '@fontsource-variable/source-serif-4@5.3.0':
     resolution: {integrity: sha512-9vch9WqxjaaA+1o9Ur8pOgIGbCYLjRReOUel23A6lOpD1syptgjtkORevvNmldJ5kGXQL29onQUqI5Ltz0s3bQ==}
 
@@ -945,6 +954,9 @@ packages:
 
   '@fontsource/instrument-serif@5.3.0':
     resolution: {integrity: sha512-mDiaIg0u67sYV59fie92Wz4sM8UiVlbL7fLxnFPCKkX15DMASEnQTREbaP5S5/3DCcsoAOcQ0sV9E4AeY4QqYQ==}
+
+  '@fontsource/marcellus@5.3.0':
+    resolution: {integrity: sha512-cMnanjpiPIC7Rq4GXIA/Zal5WLSoDV5Mc681tMkWsWfKHXnRnLGlhuGeBnLF6HrqtFkiSdiuy4NCSPfOrz266w==}
 
   '@fontsource/saira-extra-condensed@5.3.0':
     resolution: {integrity: sha512-oBbHvzZAebVOvXRgDxwWSl3IQbPIJNAP0XxIJOs2DUk1byMMXEhEoz0cD+vUKb+TzSWS4t4xe5ZGh5QhTZ17Rw==}
@@ -4687,6 +4699,8 @@ snapshots:
 
   '@fontsource-variable/sora@5.3.0': {}
 
+  '@fontsource-variable/source-sans-3@5.3.1': {}
+
   '@fontsource-variable/source-serif-4@5.3.0': {}
 
   '@fontsource-variable/space-grotesk@5.3.0': {}
@@ -4702,6 +4716,8 @@ snapshots:
   '@fontsource/dm-serif-display@5.3.0': {}
 
   '@fontsource/instrument-serif@5.3.0': {}
+
+  '@fontsource/marcellus@5.3.0': {}
 
   '@fontsource/saira-extra-condensed@5.3.0': {}
 

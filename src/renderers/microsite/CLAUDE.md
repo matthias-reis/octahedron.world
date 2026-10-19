@@ -80,20 +80,23 @@ sharing card must be perfect. `pnpm content` enforces the checkable parts
 
 Each is documented (YAML shape) in a comment above its component.
 
-- **Global scope:** `brand` (`name`, `mark`, `sub`, `tagline`, `logo`),
-  `theme`, `header` (`phone`, `cta`), `notice` (strip above the header),
+- **Global scope:** `brand` (`name`, `mark`, `sub`, `tagline`, `logo`,
+  `href` — where the wordmark leads, default the overview),
+  `theme`, `header` (`phone`, `cta`, `switch` — segmented links between
+  connected pages, see below), `notice` (strip above the header),
   `footer` (`note`, `meta`, `variant`, `colors` — a group override for the
   dark chrome: footer, notice bar and quick bar, e.g. to match the
   highlighted section), `quickbar` (fixed call/mail/route bar on phones),
-  `legal`, `og`, `noindex`.
+  `legal`, `og`, `noindex`, `parent` (see "Connected pages").
 - **Section local scope:** `nav`, `variant`, `colors`, `kicker` (string, or
   `{ text, icon }` for a pill; `tone: copy` sets it in the text color instead
   of the button color), `pattern` (a subtle repeating motif behind the
-  section in its text color — `patterns.ts`, e.g. `roof`, `wave`), `backdrop` (full-bleed background image, the
+  section in its text color — `patterns.ts`, e.g. `roof`, `wave`, `grain`), `backdrop` (full-bleed background image, the
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
-  subject below — `backdrop.tsx`), `align: center` (everything on the vertical
+  subject below — `backdrop.tsx`), `headline: stacked` (the h2 one word per
+  line, a size up — a headline that stands out), `align: center` (everything on the vertical
   axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs
@@ -101,16 +104,22 @@ Each is documented (YAML shape) in a comment above its component.
   - `split` — kicker + h2 left, the first paragraph right, the rest below
   - `side` — text left, the last block right (lists, contact card)
   - `band` — compact strip without a headline (trust bar)
-- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`),
+- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`,
+  `image` — a photo on top, so a service list stays visible at once),
   `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
-  with real text — only for things that have an order; `style: icons` for
+  with real text — only for things that have an order; `numbers: plain`
+  counts 1., 2., 3. in large figures for steps; `style: icons` for
   the rest), `reveal` (titles that open in place one at a time — the native
   `<details name>` accordion, animated; each item is a whole chapter with
   text, icon, a photo or its own `gallery` mosaic, so a service list needs
-  no sections of its own and no numbers), `stats` (two or three big real
+  no sections of its own and no numbers; `photos: natural` shows small
+  originals at their own size instead of cropping them to 3:2), `stats` (two or three big real
   figures), `video` (YouTube, two-click: nothing loads from YouTube before
   the click; the poster is a local file), `cta` (buttons with icons),
   `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
+  `doors` (a start page that sends two or three audiences their own way:
+  big doors side by side, each a photo, an h2 in the visitor's words and
+  its one action; a door can be `variant: inverted` with its own `colors`),
   `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
   `gallery` (asymmetric photo mosaic, first image large, optional captions on
   the photos — 3 or 6 items), `emblem` (a logo or seal shown big and
@@ -123,11 +132,26 @@ Each is documented (YAML shape) in a comment above its component.
   `002-elektro-schuster`) always get
   `noindex: true` and a `notice` saying the page is not official.
 
+## Connected pages
+
+A business with two trades for different customers (a joinery and a funeral
+home, 013-kahn) gets a start page plus one page per trade instead of one
+crowded one-pager:
+
+- Slugs `NNN-<name>` (start, with a `doors` hero), `NNN-<name>-<trade>`.
+- Every child sets `parent: NNN-<name>`: a client code for the start page
+  opens the children too, so one link covers the family.
+- All of them set `brand.href: /NNN-<name>` and the same `header.switch`
+  (with `current: true` on the page itself). Same `theme`; tell the pages
+  apart by images, logo variant, patterns and rhythm.
+
 ## Access
 
 Every page is private by default (`src/sites/seiten/`, stateless, no
 database):
 
+- **Connected pages:** a page with `parent` also opens with the parent's
+  code or cookie (`authorize()` in `src/sites/seiten/server.ts`).
 - **Admins** log in at `/login` (`SEITEN_ADMIN_PASSWORD`) and see every page
   plus the overview with a link generator.
 - **Clients** get a link `seiten.mreis.me/<slug>?k=<code>`: an HMAC-signed
@@ -246,6 +270,9 @@ The `palette` block previews all of them live.
   colors: { background: accent-right }                  # section (yaml @)
   ```
   Both become `.ms-<group>-<palette>` classes that re-point the group.
+- `theme.buttonShade: m3` sets buttons on the desaturated mid shade
+  instead of m2 (bright copy in every variant), for pages whose buttons
+  should sit back.
 - Section `variant`s: `plain` (page b1), `surface` (b2), `tint` (b3),
   `inverted` (the highlighted section: d3 background, bright copy).
   `depth: 1 | 2` (section, or page-wide as `theme.depth`) sets inverted
