@@ -78,6 +78,7 @@ leiten die Pflegekräfte die ersten Schritte ein. Stirbt ein Mensch zu Hause,
 helfen diese drei Schritte:
 
 ```yaml index
+numbers: plain
 items:
   - title: Den Arzt rufen
     text: Benachrichtigen Sie umgehend den Hausarzt. Sie können auch den Notruf unter 112 wählen.

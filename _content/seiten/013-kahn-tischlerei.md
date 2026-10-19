@@ -79,37 +79,30 @@ kicker: Was wir bauen
 Einzelstücke nach Ihren Wünschen, komplette Einrichtungen oder Handelsware
 namhafter Hersteller – vom Keller bis zum Dach.
 
-```yaml reveal
-photos: natural
+```yaml cards
 items:
   - title: Möbel und Innenausbau
-    icon: armchair
-    text: Für Ihre Ansprüche planen, fertigen und montieren wir nach Maß – im Privat- wie im Arbeitsbereich. Wohnräume, Büro- und Geschäftsräume, Arztpraxen. Die Beratung ist persönlich und unverbindlich, auf Wunsch vor Ort bei Ihnen.
+    text: Für Ihre Ansprüche planen, fertigen und montieren wir nach Maß – Wohnräume, Büro- und Geschäftsräume, Arztpraxen. Beratung auf Wunsch vor Ort bei Ihnen.
     image: regalwand.webp
     alt: Raumhohe Regalwand aus Holz mit offenen Fächern und Schubkästen
   - title: Treppen aus Massivholz
-    icon: ruler
-    text: Treppen sind die Verbindung zwischen Ihren Wohnebenen. Wir liefern ausführliche Planungsunterlagen und beraten Sie zu Treppenstil, Handlauf, Holzart, Stabmuster und Beizton – und sind auch nach der Fertigstellung für Sie da.
+    text: Ausführliche Planungsunterlagen, Treppenstil, Handlauf, Holzart, Stabmuster und Beizton nach Ihrer Wahl – und Service auch nach der Fertigstellung.
     image: treppe.webp
     alt: Gewendelte Holztreppe mit Holzgeländer in einem hellen Flur mit Fliesenboden
   - title: Küchen
-    icon: chef-hat
-    text: Neue Küche oder Modernisierung, neue Geräte oder einzelne Bausteine – zugeschnitten auf Ihre Arbeitsabläufe. Individuell in unserer Werkstatt gefertigt oder als Markenküche von BAX, Nolte, Kornmüller und Beckermann.
+    text: Neue Küche oder Modernisierung, zugeschnitten auf Ihre Arbeitsabläufe. Aus unserer Werkstatt oder als Markenküche von BAX, Nolte, Kornmüller und Beckermann.
     image: kueche.webp
     alt: Wohnküche mit Holzfronten, Kochinsel und Hochschränken
   - title: Fenster und Türen
-    icon: door-open
-    text: Türen in Holz mit umweltfreundlicher Grund- und Oberflächenbehandlung. Fenster mit schlanken Profilen, schmalen echten Sprossen und Energiesparglas – rund, oval, viereckig oder schräg.
+    text: Holztüren mit umweltfreundlicher Oberfläche. Fenster mit schlanken Profilen, echten Sprossen und Energiesparglas – rund, oval, viereckig oder schräg.
     image: haustuer-klinker.webp
     alt: Rote Klinkerfassade mit grüner zweiflügeliger Haustür und Sprossenfenstern
   - title: Betten und Matratzen
-    icon: bed-double
-    text: Massivholzbetten, die ohne Chemie und Metall auskommen, Matratzen und Schlafsysteme namhafter Hersteller – oder ein Bett ganz nach Ihren Vorstellungen. Kommen Sie zur Beratung in die Werkstatt.
+    text: Massivholzbetten ohne Chemie und Metall, Matratzen und Schlafsysteme namhafter Hersteller – oder ein Bett ganz nach Ihren Vorstellungen.
     image: bett.webp
     alt: Massivholzbett mit dunklem Rahmen in einem Schlafzimmer
   - title: Restaurierung alter Möbel
-    icon: brush
-    text: Fachgerecht restaurieren heißt, das Original so weit wie möglich zu erhalten – Form, Design und die natürlich gealterte Oberfläche. Selbst aufgegebene Möbelstücke lassen sich oft noch retten.
+    text: Wir erhalten das Original so weit wie möglich – Form, Design und die gealterte Oberfläche. Selbst aufgegebene Stücke lassen sich oft noch retten.
     image: intarsie.webp
     alt: Restaurierte Tischplatte mit Intarsien aus verschiedenen Hölzern
 ```
@@ -146,6 +139,7 @@ items:
 nav: Werkstatt
 variant: surface
 layout: side
+headline: stacked
 kicker: Über uns
 ```
 
@@ -162,7 +156,7 @@ moderner Fertigung.
 ```yaml stats
 items:
   - { value: "1910", text: gegründet von Willi Kahn }
-  - { value: "3", text: Generationen an St. Sixti }
+  - { value: "3", text: Generationen an der St. Sixti Kirche }
 ```
 
 +++kontakt
