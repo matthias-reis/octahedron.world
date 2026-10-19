@@ -8,7 +8,7 @@ language: de
 noindex: true
 description: Tischlerei Kahn in Northeim seit 1910 – Möbel und Innenausbau nach Maß, Massivholztreppen, Küchen, Fenster und Türen, Betten und Restaurierung alter Möbel.
 og:
-  title: Tischlerei Kahn – seit 1910 an St. Sixti in Northeim
+  title: Tischlerei Kahn in Northeim – seit 1910 an der St. Sixti Kirche
   image: og.jpg
 notice:
   text: Persönliche Konzeptvorschau · keine offizielle Website der Tischlerei Kahn
@@ -47,7 +47,7 @@ quickbar:
 ```yaml @
 layout: hero
 pattern: grain
-kicker: { text: Werkstatt an St. Sixti · seit 1910, icon: hammer, tone: copy }
+kicker: { text: Werkstatt an der St. Sixti Kirche · seit 1910, icon: hammer, tone: copy }
 visual:
   src: werkstatt.webp
   alt: Kleine Tischlerwerkstatt mit gestapelten Eichen- und Nussbaumbohlen und einer Hobelbank im Tageslicht

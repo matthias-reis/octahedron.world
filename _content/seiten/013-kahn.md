@@ -5,7 +5,7 @@ publishedAs: 013-kahn
 title: Kahn – Tischlerei und Bestattungsinstitut in Northeim
 language: de
 noindex: true
-description: Tischlerei und Bestattungsinstitut Kahn in Northeim, seit 1910 an St. Sixti – Möbel, Treppen und Küchen nach Maß und würdevolle Bestattungen, rund um die Uhr erreichbar.
+description: Tischlerei und Bestattungsinstitut Kahn in Northeim, seit 1910 an der St. Sixti Kirche – Möbel, Treppen und Küchen nach Maß, Bestattungen Tag und Nacht.
 og:
   title: Kahn in Northeim – Tischlerei und Bestattungen seit 1910
   image: og.jpg
@@ -29,7 +29,7 @@ header:
     - { text: Tischlerei, url: /013-kahn-tischlerei }
     - { text: Bestattungen, url: /013-kahn-bestattungen }
 footer:
-  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nachgezeichnet; Symbolbilder KI-generiert; Fotos St. Sixti: Anaconda74 (CC0) und Postkarte Brück & Sohn Kunstverlag, 1907 (CC0), über Wikimedia Commons. Tischlerei und Bestattungsinstitut Kahn · Inhaber Felix Kahn · Kirchstraße 4 · 37154 Northeim · USt-IdNr. DE 811750429"
+  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nachgezeichnet; Symbolbilder KI-generiert; Fotos der St. Sixti Kirche: Anaconda74 (CC0) und Postkarte Brück & Sohn Kunstverlag, 1907 (CC0), über Wikimedia Commons. Tischlerei und Bestattungsinstitut Kahn · Inhaber Felix Kahn · Kirchstraße 4 · 37154 Northeim · USt-IdNr. DE 811750429"
   meta: { icon: shield-check, text: Kein Tracking · keine Cookies }
   colors: { copy: adjacent-right, background: adjacent-right }
 legal:
@@ -48,7 +48,7 @@ layout: hero
 kicker: { text: Kirchstraße 4 · Northeim · seit 1910, icon: church, tone: copy }
 ```
 
-# Zwei Handwerke, ein Haus an St. Sixti
+# Zwei Handwerke, ein Haus an der St. Sixti Kirche
 
 Seit drei Generationen baut die Familie Kahn Möbel, Treppen und Küchen – und
 begleitet Familien, wenn ein Mensch gestorben ist. Wobei dürfen wir Ihnen
@@ -113,7 +113,7 @@ items:
 src: postkarte-1907.webp
 alt: Historische Postkarte „Northeim i. Hann. – St. Sixti-Kirche“ mit Blick über Gärten auf die Kirche
 ratio: 1528/1000
-caption: St. Sixti auf einer Postkarte von 1907, drei Jahre vor der Gründung der Tischlerei (Brück & Sohn Kunstverlag, gemeinfrei)
+caption: Die St. Sixti Kirche auf einer Postkarte von 1907, drei Jahre vor der Gründung der Tischlerei (Brück & Sohn Kunstverlag, gemeinfrei)
 ```
 
 +++kontakt
@@ -126,7 +126,7 @@ backdrop:
   align: right
 ```
 
-## Kirchstraße 4, an St. Sixti
+## Kirchstraße 4, an der St. Sixti Kirche
 
 Für die Tischlerei und das Bestattungsinstitut gilt dieselbe Nummer. Im
 Trauerfall erreichen Sie uns rund um die Uhr.
