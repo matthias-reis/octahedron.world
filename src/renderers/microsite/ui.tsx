@@ -309,6 +309,8 @@ export const Section: ParentComponent<{
   pattern?: JSX.CSSProperties;
   /** `center`: everything on the vertical axis (no visual, no backdrop). */
   align?: "center";
+  /** `stacked`: the section's h2 one word per line, larger. */
+  headline?: "stacked";
 }> = (props) => {
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
@@ -332,6 +334,7 @@ export const Section: ParentComponent<{
         props.variant !== "plain" && `ms-${props.variant}`,
         props.colors,
         props.depth,
+        props.headline === "stacked" && "ms-headline-stacked",
         props.layout === "hero"
           ? "py-s2xl md:py-s3xl"
           : props.layout === "band"

@@ -122,6 +122,7 @@ export function validateMicrosite(
           "catalog",
           "logos",
           "doors",
+          "cards",
         ].includes(node.tagName)
       ) {
         const data = blockData(node);
@@ -137,7 +138,7 @@ export function validateMicrosite(
                     ? (item.images as Record<string, unknown>[])
                     : [],
                 )
-              : node.tagName === "doors"
+              : node.tagName === "doors" || node.tagName === "cards"
                 ? items.flatMap((item) =>
                     item.image ? [{ src: item.image, alt: item.alt }] : [],
                   )

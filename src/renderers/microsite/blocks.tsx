@@ -67,8 +67,35 @@ function tel(phone: string): string {
  *     text: …           # optional
  *     tags: [a, b]      # optional chips below the title
  *     link: { text: …, url: … }   # optional link at the bottom
+ *     image: foto.webp  # optional photo on top of the card (4:3, cropped)
+ *     alt: …            # required with image
  * ```
+ * With photos, a list of services stays visible at once — every item a
+ * card with its picture — instead of folding into a `reveal`.
  */
+/** The photo on top of a card, edge to edge over the card's padding. */
+const CardPhoto: Component<{ file?: string; alt: string }> = (photo) => {
+  const src = usePageAsset(() => photo.file);
+  const small = usePageAsset(() =>
+    photo.file ? smallVariant(photo.file) : undefined,
+  );
+  return (
+    <Show when={src()}>
+      {(url) => (
+        <img
+          src={url()}
+          srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+          sizes="(min-width: 64rem) 24rem, (min-width: 40rem) 50vw, 100vw"
+          alt={photo.alt}
+          loading="lazy"
+          decoding="async"
+          class="-mx-slg -mt-slg mb-slg max-w-none aspect-[4/3] object-cover bg-tint"
+        />
+      )}
+    </Show>
+  );
+};
+
 const Cards: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items);
@@ -81,7 +108,8 @@ const Cards: Component<CustomBlockProps> = (props) => {
     >
       <For each={items()}>
         {(item) => (
-          <Card class="gap-0">
+          <Card class="gap-0 overflow-hidden">
+            <CardPhoto file={str(item.image)} alt={str(item.alt) ?? ""} />
             <Show when={icon(item.icon) || str(item.label)}>
               <div class="flex items-start justify-between gap-smd mb-slg">
                 <Show when={icon(item.icon)}>
@@ -241,11 +269,14 @@ const Features: Component<CustomBlockProps> = (props) => {
  * ```
  * A numbered list (01, 02, …) in two columns on wide screens — for a longer
  * list of services that deserves real text instead of card blurbs.
+ * `numbers: plain` counts 1., 2., 3. in large figures — for steps a
+ * reader follows in order (what to do in a bereavement).
  */
 const IndexList: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const items = () => list(data()?.items);
   const icons = () => data()?.style === "icons";
+  const plain = () => data()?.numbers === "plain";
 
   const Thumb: Component<{ file?: string; alt: string }> = (thumb) => {
     const src = usePageAsset(() => thumb.file);
@@ -277,9 +308,11 @@ const IndexList: Component<CustomBlockProps> = (props) => {
               fallback={
                 <span
                   aria-hidden="true"
-                  class="font-ms-display text-4xl md:text-5xl font-extrabold leading-none text-button tabular-nums"
+                  class={`font-ms-display font-extrabold leading-none text-button tabular-nums ${plain() ? "text-6xl md:text-7xl" : "text-4xl md:text-5xl"}`}
                 >
-                  {String(index() + 1).padStart(2, "0")}
+                  {plain()
+                    ? `${index() + 1}.`
+                    : String(index() + 1).padStart(2, "0")}
                 </span>
               }
             >

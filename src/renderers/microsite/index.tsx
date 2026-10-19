@@ -78,6 +78,8 @@ type MicrositeLocal = {
   align?: string;
   /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
   depth?: number;
+  /** `stacked`: the h2 runs one word per line, larger — a headline that stands out. */
+  headline?: string;
 };
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
@@ -209,6 +211,9 @@ export default function MicrositeRenderer(props: {
                 }
                 colors={colorClasses(section.local.colors)}
                 depth={depthClass(section.local.depth)}
+                headline={
+                  section.local.headline === "stacked" ? "stacked" : undefined
+                }
                 pattern={patternMask(section.local.pattern)}
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"

@@ -632,6 +632,14 @@
   }
 }
 
+/* `headline: stacked` — the h2 one word per line (a word gap wider than any
+   line forces the break) and a size up, so it stands out. */
+.ms-headline-stacked h2 {
+  word-spacing: 100vw;
+  font-size: clamp(2.6rem, 5.6vw, 4.5rem);
+  line-height: 1;
+}
+
 /* Hero sections: bigger lead copy under the display headline. */
 .ms-hero h1 + p {
   font-size: 1.35rem;

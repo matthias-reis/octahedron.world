@@ -95,7 +95,8 @@ Each is documented (YAML shape) in a comment above its component.
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
-  subject below — `backdrop.tsx`), `align: center` (everything on the vertical
+  subject below — `backdrop.tsx`), `headline: stacked` (the h2 one word per
+  line, a size up — a headline that stands out), `align: center` (everything on the vertical
   axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs
@@ -103,9 +104,11 @@ Each is documented (YAML shape) in a comment above its component.
   - `split` — kicker + h2 left, the first paragraph right, the rest below
   - `side` — text left, the last block right (lists, contact card)
   - `band` — compact strip without a headline (trust bar)
-- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`),
+- **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`,
+  `image` — a photo on top, so a service list stays visible at once),
   `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
-  with real text — only for things that have an order; `style: icons` for
+  with real text — only for things that have an order; `numbers: plain`
+  counts 1., 2., 3. in large figures for steps; `style: icons` for
   the rest), `reveal` (titles that open in place one at a time — the native
   `<details name>` accordion, animated; each item is a whole chapter with
   text, icon, a photo or its own `gallery` mosaic, so a service list needs
