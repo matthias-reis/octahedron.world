@@ -96,7 +96,11 @@ Each is documented (YAML shape) in a comment above its component.
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
   subject below; `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
-  line, a size up — a headline that stands out), `align: center` (everything on the vertical
+  line, a size up — a headline that stands out; `headline: hand` sets the
+  section's h1/h2 in the pairing's hand face, a brush script — for a few
+  headlines only, see `pinsel`; `headline: { image, ratio, width }` shows
+  the h2 as a picture, e.g. the business's own handwritten wordmark, with
+  the text kept for screen readers — 015-dieckmann), `align: center` (everything on the vertical
   axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs
@@ -117,11 +121,12 @@ Each is documented (YAML shape) in a comment above its component.
   originals at their own size instead of cropping them to 3:2), `stats` (two or three big real
   figures), `video` (YouTube, two-click: nothing loads from YouTube before
   the click; the poster is a local file), `cta` (buttons with icons),
-  `contact` (rows incl. `fax`, `route`; `style: grid` for tiles),
+  `contact` (rows incl. `mobile`, `fax`, `route`; `style: grid` for tiles),
   `doors` (a start page that sends two or three audiences their own way:
   big doors side by side, each a photo, an h2 in the visitor's words and
   its one action; a door can be `variant: inverted` with its own `colors`),
-  `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
+  `callout` (one oversized line, e.g. the phone number; `face: hand` in
+  the pairing's hand face), `rating`, `image`,
   `gallery` (asymmetric photo mosaic, first image large, optional captions on
   the photos — 3 or 6 items), `carousel` (big uncropped photos in one row
   spanning the full screen width, aligned to the container, captions below, scroll snap plus
@@ -301,6 +306,8 @@ The `palette` block previews all of them live.
   `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
   `displayWordSpacing`, `displayTransform` (`uppercase` sets h1 and h2 in
   capitals, see `monolith`) — see `industrial` for a condensed, heavy setup.
+  `hand` adds a third face (a handwritten or brush script, see `pinsel`)
+  that only `headline: hand` and `callout.face: hand` use.
 - Fonts come only from `fontPairings` in `theme.ts`. A new pairing needs a
   Fontsource package, an `@import` in `theme.css` and a registry entry. No
   Google Fonts, no CDN (GDPR).

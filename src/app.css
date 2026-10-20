@@ -224,6 +224,7 @@
   --color-button-copy: var(--ms-button-copy);
   --font-ms-display: var(--ms-font-display);
   --font-ms-body: var(--ms-font-body);
+  --font-ms-hand: var(--ms-font-hand, var(--ms-font-display));
   --radius-ms: var(--ms-radius);
 
   /* Spacings — octahedron's legacy Fibonacci-ish numeric scale. Existing code

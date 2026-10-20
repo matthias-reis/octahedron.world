@@ -399,6 +399,7 @@ const Stats: Component<CustomBlockProps> = (props) => {
  * text: (02323) 23485
  * url: "tel:+49232323485"        # optional — makes it a link
  * icon: phone                    # optional
+ * face: hand                     # optional — the pairing's hand face (brush script)
  * ```
  * One oversized line — the phone number, an address, a claim. Meant to be
  * the loudest thing in its section.
@@ -420,8 +421,8 @@ const Callout: Component<CustomBlockProps> = (props) => {
       <span>{text()}</span>
     </>
   );
-  const lineClass =
-    "inline-flex items-center gap-[0.25em] font-ms-display font-black leading-[0.95] text-[clamp(2.8rem,9vw,7.5rem)] text-copy-strong";
+  // The hand face runs a size smaller and never breaks a phone number.
+  const lineClass = `inline-flex items-center gap-[0.25em] leading-[0.95] text-copy-strong ${data()?.face === "hand" ? "font-ms-hand font-normal tracking-normal whitespace-nowrap text-[clamp(2.6rem,10vw,5.25rem)]" : "font-ms-display font-black text-[clamp(2.8rem,9vw,7.5rem)]"}`;
 
   return (
     <Show when={text()}>
@@ -545,6 +546,7 @@ const Cta: Component<CustomBlockProps> = (props) => {
  * name: …                       # optional heading line of the address
  * address: [Street 1, 12345 City]
  * phone: 04943 91940
+ * mobile: 0172 1234567           # optional, a second phone row
  * fax: 02323 924109             # optional
  * email: …
  * hours: [Mo–Fr 9–18, Sa 10–14]
@@ -557,6 +559,7 @@ const Contact: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
   const phone = () => str(data()?.phone);
   const email = () => str(data()?.email);
+  const mobile = () => str(data()?.mobile);
   const fax = () => str(data()?.fax);
   const route = () => str(data()?.route);
   const grid = () => data()?.style === "grid";
@@ -631,6 +634,13 @@ const Contact: Component<CustomBlockProps> = (props) => {
         {(p) => (
           <Row icon="phone" label="Telefon" href={tel(p())}>
             {p()}
+          </Row>
+        )}
+      </Show>
+      <Show when={mobile()}>
+        {(m) => (
+          <Row icon="phone" label="Mobil" href={tel(m())}>
+            {m()}
           </Row>
         )}
       </Show>
