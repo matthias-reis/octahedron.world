@@ -45,9 +45,16 @@ jobs:
             echo "::warning::COOLIFY_WEBHOOK or COOLIFY_TOKEN not set, skipping Coolify deploy"
             exit 0
           fi
-          curl --fail-with-body --silent --show-error \
+          # Only a 2xx counts: a redirect (e.g. to the login page, from a
+          # wrong URL) must fail the run instead of passing silently.
+          status=$(curl --silent --show-error -o /tmp/coolify.json -w "%{http_code}" \
             -H "Authorization: Bearer $COOLIFY_TOKEN" \
-            "$COOLIFY_WEBHOOK"
+            "$COOLIFY_WEBHOOK")
+          cat /tmp/coolify.json; echo
+          case "$status" in
+            2??) echo "Coolify deploy queued ($status)" ;;
+            *) echo "::error::Coolify deploy webhook answered $status"; exit 1 ;;
+          esac
 
       - name: Trigger blog-deploy
         run: |
