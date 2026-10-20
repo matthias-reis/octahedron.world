@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # The Coolify server is ARM (arm64): build natively on GitHub's ARM
+    # runner (free for public repositories) instead of emulating.
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
 
@@ -25,6 +27,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/arm64
           push: true
           tags: |
             ghcr.io/matthias-reis/octahedron.world:latest
