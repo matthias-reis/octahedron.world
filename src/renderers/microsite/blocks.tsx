@@ -1328,8 +1328,9 @@ const Doors: Component<CustomBlockProps> = (props) => {
  *     text: …                  # optional, one or two sentences
  * ```
  * Big photos in one row at one height, uncropped (each keeps its `ratio`),
- * running out to the right edge of the screen: swipe or scroll sideways,
- * every photo snaps to the left edge. Works without JavaScript (scroll
+ * spanning the whole screen width: the first photo starts at the
+ * container's edge, scrolled ones pass into the margins on both sides, and
+ * every photo snaps to the container's left edge. Works without JavaScript (scroll
  * snap); with it, two arrow buttons page through the strip. For a
  * portfolio that should be seen big rather than as a mosaic.
  */
@@ -1444,7 +1445,7 @@ const Carousel: Component<CustomBlockProps> = (props) => {
       </div>
       <div
         ref={track}
-        class="ms-carousel-track flex gap-smd md:gap-slg overflow-x-auto snap-x snap-mandatory pb-smd pr-slg"
+        class="ms-carousel-track flex gap-smd md:gap-slg overflow-x-auto snap-x snap-mandatory pb-smd"
       >
         <For each={items()}>
           {(item, index) => <Slide item={item} index={index()} />}

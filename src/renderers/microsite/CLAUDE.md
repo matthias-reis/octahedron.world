@@ -124,7 +124,7 @@ Each is documented (YAML shape) in a comment above its component.
   `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
   `gallery` (asymmetric photo mosaic, first image large, optional captions on
   the photos — 3 or 6 items), `carousel` (big uncropped photos in one row
-  running out to the right screen edge, captions below, scroll snap plus
+  spanning the full screen width, aligned to the container, captions below, scroll snap plus
   arrows — a portfolio seen big), `people` (portraits with name and roles,
   `size: small` for a wall of faces), `emblem` (a logo or seal shown big and
   uncropped, `size` in rem), `palette`.

@@ -899,14 +899,23 @@
 }
 
 /* --- carousel (blocks.tsx) ---
-   A strip of big photos at one height that runs out of the container to
-   the right edge of the screen; the section clips it so the page never
+   A strip of big photos at one height that spans the whole screen width:
+   the first photo starts at the container's left edge, scrolled photos
+   pass into the margins on both sides. The block is a size container, so
+   the inset (half the screen minus half the container) works for padding
+   and scroll snap alike. The section clips the strip so the page never
    scrolls sideways. */
 .ms-section:has(.ms-carousel) {
   overflow-x: clip;
 }
+.ms-carousel {
+  container-type: inline-size;
+}
 .ms-carousel-track {
-  margin-right: calc(50% - 50vw);
+  --ms-carousel-inset: max(0px, calc(50vw - 50cqw));
+  margin-inline: calc(-1 * var(--ms-carousel-inset));
+  padding-inline: var(--ms-carousel-inset);
+  scroll-padding-inline: var(--ms-carousel-inset);
   scrollbar-width: thin;
   scrollbar-color: var(--ms-copy-m3) transparent;
   overscroll-behavior-x: contain;
