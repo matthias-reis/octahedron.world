@@ -98,7 +98,9 @@ Each is documented (YAML shape) in a comment above its component.
   subject below; `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
   line, a size up — a headline that stands out; `headline: hand` sets the
   section's h1/h2 in the pairing's hand face, a brush script — for a few
-  headlines only, see `pinsel`), `align: center` (everything on the vertical
+  headlines only, see `pinsel`; `headline: { image, ratio, width }` shows
+  the h2 as a picture, e.g. the business's own handwritten wordmark, with
+  the text kept for screen readers — 015-dieckmann), `align: center` (everything on the vertical
   axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
     it becomes two columns (`hero-visual.tsx`); `visual.style: bleed` runs

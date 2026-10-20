@@ -83,6 +83,7 @@ import {
 } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { cx } from "~/ui/cx";
+import { usePageAsset } from "./assets";
 
 /**
  * Icons addressable by name from MDS. A curated set on purpose: importing
@@ -285,6 +286,9 @@ export const KickerLabel: Component<{ kicker: Kicker }> = (props) => (
   </Show>
 );
 
+/** A section's h2 shown as a picture: file next to the page, aspect ratio (w/h), max width in rem. */
+export type HeadlineImage = { src: string; ratio?: number; width?: number };
+
 /** `hero` · `split` · `side` · `band` (compact strip, e.g. a trust bar). */
 export type SectionLayout = "default" | "hero" | "split" | "side" | "band";
 
@@ -323,7 +327,10 @@ export const Section: ParentComponent<{
   align?: "center";
   /** `stacked`: the section's h2 one word per line, larger. `hand`: h1/h2 in the hand face. */
   headline?: "stacked" | "hand";
+  /** The h2 shown as this picture (a wordmark); the text stays for screen readers. */
+  headlineImage?: HeadlineImage;
 }> = (props) => {
+  const headlineSrc = usePageAsset(() => props.headlineImage?.src);
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
   // JSX props are getters: reading `props.visual` twice would build it twice.
@@ -338,6 +345,15 @@ export const Section: ParentComponent<{
     <section
       id={props.id}
       aria-label={props.label}
+      style={
+        headlineSrc()
+          ? {
+              "--ms-headline-image": `url("${headlineSrc()}")`,
+              "--ms-headline-ratio": String(props.headlineImage?.ratio ?? 8),
+              "--ms-headline-width": `${props.headlineImage?.width ?? 26}rem`,
+            }
+          : undefined
+      }
       class={cx(
         "ms-section",
         (backdrop() || props.pattern) && "relative isolate overflow-hidden",
@@ -348,6 +364,7 @@ export const Section: ParentComponent<{
         props.depth,
         props.headline === "stacked" && "ms-headline-stacked",
         props.headline === "hand" && "ms-headline-hand",
+        headlineSrc() && "ms-headline-image",
         props.layout === "hero"
           ? "py-s2xl md:py-s3xl"
           : props.layout === "band"

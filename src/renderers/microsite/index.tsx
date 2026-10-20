@@ -26,7 +26,14 @@ import {
   type MicrositeTheme,
   themeStyle,
 } from "./theme";
-import { isIconName, type Kicker, Section, toLayout, toVariant } from "./ui";
+import {
+  type HeadlineImage,
+  isIconName,
+  type Kicker,
+  Section,
+  toLayout,
+  toVariant,
+} from "./ui";
 import "./theme.css";
 
 type MicrositeGlobal = {
@@ -79,9 +86,21 @@ type MicrositeLocal = {
   /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
   depth?: number;
   /** `stacked`: the h2 runs one word per line, larger — a headline that stands out.
-   *  `hand`: h1/h2 in the pairing's hand face (brush script), see theme.css. */
-  headline?: string;
+   *  `hand`: h1/h2 in the pairing's hand face (brush script), see theme.css.
+   *  `{ image, ratio, width }`: the h2 shown as a picture, e.g. the wordmark
+   *  (`pnpm ms-image …`, alpha kept); its text stays for screen readers. */
+  headline?: string | { image?: string; ratio?: number; width?: number };
 };
+
+function toHeadlineImage(
+  value: MicrositeLocal["headline"],
+): HeadlineImage | undefined {
+  if (typeof value !== "object" || !value || typeof value.image !== "string")
+    return undefined;
+  const num = (n: unknown) =>
+    typeof n === "number" && Number.isFinite(n) && n > 0 ? n : undefined;
+  return { src: value.image, ratio: num(value.ratio), width: num(value.width) };
+}
 
 function toKicker(value: MicrositeLocal["kicker"]): Kicker | undefined {
   if (typeof value === "string") return { text: value };
@@ -218,6 +237,7 @@ export default function MicrositeRenderer(props: {
                     ? section.local.headline
                     : undefined
                 }
+                headlineImage={toHeadlineImage(section.local.headline)}
                 pattern={patternMask(section.local.pattern)}
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"

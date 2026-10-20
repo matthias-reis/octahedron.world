@@ -663,6 +663,20 @@
   font-size: clamp(2.8rem, 5.4vw, 4.6rem);
 }
 
+/* `headline: { image }` — the h2 shown as a picture (a wordmark, dark on a
+   light section). The text stays in the DOM for screen readers and search,
+   transparent; the picture keeps its aspect ratio and never grows past its
+   width. */
+.ms-root .ms-headline-image h2 {
+  width: min(100%, var(--ms-headline-width, 26rem));
+  aspect-ratio: var(--ms-headline-ratio, 8);
+  background: var(--ms-headline-image) left center / contain no-repeat;
+  color: transparent;
+  font-size: 1rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 /* Hero sections: bigger lead copy under the display headline. */
 .ms-hero h1 + p {
   font-size: 1.35rem;
