@@ -26,7 +26,7 @@ header:
   phone: 0541 801 555
   cta: { text: E-Mail schreiben, url: "mailto:carsten.dieckmann@osnanet.de" }
 footer:
-  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Wortmarke von maler-dieckmann.de, Schilde nach dem Logo nachgezeichnet. Symbolbilder und Team-Porträts KI-generiert, Teamnamen sind Platzhalter. H. Georg Dieckmann Malermeister · Inh. Carsten Dieckmann · Lange Straße 63 · 49080 Osnabrück · [Rechtsform, USt-IdNr.]
+  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Wortmarke von maler-dieckmann.de (geglättet), Schilde nach dem Logo nachgezeichnet. Symbolbilder und Team-Porträts KI-generiert, Teamnamen sind Platzhalter. H. Georg Dieckmann Malermeister · Inh. Carsten Dieckmann · Lange Straße 63 · 49080 Osnabrück · [Rechtsform, USt-IdNr.]
   meta: { icon: shield-check, text: Kein Tracking · keine Cookies }
   colors: { copy: adjacent-right, background: adjacent-right }
 legal:
@@ -42,7 +42,6 @@ quickbar:
 
 ```yaml @
 layout: hero
-headline: hand
 kicker: { text: Innungsbetrieb in Osnabrück, icon: paint-roller }
 visual:
   src: hero.webp
@@ -124,7 +123,7 @@ Fotos in diesem Abschnitt: Symbolbilder (KI-generiert).
 nav: Betrieb
 layout: side
 variant: surface
-headline: hand
+headline: { image: wordmark.webp, ratio: 9.64, width: 30 }
 kicker: Der Betrieb
 ```
 
@@ -154,7 +153,6 @@ size: 20
 nav: Team
 variant: inverted
 colors: { copy: adjacent-right, background: adjacent-right }
-headline: hand
 kicker: { text: Beispiel · Platzhalter, tone: copy }
 ```
 
