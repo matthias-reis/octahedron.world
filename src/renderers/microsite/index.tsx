@@ -78,7 +78,8 @@ type MicrositeLocal = {
   align?: string;
   /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
   depth?: number;
-  /** `stacked`: the h2 runs one word per line, larger — a headline that stands out. */
+  /** `stacked`: the h2 runs one word per line, larger — a headline that stands out.
+   *  `hand`: h1/h2 in the pairing's hand face (brush script), see theme.css. */
   headline?: string;
 };
 
@@ -212,7 +213,10 @@ export default function MicrositeRenderer(props: {
                 colors={colorClasses(section.local.colors)}
                 depth={depthClass(section.local.depth)}
                 headline={
-                  section.local.headline === "stacked" ? "stacked" : undefined
+                  section.local.headline === "stacked" ||
+                  section.local.headline === "hand"
+                    ? section.local.headline
+                    : undefined
                 }
                 pattern={patternMask(section.local.pattern)}
                 backdropStyle={

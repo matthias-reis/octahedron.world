@@ -60,6 +60,7 @@
 @import "@fontsource/barlow/700.css";
 @import "@fontsource/barlow-semi-condensed/600.css";
 @import "@fontsource/barlow-semi-condensed/700.css";
+@import "@fontsource/caveat-brush/400.css";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -639,6 +640,27 @@
   word-spacing: 100vw;
   font-size: clamp(2.6rem, 5.6vw, 4.5rem);
   line-height: 1;
+}
+
+/* `headline: hand` — the section's h1/h2 in the pairing's hand face (a
+   brush script like a painted wordmark), a size up and upright. Falls back
+   to the display face when the pairing has no `hand`. */
+.ms-root .ms-headline-hand :is(h1, h2) {
+  font-family: var(--ms-font-hand, var(--ms-font-display));
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+}
+
+.ms-root .ms-headline-hand h1 {
+  font-size: clamp(3rem, 6.4vw, 5.6rem);
+}
+
+.ms-root .ms-headline-hand h2 {
+  font-size: clamp(2.8rem, 5.4vw, 4.6rem);
 }
 
 /* Hero sections: bigger lead copy under the display headline. */

@@ -145,6 +145,16 @@ export const fontPairings = {
     /** h1 and h2 slant like the wordmark; h3 and body stay upright. */
     displayStyle: "italic",
   },
+  /** Painter's hand: a round, sturdy sans for everything, plus a brush script
+   * (`hand`) for the few headlines set with `headline: hand` and `callout.face: hand`. */
+  pinsel: {
+    display: '"Figtree Variable", system-ui, sans-serif',
+    body: '"Figtree Variable", system-ui, sans-serif',
+    hand: '"Caveat Brush", "Comic Sans MS", cursive',
+    h1Weight: 800,
+    headingWeight: 800,
+    displayTracking: "-0.025em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -235,6 +245,7 @@ export function themeStyle(
   if (fonts) {
     style["--ms-font-display"] = fonts.display;
     style["--ms-font-body"] = fonts.body;
+    if ("hand" in fonts) style["--ms-font-hand"] = fonts.hand;
     if ("h1Weight" in fonts) style["--ms-h1-weight"] = String(fonts.h1Weight);
     if ("headingWeight" in fonts)
       style["--ms-heading-weight"] = String(fonts.headingWeight);

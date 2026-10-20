@@ -33,6 +33,7 @@ import {
   Flame,
   Flower2,
   GraduationCap,
+  Grid2x2,
   Hammer,
   HandHeart,
   Heart,
@@ -123,6 +124,7 @@ const icons = {
   droplets: Droplets,
   "ev-charger": EvCharger,
   flame: Flame,
+  "grid-2x2": Grid2x2,
   "graduation-cap": GraduationCap,
   hammer: Hammer,
   heart: Heart,
@@ -319,8 +321,8 @@ export const Section: ParentComponent<{
   pattern?: JSX.CSSProperties;
   /** `center`: everything on the vertical axis (no visual, no backdrop). */
   align?: "center";
-  /** `stacked`: the section's h2 one word per line, larger. */
-  headline?: "stacked";
+  /** `stacked`: the section's h2 one word per line, larger. `hand`: h1/h2 in the hand face. */
+  headline?: "stacked" | "hand";
 }> = (props) => {
   const kicker = () =>
     props.kicker ? <KickerLabel kicker={props.kicker} /> : null;
@@ -345,6 +347,7 @@ export const Section: ParentComponent<{
         props.colors,
         props.depth,
         props.headline === "stacked" && "ms-headline-stacked",
+        props.headline === "hand" && "ms-headline-hand",
         props.layout === "hero"
           ? "py-s2xl md:py-s3xl"
           : props.layout === "band"
