@@ -102,6 +102,7 @@ async function readDocuments(): Promise<Document[]> {
         // microsite blocks (src/renderers/microsite/blocks.tsx)
         "callout",
         "cards",
+        "carousel",
         "catalog",
         "contact",
         "doors",
@@ -111,6 +112,7 @@ async function readDocuments(): Promise<Document[]> {
         "image",
         "index",
         "logos",
+        "people",
         "rating",
         "reveal",
         "stats",

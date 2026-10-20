@@ -33,6 +33,7 @@
 @import "@fontsource-variable/newsreader/opsz.css";
 /* wdth: the width axis (62–125 %), not just the default width */
 @import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/archivo/wdth-italic.css";
 @import "@fontsource-variable/source-serif-4/opsz.css";
 @import "@fontsource-variable/instrument-sans/wdth.css";
 /* standard: wght + wdth + opsz in one file */
@@ -674,10 +675,12 @@
 }
 
 /* Headlines default to tight tracking (Tailwind's `tracking-tight`). A
-   pairing may also set them in capitals (`displayTransform`). */
+   pairing may also set them in capitals (`displayTransform`) or slant them
+   (`displayStyle: italic`). */
 .ms-root :is(h1, h2) {
   letter-spacing: var(--ms-display-tracking, -0.025em);
   text-transform: var(--ms-display-transform, none);
+  font-style: var(--ms-display-style, normal);
 }
 
 .ms-root :is(h2, h3) {
@@ -757,4 +760,163 @@
 /* A hero on a frosted panel has half the width: one step smaller. */
 .ms-panel h1 {
   font-size: clamp(2.2rem, 4.2vw, 3.75rem);
+}
+
+/* --- backdrop slideshow (local `backdrop.slides`, backdrop.tsx) ---
+   The first slide lies still underneath; every further slide fades in on
+   its turn (7 s each, 1.6 s fade), drifts a little and fades out again, so
+   the cycle returns to the first one. Pure CSS: no JavaScript, and with
+   reduced motion only the first slide shows. One keyframe set per count. */
+.ms-slide {
+  opacity: 0;
+  animation-duration: calc(var(--ms-slides) * 7s);
+  animation-delay: calc(var(--ms-slide) * 7s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards;
+}
+.ms-slides-2 .ms-slide {
+  animation-name: ms-slides-2;
+}
+.ms-slides-3 .ms-slide {
+  animation-name: ms-slides-3;
+}
+.ms-slides-4 .ms-slide {
+  animation-name: ms-slides-4;
+}
+.ms-slides-5 .ms-slide {
+  animation-name: ms-slides-5;
+}
+.ms-slides-6 .ms-slide {
+  animation-name: ms-slides-6;
+}
+
+@keyframes ms-slides-2 {
+  0% {
+    opacity: 0;
+    scale: 1.06;
+  }
+  11.43% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  61.43% {
+    opacity: 0;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+  }
+}
+@keyframes ms-slides-3 {
+  0% {
+    opacity: 0;
+    scale: 1.06;
+  }
+  7.62% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  40.95% {
+    opacity: 0;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+  }
+}
+@keyframes ms-slides-4 {
+  0% {
+    opacity: 0;
+    scale: 1.06;
+  }
+  5.71% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 1;
+  }
+  30.71% {
+    opacity: 0;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+  }
+}
+@keyframes ms-slides-5 {
+  0% {
+    opacity: 0;
+    scale: 1.06;
+  }
+  4.57% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24.57% {
+    opacity: 0;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+  }
+}
+@keyframes ms-slides-6 {
+  0% {
+    opacity: 0;
+    scale: 1.06;
+  }
+  3.81% {
+    opacity: 1;
+  }
+  16.67% {
+    opacity: 1;
+  }
+  20.48% {
+    opacity: 0;
+    scale: 1;
+  }
+  100% {
+    opacity: 0;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-slide {
+    animation: none;
+  }
+}
+
+/* --- carousel (blocks.tsx) ---
+   A strip of big photos at one height that spans the whole screen width:
+   the first photo starts at the container's left edge, scrolled photos
+   pass into the margins on both sides. The block is a size container, so
+   the inset (half the screen minus half the container) works for padding
+   and scroll snap alike. The section clips the strip so the page never
+   scrolls sideways. */
+.ms-section:has(.ms-carousel) {
+  overflow-x: clip;
+}
+.ms-carousel {
+  container-type: inline-size;
+}
+.ms-carousel-track {
+  --ms-carousel-inset: max(0px, calc(50vw - 50cqw));
+  margin-inline: calc(-1 * var(--ms-carousel-inset));
+  padding-inline: var(--ms-carousel-inset);
+  scroll-padding-inline: var(--ms-carousel-inset);
+  scrollbar-width: thin;
+  scrollbar-color: var(--ms-copy-m3) transparent;
+  overscroll-behavior-x: contain;
 }

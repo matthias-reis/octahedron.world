@@ -96,6 +96,15 @@ export function validateMicrosite(
         `section "${step.id}": backdrop not found: ${String(backdrop.src)}`,
       );
     }
+    for (const slide of Array.isArray(backdrop?.slides)
+      ? backdrop.slides
+      : []) {
+      if (!exists(slide)) {
+        problems.push(
+          `section "${step.id}": backdrop slide not found: ${String(slide)}`,
+        );
+      }
+    }
 
     walk(step.body.node as Node, (node) => {
       if (node.type !== "element" || !node.tagName) return;
@@ -123,6 +132,8 @@ export function validateMicrosite(
           "logos",
           "doors",
           "cards",
+          "carousel",
+          "people",
         ].includes(node.tagName)
       ) {
         const data = blockData(node);
@@ -130,7 +141,10 @@ export function validateMicrosite(
           ? (data.items as Record<string, unknown>[])
           : [];
         const images =
-          node.tagName === "gallery" || node.tagName === "logos"
+          node.tagName === "gallery" ||
+          node.tagName === "logos" ||
+          node.tagName === "carousel" ||
+          node.tagName === "people"
             ? items
             : node.tagName === "catalog"
               ? items.flatMap((item) =>

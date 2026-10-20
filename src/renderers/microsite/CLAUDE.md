@@ -95,7 +95,7 @@ Each is documented (YAML shape) in a comment above its component.
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
-  subject below — `backdrop.tsx`), `headline: stacked` (the h2 one word per
+  subject below; `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
   line, a size up — a headline that stands out), `align: center` (everything on the vertical
   axis, e.g. a hero around a big logo), `layout`:
   - `hero` — display type; with `visual` (image + optional badge + quote card)
@@ -107,7 +107,8 @@ Each is documented (YAML shape) in a comment above its component.
 - **Blocks:** `cards` (icons, `icons: tile`, `label`, `tags`, `link`,
   `image` — a photo on top, so a service list stays visible at once),
   `features` (`plain` / `tiles` / `chips`), `index` (numbered 01, 02, … list
-  with real text — only for things that have an order; `numbers: plain`
+  with real text — only for things that have an order; `mark` per item sets
+  a year in place of the number for a timeline; `numbers: plain`
   counts 1., 2., 3. in large figures for steps; `style: icons` for
   the rest), `reveal` (titles that open in place one at a time — the native
   `<details name>` accordion, animated; each item is a whole chapter with
@@ -122,7 +123,10 @@ Each is documented (YAML shape) in a comment above its component.
   its one action; a door can be `variant: inverted` with its own `colors`),
   `callout` (one oversized line, e.g. the phone number), `rating`, `image`,
   `gallery` (asymmetric photo mosaic, first image large, optional captions on
-  the photos — 3 or 6 items), `emblem` (a logo or seal shown big and
+  the photos — 3 or 6 items), `carousel` (big uncropped photos in one row
+  spanning the full screen width, aligned to the container, captions below, scroll snap plus
+  arrows — a portfolio seen big), `people` (portraits with name and roles,
+  `size: small` for a wall of faces), `emblem` (a logo or seal shown big and
   uncropped, `size` in rem), `palette`.
 - **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
   next to it (it becomes the `alt`). `brand.logoHeight` (rem) lets a tall

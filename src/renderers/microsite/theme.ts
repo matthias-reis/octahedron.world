@@ -133,6 +133,18 @@ export const fontPairings = {
     headingWeight: 400,
     displayTracking: "0.005em",
   },
+  /** Brush stroke: a wide, heavy italic grotesk on top (like a painted sign) over a crisp sans. */
+  schwung: {
+    display: '"Archivo Variable", "Arial Black", sans-serif',
+    body: '"Instrument Sans Variable", system-ui, sans-serif',
+    h1Weight: 850,
+    headingWeight: 800,
+    /** Archivo runs 62–125 % wide; the sign-writer's extended cut. */
+    displayStretch: "118%",
+    displayTracking: "-0.02em",
+    /** h1 and h2 slant like the wordmark; h3 and body stay upright. */
+    displayStyle: "italic",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -234,6 +246,8 @@ export function themeStyle(
       style["--ms-display-word-spacing"] = fonts.displayWordSpacing;
     if ("displayTransform" in fonts)
       style["--ms-display-transform"] = fonts.displayTransform;
+    if ("displayStyle" in fonts)
+      style["--ms-display-style"] = fonts.displayStyle;
   }
 
   return style;

@@ -266,11 +266,13 @@ const Features: Component<CustomBlockProps> = (props) => {
  *     title: …
  *     text: …            # a few sentences
  *     image: foto.webp   # optional small photo, never shown above its own size
+ *     mark: "1984"       # optional: set in place of the number (a year in a timeline)
  * ```
  * A numbered list (01, 02, …) in two columns on wide screens — for a longer
  * list of services that deserves real text instead of card blurbs.
  * `numbers: plain` counts 1., 2., 3. in large figures — for steps a
- * reader follows in order (what to do in a bereavement).
+ * reader follows in order (what to do in a bereavement). A `mark` on every
+ * item turns the list into a timeline: the year stands where the number was.
  */
 const IndexList: Component<CustomBlockProps> = (props) => {
   const data = () => props.data as Data;
@@ -310,9 +312,10 @@ const IndexList: Component<CustomBlockProps> = (props) => {
                   aria-hidden="true"
                   class={`font-ms-display font-extrabold leading-none text-button tabular-nums ${plain() ? "text-6xl md:text-7xl" : "text-4xl md:text-5xl"}`}
                 >
-                  {plain()
-                    ? `${index() + 1}.`
-                    : String(index() + 1).padStart(2, "0")}
+                  {str(item.mark) ??
+                    (plain()
+                      ? `${index() + 1}.`
+                      : String(index() + 1).padStart(2, "0"))}
                 </span>
               }
             >
@@ -1314,6 +1317,228 @@ const Doors: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/**
+ * ```yaml carousel
+ * label: Innenräume            # optional, small line above the strip
+ * items:
+ *   - src: flur.webp           # pnpm ms-image …
+ *     alt: …                   # required
+ *     ratio: 4/3               # optional width/height of the photo (default 4/3)
+ *     title: Altenzentrum, Syke   # optional caption headline
+ *     text: …                  # optional, one or two sentences
+ * ```
+ * Big photos in one row at one height, uncropped (each keeps its `ratio`),
+ * spanning the whole screen width: the first photo starts at the
+ * container's edge, scrolled ones pass into the margins on both sides, and
+ * every photo snaps to the container's left edge. Works without JavaScript (scroll
+ * snap); with it, two arrow buttons page through the strip. For a
+ * portfolio that should be seen big rather than as a mosaic.
+ */
+const Carousel: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const items = () => list(data()?.items).filter((item) => str(item.src));
+  let track!: HTMLDivElement;
+  let controls!: HTMLDivElement;
+
+  const ratio = (value: unknown) => {
+    const m =
+      typeof value === "string" &&
+      /^(\d+(?:\.\d+)?)\/(\d+(?:\.\d+)?)$/.exec(value.trim());
+    return m
+      ? `${m[1]} / ${m[2]}`
+      : typeof value === "number" && value > 0
+        ? String(value)
+        : "4 / 3";
+  };
+
+  const page = (direction: 1 | -1) => {
+    const reduced = window.matchMedia?.(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    track.scrollBy({
+      left: direction * Math.max(track.clientWidth * 0.8, 240),
+      behavior: reduced ? "auto" : "smooth",
+    });
+  };
+
+  // The arrows only make sense with JavaScript: shown once mounted.
+  onMount(() => controls.removeAttribute("hidden"));
+
+  const Slide: Component<{ item: Record<string, unknown>; index: number }> = (
+    slide,
+  ) => {
+    const src = usePageAsset(() => str(slide.item.src));
+    const small = usePageAsset(() => {
+      const f = str(slide.item.src);
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <figure class="shrink-0 snap-start flex flex-col gap-ssm">
+        <div
+          class="h-[clamp(15rem,58vw,22rem)] md:h-[clamp(20rem,52vh,32rem)] rounded-ms bg-card overflow-hidden"
+          style={{ "aspect-ratio": ratio(slide.item.ratio) }}
+        >
+          <Show when={src()}>
+            {(url) => (
+              <img
+                src={url()}
+                srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+                sizes="(min-width: 768px) 48rem, 90vw"
+                alt={str(slide.item.alt) ?? ""}
+                loading={slide.index < 2 ? "eager" : "lazy"}
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            )}
+          </Show>
+        </div>
+        <Show when={str(slide.item.title) || str(slide.item.text)}>
+          {/* As wide as its photo, never wider: w-0 + min-w-full. */}
+          <figcaption class="w-0 min-w-full pr-ssm">
+            <Show when={str(slide.item.title)}>
+              {(title) => (
+                <span class="block font-semibold text-copy-strong leading-snug">
+                  {title()}
+                </span>
+              )}
+            </Show>
+            <Show when={str(slide.item.text)}>
+              {(text) => (
+                <span class="block text-sm leading-relaxed text-copy-soft mt-[0.15rem]">
+                  {text()}
+                </span>
+              )}
+            </Show>
+          </figcaption>
+        </Show>
+      </figure>
+    );
+  };
+
+  return (
+    <div class="ms-block ms-carousel my-sxl">
+      <div class="flex items-end justify-between gap-smd mb-smd">
+        <Show when={str(data()?.label)} fallback={<span />}>
+          {(label) => (
+            <p class="text-sm font-semibold uppercase tracking-[0.12em] text-copy-soft">
+              {label()}
+            </p>
+          )}
+        </Show>
+        <div ref={controls} hidden class="flex gap-ssm shrink-0">
+          <For each={[-1, 1] as const}>
+            {(direction) => (
+              <button
+                type="button"
+                aria-label={direction < 0 ? "Zurück" : "Weiter"}
+                onClick={() => page(direction)}
+                class="w-[2.75rem] h-[2.75rem] rounded-full bg-button text-button-copy flex items-center justify-center transition-colors hover:bg-button-hover"
+              >
+                <Icon
+                  name={direction < 0 ? "arrow-left" : "arrow-right"}
+                  class="w-[1.2rem] h-[1.2rem]"
+                />
+              </button>
+            )}
+          </For>
+        </div>
+      </div>
+      <div
+        ref={track}
+        class="ms-carousel-track flex gap-smd md:gap-slg overflow-x-auto snap-x snap-mandatory pb-smd"
+      >
+        <For each={items()}>
+          {(item, index) => <Slide item={item} index={index()} />}
+        </For>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * ```yaml people
+ * size: large               # optional: large (three per row, 3 or 6 fill it) or small (a dense wall of faces)
+ * items:
+ *   - src: thomas.webp      # square portrait, pnpm ms-image …
+ *     alt: …                # required
+ *     name: Thomas Vehrenkamp   # optional — only published names
+ *     role: Geschäftsführer     # optional, one line
+ *     roles: [Firmengründer, Maler- und Lackierermeister]   # optional extra lines
+ * ```
+ * Portraits of a team. `large` for the people a customer talks to (name and
+ * roles under each photo), `small` for the whole crew as a wall of faces,
+ * with or without names.
+ */
+const People: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  const small = () => data()?.size === "small";
+  const items = () => list(data()?.items).filter((item) => str(item.src));
+
+  const Person: Component<{ item: Record<string, unknown> }> = (person) => {
+    const src = usePageAsset(() => str(person.item.src));
+    const thumb = usePageAsset(() => {
+      const f = str(person.item.src);
+      return f ? smallVariant(f) : undefined;
+    });
+    return (
+      <figure class="flex flex-col gap-ssm min-w-0">
+        <Show when={src()}>
+          {(url) => (
+            <img
+              src={url()}
+              srcset={thumb() ? `${thumb()} 800w, ${url()} 1600w` : undefined}
+              sizes={
+                small()
+                  ? "(min-width: 64rem) 9rem, 30vw"
+                  : "(min-width: 64rem) 16rem, 50vw"
+              }
+              alt={str(person.item.alt) ?? ""}
+              loading="lazy"
+              decoding="async"
+              class={`w-full aspect-square object-cover bg-card ${small() ? "rounded-[calc(var(--ms-radius)*0.75)]" : "rounded-ms"}`}
+            />
+          )}
+        </Show>
+        <Show when={str(person.item.name) || str(person.item.role)}>
+          <figcaption>
+            <Show when={str(person.item.name)}>
+              {(name) => (
+                <span
+                  class={`block font-ms-display text-copy-strong leading-tight ${small() ? "text-sm font-semibold" : "text-xl font-bold"}`}
+                >
+                  {name()}
+                </span>
+              )}
+            </Show>
+            <Show when={str(person.item.role)}>
+              {(role) => (
+                <span class="block text-sm font-semibold text-button mt-[0.2rem]">
+                  {role()}
+                </span>
+              )}
+            </Show>
+            <For each={strings(person.item.roles)}>
+              {(line) => (
+                <span class="block text-sm text-copy-soft leading-snug">
+                  {line}
+                </span>
+              )}
+            </For>
+          </figcaption>
+        </Show>
+      </figure>
+    );
+  };
+
+  return (
+    <div
+      class={`ms-block my-sxl grid ${small() ? "grid-cols-3 sm:grid-cols-5 lg:grid-cols-7 gap-ssm md:gap-smd" : "grid-cols-2 md:grid-cols-3 gap-smd md:gap-slg"}`}
+    >
+      <For each={items()}>{(item) => <Person item={item} />}</For>
+    </div>
+  );
+};
+
 /** Prose + blocks for a microsite section body. */
 export const micrositeComponents: ComponentMap = {
   h1: (props: any) => (
@@ -1348,6 +1573,7 @@ export const micrositeComponents: ComponentMap = {
     <a class="text-link underline underline-offset-4" {...props} />
   ),
   cards: Cards,
+  carousel: Carousel,
   catalog: Catalog,
   cta: Cta,
   contact: Contact,
@@ -1364,4 +1590,5 @@ export const micrositeComponents: ComponentMap = {
   gallery: Gallery,
   emblem: Emblem,
   logos: Logos,
+  people: People,
 };
