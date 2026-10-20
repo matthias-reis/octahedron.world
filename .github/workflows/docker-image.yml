@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # The Coolify server is ARM (arm64): build natively on GitHub's ARM
+    # runner (free for public repositories) instead of emulating.
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
 
@@ -25,10 +27,27 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/arm64
           push: true
           tags: |
             ghcr.io/matthias-reis/octahedron.world:latest
             ghcr.io/matthias-reis/octahedron.world:sha-${{ github.sha }}
+
+      # Coolify deploys the image pushed above instead of building on the
+      # server (its own build ran out of memory). Skipped until the app's
+      # deploy webhook and an API token are stored as repository secrets.
+      - name: Deploy on Coolify
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          if [ -z "$COOLIFY_WEBHOOK" ] || [ -z "$COOLIFY_TOKEN" ]; then
+            echo "::warning::COOLIFY_WEBHOOK or COOLIFY_TOKEN not set, skipping Coolify deploy"
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer $COOLIFY_TOKEN" \
+            "$COOLIFY_WEBHOOK"
 
       - name: Trigger blog-deploy
         run: |
