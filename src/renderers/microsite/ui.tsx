@@ -329,6 +329,9 @@ export const Section: ParentComponent<{
   headline?: "stacked" | "hand";
   /** The h2 shown as this picture (a wordmark); the text stays for screen readers. */
   headlineImage?: HeadlineImage;
+  /** Part of a framed run of sections (see `.ms-framed` in theme.css); a
+   *  non-empty string is the frame's label. */
+  frame?: string;
 }> = (props) => {
   const headlineSrc = usePageAsset(() => props.headlineImage?.src);
   const kicker = () =>
@@ -345,6 +348,7 @@ export const Section: ParentComponent<{
     <section
       id={props.id}
       aria-label={props.label}
+      data-frame={props.frame || undefined}
       style={
         headlineSrc()
           ? {
@@ -360,6 +364,7 @@ export const Section: ParentComponent<{
         bleed() &&
           "relative lg:min-h-[min(88vh,50rem)] lg:flex lg:items-center pb-0 lg:pb-s3xl",
         props.variant !== "plain" && `ms-${props.variant}`,
+        props.frame !== undefined && "ms-framed",
         props.colors,
         props.depth,
         props.headline === "stacked" && "ms-headline-stacked",

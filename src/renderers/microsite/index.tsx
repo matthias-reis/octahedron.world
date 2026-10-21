@@ -90,6 +90,9 @@ type MicrositeLocal = {
    *  `{ image, ratio, width }`: the h2 shown as a picture, e.g. the wordmark
    *  (`pnpm ms-image …`, alpha kept); its text stays for screen readers. */
   headline?: string | { image?: string; ratio?: number; width?: number };
+  /** Consecutive sections with `frame` share one border in the page's
+   *  button color; a string labels it (on the first section of the run). */
+  frame?: boolean | string;
 };
 
 function toHeadlineImage(
@@ -251,6 +254,13 @@ export default function MicrositeRenderer(props: {
                 align={section.local.align === "center" ? "center" : undefined}
                 visualStyle={
                   section.local.visual?.style === "bleed" ? "bleed" : "card"
+                }
+                frame={
+                  section.local.frame === true
+                    ? ""
+                    : typeof section.local.frame === "string"
+                      ? section.local.frame
+                      : undefined
                 }
               >
                 <section.Body />

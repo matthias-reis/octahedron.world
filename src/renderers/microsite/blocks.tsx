@@ -5,7 +5,7 @@ import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
 import { Palette } from "./palette";
-import { colorClasses } from "./theme";
+import { colorClasses, depthClass } from "./theme";
 import {
   ButtonLink,
   Card,
@@ -1190,7 +1190,8 @@ const Logos: Component<CustomBlockProps> = (props) => {
  *     primary: { text: Zur Tischlerei, url: /…, icon: arrow-up-right }
  *     secondary: { text: …, url: … }                # optional
  *     note: { icon: clock, text: Mo–Do 7:30–17:00 } # optional small line
- *     variant: inverted                             # optional: a dark door
+ *     variant: inverted                             # optional: a dark door, or `tint`
+ *     depth: 2                                      # optional, inverted on d1/d2 (see theme.css)
  *     colors: { copy: adjacent-right, background: adjacent-right }   # optional
  * ```
  * A start page that sends two (or three) audiences their own way: big
@@ -1229,14 +1230,18 @@ const Doors: Component<CustomBlockProps> = (props) => {
     const primary = () => link(door.item.primary);
     const secondary = () => link(door.item.secondary);
     const dark = () => door.item.variant === "inverted";
+    const tint = () => door.item.variant === "tint";
 
     return (
       <article
         class={[
           "ms-section flex flex-col rounded-[calc(var(--ms-radius)*2)] overflow-hidden border border-line",
-          dark() ? "ms-inverted" : "ms-surface",
+          dark() ? "ms-inverted" : tint() ? "ms-tint" : "ms-surface",
+          depthClass(door.item.depth),
           ...colorClasses(door.item.colors),
-        ].join(" ")}
+        ]
+          .filter(Boolean)
+          .join(" ")}
       >
         <Show when={src()}>
           {(url) => (

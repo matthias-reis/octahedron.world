@@ -612,6 +612,68 @@
   --ms-line: var(--ms-background-d3);
 }
 
+/* --- frame: consecutive sections with `frame` share one border, inset
+   from the screen edge, in the page's button color. `--ms-frame` is
+   resolved on the root, so a section's own color groups don't recolor it.
+   The first section of a run carries the top edge (and the label from
+   `data-frame`, a tab hanging from it), the last one the bottom edge. --- */
+
+.ms-root {
+  --ms-frame: var(--ms-button-m2);
+  --ms-frame-copy: var(--ms-button-b1);
+  --ms-frame-width: 4px;
+  --ms-frame-inset: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+  .ms-root {
+    --ms-frame-width: 6px;
+    --ms-frame-inset: 1.25rem;
+  }
+}
+
+.ms-section.ms-framed {
+  position: relative;
+  margin-inline: var(--ms-frame-inset);
+  border-inline: var(--ms-frame-width) solid var(--ms-frame);
+}
+
+.ms-section.ms-framed:not(.ms-framed + .ms-framed) {
+  margin-top: var(--ms-frame-inset);
+  border-top: var(--ms-frame-width) solid var(--ms-frame);
+  border-top-left-radius: calc(var(--ms-radius) * 3);
+  border-top-right-radius: calc(var(--ms-radius) * 3);
+}
+
+.ms-section.ms-framed:not(:has(+ .ms-framed)) {
+  margin-bottom: var(--ms-frame-inset);
+  border-bottom: var(--ms-frame-width) solid var(--ms-frame);
+  border-bottom-left-radius: calc(var(--ms-radius) * 3);
+  border-bottom-right-radius: calc(var(--ms-radius) * 3);
+}
+
+.ms-section.ms-framed[data-frame]:not(.ms-framed + .ms-framed)::before {
+  content: attr(data-frame);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 1;
+  translate: -50% 0;
+  max-width: calc(100% - 2rem);
+  padding: 0.3rem 1.1rem 0.45rem;
+  border-radius: 0 0 calc(var(--ms-radius) * 2) calc(var(--ms-radius) * 2);
+  background: var(--ms-frame);
+  color: var(--ms-frame-copy);
+  font-family: var(--ms-font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* --- reveal block: the open/close motion is scripted (blocks.tsx, Web
    Animations API); CSS only hides the marker and turns the plus. --- */
 .ms-reveal summary::-webkit-details-marker {
