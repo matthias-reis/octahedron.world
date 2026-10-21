@@ -626,6 +626,17 @@
   --ms-line: var(--ms-background-d3);
 }
 
+/* Backdrop photos: `position` from the page, `positionMobile` below 48rem
+   (backdrop.tsx) — a portrait crop of a wide photo needs its own focus. */
+.ms-backdrop-photo {
+  object-position: var(--ms-pos-mobile, var(--ms-pos, 50% 50%));
+}
+@media (min-width: 48rem) {
+  .ms-backdrop-photo {
+    object-position: var(--ms-pos, 50% 50%);
+  }
+}
+
 /* `depth: vivid` — the inverted section on the background group's
    full-chroma mid shade m2 instead of a dark one: a loud band in the brand
    color (bright copy keeps ≥ 4.5 : 1 on every m2). Cards and tints drop to

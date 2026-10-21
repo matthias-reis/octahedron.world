@@ -98,7 +98,7 @@ Each is documented (YAML shape) in a comment above its component.
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
   subject below, `shade: soft` (cover only) keeps a dark sky visible behind the
-  copy instead of fading it out (016-moeller); `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
+  copy instead of fading it out (016-moeller), `positionMobile` sets the photo's focus below 48rem; `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
   line, a size up — a headline that stands out; `headline: hand` sets the
   section's h1/h2 in the pairing's hand face, a brush script — for a few
   headlines only, see `pinsel`; `headline: { image, ratio, width }` shows
