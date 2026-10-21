@@ -283,6 +283,12 @@ The `palette` block previews all of them live.
   colors: { background: accent-right }                  # section (yaml @)
   ```
   Both become `.ms-<group>-<palette>` classes that re-point the group.
+- `theme.neutrals: 0.25` scales the chroma of the near-neutral shades
+  (b1–b3, m3, d1, d2) for a page that must read greyer than the default.
+- `theme.buttonColor: "#e2001a"` sets buttons and icons in the business's
+  own brand color in every variant. It is outside the approved
+  combinations: only on request (018-meyer). An ornament color `button`
+  follows it.
 - `theme.buttonShade: m3` sets buttons on the desaturated mid shade
   instead of m2 (bright copy in every variant), for pages whose buttons
   should sit back.

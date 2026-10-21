@@ -70,23 +70,24 @@
   --ms-font-display: "Fraunces Variable", serif;
   --ms-font-body: "Inter Variable", sans-serif;
 
-  /* --- shade shape: lightness + chroma, shared by all palettes --- */
+  /* --- shade shape: lightness + chroma, shared by all palettes; the
+     near-neutral shades (b1–b3, m3, d1, d2) scale with `theme.neutrals` --- */
   --ms-l-b1: 0.985;
-  --ms-c-b1: 0.003;
+  --ms-c-b1: calc(0.003 * var(--ms-neutrals, 1));
   --ms-l-b2: 0.95;
-  --ms-c-b2: 0.008;
+  --ms-c-b2: calc(0.008 * var(--ms-neutrals, 1));
   --ms-l-b3: 0.93;
-  --ms-c-b3: 0.04;
+  --ms-c-b3: calc(0.04 * var(--ms-neutrals, 1));
   --ms-l-m1: 0.64;
   --ms-c-m1: 0.18;
   --ms-l-m2: 0.5;
   --ms-c-m2: 0.16;
   --ms-l-m3: 0.58;
-  --ms-c-m3: 0.03;
+  --ms-c-m3: calc(0.03 * var(--ms-neutrals, 1));
   --ms-l-d1: 0.18;
-  --ms-c-d1: 0.008;
+  --ms-c-d1: calc(0.008 * var(--ms-neutrals, 1));
   --ms-l-d2: 0.3;
-  --ms-c-d2: 0.015;
+  --ms-c-d2: calc(0.015 * var(--ms-neutrals, 1));
   --ms-l-d3: 0.3;
   --ms-c-d3: 0.09;
 
@@ -592,6 +593,18 @@
   --ms-button: var(--ms-button-m3);
   --ms-button-hover: var(--ms-button-m2);
   --ms-button-copy: var(--ms-button-b1);
+}
+
+/* `theme.buttonColor: "#e2001a"` — buttons (and icons) in the page's own
+   brand color instead of the button group, in every variant. Outside the
+   approved combinations: only on request (018-meyer). */
+.ms-root.ms-button-brand,
+.ms-root.ms-button-brand .ms-section,
+.ms-root.ms-button-brand .ms-section.ms-inverted {
+  --ms-button: var(--ms-button-brand);
+  --ms-button-hover: color-mix(in oklch, var(--ms-button-brand) 80%, black);
+  --ms-button-copy: white;
+  --ms-icon: var(--ms-button-brand);
 }
 
 /* A mostly dark page reads better one step above the deepest shade:
