@@ -20,14 +20,16 @@ theme:
   radius: 0.25
   fonts: meister
   signal: "#ffd814"
+  buttonColor: "#e2001a"
+  neutrals: 0.25
   colors: { copy: main, background: main }
   depth: 1
-  ornament: { shape: stripes, colors: [accent-left-m2, signal, main] }
+  ornament: { shape: stripes, colors: [accent-left-m2, signal, button] }
 header:
   phone: 04625 18 79 90
   cta: { text: E-Mail schreiben, url: "mailto:malermeister@svend-meyer.de" }
 footer:
-  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nach der Visitenkarte auf svend-meyer.de nachgezeichnet, Visitenkarte von svend-meyer.de. Symbolbilder KI-generiert, keine Arbeiten des Betriebs. Anschrift und E-Mail laut Maler- und Lackierer-Innung Flensburg-Schleswig. Malerei Svend Meyer · Treenestraße 37 · 24896 Treia · [Inhaber, Rechtsform]"
+  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nach der Visitenkarte auf svend-meyer.de nachgezeichnet, Visitenkarte von svend-meyer.de. Titelbild und Symbolbilder KI-generiert, keine Arbeiten des Betriebs. Anschrift und E-Mail laut Maler- und Lackierer-Innung Flensburg-Schleswig. Malerei Svend Meyer · Treenestraße 37 · 24896 Treia · [Inhaber, Rechtsform]"
   meta: { icon: shield-check, text: Kein Tracking · keine Cookies }
 legal:
   - Impressum
@@ -44,10 +46,11 @@ quickbar:
 layout: hero
 kicker: { text: Maler- und Lackierermeister, icon: paint-roller }
 visual:
-  src: pinsel.webp
-  alt: Drei breite Pinselstriche in Blau, Gelb und Rot, die schräg nach rechts unten laufen – die Farben des Logos
+  src: regenbogen.webp
+  alt: Zwei Maler in weißen Latzhosen rollen auf einem Gerüst einen großen Regenbogen auf die weiße Giebelwand eines Hauses
   style: bleed
-  position: 0% 20%
+  position: 50% 45%
+  credit: { text: Symbolbild (KI-generiert) }
 ```
 
 # Maler­meister in Treia
