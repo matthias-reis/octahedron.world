@@ -19,10 +19,12 @@ import {
 import { HeroVisual, type HeroVisualData } from "./hero-visual";
 import { patternMask } from "./patterns";
 import {
+  buttonBrandClass,
   buttonShadeClass,
   type ColorAssignment,
   colorClasses,
   depthClass,
+  leadClass,
   type MicrositeTheme,
   type Ornament,
   ornamentClass,
@@ -166,6 +168,8 @@ export default function MicrositeRenderer(props: {
         depthClass(global?.theme?.depth),
         ornamentClass(global?.theme?.ornament),
         buttonShadeClass(global?.theme?.buttonShade),
+        buttonBrandClass(global?.theme?.buttonColor),
+        leadClass(global?.theme?.fonts),
         ...colorClasses(global?.theme?.colors),
       ]
         .filter(Boolean)

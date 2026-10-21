@@ -53,6 +53,7 @@
 @import "@fontsource-variable/outfit";
 @import "@fontsource/marcellus/400.css";
 @import "@fontsource-variable/source-sans-3";
+@import "@fontsource-variable/montserrat";
 /* static cuts: Barlow has no variable build — only the weights `norm` uses */
 @import "@fontsource/barlow/400.css";
 @import "@fontsource/barlow/500.css";
@@ -69,23 +70,24 @@
   --ms-font-display: "Fraunces Variable", serif;
   --ms-font-body: "Inter Variable", sans-serif;
 
-  /* --- shade shape: lightness + chroma, shared by all palettes --- */
+  /* --- shade shape: lightness + chroma, shared by all palettes; the
+     near-neutral shades (b1–b3, m3, d1, d2) scale with `theme.neutrals` --- */
   --ms-l-b1: 0.985;
-  --ms-c-b1: 0.003;
+  --ms-c-b1: calc(0.003 * var(--ms-neutrals, 1));
   --ms-l-b2: 0.95;
-  --ms-c-b2: 0.008;
+  --ms-c-b2: calc(0.008 * var(--ms-neutrals, 1));
   --ms-l-b3: 0.93;
-  --ms-c-b3: 0.04;
+  --ms-c-b3: calc(0.04 * var(--ms-neutrals, 1));
   --ms-l-m1: 0.64;
   --ms-c-m1: 0.18;
   --ms-l-m2: 0.5;
   --ms-c-m2: 0.16;
   --ms-l-m3: 0.58;
-  --ms-c-m3: 0.03;
+  --ms-c-m3: calc(0.03 * var(--ms-neutrals, 1));
   --ms-l-d1: 0.18;
-  --ms-c-d1: 0.008;
+  --ms-c-d1: calc(0.008 * var(--ms-neutrals, 1));
   --ms-l-d2: 0.3;
-  --ms-c-d2: 0.015;
+  --ms-c-d2: calc(0.015 * var(--ms-neutrals, 1));
   --ms-l-d3: 0.3;
   --ms-c-d3: 0.09;
 
@@ -593,6 +595,18 @@
   --ms-button-copy: var(--ms-button-b1);
 }
 
+/* `theme.buttonColor: "#e2001a"` — buttons (and icons) in the page's own
+   brand color instead of the button group, in every variant. Outside the
+   approved combinations: only on request (018-meyer). */
+.ms-root.ms-button-brand,
+.ms-root.ms-button-brand .ms-section,
+.ms-root.ms-button-brand .ms-section.ms-inverted {
+  --ms-button: var(--ms-button-brand);
+  --ms-button-hover: color-mix(in oklch, var(--ms-button-brand) 80%, black);
+  --ms-button-copy: white;
+  --ms-icon: var(--ms-button-brand);
+}
+
 /* A mostly dark page reads better one step above the deepest shade:
    `depth: 1` sets inverted sections on d1 (near black), `depth: 2` on d2
    (desaturated dark). Page-wide via `theme.depth`, per section via `depth`. */
@@ -640,6 +654,65 @@
   margin-right: 0.32em;
   vertical-align: 0.04em;
   background: var(--ms-ornament, var(--ms-button));
+}
+
+/* `theme.ornament: { shape: stripes, colors: [a, b, c] }` — three short
+   slanted bands in front of every h1/h2, like the brush strokes of a
+   painter's logo: horizontal bands, a ragged-ended mask, skewed so they fall
+   to the right. The same three colors run as a thin band under the header
+   and over the footer. */
+.ms-root.ms-ornament-stripes {
+  --ms-stripes: linear-gradient(
+    to bottom,
+    var(--ms-ornament, var(--ms-button)) 0 33.4%,
+    var(--ms-ornament-2, var(--ms-ornament, var(--ms-button))) 0 66.7%,
+    var(--ms-ornament-3, var(--ms-ornament, var(--ms-button))) 0
+  );
+}
+
+.ms-root.ms-ornament-stripes .ms-section :is(h1, h2)::before {
+  content: "";
+  display: var(--ms-ornament-display, inline-block);
+  width: 1.05em;
+  height: 0.6em;
+  margin-right: 0.42em;
+  vertical-align: 0.06em;
+  background: linear-gradient(
+    to bottom,
+    var(--ms-ornament, var(--ms-button)) 0 33.4%,
+    var(--ms-ornament-2, var(--ms-ornament, var(--ms-button))) 0 66.7%,
+    var(--ms-ornament-3, var(--ms-ornament, var(--ms-button))) 0
+  );
+  mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60' preserveAspectRatio='none'%3E%3Cpath d='M6 0 L100 0 L96 7 L99 14 L94 21 L98 29 L95 36 L99 44 L94 51 L97 60 L3 60 L7 53 L1 46 L5 39 L0 31 L4 24 L1 16 L5 9 Z'/%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+  transform: skewY(16deg);
+}
+
+.ms-root.ms-ornament-stripes > header::after,
+.ms-root.ms-ornament-stripes > footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--ms-stripes);
+}
+
+.ms-root.ms-ornament-stripes > header {
+  border-bottom-color: transparent;
+}
+
+.ms-root.ms-ornament-stripes > header::after {
+  bottom: -6px;
+}
+
+.ms-root.ms-ornament-stripes > footer {
+  position: relative;
+}
+
+.ms-root.ms-ornament-stripes > footer::before {
+  top: 0;
 }
 
 /* --- reveal block: the open/close motion is scripted (blocks.tsx, Web
@@ -705,6 +778,12 @@
   font-size: 1rem;
   overflow: hidden;
   white-space: nowrap;
+}
+
+/* A pairing may set the first paragraph under an h2 a size up
+   (`leadSize`), so a short headline carries longer text right below it. */
+.ms-root.ms-lead .ms-section h2 + p {
+  font-size: var(--ms-lead-size);
 }
 
 /* Hero sections: bigger lead copy under the display headline. */

@@ -47,6 +47,9 @@ importers:
       '@fontsource-variable/lora':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource-variable/montserrat':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@fontsource-variable/newsreader':
         specifier: ^5.3.0
         version: 5.3.0
@@ -906,6 +909,9 @@ packages:
 
   '@fontsource-variable/lora@5.3.0':
     resolution: {integrity: sha512-2ph8KiZ8Bn141hWuC3ErtpJ+Ui8p2MJQn8TJNRSRmLmnCIOCtHfiBM9R7WLRPeUG/q6hXyHOxWQ8DvRSX+ixvQ==}
+
+  '@fontsource-variable/montserrat@5.3.0':
+    resolution: {integrity: sha512-7PaZoxaxrWLAyrhO46v65An9LhUhfkTExWLhfbywYZCnZEgg/W1rEHnlNmZKjNZ3nJTVYyicqxlJt10z/26yTA==}
 
   '@fontsource-variable/newsreader@5.3.0':
     resolution: {integrity: sha512-rrzYi43qMpbzwuFtf9OkWH8sxAPVPcQQQEwXpPtwaKYeJ8yVg5aLs5kawmo1f2Q1t1M38TLmEKCkGVDsYwgdFw==}
@@ -4688,6 +4694,8 @@ snapshots:
   '@fontsource-variable/inter@5.3.0': {}
 
   '@fontsource-variable/lora@5.3.0': {}
+
+  '@fontsource-variable/montserrat@5.3.0': {}
 
   '@fontsource-variable/newsreader@5.3.0': {}
 
