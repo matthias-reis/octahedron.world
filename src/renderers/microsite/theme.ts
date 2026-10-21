@@ -155,6 +155,20 @@ export const fontPairings = {
     headingWeight: 800,
     displayTracking: "-0.025em",
   },
+  /** Sign-painter's capitals: a wide geometric face, black (900), in open-tracked
+   * capitals on top — like a painter's wordmark — over a humanist text sans;
+   * the paragraph under each h2 runs a size up, so short headlines can carry
+   * the longer text right below them (018-meyer). */
+  meister: {
+    display: '"Montserrat Variable", "Arial Black", sans-serif',
+    body: '"Source Sans 3 Variable", system-ui, sans-serif',
+    h1Weight: 900,
+    headingWeight: 900,
+    displayTracking: "0.045em",
+    displayTransform: "uppercase",
+    /** font-size of the first paragraph after an h2 (the hero keeps its own). */
+    leadSize: "1.2rem",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -215,6 +229,12 @@ export function buttonShadeClass(shade: unknown): string | undefined {
   return shade === "m3" ? "ms-button-shade-m3" : undefined;
 }
 
+/** `ms-lead` when the page's font pairing sets a lead size (`leadSize`). */
+export function leadClass(fonts: unknown): string | undefined {
+  const pairing = fontPairings[fonts as FontPairing];
+  return pairing && "leadSize" in pairing ? "ms-lead" : undefined;
+}
+
 /** `ms-depth-<n>` for a valid depth (1, 2 or `vivid`), else nothing. */
 export function depthClass(depth: unknown): string | undefined {
   return depth === 1 || depth === 2 || depth === "vivid"
@@ -226,29 +246,53 @@ export function depthClass(depth: unknown): string | undefined {
  * Headline ornament: `{ shape: square, color: signal }` page-wide; a section
  * re-colors it with `ornament: { color: main }` or drops it with
  * `ornament: none`. The color is a palette's m1 shade (the full brand tone
- * for `signal`).
+ * for `signal`), or a named shade (`accent-left-m2`).
+ *
+ * `{ shape: stripes, colors: [accent-left-m2, signal, main] }` sets three
+ * short slanted bands, top to bottom, like the three brush strokes of a
+ * painter's logo, and repeats them as a band under the header and over the
+ * footer (018-meyer).
  */
-export type Ornament = { shape?: "square"; color?: GroupPalette } | "none";
+export type Ornament =
+  | { shape?: "square" | "stripes"; color?: string; colors?: string[] }
+  | "none";
+
+const ornamentShapes = ["square", "stripes"] as const;
+
+/** `var(--ms-<palette>-<shade>)` for `main` or `main-m2`, else undefined. */
+function shadeVar(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const match = /^(.+?)(?:-([bmd][123]))?$/.exec(value);
+  if (!match || !isPalette(match[1])) return undefined;
+  return `var(--ms-${match[1]}-${match[2] ?? "m1"})`;
+}
 
 function isPalette(value: unknown): value is GroupPalette {
   return groupPalettes.includes(value as GroupPalette);
 }
 
-/** `ms-ornament-square` on the root when the page sets a square ornament. */
+/** `ms-ornament-<shape>` on the root when the page sets an ornament. */
 export function ornamentClass(ornament: unknown): string | undefined {
-  return typeof ornament === "object" &&
-    ornament !== null &&
-    (ornament as { shape?: unknown }).shape === "square"
-    ? "ms-ornament-square"
+  if (typeof ornament !== "object" || ornament === null) return undefined;
+  const shape = (ornament as { shape?: unknown }).shape;
+  return ornamentShapes.includes(shape as (typeof ornamentShapes)[number])
+    ? `ms-ornament-${shape}`
     : undefined;
 }
 
-/** The ornament color (and `none`) as inline custom properties. */
+/** The ornament color(s) (and `none`) as inline custom properties. */
 export function ornamentStyle(ornament: unknown): JSX.CSSProperties {
   if (ornament === "none") return { "--ms-ornament-display": "none" };
   if (typeof ornament !== "object" || ornament === null) return {};
-  const color = (ornament as { color?: unknown }).color;
-  return isPalette(color) ? { "--ms-ornament": `var(--ms-${color}-m1)` } : {};
+  const { color, colors } = ornament as { color?: unknown; colors?: unknown };
+  const style: JSX.CSSProperties = {};
+  const list = Array.isArray(colors) ? colors.slice(0, 3) : [color];
+  const keys = ["--ms-ornament", "--ms-ornament-2", "--ms-ornament-3"] as const;
+  list.forEach((value, i) => {
+    const css = shadeVar(value);
+    if (css) style[keys[i]] = css;
+  });
+  return style;
 }
 
 function num(value: unknown): number | undefined {
@@ -295,6 +339,7 @@ export function themeStyle(
       style["--ms-display-transform"] = fonts.displayTransform;
     if ("displayStyle" in fonts)
       style["--ms-display-style"] = fonts.displayStyle;
+    if ("leadSize" in fonts) style["--ms-lead-size"] = fonts.leadSize;
   }
 
   return style;

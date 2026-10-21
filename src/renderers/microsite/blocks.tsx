@@ -849,6 +849,7 @@ const Gallery: Component<CustomBlockProps> = (props) => {
  *     icon: hammer         # optional
  *     image: foto.webp     # optional single photo beside the text
  *     alt: …               # required with image
+ *     caption: …           # optional line under the photo (e.g. Symbolbild (KI-generiert))
  *     gallery:             # optional: the item's own photo mosaic below the text
  *       - { src: a.webp, alt: …, caption: … }
  * photos: natural          # optional: photos at their own size (small originals), not cropped to 3:2
@@ -960,6 +961,24 @@ const Reveal: Component<CustomBlockProps> = (props) => {
     );
   };
 
+  const Figure: Component<{ file?: string; alt: string; caption?: string }> = (
+    figure,
+  ) => (
+    <Show
+      when={figure.caption}
+      fallback={<Photo file={figure.file} alt={figure.alt} />}
+    >
+      {(caption) => (
+        <figure class="m-0">
+          <Photo file={figure.file} alt={figure.alt} />
+          <figcaption class="mt-sxs text-xs text-copy-soft">
+            {caption()}
+          </figcaption>
+        </figure>
+      )}
+    </Show>
+  );
+
   return (
     <div ref={root} class="ms-block ms-reveal mt-sxl border-t border-line">
       <For each={items()}>
@@ -1004,7 +1023,11 @@ const Reveal: Component<CustomBlockProps> = (props) => {
                 <p class="max-w-prose leading-relaxed text-copy">
                   {str(item.text)}
                 </p>
-                <Photo file={str(item.image)} alt={str(item.alt) ?? ""} />
+                <Figure
+                  file={str(item.image)}
+                  alt={str(item.alt) ?? ""}
+                  caption={str(item.caption)}
+                />
               </div>
               <Show when={list(item.gallery).length > 0}>
                 <Mosaic items={list(item.gallery)} class="mt-slg" />

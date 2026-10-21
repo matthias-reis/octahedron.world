@@ -121,7 +121,8 @@ Each is documented (YAML shape) in a comment above its component.
   `<details name>` accordion, animated; each item is a whole chapter with
   text, icon, a photo or its own `gallery` mosaic, so a service list needs
   no sections of its own and no numbers; `photos: natural` shows small
-  originals at their own size instead of cropping them to 3:2), `stats` (two or three big real
+  originals at their own size instead of cropping them to 3:2; `caption`
+  per item, e.g. `Symbolbild (KI-generiert)`), `stats` (two or three big real
   figures), `video` (YouTube, two-click: nothing loads from YouTube before
   the click; the poster is a local file), `cta` (buttons with icons),
   `contact` (rows incl. `mobile`, `fax`, `route`; `style: grid` for tiles),
@@ -298,6 +299,10 @@ The `palette` block previews all of them live.
   (the palette's m1) in front of every h1/h2, like the square marks of a
   logo; a section re-colors it with `ornament: { color: main }` or drops it
   with `ornament: none` (016-moeller).
+  `{ shape: stripes, colors: [accent-left-m2, signal, main] }` sets three
+  short slanted bands instead (a logo of three brush strokes), and repeats
+  them as a thin band under the header and over the footer (018-meyer).
+  Colors are palettes (m1) or named shades (`accent-left-m2`).
 - The semantic layer is re-declared on every `.ms-section`. Anything that
   should respond to a group class or `ms-inverted` must be (inside) an
   element with `ms-section`.
@@ -317,6 +322,8 @@ The `palette` block previews all of them live.
   `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
   `displayWordSpacing`, `displayTransform` (`uppercase` sets h1 and h2 in
   capitals, see `monolith`) — see `industrial` for a condensed, heavy setup.
+  `leadSize` sets the first paragraph under every h2 a size up, so short
+  headlines carry longer text right below them (`meister`).
   `hand` adds a third face (a handwritten or brush script, see `pinsel`)
   that only `headline: hand` and `callout.face: hand` use.
 - Fonts come only from `fontPairings` in `theme.ts`. A new pairing needs a
