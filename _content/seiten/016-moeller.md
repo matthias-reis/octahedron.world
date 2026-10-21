@@ -27,7 +27,7 @@ header:
   phone: 040 / 78 01 83 - 0
   cta: { text: E-Mail schreiben, url: "mailto:info@thomas-moeller.com" }
 footer:
-  note: Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nach thomas-moeller.com nachgezeichnet. Titelbild (Berliner Bogen, Hamburg) und Referenzfotos von thomas-moeller.com; der Himmel links im Titelbild ist KI-erweitert und das Foto hochgerechnet. Thomas Möller GmbH Malereibetrieb · Herrengraben 2 · 21465 Reinbek · Geschäftsführung Nils Möller · Amtsgericht Lübeck HRB 1625 RE
+  note: "Unverbindliche Konzeptdarstellung eines möglichen neuen Internetauftritts. Logo nach thomas-moeller.com nachgezeichnet. Titelbild: „Hamburg, Bürogebäude Berliner Bogen“ von Dguendel, Wikimedia Commons, Lizenz CC BY 4.0 (creativecommons.org/licenses/by/4.0), Himmel durch KI-generierte Wolken ersetzt und Farben angepasst. Referenzfotos von thomas-moeller.com. Thomas Möller GmbH Malereibetrieb · Herrengraben 2 · 21465 Reinbek · Geschäftsführung Nils Möller · Amtsgericht Lübeck HRB 1625 RE"
   meta: { icon: shield-check, text: Kein Tracking · keine Cookies }
 legal:
   - Impressum
@@ -50,7 +50,7 @@ backdrop:
   style: cover
   valign: top
   shade: soft
-  position: 52% 40%
+  position: 50% 30%
 ```
 
 # Für Norddeutschland und den Rest der Welt
