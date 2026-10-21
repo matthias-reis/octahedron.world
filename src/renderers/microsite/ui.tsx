@@ -323,6 +323,8 @@ export const Section: ParentComponent<{
   visualStyle?: "card" | "bleed";
   /** CSS mask for a repeating motif, drawn in the section's text color. */
   pattern?: JSX.CSSProperties;
+  /** Section override of the headline ornament (`--ms-ornament*`). */
+  ornament?: JSX.CSSProperties;
   /** `center`: everything on the vertical axis (no visual, no backdrop). */
   align?: "center";
   /** `stacked`: the section's h2 one word per line, larger. `hand`: h1/h2 in the hand face. */
@@ -345,15 +347,16 @@ export const Section: ParentComponent<{
     <section
       id={props.id}
       aria-label={props.label}
-      style={
-        headlineSrc()
+      style={{
+        ...props.ornament,
+        ...(headlineSrc()
           ? {
               "--ms-headline-image": `url("${headlineSrc()}")`,
               "--ms-headline-ratio": String(props.headlineImage?.ratio ?? 8),
               "--ms-headline-width": `${props.headlineImage?.width ?? 26}rem`,
             }
-          : undefined
-      }
+          : {}),
+      }}
       class={cx(
         "ms-section",
         (backdrop() || props.pattern) && "relative isolate overflow-hidden",

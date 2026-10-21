@@ -612,6 +612,36 @@
   --ms-line: var(--ms-background-d3);
 }
 
+/* `depth: vivid` — the inverted section on the background group's
+   full-chroma mid shade m2 instead of a dark one: a loud band in the brand
+   color (bright copy keeps ≥ 4.5 : 1 on every m2). Cards and tints drop to
+   d3. Give it a button group off the hue, e.g. `colors: { button: signal }`.
+   For a band in the `signal` color itself use a plain section with
+   `colors: { background: signal }` (its b1 is the brand color). */
+.ms-root.ms-depth-vivid .ms-section.ms-inverted,
+.ms-section.ms-inverted.ms-depth-vivid {
+  --ms-page: var(--ms-background-m2);
+  --ms-card: var(--ms-background-d3);
+  --ms-tint: var(--ms-background-d3);
+  --ms-line: var(--ms-background-m1);
+  --ms-copy-soft: var(--ms-copy-b2);
+  --ms-link: var(--ms-copy-b1);
+}
+
+/* `theme.ornament: { shape: square, color: <palette> }` — a solid square in
+   front of every h1/h2, like the square marks of a logo. Its color is the
+   palette's m1 (`--ms-ornament`, set inline by theme.ts on the page or a
+   section); a section's `ornament: none` drops it. */
+.ms-root.ms-ornament-square .ms-section :is(h1, h2)::before {
+  content: "";
+  display: var(--ms-ornament-display, inline-block);
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: 0.32em;
+  vertical-align: 0.04em;
+  background: var(--ms-ornament, var(--ms-button));
+}
+
 /* --- reveal block: the open/close motion is scripted (blocks.tsx, Web
    Animations API); CSS only hides the marker and turns the plus. --- */
 .ms-reveal summary::-webkit-details-marker {

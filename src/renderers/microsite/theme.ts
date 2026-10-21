@@ -201,8 +201,11 @@ export type MicrositeTheme = {
   colors?: ColorAssignment;
   /** Brand color for the `signal` palette, as hex (`#efb814`). */
   signal?: string;
-  /** Inverted sections on d1 (1, near black) or d2 (2) instead of d3. */
-  depth?: number;
+  /** Inverted sections on d1 (1, near black), d2 (2) or the full-chroma
+   * mid shade m2 (`vivid`) instead of d3. */
+  depth?: number | "vivid";
+  /** A small mark in front of every h1/h2, e.g. the square of a logo. */
+  ornament?: Ornament;
   /** Button background shade: `m3` (desaturated mid) instead of the default m2. */
   buttonShade?: "m3";
 };
@@ -212,9 +215,40 @@ export function buttonShadeClass(shade: unknown): string | undefined {
   return shade === "m3" ? "ms-button-shade-m3" : undefined;
 }
 
-/** `ms-depth-<n>` for a valid depth, else nothing. */
+/** `ms-depth-<n>` for a valid depth (1, 2 or `vivid`), else nothing. */
 export function depthClass(depth: unknown): string | undefined {
-  return depth === 1 || depth === 2 ? `ms-depth-${depth}` : undefined;
+  return depth === 1 || depth === 2 || depth === "vivid"
+    ? `ms-depth-${depth}`
+    : undefined;
+}
+
+/**
+ * Headline ornament: `{ shape: square, color: signal }` page-wide; a section
+ * re-colors it with `ornament: { color: main }` or drops it with
+ * `ornament: none`. The color is a palette's m1 shade (the full brand tone
+ * for `signal`).
+ */
+export type Ornament = { shape?: "square"; color?: GroupPalette } | "none";
+
+function isPalette(value: unknown): value is GroupPalette {
+  return groupPalettes.includes(value as GroupPalette);
+}
+
+/** `ms-ornament-square` on the root when the page sets a square ornament. */
+export function ornamentClass(ornament: unknown): string | undefined {
+  return typeof ornament === "object" &&
+    ornament !== null &&
+    (ornament as { shape?: unknown }).shape === "square"
+    ? "ms-ornament-square"
+    : undefined;
+}
+
+/** The ornament color (and `none`) as inline custom properties. */
+export function ornamentStyle(ornament: unknown): JSX.CSSProperties {
+  if (ornament === "none") return { "--ms-ornament-display": "none" };
+  if (typeof ornament !== "object" || ornament === null) return {};
+  const color = (ornament as { color?: unknown }).color;
+  return isPalette(color) ? { "--ms-ornament": `var(--ms-${color}-m1)` } : {};
 }
 
 function num(value: unknown): number | undefined {
@@ -240,6 +274,8 @@ export function themeStyle(
     /^#[0-9a-f]{3,8}$/i.test(theme.signal)
   )
     style["--ms-signal"] = theme.signal;
+
+  Object.assign(style, ornamentStyle(theme.ornament));
 
   const fonts = theme.fonts && fontPairings[theme.fonts];
   if (fonts) {

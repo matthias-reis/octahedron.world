@@ -91,11 +91,14 @@ Each is documented (YAML shape) in a comment above its component.
 - **Section local scope:** `nav`, `variant`, `colors`, `kicker` (string, or
   `{ text, icon }` for a pill; `tone: copy` sets it in the text color instead
   of the button color), `pattern` (a subtle repeating motif behind the
-  section in its text color — `patterns.ts`, e.g. `roof`, `wave`, `grain`), `backdrop` (full-bleed background image, the
+  section in its text color — `patterns.ts`, e.g. `roof`, `wave`, `grain`,
+  `squares`), `ornament` (re-color the page's headline ornament,
+  `{ color: main }`, or drop it, `none`), `backdrop` (full-bleed background image, the
   copy moves onto a frosted panel; `style: cover` sets it straight onto the
   photo, bottom left, magazine-cover style; `align: right` puts the copy on
   the right half, `valign: top` (cover only) sets it into the sky with the
-  subject below; `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
+  subject below, `shade: soft` (cover only) keeps a dark sky visible behind the
+  copy instead of fading it out (016-moeller); `slides` adds up to five photos that cross-fade over it, CSS only — `backdrop.tsx`), `headline: stacked` (the h2 one word per
   line, a size up — a headline that stands out; `headline: hand` sets the
   section's h1/h2 in the pairing's hand face, a brush script — for a few
   headlines only, see `pinsel`; `headline: { image, ratio, width }` shows
@@ -287,6 +290,14 @@ The `palette` block previews all of them live.
   `depth: 1 | 2` (section, or page-wide as `theme.depth`) sets inverted
   sections on d1 (near black) or d2 (desaturated dark) instead of d3 — for a
   page that is mostly dark; alternate 1 and 2 so neighbours differ.
+  `depth: vivid` sets an inverted section on the background group's
+  full-chroma m2 — a loud band in the brand color; give it a button group
+  off the hue (`colors: { button: signal }`). Only on request (016-moeller):
+  it is outside the approved combinations.
+- `theme.ornament: { shape: square, color: <palette> }` puts a solid square
+  (the palette's m1) in front of every h1/h2, like the square marks of a
+  logo; a section re-colors it with `ornament: { color: main }` or drops it
+  with `ornament: none` (016-moeller).
 - The semantic layer is re-declared on every `.ms-section`. Anything that
   should respond to a group class or `ms-inverted` must be (inside) an
   element with `ms-section`.
