@@ -8,6 +8,7 @@ import { smallVariant, usePageAsset } from "./assets";
  * backdrop:
  *   src: backdrop.webp     # pnpm ms-image … --wide (2400 + 1200 px)
  *   position: 80% 50%      # optional object-position — keep the subject clear
+ *   positionMobile: 25% 50%  # optional, below 48rem: a portrait crop needs its own focus
  *   style: cover           # optional: magazine cover instead of the panel
  *   align: right           # optional: copy on the right half (default left)
  *   valign: top            # optional, cover only: copy at the top (default bottom)
@@ -29,6 +30,7 @@ import { smallVariant, usePageAsset } from "./assets";
 export type BackdropData = {
   src?: string;
   position?: string;
+  positionMobile?: string;
   style?: "panel" | "cover";
   align?: "left" | "right";
   valign?: "top" | "bottom";
@@ -40,6 +42,7 @@ export type BackdropData = {
 const Photo: Component<{
   file: string;
   position?: string;
+  positionMobile?: string;
   index?: number;
   count?: number;
 }> = (props) => {
@@ -57,9 +60,12 @@ const Photo: Component<{
           loading="eager"
           fetchpriority={slide() ? "low" : "high"}
           decoding="async"
-          class={`absolute inset-0 h-full w-full object-cover ${slide() ? "ms-slide" : ""}`}
+          class={`ms-backdrop-photo absolute inset-0 h-full w-full object-cover ${slide() ? "ms-slide" : ""}`}
           style={{
-            "object-position": props.position ?? "50% 50%",
+            "--ms-pos": props.position ?? "50% 50%",
+            ...(props.positionMobile
+              ? { "--ms-pos-mobile": props.positionMobile }
+              : {}),
             ...(slide()
               ? {
                   "--ms-slide": String(props.index),
@@ -94,12 +100,14 @@ export const Backdrop: Component<{ backdrop: BackdropData }> = (props) => {
           <Photo
             file={props.backdrop.src as string}
             position={props.backdrop.position}
+            positionMobile={props.backdrop.positionMobile}
           />
           <For each={slides()}>
             {(file, index) => (
               <Photo
                 file={file}
                 position={props.backdrop.position}
+                positionMobile={props.backdrop.positionMobile}
                 index={index() + 1}
                 count={slides().length + 1}
               />
