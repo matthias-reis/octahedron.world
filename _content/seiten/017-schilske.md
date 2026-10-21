@@ -93,7 +93,6 @@ nav: Malerei
 variant: tint
 colors: { background: accent-left, button: accent-left }
 layout: split
-frame: Kurt Schilske Unternehmensgruppe
 kicker: Kapitel 1 · Malereibetrieb
 ```
 
@@ -160,7 +159,6 @@ nav: Sonderbau
 variant: tint
 colors: { background: accent-right, button: accent-right }
 layout: side
-frame: true
 kicker: Kapitel 2 · Sonderbau
 ```
 
@@ -205,7 +203,6 @@ variant: inverted
 depth: 2
 colors: { copy: accent-left, background: accent-left }
 layout: split
-frame: true
 kicker: Kapitel 3 · Korrosionsschutz
 ```
 
