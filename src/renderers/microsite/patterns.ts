@@ -34,6 +34,13 @@ const tiles = {
     size: "320px 120px",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120"><g stroke="#000" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M0 14 C80 8 160 22 240 12 S300 10 320 14"/><path d="M0 34 C70 30 120 26 150 40 C176 52 210 30 260 32 S310 36 320 34"/><path d="M0 54 C60 54 110 46 140 58 C160 66 196 66 214 56 C240 44 290 52 320 54"/><path d="M0 76 C50 80 112 70 150 76 C190 82 250 88 320 76"/><path d="M0 98 C90 104 170 92 250 100 S300 102 320 98"/><ellipse cx="176" cy="54" rx="13" ry="6"/></g></svg>`,
   },
+  /** Loose squares in three sizes, like the square marks of a logo — for a
+   * brand built on squares (016-moeller). */
+  squares: {
+    // Every square lies fully inside the tile, so it repeats without cuts.
+    size: "240px 200px",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="200" viewBox="0 0 240 200"><g fill="#000"><rect x="20" y="24" width="30" height="30"/><rect x="132" y="12" width="12" height="12"/><rect x="176" y="70" width="44" height="44"/><rect x="70" y="120" width="18" height="18"/><rect x="150" y="164" width="10" height="10"/><rect x="18" y="168" width="8" height="8"/></g></svg>`,
+  },
 } as const;
 
 export type PatternName = keyof typeof tiles;

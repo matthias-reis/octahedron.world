@@ -11,6 +11,8 @@ import { smallVariant, usePageAsset } from "./assets";
  *   style: cover           # optional: magazine cover instead of the panel
  *   align: right           # optional: copy on the right half (default left)
  *   valign: top            # optional, cover only: copy at the top (default bottom)
+ *   shade: soft            # optional, cover only: a lighter fade, for a photo whose
+ *                          #   sky is dark enough to carry bright copy (016-moeller)
  *   slides:                # optional: 1–5 more photos that cross-fade over `src`
  *     - b.webp             #   (pnpm ms-image … --wide), 7 s each, CSS only
  * ```
@@ -30,6 +32,7 @@ export type BackdropData = {
   style?: "panel" | "cover";
   align?: "left" | "right";
   valign?: "top" | "bottom";
+  shade?: "soft";
   slides?: string[];
 };
 
@@ -79,6 +82,7 @@ export const Backdrop: Component<{ backdrop: BackdropData }> = (props) => {
       .slice(0, 5);
   const right = () => props.backdrop.align === "right";
   const top = () => props.backdrop.valign === "top";
+  const soft = () => props.backdrop.shade === "soft";
 
   return (
     <Show when={src()}>
@@ -121,8 +125,11 @@ export const Backdrop: Component<{ backdrop: BackdropData }> = (props) => {
                 </>
               }
             >
-              {/* Copy in the sky: fade out early so the subject stays clear. */}
-              <div class="absolute inset-0 bg-linear-to-b from-page from-15% via-page/60 via-45% to-transparent to-70%" />
+              {/* Copy in the sky: fade out early so the subject stays clear.
+                  `soft` keeps the sky itself visible behind the copy. */}
+              <div
+                class={`absolute inset-0 bg-linear-to-b ${soft() ? "from-page/55 via-page/20 via-35% to-transparent to-60%" : "from-page from-15% via-page/60 via-45% to-transparent to-70%"}`}
+              />
             </Show>
           </Show>
         </div>

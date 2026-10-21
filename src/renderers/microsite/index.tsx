@@ -24,6 +24,9 @@ import {
   colorClasses,
   depthClass,
   type MicrositeTheme,
+  type Ornament,
+  ornamentClass,
+  ornamentStyle,
   themeStyle,
 } from "./theme";
 import {
@@ -83,8 +86,12 @@ type MicrositeLocal = {
   backdrop?: BackdropData;
   /** `center` puts the section's content on the vertical axis. */
   align?: string;
-  /** Inverted section on d1 (1) or d2 (2) instead of d3, see theme.css. */
-  depth?: number;
+  /** Inverted section on d1 (1), d2 (2) or full-chroma m2 (`vivid`)
+   *  instead of d3, see theme.css. */
+  depth?: number | "vivid";
+  /** Re-color the page's headline ornament (`{ color: main }`) or drop it
+   *  (`none`), see `Ornament` in theme.ts. */
+  ornament?: Ornament;
   /** `stacked`: the h2 runs one word per line, larger — a headline that stands out.
    *  `hand`: h1/h2 in the pairing's hand face (brush script), see theme.css.
    *  `{ image, ratio, width }`: the h2 shown as a picture, e.g. the wordmark
@@ -157,6 +164,7 @@ export default function MicrositeRenderer(props: {
       class={[
         "ms-root min-h-screen",
         depthClass(global?.theme?.depth),
+        ornamentClass(global?.theme?.ornament),
         buttonShadeClass(global?.theme?.buttonShade),
         ...colorClasses(global?.theme?.colors),
       ]
@@ -239,6 +247,7 @@ export default function MicrositeRenderer(props: {
                 }
                 headlineImage={toHeadlineImage(section.local.headline)}
                 pattern={patternMask(section.local.pattern)}
+                ornament={ornamentStyle(section.local.ornament)}
                 backdropStyle={
                   section.local.backdrop?.style === "cover" ? "cover" : "panel"
                 }
