@@ -182,8 +182,10 @@ database):
 - Unknown slugs show the same locked page as real ones, and images go
   through the same check (`/asset/<slug>/<file>`, `?k=` carried along for
   link-preview crawlers).
-- Env: `SEITEN_SECRET`, `SEITEN_ADMIN_PASSWORD`. In development both fall
-  back to `dev`; in production a missing one keeps everything locked.
+- Env: `SEITEN_SECRET`, `SEITEN_ADMIN_PASSWORD`. In development without
+  `SEITEN_ADMIN_PASSWORD` everything is open (no login, no codes) and the
+  secret falls back to `dev`; in production a missing one keeps everything
+  locked.
 
 ## Content rules
 
@@ -361,8 +363,9 @@ The `palette` block previews all of them live.
 
 ## Checking a page
 
-- `pnpm content` must pass. Open `http://seiten.localhost:4242/<name>` (log
-  in at `/login`, dev password `dev`) at
+- `pnpm content` must pass. Open `http://seiten.localhost:4242/<name>`
+  (open without login while the local env sets no admin password; a
+  worktree runs its own server with `DEV_PORT=4243 pnpm dev`) at
   desktop and mobile widths.
 - Check the header anchors, the mobile menu, no horizontal scroll, and
   contrast in every variant.

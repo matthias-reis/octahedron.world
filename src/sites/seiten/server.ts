@@ -3,6 +3,7 @@ import {
   ADMIN_COOKIE,
   checkAdminToken,
   checkPageCode,
+  openWithoutPassword,
   pageCookie,
   parseCookies,
 } from "./access";
@@ -51,6 +52,7 @@ export const accessVersion = (item: SeitenMeta) =>
   typeof item.access === "number" ? item.access : 1;
 
 export function isAdmin(request: Request): boolean {
+  if (openWithoutPassword()) return true;
   return checkAdminToken(
     parseCookies(request.headers.get("cookie"))[ADMIN_COOKIE],
   );

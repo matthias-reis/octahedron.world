@@ -100,14 +100,15 @@ the content, SEO and no-slop rules from the CLAUDE.md. In particular:
 
 1. `pnpm content`. It enforces the heading outline, the sharing card and
    the image references. Fix until it passes.
-2. Open `http://seiten.localhost:4242/<name>` after logging in at `/login`
-   (dev password `dev`) (the dev server; start it
-   with `preview_start` if nothing is running). Check desktop and mobile:
+2. Open `http://seiten.localhost:4242/<name>` (the dev server; open
+   without login while the local env sets no admin password). Use the
+   running server if there is one; otherwise start it once with `pnpm dev`
+   and leave it running (a worktree: `DEV_PORT=4243 pnpm dev`). Check desktop and mobile:
    hierarchy, header anchors, mobile menu, no horizontal scroll, contrast
    in every section, images sharp and not stretched.
-3. Check the SSR head with a client code (`pnpm seiten-link <name> 1
-   http://seiten.localhost:4242`, then `curl -s -H "Host:
-   seiten.localhost:4242" "http://localhost:4242/<name>?k=<code>"`): `<title>`, `description`, `og:title`,
+3. Check the SSR head (`curl -s -H "Host: seiten.localhost:4242"
+   "http://localhost:4242/<name>"`; with an admin password set locally,
+   add `?k=<code>` from `pnpm seiten-link <name> 1 http://seiten.localhost:4242`): `<title>`, `description`, `og:title`,
    `og:description`, `og:image` (absolute) must all be there.
 4. Look at the page as a stranger would. Does it feel like *this*
    business, or like a template? If a template, go back to step 2.
