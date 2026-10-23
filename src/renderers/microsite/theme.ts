@@ -178,6 +178,8 @@ export const fontPairings = {
     headingWeight: 800,
     /** Condensed faces need their spacing back: no tight tracking. */
     displayTracking: "-0.005em",
+    /** Buttons, the header phone and the quick bar in the display face. */
+    ui: '"Roboto Condensed Variable", "Arial Narrow", sans-serif',
   },
 } as const;
 
@@ -383,6 +385,7 @@ export function themeStyle(
     if ("displayStyle" in fonts)
       style["--ms-display-style"] = fonts.displayStyle;
     if ("leadSize" in fonts) style["--ms-lead-size"] = fonts.leadSize;
+    if ("ui" in fonts) style["--ms-font-ui"] = fonts.ui;
   }
 
   return style;

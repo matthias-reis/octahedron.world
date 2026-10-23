@@ -200,7 +200,7 @@ export const SiteHeader: Component<{
             <a
               href={tel(phone())}
               aria-label={`${phone()} anrufen`}
-              class="inline-flex items-center gap-ssm h-[2.75rem] px-[0.7rem] sm:px-smd rounded-ms border border-line bg-card font-semibold text-copy-strong whitespace-nowrap hover:border-copy-soft transition-colors"
+              class="ms-ui inline-flex items-center gap-ssm h-[2.75rem] px-[0.7rem] sm:px-smd rounded-ms border border-line bg-card font-semibold text-copy-strong whitespace-nowrap hover:border-copy-soft transition-colors"
             >
               <Icon name="phone" class="w-[1.2rem] h-[1.2rem] text-button" />
               <span class="hidden sm:inline">{phone()}</span>
@@ -366,7 +366,7 @@ export const QuickBar: Component<{
           href={link.url}
           target={link.url.startsWith("http") ? "_blank" : undefined}
           rel={link.url.startsWith("http") ? "noopener" : undefined}
-          class={`h-[3.25rem] flex items-center justify-center gap-ssm rounded-ms text-sm font-semibold ${index() === 0 ? "bg-button text-button-copy" : "text-copy-strong hover:bg-card"}`}
+          class={`ms-ui h-[3.25rem] flex items-center justify-center gap-ssm rounded-ms text-sm font-semibold ${index() === 0 ? "bg-button text-button-copy" : "text-copy-strong hover:bg-card"}`}
         >
           <Icon name={link.icon} class="w-[1.15rem] h-[1.15rem]" />
           {link.text}

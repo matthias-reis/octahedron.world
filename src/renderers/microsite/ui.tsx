@@ -187,7 +187,7 @@ export const ButtonLink: ParentComponent<{
   <a
     href={props.href}
     class={cx(
-      "inline-flex items-center justify-center gap-ssm px-slg py-ssm min-h-[2.75rem]",
+      "ms-ui inline-flex items-center justify-center gap-ssm px-slg py-ssm min-h-[2.75rem]",
       "rounded-ms font-semibold transition-colors",
       "outline-offset-2 focus-visible:outline-2 outline-button",
       props.variant === "secondary"

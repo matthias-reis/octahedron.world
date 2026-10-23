@@ -335,6 +335,8 @@ The `palette` block previews all of them live.
   `displayStretch` (for width-axis fonts like Archivo), `displayTracking`,
   `displayWordSpacing`, `displayTransform` (`uppercase` sets h1 and h2 in
   capitals, see `monolith`) — see `industrial` for a condensed, heavy setup.
+  `ui` sets buttons, the header phone and the quick bar in their own face
+  (`fachwerk`: the condensed grotesk over a serif body).
   `leadSize` sets the first paragraph under every h2 a size up, so short
   headlines carry longer text right below them (`meister`).
   `hand` adds a third face (a handwritten or brush script, see `pinsel`)

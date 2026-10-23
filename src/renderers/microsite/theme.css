@@ -876,6 +876,12 @@
   white-space: nowrap;
 }
 
+/* A pairing may set its controls — buttons, the header phone, the quick
+   bar — in their own face (`ui`), e.g. the display grotesk over a serif
+   body (019-herbst). */
+.ms-root .ms-ui {
+  font-family: var(--ms-font-ui, inherit);
+}
 /* A pairing may set the first paragraph under an h2 a size up
    (`leadSize`), so a short headline carries longer text right below it. */
 .ms-root.ms-lead .ms-section h2 + p {
