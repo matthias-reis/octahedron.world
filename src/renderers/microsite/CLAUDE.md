@@ -139,7 +139,11 @@ Each is documented (YAML shape) in a comment above its component.
   uncropped, `size` in rem), `palette`.
 - **Logo:** `brand.logo` is the whole wordmark — the name is not repeated
   next to it (it becomes the `alt`). `brand.logoHeight` (rem) lets a tall
-  mark, like a logo on a shape, run higher than the default 2.4/2.9 rem. An existing logo on white gets its
+  mark, like a logo on a shape, run higher than the default 2.4/2.9 rem;
+  above 3.75 the header grows with it, and `brand.logoHeightMobile` keeps a
+  wide logo smaller on phones (019-herbst). `header.colors` puts the
+  header on its own group, e.g. `{ background: signal }` for a header in
+  the brand yellow. An existing logo on white gets its
   background turned into alpha before `pnpm ms-image … --logo`.
 - **Concept previews of real businesses** (like `001-juergens`,
   `002-elektro-schuster`) always get
@@ -308,6 +312,9 @@ The `palette` block previews all of them live.
   `{ shape: stripes, colors: [accent-left-m2, signal, main] }` sets three
   short slanted bands instead (a logo of three brush strokes), and repeats
   them as a thin band under the header and over the footer (018-meyer).
+  `{ shape: fachwerk, color: adjacent-left-d3 }` sets one timber-frame
+  field with a St Andrew's cross; the `gefach` beams take the same color
+  (019-herbst).
   Colors are palettes (m1) or named shades (`accent-left-m2`).
 - The semantic layer is re-declared on every `.ms-section`. Anything that
   should respond to a group class or `ms-inverted` must be (inside) an
