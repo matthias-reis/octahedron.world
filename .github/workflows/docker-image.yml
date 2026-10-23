@@ -47,7 +47,9 @@ jobs:
           fi
           # Only a 2xx counts: a redirect (e.g. to the login page, from a
           # wrong URL) must fail the run instead of passing silently.
-          status=$(curl --silent --show-error -o /tmp/coolify.json -w "%{http_code}" \
+          # POST: since the Coolify update of 22.10.2026 the deploy endpoint
+          # answers GET with 405.
+          status=$(curl --silent --show-error -X POST -o /tmp/coolify.json -w "%{http_code}" \
             -H "Authorization: Bearer $COOLIFY_TOKEN" \
             "$COOLIFY_WEBHOOK")
           cat /tmp/coolify.json; echo
