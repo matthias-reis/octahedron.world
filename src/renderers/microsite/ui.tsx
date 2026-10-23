@@ -193,7 +193,7 @@ export const ButtonLink: ParentComponent<{
       props.variant === "secondary"
         ? // Half-opaque fill: stays readable on photos and tinted backdrops.
           "border-2 border-button bg-page/75 backdrop-blur-sm text-copy-strong hover:bg-button hover:text-button-copy"
-        : "bg-button text-button-copy hover:bg-button-hover",
+        : "ms-button bg-button text-button-copy hover:bg-button-hover",
       props.class,
     )}
   >

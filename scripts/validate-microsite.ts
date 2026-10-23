@@ -77,7 +77,21 @@ export function validateMicrosite(
     const visual = (step.local as Record<string, unknown>).visual as
       | Record<string, unknown>
       | undefined;
-    if (visual) {
+    const house = visual?.house as Record<string, unknown> | undefined;
+    if (house) {
+      // A gabled timber frame of photos (gefach.tsx) instead of one picture.
+      const items = Array.isArray(house.items) ? house.items : [];
+      if (items.length === 0)
+        problems.push(`section "${step.id}": visual.house needs \`items\``);
+      for (const item of items as Record<string, unknown>[]) {
+        if (!exists(item.src))
+          problems.push(
+            `section "${step.id}": house photo not found: ${String(item.src)}`,
+          );
+        if (typeof item.alt !== "string" || !item.alt.trim())
+          problems.push(`section "${step.id}": house photo needs an \`alt\``);
+      }
+    } else if (visual) {
       if (!exists(visual.src)) {
         problems.push(
           `section "${step.id}": visual not found: ${String(visual.src)}`,
@@ -126,6 +140,7 @@ export function validateMicrosite(
         [
           "image",
           "gallery",
+          "gefach",
           "emblem",
           "reveal",
           "catalog",

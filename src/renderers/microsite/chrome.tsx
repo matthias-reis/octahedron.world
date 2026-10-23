@@ -14,8 +14,12 @@ export type Brand = {
   sub?: string;
   /** Logo file next to the page (`pnpm ms-image … --logo`); replaces the mark. */
   logo?: string;
-  /** Max height of the logo in rem (default 2.4, 2.9 from md) — for a tall mark. */
+  /** Max height of the logo in rem (default 2.4, 2.9 from md) — for a tall mark.
+   * Above 3.75 the header grows with it (019-herbst). */
   logoHeight?: number;
+  /** Max logo height below `md`, when a wide logo at `logoHeight` would not
+   * fit next to the phone button and menu (default: `logoHeight`). */
+  logoHeightMobile?: number;
   /**
    * Where the wordmark leads, e.g. `/013-kahn` — the start page of a family
    * of connected pages. Default: the overview of all microsites.
@@ -46,7 +50,20 @@ export type HeaderActions = {
    * ```
    */
   switch?: SwitchItem[];
+  /**
+   * The header on its own color group, e.g. the brand yellow:
+   * `{ background: signal }` (019-herbst). It then drops the hairline for a
+   * soft shadow.
+   */
+  colors?: ColorAssignment;
 };
+
+/** Header height for a logo taller than the default header fits, in rem. */
+export function headerHeight(brand: Brand): number | undefined {
+  return brand.logoHeight && brand.logoHeight > 3.75
+    ? brand.logoHeight + 1.5
+    : undefined;
+}
 
 export type QuickLink = { icon: IconName; text: string; url: string };
 
@@ -88,10 +105,13 @@ const Logo: Component<{ brand: Brand }> = (props) => {
           <img
             src={url()}
             alt={props.brand.name}
-            class="h-auto max-h-[2.4rem] md:max-h-[2.9rem] w-auto max-w-full object-contain object-left"
+            class="h-auto max-h-[var(--ms-logo-h-sm,2.4rem)] md:max-h-[var(--ms-logo-h,2.9rem)] w-auto max-w-full object-contain object-left"
             style={
               props.brand.logoHeight
-                ? { "max-height": `${props.brand.logoHeight}rem` }
+                ? {
+                    "--ms-logo-h": `${props.brand.logoHeight}rem`,
+                    "--ms-logo-h-sm": `${props.brand.logoHeightMobile ?? props.brand.logoHeight}rem`,
+                  }
                 : undefined
             }
             decoding="async"
@@ -155,8 +175,12 @@ export const SiteHeader: Component<{
   nav: NavItem[];
   actions?: HeaderActions;
 }> = (props) => (
-  <header class="sticky top-0 z-20 bg-page/90 backdrop-blur border-b border-line">
-    <Container class="flex items-center gap-slg h-[4rem] md:h-[4.75rem]">
+  <header
+    class={`sticky top-0 z-20 bg-page/90 backdrop-blur border-b border-line ${props.actions?.colors ? `ms-section ms-header-tinted ${colorClasses(props.actions.colors).join(" ")}` : ""}`}
+  >
+    <Container
+      class={`flex items-center gap-slg min-h-[4rem] md:min-h-[4.75rem] ${headerHeight(props.brand) ? "py-[0.6rem]" : ""}`}
+    >
       <Logo brand={props.brand} />
       <Show when={props.actions?.switch?.length}>
         <PageSwitch

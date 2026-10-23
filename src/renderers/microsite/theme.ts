@@ -169,6 +169,16 @@ export const fontPairings = {
     /** font-size of the first paragraph after an h2 (the hero keeps its own). */
     leadSize: "1.2rem",
   },
+  /** Carpenter's sign: a heavy condensed grotesk on top, like a timber firm's
+   * painted wordmark, over a warm book serif for the long copy (019-herbst). */
+  fachwerk: {
+    display: '"Roboto Condensed Variable", "Arial Narrow", sans-serif',
+    body: '"Lora Variable", Georgia, serif',
+    h1Weight: 850,
+    headingWeight: 800,
+    /** Condensed faces need their spacing back: no tight tracking. */
+    displayTracking: "-0.005em",
+  },
 } as const;
 
 export type FontPairing = keyof typeof fontPairings;
@@ -225,6 +235,10 @@ export type MicrositeTheme = {
   /** Buttons in a brand color (hex) instead of the button group — outside
    * the approved combinations, only on request. */
   buttonColor?: string;
+  /** Copy color (hex) on `buttonColor` buttons, for a light brand color (a
+   * lemon yellow): ink copy, a darker edge and a soft shadow instead of
+   * white copy (019-herbst). */
+  buttonInk?: string;
   /** Chroma scale for the near-neutral shades (b1–b3, m3, d1, d2), 0–1:
    * `0.3` greys the page further than the default. */
   neutrals?: number;
@@ -244,9 +258,14 @@ export function leadClass(fonts: unknown): string | undefined {
 const hex = (value: unknown): value is string =>
   typeof value === "string" && /^#[0-9a-f]{3,8}$/i.test(value);
 
-/** `ms-button-brand` when the page sets a hex `buttonColor`. */
-export function buttonBrandClass(color: unknown): string | undefined {
-  return hex(color) ? "ms-button-brand" : undefined;
+/** `ms-button-brand` when the page sets a hex `buttonColor`, plus
+ * `ms-button-ink` when it also sets a hex `buttonInk`. */
+export function buttonBrandClass(
+  color: unknown,
+  ink?: unknown,
+): string | undefined {
+  if (!hex(color)) return undefined;
+  return hex(ink) ? "ms-button-brand ms-button-ink" : "ms-button-brand";
 }
 
 /** `ms-depth-<n>` for a valid depth (1, 2 or `vivid`), else nothing. */
@@ -266,12 +285,19 @@ export function depthClass(depth: unknown): string | undefined {
  * short slanted bands, top to bottom, like the three brush strokes of a
  * painter's logo, and repeats them as a band under the header and over the
  * footer (018-meyer).
+ *
+ * `{ shape: fachwerk, color: adjacent-left-d3 }` sets one timber-frame panel
+ * — a framed square with a St Andrew's cross — for a carpenter (019-herbst).
  */
 export type Ornament =
-  | { shape?: "square" | "stripes"; color?: string; colors?: string[] }
+  | {
+      shape?: "square" | "stripes" | "fachwerk";
+      color?: string;
+      colors?: string[];
+    }
   | "none";
 
-const ornamentShapes = ["square", "stripes"] as const;
+const ornamentShapes = ["square", "stripes", "fachwerk"] as const;
 
 /** `var(--ms-<palette>-<shade>)` for `main` or `main-m2`, the button color
  * for `button`, else undefined. */
@@ -331,6 +357,7 @@ export function themeStyle(
   if (radius !== undefined) style["--ms-radius"] = `${radius}rem`;
   if (hex(theme.signal)) style["--ms-signal"] = theme.signal;
   if (hex(theme.buttonColor)) style["--ms-button-brand"] = theme.buttonColor;
+  if (hex(theme.buttonInk)) style["--ms-button-ink"] = theme.buttonInk;
   const neutrals = num(theme.neutrals);
   if (neutrals !== undefined && neutrals >= 0 && neutrals <= 1)
     style["--ms-neutrals"] = String(neutrals);

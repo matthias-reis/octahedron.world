@@ -62,6 +62,7 @@
 @import "@fontsource/barlow-semi-condensed/600.css";
 @import "@fontsource/barlow-semi-condensed/700.css";
 @import "@fontsource/caveat-brush/400.css";
+@import "@fontsource-variable/roboto-condensed";
 
 .ms-root {
   /* --- knobs (defaults; overridden inline per page) --- */
@@ -607,6 +608,73 @@
   --ms-icon: var(--ms-button-brand);
 }
 
+/* `theme.buttonInk: "#3d1c00"` with a light `buttonColor` (a lemon yellow,
+   019-herbst): buttons keep the brand color but take ink copy, a darker
+   hairline edge and a soft shadow, so they stand off a white page. Icon
+   tiles turn into the brand color with ink icons. Wherever the button color
+   is used as a foreground (icons, marks, focus rings, the hover color of a
+   title), it would vanish on a light section: there the ink stands in, on
+   an inverted section the brand color itself (`--ms-button-fg`). */
+.ms-root.ms-button-ink,
+.ms-root.ms-button-ink .ms-section,
+.ms-root.ms-button-ink .ms-section.ms-inverted {
+  --ms-button-hover: color-mix(
+    in oklch,
+    var(--ms-button-brand) 86%,
+    var(--ms-button-ink)
+  );
+  --ms-button-copy: var(--ms-button-ink);
+  --ms-icon-tile: var(--ms-button-brand);
+  --ms-icon: var(--ms-button-ink);
+  --ms-button-fg: var(--ms-button-ink);
+  --ms-button-edge: color-mix(
+    in oklch,
+    var(--ms-button-brand) 72%,
+    var(--ms-button-ink)
+  );
+}
+.ms-root.ms-button-ink .ms-section.ms-inverted {
+  --ms-button-fg: var(--ms-button-brand);
+  --ms-button-edge: var(--ms-button-brand);
+}
+.ms-root.ms-button-ink .ms-button {
+  box-shadow:
+    inset 0 0 0 1px var(--ms-button-edge),
+    0 1px 2px color-mix(in oklch, var(--ms-button-ink) 22%, transparent),
+    0 6px 16px -6px color-mix(in oklch, var(--ms-button-ink) 38%, transparent);
+  transition:
+    background-color 150ms,
+    box-shadow 150ms,
+    translate 150ms;
+}
+.ms-root.ms-button-ink .ms-button:hover {
+  translate: 0 -1px;
+  box-shadow:
+    inset 0 0 0 1px var(--ms-button-edge),
+    0 2px 4px color-mix(in oklch, var(--ms-button-ink) 22%, transparent),
+    0 12px 24px -8px color-mix(in oklch, var(--ms-button-ink) 42%, transparent);
+}
+.ms-root.ms-button-ink .bg-icon-tile {
+  box-shadow: inset 0 0 0 1px var(--ms-button-edge);
+}
+.ms-root.ms-button-ink .text-button,
+.ms-root.ms-button-ink .hover\:text-button:hover {
+  color: var(--ms-button-fg);
+}
+.ms-root.ms-button-ink .outline-button {
+  outline-color: var(--ms-button-fg);
+}
+.ms-root.ms-button-ink .border-button {
+  border-color: var(--ms-button-fg);
+}
+/* `header.colors` — the header on its own color group, e.g. the brand
+   yellow (`{ background: signal }`, 019-herbst): no hairline, a soft shadow
+   underneath instead. */
+.ms-root > header.ms-header-tinted {
+  border-bottom-color: transparent;
+  box-shadow: 0 12px 28px -18px
+    color-mix(in oklch, var(--ms-copy-strong) 55%, transparent);
+}
 /* A mostly dark page reads better one step above the deepest shade:
    `depth: 1` sets inverted sections on d1 (near black), `depth: 2` on d2
    (desaturated dark). Page-wide via `theme.depth`, per section via `depth`. */
@@ -726,6 +794,21 @@
   top: 0;
 }
 
+/* `theme.ornament: { shape: fachwerk, color: <palette> }` — one timber-frame
+   panel in front of every h1/h2: a framed square with a St Andrew's cross,
+   like a field of a half-timbered wall (019-herbst). */
+.ms-root.ms-ornament-fachwerk .ms-section :is(h1, h2)::before {
+  content: "";
+  display: var(--ms-ornament-display, inline-block);
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 0.34em;
+  vertical-align: 0.02em;
+  background: var(--ms-ornament, var(--ms-button));
+  mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23000' stroke-width='6'%3E%3Crect x='3' y='3' width='34' height='34'/%3E%3Cpath d='M3 3 L37 37 M37 3 L3 37'/%3E%3C/g%3E%3C/svg%3E")
+    center / 100% 100% no-repeat;
+}
 /* --- reveal block: the open/close motion is scripted (blocks.tsx, Web
    Animations API); CSS only hides the marker and turns the plus. --- */
 .ms-reveal summary::-webkit-details-marker {
@@ -738,7 +821,9 @@
 
 /* Section anchors land below the sticky header. */
 .ms-root section[id] {
-  scroll-margin-top: 4.5rem;
+  /* A tall logo (`brand.logoHeight`) makes the header taller: index.tsx sets
+     its height as `--ms-header-h`. */
+  scroll-margin-top: max(4.5rem, var(--ms-header-h, 0rem));
 }
 
 /* …which grows by the page switch row on phones and tablets. */
