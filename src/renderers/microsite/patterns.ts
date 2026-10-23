@@ -41,6 +41,14 @@ const tiles = {
     size: "240px 200px",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="240" height="200" viewBox="0 0 240 200"><g fill="#000"><rect x="20" y="24" width="30" height="30"/><rect x="132" y="12" width="12" height="12"/><rect x="176" y="70" width="44" height="44"/><rect x="70" y="120" width="18" height="18"/><rect x="150" y="164" width="10" height="10"/><rect x="18" y="168" width="8" height="8"/></g></svg>`,
   },
+  /** Half-timbering: posts, rails and braces — one field with a St Andrew's
+   * cross, two with a single brace, one open — for carpenters (019-herbst). */
+  fachwerk: {
+    // Every beam on a tile edge is drawn on the left/top edge only, so the
+    // 200 × 140 px tile repeats into a continuous frame.
+    size: "200px 140px",
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="140" viewBox="0 0 200 140"><g stroke="#000" stroke-width="5" fill="none" stroke-linecap="square"><path d="M2.5 0 V140 M100 0 V140 M0 2.5 H200 M0 70 H200"/><path d="M2.5 70 L100 2.5"/><path d="M100 2.5 L200 70 M200 2.5 L100 70"/><path d="M100 70 L200 140"/></g></svg>`,
+  },
 } as const;
 
 export type PatternName = keyof typeof tiles;

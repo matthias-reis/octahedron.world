@@ -187,13 +187,13 @@ export const ButtonLink: ParentComponent<{
   <a
     href={props.href}
     class={cx(
-      "inline-flex items-center justify-center gap-ssm px-slg py-ssm min-h-[2.75rem]",
+      "ms-ui inline-flex items-center justify-center gap-ssm px-slg py-ssm min-h-[2.75rem]",
       "rounded-ms font-semibold transition-colors",
       "outline-offset-2 focus-visible:outline-2 outline-button",
       props.variant === "secondary"
         ? // Half-opaque fill: stays readable on photos and tinted backdrops.
           "border-2 border-button bg-page/75 backdrop-blur-sm text-copy-strong hover:bg-button hover:text-button-copy"
-        : "bg-button text-button-copy hover:bg-button-hover",
+        : "ms-button bg-button text-button-copy hover:bg-button-hover",
       props.class,
     )}
   >

@@ -109,6 +109,7 @@ async function readDocuments(): Promise<Document[]> {
         "emblem",
         "features",
         "gallery",
+        "gefach",
         "image",
         "index",
         "logos",

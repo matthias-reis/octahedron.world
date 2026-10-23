@@ -4,6 +4,7 @@ import type { Component } from "solid-js";
 import { createUniqueId, For, onMount, Show } from "solid-js";
 import type { ComponentMap, CustomBlockProps } from "solid-mds";
 import { smallVariant, usePageAsset } from "./assets";
+import { Gefach as GefachWall } from "./gefach";
 import { Palette } from "./palette";
 import { colorClasses, depthClass } from "./theme";
 import {
@@ -945,7 +946,13 @@ const Reveal: Component<CustomBlockProps> = (props) => {
         {(url) => (
           <img
             src={url()}
-            srcset={small() ? `${small()} 800w, ${url()} 1600w` : undefined}
+            // A small original is smaller than its `800w` descriptor claims:
+            // the srcset would shrink it to a fraction of its own size.
+            srcset={
+              small() && !natural()
+                ? `${small()} 800w, ${url()} 1600w`
+                : undefined
+            }
             sizes="(min-width: 1024px) 24rem, 100vw"
             alt={photo.alt}
             loading="lazy"
@@ -1577,6 +1584,26 @@ const People: Component<CustomBlockProps> = (props) => {
   );
 };
 
+/** `gefach`: photos in a half-timbered wall, see gefach.tsx. */
+const Gefach: Component<CustomBlockProps> = (props) => {
+  const data = () => props.data as Data;
+  return (
+    <GefachWall
+      data={{
+        items: list(data()?.items).map((item) => ({
+          src: str(item.src),
+          alt: str(item.alt),
+        })),
+        columns: Number(data()?.columns) || undefined,
+        gable: data()?.gable === true,
+        label: str(data()?.label),
+        caption: str(data()?.caption),
+      }}
+      class="my-sxl max-w-[40rem]"
+    />
+  );
+};
+
 /** Prose + blocks for a microsite section body. */
 export const micrositeComponents: ComponentMap = {
   h1: (props: any) => (
@@ -1626,6 +1653,7 @@ export const micrositeComponents: ComponentMap = {
   palette: Palette,
   image: Image,
   gallery: Gallery,
+  gefach: Gefach,
   emblem: Emblem,
   logos: Logos,
   people: People,

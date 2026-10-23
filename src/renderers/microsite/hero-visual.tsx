@@ -1,6 +1,7 @@
 import { type Component, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { smallVariant, usePageAsset } from "./assets";
+import { Gefach, type GefachData } from "./gefach";
 import { Icon, type IconName, isIconName } from "./ui";
 
 /**
@@ -21,6 +22,10 @@ import { Icon, type IconName, isIconName } from "./ui";
  *                             # optional source line on the picture, bottom right
  * ```
  *
+ * `house: { items, label, caption }` replaces the photo with a gabled
+ * half-timbered wall whose fields hold small photos (gefach.tsx,
+ * 019-herbst).
+ *
  * Badge and quote are optional. `bleed` drops the framed card: the photo
  * fills the right half of the section edge to edge and full height (on
  * phones, full width under the copy); only the badge is shown on it. The quote card is an inverted section in
@@ -36,6 +41,7 @@ export type HeroVisualData = {
   url?: string;
   label?: string;
   credit?: { text?: string; url?: string };
+  house?: Partial<GefachData>;
 };
 
 const iconOf = (name: unknown): IconName | undefined =>
@@ -75,6 +81,20 @@ export const HeroVisual: Component<{ visual: HeroVisualData }> = (props) => {
   const small = usePageAsset(() =>
     props.visual.src ? smallVariant(props.visual.src) : undefined,
   );
+
+  if (props.visual.house && Array.isArray(props.visual.house.items))
+    return (
+      <Gefach
+        data={{
+          items: props.visual.house.items,
+          columns: props.visual.house.columns,
+          label: props.visual.house.label,
+          caption: props.visual.house.caption,
+          gable: true,
+        }}
+        class="w-full max-w-[36rem] mx-auto lg:mr-0"
+      />
+    );
 
   if (props.visual.style === "bleed")
     return (

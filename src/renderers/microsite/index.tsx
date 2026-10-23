@@ -9,6 +9,7 @@ import {
   type Brand,
   type FooterOptions,
   type HeaderActions,
+  headerHeight,
   type NavItem,
   NoticeBar,
   QuickBar,
@@ -145,6 +146,7 @@ export default function MicrositeRenderer(props: {
     tagline: global?.brand?.tagline,
     logo: global?.brand?.logo,
     logoHeight: global?.brand?.logoHeight,
+    logoHeightMobile: global?.brand?.logoHeightMobile,
     sub: global?.brand?.sub,
     href: global?.brand?.href,
   };
@@ -168,13 +170,18 @@ export default function MicrositeRenderer(props: {
         depthClass(global?.theme?.depth),
         ornamentClass(global?.theme?.ornament),
         buttonShadeClass(global?.theme?.buttonShade),
-        buttonBrandClass(global?.theme?.buttonColor),
+        buttonBrandClass(global?.theme?.buttonColor, global?.theme?.buttonInk),
         leadClass(global?.theme?.fonts),
         ...colorClasses(global?.theme?.colors),
       ]
         .filter(Boolean)
         .join(" ")}
-      style={themeStyle(global?.theme)}
+      style={{
+        ...themeStyle(global?.theme),
+        ...(headerHeight(brand)
+          ? { "--ms-header-h": `${headerHeight(brand)}rem` }
+          : {}),
+      }}
     >
       <Title>{global?.title ?? brand.name}</Title>
       <Show when={global?.description}>
