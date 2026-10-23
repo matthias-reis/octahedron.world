@@ -14,8 +14,10 @@ import { createHash, createHmac, timingSafeEqual } from "node:crypto";
  * Admin: a password (env) exchanged for a signed cookie that opens every
  * page and the overview.
  *
- * Env: SEITEN_SECRET, SEITEN_ADMIN_PASSWORD. In development both fall back to
- * "dev"; in production a missing value locks everything (fail closed).
+ * Env: SEITEN_SECRET, SEITEN_ADMIN_PASSWORD. In development a missing
+ * SEITEN_ADMIN_PASSWORD opens everything (no login, no codes, see
+ * `openWithoutPassword`) and SEITEN_SECRET falls back to "dev"; in
+ * production a missing value locks everything (fail closed).
  */
 
 const CROCKFORD = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
@@ -31,6 +33,17 @@ function env(name: string): string | undefined {
   if (process.env.NODE_ENV !== "production") return "dev";
   console.error(`[seiten] ${name} is not set — all previews stay locked`);
   return undefined;
+}
+
+/**
+ * Development without SEITEN_ADMIN_PASSWORD: every request counts as admin,
+ * so every page, asset and the overview open on localhost without a login.
+ * Never in production — there a missing password keeps everything locked.
+ */
+export function openWithoutPassword(): boolean {
+  return (
+    process.env.NODE_ENV !== "production" && !process.env.SEITEN_ADMIN_PASSWORD
+  );
 }
 
 function hmac(message: string): Buffer | undefined {

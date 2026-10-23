@@ -2,8 +2,10 @@ import { type ChildProcess, spawn } from "node:child_process";
 
 // Dev runner: spawns the content watcher and the vinxi dev server, pipes
 // their output through, and prints clickable URLs for both sites once the
-// server is ready.
+// server is ready. `DEV_PORT` moves it off 4242, e.g. for a worktree next to
+// the main checkout (`DEV_PORT=4243 pnpm dev`).
 
+const port = process.env.DEV_PORT ?? "4242";
 const children: ChildProcess[] = [];
 let bannerPrinted = false;
 
@@ -11,9 +13,9 @@ function printBanner() {
   if (bannerPrinted) return;
   bannerPrinted = true;
   console.log("");
-  console.log("  ➜ octahedron  http://octa.localhost:4242/");
-  console.log("  ➜ mreis       http://mreis.localhost:4242/");
-  console.log("  ➜ seiten      http://seiten.localhost:4242/");
+  console.log(`  ➜ octahedron  http://octa.localhost:${port}/`);
+  console.log(`  ➜ mreis       http://mreis.localhost:${port}/`);
+  console.log(`  ➜ seiten      http://seiten.localhost:${port}/`);
   console.log("");
 }
 
@@ -31,7 +33,7 @@ const watcher = spawn("pnpm", ["watch:content"], {
 });
 children.push(watcher);
 
-const vinxi = spawn("pnpm", ["exec", "vinxi", "dev", "--port", "4242"], {
+const vinxi = spawn("pnpm", ["exec", "vinxi", "dev", "--port", port], {
   stdio: ["inherit", "pipe", "inherit"],
 });
 children.push(vinxi);
