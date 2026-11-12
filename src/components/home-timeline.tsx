@@ -42,7 +42,7 @@ const TimelineEntry: Component<{ post: PostMeta; index: number }> = (props) => (
 
 /** Seven recent entries in the fixed-size latest-changes area. */
 export const HomeTimeline: Component<{ posts: PostMeta[] }> = (props) => (
-  <aside class="flex h-full min-h-0 flex-col border-2 border-can9 bg-cas7 p-3">
+  <aside class="flex h-full min-h-0 flex-col border-4 border-can9 bg-cas7 p-3">
     <h2 class="mb-2 px-1 font-octa text-2xl font-bold text-can2">
       Latest changes
     </h2>
