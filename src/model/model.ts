@@ -1,6 +1,7 @@
 import { query } from "@solidjs/router";
 import { getRequestEvent } from "solid-js/web";
 import { getSite } from "~/site/context";
+import { shuffleRootItems } from "./helpers";
 import type { CompactItemMeta, ItemMeta, PostMeta } from "~/types";
 
 let cachedData: Record<string, ItemMeta> | null = null;
@@ -105,6 +106,7 @@ export const getAllCompactRoutes: () => Promise<
             group,
             type,
             image,
+            imageShape,
             description,
             superTitle,
             subTitle,
@@ -121,6 +123,7 @@ export const getAllCompactRoutes: () => Promise<
               group,
               type,
               image,
+              imageShape,
               description,
               superTitle,
               subTitle,
@@ -141,17 +144,30 @@ export const getAllRootRoutes = query(async () => {
   const availableItems = Object.values(data)
     .filter((item) => item.root && (item.site ?? "octahedron") === site)
     .map(
-      ({ slug, site: itemSite, title, image, description, group, weight }) => ({
+      ({
+        slug,
+        site: itemSite,
+        title,
+        image,
+        imageShape,
+        description,
+        group,
+        weight,
+      }) => ({
         slug,
         site: itemSite,
         title,
         group,
         image,
+        imageShape,
         description,
         weight: weight ?? 0,
       }),
     );
-  return availableItems as CompactItemMeta[];
+  return shuffleRootItems(
+    availableItems as CompactItemMeta[],
+    new Date().toISOString().slice(0, 10),
+  );
 }, "all-root-routes");
 
 /** All published posts of the current site, newest first.
@@ -179,6 +195,7 @@ export const getAllPosts = query(async () => {
         title,
         group,
         image,
+        imageShape,
         description,
         date,
         language,
@@ -187,6 +204,7 @@ export const getAllPosts = query(async () => {
         title,
         group,
         image,
+        imageShape,
         description,
         date,
         language,

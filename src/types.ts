@@ -14,6 +14,7 @@ export type ItemMeta = {
   subTitle?: string;
   description?: string | string[];
   image: string; // mandatory from now on
+  imageShape?: "square";
   // dates //
   startDate?: string;
   date?: string;
@@ -49,6 +50,7 @@ export type CompactItemMeta = Pick<
   | "group"
   | "type"
   | "image"
+  | "imageShape"
   | "description"
   | "superTitle"
   | "subTitle"
@@ -71,5 +73,12 @@ export type HtmlComponents = Options["components"];
 
 export type PostMeta = Pick<
   ItemMeta,
-  "slug" | "title" | "group" | "image" | "description" | "date" | "language"
+  | "slug"
+  | "title"
+  | "group"
+  | "image"
+  | "imageShape"
+  | "description"
+  | "date"
+  | "language"
 >;

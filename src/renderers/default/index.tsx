@@ -5,7 +5,10 @@ import { CalendarDays, ChevronLeft } from "lucide-solid";
 import type { JSX } from "solid-js/jsx-runtime";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { largeImageUrl } from "~/components/image-helpers";
+import {
+  imagePresentationClass,
+  largeImageUrl,
+} from "~/components/image-helpers";
 import { Related } from "~/components/related";
 import type { GlobalScope, ItemMeta } from "~/types";
 
@@ -25,7 +28,7 @@ export default function createTemplate(props: {
             <img
               src={largeImageUrl(item.image)}
               alt={item.title}
-              class="aspect-double xl:aspect-auto w-full object-cover mb-5"
+              class={`w-full mb-5 ${imagePresentationClass(item.imageShape, "aspect-double xl:aspect-auto object-cover")}`}
             />
           )}
           {item?.description && (

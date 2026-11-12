@@ -34,7 +34,10 @@ export function editorialAssetUrl(
 }
 
 /** The `srcset` for a `<picture>` source of one format, across all three sizes. */
-export function editorialAssetSrcSet(slug: string, format: "jpg" | "webp"): string {
+export function editorialAssetSrcSet(
+  slug: string,
+  format: "jpg" | "webp",
+): string {
   return [
     `${editorialAssetUrl(slug, "small", format)} 600w`,
     `${editorialAssetUrl(slug, "medium", format)} 900w`,
@@ -44,3 +47,11 @@ export function editorialAssetSrcSet(slug: string, format: "jpg" | "webp"): stri
 
 export const largeImageUrl = (slug: string) => editorialAssetUrl(slug, "large");
 export const smallImageUrl = (slug: string) => editorialAssetUrl(slug, "small");
+
+/** Square editorial artwork may contain text, so every edge stays visible. */
+export function imagePresentationClass(
+  shape: string | undefined,
+  landscapeClass: string,
+): string {
+  return shape === "square" ? "aspect-square object-contain" : landscapeClass;
+}

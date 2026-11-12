@@ -1,19 +1,17 @@
 import { createAsyncStore } from "@solidjs/router";
 import { Head } from "~/components/head";
-import { HomeTimeline } from "~/components/home-timeline";
-import { HomeWorlds } from "~/components/home-worlds";
+import { HomeMosaic } from "~/components/home-mosaic";
 import { largeImageUrl } from "~/components/image-helpers";
 import OctahedronLogo from "~/components/octahedron-logo";
 import { useI18n } from "~/i18n/context";
-import { sortRootItems } from "~/model/helpers";
-import { getAllPosts, getAllRootRoutes } from "~/model/model";
+import {
+  getAllCompactRoutes,
+  getAllPosts,
+  getAllRootRoutes,
+} from "~/model/model";
 import { getSite } from "~/site/context";
 import MreisHome from "~/sites/mreis/pages/home";
 import SeitenHome from "~/sites/seiten/pages/home";
-
-/** Tuned by eye: enough entries that the timeline column reaches — but does not
-    overshoot — the bottom of the three-column world grid next to it. */
-const TIMELINE_LENGTH = 30;
 
 export default function HomePage() {
   if (getSite() === "mreis") {
@@ -25,16 +23,22 @@ export default function HomePage() {
 
   const getItems = createAsyncStore(() => getAllRootRoutes());
   const getPosts = createAsyncStore(() => getAllPosts());
+  const getRoutes = createAsyncStore(() => getAllCompactRoutes());
   const { t, locale } = useI18n();
 
-  const items = () => sortRootItems(getItems() || []);
+  const items = () => getItems() || [];
+  const stamps = () =>
+    Object.values(getRoutes() || {})
+      .filter((item) => item.group === "stamps" && item.type === "lightbox")
+      .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
+      .slice(0, 7);
 
   // A post without an explicit language is English by convention, so it stays
   // visible in every locale; a translated pair collapses to the matching half.
   const posts = () =>
     (getPosts() || [])
       .filter((post) => !post.language || post.language === locale())
-      .slice(0, TIMELINE_LENGTH);
+      .slice(0, 7);
 
   return (
     <div class="bg-can9">
@@ -55,14 +59,7 @@ export default function HomePage() {
             </h2>
           </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-5 items-start">
-          <div class="md:col-span-3 order-2 md:order-1">
-            <HomeWorlds items={items()} />
-          </div>
-          <div class="md:col-span-2 order-1 md:order-2 self-stretch border border-transparent p-3 md:p-0">
-            <HomeTimeline posts={posts()} />
-          </div>
-        </div>
+        <HomeMosaic items={items()} posts={posts()} stamps={stamps()} />
       </main>
     </div>
   );

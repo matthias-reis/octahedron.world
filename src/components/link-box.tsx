@@ -16,8 +16,13 @@ export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = (
     variant="row"
     href={`/${props.item.slug}`}
     title={props.item.title}
-    description={props.item.description}
+    description={
+      Array.isArray(props.item.description)
+        ? props.item.description.join(" ")
+        : props.item.description
+    }
     image={smallImageUrl(props.item.image)}
+    imageShape={props.item.imageShape}
     imageAlt={props.item.title}
     class={`bg-can7 min-h-8 gap-3 hover:outline-cas5 ${
       props.small ? "md:flex-col" : ""

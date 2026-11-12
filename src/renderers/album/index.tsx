@@ -4,7 +4,6 @@ import { ChevronLeft } from "lucide-solid/icons";
 import { For, type JSX, Suspense } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { cx } from "~/components/cx";
 import { smallImageUrl } from "~/components/image-helpers";
 import { Loading } from "~/components/loading";
 import { getAllCompactRoutes } from "~/model/model";
@@ -58,14 +57,28 @@ export default function AlbumRenderer(props: {
                   {(subItem) => (
                     <A
                       href={`/${subItem.slug}`}
-                      class="aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
+                      class={
+                        subItem.imageShape === "square"
+                          ? "flex flex-col bg-cad7 min-h-8 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
+                          : "aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
+                      }
                     >
                       <img
                         src={smallImageUrl(subItem.image)}
                         alt=""
-                        class={cx("h-full aspect-image object-cover")}
+                        class={
+                          subItem.imageShape === "square"
+                            ? "w-full aspect-square object-contain"
+                            : "h-full aspect-image object-cover"
+                        }
                       />
-                      <span class="absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw">
+                      <span
+                        class={
+                          subItem.imageShape === "square"
+                            ? "px-3 py-2 font-octa font-bold text-lg text-can2"
+                            : "absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw"
+                        }
+                      >
                         {subItem.title}
                       </span>
                     </A>

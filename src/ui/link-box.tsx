@@ -12,6 +12,7 @@ export type LinkBoxProps = {
   /** Fully resolved image URL. Omit for a text-only box. */
   image?: string;
   imageAlt?: string;
+  imageShape?: "square";
   variant?: LinkBoxVariant;
   external?: boolean;
   /** Rendered above the title — badges, dates, category labels. */
@@ -69,7 +70,12 @@ export const LinkBox: Component<LinkBoxProps> = (props) => {
             src={src()}
             alt={props.imageAlt ?? props.title}
             loading="lazy"
-            class={cx(layout().image, props.imageClass)}
+            class={cx(
+              props.imageShape === "square"
+                ? "aspect-square object-contain w-full"
+                : layout().image,
+              props.imageClass,
+            )}
           />
         )}
       </Show>
