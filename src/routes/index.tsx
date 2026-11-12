@@ -38,7 +38,7 @@ export default function HomePage() {
   const posts = () =>
     (getPosts() || [])
       .filter((post) => !post.language || post.language === locale())
-      .slice(0, 7);
+      .slice(0, 6);
 
   return (
     <div class="bg-can9">
@@ -46,7 +46,7 @@ export default function HomePage() {
       <main class="mx-auto mb-7 max-w-6xl">
         <div
           style={{ "background-image": `url(${largeImageUrl("_home")})` }}
-          class="bg-cover bg-center aspect-image md:aspect-wide border-x-4 border-can9"
+          class="bg-cover bg-center aspect-image md:aspect-wide border-x-4 border-b-4 border-can9"
         >
           <div class="w-full h-full bg-center flex flex-col justify-center items-center text-center bg-linear-to-b from-transparent via-cb to-transparent">
             <h1 class="font-octa flex justify-center items-center gap-2 text-can2 text-4xl w-full">

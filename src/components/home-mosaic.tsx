@@ -108,7 +108,7 @@ const GroupTile: Component<{
             }
           />
         </div>
-        <div class={wide() ? "px-5 pb-5 pt-2 md:px-7" : "px-3 pb-3 pt-2"}>
+        <div class="p-4">
           <h2
             class={
               wide()
@@ -178,7 +178,7 @@ export const HomeMosaic: Component<{
             <StampTile item={entry.item} slot={entry.slot} />
           ) : (
             <li
-              class="home-mosaic-item min-w-0 min-h-[34rem] sm:col-span-2 lg:min-h-0"
+              class="home-mosaic-item min-w-0 min-h-[55rem] sm:col-span-2 lg:min-h-0"
               style={position(entry.slot)}
             >
               <HomeTimeline posts={props.posts} />
