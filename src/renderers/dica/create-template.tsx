@@ -150,7 +150,7 @@ export default function createTemplate(props: {
     a: (props: any) => <a class="text-cas5 underline" {...props} />,
     img: (props: any) => (
       <img
-        class="my-6 mx-auto rounded-lg shadow-md select-none"
+        class="my-6 mx-auto aspect-square w-full rounded-lg object-cover shadow-md select-none"
         src={
           props.src?.startsWith("http") ? props.src : largeImageUrl(props.src)
         }

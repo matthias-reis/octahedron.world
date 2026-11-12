@@ -4,10 +4,7 @@ import { ChevronLeft } from "lucide-solid/icons/index";
 import { For, type JSX, Suspense } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import {
-  imagePresentationClass,
-  largeImageUrl,
-} from "~/components/image-helpers";
+import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
 import { LinkBox } from "~/components/link-box";
 import { Loading } from "~/components/loading";
 import { getAllCompactRoutes } from "~/model/model";
@@ -36,7 +33,7 @@ export default function createTemplate(props: {
           <img
             src={largeImageUrl(item.image)}
             alt={item.title}
-            class={`mx-auto mb-6 w-full ${imagePresentationClass(item.imageShape, "aspect-image object-contain")}`}
+            class={`mx-auto mb-6 w-full ${detailImageClass(item.imageShape)}`}
           />
         )}
         <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
@@ -67,7 +64,7 @@ export default function createTemplate(props: {
               <>
                 <nav class="grid gap-4 md:grid-cols-2 my-5">
                   <For each={relevantRoutes}>
-                    {(item) => <LinkBox item={item} small />}
+                    {(item) => <LinkBox item={item} layout="group" />}
                   </For>
                 </nav>
               </>

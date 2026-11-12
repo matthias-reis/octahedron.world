@@ -4,10 +4,7 @@ import { ChevronLeft } from "lucide-solid/icons/index";
 import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import {
-  imagePresentationClass,
-  largeImageUrl,
-} from "~/components/image-helpers";
+import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -32,7 +29,7 @@ export default function createTemplate(props: {
           <img
             src={largeImageUrl(item.image)}
             alt={item.title}
-            class={`mx-auto mb-6 w-full ${imagePresentationClass(item.imageShape, "aspect-image object-contain")}`}
+            class={`mx-auto mb-6 w-full ${detailImageClass(item.imageShape)}`}
           />
         )}
         <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">

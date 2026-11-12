@@ -5,10 +5,7 @@ import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { cx } from "~/components/cx";
-import {
-  imagePresentationClass,
-  largeImageUrl,
-} from "~/components/image-helpers";
+import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
 import { Related } from "~/components/related";
 import type { GlobalScope } from "~/types";
 
@@ -48,7 +45,7 @@ export default function createTemplate(props: {
           <img
             src={largeImageUrl(item.image)}
             alt={item.title}
-            class={`mx-auto mb-6 w-full max-w-3xl ${imagePresentationClass(item.imageShape, "aspect-image object-contain")}`}
+            class={`mx-auto mb-6 w-full max-w-3xl ${detailImageClass(item.imageShape)}`}
           />
         )}
 

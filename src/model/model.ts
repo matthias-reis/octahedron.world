@@ -1,8 +1,8 @@
 import { query } from "@solidjs/router";
 import { getRequestEvent } from "solid-js/web";
 import { getSite } from "~/site/context";
-import { shuffleRootItems } from "./helpers";
 import type { CompactItemMeta, ItemMeta, PostMeta } from "~/types";
+import { chooseStampSlots, shuffleRootItems } from "./helpers";
 
 let cachedData: Record<string, ItemMeta> | null = null;
 
@@ -13,8 +13,8 @@ async function getData() {
     return cachedData;
   }
 
-  const { readFile } = await import("fs/promises");
-  const { join } = await import("path");
+  const { readFile } = await import("node:fs/promises");
+  const { join } = await import("node:path");
 
   const dataPath = join(process.cwd(), "data.json");
   const fileContent = await readFile(dataPath, "utf-8");
@@ -135,6 +135,51 @@ export const getAllCompactRoutes: () => Promise<
       ),
   );
 }, "all-routes-overview");
+
+/** A daily selection of stamps and their positions in the seven homepage slots. */
+export const getHomeStamps: () => Promise<Array<CompactItemMeta | null>> =
+  query(async () => {
+    "use server";
+    const data = await getData();
+    const site = getSite();
+    const stamps = Object.values(data)
+      .filter(
+        (item) =>
+          (item.site ?? "octahedron") === site &&
+          item.group === "stamps" &&
+          item.type === "lightbox",
+      )
+      .map(
+        ({
+          slug,
+          site: itemSite,
+          title,
+          group,
+          type,
+          image,
+          imageShape,
+          description,
+          superTitle,
+          subTitle,
+          date,
+          weight,
+        }): CompactItemMeta => ({
+          slug,
+          site: itemSite,
+          title,
+          group,
+          type,
+          image,
+          imageShape,
+          description,
+          superTitle,
+          subTitle,
+          date,
+          weight,
+        }),
+      );
+    return chooseStampSlots(stamps, new Date().toISOString().slice(0, 10));
+  }, "home-stamps");
 
 export const getAllRootRoutes = query(async () => {
   "use server";

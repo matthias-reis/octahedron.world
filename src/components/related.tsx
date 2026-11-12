@@ -50,9 +50,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
                   )}
                 >
                   <For each={relatedItems}>
-                    {(item) => (
-                      <LinkBox item={item} small={relatedItems.length > 1} />
-                    )}
+                    {(item) => <LinkBox item={item} layout="group" />}
                   </For>
                 </nav>
               </>
@@ -69,9 +67,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
                   )}
                 >
                   <For each={groupedItems}>
-                    {(item) => (
-                      <LinkBox item={item} small={groupedItems.length > 1} />
-                    )}
+                    {(item) => <LinkBox item={item} layout="group" />}
                   </For>
                 </nav>
               </>

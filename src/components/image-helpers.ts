@@ -48,10 +48,7 @@ export function editorialAssetSrcSet(
 export const largeImageUrl = (slug: string) => editorialAssetUrl(slug, "large");
 export const smallImageUrl = (slug: string) => editorialAssetUrl(slug, "small");
 
-/** Square editorial artwork may contain text, so every edge stays visible. */
-export function imagePresentationClass(
-  shape: string | undefined,
-  landscapeClass: string,
-): string {
-  return shape === "square" ? "aspect-square object-contain" : landscapeClass;
+/** Detail-page images keep their natural ratio unless marked as square artwork. */
+export function detailImageClass(shape: string | undefined): string {
+  return shape === "square" ? "aspect-square object-cover" : "h-auto";
 }

@@ -13,6 +13,7 @@ export type LinkBoxProps = {
   image?: string;
   imageAlt?: string;
   imageShape?: "square";
+  squareCover?: boolean;
   variant?: LinkBoxVariant;
   external?: boolean;
   /** Rendered above the title — badges, dates, category labels. */
@@ -71,9 +72,11 @@ export const LinkBox: Component<LinkBoxProps> = (props) => {
             alt={props.imageAlt ?? props.title}
             loading="lazy"
             class={cx(
-              props.imageShape === "square"
-                ? "aspect-square object-contain w-full"
-                : layout().image,
+              props.squareCover
+                ? "aspect-square object-cover"
+                : props.imageShape === "square"
+                  ? "aspect-square object-contain w-full"
+                  : layout().image,
               props.imageClass,
             )}
           />

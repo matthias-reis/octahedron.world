@@ -4,11 +4,7 @@ import { HomeMosaic } from "~/components/home-mosaic";
 import { largeImageUrl } from "~/components/image-helpers";
 import OctahedronLogo from "~/components/octahedron-logo";
 import { useI18n } from "~/i18n/context";
-import {
-  getAllCompactRoutes,
-  getAllPosts,
-  getAllRootRoutes,
-} from "~/model/model";
+import { getAllPosts, getAllRootRoutes, getHomeStamps } from "~/model/model";
 import { getSite } from "~/site/context";
 import MreisHome from "~/sites/mreis/pages/home";
 import SeitenHome from "~/sites/seiten/pages/home";
@@ -23,22 +19,18 @@ export default function HomePage() {
 
   const getItems = createAsyncStore(() => getAllRootRoutes());
   const getPosts = createAsyncStore(() => getAllPosts());
-  const getRoutes = createAsyncStore(() => getAllCompactRoutes());
+  const getStamps = createAsyncStore(() => getHomeStamps());
   const { t, locale } = useI18n();
 
   const items = () => getItems() || [];
-  const stamps = () =>
-    Object.values(getRoutes() || {})
-      .filter((item) => item.group === "stamps" && item.type === "lightbox")
-      .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""))
-      .slice(0, 7);
+  const stamps = () => getStamps() || [];
 
   // A post without an explicit language is English by convention, so it stays
   // visible in every locale; a translated pair collapses to the matching half.
   const posts = () =>
     (getPosts() || [])
       .filter((post) => !post.language || post.language === locale())
-      .slice(0, 6);
+      .slice(0, 5);
 
   return (
     <div class="bg-can9">

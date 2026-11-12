@@ -40,7 +40,7 @@ export default function Nav() {
             <img
               src={smallImageUrl("_home")}
               alt=""
-              class="aspect-image object-cover h-6"
+              class="aspect-square object-cover h-6"
             />
             <span class="font-octa font-bold text-xl leading-none text-cas4">
               <House />
@@ -56,7 +56,7 @@ export default function Nav() {
                   <img
                     src={smallImageUrl(item.image)}
                     alt=""
-                    class="aspect-image object-contain h-6"
+                    class="aspect-square object-cover h-6"
                   />
                   <span class="font-octa font-bold text-xl leading-none">
                     {item.title}

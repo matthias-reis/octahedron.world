@@ -5,10 +5,7 @@ import { ChevronLeft } from "lucide-solid";
 import type { JSX } from "solid-js/jsx-runtime";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import {
-  imagePresentationClass,
-  largeImageUrl,
-} from "~/components/image-helpers";
+import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
 import { Related } from "~/components/related";
 import type { GlobalScope, ItemMeta } from "~/types";
 
@@ -57,7 +54,7 @@ export default function createTemplate(props: {
           <img
             src={largeImageUrl(item.image)}
             alt={item.title}
-            class={`mx-auto mb-6 w-full ${imagePresentationClass(item.imageShape, "aspect-image object-cover")}`}
+            class={`mx-auto mb-6 w-full ${detailImageClass(item.imageShape)}`}
           />
         )}
 

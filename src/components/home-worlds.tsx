@@ -32,10 +32,7 @@ const WorldTile: Component<{ item: CompactItemMeta; index: number }> = (
       <img
         src={smallImageUrl(props.item.image)}
         alt="Reference"
-        class={cx(
-          "object-cover w-full",
-          isWide(props.index) ? "aspect-double" : "aspect-square",
-        )}
+        class="aspect-square w-full object-cover"
       />
       <div class="grow">
         <h3

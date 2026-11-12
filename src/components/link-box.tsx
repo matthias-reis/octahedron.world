@@ -9,11 +9,12 @@ import { smallImageUrl } from "./image-helpers";
  * not cover one-to-one (surface is one step lighter here, and the box uses the
  * numeric spacing scale).
  */
-export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = (
-  props,
-) => (
+export const LinkBox: Component<{
+  item: CompactItemMeta;
+  layout?: "teaser" | "group";
+}> = (props) => (
   <SharedLinkBox
-    variant="row"
+    variant={props.layout === "group" ? "tile" : "row"}
     href={`/${props.item.slug}`}
     title={props.item.title}
     description={
@@ -22,12 +23,14 @@ export const LinkBox: Component<{ item: CompactItemMeta; small?: boolean }> = (
         : props.item.description
     }
     image={smallImageUrl(props.item.image)}
-    imageShape={props.item.imageShape}
+    squareCover
     imageAlt={props.item.title}
-    class={`bg-can7 min-h-8 gap-3 hover:outline-cas5 ${
-      props.small ? "md:flex-col" : ""
-    }`}
-    imageClass={props.small ? "h-8 md:h-auto" : "h-8"}
+    class={`bg-can7 min-h-8 gap-3 hover:outline-cas5 ${props.layout === "group" ? "" : "sm:items-start"}`}
+    imageClass={
+      props.layout === "group"
+        ? "w-full"
+        : "w-full sm:w-40 sm:max-w-[40%] sm:shrink-0 sm:self-start"
+    }
     titleClass="font-octa text-can2 mb-2"
     descriptionClass="text-can4"
   />

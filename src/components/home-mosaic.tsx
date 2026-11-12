@@ -43,12 +43,12 @@ const STAMP_SLOTS: readonly Slot[] = [
 
 type MosaicEntry =
   | { kind: "group"; slot: Slot; item: CompactItemMeta; index: number }
-  | { kind: "stamp"; slot: Slot; item?: CompactItemMeta }
+  | { kind: "stamp"; slot: Slot; item?: CompactItemMeta | null }
   | { kind: "posts"; slot: Slot };
 
 function entries(
   items: CompactItemMeta[],
-  stamps: CompactItemMeta[],
+  stamps: Array<CompactItemMeta | null>,
 ): MosaicEntry[] {
   const groups: MosaicEntry[] = GROUP_SLOTS.flatMap((slot, index) => {
     const item = items[index];
@@ -87,25 +87,21 @@ const GroupTile: Component<{
     <li
       class={
         wide()
-          ? "home-mosaic-item min-w-0 min-h-[28rem] lg:min-h-0"
-          : "home-mosaic-item min-w-0 min-h-[22rem] lg:min-h-0"
+          ? "home-mosaic-item min-w-0 min-h-[28rem] xl:min-h-0"
+          : "home-mosaic-item min-w-0 min-h-[22rem] xl:min-h-0"
       }
       style={position(props.slot)}
     >
       <A
         href={`/${props.item.slug}`}
-        class={`group flex h-full min-h-0 flex-col overflow-hidden border-4 border-can9 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 transition-colors ${COLORS[props.index % COLORS.length]}`}
+        class={`group flex h-full flex-col border-4 border-can9 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 transition-colors xl:overflow-hidden ${COLORS[props.index % COLORS.length]}`}
       >
         <div class="aspect-square w-full shrink-0">
           <img
             src={smallImageUrl(props.item.image)}
             alt=""
             loading={props.index < 3 ? "eager" : "lazy"}
-            class={
-              props.item.imageShape === "square"
-                ? "h-full w-full object-contain"
-                : "h-full w-full object-cover"
-            }
+            class="h-full w-full object-cover"
           />
         </div>
         <div class="p-4">
@@ -121,8 +117,8 @@ const GroupTile: Component<{
           <p
             class={
               wide()
-                ? "mt-3 line-clamp-3 font-sans text-base text-can3"
-                : "mt-2 line-clamp-3 font-sans text-base text-can3"
+                ? "mt-3 font-sans text-base text-can3 xl:line-clamp-4"
+                : "mt-2 font-sans text-base text-can3 xl:line-clamp-4"
             }
           >
             {props.item.description}
@@ -133,11 +129,11 @@ const GroupTile: Component<{
   );
 };
 
-const StampTile: Component<{ item?: CompactItemMeta; slot: Slot }> = (
+const StampTile: Component<{ item?: CompactItemMeta | null; slot: Slot }> = (
   props,
 ) => (
   <li
-    class="home-mosaic-item min-w-0 min-h-0 aspect-square lg:aspect-auto"
+    class="home-mosaic-item min-w-0 aspect-square"
     style={position(props.slot)}
   >
     {props.item ? (
@@ -150,7 +146,7 @@ const StampTile: Component<{ item?: CompactItemMeta; slot: Slot }> = (
           src={smallImageUrl(props.item.image)}
           alt={props.item.title}
           loading="lazy"
-          class="h-full w-full object-contain"
+          class="h-full w-full object-cover"
         />
       </A>
     ) : (
@@ -162,7 +158,7 @@ const StampTile: Component<{ item?: CompactItemMeta; slot: Slot }> = (
 export const HomeMosaic: Component<{
   items: CompactItemMeta[];
   posts: PostMeta[];
-  stamps: CompactItemMeta[];
+  stamps: Array<CompactItemMeta | null>;
 }> = (props) => (
   <>
     <ul class="home-mosaic">
@@ -178,7 +174,7 @@ export const HomeMosaic: Component<{
             <StampTile item={entry.item} slot={entry.slot} />
           ) : (
             <li
-              class="home-mosaic-item min-w-0 min-h-[55rem] sm:col-span-2 lg:min-h-0"
+              class="home-mosaic-item min-w-0 min-h-[55rem] sm:col-span-2 xl:min-h-0"
               style={position(entry.slot)}
             >
               <HomeTimeline posts={props.posts} />
@@ -188,7 +184,7 @@ export const HomeMosaic: Component<{
       </For>
     </ul>
     {props.items.length > GROUP_SLOTS.length && (
-      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+      <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5">
         <For each={props.items.slice(GROUP_SLOTS.length)}>
           {(item, index) => (
             <GroupTile

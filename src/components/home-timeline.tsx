@@ -12,20 +12,16 @@ const asText = (description?: string | string[]) =>
   Array.isArray(description) ? description.join(" ") : (description ?? "");
 
 const TimelineEntry: Component<{ post: PostMeta; index: number }> = (props) => (
-  <li class="min-h-0">
+  <li>
     <A
       href={`/${props.post.slug}`}
-      class={`flex h-full min-h-0 items-center gap-3 overflow-hidden p-4 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 ${TILE_COLORS[props.index % TILE_COLORS.length]}`}
+      class={`flex items-start gap-3 p-4 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 ${TILE_COLORS[props.index % TILE_COLORS.length]}`}
     >
       <img
         src={smallImageUrl(props.post.image)}
         alt=""
         loading="lazy"
-        class={
-          props.post.imageShape === "square"
-            ? "aspect-square h-full max-h-28 shrink-0 object-contain"
-            : "aspect-square h-full max-h-28 shrink-0 object-cover"
-        }
+        class="aspect-square w-28 shrink-0 object-cover"
       />
       <div class="min-w-0">
         <p class="flex items-center gap-1 font-sans text-[0.625rem] uppercase tracking-wide text-can5">
@@ -38,7 +34,7 @@ const TimelineEntry: Component<{ post: PostMeta; index: number }> = (props) => (
         <h3 class="line-clamp-1 font-octa text-2xl font-bold leading-tight text-can2 xl:line-clamp-2">
           {props.post.title}
         </h3>
-        <p class="mt-1 line-clamp-1 font-sans text-base text-can4 xl:line-clamp-2">
+        <p class="mt-1 font-sans text-base text-can4">
           {asText(props.post.description)}
         </p>
       </div>
@@ -46,14 +42,14 @@ const TimelineEntry: Component<{ post: PostMeta; index: number }> = (props) => (
   </li>
 );
 
-/** Six recent entries in the fixed-size latest-changes area. */
+/** Five recent entries in the latest-changes area. */
 export const HomeTimeline: Component<{ posts: PostMeta[] }> = (props) => (
-  <aside class="flex h-full min-h-0 flex-col border-4 border-can9 bg-cas7 p-3">
+  <aside class="h-full border-4 border-can9 bg-cas7 p-3">
     <h2 class="mb-2 px-1 font-octa text-2xl font-bold text-can2">
       Latest changes
     </h2>
-    <ol class="grid min-h-0 flex-1 grid-rows-6 gap-1">
-      <For each={props.posts.slice(0, 6)}>
+    <ol class="grid gap-1">
+      <For each={props.posts.slice(0, 5)}>
         {(post, index) => <TimelineEntry post={post} index={index()} />}
       </For>
     </ol>

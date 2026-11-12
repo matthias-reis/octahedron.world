@@ -57,28 +57,14 @@ export default function AlbumRenderer(props: {
                   {(subItem) => (
                     <A
                       href={`/${subItem.slug}`}
-                      class={
-                        subItem.imageShape === "square"
-                          ? "flex flex-col bg-cad7 min-h-8 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
-                          : "aspect-image relative bg-cad7 min-h-8 sm:flex-row justify-stretch gap-3 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
-                      }
+                      class="flex min-h-8 flex-col bg-cad7 outline-2 -outline-offset-2 outline-transparent hover:outline-cas5"
                     >
                       <img
                         src={smallImageUrl(subItem.image)}
                         alt=""
-                        class={
-                          subItem.imageShape === "square"
-                            ? "w-full aspect-square object-contain"
-                            : "h-full aspect-image object-cover"
-                        }
+                        class="aspect-square w-full object-cover"
                       />
-                      <span
-                        class={
-                          subItem.imageShape === "square"
-                            ? "px-3 py-2 font-octa font-bold text-lg text-can2"
-                            : "absolute bottom-3 right-3 font-octa font-bold text-lg text-shadow-md text-shadow-cbn9 text-cw"
-                        }
-                      >
+                      <span class="px-3 py-2 font-octa font-bold text-lg text-can2">
                         {subItem.title}
                       </span>
                     </A>

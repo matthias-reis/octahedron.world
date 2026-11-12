@@ -53,11 +53,15 @@ export default function createTemplate(props: {
   return (
     <div class={cx(`min-h-screen bg-xbn9 pb-8`, item?.colorSpace)}>
       {item?.image && (
-        <div class="justify-center items-center pt-5 pb-2 relative w-full h-[90vh]">
+        <div class="relative mx-auto w-full max-w-[90vh] pt-5 pb-2">
           <img
             src={largeImageUrl(item.image)}
             alt={item?.title}
-            class="top-0 object-contain w-full h-full"
+            class={
+              item.imageShape === "square"
+                ? "aspect-square w-full object-cover"
+                : "mx-auto block h-auto max-h-[90vh] max-w-full object-contain"
+            }
           />
         </div>
       )}
