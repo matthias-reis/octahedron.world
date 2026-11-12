@@ -94,7 +94,7 @@ const GroupTile: Component<{
     >
       <A
         href={`/${props.item.slug}`}
-        class={`group flex h-full min-h-0 flex-col overflow-hidden border border-can9 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 transition-colors ${COLORS[props.index % COLORS.length]}`}
+        class={`group flex h-full min-h-0 flex-col overflow-hidden border-2 border-can9 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 transition-colors ${COLORS[props.index % COLORS.length]}`}
       >
         <div class="aspect-square w-full shrink-0">
           <img
@@ -144,7 +144,7 @@ const StampTile: Component<{ item?: CompactItemMeta; slot: Slot }> = (
       <A
         href={`/${props.item.slug}`}
         aria-label={`Stamp: ${props.item.title}`}
-        class="block h-full overflow-hidden border border-can9 bg-cad7 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4"
+        class="block h-full overflow-hidden border-2 border-can9 bg-cad7 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4"
       >
         <img
           src={smallImageUrl(props.item.image)}
@@ -154,7 +154,7 @@ const StampTile: Component<{ item?: CompactItemMeta; slot: Slot }> = (
         />
       </A>
     ) : (
-      <div class="h-full border border-can9 bg-can7" aria-hidden="true" />
+      <div class="h-full border-2 border-can9 bg-can7" aria-hidden="true" />
     )}
   </li>
 );
