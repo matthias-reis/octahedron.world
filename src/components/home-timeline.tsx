@@ -32,7 +32,7 @@ const TimelineEntry: Component<{ post: PostMeta; index: number }> = (props) => (
           <span aria-hidden="true">·</span>
           <span class="truncate">{groupLabel(props.post.group)}</span>
         </p>
-        <h3 class="mt-1 line-clamp-2 font-octa text-lg font-bold leading-tight text-can2">
+        <h3 class="mt-1 line-clamp-2 font-octa text-2xl font-bold leading-tight text-can2">
           {props.post.title}
         </h3>
       </div>

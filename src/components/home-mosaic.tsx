@@ -96,38 +96,24 @@ const GroupTile: Component<{
         href={`/${props.item.slug}`}
         class={`group flex h-full min-h-0 flex-col overflow-hidden border border-can9 outline-2 -outline-offset-2 outline-transparent hover:outline-cas4 focus-visible:outline-cas4 transition-colors ${COLORS[props.index % COLORS.length]}`}
       >
-        <div
-          class={
-            wide()
-              ? "flex min-h-0 grow items-center justify-center px-5 pt-5"
-              : "flex min-h-0 items-center justify-center"
-          }
-        >
-          <div
+        <div class="aspect-square w-full shrink-0">
+          <img
+            src={smallImageUrl(props.item.image)}
+            alt=""
+            loading={props.index < 3 ? "eager" : "lazy"}
             class={
-              wide()
-                ? "aspect-square w-[76%] max-h-full bg-can8/40 p-3"
-                : "aspect-square w-full"
+              props.item.imageShape === "square"
+                ? "h-full w-full object-contain"
+                : "h-full w-full object-cover"
             }
-          >
-            <img
-              src={smallImageUrl(props.item.image)}
-              alt=""
-              loading={props.index < 3 ? "eager" : "lazy"}
-              class={
-                wide() || props.item.imageShape === "square"
-                  ? "h-full w-full object-contain"
-                  : "h-full w-full object-cover"
-              }
-            />
-          </div>
+          />
         </div>
         <div class={wide() ? "px-5 pb-5 pt-2 md:px-7" : "px-3 pb-3 pt-2"}>
           <h2
             class={
               wide()
-                ? "font-octa text-3xl font-bold leading-none text-can2 md:text-4xl"
-                : "font-octa text-xl font-bold leading-tight text-can2"
+                ? "font-octa text-5xl font-bold leading-none text-can2"
+                : "font-octa text-3xl font-bold leading-tight text-can2"
             }
           >
             {props.item.title}
@@ -135,8 +121,8 @@ const GroupTile: Component<{
           <p
             class={
               wide()
-                ? "mt-3 line-clamp-3 font-sans text-sm text-can3"
-                : "mt-2 line-clamp-3 font-sans text-xs text-can3"
+                ? "mt-3 line-clamp-3 font-sans text-base text-can3"
+                : "mt-2 line-clamp-3 font-sans text-base text-can3"
             }
           >
             {props.item.description}
