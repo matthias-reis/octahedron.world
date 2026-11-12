@@ -60,7 +60,16 @@ export const MdsTemplate = ({ route }: { route: string }) => {
           );
         }
 
-        return <Renderer mds={mds} accessCode={data().accessCode} />;
+        // Renderers read the parsed global scope. Add the derived route fields
+        // here so albums, lightboxes, and other pages see their resolved parent,
+        // slug, and dates alongside the source document's metadata.
+        const { mds: _mds, ...routeMeta } = data();
+        const resolvedMds = {
+          ...mds,
+          global: { ...mds.global, ...routeMeta },
+        };
+
+        return <Renderer mds={resolvedMds} accessCode={data().accessCode} />;
       }}
     </Show>
   );
