@@ -1,10 +1,9 @@
-import { A, createAsync } from "@solidjs/router";
+import { createAsync } from "@solidjs/router";
 import type { HastParseResult } from "hast-mds";
-import { ChevronLeft } from "lucide-solid/icons/index";
 import { For, type JSX, Suspense } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
+import { EditorialHero } from "~/components/editorial-hero";
 import { LinkBox } from "~/components/link-box";
 import { Loading } from "~/components/loading";
 import { getAllCompactRoutes } from "~/model/model";
@@ -19,27 +18,11 @@ export default function createTemplate(props: {
 
   return (
     <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
+      <EditorialHero
+        item={item}
+        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+      />
       <main class="max-w-3xl mx-auto px-3 py-7">
-        <A
-          href={`/`}
-          class="flex items-center justify-start text-cbd2 mb-6 gap-2 uppercase"
-        >
-          <ChevronLeft /> <span>home</span>
-        </A>
-        <h1 class="text-6xl md:text-8xl text-cad2 font-octa font-bold leading-none text-center mb-3">
-          {item?.title}
-        </h1>
-        {item?.image && (
-          <img
-            src={largeImageUrl(item.image)}
-            alt={item.title}
-            class={`mx-auto mb-6 w-full ${detailImageClass(item.imageShape)}`}
-          />
-        )}
-        <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
-          {item?.description}
-        </p>
-
         {/* Render any MDS content steps */}
         {Object.values(parsed.steps).map((step) => (
           <step.Body />

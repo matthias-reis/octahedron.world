@@ -1,11 +1,9 @@
-import { A } from "@solidjs/router";
 import type { HastParseResult } from "hast-mds";
-import { ChevronLeft } from "lucide-solid/icons/index";
 import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { cx } from "~/components/cx";
-import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
+import { EditorialHero } from "~/components/editorial-hero";
 import { Related } from "~/components/related";
 import type { GlobalScope } from "~/types";
 
@@ -17,67 +15,11 @@ export default function createTemplate(props: {
 
   return (
     <div class={cx(`min-h-screen bg-can9`, item?.colorSpace)}>
+      <EditorialHero
+        item={item}
+        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+      />
       <main class="max-w-5xl mx-auto px-3 py-7">
-        <A
-          href={`/${item?.group}`}
-          class="flex items-center justify-start text-cbd2 mb-6 gap-2 uppercase"
-        >
-          <ChevronLeft /> <span>{item?.group?.replace(/-/g, " ")}</span>
-        </A>
-
-        {/* Title Component */}
-        <div class="text-center mb-5">
-          <h1 class="text-7xl text-cad3 font-serif font-light leading-tight">
-            {item?.title}
-          </h1>
-          {item?.subTitle && (
-            <p class="text-lg text-cad5 mt-2">{item.subTitle}</p>
-          )}
-          {item?.superTitle && (
-            <p class="text-lg uppercase text-can5 mt-5 font-bold tracking-widest font-octa">
-              {item.superTitle}
-            </p>
-          )}
-        </div>
-
-        {/* Image */}
-        {item?.image && (
-          <img
-            src={largeImageUrl(item.image)}
-            alt={item.title}
-            class={`mx-auto mb-6 w-full max-w-3xl ${detailImageClass(item.imageShape)}`}
-          />
-        )}
-
-        {/* Description */}
-        {item?.description && (
-          <p class="text-center text-md font-sans text-cad4 mb-2 mx-auto max-w-md">
-            {Array.isArray(item.description)
-              ? item.description.join(" ")
-              : item.description}
-          </p>
-        )}
-
-        {/* Reading Stats */}
-        {item?.words && (
-          <p class="text-center text-sm font-sans text-cad4 mb-6">
-            Read: {Math.round(item.words / 200)} min ✧ Words:{" "}
-            {item.words.toLocaleString()} ✧ Chars:{" "}
-            {item.chars?.toLocaleString()}
-          </p>
-        )}
-
-        {/* Language Link */}
-        {item?.ref && item?.language && (
-          <div class="text-center mb-6">
-            <A href={`/${item.ref}`} class="text-cad4 hover:text-cas2">
-              {item.language === "en"
-                ? "🇩🇪 Deutsche Version"
-                : "🇬🇧 English Version"}
-            </A>
-          </div>
-        )}
-
         {/* MDS Content Steps */}
         <div class="my-7 text-lg font-serif">
           {Object.values(parsed.steps).map((step) => (

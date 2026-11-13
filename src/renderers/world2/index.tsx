@@ -1,10 +1,8 @@
-import { A } from "@solidjs/router";
 import type { HastParseResult } from "hast-mds";
-import { ChevronLeft } from "lucide-solid";
 import type { JSX } from "solid-js/jsx-runtime";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
+import { EditorialHero } from "~/components/editorial-hero";
 import { Related } from "~/components/related";
 import { World2Calculator } from "~/components/world-2-calculator";
 import type { GlobalScope } from "~/types";
@@ -51,73 +49,11 @@ export default function createTemplate(props: {
 
   return (
     <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
+      <EditorialHero
+        item={item}
+        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+      />
       <main class="max-w-4xl mx-auto px-3 pb-7 relative">
-        {/* Image */}
-        {item?.image && (
-          <img
-            src={largeImageUrl(item.image)}
-            alt={item.title}
-            class={`mx-auto mb-6 w-full ${detailImageClass(item.imageShape)}`}
-          />
-        )}
-
-        {/* Back Navigation */}
-        <A
-          href={`/${item?.group}`}
-          class="absolute top-3 left-3 flex items-center justify-start text-cad2 mb-6 gap-2 uppercase text-shadow-md text-shadow-neutral-500"
-        >
-          <ChevronLeft /> <span>{item?.group?.replace(/-/g, " ")}</span>
-        </A>
-
-        {/* Title Section */}
-        <div class="text-center relative -top-9 md:-top-10 -mb-8">
-          {item?.superTitle && (
-            <p class="text-lg uppercase text-can1 mt-5 font-bold tracking-widest font-octa text-shadow-md text-shadow-can9">
-              {item.superTitle}
-            </p>
-          )}
-          <h1 class="text-6xl md:text-8xl text-can1 font-octa font-bold leading-none text-shadow-md text-shadow-can9">
-            {item?.title}
-          </h1>
-          {item?.subTitle && (
-            <p class="text-lg text-can1 mt-2 text-shadow-md text-shadow-can9">
-              {item.subTitle}
-            </p>
-          )}
-        </div>
-
-        {/* Description */}
-        {item?.description && (
-          <p class="text-center text-md font-sans text-cad4 mb-6 mx-auto max-w-md">
-            {Array.isArray(item.description)
-              ? item.description.join(" ")
-              : item.description}
-          </p>
-        )}
-
-        {/* Reading Stats */}
-        {item?.words && (
-          <p class="text-center text-sm font-sans text-cad5 mb-6">
-            Read: {Math.round(item.words / 200)} min ✧ Words:{" "}
-            {item.words.toLocaleString()} ✧ Chars:{" "}
-            {item.chars?.toLocaleString()}
-          </p>
-        )}
-
-        {/* Language Link */}
-        {item?.ref && item?.language && (
-          <div class="text-center mb-6">
-            <A
-              href={`/${item.group}/${item.ref}`}
-              class="text-cad4 hover:text-cas3"
-            >
-              {item.language === "en"
-                ? "🇩🇪 Deutsche Version"
-                : "🇬🇧 English Version"}
-            </A>
-          </div>
-        )}
-
         {/* MDS Content Steps */}
         <div class="space-y-7">
           {Object.values(parsed.steps).map((step) => (
