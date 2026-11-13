@@ -24,8 +24,6 @@ export const EditorialHero: Component<{
 
   return (
     <>
-      {/* The site logo is supplied by the shell's fixed navigation. */}
-      <div class="h-16" aria-hidden="true" />
       <section
         class="relative isolate overflow-hidden"
         style={{ "background-color": props.pageBackground }}
@@ -33,7 +31,7 @@ export const EditorialHero: Component<{
         {props.item?.image && (
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -inset-8 bg-cover bg-center blur-2xl brightness-50"
+            class="pointer-events-none absolute -inset-8 bg-cover bg-center blur-xl brightness-50"
             style={{
               "background-image": `url(${largeImageUrl(props.item.image)})`,
             }}
@@ -43,10 +41,10 @@ export const EditorialHero: Component<{
           aria-hidden="true"
           class="pointer-events-none absolute inset-0"
           style={{
-            background: `linear-gradient(to bottom, color-mix(in srgb, ${props.pageBackground} 35%, transparent) 0%, color-mix(in srgb, ${props.pageBackground} 50%, transparent) 55%, ${props.pageBackground} 100%)`,
+            background: `linear-gradient(to bottom, color-mix(in srgb, ${props.pageBackground} 10%, transparent) 0%, color-mix(in srgb, ${props.pageBackground} 30%, transparent) 55%, ${props.pageBackground} 100%)`,
           }}
         />
-        <div class="relative mx-auto grid max-w-6xl grid-cols-1 items-start gap-x-12 gap-y-0 px-6 pb-12 pt-6 sm:grid-cols-2 sm:items-center sm:py-12 lg:gap-x-16 lg:py-16">
+        <div class="relative mx-auto grid max-w-6xl grid-cols-1 items-start gap-x-12 gap-y-0 px-6 pb-12 pt-16 sm:grid-cols-2 sm:items-center sm:pb-12 lg:gap-x-16 lg:pb-16 lg:pt-20">
           <div class="min-w-0">
             {props.item?.image && (
               <img
