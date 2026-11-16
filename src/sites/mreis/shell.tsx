@@ -24,6 +24,8 @@ const links: FooterLink[] = [
     label: "Bluesky",
     external: true,
   },
+  { href: "/impressum", label: "Impressum" },
+  { href: "/datenschutz", label: "Datenschutz" },
 ];
 
 /** mreis.me's layout: centred column, logo + theme toggle, split footer. */
