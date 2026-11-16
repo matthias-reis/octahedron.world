@@ -16,9 +16,9 @@ relations:
 
 # Das Wichtigste in Kürze
 
-octahedron.world ist eine private Website mit Geschichten, Essays und Bildern.
-Sie verarbeitet nur die Daten, die für den Betrieb nötig sind, und eine anonyme
-Reichweitenmessung.
+octahedron.world ist eine persönliche Website mit Geschichten, Essays und
+Bildern. Sie verarbeitet nur die Daten, die für den Betrieb nötig sind, und eine
+anonyme Reichweitenmessung.
 
 - Keine Werbung, keine Tracking- oder Analysedienste von Dritten
 - Keine eingebetteten Inhalte oder Social-Media-Plugins anderer Anbieter
@@ -28,9 +28,10 @@ Reichweitenmessung.
 
 # Verantwortlicher
 
-Matthias Reis  
-Seevestr. 30  
-21271 Hanstedt
+MReis GmbH  
+vertreten durch den Geschäftsführer Matthias Reis  
+Gänsemarkt 33  
+20354 Hamburg
 
 E-Mail: [mr@octahedron.world](mailto:mr@octahedron.world)
 
@@ -114,7 +115,7 @@ Grundlage unseres berechtigten Interesses können Sie widersprechen (Art. 21).
 Eine E-Mail an [mr@octahedron.world](mailto:mr@octahedron.world) genügt.
 
 Außerdem können Sie sich bei einer Datenschutz-Aufsichtsbehörde beschweren (Art.
-77 DSGVO). Für uns zuständig ist die Landesbeauftragte für den Datenschutz
-Niedersachsen.
+77 DSGVO). Für uns zuständig ist der Hamburgische Beauftragte für Datenschutz
+und Informationsfreiheit.
 
 Stand: November 2026
