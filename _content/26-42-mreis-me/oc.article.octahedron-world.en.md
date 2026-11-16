@@ -2,10 +2,11 @@
 type: page
 title: Octahedron World
 format: article
-publishedAs: posts/octahedron-world
+publishedAs: octahedron-world
 language: en
 description: My playground, my laboratory and the output of the more phantastic and creative areas of my brain. But isn't coding also a creative process? Let's dive into it.
-image: octahedron-world
+image: 26-004-octahedron-world
+imageShape: square
 time: 2026-03-27T00:00:00.000Z
 tags: []
 relations:

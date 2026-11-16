@@ -2,7 +2,7 @@
 type: page
 title: Setup your AI Agent
 format: article
-publishedAs: posts/generic-setup-of-ai-agents
+publishedAs: generic-setup-of-ai-agents
 language: en
 description: "Practical patterns I've settled on for working effectively with AI agents: rights, context hygiene, commit discipline, skill hierarchies, and parallel workflows."
 image: setup-your-ai-agent
