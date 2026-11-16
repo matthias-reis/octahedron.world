@@ -31,10 +31,10 @@ const configs: Record<Site, SiteConfig> = {
   },
   mreis: {
     titleSuffix: " - Matthias Reis",
-    defaultTitle: "Engineering Lead & Software Architect",
+    defaultTitle: "Digital infrastructure for events and communities",
     brandTitle: "Matthias Reis",
     defaultDescription:
-      "Engineering Lead & Software Architect with over 20 years of experience building and evolving high-traffic large scale web platforms.",
+      "Co-founder and CTO of commonspace. 20 years of building large web platforms, eleven of them at XING. Articles on architecture, AI-assisted engineering and the software behind events.",
     defaultImage: "/reference/matze.jpg",
     resolveImage: (image) => image,
   },

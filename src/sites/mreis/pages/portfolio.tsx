@@ -1,5 +1,4 @@
 import { A } from "@solidjs/router";
-import { Download } from "lucide-solid";
 import { For } from "solid-js";
 import { ButtonLink, Buttons } from "~/ui/button";
 import { Chips } from "~/ui/chips";
@@ -64,10 +63,10 @@ const referencesData = [
     imageUrl: "/reference/soundsvegan.jpg",
   },
   {
-    title: "commonspace (in progress)",
+    title: "commonspace",
     url: "https://commonspace.tech",
     content:
-      "Open Source and federated social network for small groups built on the AT Protocol (Bluesky). Exploring decentralised identity, federated data, and modern social UX patterns.",
+      "Platform for communities and events that I co-founded and build: chat, posts, events, registration and admission control. From a hackathon prototype to 15,000+ members in five months.",
     imageUrl: "/reference/mosquito-social.jpg",
   },
   {
@@ -92,29 +91,21 @@ export default function MreisPortfolio() {
         <p>Concept ⋅ Web Architecture ⋅ Full Stack Engineering ⋅ Consulting</p>
         <p class="text-xl leading-relaxed">
           <A
-            href="/cv"
+            href="/about"
             class="hover:underline underline-offset-2 text-col-hi-bg outline-offset-2 outline-col-hi-bg focus:outline-2"
           >
-            In my main role
+            For eleven years
           </A>{" "}
-          I lead the web frontend engineering team at XING.com, owning the full
-          frontend layer of a high-scale application serving 300+ server-side
-          rendered requests per second.
+          I was architect and team lead at XING, owning the frontend layer of a
+          platform serving up to 600 server-side rendered requests per second.
+          Today I am co-founder and CTO of commonspace.
         </p>
         <p class="text-xl leading-relaxed">
-          My freelance projects benefit directly from this: architectural
-          thinking, production mindset, and real hands-on implementation — zero
-          handoff friction.
+          The projects below benefit directly from this: architectural thinking,
+          production mindset, and real hands-on implementation — zero handoff
+          friction.
         </p>
         <Buttons>
-          <ButtonLink
-            variant="secondary"
-            href="/reference/portfolio.pdf"
-            download="Matthias_Reis_Portfolio.pdf"
-          >
-            <Download class="w-[1.25rem] h-[1.25rem]" />
-            Download PDF
-          </ButtonLink>
           <ButtonLink href="/contact">Let's talk</ButtonLink>
         </Buttons>
       </section>

@@ -1,34 +1,50 @@
-import { Check, Download } from "lucide-solid";
+import { A } from "@solidjs/router";
+import { Check } from "lucide-solid";
 import { For, Show } from "solid-js";
 import { Box } from "~/ui/box";
-import { ButtonLink, Buttons } from "~/ui/button";
 import { Chips } from "~/ui/chips";
 import { Head } from "~/ui/head";
 import { ProfileBox } from "../profile-box";
 import { H1, H2 } from "../typography";
 
-const experiences = [
+type Experience = {
+  role: string;
+  roleDescription: string;
+  company: string;
+  period: string;
+  description: string;
+  skills: string[];
+  highlights: string[];
+};
+
+const experiences: Experience[] = [
+  {
+    role: "Co-founder & CTO",
+    roleDescription: "Architecture, engineering, event-day operations",
+    company: "commonspace",
+    period: "2026 - today",
+    description:
+      "A platform for communities and events: chat, posts, events, registration and admission control in one place.",
+    skills: ["Platform Architecture", "Solid.js", "AI Agents / MCP", "Ops"],
+    highlights: [
+      "From a hackathon prototype to 15,000+ members in five months",
+      "Five hackathons in Prague, Paris, Warsaw, Munich and London ran on it, two of them on the same weekend",
+      "Rebuilt the prototype into a discovery platform plus community servers and migrated 45 events and 5,450 members in one go",
+      "Made the platform operable by AI agents through MCP: jury feedback that took an organiser half a day became one prompt and an approval",
+    ],
+  },
   {
     role: "Team Lead Engineering",
     roleDescription: "People Manager, Platform Owner",
     company: "XING SE",
     period: "2019 - 2026",
     description: "",
-    skills: [
-      "Leadership",
-      "Team Management",
-      "Agile",
-      "Frontend Architecture",
-      "Strategy",
-      "Cross Team Alignment",
-      "Communication",
-    ],
+    skills: ["Leadership", "Frontend Architecture", "Strategy"],
     highlights: [
-      "People management for engineering teams 'Design System' and 'Web Platform' (up to 10 devs, web, iOS and Android platforms)",
-      "Lead for two very different teams in parallel with consistently positive feedback from leadership, peers and direct reports",
-      "Responsible for the technical evolution of the whole frontend layer at XING.com (delivering ~600 req/s SSR web content)",
-      "Orchestrating big projects like cloud move or the migration to a monorepo structure with more than 1.4m lines of code and 40+ contributors",
-      "Cross team alignment between tech, design and project management with excellent communication skills",
+      "Led the engineering teams 'Design System' and 'Web Platform' (up to 10 developers across web, iOS and Android)",
+      "Responsible for the technical evolution of the whole frontend layer of XING.com (~600 req/s of server-side rendered content)",
+      "Orchestrated big moves like the cloud migration and a monorepo with 1.4M+ lines of code and 40+ contributors",
+      "Aligned tech, design and product across teams",
     ],
   },
   {
@@ -37,18 +53,11 @@ const experiences = [
     company: "XING SE",
     period: "2015 - 2019",
     description: "",
-    skills: [
-      "React.js",
-      "Redux",
-      "Apollo",
-      "Typescript",
-      "Mentoring",
-      "Lateral Leadership",
-    ],
+    skills: ["React.js", "Redux", "Apollo", "Typescript"],
     highlights: [
-      "Introduced React.JS ecosystem (starting at version 0.10) that redefined dev collaboration and user flows in the company",
-      "Several technology waves including Redux, Apollo, Typescript",
-      "Onboarding and direction for a community of 60+ frontend developers",
+      "Introduced the React ecosystem (from version 0.10), which changed how developers and user flows worked across the company",
+      "Drove several technology waves: Redux, Apollo, Typescript",
+      "Onboarded and guided a community of 60+ frontend developers",
     ],
   },
   {
@@ -57,20 +66,11 @@ const experiences = [
     company: "VERLAGSGRUPPE WELTBILD GMBH",
     period: "2012 - 2015",
     description: "",
-    skills: [
-      "PHP",
-      "Javascript",
-      "jQuery",
-      "Angular",
-      "E-Commerce",
-      "High Traffic Engine",
-    ],
+    skills: ["PHP", "JavaScript", "Angular", "E-Commerce"],
     highlights: [
-      "Operating a high traffic e-commerce platform including complex purchase funnels (hitting the 1 million Euro minute once)",
-      "Responsible for the whole frontend server stack",
-      "Tech Stack: PHP, Javascript, jQuery",
-      "Introducing Angular (v1) based back office / content management layer",
-      "Role directly evolved from my work as an engineer",
+      "Operated a high-traffic e-commerce platform with complex purchase funnels (it hit the 1 million euro minute once)",
+      "Owned the whole frontend server stack",
+      "Introduced an Angular (v1) back office and content management layer",
     ],
   },
   {
@@ -79,7 +79,7 @@ const experiences = [
     company: "VERLAGSGRUPPE WELTBILD GMBH",
     period: "2011 - 2012",
     description: "",
-    skills: ["PHP", "JavaScript", "Frontend Development"],
+    skills: ["PHP", "JavaScript"],
     highlights: [],
   },
   {
@@ -87,39 +87,30 @@ const experiences = [
     roleDescription: "",
     company: "FILESPOTS & BWSO GMBH",
     period: "2009 - 2011",
-    description: "",
-    skills: ["ExtJS", "SPAs", "JavaScript"],
-    highlights: ["Technologies: SPAs (early adopters) with ExtJS"],
+    description: "Early single-page applications with ExtJS.",
+    skills: ["ExtJS", "SPAs"],
+    highlights: [],
   },
 ];
 
-export default function MreisCv() {
+export default function MreisAbout() {
   return (
     <main class="py-s2xl min-h-screen font-sans">
       <Head
-        title="CV"
-        description="Professional experience and successes of Matthias Reis."
+        title="Track record"
+        description="What Matthias Reis has built: from early single-page apps to XING's frontend platform and commonspace."
       />
 
       <div class="px-smd mx-auto max-w-4xl">
         <div class="p-sxl md:p-s2xl mb-s3xl flex flex-col md:flex-row justify-between items-start md:items-center gap-sxl">
           <div class="flex-1">
-            <H1 class="mb-smd">Curriculum Vitae</H1>
-            <p class="opacity-80 max-w-2xl text-xl font-sans mb-sxl">
-              A summary of my professional journey, focusing on my roles,
-              responsibilities, and key successes over the years.
+            <H1 class="mb-smd">Track record</H1>
+            <p class="opacity-80 max-w-2xl text-xl font-sans">
+              I have been building for the web since the early days of
+              single-page apps: e-commerce under heavy load, the frontend
+              platform of XING, and now commonspace. This is what came out of
+              it.
             </p>
-            <Buttons>
-              <ButtonLink
-                variant="secondary"
-                href="/reference/cv.pdf"
-                download="Matthias_Reis_CV.pdf"
-              >
-                <Download class="w-[1.25rem] h-[1.25rem]" />
-                Download PDF
-              </ButtonLink>
-              <ButtonLink href="/contact">Contact Me</ButtonLink>
-            </Buttons>
           </div>
 
           <ProfileBox />
@@ -156,7 +147,7 @@ export default function MreisCv() {
 
                 <Show when={exp.highlights.length > 0}>
                   <div class="mt-smd">
-                    <Box title="Key Successes" class="font-sans">
+                    <Box title="Impact" class="font-sans">
                       <ul class="space-y-ssm font-sans mt-ssm">
                         <For each={exp.highlights}>
                           {(highlight) => (
@@ -181,18 +172,24 @@ export default function MreisCv() {
           </For>
         </div>
 
-        <div class="mt-s3xl pt-s2xl border-t border-col-border flex flex-col items-start font-sans">
-          <p class="text-col-fg-muted mb-sxl text-xl max-w-2xl">
-            For a comprehensive list of projects and technical details, please
-            download the full portfolio.
+        <div class="mt-s3xl pt-s2xl border-t border-col-border font-sans">
+          <p class="text-col-fg-muted text-xl max-w-2xl">
+            Selected projects are in the{" "}
+            <A
+              href="/portfolio"
+              class="hover:underline underline-offset-2 text-col-hi-bg outline-offset-2 outline-col-hi-bg focus:outline-2"
+            >
+              portfolio
+            </A>
+            , and what I learn along the way in the{" "}
+            <A
+              href="/posts"
+              class="hover:underline underline-offset-2 text-col-hi-bg outline-offset-2 outline-col-hi-bg focus:outline-2"
+            >
+              articles
+            </A>
+            .
           </p>
-          <ButtonLink
-            href="/reference/portfolio.pdf"
-            download="Matthias_Reis_Portfolio.pdf"
-          >
-            <Download class="w-[1.25rem] h-[1.25rem]" />
-            Download PDF
-          </ButtonLink>
         </div>
       </div>
     </main>

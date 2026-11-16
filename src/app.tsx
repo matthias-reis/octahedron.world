@@ -14,7 +14,10 @@ import { OctahedronShell } from "./sites/octahedron/shell";
 // mreis's static pages are not file routes: `src/routes/` is shared by both
 // sites and these must never resolve on octahedron.
 const mreisRoutes = [
-  { path: "/cv", component: lazy(() => import("./sites/mreis/pages/cv")) },
+  {
+    path: "/about",
+    component: lazy(() => import("./sites/mreis/pages/about")),
+  },
   {
     path: "/portfolio",
     component: lazy(() => import("./sites/mreis/pages/portfolio")),
