@@ -7,6 +7,7 @@ language: en
 description: A music and lifestyle blog with band interviews and a sustainability focus, on its third technical rebuild — React, Payload CMS, custom search.
 image: 26-005-sounds-vegan
 imageShape: square
+time: 2026-08-27T00:00:00.000Z
 tags: []
 relations:
   - rel: parent
