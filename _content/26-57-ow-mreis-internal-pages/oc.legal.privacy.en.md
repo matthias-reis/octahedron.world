@@ -16,8 +16,8 @@ relations:
 
 # In short
 
-octahedron.world is a private website with stories, essays and pictures. It only
-processes the data it needs to run, plus an anonymous visitor count.
+octahedron.world is a personal website with stories, essays and pictures. It
+only processes the data it needs to run, plus an anonymous visitor count.
 
 - No ads, no third-party tracking or analytics services
 - No embedded content or social media plugins from other providers
@@ -27,9 +27,10 @@ processes the data it needs to run, plus an anonymous visitor count.
 
 # Controller
 
-Matthias Reis  
-Seevestr. 30  
-21271 Hanstedt, Germany
+MReis GmbH  
+represented by its managing director Matthias Reis  
+Gänsemarkt 33  
+20354 Hamburg, Germany
 
 Email: [mr@octahedron.world](mailto:mr@octahedron.world)
 
@@ -109,8 +110,8 @@ based on our legitimate interest (Art. 21). An email to
 [mr@octahedron.world](mailto:mr@octahedron.world) is enough.
 
 You can also lodge a complaint with a data protection supervisory authority
-(Art. 77 GDPR). The authority responsible for us is the Data Protection
-Commissioner of Lower Saxony (Die Landesbeauftragte für den Datenschutz
-Niedersachsen).
+(Art. 77 GDPR). The authority responsible for us is the Hamburg Commissioner for
+Data Protection and Freedom of Information (Der Hamburgische Beauftragte für
+Datenschutz und Informationsfreiheit).
 
 Last updated: November 2026

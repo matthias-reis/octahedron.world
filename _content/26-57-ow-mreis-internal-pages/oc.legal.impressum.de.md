@@ -13,11 +13,19 @@ relations:
     to: 26-57-ow-mreis-internal-pages/oc.legal.imprint.en
 ```
 
-# Angaben gemäß § 5 TMG
+# Angaben gemäß § 5 DDG
 
-Matthias Reis  
-Seevestr. 30  
-20271 Hanstedt
+MReis GmbH  
+Gänsemarkt 33  
+20354 Hamburg
+
+Vertreten durch den Geschäftsführer Matthias Reis
+
+# Registereintrag
+
+Eintragung im Handelsregister  
+Registergericht: Amtsgericht Hamburg  
+Registernummer: HRB 200597
 
 # Kontakt
 
@@ -26,4 +34,4 @@ E-Mail: [mr@octahedron.world](mailto:mr@octahedron.world)
 
 # Redaktionell verantwortlich
 
-Matthias Reis
+Matthias Reis, Anschrift wie oben
