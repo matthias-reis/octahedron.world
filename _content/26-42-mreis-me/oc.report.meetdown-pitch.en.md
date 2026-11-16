@@ -33,12 +33,12 @@ relations:
 
 # On Networking
 
-Let's create some context first. **Networking**, the term, gives me vibes of
-overhyped modern business exchanges or influencer mingling (hello, LinkedIn). It
-appears to be about creating connections rather than maintainig them. But of
-course that's not at all what it is and should be in the core. We should rather
-see it as the vital social interactions we all need extended by the
-possibilities of the digital world.
+I'd like to create create some context first. **Networking**, the term, gives me
+vibes of overhyped modern business exchanges or influencer mingling (hello,
+LinkedIn). It appears to be about creating connections rather than maintainig
+them. But of course that's not at all what it is and should be in the core. We
+should rather see it as the vital social interactions we all need extended by
+the possibilities of the digital world.
 
 Social networks and Communities are an entierely natural phenomenon. They have
 always existed, ages before the wheel was invented (probably by a group of
@@ -261,12 +261,3 @@ free time:
 
 Let’s return the power of community into the hands of the people. Join us today
 and help shape the future of human connection and growth.
-
-## Contact
-
-Want to hear more or get into discussion?
-
-Ping me:
-
-- on bluesky: `@octahedron.bsky.social`
-- on Mastodon: `@matzee@norden.social`
