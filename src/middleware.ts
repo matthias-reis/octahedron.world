@@ -7,6 +7,8 @@ import { siteForHost } from "./site/context";
  * - mreis.me/p[/…] moved: 301 to seiten.mreis.me[/…]
  * - mreis.me/cv became /about: 301
  * - mreis.me/posts/<slug> became /<slug>: 301
+ * - mreis.me/mreis-impressum, /mreis-datenschutz (the vault slugs) live at
+ *   /impressum and /datenschutz: 301
  * - POST /login, GET /logout: the admin cookie
  * - GET /<slug>?k=<code>: a valid code also becomes a page cookie, so the
  *   visitor keeps access after the first click (until the code expires)
@@ -47,6 +49,12 @@ export default createMiddleware({
     if (site === "mreis" && /^\/cv\/?$/.test(url.pathname)) {
       return redirect("/about", 301);
     }
+
+    const legal =
+      site === "mreis"
+        ? /^\/mreis-(impressum|datenschutz)\/?$/.exec(url.pathname)
+        : null;
+    if (legal) return redirect(`/${legal[1]}`, 301);
 
     const oldPost =
       site === "mreis" ? /^\/posts\/([a-z0-9-]+)\/?$/.exec(url.pathname) : null;

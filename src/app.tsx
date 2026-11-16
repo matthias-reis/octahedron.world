@@ -30,6 +30,22 @@ const mreisRoutes = [
     path: "/posts",
     component: lazy(() => import("./sites/mreis/pages/posts")),
   },
+  {
+    path: "/impressum",
+    component: lazy(() =>
+      import("./sites/mreis/pages/legal").then((m) => ({
+        default: m.Impressum,
+      })),
+    ),
+  },
+  {
+    path: "/datenschutz",
+    component: lazy(() =>
+      import("./sites/mreis/pages/legal").then((m) => ({
+        default: m.Datenschutz,
+      })),
+    ),
+  },
 ];
 
 /**
