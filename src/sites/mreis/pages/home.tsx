@@ -1,11 +1,10 @@
 import { A, createAsync } from "@solidjs/router";
 import dayjs from "dayjs";
 import { For, Show } from "solid-js";
-import { largeImageUrl } from "~/components/image-helpers";
 import { ButtonLink, Buttons } from "~/ui/button";
 import { Head } from "~/ui/head";
 import { LinkBox } from "~/ui/link-box";
-import { getMreisPosts } from "../posts";
+import { getMreisPosts, mreisImageUrl } from "../posts";
 import { H1, H2 } from "../typography";
 
 const inlineLink =
@@ -104,7 +103,7 @@ export default function MreisHome() {
                       ? post.description.join(" ")
                       : post.description
                   }
-                  image={post.image ? largeImageUrl(post.image) : undefined}
+                  image={post.image ? mreisImageUrl(post.image) : undefined}
                   squareCover
                   imageClass="w-full"
                   meta={

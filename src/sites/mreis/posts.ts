@@ -1,3 +1,4 @@
+import { largeImageUrl } from "~/components/image-helpers";
 import { getAllCompactRoutes } from "~/model/model";
 import type { CompactItemMeta } from "~/types";
 
@@ -15,8 +16,18 @@ export async function getMreisPosts(
   const routes = await getAllCompactRoutes();
 
   const posts = Object.values(routes)
-    .filter((item) => item.group === "posts")
+    .filter((item) => item.group === "posts" || item.group === "work")
     .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 
   return limit ? posts.slice(0, limit) : posts;
+}
+
+/**
+ * An item's image URL: editorial asset slugs resolve to their large size,
+ * plain paths (`/reference/…`) and absolute URLs are used as they are.
+ */
+export function mreisImageUrl(image: string): string {
+  return image.startsWith("/") || image.startsWith("http")
+    ? image
+    : largeImageUrl(image);
 }
