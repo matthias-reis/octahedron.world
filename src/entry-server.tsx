@@ -21,6 +21,16 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <SiteIcons />
+          {/* Umami (self-hosted, cookieless) on mreis.me only. data-domains
+              keeps local previews out of the stats. */}
+          {getSite() === "mreis" && (
+            <script
+              defer
+              src="https://stats.neustart.studio/script.js"
+              data-website-id="f55d69bc-b2d5-4751-b16b-8386ddb037b8"
+              data-domains="mreis.me,www.mreis.me"
+            />
+          )}
           {assets}
         </head>
         <body>
