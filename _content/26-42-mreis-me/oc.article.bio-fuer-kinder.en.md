@@ -7,6 +7,7 @@ language: en
 description: A SaaS platform for caterers planning organic meals for kindergartens and schools — twelve years running, now on Payload CMS.
 image: 26-008-bio-fuer-kinder
 imageShape: square
+time: 2026-09-10T00:00:00.000Z
 tags: []
 relations:
   - rel: parent

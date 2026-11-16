@@ -7,6 +7,7 @@ image: 26-007-neustart-studio
 language: en
 description: One-page websites for local trade businesses, pitched by showing the finished page first — a side project with Hein.
 imageShape: square
+time: 2026-11-10T00:00:00.000Z
 tags: []
 relations:
   - rel: parent
