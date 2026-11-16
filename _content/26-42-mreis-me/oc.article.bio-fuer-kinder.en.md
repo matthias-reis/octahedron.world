@@ -15,45 +15,49 @@ relations:
 
 Bio für Kinder helps caterers who cook organic meals for kindergartens and
 schools plan what's for lunch — and everything the kitchen needs to get there.
-The platform, [biospeiseplan.de](https://biospeiseplan.de), has been my client's
-since 2014, and I've built every major version of it since.
 
-## The problem
+The platform, [bio-fuer-kinder.de](https://bio-fuer-kinder.de), and its
+organisers, Tollwood Munich, have been my clients since 2014. I've built every
+major version of it since then, together with my colleague who does the project
+management and QA.
 
-Planning organic meals for dozens of institutions means juggling recipes,
-seasonal availability, nutrition requirements and a shopping list that has to be
-right every week, for every kitchen. Doing that on paper or in spreadsheets
-stops scaling the moment you're serving more than a handful of schools.
+## What it does
 
-## What I built
+The platform uses a set of recipes that are tailor-made for catering for
+children and organises everything into a weekly plan that adheres to all
+nutritional rules and best practices for mass cooking.
 
-- Meal and cooking plans for kindergartens and schools, built from a recipe
-  library
-- Cost and nutritional values aggregated automatically per plan, so a kitchen
-  sees the real cost and nutrition of what it's serving before it's served
-- A shopping-list wizard: pick a date range, the system pulls every ingredient
-  needed across that period, groups it, lets the kitchen fix quantities and
-  prices, then hands over a list ready to print and shop from
-- A CMS for the editorial side — seminar listings, recipe articles, video
-  content — so content changes don't need a developer
+It's built from the smallest building blocks (ingredients) and can calculate
+relevant results such as:
 
-## Technical decisions
+- costs and shopping carts
+- nutritional values (carbs / fats / proteins)
+- warnings (when exceeding certain rules in the plan)
 
-The platform has outlived several of its own technology choices, which is normal
-for something running over a decade. The latest major version moved content
-management onto Payload CMS — the same move I made for
-[Sounds Vegan](/26-42-mreis-me/oc.article.sounds-vegan.en) — while deliberately
-leaving the older backend running in parallel for recipes and user data.
-Rewriting a live, paying client's backend in one go is a good way to break it;
-running the new CMS alongside the old backend let the editorial team start
-working in the new system straight away, while the rest of the migration happens
-in its own, lower-risk steps in the versions after.
+Every user can then adapt the recommended plan.
 
-## Outcome
+## Iterations
 
-The Payload version shipped and went to the editorial team to fill with content;
-the current round is follow-up changes on top of it. Twelve years in, the
-platform is still what the client runs their actual kitchens on.
+We worked together with several chefs and catering experts to get into every
+detail of kitchen organisation and calculation.
+
+The first iteration was built on Firebase (database and hosting), with a
+GitHub-based flow for the few editorial changes (Tina CMS). For the frontend I
+used Next.js and MUI.
+
+By now we're at V5, with:
+
+- Our own hosting
+- Postgres and Payload CMS
+- Tailwind replaced MUI
+- A big face lift
+
+Over time I continuously renewed parts of the architecture to stay up to date
+with the latest tech. Especially in the React world, a lot has happened since I
+started planning the first version in 2014.
+
+Some of the core features (like the Firebase authentication) are still waiting
+to be picked up in a future iteration.
 
 ## My part
 
