@@ -92,7 +92,7 @@ export default function MreisHome() {
               engineering, social networks and the software behind events.
             </p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-sxl">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-sxl">
             <For each={posts()}>
               {(post) => (
                 <LinkBox
@@ -105,6 +105,8 @@ export default function MreisHome() {
                       : post.description
                   }
                   image={post.image ? largeImageUrl(post.image) : undefined}
+                  squareCover
+                  imageClass="w-full"
                   meta={
                     <Show when={post.date}>
                       {(date) => (

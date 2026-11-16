@@ -49,7 +49,7 @@ export default function ArticleRenderer(props: {
           <img
             src={largeImageUrl(image())}
             alt={item?.title}
-            class="aspect-image w-full object-cover mb-sxl rounded-lg"
+            class="aspect-square w-full max-w-md object-cover mb-sxl rounded-lg"
           />
         )}
       </Show>
