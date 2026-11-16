@@ -14,19 +14,15 @@ relations:
 
 MReis GmbH  
 Gänsemarkt 33  
-⚠️ PLZ Hamburg
+20354 Hamburg
 
 Vertreten durch den Geschäftsführer Matthias Reis
 
 # Registereintrag
 
 Eintragung im Handelsregister  
-Registergericht: ⚠️ Amtsgericht  
-Registernummer: ⚠️ HRB
-
-# Umsatzsteuer-ID
-
-Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: ⚠️ USt-IdNr.
+Registergericht: Amtsgericht Hamburg  
+Registernummer: HRB 200597
 
 # Kontakt
 
