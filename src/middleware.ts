@@ -5,6 +5,7 @@ import { siteForHost } from "./site/context";
  * Request-level plumbing for seiten.mreis.me (client previews):
  *
  * - mreis.me/p[/…] moved: 301 to seiten.mreis.me[/…]
+ * - mreis.me/cv became /about: 301
  * - POST /login, GET /logout: the admin cookie
  * - GET /<slug>?k=<code>: a valid code also becomes a page cookie, so the
  *   visitor keeps access after the first click (until the code expires)
@@ -40,6 +41,10 @@ export default createMiddleware({
       const rest = url.pathname.replace(/^\/p\/?/, "");
       const scheme = host.includes("localhost") ? "http" : "https";
       return redirect(`${scheme}://${seitenHost(host)}/${rest}`, 301);
+    }
+
+    if (site === "mreis" && /^\/cv\/?$/.test(url.pathname)) {
+      return redirect("/about", 301);
     }
 
     if (site !== "seiten") return;
