@@ -41,6 +41,33 @@ const SITE_HOMES: Record<string, Site> = {
   "mreis-home": "mreis",
 };
 
+/** Public host per site, for links that cross from one site to the other. */
+const SITE_HOSTS: Partial<Record<Site, string>> = {
+  octahedron: "octahedron.world",
+  mreis: "mreis.me",
+};
+
+/** Rewrite the `href` of every `<a>` in a parsed MDS tree, in place. */
+function visitLinks(node: unknown, rewrite: (href: string) => string): void {
+  if (Array.isArray(node)) {
+    for (const child of node) visitLinks(child, rewrite);
+    return;
+  }
+  if (!node || typeof node !== "object") return;
+  const element = node as {
+    type?: unknown;
+    tagName?: unknown;
+    properties?: { href?: unknown };
+  };
+  if (
+    element.type === "element" &&
+    element.tagName === "a" &&
+    typeof element.properties?.href === "string"
+  )
+    element.properties.href = rewrite(element.properties.href);
+  for (const value of Object.values(node)) visitLinks(value, rewrite);
+}
+
 /** Keys life-brain keeps for itself; never part of the rendered item. */
 const LIFE_BRAIN_ONLY = new Set([
   "type",
@@ -167,6 +194,29 @@ async function getMetaData(): Promise<Record<string, ItemMeta>> {
   };
   const warn = (document: Document, message: string) =>
     console.log(`[CON] ⚠️  ${document.id}: ${message}`);
+
+  // Inline links in the vault point at document ids (`/26-42-mreis-me/
+  // oc.article.sounds-vegan.en`), which is what life-brain resolves. The sites
+  // serve slugs, so rewrite those links to the target's slug — on the target's
+  // own site when it lives on the other one.
+  for (const document of documents) {
+    const from = siteOf(document);
+    visitLinks(document.mds, (href) => {
+      const match = /^\/([^#?]+)([#?].*)?$/.exec(href);
+      const target = match ? byId.get(match[1]) : undefined;
+      if (!match || !target) return href;
+      const slug = slugOf(target.id);
+      if (!slug || target.global.format === "anchor") {
+        warn(document, `links to '${target.id}', which is not published`);
+        return href;
+      }
+      const site = siteOf(target);
+      const path = `/${slug}${match[2] ?? ""}`;
+      return site === from || !SITE_HOSTS[site]
+        ? path
+        : `https://${SITE_HOSTS[site]}${path}`;
+    });
+  }
   const hubs = new Set(
     documents
       .map(primaryParent)
