@@ -140,6 +140,8 @@ export default function MreisPortfolio() {
                   title={ref.title}
                   description={ref.content}
                   image={ref.imageUrl}
+                  squareCover
+                  imageClass="w-full"
                   meta={
                     <span class="text-col-fg-muted text-sm">{ref.url}</span>
                   }

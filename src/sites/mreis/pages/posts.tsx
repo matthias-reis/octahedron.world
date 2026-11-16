@@ -27,7 +27,7 @@ export default function MreisPosts() {
         when={posts()?.length}
         fallback={<p class="text-col-fg-muted">Nothing published yet.</p>}
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-sxl">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-sxl">
           <For each={posts()}>
             {(post) => (
               <LinkBox
@@ -40,6 +40,8 @@ export default function MreisPosts() {
                     : post.description
                 }
                 image={post.image ? largeImageUrl(post.image) : undefined}
+                squareCover
+                imageClass="w-full"
                 meta={
                   <Show when={post.date}>
                     {(date) => (
