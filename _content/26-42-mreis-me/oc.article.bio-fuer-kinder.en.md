@@ -4,7 +4,7 @@ title: Bio für Kinder
 format: article
 publishedAs: bio-fuer-kinder
 language: en
-description: A SaaS platform for caterers planning organic meals for kindergartens and schools — five years running, now on Payload CMS.
+description: A SaaS platform for caterers planning organic meals for kindergartens and schools — twelve years running, now on Payload CMS.
 image: 26-008-bio-fuer-kinder
 imageShape: square
 tags: []
@@ -17,7 +17,7 @@ Bio für Kinder helps caterers who cook organic meals for kindergartens and
 schools plan what's for lunch — and everything the kitchen needs to get there.
 
 The platform, [bio-fuer-kinder.de](https://bio-fuer-kinder.de), and its
-organisers, Tollwood Munich, have been my clients since 2021. I've built every
+organisers, Tollwood Munich, have been my clients since 2014. I've built every
 major version of it since then, together with my colleague who does the project
 management and QA.
 
@@ -54,7 +54,7 @@ By now we're at V5, with:
 
 Over time I continuously renewed parts of the architecture to stay up to date
 with the latest tech. Especially in the React world, a lot has happened since I
-started planning the first version in 2021.
+started planning the first version in 2014.
 
 Some of the core features (like the Firebase authentication) are still waiting
 to be picked up in a future iteration.
