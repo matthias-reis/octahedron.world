@@ -41,9 +41,10 @@ Every user can then adapt the recommended plan.
 We worked together with several chefs and catering experts to get into every
 detail of kitchen organisation and calculation.
 
-The first iteration was built on Firebase (database and hosting), with a
-GitHub-based flow for the few editorial changes (Tina CMS). For the frontend I
-used Next.js and MUI.
+The first version went live in 2014, built with jQuery and Tilion, a small
+framework of my own. In 2021 I restarted the codebase on Firebase (database and
+hosting), with a GitHub-based flow for the few editorial changes (Tina CMS), and
+Next.js and MUI in the frontend.
 
 By now we're at V5, with:
 
