@@ -5,11 +5,28 @@ import { CalendarDays, ChevronLeft } from "lucide-solid";
 import { For, Show } from "solid-js";
 import type { JSX } from "solid-js/jsx-runtime";
 import { transform } from "solid-mds";
-import { largeImageUrl } from "~/components/image-helpers";
 import type { GlobalScope, ItemMeta } from "~/types";
 import { Head } from "~/ui/head";
 import { proseComponents } from "~/ui/prose";
+import { mreisImageUrl } from "../posts";
 import { H1 } from "../typography";
+
+/**
+ * The shared prose map, with inline images resolved like covers: editorial
+ * asset slugs (`![…](_meetdown-fediverse)`) become bucket URLs, plain paths
+ * and absolute URLs stay as they are.
+ */
+const articleComponents = {
+  ...proseComponents,
+  img: (props: { src?: string; alt?: string }) => (
+    <img
+      class="my-slg mx-auto rounded-lg shadow-md select-none"
+      src={props.src ? mreisImageUrl(props.src) : undefined}
+      alt={props.alt}
+      draggable={false}
+    />
+  ),
+};
 
 /**
  * mreis.me's long-form renderer, registered for `type: article`.
@@ -22,7 +39,7 @@ import { H1 } from "../typography";
 export default function ArticleRenderer(props: {
   mds: HastParseResult<GlobalScope, {}>;
 }): JSX.Element {
-  const parsed = transform<GlobalScope, {}>(props.mds, proseComponents);
+  const parsed = transform<GlobalScope, {}>(props.mds, articleComponents);
   const item = parsed.global as ItemMeta;
   const description = Array.isArray(item?.description)
     ? item.description.join(" ")
@@ -33,7 +50,7 @@ export default function ArticleRenderer(props: {
       <Head
         title={item?.title}
         description={description}
-        image={item?.image ? largeImageUrl(item.image) : undefined}
+        image={item?.image ? mreisImageUrl(item.image) : undefined}
       />
 
       <A
@@ -47,7 +64,7 @@ export default function ArticleRenderer(props: {
       <Show when={item?.image}>
         {(image) => (
           <img
-            src={largeImageUrl(image())}
+            src={mreisImageUrl(image())}
             alt={item?.title}
             class="aspect-square w-full max-w-md object-cover mb-sxl rounded-lg"
           />
