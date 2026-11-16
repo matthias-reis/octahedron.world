@@ -8,7 +8,7 @@ alias:
 language: en
 superTitle: Social Networks
 description: Somethig seems to be missing in the landscape of social networks. So why don't we try to build it?
-image: meetdown-pitch
+image: 26-010-meetdown
 imageShape: square
 colorSpace: tangerine
 time: 2025-09-08T00:00:00.000Z
