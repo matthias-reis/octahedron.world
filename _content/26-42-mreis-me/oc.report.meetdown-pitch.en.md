@@ -1,14 +1,15 @@
 ```yaml @@
 type: page
 title: Meetdown - A Pitch
-format: report
+format: article
 publishedAs: meetdown-pitch
 alias:
   - posts/2025/2025-09-08-meetdown-pitch
 language: en
 superTitle: Social Networks
 description: Somethig seems to be missing in the landscape of social networks. So why don't we try to build it?
-image: social-networks
+image: meetdown-pitch
+imageShape: square
 colorSpace: tangerine
 time: 2025-09-08T00:00:00.000Z
 tags:
@@ -22,7 +23,7 @@ tags:
   - Content Federation
 relations:
   - rel: parent
-    to: 26-42-mreis-me/oc.digest.social-networks.social-networks.en
+    to: 26-42-mreis-me/posts
 ```
 
 > Annotation before we dive in: Meetdown - the name - is meant as a pun, like

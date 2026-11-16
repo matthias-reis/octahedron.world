@@ -2,7 +2,7 @@
 type: page
 title: Federated Social Networks
 format: article
-publishedAs: posts/federated-social-networks
+publishedAs: federated-social-networks
 language: en
 description: In this post I take a high level architectural look at the two most popular open source social network formats, AT Proto, which drives Bluesky, and Activity Pub, which stands behind Mastodon.
 image: federated-social-networks
