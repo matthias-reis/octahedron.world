@@ -25,6 +25,11 @@ export const MdsCode = {
     ) {
       return null;
     }
-    return <pre {...props} />;
+    return (
+      <pre
+        {...props}
+        class={`editorial-wide my-4 overflow-x-auto ${className}`}
+      />
+    );
   },
 };

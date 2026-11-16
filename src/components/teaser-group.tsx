@@ -33,7 +33,7 @@ export const TeaserGroup: Component<{ data?: Record<string, any> }> = (
 
         // Loaded and found - display the link
         return (
-          <nav class="grid gap-4 md:grid-cols-3 my-5">
+          <nav class="editorial-wide grid gap-4 md:grid-cols-3 my-5">
             <For each={visibleItems}>
               {(item) => <LinkBox item={item} layout="group" />}
             </For>

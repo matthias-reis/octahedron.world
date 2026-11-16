@@ -5,6 +5,7 @@ import { Spacetravel } from "./spacetravel";
 import { TeaserBlock } from "./teaser-block";
 import { TeaserGroup } from "./teaser-group";
 import { Typography } from "./typography";
+import "./editorial-content.css";
 
 /**
  * Octahedron's MDS component map: the shared prose map first, then this site's

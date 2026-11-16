@@ -12,7 +12,7 @@ const Teaser = (props: { slug: string }) => {
       fallback={<div class="text-red-500">Teaser missing: {props.slug}</div>}
     >
       {(i) => (
-        <div class="my-5">
+        <div class="editorial-wide my-5">
           <LinkBox item={i()} />
         </div>
       )}

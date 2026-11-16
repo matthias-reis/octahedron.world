@@ -183,7 +183,7 @@ export const Spacetravel: Component<SpacetravelProps> = (props) => {
   });
 
   return (
-    <div class="my-4 p-4 bg-neutral-200 rounded-xl border border-neutral-300 shadow-sm relative overflow-hidden group">
+    <div class="editorial-wide my-4 p-4 bg-neutral-200 rounded-xl border border-neutral-300 shadow-sm relative overflow-hidden group">
       <Show when={editable}>
         <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
           <span class="text-sm bg-cas6 text-neutral-700 px-2 py-1 rounded">

@@ -40,7 +40,7 @@
 
   /* Chroma (Saturation) */
   --s-s: 0.21; /* Saturated */
-  --s-d: 0.095; /* Decent */
+  --s-d: 0.095; /* Subtle */
   --s-n: 0.02; /* Neutral */
 
   /* Lightness (1=Bright, 9=Dark) */

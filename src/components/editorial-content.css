@@ -1,0 +1,43 @@
+/* Reading blocks carry their own inset, leaving room for wider embedded work. */
+.editorial-content .editorial-prose,
+.editorial-content .editorial-wide {
+  margin-inline: var(--spacing-5);
+}
+
+/* Lists and quotes may contain further prose nodes; only the outer block
+   receives the reading inset. */
+.editorial-content .editorial-prose .editorial-prose {
+  margin-inline: 0;
+}
+
+.editorial-content p.editorial-prose:has(> img.editorial-wide) {
+  margin-inline: var(--spacing-5);
+}
+
+.editorial-content p.editorial-prose > img.editorial-wide {
+  width: 100%;
+  margin-inline: 0;
+}
+
+@media (min-width: 40rem) {
+  .editorial-content .editorial-prose,
+  .editorial-content .editorial-wide {
+    margin-inline: var(--spacing-7);
+  }
+
+  .editorial-content p.editorial-prose:has(> img.editorial-wide) {
+    margin-inline: var(--spacing-7);
+  }
+}
+
+@media (min-width: 48rem) {
+  .editorial-content .editorial-prose {
+    margin-inline: var(--spacing-8);
+  }
+}
+
+@media (min-width: 64rem) {
+  .editorial-content .editorial-prose {
+    margin-inline: var(--spacing-9);
+  }
+}

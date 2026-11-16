@@ -35,7 +35,7 @@ export const Cta: Component<CustomBlockProps> = (props) => {
   return (
     <Show when={payload()}>
       {(cta) => (
-        <div class="my-6 text-center">
+        <div class="editorial-wide my-6 text-center">
           <CtaAnchor href={cta().url}>{cta().text}</CtaAnchor>
         </div>
       )}

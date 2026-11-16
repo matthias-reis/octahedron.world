@@ -22,7 +22,7 @@ export default function createTemplate(props: {
         item={item}
         pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
       />
-      <main class="max-w-3xl mx-auto px-3 py-7">
+      <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
         {/* Render any MDS content steps */}
         {Object.values(parsed.steps).map((step) => (
           <step.Body />
@@ -45,7 +45,7 @@ export default function createTemplate(props: {
             if (!relevantRoutes || relevantRoutes.length === 0) return null;
             return (
               <>
-                <nav class="grid gap-4 md:grid-cols-2 my-5">
+                <nav class="editorial-wide grid gap-4 md:grid-cols-2 my-5">
                   <For each={relevantRoutes}>
                     {(item) => <LinkBox item={item} layout="group" />}
                   </For>

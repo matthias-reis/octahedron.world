@@ -23,18 +23,18 @@ export default function createTemplate(
         pageBackground="oklch(var(--l-9) var(--s-n) var(--h-b))"
       />
       <div class="bg-linear-to-b from-cbn9 to-cbs9">
-        <main class="max-w-4xl mx-auto px-3 pb-7 mb-7 relative bg-cbn9">
+        <main class="editorial-content max-w-5xl mx-auto px-3 pb-7 mb-7 relative bg-cbn9 font-serif text-lg">
           {/* MDS Content Steps */}
           <div class="my-6">
             {Object.values(parsed.steps).map((step) => (
-              <section class="mx-5 sm:mx-7 mb-7 text-lg">
+              <section class="mb-7">
                 <step.Body />
               </section>
             ))}
           </div>
         </main>
 
-        <aside class="max-w-4xl mx-auto pb-7">
+        <aside class="max-w-5xl mx-auto px-3 pb-7">
           {/* Related Content */}
           {item && <Related item={item} />}
         </aside>

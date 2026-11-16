@@ -37,7 +37,7 @@ export const Related: Component<{ item: GlobalScope }> = ({ item }) => {
 
         // Loaded and found - display the link
         return (
-          <div class="px-3">
+          <div class="mx-5 sm:mx-7">
             {relatedItems.length > 0 && (
               <>
                 <h3 class="font-octa text-4xl font-bold text-cbn6">

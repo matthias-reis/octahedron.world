@@ -19,8 +19,8 @@ export default function createTemplate(props: {
         backHref="/"
         backLabel="home"
       />
-      <main class="max-w-4xl mx-auto px-3 pb-7 relative">
-        <div class="mx-5 sm:mx-7 mb-7">
+      <main class="editorial-content max-w-5xl mx-auto px-3 pb-7 relative font-serif text-lg">
+        <div class="mb-7">
           {Object.values(parsed.steps).map((step) => (
             <step.Body />
           ))}

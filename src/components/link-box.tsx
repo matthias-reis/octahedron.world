@@ -32,6 +32,6 @@ export const LinkBox: Component<{
         : "w-full sm:w-40 sm:max-w-[40%] sm:shrink-0 sm:self-start"
     }
     titleClass="font-octa text-can2 mb-2"
-    descriptionClass="text-can4"
+    descriptionClass="font-serif text-lg text-can4"
   />
 );

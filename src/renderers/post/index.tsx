@@ -22,16 +22,16 @@ export default function createTemplate(props: {
         showGroup
       />
       <div class="bg-linear-to-b from-cbn9 to-cbs9 pb-8">
-        <main class="max-w-3xl mx-auto px-3 py-7">
+        <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
           {/* MDS Content Steps */}
-          <div class="text-lg">
+          <div>
             {Object.values(parsed.steps).map((step) => (
               <step.Body />
             ))}
           </div>
         </main>
 
-        <aside class="max-w-4xl mt-5 mx-auto">
+        <aside class="max-w-5xl mt-5 mx-auto px-3">
           <Related item={item as ItemMeta} />
         </aside>
       </div>

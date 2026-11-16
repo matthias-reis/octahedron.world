@@ -19,11 +19,11 @@ export default function createTemplate(props: {
         item={item}
         pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
       />
-      <main class="max-w-5xl mx-auto px-3 py-7">
+      <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
         {/* MDS Content Steps */}
-        <div class="my-7 text-lg font-serif">
+        <div class="my-7">
           {Object.values(parsed.steps).map((step) => (
-            <section class="mx-5 sm:mx-7 md:mx-8 lg:mx-9">
+            <section>
               <step.Body />
             </section>
           ))}

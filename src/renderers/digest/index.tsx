@@ -18,9 +18,9 @@ export default function createTemplate(props: {
         pageBackground="oklch(var(--l-9) var(--s-d) var(--h-b))"
       />
 
-      <main class="max-w-3xl mx-auto px-3 py-7">
+      <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
         {/* Render the content (single step) */}
-        <div class="text-lg">
+        <div>
           {Object.values(parsed.steps).map((step) => (
             <step.Body />
           ))}

@@ -78,7 +78,7 @@ export const EditorialHero: Component<{
               </p>
             )}
             {description() && (
-              <p class="mt-4 max-w-prose font-sans text-lg leading-relaxed text-white sm:mt-6">
+              <p class="mt-4 max-w-prose font-serif text-lg leading-relaxed text-white sm:mt-6">
                 {description()}
               </p>
             )}
