@@ -305,6 +305,21 @@ Soweit Cookies von Drittunternehmen oder zu Analysezwecken eingesetzt werden,
 werden wir Sie hierüber im Rahmen dieser Datenschutzerklärung gesondert
 informieren und ggf. eine Einwilligung abfragen.
 
+## Reichweitenmessung mit Umami
+
+Um zu sehen, welche Seiten gelesen werden, nutzen wir Umami. Umami läuft auf
+unserem eigenen Server bei Hetzner; es werden keine Daten an Dritte übermittelt.
+
+Umami setzt keine Cookies und speichert keine IP-Adressen. Erfasst werden die
+aufgerufene Seite, die vorher besuchte Seite, Browser, Betriebssystem,
+Gerätetyp, Bildschirmgröße, Sprache und das Land, aus dem der Aufruf kommt. Um
+Besuche zu zählen, bildet Umami aus IP-Adresse und Browserkennung eine anonyme
+Kennung, deren Grundlage regelmäßig wechselt, sodass Sie nicht über längere Zeit
+wiedererkannt werden können. Ein Rückschluss auf Ihre Person ist nicht möglich.
+
+Rechtsgrundlage ist unser berechtigtes Interesse an einer datensparsamen
+Auswertung der Nutzung unserer Website (Art. 6 Abs. 1 lit. f DSGVO).
+
 # 5. Newsletter
 
 Newsletterdaten Wenn Sie den auf der Website angebotenen Newsletter beziehen
