@@ -35,7 +35,7 @@ E-Mail: [mr@mreis.me](mailto:mr@mreis.me)
 
 Die Website und ihre Bilder liegen auf Servern der Hetzner Online GmbH,
 Industriestr. 25, 91710 Gunzenhausen, in Rechenzentren in Deutschland. Hetzner
-verarbeitet die Daten nur in unserem Auftrag und nach unseren Weisungen; ⚠️ mit
+verarbeitet die Daten nur in unserem Auftrag und nach unseren Weisungen; mit
 Hetzner besteht ein Vertrag über Auftragsverarbeitung nach Art. 28 DSGVO.
 
 # Server-Logfiles
