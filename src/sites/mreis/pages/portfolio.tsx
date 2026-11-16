@@ -66,7 +66,7 @@ const referencesData = [
     title: "commonspace",
     url: "https://commonspace.tech",
     content:
-      "Platform for communities and events that I co-founded and build: chat, posts, events, registration and admission control. From a hackathon prototype to 15,000+ members in five months.",
+      "Platform for communities and events that I co-founded and build: chat, posts, events, registration and admission control. From a hackathon prototype to 18,000+ members and 180+ events.",
     imageUrl: "/reference/mosquito-social.jpg",
   },
   {

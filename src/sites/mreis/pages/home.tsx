@@ -12,9 +12,10 @@ const inlineLink =
   "hover:underline underline-offset-2 text-col-hi-bg outline-offset-2 outline-col-hi-bg focus:outline-2";
 
 const commonspaceFacts = [
-  { value: "15,000+", label: "members" },
+  { value: "18,000+", label: "members" },
+  { value: "180+", label: "events on the platform" },
+  { value: "17", label: "hackathons since May, from Prague to Seoul" },
   { value: "45", label: "events migrated in one go" },
-  { value: "5", label: "hackathons in Prague, Paris, Warsaw, Munich, London" },
 ];
 
 const trackRecord = [
@@ -66,10 +67,11 @@ export default function MreisHome() {
         <p class="text-lg leading-relaxed max-w-3xl">
           It started as a prototype for one hackathon in Prague. Five months
           later the platform carries meetups, conferences and hackathons across
-          Europe, and organisers can run it through AI agents. I am responsible
-          for its technology, from architecture to event-day operations.
+          Europe and Asia, and organisers can run it through AI agents. I am
+          responsible for its technology, from architecture to event-day
+          operations.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-smd">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-smd">
           <For each={commonspaceFacts}>
             {(fact) => (
               <div class="border border-col-border rounded-lg p-slg">

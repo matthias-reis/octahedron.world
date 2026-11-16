@@ -27,8 +27,8 @@ const experiences: Experience[] = [
       "A platform for communities and events: chat, posts, events, registration and admission control in one place.",
     skills: ["Platform Architecture", "Solid.js", "AI Agents / MCP", "Ops"],
     highlights: [
-      "From a hackathon prototype to 15,000+ members in five months",
-      "Five hackathons in Prague, Paris, Warsaw, Munich and London ran on it, two of them on the same weekend",
+      "From a hackathon prototype to 18,000+ members and 180+ events on the platform",
+      "17 hackathons since May, from Prague to Seoul and Taiwan, often several on the same weekend",
       "Rebuilt the prototype into a discovery platform plus community servers and migrated 45 events and 5,450 members in one go",
       "Made the platform operable by AI agents through MCP: jury feedback that took an organiser half a day became one prompt and an approval",
     ],
