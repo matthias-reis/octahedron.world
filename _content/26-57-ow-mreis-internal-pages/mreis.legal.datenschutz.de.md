@@ -52,7 +52,7 @@ Browser, Betriebssystem und die vorher besuchte Seite (Referrer) werden nicht
 gespeichert. Wir brauchen die Logfiles, um die Website sicher und fehlerfrei zu
 betreiben und Angriffe zu erkennen. Einmal täglich zählen wir daraus, wie oft
 welche Seite mit welchem Statuscode aufgerufen wurde; diese Zählung enthält
-keine IP-Adressen. Die Logfiles selbst werden ⚠️ nach 14 Tagen gelöscht.
+keine IP-Adressen. Die Logfiles selbst werden nach 14 Tagen gelöscht.
 
 Rechtsgrundlage ist unser berechtigtes Interesse am sicheren Betrieb der Website
 (Art. 6 Abs. 1 lit. f DSGVO).
