@@ -9,6 +9,7 @@ language: en
 superTitle: Children's Story
 description: Little Kamina is always drawn into phantastic adventures. This time she jumps into a steampunk world with a lot of surprises.
 image: kamina-2
+imageShape: square
 colorSpace: tangerine
 time:
   from: 2023-01-11T00:00:00.000Z

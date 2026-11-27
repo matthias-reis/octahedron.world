@@ -9,6 +9,7 @@ language: en
 superTitle: Children's Story
 description: Just like Alice, the little Kamina is drawn into a rabbit hole and experiences a fantastic adventure ... under water.
 image: kamina-1
+imageShape: square
 colorSpace: carmine
 time:
   from: 2019-10-15T00:00:00.000Z
