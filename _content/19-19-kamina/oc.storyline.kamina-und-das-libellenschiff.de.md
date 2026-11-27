@@ -9,6 +9,7 @@ language: de
 superTitle: Kindergeschichte
 description: Die kleine Kamina wird immer wieder in phantastische Abenteuer hineingezogen. Diesmal gerät sie in eine Steampunk-Welt, in der Überraschungen an jeder Ecke lauern.
 image: kamina-2
+imageShape: square
 colorSpace: tangerine
 time:
   from: 2023-01-11T00:00:00.000Z

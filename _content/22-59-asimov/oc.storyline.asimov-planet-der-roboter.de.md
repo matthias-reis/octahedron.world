@@ -9,6 +9,7 @@ language: de
 superTitle: Kindergeschichte
 description: Ein Roboter von einem fremden Planeten stellt Kontakt zu einem Jungen auf der Erde her und fragt ihn nach Hilfe zu einem delikaten Problem.
 image: asimov
+imageShape: square
 colorSpace: wood
 time:
   from: 2022-12-25T00:00:00.000Z

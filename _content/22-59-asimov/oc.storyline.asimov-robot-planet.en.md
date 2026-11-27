@@ -9,6 +9,7 @@ language: en
 superTitle: Children's Story
 description: A robot from another planet is making contact with a boy on earth and asking for his help.
 image: asimov
+imageShape: square
 colorSpace: wood
 time:
   from: 2022-12-25T00:00:00.000Z

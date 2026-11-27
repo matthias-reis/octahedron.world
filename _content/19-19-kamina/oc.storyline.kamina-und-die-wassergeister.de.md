@@ -9,6 +9,7 @@ language: de
 superTitle: Kindergeschichte
 description: Genau wie Alice, wird die kleine Kamina in einen Kaninchenbau gezogen und findet sich in einem fantastischen Abenteuer wieder ... unter Wasser.
 image: kamina-1
+imageShape: square
 colorSpace: carmine
 time:
   from: 2019-10-15T00:00:00.000Z
