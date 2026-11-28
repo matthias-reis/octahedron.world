@@ -6,8 +6,9 @@ import { HomeTimeline } from "./home-timeline";
 
 type Slot = { column: number; row: number; width: number; height: number };
 
-// Five square columns and fifteen square rows, following the editorial sketch.
-// The five wide group slots take their subjects from the shuffled order.
+// Five square columns and fourteen square rows, following the editorial sketch.
+// Nineteen group slots, one per homepage subject, take their subjects from the
+// shuffled order; eight square stamp slots fill the gaps between them.
 const GROUP_SLOTS: readonly Slot[] = [
   { column: 1, row: 1, width: 2, height: 3 },
   { column: 3, row: 1, width: 1, height: 2 },
@@ -26,9 +27,8 @@ const GROUP_SLOTS: readonly Slot[] = [
   { column: 4, row: 11, width: 1, height: 2 },
   { column: 5, row: 11, width: 1, height: 2 },
   { column: 3, row: 13, width: 1, height: 2 },
-  { column: 4, row: 13, width: 2, height: 3 },
-  { column: 1, row: 14, width: 1, height: 2 },
-  { column: 2, row: 14, width: 1, height: 2 },
+  { column: 4, row: 13, width: 1, height: 2 },
+  { column: 5, row: 13, width: 1, height: 2 },
 ];
 
 const STAMP_SLOTS: readonly Slot[] = [
@@ -38,7 +38,8 @@ const STAMP_SLOTS: readonly Slot[] = [
   { column: 1, row: 8, width: 1, height: 1 },
   { column: 2, row: 10, width: 1, height: 1 },
   { column: 3, row: 12, width: 1, height: 1 },
-  { column: 3, row: 15, width: 1, height: 1 },
+  { column: 1, row: 14, width: 1, height: 1 },
+  { column: 2, row: 14, width: 1, height: 1 },
 ];
 
 type MosaicEntry =

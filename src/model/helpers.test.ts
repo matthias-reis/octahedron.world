@@ -14,13 +14,13 @@ const stamp = (index: number, date?: string): CompactItemMeta => ({
 });
 
 describe("homepage stamp selection", () => {
-  it("selects seven distinct stamps regardless of input order or dates", () => {
+  it("selects eight distinct stamps regardless of input order or dates", () => {
     const items = Array.from({ length: 20 }, (_, index) => stamp(index));
     const selected = chooseStampSlots(items, "2026-11-12");
     const slugs = selected.flatMap((item) => (item ? [item.slug] : []));
 
-    assert.equal(selected.length, 7);
-    assert.equal(new Set(slugs).size, 7);
+    assert.equal(selected.length, 8);
+    assert.equal(new Set(slugs).size, 8);
     assert.deepEqual(
       chooseStampSlots(
         items.map((item) => ({ ...item, date: item.slug })).reverse(),
