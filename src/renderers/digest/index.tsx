@@ -3,6 +3,7 @@ import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { EditorialHero } from "~/components/editorial-hero";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -12,10 +13,10 @@ export default function createTemplate(props: {
   const item = parsed.global;
 
   return (
-    <div class={`${item?.colorSpace} bg-cbd9 min-h-screen`}>
+    <div class="bg-cbd9 min-h-screen" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
-        pageBackground="oklch(var(--l-9) var(--s-d) var(--h-b))"
+        pageBackground="var(--color-cbd9)"
       />
 
       <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">

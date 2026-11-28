@@ -4,6 +4,7 @@ import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { EditorialHero } from "~/components/editorial-hero";
 import { Related } from "~/components/related";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope, ItemMeta } from "~/types";
 
 export default function createTemplate(props: {
@@ -13,10 +14,10 @@ export default function createTemplate(props: {
   const item = parsed.global as ItemMeta;
 
   return (
-    <div class={`${item?.colorSpace} min-h-screen bg-cbn9`}>
+    <div class="min-h-screen bg-cbn9" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
-        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-b))"
+        pageBackground="var(--color-cbn9)"
         backHref="/"
         backLabel="home"
         showGroup

@@ -4,9 +4,9 @@ import type { HastParseResult } from "hast-mds";
 import { createEffect, type JSX, onCleanup } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { cx } from "~/components/cx";
 import { largeImageUrl } from "~/components/image-helpers";
 import { getAllCompactRoutes } from "~/model/model";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -51,7 +51,7 @@ export default function createTemplate(props: {
   });
 
   return (
-    <div class={cx(`min-h-screen bg-xbn9 pb-8`, item?.colorSpace)}>
+    <div class="min-h-screen bg-cbn9 pb-8" style={colorSpaceStyle(item?.colorSpace)}>
       {item?.image && (
         <div class="relative mx-auto w-full max-w-[90vh] pt-5 pb-2">
           <img

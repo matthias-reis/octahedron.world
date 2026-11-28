@@ -7,6 +7,7 @@ import { EditorialHero } from "~/components/editorial-hero";
 import { LinkBox } from "~/components/link-box";
 import { Loading } from "~/components/loading";
 import { getAllCompactRoutes } from "~/model/model";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -17,10 +18,10 @@ export default function createTemplate(props: {
   const routes = createAsync(() => getAllCompactRoutes());
 
   return (
-    <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
+    <div class="bg-can9 min-h-screen" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
-        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+        pageBackground="var(--color-can9)"
       />
       <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
         {/* Render any MDS content steps */}

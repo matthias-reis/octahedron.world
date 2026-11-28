@@ -7,6 +7,7 @@ import { canonicalComponents } from "~/components/canonical-components";
 import { smallImageUrl } from "~/components/image-helpers";
 import { Loading } from "~/components/loading";
 import { getAllCompactRoutes } from "~/model/model";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function AlbumRenderer(props: {
@@ -18,7 +19,7 @@ export default function AlbumRenderer(props: {
   const routes = createAsync(() => getAllCompactRoutes());
 
   return (
-    <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
+    <div class="bg-can9 min-h-screen" style={colorSpaceStyle(item?.colorSpace)}>
       <main class="max-w-6xl mx-auto px-3 py-7">
         <A
           href={`/`}
