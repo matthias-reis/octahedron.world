@@ -8,7 +8,8 @@ alias:
 language: en
 superTitle: Elements, Part 2
 description: The journey continues with a boat trip and a visit of the dystopian catastrophe site.
-image: elements-water
+image: 26-017-elements-water
+imageShape: square
 colorSpace: sky
 time:
   from: 2022-09-20T00:00:00.000Z
