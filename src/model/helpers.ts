@@ -29,11 +29,11 @@ export function shuffleRootItems(
   );
 }
 
-/** Pick up to seven stamps and spread them across independently shuffled slots. */
+/** Pick up to eight stamps and spread them across independently shuffled slots. */
 export function chooseStampSlots(
   items: CompactItemMeta[],
   day: string,
-  slotCount = 7,
+  slotCount = 8,
 ): Array<CompactItemMeta | null> {
   const selected = [...items]
     .sort(
