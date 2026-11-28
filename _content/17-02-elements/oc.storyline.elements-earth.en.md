@@ -8,7 +8,8 @@ alias:
 language: en
 superTitle: Elements, Part 1
 description: The start of a dystopian journey to hell and elysium and back.
-image: elements-earth
+image: 26-016-elements-earth
+imageShape: square
 colorSpace: lemon
 time:
   from: 2022-09-20T00:00:00.000Z
