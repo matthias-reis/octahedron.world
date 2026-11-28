@@ -7,6 +7,7 @@ import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { detailImageClass, largeImageUrl } from "~/components/image-helpers";
 import { Related } from "~/components/related";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope, ItemMeta } from "~/types";
 
 export default function createTemplate(props: {
@@ -17,7 +18,8 @@ export default function createTemplate(props: {
 
   return (
     <div
-      class={`${item?.colorSpace} min-h-screen gradient bg-linear-to-b from-cbn9 to-cbs9 pb-8`}
+      class="min-h-screen gradient bg-linear-to-b from-cbn9 to-cbs9 pb-8"
+      style={colorSpaceStyle(item?.colorSpace)}
     >
       <main class="max-w-2xl xl:max-w-5xl mx-auto grid grid-cols-1 xl:grid-cols-2 items-start gap-6 justify-stretch relative">
         <div class="relative xl:mr-7">

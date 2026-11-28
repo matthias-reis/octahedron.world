@@ -10,6 +10,7 @@ import {
   Show,
 } from "solid-js";
 import { createStore } from "solid-js/store";
+import { colorSpaceStyle } from "~/color/palette";
 import { largeImageUrl } from "~/components/image-helpers";
 import { transform } from "solid-mds";
 import { useI18n } from "~/i18n/context";
@@ -275,7 +276,8 @@ export default function createTemplate(props: {
 
   return (
     <div
-      class={`w-full min-h-screen relative ${parsed.global?.colorSpace || "original"}`}
+      class="w-full min-h-screen relative"
+      style={colorSpaceStyle(parsed.global?.colorSpace)}
     >
       {/* Loading indicator - shown until hydration completes */}
       <div

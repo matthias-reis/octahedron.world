@@ -3,6 +3,7 @@ import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
 import { EditorialHero } from "~/components/editorial-hero";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -12,7 +13,7 @@ export default function createTemplate(props: {
   const item = parsed.global;
 
   return (
-    <div class={`${item?.colorSpace || ""} min-h-screen bg-cb`}>
+    <div class="min-h-screen bg-cb" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
         pageBackground="#000000"

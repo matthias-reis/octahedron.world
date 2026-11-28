@@ -2,6 +2,7 @@ import { useLocation } from "@solidjs/router";
 import { createEffect, type ParentComponent, Suspense } from "solid-js";
 import { Footer } from "~/components/footer";
 import Nav from "~/components/nav";
+import { colorSpaceStyle } from "~/color/palette";
 import { colorSpace, setColorSpace } from "~/store/color-space";
 
 /** octahedron.world's layout: colour-space wrapper, slide-out nav, footer. */
@@ -19,7 +20,7 @@ export const OctahedronShell: ParentComponent = (props) => {
   });
 
   return (
-    <div class={colorSpace()}>
+    <div style={colorSpaceStyle(colorSpace())}>
       <Nav />
       <Suspense>
         <div class="bg-cb">

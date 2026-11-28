@@ -5,6 +5,7 @@ import { canonicalComponents } from "~/components/canonical-components";
 import { EditorialHero } from "~/components/editorial-hero";
 import { Related } from "~/components/related";
 import { World2Calculator } from "~/components/world-2-calculator";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 // Graphics plugin - the SVG chart from the world-2 layout
@@ -50,10 +51,10 @@ export default function createTemplate(props: {
   const item = parsed.global;
 
   return (
-    <div class={`${item?.colorSpace} bg-can9 min-h-screen`}>
+    <div class="bg-can9 min-h-screen" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
-        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+        pageBackground="var(--color-can9)"
       />
       <main class="editorial-content max-w-5xl mx-auto px-3 pb-7 relative font-serif text-lg">
         {/* MDS Content Steps */}

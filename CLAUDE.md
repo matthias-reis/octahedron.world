@@ -166,6 +166,24 @@ them. `mreis.me/p/*` redirects there (`src/middleware.ts`).
 2. Default-export a component taking the parsed MDS structure.
 3. Register the key in the `renderers` map in
    `src/components/mds-template.tsx`.
+4. Theme its outer element with
+   `style={colorSpaceStyle(item?.colorSpace)}` (see "Colour space").
+
+### Colour space
+
+A page's `colorSpace` picks its colours. It is either a hue string — `170+`
+/ `170-`: main hue 170, counter hue 170 ± 137.5 (OKLCH hues) — or a preset
+name (`petrol`, `carmine`, `sky`, …). Anything else, typos included, falls
+back to petrol.
+
+- `src/color/palette.ts` turns it into the 54 `c{a|b}{s|d|n}{1–9}` tokens
+  (hue a main / b counter, chroma saturated / desaturated / neutral,
+  lightness 1 bright … 9 dark) as sRGB hex. Out-of-gamut colours lose
+  chroma, never hue or lightness. `colorSpaceStyle()` sets them as `--p-*`
+  on the themed element; `app.css` maps `--color-c…` onto them. CSS never
+  computes a colour, so never write `oklch(var(--h-…))` — use the tokens.
+- `/color` is the colour lab: pick a hue, see an example page and every
+  token with hex / RGB / HSB. `?hue=170+` preselects one.
 
 ## Data Layer (Model)
 

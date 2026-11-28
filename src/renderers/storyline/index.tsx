@@ -2,9 +2,9 @@ import type { HastParseResult } from "hast-mds";
 import type { JSX } from "solid-js";
 import { transform } from "solid-mds";
 import { canonicalComponents } from "~/components/canonical-components";
-import { cx } from "~/components/cx";
 import { EditorialHero } from "~/components/editorial-hero";
 import { Related } from "~/components/related";
+import { colorSpaceStyle } from "~/color/palette";
 import type { GlobalScope } from "~/types";
 
 export default function createTemplate(props: {
@@ -14,10 +14,10 @@ export default function createTemplate(props: {
   const item = parsed.global;
 
   return (
-    <div class={cx(`min-h-screen bg-can9`, item?.colorSpace)}>
+    <div class="min-h-screen bg-can9" style={colorSpaceStyle(item?.colorSpace)}>
       <EditorialHero
         item={item}
-        pageBackground="oklch(var(--l-9) var(--s-n) var(--h-a))"
+        pageBackground="var(--color-can9)"
       />
       <main class="editorial-content max-w-5xl mx-auto px-3 py-7 font-serif text-lg">
         {/* MDS Content Steps */}
